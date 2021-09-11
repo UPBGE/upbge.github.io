@@ -1,35 +1,12 @@
-# UPBGE-Web
+# UPBGE-Web2
 
-Each commit is automatically uploaded to UPBGE Web server by CI.
+Each commit is automatically published after 20-30 seconds.
 
-# Server Setup
+# Submodules
 
-public_html/
+Manual 0.3, API 0.3 and Manual/API 0.2.5 are submodules. If you want to make changes over these directories, please use their correspondents repositories for it.
 
---- basic_files_exposed_in_this_git (including `.htaccess` which is manually ported when necessary)
-
---- `manual/index.html` (this is updated automatically when we commit in UPBGE-Docs git)
-
---- `api/index.html` (I manually update content to this folder)
-
---- `css`
-
---- `img`
-
---- `downloads/index.html` (lordloki manually updates the build releases)
-
------- **Stable Releases**
-
---------- Github (Linux64, MacOSX, Windows [32-bit, 64-bit])
-
---------- MEGA (Linux64, MacOSX, Windows [32-bit, 64-bit])
-
------- **Older Releases**
-
---------- Github (Linux64, MacOSX, Windows [32-bit, 64-bit])
-
---------- MEGA (Linux64, MacOSX, Windows [32-bit, 64-bit])
-
------- **Alpha Builds**
-
---------- MEGA (Linux64, MacOSX, Windows [32-bit, 64-bit])
+#TODO
+ - Automatize submodules update after any commit on them.
+ - Change upbge.org pointing out from current server to this repository.
+ - Fix any broken link due to the movement.
