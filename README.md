@@ -8,5 +8,3 @@ Manual 0.3, API 0.3 and Manual/API 0.2.5 are submodules. If you want to make cha
 
 # TODO
  - Automatize submodules update after any commit on them.
- - Change upbge.org pointing out from current server to this repository.
- - Fix any broken link due to the movement.
