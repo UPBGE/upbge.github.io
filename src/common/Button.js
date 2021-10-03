@@ -9,7 +9,7 @@ const Button = ({ children, ...rest }) => {
 }
 
 Button.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.any,
 }
 
 export default Button

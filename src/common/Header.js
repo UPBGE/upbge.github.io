@@ -23,7 +23,7 @@ const MenuItem = ({ children, to, exact, ...rest }) => {
 }
 
 MenuItem.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.any,
   to: PropTypes.string.isRequired,
   exact: PropTypes.bool,
 }

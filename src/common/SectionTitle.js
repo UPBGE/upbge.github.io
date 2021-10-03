@@ -8,7 +8,7 @@ const SectionTitle = ({ children, ...rest }) => {
 }
 
 SectionTitle.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.any,
 }
 
 export default SectionTitle
