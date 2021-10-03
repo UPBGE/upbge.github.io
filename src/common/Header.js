@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     <div
-      className={`sticky top-0 z-50 p-2 h-18 md:px-20 2xl:px-48 flex items-center 
+      className={`sticky top-0 z-50 p-2 h-18 px-4 md:px-20 2xl:px-48 flex items-center 
             justify-between transition-height duration-300 ease-in-out  
             ${
               collapsed || !isHome ? 'bg-gray-950' : 'bg-transparent md:h-32'
