@@ -64,10 +64,19 @@ const Header = () => {
       </div>
 
       <div
-        className={'md:hidden text-white cursor-pointer'}
-        onClick={onMenuClick}>
-        <MenuIcon className={menuVisible ? 'hidden' : 'h-10'} />
-        <XIcon className={menuVisible ? 'h-10' : 'hidden'} />
+        className={
+          'md:hidden text-white cursor-pointer flex items-center space-x-4'
+        }>
+        <DarkModeSwitcher />
+
+        <MenuIcon
+          className={menuVisible ? 'hidden' : 'h-10'}
+          onClick={onMenuClick}
+        />
+        <XIcon
+          className={menuVisible ? 'h-10' : 'hidden'}
+          onClick={onMenuClick}
+        />
       </div>
 
       <div
