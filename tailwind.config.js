@@ -1,8 +1,9 @@
-const { fontFamily } = require('tailwindcss/defaultTheme')
+const { fontFamily, height } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
   purge: ['./public/**/*.html', './src/**/*.js'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -15,6 +16,7 @@ module.exports = {
       },
       height: {
         18: '4.5em',
+        ...height
       },
       transitionProperty: {
         height: 'height',

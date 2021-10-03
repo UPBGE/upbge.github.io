@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 
+import { useDarkModeChange } from './common/theme'
 import Header from './common/Header'
 import Home from './pages/Home'
 import Documentation from './pages/Documentation'
@@ -7,10 +8,12 @@ import Community from './pages/Community'
 import Releases from './pages/Releases'
 
 const App = () => {
+  const darkMode = useDarkModeChange()
+
   return (
-    <div className={'text-gray-600 leading-7'}>
+    <div className={`${darkMode ? 'dark' : 'light'}`}>
       <Header />
-      <main>
+      <main className={'text-gray-600 dark:text-gray-100 leading-7'}>
         <Switch>
           <Route path='/documentation'>
             <Documentation />
