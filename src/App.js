@@ -11,24 +11,29 @@ const App = () => {
   const darkMode = useDarkModeChange()
 
   return (
-    <div className={`${darkMode ? 'dark' : 'light'}`}>
-      <Header />
-      <main className={'text-gray-600 dark:text-gray-100 leading-7'}>
-        <Switch>
-          <Route path='/documentation'>
-            <Documentation />
-          </Route>
-          <Route path='/community'>
-            <Community />
-          </Route>
-          <Route path='/releases'>
-            <Releases />
-          </Route>
-          <Route path='/'>
-            <Home />
-          </Route>
-        </Switch>
-      </main>
+    <div className={`min-h-screen ${darkMode ? 'dark' : 'light'}`}>
+      <div
+        className={
+          'min-h-screen text-gray-600 dark:bg-gray-930 dark:text-gray-150 leading-7'
+        }>
+        <Header />
+        <main>
+          <Switch>
+            <Route path='/documentation'>
+              <Documentation />
+            </Route>
+            <Route path='/community'>
+              <Community />
+            </Route>
+            <Route path='/releases'>
+              <Releases />
+            </Route>
+            <Route path='/'>
+              <Home />
+            </Route>
+          </Switch>
+        </main>
+      </div>
     </div>
   )
 }

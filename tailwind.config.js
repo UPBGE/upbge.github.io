@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       colors: {
         upbge: '#f99543',
+        'gray-150': '#B5B5B5',
+        'gray-930': '#222222',
         'gray-950': '#121212',
       },
       fontFamily: {
@@ -16,7 +18,7 @@ module.exports = {
       },
       height: {
         18: '4.5em',
-        ...height
+        ...height,
       },
       transitionProperty: {
         height: 'height',

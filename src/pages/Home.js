@@ -13,7 +13,9 @@ const Jumbotron = tw.div`absolute top-0 left-0 w-screen h-screen max-w-full z-40
     flex-col justify-center items-center`
 
 const Content = tw.div`px-6 md:px-12`
-const Intro = tw(Content)`bg-gray-50 text-center py-10 md:py-16`
+const Intro = tw(
+  Content
+)`bg-gray-50 dark:bg-gray-950 text-center py-10 md:py-16`
 const Section = tw(
   Content
 )`md:grid md:grid-cols-2 py-4 md:py-10 space-x-2 max-w-6xl`

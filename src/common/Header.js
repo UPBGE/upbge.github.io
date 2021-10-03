@@ -4,6 +4,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { MenuIcon, XIcon } from '@heroicons/react/solid'
 import tw from 'tailwind-styled-components'
 
+import DarkModeSwitcher from './DarkModeSwitcher'
 import logo from '../assets/images/upbge.svg'
 
 const Nav = tw.nav`flex justify-end space-x-4 text-sm font-semibold md:visible`
@@ -84,13 +85,15 @@ const Header = () => {
         </div>
       </div>
 
-      <Nav className={'hidden md:block'}>
+      <Nav className={'hidden md:flex items-center'}>
         <MenuItem to='/' exact={true}>
           Home
         </MenuItem>
         <MenuItem to='/documentation'>Documentation</MenuItem>
         <MenuItem to='/community'>Community</MenuItem>
         <MenuItem to='/releases'>Releases</MenuItem>
+
+        <DarkModeSwitcher />
       </Nav>
     </div>
   )
