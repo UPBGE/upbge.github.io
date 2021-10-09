@@ -32,7 +32,8 @@ class ModeManager extends EventTarget {
   }
 
   get enabled() {
-    return JSON.parse(localStorage.getItem(DARK_MODE_KEY)) === true
+    const value = JSON.parse(localStorage.getItem(DARK_MODE_KEY))
+    return value !== null ? value : this.prefersDarkMode
   }
 
   set enabled(value) {
