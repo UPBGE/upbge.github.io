@@ -36,13 +36,35 @@ module.exports = {
             ignore: ['*.DS_Store'],
           },
         },
+        {
+          from: paths.manual,
+          to: 'docs/latest/manual',
+          globOptions: {
+            ignore: ['**/_sources'],
+          },
+        },
+        {
+          from: paths.api,
+          to: 'docs/latest/api',
+          globOptions: {
+            ignore: ['**/_sources'],
+          },
+        },
+        {
+          from: paths.docs_0_2_5,
+          to: 'docs/v0.2.5',
+          toType: 'dir',
+          globOptions: {
+            ignore: ['**/_sources'],
+          },
+        },
       ],
     }),
 
     // Generates an HTML file from a template
     // Generates deprecation warning: https://github.com/jantimon/html-webpack-plugin/issues/1501
     new HtmlWebpackPlugin({
-      title: 'Project Title',
+      title: 'UPBGE',
       favicon: paths.public + '/images/favicon.png',
       template: paths.public + '/index.html', // template file
       filename: 'index.html', // output file
