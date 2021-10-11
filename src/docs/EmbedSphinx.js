@@ -108,6 +108,10 @@ const EmbedSphinx = () => {
     [keyword]
   )
 
+  useEffect(() => {
+    document.getElementById('doc-content').scrollTop = 0
+  }, [content, query, error])
+
   const onInputChange = useCallback((e) => {
     setKeyword(e.target.value)
   }, [])
