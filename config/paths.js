@@ -11,11 +11,11 @@ module.exports = {
   public: path.resolve(__dirname, '../public'),
 
   //API reference for UPBGE 0.3
-  api: path.resolve(__dirname, '../api'),
+  api: path.resolve(__dirname, '../docs/api'),
 
   //Manual for UPBGE 0.3
-  manual: path.resolve(__dirname, '../manual'),
+  manual: path.resolve(__dirname, '../docs/manual'),
 
   //API reference and manual for UPBGE 0.2.5
-  docs_0_2_5: path.resolve(__dirname, '../manual_api_0.2.5'),
+  docs_0_2_5: path.resolve(__dirname, '../docs/manual_api_0.2.5'),
 }
