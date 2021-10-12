@@ -1,40 +1,65 @@
-# UPBGE-Web2
+# UPBGE-Web
 
-Each commit is automatically published after 20-30 seconds.
+This is a repository for the website of [UPBGE](https://upbge.org) project. 
+The `master` branch contains the source files for the website, which is built and 
+published to `gh_page` branch via a Github workflow.
 
-## Submodules
+### Requirements
 
-Manual 0.3, API 0.3 and Manual/API 0.2.5 are submodules. If you want to make 
-changes over these directories, please use their respective repositories for it.
+[Node.js](https://nodejs.org) is needed to build and test the website.
 
-## Automatic submodules update
- - The submodules are automatically updated after each commit and every 6 hours. 
- - Additionally, you can launch a submodules update through 
-   _Actions -> update-submodules -> Run workflow_
-
-## Development and Testing
+### Install Dependencies
 
 If you just checked out the project and want to test the website on your local 
-machine, you'll need to update submodules as shown below:   
-
-```bash
-> git submodule update --init --recursive
-```
-
-Then install required modules to run the website using the following `npm` 
-command:
+machine, you'll need to install the dependencies using the following command:   
 
 ```bash
 > npm install
 ```
 
-These steps are only necessary when you cloned the repository the first time. 
+### Prepare Documentation
 
-Once it's done, you can run the development server using,
+The website requires documentation files from other repositories. You can either 
+download them using `npm` (see below) or do it manually as explained in 
+[here](./docs/README.md): 
+
+```bash
+> npm run clone-docs
+```
+
+This step is only necessary the first time you clone the repository.
+
+### Run Local Server
+
+Once you have performed all the prerequisite steps, you can run the development 
+server to test the website on your local machine:
 
 ```bash
 > npm run start
 ```
 
-Now you can access the website at http://localhost:3000, which will get updated 
-automatically if you make changes.
+While the command is running, you can access the website at http://localhost:3000.
+
+### Development
+
+If you are interested in developing the website, you can make changes to the source 
+files while the server is running, which will trigger automatic update of the current 
+page.
+
+The project is written in [React.js](https://reactjs.org) and 
+[Tailwind CSS](https://tailwindcss.com), so you may want to read their documentation 
+if you are not familiar with them.   
+
+Once you finish modifying the source, please make sure that the change doesn't contain 
+any error and follows the coding convention by running the linter script before 
+submitting a pull request:
+
+```bash
+> npm run lint-fix
+```
+
+Or to check the source without fixing problems: 
+
+```bash
+> npm run lint
+```
