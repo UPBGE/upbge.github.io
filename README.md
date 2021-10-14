@@ -64,6 +64,6 @@ Or to check the source without fixing problems:
 > npm run lint
 ```
 
-## License
+### License
 
 This project is licensed under the terms of the [MIT license](./LICENSE).
