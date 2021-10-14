@@ -58,6 +58,16 @@ module.exports = {
             ignore: ['**/_sources', '**/.git'],
           },
         },
+        {
+          from: paths.root + '/.nojekyll',
+          to: 'docs/.nojekyll',
+          toType: 'file',
+        },
+        {
+          from: paths.root + '/.nojekyll',
+          to: 'docs/latest/.nojekyll',
+          toType: 'file',
+        },
       ],
     }),
 
