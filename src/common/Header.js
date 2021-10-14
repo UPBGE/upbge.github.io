@@ -57,13 +57,11 @@ const Header = () => {
                 ? 'bg-gray-950'
                 : 'bg-transparent md:h-32 2xl:px-48'
             }`}>
-      <div className={'flex items-center'}>
-        <NavLink to={'/'} className={'mr-1 md:mr-3'}>
-          <img src={logo} alt={'UPBGE Logo'} className={'h-10 md:h-12'} />
-        </NavLink>
+      <NavLink to={'/'} className={'flex items-center space-x-1 md:space-x-3'}>
+        <img src={logo} alt={'UPBGE Logo'} className={'h-10 md:h-12'} />
 
         <Brand>UPBGE</Brand>
-      </div>
+      </NavLink>
 
       <div
         className={
