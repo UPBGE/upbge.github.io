@@ -2,7 +2,7 @@
 
 This is a repository for the website of [UPBGE](https://upbge.org) project. 
 The `master` branch contains the source files for the website, which is built and 
-published to `gh_page` branch via a Github workflow.
+published to `gh-pages` branch via a Github workflow.
 
 ### Requirements
 
