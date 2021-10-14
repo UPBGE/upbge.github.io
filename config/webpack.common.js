@@ -40,14 +40,14 @@ module.exports = {
           from: paths.manual,
           to: 'docs/latest/manual',
           globOptions: {
-            ignore: ['**/_sources'],
+            ignore: ['**/_sources', '**/.git'],
           },
         },
         {
           from: paths.api,
           to: 'docs/latest/api',
           globOptions: {
-            ignore: ['**/_sources'],
+            ignore: ['**/_sources', '**/.git'],
           },
         },
         {
@@ -55,7 +55,7 @@ module.exports = {
           to: 'docs/v0.2.5',
           toType: 'dir',
           globOptions: {
-            ignore: ['**/_sources'],
+            ignore: ['**/_sources', '**/.git'],
           },
         },
       ],
