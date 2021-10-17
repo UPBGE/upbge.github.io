@@ -6,7 +6,7 @@ import '../docs/sphinx.css'
 
 const Documentation = () => {
   return (
-    <HashRouter>
+    <HashRouter basename={'/documentation'}>
       <Switch>
         <Route path={`/:path`}>
           <div

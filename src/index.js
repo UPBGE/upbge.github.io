@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 import './index.css'
 
@@ -8,8 +8,8 @@ import App from './App'
 const root = document.getElementById('root')
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <App />
-  </BrowserRouter>,
+  </HashRouter>,
   root
 )
