@@ -133,7 +133,7 @@ const EmbedSphinx = () => {
           <div className={'sphinx relative h-full flex items-stretch'}>
             <div
               className={
-                'absolute block md:hidden right-8 bottom-5 text-white cursor-pointer'
+                'absolute block md:hidden right-8 bottom-5 text-gray-950 dark:text-white cursor-pointer'
               }>
               <ChevronDoubleRightIcon
                 className={`h-5 ${sideMenuVisible ? 'hidden' : 'block'}`}
