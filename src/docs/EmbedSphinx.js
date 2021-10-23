@@ -11,6 +11,10 @@ import parse from './sphinx'
 import SearchService from './search'
 import SearchResult from './SearchResult'
 import LazyLoad from 'react-lazyload'
+import tw from 'tailwind-styled-components'
+
+const Button = tw.button`p-1 px-2 bg-gray-400 dark:bg-gray-950 border-gray-200 
+  text-gray-950 dark:text-white cursor-pointer`
 
 const EmbedSphinx = () => {
   const { url } = useRouteMatch()
@@ -130,9 +134,9 @@ const EmbedSphinx = () => {
         </Route>
         <Route path={'/'}>
           <div className={'sphinx relative h-full flex items-stretch'}>
-            <div
+            <Button
               className={
-                'absolute z-10 block md:hidden right-8 bottom-5 text-gray-950 dark:text-white cursor-pointer'
+                'absolute z-10 block md:hidden right-5 bottom-5 rounded-md'
               }>
               <SearchIcon
                 className={`h-5 ${sideMenuVisible ? 'hidden' : 'block'}`}
@@ -144,7 +148,7 @@ const EmbedSphinx = () => {
                 title={'Hide table of contents for documentation'}
                 onClick={onToggleTOC}
               />
-            </div>
+            </Button>
             <div
               className={
                 'text-gray-800 dark:text-gray-100 bg-gray-300 dark:bg-gray-650 py-5 ' +
@@ -172,10 +176,8 @@ const EmbedSphinx = () => {
                   disabled={searching}
                   onChange={onInputChange}
                 />
-                <button
-                  className={
-                    'p-1 px-2 bg-gray-400 dark:bg-gray-950 rounded-r-md'
-                  }
+                <Button
+                  className={'rounded-r-md'}
                   disabled={searching}
                   onClick={onSearch}>
                   <RefreshIcon
@@ -186,7 +188,7 @@ const EmbedSphinx = () => {
                   <SearchIcon
                     className={`h-5 ${searching ? 'hidden' : 'block'}`}
                   />
-                </button>
+                </Button>
               </form>
 
               {navigation}
