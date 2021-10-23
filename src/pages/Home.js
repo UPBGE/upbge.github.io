@@ -22,6 +22,9 @@ const Intro = tw(
 const Section = tw(Content)`py-4 md:py-10`
 const HSection = tw(Section)`md:grid md:grid-cols-2 space-x-2 max-w-6xl`
 
+const GridSection = tw.div`bg-gray-100 dark:bg-gray-950 py-4 px-8 rounded-lg`
+const GridSectionTitle = tw(SectionTitle)`text-left lg:text-center`
+
 const BulletList = tw.ul`list-disc p-4 md:p-0`
 
 const Home = () => {
@@ -137,11 +140,9 @@ const Home = () => {
         </Section>
 
         <Section className={'max-w-7xl'}>
-          <div className={'grid grid-cols-1 lg:grid-cols-3 gap-x-10'}>
-            <div>
-              <SectionTitle className={'text-left md:text-center'}>
-                Integrated with Blender
-              </SectionTitle>
+          <div className={'grid grid-cols-1 lg:grid-cols-3 gap-2'}>
+            <GridSection>
+              <GridSectionTitle>Integrated with Blender</GridSectionTitle>
 
               <BulletList>
                 <li>
@@ -165,12 +166,10 @@ const Home = () => {
                   patterns as Blender itself.
                 </li>
               </BulletList>
-            </div>
+            </GridSection>
 
-            <div>
-              <SectionTitle className={'text-left md:text-center'}>
-                Graphics
-              </SectionTitle>
+            <GridSection>
+              <GridSectionTitle>Graphics</GridSectionTitle>
 
               <BulletList>
                 <li>
@@ -189,12 +188,10 @@ const Home = () => {
                 <li>Volumetrics</li>
                 <li>Depth of field</li>
               </BulletList>
-            </div>
+            </GridSection>
 
-            <div>
-              <SectionTitle className={'text-left md:text-center'}>
-                Physics/Animation
-              </SectionTitle>
+            <GridSection>
+              <GridSectionTitle>Physics/Animation</GridSectionTitle>
 
               <BulletList>
                 <li>Rigid bodies</li>
@@ -207,9 +204,9 @@ const Home = () => {
                 <li>Shape keys</li>
                 <li>Drivers</li>
                 <li>Actions</li>
-                <li>motion capture</li>
+                <li>Motion capture</li>
               </BulletList>
-            </div>
+            </GridSection>
           </div>
         </Section>
 
