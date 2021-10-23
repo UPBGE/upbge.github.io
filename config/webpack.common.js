@@ -7,7 +7,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin') // extract css t
 
 module.exports = {
   // Where webpack looks to start building the bundle
-  entry: [paths.src + '/index.js'],
+  entry: [
+    'whatwg-fetch',
+    'core-js',
+    'react',
+    'react-dom',
+    paths.src + '/index.js',
+  ],
 
   // Where webpack outputs the assets and bundles
   output: {
