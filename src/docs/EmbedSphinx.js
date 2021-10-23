@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link, Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
 import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
   HomeIcon,
   RefreshIcon,
   SearchIcon,
@@ -21,6 +23,7 @@ const EmbedSphinx = () => {
   const [searching, setSearching] = useState(false)
   const [query, setQuery] = useState()
   const [error, setError] = useState()
+  const [sideMenuVisible, setSideMenuVisible] = useState(false)
 
   const [hits, setHits] = useState([])
 
@@ -116,6 +119,10 @@ const EmbedSphinx = () => {
     setKeyword(e.target.value)
   }, [])
 
+  const onToggleTOC = useCallback(() => {
+    setSideMenuVisible(!sideMenuVisible)
+  }, [sideMenuVisible])
+
   return (
     <div className={'h-full relative'}>
       <Switch>
@@ -126,8 +133,29 @@ const EmbedSphinx = () => {
           <div className={'sphinx relative h-full flex items-stretch'}>
             <div
               className={
-                'text-gray-800 dark:text-gray-100 bg-gray-300 dark:bg-gray-650 py-5 px-10 ' +
-                'overflow-y-auto max-w-sm'
+                'absolute block md:hidden right-8 bottom-5 text-white cursor-pointer'
+              }>
+              <ChevronDoubleRightIcon
+                className={`h-5 ${sideMenuVisible ? 'hidden' : 'block'}`}
+                title={'Show table of contents for documentation'}
+                onClick={onToggleTOC}
+              />
+              <ChevronDoubleLeftIcon
+                className={`h-5 ${sideMenuVisible ? 'block' : 'hidden'}`}
+                title={'Hide table of contents for documentation'}
+                onClick={onToggleTOC}
+              />
+            </div>
+            <div
+              className={
+                'text-gray-800 dark:text-gray-100 bg-gray-300 dark:bg-gray-650 py-5 ' +
+                'overflow-y-auto absolute bottom-0 top-0 md:static md:max-w-sm ' +
+                'transition-width duration-300 ease-in-out ' +
+                `${
+                  sideMenuVisible
+                    ? 'w-auto px-10'
+                    : 'w-0 px-0 md:w-auto md:px-10'
+                }`
               }>
               <Link
                 to={'/'}
