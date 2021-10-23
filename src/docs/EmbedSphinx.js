@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react'
 import { Link, Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
 import {
   ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
   HomeIcon,
   RefreshIcon,
   SearchIcon,
@@ -135,7 +134,7 @@ const EmbedSphinx = () => {
               className={
                 'absolute block md:hidden right-8 bottom-5 text-gray-950 dark:text-white cursor-pointer'
               }>
-              <ChevronDoubleRightIcon
+              <SearchIcon
                 className={`h-5 ${sideMenuVisible ? 'hidden' : 'block'}`}
                 title={'Show table of contents for documentation'}
                 onClick={onToggleTOC}
