@@ -152,7 +152,7 @@ const EmbedSphinx = () => {
                 'transition-width duration-300 ease-in-out ' +
                 `${
                   sideMenuVisible
-                    ? 'w-auto px-10'
+                    ? 'w-auto px-10 left-0 right-0'
                     : 'w-0 px-0 md:w-auto md:px-10'
                 }`
               }>
