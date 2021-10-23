@@ -8,8 +8,7 @@ module.exports = {
     extends: [
         "eslint:recommended",
         "plugin:react/recommended",
-        "prettier",
-        "prettier/react"
+        "prettier"
     ],
     parserOptions: {
         ecmaVersion: "2017",
