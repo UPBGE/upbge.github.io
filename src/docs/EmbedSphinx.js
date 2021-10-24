@@ -11,7 +11,7 @@ import {
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../tailwind.config'
 
-import Spinner from 'react-spinners/ScaleLoader'
+import Spinner from 'react-spinners/MoonLoader'
 
 import parse from './sphinx'
 import SearchService from './search'
@@ -252,15 +252,10 @@ const EmbedSphinx = () => {
 
               <div
                 className={`flex flex-col items-center justify-center absolute  
-                  left-0 right-0 top-2/4 opacity-50 -mt-14 ${
+                  left-0 right-0 top-2/4 -mt-14 ${
                     fetching ? 'block' : 'hidden'
                   }`}>
-                <Spinner
-                  color={colors['upbge']}
-                  loading={fetching}
-                  width={10}
-                  height={80}
-                />
+                <Spinner color={colors['upbge']} loading={fetching} size={80} />
               </div>
 
               {!query && content}
