@@ -20,6 +20,7 @@ import LazyLoad from 'react-lazyload'
 import tw from 'tailwind-styled-components'
 import Dropdown from '../common/Dropdown'
 import MenuItem from '../common/MenuItem'
+import ScrollPane from '../common/ScrollPane'
 
 function getTitle(url) {
   if (url.startsWith('/docs/latest/manual')) {
@@ -176,7 +177,7 @@ const EmbedSphinx = () => {
                 onClick={onToggleTOC}
               />
             </Button>
-            <div
+            <ScrollPane
               className={
                 'text-gray-800 dark:text-gray-100 bg-gray-300 dark:bg-gray-650 py-5 ' +
                 'overflow-y-auto absolute bottom-0 top-0 md:static md:max-w-sm z-10 opacity-90 ' +
@@ -241,8 +242,10 @@ const EmbedSphinx = () => {
               </form>
 
               {navigation}
-            </div>
-            <div id={'doc-content'} className={'flex-1 p-10 overflow-auto'}>
+            </ScrollPane>
+            <ScrollPane
+              id={'doc-content'}
+              className={'flex-1 p-10 overflow-auto'}>
               {error && (
                 <p className={'text-red-500 py-10 flex items-center'}>
                   <XCircleIcon className={'h-5 mr-1'} />
@@ -275,7 +278,7 @@ const EmbedSphinx = () => {
                   {hits}
                 </div>
               )}
-            </div>
+            </ScrollPane>
           </div>
         </Route>
       </Switch>

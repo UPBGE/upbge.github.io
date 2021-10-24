@@ -1,4 +1,5 @@
 const { fontFamily, height, spacing } = require('tailwindcss/defaultTheme')
+const scrollbar = require('tailwind-scrollbar')
 
 module.exports = {
   mode: 'jit',
@@ -36,4 +37,10 @@ module.exports = {
       },
     },
   },
+  variants: {
+    extend: {
+      scrollbar: ['dark'],
+    },
+  },
+  plugins: [scrollbar],
 }
