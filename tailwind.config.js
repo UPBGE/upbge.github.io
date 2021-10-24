@@ -39,7 +39,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      scrollbar: ['dark'],
+      scrollbar: ['dark', 'rounded'],
     },
   },
   plugins: [scrollbar],
