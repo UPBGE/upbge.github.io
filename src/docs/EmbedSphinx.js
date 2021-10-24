@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link, Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
+import { Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
 import {
+  BookmarkIcon,
   ChevronDoubleLeftIcon,
-  HomeIcon,
   RefreshIcon,
   SearchIcon,
   XCircleIcon,
@@ -12,6 +12,20 @@ import SearchService from './search'
 import SearchResult from './SearchResult'
 import LazyLoad from 'react-lazyload'
 import tw from 'tailwind-styled-components'
+import Dropdown from '../common/Dropdown'
+import MenuItem from '../common/MenuItem'
+
+function getTitle(url) {
+  if (url.startsWith('/docs/latest/manual')) {
+    return 'UPBGE Manual (current)'
+  } else if (url.startsWith('/docs/latest/api')) {
+    return 'UPBGE API Reference (current)'
+  } else if (url.startsWith('/docs/v0.2.5')) {
+    return 'UPBGE Documentation (v0.2.5)'
+  }
+
+  return 'UPBGE Documentation'
+}
 
 const Button = tw.button`p-1 px-2 bg-gray-400 dark:bg-gray-950 border-gray-200 
   text-gray-950 dark:text-white cursor-pointer`
@@ -160,11 +174,33 @@ const EmbedSphinx = () => {
                     : 'w-0 px-0 md:w-auto md:px-10'
                 }`
               }>
-              <Link
-                to={'/'}
-                className={'block mb-2 font-bold flex items-center'}>
-                <HomeIcon className={'h-5 mr-1 inline-block'} /> Home
-              </Link>
+              <div className={'flex items-center space-x-1 mb-2'}>
+                <BookmarkIcon className={'h-5 text-sm'} />
+
+                <Dropdown
+                  label={
+                    <button className={'text-sm font-bold'}>
+                      {getTitle(url)}
+                    </button>
+                  }>
+                  <MenuItem to={`/docs/latest/manual/index.html`}>
+                    UPBGE 0.3 Manual
+                  </MenuItem>
+                  <MenuItem to={`/docs/latest/api/index.html`}>
+                    UPBGE 0.3 API Reference
+                  </MenuItem>
+                  <MenuItem to={`/docs/v0.2.5/index.html`}>
+                    UPBGE 0.2.5 Manual
+                  </MenuItem>
+
+                  <hr className={'dark:border-gray-800'} />
+
+                  <MenuItem to={``} exact={true}>
+                    Documentation Home
+                  </MenuItem>
+                </Dropdown>
+              </div>
+
               <form
                 className={'flex mb-3 justify-items-stretch'}
                 onSubmit={onSearch}>
