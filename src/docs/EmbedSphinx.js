@@ -38,6 +38,7 @@ const EmbedSphinx = () => {
   const [content, setContent] = useState()
   const [keyword, setKeyword] = useState()
   const [searching, setSearching] = useState(false)
+  const [fetching, setFetching] = useState(false)
   const [query, setQuery] = useState()
   const [error, setError] = useState()
   const [sideMenuVisible, setSideMenuVisible] = useState(false)
@@ -70,6 +71,7 @@ const EmbedSphinx = () => {
     }
 
     setError(null)
+    setFetching(true)
 
     fetch(effectiveUrl)
       .then((res) => res.text())
@@ -79,6 +81,8 @@ const EmbedSphinx = () => {
         setError(`Failed to load the requested page: ${effectiveUrl}`)
       })
       .finally(() => {
+        setFetching(false)
+
         const segments = document.location.hash.replace('%23', '#').split('#')
 
         if (segments.length === 3) {
@@ -229,13 +233,22 @@ const EmbedSphinx = () => {
 
               {navigation}
             </div>
-            <div id={'doc-content'} className={'flex-1 p-10 overflow-auto'}>
+            <div
+              id={'doc-content'}
+              className={'flex-1 p-10 overflow-auto relative'}>
               {error && (
                 <p className={'text-red-500 py-10 flex items-center'}>
                   <XCircleIcon className={'h-5 mr-1'} />
                   {error}
                 </p>
               )}
+
+              <div
+                className={`flex flex-col items-center justify-center absolute h-screen 
+                  left-0 right-0 top-0 ${fetching ? 'block' : 'hidden'}`}>
+                <RefreshIcon className={'animate-spin h-1/3 opacity-25'} />
+              </div>
+
               {!query && content}
 
               {query && (
