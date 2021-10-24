@@ -233,9 +233,7 @@ const EmbedSphinx = () => {
 
               {navigation}
             </div>
-            <div
-              id={'doc-content'}
-              className={'flex-1 p-10 overflow-auto relative'}>
+            <div id={'doc-content'} className={'flex-1 p-10 overflow-auto'}>
               {error && (
                 <p className={'text-red-500 py-10 flex items-center'}>
                   <XCircleIcon className={'h-5 mr-1'} />
