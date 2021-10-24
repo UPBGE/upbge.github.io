@@ -7,6 +7,12 @@ import {
   SearchIcon,
   XCircleIcon,
 } from '@heroicons/react/solid'
+
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../../tailwind.config'
+
+import Spinner from 'react-spinners/ScaleLoader'
+
 import parse from './sphinx'
 import SearchService from './search'
 import SearchResult from './SearchResult'
@@ -26,6 +32,8 @@ function getTitle(url) {
 
   return 'UPBGE Documentation'
 }
+
+const colors = resolveConfig(tailwindConfig).theme.colors
 
 const Button = tw.button`p-1 px-2 bg-gray-400 dark:bg-gray-950 border-gray-200 
   text-gray-950 dark:text-white cursor-pointer`
@@ -243,9 +251,16 @@ const EmbedSphinx = () => {
               )}
 
               <div
-                className={`flex flex-col items-center justify-center absolute h-screen 
-                  left-0 right-0 top-0 ${fetching ? 'block' : 'hidden'}`}>
-                <RefreshIcon className={'animate-spin h-1/3 opacity-25'} />
+                className={`flex flex-col items-center justify-center absolute  
+                  left-0 right-0 top-2/4 opacity-50 -mt-14 ${
+                    fetching ? 'block' : 'hidden'
+                  }`}>
+                <Spinner
+                  color={colors['upbge']}
+                  loading={fetching}
+                  width={10}
+                  height={80}
+                />
               </div>
 
               {!query && content}
