@@ -2,10 +2,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { Route, Switch, useParams, useRouteMatch } from 'react-router-dom'
 import {
   BookmarkIcon,
-  ChevronDoubleLeftIcon,
   RefreshIcon,
   SearchIcon,
   XCircleIcon,
+  XIcon,
 } from '@heroicons/react/solid'
 
 import resolveConfig from 'tailwindcss/resolveConfig'
@@ -171,7 +171,7 @@ const EmbedSphinx = () => {
                 title={'Show table of contents for documentation'}
                 onClick={onToggleTOC}
               />
-              <ChevronDoubleLeftIcon
+              <XIcon
                 className={`h-5 ${sideMenuVisible ? 'block' : 'hidden'}`}
                 title={'Hide table of contents for documentation'}
                 onClick={onToggleTOC}
