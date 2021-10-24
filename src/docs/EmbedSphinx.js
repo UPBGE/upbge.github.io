@@ -97,6 +97,7 @@ const EmbedSphinx = () => {
       setSearching(true)
       setQuery(null)
       setHits([])
+      setSideMenuVisible(false)
 
       const prefix = SearchService.docRoot
 
@@ -154,7 +155,7 @@ const EmbedSphinx = () => {
           <div className={'sphinx relative h-full flex items-stretch'}>
             <Button
               className={
-                'absolute z-10 block md:hidden right-5 bottom-5 rounded-md'
+                'absolute z-20 block md:hidden right-5 bottom-5 rounded-md'
               }>
               <SearchIcon
                 className={`h-5 ${sideMenuVisible ? 'hidden' : 'block'}`}
@@ -170,8 +171,8 @@ const EmbedSphinx = () => {
             <div
               className={
                 'text-gray-800 dark:text-gray-100 bg-gray-300 dark:bg-gray-650 py-5 ' +
-                'overflow-y-auto absolute bottom-0 top-0 md:static md:max-w-sm ' +
-                'transition-width duration-300 ease-in-out ' +
+                'overflow-y-auto absolute bottom-0 top-0 md:static md:max-w-sm z-10 opacity-90 ' +
+                'md:opacity-100 backdrop-blur-sm transition-width duration-300 ease-in-out ' +
                 `${
                   sideMenuVisible
                     ? 'w-auto px-10 left-0 right-0'
