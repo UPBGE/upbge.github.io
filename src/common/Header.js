@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { NavLink, useLocation } from 'react-router-dom'
 import { MenuIcon } from '@heroicons/react/solid'
 import tw from 'tailwind-styled-components'
@@ -7,25 +6,12 @@ import tw from 'tailwind-styled-components'
 import DarkModeSwitcher from './DarkModeSwitcher'
 import logo from '../assets/images/upbge.svg'
 import Dropdown from './Dropdown'
+import MenuItem from './MenuItem'
 
 const Nav = tw.nav`flex justify-end space-x-4 text-sm font-semibold md:visible`
 const Brand = tw.div`text-white text-3xl md:text-4xl font-black font-display`
 
-const MenuItem = ({ children, to, exact, ...rest }) => {
-  return (
-    <NavLink to={to} activeClassName={'text-upbge'} exact={exact} {...rest}>
-      {children}
-    </NavLink>
-  )
-}
-
 const HeaderMenu = tw(MenuItem)`text-white`
-
-MenuItem.propTypes = {
-  children: PropTypes.any,
-  to: PropTypes.string.isRequired,
-  exact: PropTypes.bool,
-}
 
 const Header = () => {
   const [collapsed, setCollapsed] = useState(false)
