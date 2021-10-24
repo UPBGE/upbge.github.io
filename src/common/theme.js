@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react'
 
 const DARK_MODE_KEY = 'upbge.website.dark_mode'
 
-class ModeChangeEvent extends CustomEvent {
+class ModeChangeEvent {
   constructor(darkModeEnabled) {
-    super('modeChange', {
-      detail: {
-        darkModeEnabled: darkModeEnabled,
-      },
-    })
+    this.detail = {
+      darkModeEnabled: darkModeEnabled,
+    }
+  }
+
+  get type() {
+    return 'modeChange'
   }
 
   get darkModeEnabled() {
@@ -16,15 +18,9 @@ class ModeChangeEvent extends CustomEvent {
   }
 }
 
-class ModeManager extends EventTarget {
+class ModeManager {
   constructor() {
-    super()
-
-    const eventTarget = document.createTextNode(null)
-
-    this.addEventListener = eventTarget.addEventListener
-    this.removeEventListener = eventTarget.removeEventListener
-    this.dispatchEvent = eventTarget.dispatchEvent
+    this._listeners = []
   }
 
   get prefersDarkMode() {
@@ -42,8 +38,20 @@ class ModeManager extends EventTarget {
     localStorage.setItem(DARK_MODE_KEY, JSON.stringify(value === true))
 
     if (changed) {
-      this.dispatchEvent(new ModeChangeEvent(value))
+      const event = new ModeChangeEvent(value)
+
+      this._listeners.forEach((l) => l(event))
     }
+  }
+
+  addEventListener(listener) {
+    if (this._listeners.indexOf(listener) === -1) {
+      this._listeners.push(listener)
+    }
+  }
+
+  removeEventListener(listener) {
+    this._listeners = this._listeners.filter((l) => l !== listener)
   }
 }
 
@@ -55,9 +63,9 @@ export const useDarkModeChange = () => {
   useEffect(() => {
     const handler = (e) => setDarkModeEnabled(e.darkModeEnabled)
 
-    DarkMode.addEventListener('modeChange', handler)
+    DarkMode.addEventListener(handler)
 
-    return () => DarkMode.removeEventListener('modeChange', handler)
+    return () => DarkMode.removeEventListener(handler)
   })
 
   return darkModeEnabled
