@@ -1,27 +1,25 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink, useLocation } from 'react-router-dom'
-import { MenuIcon, XIcon } from '@heroicons/react/solid'
+import { MenuIcon } from '@heroicons/react/solid'
 import tw from 'tailwind-styled-components'
 
 import DarkModeSwitcher from './DarkModeSwitcher'
 import logo from '../assets/images/upbge.svg'
+import Dropdown from './Dropdown'
 
 const Nav = tw.nav`flex justify-end space-x-4 text-sm font-semibold md:visible`
 const Brand = tw.div`text-white text-3xl md:text-4xl font-black font-display`
 
 const MenuItem = ({ children, to, exact, ...rest }) => {
   return (
-    <NavLink
-      to={to}
-      className={'text-white'}
-      activeClassName={'text-upbge'}
-      exact={exact}
-      {...rest}>
+    <NavLink to={to} activeClassName={'text-upbge'} exact={exact} {...rest}>
       {children}
     </NavLink>
   )
 }
+
+const HeaderMenu = tw(MenuItem)`text-white`
 
 MenuItem.propTypes = {
   children: PropTypes.any,
@@ -31,7 +29,6 @@ MenuItem.propTypes = {
 
 const Header = () => {
   const [collapsed, setCollapsed] = useState(false)
-  const [menuVisible, setMenuVisible] = useState(false)
 
   const isHome = useLocation().pathname === '/'
 
@@ -42,11 +39,6 @@ const Header = () => {
 
     return () => removeEventListener('scroll', handler)
   })
-
-  const onMenuClick = useCallback(
-    () => setMenuVisible(!menuVisible),
-    [menuVisible]
-  )
 
   return (
     <div
@@ -63,44 +55,26 @@ const Header = () => {
         <Brand>UPBGE</Brand>
       </NavLink>
 
-      <div
-        className={
-          'md:hidden text-white cursor-pointer flex items-center space-x-4'
-        }>
-        <DarkModeSwitcher />
+      <div className={'md:hidden cursor-pointer flex items-center space-x-4'}>
+        <DarkModeSwitcher className={'text-white'} />
 
-        <MenuIcon
-          className={menuVisible ? 'hidden' : 'h-10'}
-          onClick={onMenuClick}
-        />
-        <XIcon
-          className={menuVisible ? 'h-10' : 'hidden'}
-          onClick={onMenuClick}
-        />
-      </div>
-
-      <div
-        className={`absolute top-14 left-0 w-screen bg-gray-950 overflow-hidden 
-                text-2xl shadow-lg transition-height duration-300 ease-in-out  
-                ${menuVisible ? 'h-60' : 'h-0'}`}
-        onClick={onMenuClick}>
-        <div className={'flex flex-col space-y-4 m-6'}>
+        <Dropdown label={<MenuIcon className={'h-10 text-white'} />}>
           <MenuItem to='/' exact={true}>
             Home
           </MenuItem>
           <MenuItem to='/documentation'>Documentation</MenuItem>
           <MenuItem to='/community'>Community</MenuItem>
           <MenuItem to='/releases'>Releases</MenuItem>
-        </div>
+        </Dropdown>
       </div>
 
       <Nav className={'hidden md:flex items-center'}>
-        <MenuItem to='/' exact={true}>
+        <HeaderMenu to='/' exact={true}>
           Home
-        </MenuItem>
-        <MenuItem to='/documentation'>Documentation</MenuItem>
-        <MenuItem to='/community'>Community</MenuItem>
-        <MenuItem to='/releases'>Releases</MenuItem>
+        </HeaderMenu>
+        <HeaderMenu to='/documentation'>Documentation</HeaderMenu>
+        <HeaderMenu to='/community'>Community</HeaderMenu>
+        <HeaderMenu to='/releases'>Releases</HeaderMenu>
 
         <DarkModeSwitcher />
       </Nav>
