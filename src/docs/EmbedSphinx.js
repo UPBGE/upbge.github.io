@@ -188,32 +188,32 @@ const EmbedSphinx = () => {
                     : 'w-0 px-0 md:w-auto md:px-10'
                 }`
               }>
-              <div className={'flex items-center space-x-1 mb-2'}>
-                <BookmarkIcon className={'h-5 text-sm'} />
+              <Dropdown
+                label={
+                  <button
+                    className={
+                      'text-sm font-bold flex items-center space-x-1 mb-2'
+                    }>
+                    <BookmarkIcon className={'h-5 text-sm'} />
+                    <span>{getTitle(url)}</span>
+                  </button>
+                }>
+                <MenuItem to={`/docs/latest/manual/index.html`}>
+                  UPBGE 0.3 Manual
+                </MenuItem>
+                <MenuItem to={`/docs/latest/api/index.html`}>
+                  UPBGE 0.3 API Reference
+                </MenuItem>
+                <MenuItem to={`/docs/v0.2.5/index.html`}>
+                  UPBGE 0.2.5 Manual
+                </MenuItem>
 
-                <Dropdown
-                  label={
-                    <button className={'text-sm font-bold'}>
-                      {getTitle(url)}
-                    </button>
-                  }>
-                  <MenuItem to={`/docs/latest/manual/index.html`}>
-                    UPBGE 0.3 Manual
-                  </MenuItem>
-                  <MenuItem to={`/docs/latest/api/index.html`}>
-                    UPBGE 0.3 API Reference
-                  </MenuItem>
-                  <MenuItem to={`/docs/v0.2.5/index.html`}>
-                    UPBGE 0.2.5 Manual
-                  </MenuItem>
+                <hr className={'dark:border-gray-800'} />
 
-                  <hr className={'dark:border-gray-800'} />
-
-                  <MenuItem to={``} exact={true}>
-                    Documentation Home
-                  </MenuItem>
-                </Dropdown>
-              </div>
+                <MenuItem to={``} exact={true}>
+                  Documentation Home
+                </MenuItem>
+              </Dropdown>
 
               <form
                 className={'flex mb-3 justify-items-stretch'}
