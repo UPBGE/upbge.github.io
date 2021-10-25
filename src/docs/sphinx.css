@@ -73,7 +73,16 @@
 
     .toctree-wrapper {
         li {
-            @apply list-disc ml-8;
+            @apply text-base ml-8;
+        }
+
+        li.toctree-l1 {
+            @apply text-lg font-semibold my-4 ml-0;
+        }
+
+        * ul {
+            border-top-width: 1px;
+            @apply font-normal border-t-gray-150 mt-2 mb-4 pt-4;
         }
     }
 
@@ -119,11 +128,28 @@
     }
 
     .rst-footer-buttons {
-        @apply flex justify-between mt-10;
+        @apply mt-10;
 
         a {
             @apply inline-block bg-upbge hover:bg-yellow-700 px-4 py-2 mx-1 text-white rounded-lg;
         }
+
+        a:first-child {
+            float: left;
+        }
+
+        a:last-child {
+            float: right;
+        }
+    }
+
+    .rst-footer-buttons:after, .rst-footer-buttons:before {
+        @apply w-full table;
+        content: "";
+    }
+
+    .rst-footer-buttons:after {
+        clear: both;
     }
 }
 
@@ -165,6 +191,17 @@
             }
             th {
                 @apply bg-gray-800;
+            }
+        }
+
+        .toctree-wrapper {
+            li.toctree-l1 {
+                @apply text-gray-100;
+            }
+
+            * ul {
+                border-top-width: 1px;
+                @apply text-gray-150 border-t-gray-600;
             }
         }
 
