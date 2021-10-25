@@ -14,7 +14,8 @@ const App = () => {
     <div className={`min-h-screen ${darkMode ? 'dark' : 'light'}`}>
       <div
         className={
-          'min-h-screen text-gray-600 dark:bg-gray-930 dark:text-gray-150 leading-7'
+          'min-h-screen text-gray-600 dark:bg-gray-930 dark:text-gray-150 transition-colors ' +
+          'duration-500 ease-in-out leading-7'
         }>
         <Header />
         <main>
