@@ -49,7 +49,7 @@ const Home = () => {
           Blender.
         </p>
 
-        <Button className={'mt-6'} href={'#intro'}>
+        <Button className={'mt-6'} to={'#intro'}>
           Learn More
         </Button>
       </Jumbotron>
