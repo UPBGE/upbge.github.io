@@ -55,7 +55,7 @@ const Header = () => {
           </MenuItem>
           <MenuItem to='/documentation'>Documentation</MenuItem>
           <MenuItem to='/community'>Community</MenuItem>
-          <MenuItem to='/releases'>Releases</MenuItem>
+          <MenuItem to='/download'>Download</MenuItem>
         </Dropdown>
       </div>
 
@@ -65,7 +65,7 @@ const Header = () => {
         </HeaderMenu>
         <HeaderMenu to='/documentation'>Documentation</HeaderMenu>
         <HeaderMenu to='/community'>Community</HeaderMenu>
-        <HeaderMenu to='/releases'>Releases</HeaderMenu>
+        <HeaderMenu to='/download'>Download</HeaderMenu>
 
         <DarkModeSwitcher />
       </Nav>
