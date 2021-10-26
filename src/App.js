@@ -5,7 +5,7 @@ import Header from './common/Header'
 import Home from './pages/Home'
 import Documentation from './pages/Documentation'
 import Community from './pages/Community'
-import Releases from './pages/Releases'
+import Download from './pages/Download'
 
 const App = () => {
   const darkMode = useDarkModeChange()
@@ -26,8 +26,8 @@ const App = () => {
             <Route path='/community'>
               <Community />
             </Route>
-            <Route path='/releases'>
-              <Releases />
+            <Route path='/download'>
+              <Download />
             </Route>
             <Route path='/'>
               <Home />

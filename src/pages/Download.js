@@ -1,11 +1,11 @@
 import SectionTitle from '../common/SectionTitle'
 
-const Releases = () => {
+const Download = () => {
   return (
     <div className={'p-10'}>
-      <SectionTitle>Releases</SectionTitle>
+      <SectionTitle>Download</SectionTitle>
     </div>
   )
 }
 
-export default Releases
+export default Download
