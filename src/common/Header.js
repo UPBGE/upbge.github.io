@@ -39,7 +39,7 @@ const Header = () => {
             }`}>
       <NavLink
         to={'/'}
-        className={'flex items-center space-x-1 md:space-x-3'}
+        className={'flex items-center space-x-1 md:space-x-2'}
         onClick={scrollToTop}>
         <img src={logo} alt={'UPBGE Logo'} className={'h-10 md:h-12'} />
 
