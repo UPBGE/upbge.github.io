@@ -44,7 +44,7 @@ const Home = () => {
           Make <Marquee texts={marqueeTexts} />
         </h1>
 
-        <p className={'mt-3 text-lg px-6'}>
+        <p className={'mt-3 text-lg px-6 text-center'}>
           Now you can make your game from start to finish without leaving
           Blender.
         </p>
