@@ -53,6 +53,7 @@ const Header = () => {
           <MenuItem to='/' exact={true}>
             Home
           </MenuItem>
+          <MenuItem to='/features'>Features</MenuItem>
           <MenuItem to='/documentation'>Documentation</MenuItem>
           <MenuItem to='/community'>Community</MenuItem>
           <MenuItem to='/download'>Download</MenuItem>
@@ -63,6 +64,7 @@ const Header = () => {
         <HeaderMenu to='/' exact={true}>
           Home
         </HeaderMenu>
+        <HeaderMenu to='/features'>Features</HeaderMenu>
         <HeaderMenu to='/documentation'>Documentation</HeaderMenu>
         <HeaderMenu to='/community'>Community</HeaderMenu>
         <HeaderMenu to='/download'>Download</HeaderMenu>
