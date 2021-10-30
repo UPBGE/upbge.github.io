@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Documentation from './pages/Documentation'
 import Community from './pages/Community'
 import Download from './pages/Download'
+import Features from './pages/Features'
 
 const App = () => {
   const darkMode = useDarkModeChange()
@@ -20,6 +21,9 @@ const App = () => {
         <Header />
         <main>
           <Switch>
+            <Route path='/features'>
+              <Features />
+            </Route>
             <Route path='/documentation'>
               <Documentation />
             </Route>
