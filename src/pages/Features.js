@@ -176,7 +176,7 @@ const Features = () => {
             </GridSection>
 
             <GridSection>
-              <GridSectionTitle>Multiplataform editor</GridSectionTitle>
+              <GridSectionTitle>Multiplatform editor</GridSectionTitle>
               <p>The UPBGE editor works in 64-bit on Windows (7, 8 & 10),
                  MacOS (x86 and arm) and Linux and it has a small
                  size (around 170MB).</p>
@@ -200,13 +200,13 @@ const Features = () => {
               <GridSectionTitle>Audio system</GridSectionTitle>
               <p>UPBGE uses the Audaspace library for its audio system. It is a
                  high level audio library written in C++ with language bindings
-                 for Python for example.</p>
+                 for Python.</p>
               <p><br />Audaspace has 3D audio support, filters like low/highpass and
                  effects like delay, reverse or fading.</p>
             </GridSection>
 
             <GridSection>
-              <GridSectionTitle>Multiplataform deployment</GridSectionTitle>
+              <GridSectionTitle>Multiplatform deployment</GridSectionTitle>
               <p>UPBGE exports to the main desktop platforms: Windows,
                  Linux and MacOS.</p>
             </GridSection>
