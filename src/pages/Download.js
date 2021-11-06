@@ -1,7 +1,5 @@
 import {
   GridSection,
-  GridSectionTitle,
-  Section,
   SectionTitle,
   WideHSection,
 } from '../common/Section'
@@ -18,7 +16,7 @@ import { useState } from 'react'
 import logo_name from '../assets/images/logo_web_name.png'
 
 const Download = () => {
-  var sta
+  let sta
   if (isWindows || isWinPhone) {
     sta = 0
   } else if (isMacOs || isIOS) {
