@@ -45,10 +45,16 @@ const Dropdown = ({ label, children, ...rest }) => {
   })
 
   useEffect(() => {
-    document.addEventListener('click', close)
+    if (instance) {
+      document.addEventListener('click', close)
+    }
 
-    return () => document.removeEventListener('click', close)
-  }, [close])
+    return () => {
+      if (instance) {
+        document.removeEventListener('click', close)
+      }
+    }
+  }, [instance, close])
 
   return (
     <>

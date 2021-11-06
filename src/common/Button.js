@@ -14,7 +14,7 @@ const Button = ({ to, className, children, ...rest }) => {
     )
   } else {
     return (
-      <a className={classes} {...rest}>
+      <a className={`${classes} ${className}`} {...rest}>
         {children}
       </a>
     )

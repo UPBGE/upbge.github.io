@@ -48,9 +48,10 @@ const Download = () => {
                       <SectionTitle>For Windows 8.1, 10 and 11</SectionTitle>
                       <Button
                         className={'mt-2'}
-                        to={
+                        href={
                           'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Windows-10-x64.7z'
-                        }>
+                        }
+                        target={'_blank'}>
                         Download UPBGE 0.30.0 (64 bits)
                       </Button>
                     </div>
@@ -58,9 +59,10 @@ const Download = () => {
                       <SectionTitle>For Windows 7</SectionTitle>
                       <Button
                         className={'mt-2'}
-                        to={
+                        href={
                           'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Windows-7-x64.7z'
-                        }>
+                        }
+                        target={'_blank'}>
                         Download UPBGE 0.30.0 (64 bits)
                       </Button>
                     </div>
@@ -70,8 +72,13 @@ const Download = () => {
                         <li>64-bits builds do not run at 32-bits systems.</li>
                         <li>
                           7z extension is opened with{' '}
-                          <a href='https://www.7-zip.org/'>7zip</a> or similar
-                          application{' '}
+                          <a
+                            href='https://www.7-zip.org/'
+                            target={'_blank'}
+                            rel='noreferrer'>
+                            7zip
+                          </a>{' '}
+                          or similar application{' '}
                         </li>
                       </BulletListInside>
                     </div>
@@ -100,9 +107,10 @@ const Download = () => {
                       <SectionTitle>For Linux</SectionTitle>
                       <Button
                         className={'mt-2'}
-                        to={
+                        href={
                           'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Linux-x64.tar.xz'
-                        }>
+                        }
+                        target={'_blank'}>
                         Download UPBGE 0.30.0 (64 bits)
                       </Button>
                     </div>
@@ -139,9 +147,10 @@ const Download = () => {
                       <SectionTitle>Mac OS intel</SectionTitle>
                       <Button
                         className={'mt-2'}
-                        to={
+                        href={
                           'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-MacOS-intel-x64.dmg'
-                        }>
+                        }
+                        target={'_blank'}>
                         Download UPBGE 0.30.0 (intel 64 bits)
                       </Button>
                     </div>
@@ -149,9 +158,10 @@ const Download = () => {
                       <SectionTitle>Mac OS apple silicon</SectionTitle>
                       <Button
                         className={'mt-2'}
-                        to={
+                        href={
                           'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-MacOS-apple-silicon-x64.dmg'
-                        }>
+                        }
+                        target={'_blank'}>
                         Download UPBGE 0.30.0 (arm 64 bits)
                       </Button>
                     </div>
@@ -191,9 +201,10 @@ const Download = () => {
                       </SectionTitle>
                       <Button
                         className={'mt-2'}
-                        to={
+                        href={
                           'https://mega.nz/folder/t9EEFSaS#JPiOPSInCZyU-SW_-rhEOQ'
-                        }>
+                        }
+                        target={'_blank'}>
                         Go to experimental builds repository
                       </Button>
                     </div>
