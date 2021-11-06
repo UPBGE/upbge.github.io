@@ -34,9 +34,7 @@ const Download = () => {
             <p>released 4 December 2021</p>
           </div>
           <div>
-            <Tabs
-              selectedIndex={tabIndex}
-              onSelect={(index) => setTabIndex(index)}>
+            <Tabs selectedIndex={tabIndex} onSelect={setTabIndex}>
               <TabList>
                 <Tab>Windows</Tab>
                 <Tab>Linux</Tab>
