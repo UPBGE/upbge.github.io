@@ -1,10 +1,6 @@
-import {
-  GridSection,
-  SectionTitle,
-  WideHSection,
-} from '../common/Section'
+import { GridSection, SectionTitle, WideHSection } from '../common/Section'
 
-import { BulletList, BulletListInside } from '../common/List'
+import { BulletListInside } from '../common/List'
 import Button from '../common/Button'
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
@@ -14,7 +10,6 @@ import { isWinPhone, isIOS, isWindows, isMacOs } from 'react-device-detect'
 import { useState } from 'react'
 
 import logo_name from '../assets/images/logo_web_name.png'
-
 
 let sta
 if (isWindows || isWinPhone) {
@@ -26,7 +21,7 @@ if (isWindows || isWinPhone) {
 }
 
 const Download = () => {
-const [tabIndex, setTabIndex] = useState(sta)
+  const [tabIndex, setTabIndex] = useState(sta)
 
   return (
     <div className={'p-10'}>
