@@ -15,17 +15,18 @@ import { useState } from 'react'
 
 import logo_name from '../assets/images/logo_web_name.png'
 
-const Download = () => {
-  let sta
-  if (isWindows || isWinPhone) {
-    sta = 0
-  } else if (isMacOs || isIOS) {
-    sta = 2
-  } else {
-    sta = 1
-  }
 
-  const [tabIndex, setTabIndex] = useState(sta)
+let sta
+if (isWindows || isWinPhone) {
+  sta = 0
+} else if (isMacOs || isIOS) {
+  sta = 2
+} else {
+  sta = 1
+}
+
+const Download = () => {
+const [tabIndex, setTabIndex] = useState(sta)
 
   return (
     <div className={'p-10'}>
