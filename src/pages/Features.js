@@ -29,7 +29,7 @@ const Features = () => {
       <div className={'flex flex-col items-center'}>
         <HSection>
           <div>
-            <SectionTitle>Integrated design in Blender</SectionTitle>
+            <SectionTitle>Integrated Design in Blender</SectionTitle>
             <p>
               UPBGE is a game engine build over the famous Blender 3d tool. It
               is internally integrated in such a way that what you see in the
@@ -97,7 +97,7 @@ const Features = () => {
 
         <HSection>
           <div>
-            <SectionTitle>Scripting & Logic support</SectionTitle>
+            <SectionTitle>Scripting & Logic Support</SectionTitle>
             <p>
               The UPBGE scripting language is Python. UPBGE has a very complete
               Python API that can be used as in the embedded editor as in the
@@ -136,7 +136,7 @@ const Features = () => {
 
         <HSection>
           <div>
-            <SectionTitle>Animation system</SectionTitle>
+            <SectionTitle>Animation System</SectionTitle>
             <p>
               The UPBGE animation system is the same than the Blender one. Due
               to this, UPBGE has one of the most powerfull animation system out
@@ -210,7 +210,7 @@ const Features = () => {
             </GridSection>
 
             <GridSection>
-              <GridSectionTitle>Multiplatform editor</GridSectionTitle>
+              <GridSectionTitle>Multiplatform Editor</GridSectionTitle>
               <p>
                 The UPBGE editor works in 64-bit on Windows (7, 8 & 10), MacOS
                 (x86 and arm) and Linux and it has a small size (around 170MB).
@@ -227,7 +227,7 @@ const Features = () => {
         <Section className={'max-w-7xl'}>
           <div className={'grid grid-cols-1 lg:grid-cols-3 gap-2'}>
             <GridSection>
-              <GridSectionTitle>Navigation system</GridSectionTitle>
+              <GridSectionTitle>Navigation System</GridSectionTitle>
               <p>
                 UPBGE includes a state of the art navigation system based in the
                 Recast & Detour libraries.
@@ -240,7 +240,7 @@ const Features = () => {
             </GridSection>
 
             <GridSection>
-              <GridSectionTitle>Audio system</GridSectionTitle>
+              <GridSectionTitle>Audio System</GridSectionTitle>
               <p>
                 UPBGE uses the Audaspace library for its audio system. It is a
                 high level audio library written in C++ with language bindings
@@ -254,7 +254,7 @@ const Features = () => {
             </GridSection>
 
             <GridSection>
-              <GridSectionTitle>Multiplatform deployment</GridSectionTitle>
+              <GridSectionTitle>Multiplatform Deployment</GridSectionTitle>
               <p>
                 UPBGE exports to the main desktop platforms: Windows, Linux and
                 MacOS.
