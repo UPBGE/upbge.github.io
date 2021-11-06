@@ -2,8 +2,8 @@ import tw from 'tailwind-styled-components'
 
 import SectionTitle from '../common/SectionTitle'
 
-import videoanimation from '../assets/videos/animation.mp4'
-import videoanimation2 from '../assets/videos/animation2.mp4'
+import video_animation from '../assets/videos/animation.mp4'
+import video_animation2 from '../assets/videos/animation2.mp4'
 import features_1 from '../assets/images/features_1.png'
 import features_2 from '../assets/images/features_2.png'
 import features_3 from '../assets/images/features_3.png'
@@ -165,11 +165,11 @@ const Features = () => {
           </div>
           <div>
             <Video autoPlay={true} muted={true} loop={true}>
-              <source src={videoanimation} type={'video/mp4'} />
+              <source src={video_animation} type={'video/mp4'}/>
               Your browser does not support the video tag.
             </Video>
             <Video autoPlay={true} muted={true} loop={true}>
-              <source src={videoanimation2} type={'video/mp4'} />
+              <source src={video_animation2} type={'video/mp4'}/>
               Your browser does not support the video tag.
             </Video>
           </div>
