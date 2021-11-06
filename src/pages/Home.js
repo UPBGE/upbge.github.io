@@ -2,30 +2,29 @@ import tw from 'tailwind-styled-components'
 
 import Button from '../common/Button'
 import Marquee from '../common/Marquee'
-import SectionTitle from '../common/SectionTitle'
 
 import banner from '../assets/videos/banner.mp4'
 import screenshot1 from '../assets/images/evee.gif'
 import screenshot2 from '../assets/images/logicnode.gif'
 import screenshot3 from '../assets/images/custominterface.gif'
 import screenshot4 from '../assets/images/games.gif'
+import Content from '../common/Content'
+import {
+  GridSection,
+  GridSectionTitle,
+  HSection,
+  Section,
+  SectionTitle,
+} from '../common/Section'
+import { BulletList } from '../common/List'
 
 const Video = tw.video`absolute top-0 left-0 w-screen h-screen object-cover object-center bg-black`
 const Jumbotron = tw.div`absolute top-0 left-0 w-screen h-screen max-w-full z-40 text-white flex 
     flex-col justify-center items-center`
 
-const Content = tw.div`px-6 md:px-12`
 const Intro = tw(
   Content
 )`bg-gray-50 dark:bg-gray-950 text-center py-10 md:py-16`
-
-const Section = tw(Content)`py-4 md:py-10`
-const HSection = tw(Section)`md:grid md:grid-cols-2 space-x-2 max-w-6xl`
-
-const GridSection = tw.div`bg-gray-100 dark:bg-gray-950 py-4 px-8 rounded-lg`
-const GridSectionTitle = tw(SectionTitle)`text-left lg:text-center`
-
-const BulletList = tw.ul`list-disc p-4 md:p-0`
 
 const Home = () => {
   const marqueeTexts = ['Game', 'Scripts', 'Models', 'Textures', 'Materials']

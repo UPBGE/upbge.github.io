@@ -1,7 +1,7 @@
 import { HashRouter, Link, Route, Switch } from 'react-router-dom'
 
 import EmbedSphinx from '../docs/EmbedSphinx'
-import SectionTitle from '../common/SectionTitle'
+import { SectionTitle } from '../common/Section'
 import '../docs/sphinx.css'
 
 const Documentation = () => {

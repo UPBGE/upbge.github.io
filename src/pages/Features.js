@@ -1,33 +1,26 @@
 import tw from 'tailwind-styled-components'
 
-import SectionTitle from '../common/SectionTitle'
-
 import video_animation from '../assets/videos/animation.mp4'
 import video_animation2 from '../assets/videos/animation2.mp4'
 import features_1 from '../assets/images/features_1.png'
 import features_2 from '../assets/images/features_2.png'
 import features_3 from '../assets/images/features_3.png'
+import {
+  GridSection,
+  GridSectionTitle,
+  Section,
+  SectionTitle,
+  WideHSection,
+} from '../common/Section'
+import { BulletList, BulletListInside } from '../common/List'
 
 const Video = tw.video`object-cover object-center bg-black`
-
-const Content = tw.div`px-6 md:px-12`
-
-const Section = tw(Content)`py-4 md:py-10`
-const HSection = tw(
-  Section
-)`md:grid md:grid-cols-2 space-x-2 max-w-6xl gap-x-12`
-
-const GridSection = tw.div`bg-gray-100 dark:bg-gray-950 py-4 px-8 rounded-lg`
-const GridSectionTitle = tw(SectionTitle)`text-left lg:text-center`
-
-const BulletList = tw.ul`list-disc p-4 md:p-0`
-const BulletListInside = tw.ul`list-disc list-inside p-4 md:p-0`
 
 const Features = () => {
   return (
     <div className={'p-10'}>
       <div className={'flex flex-col items-center'}>
-        <HSection>
+        <WideHSection>
           <div>
             <SectionTitle>Integrated Design in Blender</SectionTitle>
             <p>
@@ -61,9 +54,9 @@ const Features = () => {
           <div className={'md:order-first mt-5'}>
             <img src={features_1} alt={'UPBGE Screenshot #1'} />
           </div>
-        </HSection>
+        </WideHSection>
 
-        <HSection>
+        <WideHSection>
           <div>
             <SectionTitle>Graphics</SectionTitle>
             <p>
@@ -93,9 +86,9 @@ const Features = () => {
           <div>
             <img src={features_2} alt={'UPBGE Screenshot #2'} />
           </div>
-        </HSection>
+        </WideHSection>
 
-        <HSection>
+        <WideHSection>
           <div>
             <SectionTitle>Scripting & Logic Support</SectionTitle>
             <p>
@@ -132,9 +125,9 @@ const Features = () => {
           <div className={'md:order-first mt-24'}>
             <img src={features_3} alt={'UPBGE Screenshot #1'} />
           </div>
-        </HSection>
+        </WideHSection>
 
-        <HSection>
+        <WideHSection>
           <div>
             <SectionTitle>Animation System</SectionTitle>
             <p>
@@ -165,18 +158,18 @@ const Features = () => {
           </div>
           <div>
             <Video autoPlay={true} muted={true} loop={true}>
-              <source src={video_animation} type={'video/mp4'}/>
+              <source src={video_animation} type={'video/mp4'} />
               Your browser does not support the video tag.
             </Video>
             <Video autoPlay={true} muted={true} loop={true}>
-              <source src={video_animation2} type={'video/mp4'}/>
+              <source src={video_animation2} type={'video/mp4'} />
               Your browser does not support the video tag.
             </Video>
           </div>
-        </HSection>
+        </WideHSection>
 
         <Section className={'max-w-7xl'}>
-          <div className={'grid grid-cols-1 lg:grid-cols-3 gap-2'}>
+          <div className={'grid grid-cols-1 lg:grid-cols-3 gap-x-2 gap-y-4'}>
             <GridSection>
               <GridSectionTitle>Physics</GridSectionTitle>
               <p>
@@ -221,11 +214,7 @@ const Features = () => {
                 downloaded through an easy to use script).
               </p>
             </GridSection>
-          </div>
-        </Section>
 
-        <Section className={'max-w-7xl'}>
-          <div className={'grid grid-cols-1 lg:grid-cols-3 gap-2'}>
             <GridSection>
               <GridSectionTitle>Navigation System</GridSectionTitle>
               <p>
