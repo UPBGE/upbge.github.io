@@ -33,9 +33,9 @@ const Documentation = () => {
           <div className={'p-10'}>
             <div className={'flex flex-col items-center'}>
               <H3Section>
-                <div className={'transform -rotate-12'}>
+                <div className={'transform -rotate-6'}>
                   <GridSectionOrange>
-                    <div className={'shadow-lg transform rotate-12'}>
+                    <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
                         <GridSectionTitle>
                           <Link to={`/docs/latest/manual/index.html`}>
@@ -55,9 +55,9 @@ const Documentation = () => {
                     </div>
                   </GridSectionOrange>
                 </div>
-                <div className={'transform -rotate-12'}>
+                <div className={'transform -rotate-6'}>
                   <GridSectionOrangeDark>
-                    <div className={'shadow-lg transform rotate-12'}>
+                    <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
                         <GridSectionTitle>
                           <Link to={`/docs/latest/api/index.html`}>
@@ -80,9 +80,9 @@ const Documentation = () => {
                     </div>
                   </GridSectionOrangeDark>
                 </div>
-                <div className={'transform -rotate-12'}>
+                <div className={'transform -rotate-6'}>
                   <GridSectionOrange>
-                    <div className={'shadow-lg transform rotate-12'}>
+                    <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
                         <GridSectionTitle>
                           <Link to={`/docs/v0.2.5/index.html`}>
@@ -108,9 +108,9 @@ const Documentation = () => {
                 </div>
               </H3Section>
               <H3Section>
-                <div className={'transform -rotate-12'}>
+                <div className={'transform -rotate-6'}>
                   <GridSectionOrangeDark>
-                    <div className={'shadow-lg transform rotate-12'}>
+                    <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
                         <GridSectionTitle>
                           <a href='https://github.com/UPBGE/upbge/wiki'>
@@ -129,9 +129,9 @@ const Documentation = () => {
                     </div>
                   </GridSectionOrangeDark>
                 </div>
-                <div className={'transform -rotate-12'}>
+                <div className={'transform -rotate-6'}>
                   <GridSectionOrange>
-                    <div className={'shadow-lg transform rotate-12'}>
+                    <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
                         <GridSectionTitle>
                           <a href='https://github.com/UPBGE/upbge/wiki/Release-notes'>
@@ -153,9 +153,9 @@ const Documentation = () => {
                     </div>
                   </GridSectionOrange>
                 </div>
-                <div className={'transform -rotate-12'}>
+                <div className={'transform -rotate-6'}>
                   <GridSectionOrangeDark>
-                    <div className={'shadow-lg transform rotate-12'}>
+                    <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
                         <GridSectionTitle>
                           <a href='https://docs.blender.org/manual/en/latest/'>
