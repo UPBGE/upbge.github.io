@@ -74,6 +74,8 @@ const Documentation = () => {
                         <p align='center'>
                           Unified Python API for UPBGE current and Blender
                         </p>
+                        <br />
+                        <br />
                       </GridSection>
                     </div>
                   </GridSectionOrangeDark>
@@ -98,6 +100,8 @@ const Documentation = () => {
                           Unified Manual and Python API for former UPBGE 0.2.5
                           release
                         </p>
+                        <br />
+                        <br />
                       </GridSection>
                     </div>
                   </GridSectionOrange>
@@ -114,12 +118,12 @@ const Documentation = () => {
                           </a>
                         </GridSectionTitle>
                         <p align='center'>
-                          <img src={github_logo} alt={'Blender Manual'} />
+                          <img src={github_logo} alt={'Developer docs'} />
                         </p>
                         <br />
                         <p align='center'>
                           Information about UPBGE itself such as how to compile
-                          and build the engine{' '}
+                          and build the engine
                         </p>
                       </GridSection>
                     </div>
@@ -144,6 +148,7 @@ const Documentation = () => {
                         <p align='center'>
                           Latest updates about UPBGE described
                         </p>
+                        <br />
                       </GridSection>
                     </div>
                   </GridSectionOrange>
@@ -154,7 +159,7 @@ const Documentation = () => {
                       <GridSection>
                         <GridSectionTitle>
                           <a href='https://docs.blender.org/manual/en/latest/'>
-                            Blender Manual
+                            Official Blender Manual
                           </a>
                         </GridSectionTitle>
                         <p align='center'>
@@ -163,8 +168,7 @@ const Documentation = () => {
                         <br />
                         <p align='center'>
                           Learn about Blender&apos;s: Interface, Modeling,
-                          Animation, EEVEE, and more - All from the official
-                          Blender Foundation manual
+                          Animation, EEVEE, and more
                         </p>
                       </GridSection>
                     </div>
