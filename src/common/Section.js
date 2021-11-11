@@ -11,6 +11,6 @@ export const H3Section = tw(
 export const WideHSection = tw(HSection)`gap-x-12`
 
 export const GridSection = tw.div`bg-gray-100 dark:bg-gray-950 py-4 px-8 rounded-lg`
-export const GridSectionOrange = tw.div`bg-orange-450 rounded-lg`
-export const GridSectionOrangeDark = tw.div`bg-orange-650 rounded-lg`
+export const GridSectionOrange = tw.div`bg-gradient-to-r from-orange-650 to-orange-450 rounded-lg`
+export const GridSectionOrangeDark = tw.div`bg-gradient-to-r from-orange-450 to-orange-650 rounded-lg`
 export const GridSectionTitle = tw(SectionTitle)`text-left lg:text-center`
