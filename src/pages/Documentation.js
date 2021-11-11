@@ -1,8 +1,21 @@
 import { HashRouter, Link, Route, Switch } from 'react-router-dom'
 
 import EmbedSphinx from '../docs/EmbedSphinx'
-import { SectionTitle } from '../common/Section'
+import {
+  H3Section,
+  GridSection,
+  GridSectionOrange,
+  GridSectionOrangeDark,
+  GridSectionTitle,
+} from '../common/Section'
 import '../docs/sphinx.css'
+
+import upbge_manual from '../assets/images/UPBGE_manual.png'
+import upbge_python_api from '../assets/images/UPBGE_Python_API.png'
+import upbge_old_manual from '../assets/images/UPBGE_old_manual.png'
+import blender_manual from '../assets/images/Blender_manual.png'
+import github_logo_new from '../assets/images/Github_Logo_new.png'
+import github_logo from '../assets/images/Github_Logo.png'
 
 const Documentation = () => {
   return (
@@ -18,23 +31,147 @@ const Documentation = () => {
         </Route>
         <Route>
           <div className={'p-10'}>
-            <SectionTitle>Documentation</SectionTitle>
-
-            <ul className={'px-4 py-2'}>
-              <li>
-                <Link to={`/docs/latest/manual/index.html`}>
-                  UPBGE 0.3 Manual
-                </Link>
-              </li>
-              <li>
-                <Link to={`/docs/latest/api/index.html`}>
-                  UPBGE 0.3 API Reference
-                </Link>
-              </li>
-              <li>
-                <Link to={`/docs/v0.2.5/index.html`}>UPBGE 0.2.5 Manual</Link>
-              </li>
-            </ul>
+            <div className={'flex flex-col items-center'}>
+              <H3Section>
+                <div className={'transform -rotate-12'}>
+                  <GridSectionOrange>
+                    <div className={'shadow-lg transform rotate-12'}>
+                      <GridSection>
+                        <GridSectionTitle>
+                          <Link to={`/docs/latest/manual/index.html`}>
+                            UPBGE Current Manual
+                          </Link>
+                        </GridSectionTitle>
+                        <p align='center'>
+                          <img src={upbge_manual} alt={'UPBGE 0.3+ Manual'} />
+                        </p>
+                        <br />
+                        <p align='center'>
+                          Learn about the UPBGE game-engine specific contents,
+                          including: Game Logic, Physics, Python Programming,
+                          and more
+                        </p>
+                      </GridSection>
+                    </div>
+                  </GridSectionOrange>
+                </div>
+                <div className={'transform -rotate-12'}>
+                  <GridSectionOrangeDark>
+                    <div className={'shadow-lg transform rotate-12'}>
+                      <GridSection>
+                        <GridSectionTitle>
+                          <Link to={`/docs/latest/api/index.html`}>
+                            UPBGE & Blender Python API
+                          </Link>
+                        </GridSectionTitle>
+                        <p align='center'>
+                          <img
+                            src={upbge_python_api}
+                            alt={'UPBGE Python API'}
+                          />
+                        </p>
+                        <br />
+                        <p align='center'>
+                          Unified Python API for UPBGE current and Blender
+                        </p>
+                      </GridSection>
+                    </div>
+                  </GridSectionOrangeDark>
+                </div>
+                <div className={'transform -rotate-12'}>
+                  <GridSectionOrange>
+                    <div className={'shadow-lg transform rotate-12'}>
+                      <GridSection>
+                        <GridSectionTitle>
+                          <Link to={`/docs/v0.2.5/index.html`}>
+                            Former UPBGE 0.2.5 Manual & API
+                          </Link>
+                        </GridSectionTitle>
+                        <p align='center'>
+                          <img
+                            src={upbge_old_manual}
+                            alt={'UPBGE 0.2.5 Manual'}
+                          />
+                        </p>
+                        <br />
+                        <p align='center'>
+                          Unified Manual and Python API for former UPBGE 0.2.5
+                          release
+                        </p>
+                      </GridSection>
+                    </div>
+                  </GridSectionOrange>
+                </div>
+              </H3Section>
+              <H3Section>
+                <div className={'transform -rotate-12'}>
+                  <GridSectionOrangeDark>
+                    <div className={'shadow-lg transform rotate-12'}>
+                      <GridSection>
+                        <GridSectionTitle>
+                          <a href='https://github.com/UPBGE/upbge/wiki'>
+                            Developer & User Docs
+                          </a>
+                        </GridSectionTitle>
+                        <p align='center'>
+                          <img src={github_logo} alt={'Blender Manual'} />
+                        </p>
+                        <br />
+                        <p align='center'>
+                          Information about UPBGE itself such as how to compile
+                          and build the engine{' '}
+                        </p>
+                      </GridSection>
+                    </div>
+                  </GridSectionOrangeDark>
+                </div>
+                <div className={'transform -rotate-12'}>
+                  <GridSectionOrange>
+                    <div className={'shadow-lg transform rotate-12'}>
+                      <GridSection>
+                        <GridSectionTitle>
+                          <a href='https://github.com/UPBGE/upbge/wiki/Release-notes'>
+                            UPBGE Release Notes
+                          </a>
+                        </GridSectionTitle>
+                        <p align='center'>
+                          <img
+                            src={github_logo_new}
+                            alt={'UPBGE Release Notes'}
+                          />
+                        </p>
+                        <br />
+                        <p align='center'>
+                          Latest updates about UPBGE described
+                        </p>
+                      </GridSection>
+                    </div>
+                  </GridSectionOrange>
+                </div>
+                <div className={'transform -rotate-12'}>
+                  <GridSectionOrangeDark>
+                    <div className={'shadow-lg transform rotate-12'}>
+                      <GridSection>
+                        <GridSectionTitle>
+                          <a href='https://docs.blender.org/manual/en/latest/'>
+                            Blender Manual
+                          </a>
+                        </GridSectionTitle>
+                        <p align='center'>
+                          <img src={blender_manual} alt={'Blender Manual'} />
+                        </p>
+                        <br />
+                        <p align='center'>
+                          Learn about Blender&apos;s: Interface, Modeling,
+                          Animation, EEVEE, and more - All from the official
+                          Blender Foundation manual
+                        </p>
+                      </GridSection>
+                    </div>
+                  </GridSectionOrangeDark>
+                </div>
+              </H3Section>
+            </div>
           </div>
         </Route>
       </Switch>
