@@ -18,6 +18,8 @@ module.exports = {
         'gray-650': '#333333',
         'gray-930': '#222222',
         'gray-950': '#121212',
+        'orange-450': '#FF9F3B',
+        'orange-650': '#FF803B',
       },
       fontFamily: {
         sans: ["'Open Sans'", ...fontFamily['sans']],
