@@ -53,7 +53,8 @@ const Documentation = () => {
                         </p>
                       </GridSection>
                     </div>
-                  </GridSectionOrange><br />
+                  </GridSectionOrange>
+                  <br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrangeDark>
@@ -78,7 +79,8 @@ const Documentation = () => {
                         <br />
                       </GridSection>
                     </div>
-                  </GridSectionOrangeDark><br />
+                  </GridSectionOrangeDark>
+                  <br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrange>
@@ -127,7 +129,8 @@ const Documentation = () => {
                         </p>
                       </GridSection>
                     </div>
-                  </GridSectionOrangeDark><br />
+                  </GridSectionOrangeDark>
+                  <br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrange>
@@ -151,7 +154,8 @@ const Documentation = () => {
                         <br />
                       </GridSection>
                     </div>
-                  </GridSectionOrange><br />
+                  </GridSectionOrange>
+                  <br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrangeDark>
