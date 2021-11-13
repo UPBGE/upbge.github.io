@@ -6,7 +6,7 @@ import {
   GridSection,
   GridSectionOrange,
   GridSectionOrangeDark,
-  GridSectionTitle,
+  GridSectionTitleCentered,
 } from '../common/Section'
 import '../docs/sphinx.css'
 
@@ -37,11 +37,11 @@ const Documentation = () => {
                   <GridSectionOrange>
                     <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
-                        <GridSectionTitle>
+                        <GridSectionTitleCentered>
                           <Link to={`/docs/latest/manual/index.html`}>
                             UPBGE Current Manual
                           </Link>
-                        </GridSectionTitle>
+                        </GridSectionTitleCentered>
                         <p align='center'>
                           <img src={upbge_manual} alt={'UPBGE 0.3+ Manual'} />
                         </p>
@@ -53,17 +53,17 @@ const Documentation = () => {
                         </p>
                       </GridSection>
                     </div>
-                  </GridSectionOrange>
+                  </GridSectionOrange><br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrangeDark>
                     <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
-                        <GridSectionTitle>
+                        <GridSectionTitleCentered>
                           <Link to={`/docs/latest/api/index.html`}>
                             UPBGE & Blender Python API
                           </Link>
-                        </GridSectionTitle>
+                        </GridSectionTitleCentered>
                         <p align='center'>
                           <img
                             src={upbge_python_api}
@@ -78,17 +78,17 @@ const Documentation = () => {
                         <br />
                       </GridSection>
                     </div>
-                  </GridSectionOrangeDark>
+                  </GridSectionOrangeDark><br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrange>
                     <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
-                        <GridSectionTitle>
+                        <GridSectionTitleCentered>
                           <Link to={`/docs/v0.2.5/index.html`}>
                             Former UPBGE 0.2.5 Manual & API
                           </Link>
-                        </GridSectionTitle>
+                        </GridSectionTitleCentered>
                         <p align='center'>
                           <img
                             src={upbge_old_manual}
@@ -112,11 +112,11 @@ const Documentation = () => {
                   <GridSectionOrangeDark>
                     <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
-                        <GridSectionTitle>
+                        <GridSectionTitleCentered>
                           <a href='https://github.com/UPBGE/upbge/wiki'>
                             Developer & User Docs
                           </a>
-                        </GridSectionTitle>
+                        </GridSectionTitleCentered>
                         <p align='center'>
                           <img src={github_logo} alt={'Developer docs'} />
                         </p>
@@ -127,17 +127,17 @@ const Documentation = () => {
                         </p>
                       </GridSection>
                     </div>
-                  </GridSectionOrangeDark>
+                  </GridSectionOrangeDark><br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrange>
                     <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
-                        <GridSectionTitle>
+                        <GridSectionTitleCentered>
                           <a href='https://github.com/UPBGE/upbge/wiki/Release-notes'>
                             UPBGE Release Notes
                           </a>
-                        </GridSectionTitle>
+                        </GridSectionTitleCentered>
                         <p align='center'>
                           <img
                             src={github_logo_new}
@@ -151,17 +151,17 @@ const Documentation = () => {
                         <br />
                       </GridSection>
                     </div>
-                  </GridSectionOrange>
+                  </GridSectionOrange><br />
                 </div>
                 <div className={'transform -rotate-6'}>
                   <GridSectionOrangeDark>
                     <div className={'shadow-lg transform rotate-6'}>
                       <GridSection>
-                        <GridSectionTitle>
+                        <GridSectionTitleCentered>
                           <a href='https://docs.blender.org/manual/en/latest/'>
                             Official Blender Manual
                           </a>
-                        </GridSectionTitle>
+                        </GridSectionTitleCentered>
                         <p align='center'>
                           <img src={blender_manual} alt={'Blender Manual'} />
                         </p>
