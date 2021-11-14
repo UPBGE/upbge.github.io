@@ -10,7 +10,11 @@ const CardSection = ({ to, title, image, className, children }) => {
   let titleComp
 
   if (to.startsWith('http')) {
-    titleComp = <a href={to}> {title} </a>
+    titleComp = (
+      <a href={to} target={'_blank'} rel='noreferrer'>
+        {title}
+      </a>
+    )
   } else {
     titleComp = <HashLink to={to}> {title} </HashLink>
   }
