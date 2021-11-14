@@ -102,7 +102,7 @@ const Download = () => {
               <TabPanel>
                 <TabSection>
                   <div>
-                    <SectionTitle>For Linux</SectionTitle>
+                    <SectionTitle>Linux x64</SectionTitle>
                     <Button
                       className={'mt-2'}
                       href={
@@ -110,6 +110,17 @@ const Download = () => {
                       }
                       target={'_blank'}>
                       Download UPBGE 0.30.0 (64 bits)
+                    </Button>
+                  </div>
+                  <div>
+                    <SectionTitle>Linux aarch64</SectionTitle>
+                    <Button
+                      className={'mt-2'}
+                      href={
+                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Linux-aarch64.tar.xz'
+                      }
+                      target={'_blank'}>
+                      Download UPBGE 0.30.0 (arm 64 bits)
                     </Button>
                   </div>
                   <div>

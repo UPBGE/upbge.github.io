@@ -206,7 +206,7 @@ const Features = () => {
               <GridSectionTitle>Multiplatform Editor</GridSectionTitle>
               <p>
                 The UPBGE editor works in 64-bit on Windows (7, 8 & 10), MacOS
-                (x86 and arm) and Linux and it has a small size (around 170MB).
+                (x64 and arm) and Linux (x64 and arm) and it has a small size (around 170MB).
               </p>
               <p>
                 <br />
