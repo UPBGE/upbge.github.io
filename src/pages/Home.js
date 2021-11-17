@@ -128,9 +128,10 @@ const Home = () => {
             <SectionTitle>Fully Customizable Interface</SectionTitle>
 
             <p>
-              Here you are free to leave the interface as you like, don&apos;t
-              limit yourself to themes that only change the color, add, remove,
-              scale areas to look like you always dreamed of!
+              The editor can split, merge and separate windows, allowing you to
+              completely make UPBGE your own. Don&apos;t limit yourself to color
+              themes and predefined layouts. Add, remove, scale areas and
+              adjust the interface colors to suit your needs and preferences.
             </p>
           </div>
           <div>
