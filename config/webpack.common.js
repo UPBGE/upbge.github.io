@@ -74,6 +74,11 @@ module.exports = {
           to: 'docs/latest/.nojekyll',
           toType: 'file',
         },
+        {
+          from: paths.root + '/CNAME',
+          to: 'CNAME',
+          toType: 'file',
+        },
       ],
     }),
 
