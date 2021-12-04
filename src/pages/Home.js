@@ -130,8 +130,8 @@ const Home = () => {
             <p>
               The editor can split, merge and separate windows, allowing you to
               completely make UPBGE your own. Don&apos;t limit yourself to color
-              themes and predefined layouts. Add, remove, scale areas and
-              adjust the interface colors to suit your needs and preferences.
+              themes and predefined layouts. Add, remove, scale areas and adjust
+              the interface colors to suit your needs and preferences.
             </p>
           </div>
           <div>

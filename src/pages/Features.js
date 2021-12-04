@@ -34,9 +34,9 @@ const Features = () => {
             </p>
             <BulletList>
               <li>
-                No need for an import-export pipeline. Since Blender supports
-                3D modelling, sculpting and UV mapping, everything made in the
-                UPBGE can be used "as is".
+                No need for an import-export pipeline. Since Blender supports 3D
+                modelling, sculpting and UV mapping, everything made in the
+                UPBGE can be used &quot;as is&quot;.
               </li>
               <li>
                 Rapid iteration. Simply pressing the &quot;P&quot; key will
@@ -99,8 +99,8 @@ const Features = () => {
               The UPBGE scripting language is Python. UPBGE has a very complete
               Python API that can be used in the embedded editor as well as
               in-game. This scripting language is the most grounded way to
-              develop game logic, although there are 3 additional and
-              complete methods that the game developer can use:
+              develop game logic, although there are 3 additional and complete
+              methods that the game developer can use:
             </p>
             <BulletList>
               <br />
@@ -120,9 +120,9 @@ const Features = () => {
               <li>
                 <p>The Python Components system.</p> Basically the Python
                 Components are modules that can be attached to game objects.
-                Each one serves a specific purpose. No programming knowledge
-                is required to use them, although such knowledge is necessary
-                for the development of new or custom components.
+                Each one serves a specific purpose. No programming knowledge is
+                required to use them, although such knowledge is necessary for
+                the development of new or custom components.
               </li>
             </BulletList>
           </div>
@@ -135,8 +135,8 @@ const Features = () => {
           <div>
             <SectionTitle>Animation System</SectionTitle>
             <p>
-              The UPBGE animation system is the same as the Blender one. Due
-              to this, UPBGE has one of the most powerful animation systems out
+              The UPBGE animation system is the same as the Blender one. Due to
+              this, UPBGE has one of the most powerful animation systems out
               there.
             </p>
             <p>

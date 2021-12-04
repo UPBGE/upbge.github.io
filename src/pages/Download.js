@@ -51,7 +51,7 @@ const Download = () => {
                     <Button
                       className={'mt-2'}
                       href={
-                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Windows-10-x64.7z'
+                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-windows-x86_64.7z'
                       }
                       target={'_blank'}>
                       Download UPBGE 0.30.0 (64 bits)
@@ -62,7 +62,7 @@ const Download = () => {
                     <Button
                       className={'mt-2'}
                       href={
-                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Windows-7-x64.7z'
+                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-windows7-x86_64.7z'
                       }
                       target={'_blank'}>
                       Download UPBGE 0.30.0 (64 bits)
@@ -98,6 +98,39 @@ const Download = () => {
                     </BulletListInside>
                   </div>
                 </TabSection>
+                <br />
+                <TabSection>
+                  <div>
+                    <SectionTitle>Other links</SectionTitle>
+                    <BulletListInside>
+                      <li>
+                        Alternative download link{' '}
+                        <a
+                          href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          (MEGA)
+                        </a>
+                      </li>
+                      <li>
+                        Download old UPBGE versions from{' '}
+                        <a
+                          href='https://github.com/UPBGE/upbge/releases'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          here
+                        </a>{' '}
+                        or{' '}
+                        <a
+                          href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          here
+                        </a>
+                      </li>
+                    </BulletListInside>
+                  </div>
+                </TabSection>
               </TabPanel>
               <TabPanel>
                 <TabSection>
@@ -106,18 +139,20 @@ const Download = () => {
                     <Button
                       className={'mt-2'}
                       href={
-                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Linux-x64.tar.xz'
+                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-linux-x86_64.tar.xz'
                       }
                       target={'_blank'}>
                       Download UPBGE 0.30.0 (64 bits)
                     </Button>
                   </div>
                   <div>
-                    <SectionTitle>Linux aarch64</SectionTitle>
+                    <SectionTitle>
+                      Linux aarch64 (not available yet)
+                    </SectionTitle>
                     <Button
                       className={'mt-2'}
                       href={
-                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-Linux-aarch64.tar.xz'
+                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-linux-aarch64.tar.xz'
                       }
                       target={'_blank'}>
                       Download UPBGE 0.30.0 (arm 64 bits)
@@ -145,6 +180,39 @@ const Download = () => {
                     </BulletListInside>
                   </div>
                 </TabSection>
+                <br />
+                <TabSection>
+                  <div>
+                    <SectionTitle>Other links</SectionTitle>
+                    <BulletListInside>
+                      <li>
+                        Alternative download link{' '}
+                        <a
+                          href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          (MEGA)
+                        </a>
+                      </li>
+                      <li>
+                        Download old UPBGE versions from{' '}
+                        <a
+                          href='https://github.com/UPBGE/upbge/releases'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          here
+                        </a>{' '}
+                        or{' '}
+                        <a
+                          href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          here
+                        </a>
+                      </li>
+                    </BulletListInside>
+                  </div>
+                </TabSection>
               </TabPanel>
               <TabPanel>
                 <TabSection>
@@ -153,7 +221,7 @@ const Download = () => {
                     <Button
                       className={'mt-2'}
                       href={
-                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-MacOS-intel-x64.dmg'
+                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-macOS-x86_64.dmg'
                       }
                       target={'_blank'}>
                       Download UPBGE 0.30.0 (intel 64 bits)
@@ -164,7 +232,7 @@ const Download = () => {
                     <Button
                       className={'mt-2'}
                       href={
-                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-MacOS-apple-silicon-x64.dmg'
+                        'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-macOS-arm64.dmg'
                       }
                       target={'_blank'}>
                       Download UPBGE 0.30.0 (arm 64 bits)
@@ -188,6 +256,39 @@ const Download = () => {
                       <li>1280×768 display</li>
                       <li>Graphics card with 1 GB RAM and OpenGL 3.3</li>
                       <li>Hard disk with 500 MB free space</li>
+                    </BulletListInside>
+                  </div>
+                </TabSection>
+                <br />
+                <TabSection>
+                  <div>
+                    <SectionTitle>Other links</SectionTitle>
+                    <BulletListInside>
+                      <li>
+                        Alternative download link{' '}
+                        <a
+                          href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          (MEGA)
+                        </a>
+                      </li>
+                      <li>
+                        Download old UPBGE versions from{' '}
+                        <a
+                          href='https://github.com/UPBGE/upbge/releases'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          here
+                        </a>{' '}
+                        or{' '}
+                        <a
+                          href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
+                          target={'_blank'}
+                          rel='noreferrer'>
+                          here
+                        </a>
+                      </li>
                     </BulletListInside>
                   </div>
                 </TabSection>
