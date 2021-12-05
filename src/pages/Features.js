@@ -2,9 +2,9 @@ import tw from 'tailwind-styled-components'
 
 import video_animation from '../assets/videos/animation.mp4'
 import video_animation2 from '../assets/videos/animation2.mp4'
-import features_1 from '../assets/images/features_1.jpg'
+import features_1 from '../assets/images/features_1.png'
 import features_2 from '../assets/images/features_2.jpg'
-import features_3 from '../assets/images/features_3.jpg'
+import features_3 from '../assets/images/features_3.png'
 import {
   GridSection,
   GridSectionTitle,
