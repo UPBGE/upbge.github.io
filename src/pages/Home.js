@@ -6,7 +6,7 @@ import Marquee from '../common/Marquee'
 import banner from '../assets/videos/banner.mp4'
 import screenshot1 from '../assets/images/Make_models.jpg'
 import screenshot2 from '../assets/images/Create_materials.jpg'
-import screenshot3 from '../assets/images/Place_assets.jpg'
+import screenshot3 from '../assets/videos/Place_assets.mp4'
 import screenshot4 from '../assets/videos/Animate_everything.mp4'
 import screenshot5 from '../assets/videos/Adjust_logic.mp4'
 import screenshot6 from '../assets/videos/Release_game.mp4'
@@ -93,7 +93,10 @@ const Home = () => {
             <GridSectionTitleCentered>
               Place your assets
             </GridSectionTitleCentered>
-            <img src={screenshot3} alt={'UPBGE Screenshot #3'} />
+            <Video2 autoPlay={true} muted={true} loop={true}>
+              <source src={screenshot3} type={'video/mp4'} />
+              Your browser does not support the video tag.
+            </Video2>
           </div>
           <div>
             <GridSectionTitleCentered>
