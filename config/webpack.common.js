@@ -79,6 +79,11 @@ module.exports = {
           to: 'CNAME',
           toType: 'file',
         },
+        {
+          from: paths.root + '/sitemap.xml',
+          to: 'sitemap.xml',
+          toType: 'file',
+        },
       ],
     }),
 
