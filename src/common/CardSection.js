@@ -6,8 +6,8 @@ import tw from 'tailwind-styled-components'
 
 const CardContent = tw(GridSection)`h-full`
 
-const CardSection = ({ to, title, image, className, children }) => {
-  let titleComp
+const CardSection = ({ to, title, image, className, children, external }) => {
+  let titleComp, imageComp, externalComp
 
   if (to.startsWith('http')) {
     titleComp = (
@@ -15,8 +15,29 @@ const CardSection = ({ to, title, image, className, children }) => {
         {title}
       </a>
     )
+    imageComp = (
+      <a href={to} target={'_blank'} rel='noreferrer'>
+        <img src={image} alt={'Section icon'} />
+      </a>
+    )
   } else {
     titleComp = <HashLink to={to}> {title} </HashLink>
+    imageComp = (
+      <HashLink to={to}>
+        {' '}
+        <img src={image} alt={'Section icon'} />{' '}
+      </HashLink>
+    )
+  }
+
+  if (external && external.startsWith('http')) {
+    externalComp = (
+      <small>
+        <a href={external} target={'_blank'} rel='noreferrer'>
+          (external link)
+        </a>
+      </small>
+    )
   }
 
   return (
@@ -29,10 +50,11 @@ const CardSection = ({ to, title, image, className, children }) => {
           <CardContent>
             <div className={'flex flex-col items-center space-y-2 h-full'}>
               <GridSectionTitleCentered>{titleComp}</GridSectionTitleCentered>
-
-              <img src={image} alt={'Section icon'} />
-
-              <p align='center' className={'py-4'}>
+              {imageComp}
+              <p align='center' className={'py-0'}>
+                {externalComp}
+              </p>
+              <p align='center' className={'py-2'}>
                 {children}
               </p>
             </div>
@@ -49,6 +71,7 @@ CardSection.propTypes = {
   image: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.any,
+  external: PropTypes.string,
 }
 
 export default CardSection
