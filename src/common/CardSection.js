@@ -24,8 +24,7 @@ const CardSection = ({ to, title, image, className, children, external }) => {
     titleComp = <HashLink to={to}> {title} </HashLink>
     imageComp = (
       <HashLink to={to}>
-        {' '}
-        <img src={image} alt={'Section icon'} />{' '}
+        <img src={image} alt={'Section icon'} />
       </HashLink>
     )
   }
