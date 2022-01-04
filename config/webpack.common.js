@@ -84,6 +84,11 @@ module.exports = {
           to: 'sitemap.xml',
           toType: 'file',
         },
+        {
+          from: paths.root + '/preview_website.png',
+          to: 'preview_website.png',
+          toType: 'file',
+        },
       ],
     }),
 
