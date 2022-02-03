@@ -6,7 +6,8 @@ published to `gh-pages` branch via a Github workflow.
 
 ### Requirements
 
-[Node.js](https://nodejs.org) is needed to build and test the website.
+* [Node.js](https://nodejs.org) is needed to build and test the website.
+* Node version must be lower than [Node 17.0.0](https://github.com/facebook/create-react-app/issues/11708#issue-1070155697) due to issues mentioned in the linked issue.
 
 ### Install Dependencies
 
