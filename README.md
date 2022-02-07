@@ -1,13 +1,15 @@
 # UPBGE-Web
 
-This is a repository for the website of [UPBGE](https://upbge.org) project. 
+This is a repository for the website of [UPBGE](https://upbge.org) project.
+
 The `master` branch contains the source files for the website, which is built and 
 published to `gh-pages` branch via a Github workflow.
 
-### Requirements
+### Prerequisites
 
-* [Node.js](https://nodejs.org) is needed to build and test the website.
-* Node version must be lower than [Node 17.0.0](https://github.com/facebook/create-react-app/issues/11708#issue-1070155697) due to issues mentioned in the linked issue.
+1. [Node.js](https://nodejs.org) is needed to build and test the website.
+2. Node [version](https://nodejs.org/api/cli.html#-v---version) needs to be lower than Node 17 due to unresolved issues from external NPM packages as mentioned [here](https://github.com/facebook/create-react-app/issues/11708#issue-1070155697).
+3. [Git](https://git-scm.com/downloads) or [manual](https://stackoverflow.com/a/2751270) ZIP downloads are required for compiling to work properly.
 
 ### Install Dependencies
 
@@ -22,7 +24,7 @@ machine, you'll need to install the dependencies using the following command:
 
 The website requires documentation files from other repositories. You can either 
 download them using `npm` (see below) or do it manually as explained in 
-[here](./docs/README.md): 
+[here](./docs/README.md):
 
 ```bash
 > npm run clone-docs
