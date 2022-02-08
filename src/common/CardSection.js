@@ -6,8 +6,8 @@ import tw from 'tailwind-styled-components'
 
 const CardContent = tw(GridSection)`h-full`
 
-const CardSection = ({ to, title, image, className, children, external }) => {
-  let titleComp, imageComp, externalComp
+const CardSection = ({ to, title, image, className, children, external, hashtag }) => {
+  let titleComp, imageComp, externalComp, hashtagComp
 
   if (to.startsWith('http')) {
     titleComp = (
@@ -39,6 +39,26 @@ const CardSection = ({ to, title, image, className, children, external }) => {
     )
   }
 
+  if (external && external.startsWith('http')) {
+    externalComp = (
+      <small>
+        <a href={external} target={'_blank'} rel='noreferrer'>
+          (external link)
+        </a>
+      </small>
+    )
+  }
+
+  if (hashtag && hashtag.startsWith('http')) {
+    hashtagComp = (
+      <small>
+        <a href={hashtag} target={'_blank'} rel='noreferrer'>
+          (hashtag link)
+        </a>
+      </small>
+    )
+  }
+
   return (
     <div className={`transform -rotate-6 ${className}`}>
       <div
@@ -52,6 +72,9 @@ const CardSection = ({ to, title, image, className, children, external }) => {
               {imageComp}
               <p align='center' className={'py-0'}>
                 {externalComp}
+              </p>
+              <p align='center' className={'py-0'}>
+                {hashtagComp}
               </p>
               <p align='center' className={'py-2'}>
                 {children}
@@ -71,6 +94,7 @@ CardSection.propTypes = {
   className: PropTypes.string,
   children: PropTypes.any,
   external: PropTypes.string,
+  hashtag: PropTypes.string,
 }
 
 export default CardSection
