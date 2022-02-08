@@ -94,7 +94,7 @@ const Community = () => {
                 </CardSection>
                 <CardSection
                   title={'Steam'}
-                  to={'https://www.youtube.com/channel/UCvDRAJdVthliAUDnaVY23aA'}
+                  to={'https://steamdb.info/tech/Engine/BlenderGameEngine'}
                   image={steam}>
                   'Blender GameEngine' Category
                 </CardSection>
