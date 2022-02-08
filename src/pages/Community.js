@@ -52,14 +52,14 @@ const Community = () => {
                   title={'Facebook'}
                   to={'https://www.facebook.com/groups/2161613970761242'}
                   image={facebook}
-		  external={'https://www.facebook.com/hashtag/upbge'}>
+		  hashtag={'https://www.facebook.com/hashtag/upbge'}>
                   Official Facebook Group<br/>& UPBGE #hashtag
                 </CardSection>
                 <CardSection
                   title={'Twitter'}
                   to={'https://www.twitter.com/upbge1'}
                   image={twitter}
-		  external={'https://www.twitter.com/hashtag/upbge'}>
+		  hashtag={'https://www.twitter.com/hashtag/upbge'}>
                   Official Twitter Page<br/>& UPBGE #hashtag
                 </CardSection>
                 <CardSection
@@ -108,7 +108,7 @@ const Community = () => {
                   title={'YouTube'}
                   to={'https://www.youtube.com/channel/UCvDRAJdVthliAUDnaVY23aA'}
                   image={yt}
-		  external={'https://www.youtube.com/hashtag/upbge'}>
+		  hashtag={'https://www.youtube.com/hashtag/upbge'}>
                   (inactive) YouTube Channel<br/> & UPBGE #hashtag
                 </CardSection>
               </H3Section>
