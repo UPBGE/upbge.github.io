@@ -39,16 +39,6 @@ const CardSection = ({ to, title, image, className, children, external, hashtag 
     )
   }
 
-  if (external && external.startsWith('http')) {
-    externalComp = (
-      <small>
-        <a href={external} target={'_blank'} rel='noreferrer'>
-          (external link)
-        </a>
-      </small>
-    )
-  }
-
   if (hashtag && hashtag.startsWith('http')) {
     hashtagComp = (
       <small>
