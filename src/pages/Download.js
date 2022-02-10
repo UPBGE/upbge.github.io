@@ -72,16 +72,16 @@ const Download = () => {
                     <p>NOTE:</p>
                     <BulletListInside>
                       <li>64-bit builds do not run on 32-bit systems</li>
-                      <li>
+		                  <li>
                         7z extension can be extracted with{' '}
                         <a
-                          href='https://www.7-zip.org/'
-                          target={'_blank'}
-                          rel='noreferrer'>
-                          7zip
+                        href='https://www.7-zip.org/'
+                        target={'_blank'}
+                        rel='noreferrer'>
+                        7zip
                         </a>{' '}
-                        <br/>‎‎&nbsp;&nbsp;&nbsp;&nbsp;or a similar application{' '}
-                      </li>
+		                  </li>
+                      <li className="list-none ml-4">or a similar application{' '}</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
