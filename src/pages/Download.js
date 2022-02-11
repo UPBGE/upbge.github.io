@@ -34,7 +34,7 @@ const Download = () => {
             <img src={logo_name} alt={'UPBGE Logo with name'} />
             <br />
             <SectionTitle>Stable Release Version 0.3</SectionTitle>
-            <p>released 4 December 2021</p>
+            <p>Released 4 December 2021</p>
           </div>
           <div>
             <Tabs selectedIndex={tabIndex} onSelect={setTabIndex}>
@@ -54,7 +54,7 @@ const Download = () => {
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-windows-x86_64.7z'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (64 bits)
+                      Download UPBGE 0.30.0 (64-bit)
                     </Button>
                   </div>
                   <div>
@@ -65,23 +65,23 @@ const Download = () => {
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-windows7-x86_64.7z'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (64 bits)
+                      Download UPBGE 0.30.0 (64-bit)
                     </Button>
                   </div>
                   <div>
                     <p>NOTE:</p>
                     <BulletListInside>
-                      <li>64-bits builds do not run at 32-bits systems.</li>
-                      <li>
-                        7z extension is opened with{' '}
+                      <li>64-bit builds don't run on 32-bit systems</li>
+		              <li>
+                        7z extension can be extracted with&nbsp;
                         <a
-                          href='https://www.7-zip.org/'
-                          target={'_blank'}
-                          rel='noreferrer'>
-                          7zip
-                        </a>{' '}
-                        or similar application{' '}
-                      </li>
+                        href='https://www.7-zip.org/'
+                        target={'_blank'}
+                        rel='noreferrer'>
+                        7zip
+                        </a>&nbsp;
+		              </li>
+                      <li className="list-none ml-4">or a similar application&nbsp;</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -90,11 +90,11 @@ const Download = () => {
                   <div>
                     <SectionTitle>Requirements</SectionTitle>
                     <BulletListInside>
-                      <li>64-bit dual core 2Ghz CPU with SSE2 support</li>
-                      <li>2 GB RAM</li>
-                      <li>1280×768 display</li>
-                      <li>Graphics card with 1 GB RAM and OpenGL 3.3</li>
-                      <li>Hard disk with 500 MB free space</li>
+                      <li>CPU: 64-bit, Dual-Core 2GHz CPU with SSE2 support</li>
+                      <li>RAM: minimum 2GB</li>
+                      <li>Display: 1280×768</li>
+                      <li>GPU: minimum 1GB VRAM; OpenGL 3.3+</li>
+                      <li>Hard Drive: minimum 500MB free space</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -104,7 +104,7 @@ const Download = () => {
                     <SectionTitle>Other links</SectionTitle>
                     <BulletListInside>
                       <li>
-                        Alternative download link{' '}
+                        Alternative download link&nbsp;
                         <a
                           href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
                           target={'_blank'}
@@ -113,14 +113,14 @@ const Download = () => {
                         </a>
                       </li>
                       <li>
-                        Download old UPBGE versions from{' '}
+                        Download old UPBGE versions from&nbsp;
                         <a
                           href='https://github.com/UPBGE/upbge/releases'
                           target={'_blank'}
                           rel='noreferrer'>
                           here
-                        </a>{' '}
-                        or{' '}
+                        </a>&nbsp;
+                        or&nbsp;
                         <a
                           href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
                           target={'_blank'}
@@ -142,7 +142,7 @@ const Download = () => {
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-linux-x86_64.tar.xz'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (64 bits)
+                      Download UPBGE 0.30.0 (64-bit)
                     </Button>
                   </div>
                   <div>
@@ -155,14 +155,14 @@ const Download = () => {
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-linux-aarch64.tar.xz'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (arm 64 bits)
+                      Download UPBGE 0.30.0 (arm 64-bit)
                     </Button>
                   </div>
                   <div>
                     <p>NOTE:</p>
                     <BulletListInside>
-                      <li>64-bits build does not run at 32-bits systems.</li>
-                      <li>The build is done in a CentOS 7 distribution.</li>
+                      <li>64-bit builds don't run on 32-bit systems</li>
+                      <li>Builds are compiled from a CentOS 7 distribution</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -171,12 +171,12 @@ const Download = () => {
                   <div>
                     <SectionTitle>Requirements</SectionTitle>
                     <BulletListInside>
-                      <li>glibc 2.17 and better</li>
-                      <li>64-bit dual core 2Ghz CPU with SSE2 support</li>
-                      <li>2 GB RAM</li>
-                      <li>1280×768 display</li>
-                      <li>Graphics card with 1 GB RAM and OpenGL 3.3</li>
-                      <li>Hard disk with 500 MB free space</li>
+                      <li>glibc 2.17+</li>
+                      <li>CPU: 64-bit, Dual-Core 2GHz CPU with SSE2 support</li>
+                      <li>RAM: minimum 2GB</li>
+                      <li>Display: 1280×768</li>
+                      <li>GPU: minimum 1GB VRAM; OpenGL 3.3+</li>
+                      <li>Hard Drive: minimum 500MB free space</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -186,7 +186,7 @@ const Download = () => {
                     <SectionTitle>Other links</SectionTitle>
                     <BulletListInside>
                       <li>
-                        Alternative download link{' '}
+                        Alternative download link&nbsp;
                         <a
                           href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
                           target={'_blank'}
@@ -195,14 +195,14 @@ const Download = () => {
                         </a>
                       </li>
                       <li>
-                        Download old UPBGE versions from{' '}
+                        Download old UPBGE versions from&nbsp;
                         <a
                           href='https://github.com/UPBGE/upbge/releases'
                           target={'_blank'}
                           rel='noreferrer'>
                           here
-                        </a>{' '}
-                        or{' '}
+                        </a>&nbsp;
+                        or&nbsp;
                         <a
                           href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
                           target={'_blank'}
@@ -217,32 +217,32 @@ const Download = () => {
               <TabPanel>
                 <TabSection>
                   <div>
-                    <SectionTitle>Mac OS intel</SectionTitle>
+                    <SectionTitle>macOS Intel</SectionTitle>
                     <Button
                       className={'mt-2'}
                       href={
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-macOS-x86_64.dmg'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (intel 64 bits)
+                      Download UPBGE 0.30.0 (64-bit)
                     </Button>
                   </div>
                   <div>
-                    <SectionTitle>Mac OS apple silicon</SectionTitle>
+                    <SectionTitle>macOS Apple Silicon</SectionTitle>
                     <Button
                       className={'mt-2'}
                       href={
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-macOS-arm64.dmg'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (arm 64 bits)
+                      Download UPBGE 0.30.0 (64-bit)
                     </Button>
                   </div>
                   <div>
                     <p>NOTE:</p>
                     <BulletListInside>
-                      <li>Mac OS intel needs version 10.3 or better.</li>
-                      <li>Mac OS apple silicon needs version 11 or better.</li>
+                      <li>macOS Intel requires version 10+</li>
+                      <li>macOS Apple Silicon requires version 11+</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -251,11 +251,11 @@ const Download = () => {
                   <div>
                     <SectionTitle>Requirements</SectionTitle>
                     <BulletListInside>
-                      <li>64-bit dual core 2Ghz CPU with SSE2 support</li>
-                      <li>2 GB RAM</li>
-                      <li>1280×768 display</li>
-                      <li>Graphics card with 1 GB RAM and OpenGL 3.3</li>
-                      <li>Hard disk with 500 MB free space</li>
+                      <li>CPU: 64-bit, Dual-Core 2GHz CPU with SSE2 support</li>
+                      <li>RAM: minimum 2GB</li>
+                      <li>Display: 1280×768</li>
+                      <li>GPU: minimum 1GB VRAM; OpenGL 3.3+</li>
+                      <li>Hard Drive: minimum 500MB free space</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -265,7 +265,7 @@ const Download = () => {
                     <SectionTitle>Other links</SectionTitle>
                     <BulletListInside>
                       <li>
-                        Alternative download link{' '}
+                        Alternative download link&nbsp;
                         <a
                           href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
                           target={'_blank'}
@@ -274,14 +274,14 @@ const Download = () => {
                         </a>
                       </li>
                       <li>
-                        Download old UPBGE versions from{' '}
+                        Download old UPBGE versions from&nbsp;
                         <a
                           href='https://github.com/UPBGE/upbge/releases'
                           target={'_blank'}
                           rel='noreferrer'>
                           here
-                        </a>{' '}
-                        or{' '}
+                        </a>&nbsp;
+                        or&nbsp;
                         <a
                           href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
                           target={'_blank'}
@@ -296,20 +296,20 @@ const Download = () => {
               <TabPanel>
                 <TabSection>
                   <div>
-                    <SectionTitle>All Supported Operating Systems</SectionTitle>
+                    <SectionTitle>Experimental Builds</SectionTitle>
                     <Button
                       className={'mt-2'}
                       href={
                         'https://mega.nz/folder/t9EEFSaS#JPiOPSInCZyU-SW_-rhEOQ'
                       }
                       target={'_blank'}>
-                      Go to experimental builds repository
+                      Browse or download
                     </Button>
                   </div>
                   <div>
                     <p>NOTE:</p>
                     <BulletListInside>
-                      <li>The repository is inside a MEGA folder</li>
+                      <li>The repository is hosted inside a MEGA folder</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -318,11 +318,11 @@ const Download = () => {
                   <div>
                     <SectionTitle>Requirements</SectionTitle>
                     <BulletListInside>
-                      <li>64-bit dual core 2Ghz CPU with SSE2 support</li>
-                      <li>2 GB RAM</li>
-                      <li>1280×768 display</li>
-                      <li>Graphics card with 1 GB RAM and OpenGL 3.3</li>
-                      <li>Hard disk with 500 MB free space</li>
+                      <li>CPU: 64-bit, Dual-Core 2GHz CPU with SSE2 support</li>
+                      <li>RAM: minimum 2GB</li>
+                      <li>Display: 1280×768</li>
+                      <li>GPU: minimum 1GB VRAM; OpenGL 3.3+</li>
+                      <li>Hard Drive: minimum 500MB free space</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
