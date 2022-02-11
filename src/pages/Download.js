@@ -71,17 +71,17 @@ const Download = () => {
                   <div>
                     <p>NOTE:</p>
                     <BulletListInside>
-                      <li>64-bit builds do not run on 32-bit systems</li>
-		                  <li>
-                        7z extension can be extracted with{' '}
+                      <li>64-bit builds don't run on 32-bit systems</li>
+		              <li>
+                        7z extension can be extracted with&nbsp;
                         <a
                         href='https://www.7-zip.org/'
                         target={'_blank'}
                         rel='noreferrer'>
                         7zip
-                        </a>{' '}
-		                  </li>
-                      <li className="list-none ml-4">or a similar application{' '}</li>
+                        </a>&nbsp;
+		              </li>
+                      <li className="list-none ml-4">or a similar application&nbsp;</li>
                     </BulletListInside>
                   </div>
                 </TabSection>
@@ -104,7 +104,7 @@ const Download = () => {
                     <SectionTitle>Other links</SectionTitle>
                     <BulletListInside>
                       <li>
-                        Alternative download link{' '}
+                        Alternative download link&nbsp;
                         <a
                           href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
                           target={'_blank'}
@@ -113,14 +113,14 @@ const Download = () => {
                         </a>
                       </li>
                       <li>
-                        Download old UPBGE versions from{' '}
+                        Download old UPBGE versions from&nbsp;
                         <a
                           href='https://github.com/UPBGE/upbge/releases'
                           target={'_blank'}
                           rel='noreferrer'>
                           here
-                        </a>{' '}
-                        or{' '}
+                        </a>&nbsp;
+                        or&nbsp;
                         <a
                           href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
                           target={'_blank'}
@@ -135,14 +135,14 @@ const Download = () => {
               <TabPanel>
                 <TabSection>
                   <div>
-                    <SectionTitle>Linux (x86/x64)</SectionTitle>
+                    <SectionTitle>Linux x64</SectionTitle>
                     <Button
                       className={'mt-2'}
                       href={
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-linux-x86_64.tar.xz'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (32-bit/64-bit)
+                      Download UPBGE 0.30.0 (64-bit)
                     </Button>
                   </div>
                   <div>
@@ -155,13 +155,13 @@ const Download = () => {
                         'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-linux-aarch64.tar.xz'
                       }
                       target={'_blank'}>
-                      Download UPBGE 0.30.0 (64-bit)
+                      Download UPBGE 0.30.0 (arm 64-bit)
                     </Button>
                   </div>
                   <div>
                     <p>NOTE:</p>
                     <BulletListInside>
-                      <li>64-bit builds do not run on 32-bit systems</li>
+                      <li>64-bit builds don't run on 32-bit systems</li>
                       <li>Builds are compiled from a CentOS 7 distribution</li>
                     </BulletListInside>
                   </div>
@@ -186,7 +186,7 @@ const Download = () => {
                     <SectionTitle>Other links</SectionTitle>
                     <BulletListInside>
                       <li>
-                        Alternative download link{' '}
+                        Alternative download link&nbsp;
                         <a
                           href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
                           target={'_blank'}
@@ -195,14 +195,14 @@ const Download = () => {
                         </a>
                       </li>
                       <li>
-                        Download old UPBGE versions from{' '}
+                        Download old UPBGE versions from&nbsp;
                         <a
                           href='https://github.com/UPBGE/upbge/releases'
                           target={'_blank'}
                           rel='noreferrer'>
                           here
-                        </a>{' '}
-                        or{' '}
+                        </a>&nbsp;
+                        or&nbsp;
                         <a
                           href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
                           target={'_blank'}
@@ -265,7 +265,7 @@ const Download = () => {
                     <SectionTitle>Other links</SectionTitle>
                     <BulletListInside>
                       <li>
-                        Alternative download link{' '}
+                        Alternative download link&nbsp;
                         <a
                           href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
                           target={'_blank'}
@@ -274,14 +274,14 @@ const Download = () => {
                         </a>
                       </li>
                       <li>
-                        Download old UPBGE versions from{' '}
+                        Download old UPBGE versions from&nbsp;
                         <a
                           href='https://github.com/UPBGE/upbge/releases'
                           target={'_blank'}
                           rel='noreferrer'>
                           here
-                        </a>{' '}
-                        or{' '}
+                        </a>&nbsp;
+                        or&nbsp;
                         <a
                           href='https://mega.nz/folder/k9MW1KiZ#UOKzjh3IQ0GEgjQ6GUc7ug'
                           target={'_blank'}
