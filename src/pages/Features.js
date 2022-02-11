@@ -49,7 +49,7 @@ const Features = () => {
                 automatically included in each UPBGE release.
               </li>
               <li>
-                An unified workflow. The game engine specific workspaces,
+                A unified workflow. The game engine specific workspaces,
                 editors, panels and nodes follow the same conventions and
                 standards as Blender itself.
               </li>
