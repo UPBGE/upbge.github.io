@@ -209,8 +209,8 @@ const Features = () => {
             <GridSection>
               <GridSectionTitle>Multiplatform Editor</GridSectionTitle>
               <p>
-                The UPBGE editor works in 64-bit on Windows (7, 8 & 10), MacOS
-                (x64 and arm) and Linux (x64 and arm) and it has a small size
+                The UPBGE editor works in 64-bit on Windows (7, 8, 10, & 11), Linux (x64 and arm), and macOS
+                (x64 and arm) and it has a small size
                 (around 170MB).
               </p>
               <p>
@@ -251,7 +251,7 @@ const Features = () => {
               <GridSectionTitle>Multiplatform Deployment</GridSectionTitle>
               <p>
                 UPBGE exports to the main desktop platforms: Windows, Linux and
-                MacOS.
+                macOS.
               </p>
             </GridSection>
           </div>
