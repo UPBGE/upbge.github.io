@@ -24,7 +24,7 @@ if (isWindows || isWinPhone) {
 const TabSection = tw(GridSection)`flex flex-col gap-6`
 
 const Download = () => {
-  //const [tabIndex, setTabIndex] = useState(0)
+  const [tabIndex, setTabIndex] = useState(0)
 
   return (
     <div className={'p-10'}>
@@ -32,20 +32,24 @@ const Download = () => {
         <WideHSection>
           <div className={'flex flex-col items-center pt-4'}>
             <img src={logo_name} alt={'UPBGE Logo with name'} />
-            <br />
-            <SectionTitle>Version Info</SectionTitle>
-            <TabSection>
-              <div>
-              <p><strong>UPBGE 0.3.0</strong>&nbsp;is based on stable&nbsp;<strong>Blender 3.0</strong>&nbsp;source</p>
-              <p><strong>UPBGE 0.3+</strong>&nbsp;is based on experimental&nbsp;<strong>Blender</strong>&nbsp;source</p>
-              <p><strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;<strong>Blender 2.79.7</strong>&nbsp;source</p>
-              </div>
+              <br />
+              <SectionTitle>Stable Release</SectionTitle>
+              <p>Version UPBGE 0.3</p>
+              <p>Released 4 December 2021</p>
+              <p>&nbsp;</p>
+              <TabSection>
+                <div>
+                  <BulletListInside>
+                    <li><strong>UPBGE 0.3+</strong>&nbsp;is based on latest&nbsp;<strong>Blender</strong>&nbsp;source</li>
+                    <li><strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;<strong>Blender 2.7.9.7</strong>&nbsp;source</li>
+                  </BulletListInside>
+                </div>
             </TabSection>
           </div>
           <div>
             <Tabs forceRenderTabPanel defaultIndex={0}>
               <TabList>
-                <Tab>UPBGE 0.3.x</Tab>
+                <Tab>UPBGE 0.3+</Tab>
                 <Tab>UPBGE 0.2.x</Tab>
               </TabList>
               <TabPanel>
@@ -73,16 +77,18 @@ const Download = () => {
                           target={'_blank'}>Download (64-bit)
                         </Button>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
-                            <li>64-bit quad core CPU with SSE2 support</li>
-                            <li>8 GB RAM</li>
-                            <li>Full HD display</li>
-                            <li>Mouse, trackpad or pen+tablet</li>
-                            <li>Graphics card with 2 GB RAM, OpenGL 4.3</li>
+                            <li><strong>CPU:</strong> 64-bit quad core</li>
+                            <li className="list-none ml-4">with SSE2 support minimum</li>
+                            <li><strong>GPU:</strong> 2GB VRAM minimum</li>
+                            <li><strong>RAM:</strong> 8GB minimum</li>
+                            <li><strong>OpenGL:</strong> 4.3+ minimum</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
@@ -93,6 +99,7 @@ const Download = () => {
                             <li>64-bit builds don't run on 32-bit systems</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Misc Downloads</SectionTitle>
                           <BulletListInside>
@@ -124,16 +131,18 @@ const Download = () => {
                           target={'_blank'}>Unavailable
                         </Button>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
-                            <li>64-bit quad core CPU with SSE2 support</li>
-                            <li>8 GB RAM</li>
-                            <li>Full HD display</li>
-                            <li>Mouse, trackpad or pen+tablet</li>
-                            <li>Graphics card with 2 GB RAM, OpenGL 4.3</li>
+                            <li><strong>CPU:</strong> 64-bit quad core</li>
+                            <li className="list-none ml-4">with SSE2 support minimum</li>
+                            <li><strong>GPU:</strong> 2GB VRAM minimum</li>
+                            <li><strong>RAM:</strong> 8GB minimum</li>
+                            <li><strong>OpenGL:</strong> 4.3+ minimum</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
@@ -146,6 +155,7 @@ const Download = () => {
                             <li>64-bit builds don't run on 32-bit systems</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Misc Downloads</SectionTitle>
                           <BulletListInside>
@@ -177,16 +187,18 @@ const Download = () => {
                           target={'_blank'}>Download (64-bit)
                         </Button>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
-                            <li>64-bit quad core CPU with SSE2 support</li>
-                            <li>8 GB RAM</li>
-                            <li>Full HD display</li>
-                            <li>Mouse, trackpad or pen+tablet</li>
-                            <li>Graphics card with 2 GB RAM, OpenGL 4.3</li>
+                            <li><strong>CPU:</strong> 64-bit quad core</li>
+                            <li className="list-none ml-4">with SSE2 support minimum</li>
+                            <li><strong>GPU:</strong> 2GB VRAM minimum</li>
+                            <li><strong>RAM:</strong> 8GB minimum</li>
+                            <li><strong>OpenGL:</strong> 4.3+ minimum</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
@@ -198,6 +210,7 @@ const Download = () => {
                             <li className="list-none ml-4">or a similar application</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Misc Downloads</SectionTitle>
                           <BulletListInside>
@@ -216,7 +229,7 @@ const Download = () => {
                     <TabPanel>
                       <TabSection>
                         <div>
-                          <SectionTitle>UPBGE 0.3 Experimental</SectionTitle>
+                          <SectionTitle>UPBGE 0.3+ Experimental</SectionTitle>
                           <Button
                             href={'https://mega.nz/folder/t9EEFSaS#JPiOPSInCZyU-SW_-rhEOQ'}
                             target={'_blank'}>Browse or download
@@ -229,12 +242,14 @@ const Download = () => {
                             target={'_blank'}>Browse or download
                           </Button>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
                             <li>Check in corresponding platform tabs</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
@@ -259,7 +274,7 @@ const Download = () => {
                     <TabPanel>
                       <TabSection>
                         <div>
-                          <SectionTitle>Windows 8.1, 10, & 11</SectionTitle>
+                          <SectionTitle>Windows 7, 8.1, 10, & 11</SectionTitle>
                           <Button
                             href={'https://github.com/UPBGE/upbge/releases/download/v0.2.5b/UPBGEv0.2.5b-b2.79Windows64.7z'}
                             target={'_blank'}>Download (64-bit)
@@ -271,14 +286,16 @@ const Download = () => {
                           target={'_blank'}>Download (32-bit)
                         </Button>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
                             <li>Blender 2.79 runs on all systems that support</li>
                             <li className="list-none ml-4">OpenGL 2.1 and above, with recent</li>
-                            <li className="list-none ml-4">graphics drivers. For macOS, version 10.9 and later are supported.</li>
+                            <li className="list-none ml-4">graphics drivers</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
@@ -289,6 +306,7 @@ const Download = () => {
                             <li>64-bit builds don't run on 32-bit systems</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Misc Downloads</SectionTitle>
                           <BulletListInside>
@@ -313,21 +331,16 @@ const Download = () => {
                             target={'_blank'}>Download (64-bit)
                           </Button>
                         </div>
-                        <div>
-                        <SectionTitle>Linux aarch64 (coming soon)</SectionTitle>
-                        <Button
-                          href={'#'}
-                          target={'_blank'}>Unavailable
-                        </Button>
-                        </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
                             <li>Blender 2.79 runs on all systems that support</li>
                             <li className="list-none ml-4">OpenGL 2.1 and above, with recent</li>
-                            <li className="list-none ml-4">graphics drivers. For macOS, version 10.9 and later are supported.</li>
+                            <li className="list-none ml-4">graphics drivers</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
@@ -340,6 +353,7 @@ const Download = () => {
                             <li>64-bit builds don't run on 32-bit systems</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Misc Downloads</SectionTitle>
                           <BulletListInside>
@@ -364,14 +378,16 @@ const Download = () => {
                             target={'_blank'}>Download (64-bit)
                           </Button>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
                             <li>Blender 2.79 runs on all systems that support</li>
                             <li className="list-none ml-4">OpenGL 2.1 and above, with recent</li>
-                            <li className="list-none ml-4">graphics drivers. For macOS, version 10.9 and later are supported.</li>
+                            <li className="list-none ml-4">graphics drivers</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
@@ -383,6 +399,7 @@ const Download = () => {
                             <li className="list-none ml-4">or a similar application</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Misc Downloads</SectionTitle>
                           <BulletListInside>
@@ -407,12 +424,14 @@ const Download = () => {
                             target={'_blank'}>Browse or download
                           </Button>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
                             <li>Check in corresponding platform tabs</li>
                           </BulletListInside>
                         </div>
+                        <hr />
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
