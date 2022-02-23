@@ -32,7 +32,7 @@ const Features = () => {
               <br />
               Thanks to this integration we have:
             </p>
-            <BulletList>
+            <BulletListInside>
               <li>
                 No need for an import-export pipeline. Since Blender supports 3D
                 modelling, sculpting and UV mapping, everything made in the
@@ -53,13 +53,12 @@ const Features = () => {
                 editors, panels and nodes follow the same conventions and
                 standards as Blender itself.
               </li>
-            </BulletList>
+            </BulletListInside>
           </div>
           <div className={'md:order-first mt-5'}>
             <img src={features_1} alt={'UPBGE Screenshot #1'} />
           </div>
         </WideHSection>
-
         <WideHSection>
           <div>
             <SectionTitle>Graphics</SectionTitle>
@@ -72,7 +71,7 @@ const Features = () => {
               <br />
               It has advanced features such as:
             </p>
-            <BulletList>
+            <BulletListInside>
               <li>Physically-based rendering with TAA and SMAA.</li>
               <li>Principled BSDF.</li>
               <li>Environment lighting and HDRIs.</li>
@@ -85,13 +84,12 @@ const Features = () => {
                 Great color management, including HDR, tone mapping, exposure
                 and color transformations such as Filmic.
               </li>
-            </BulletList>
+            </BulletListInside>
           </div>
           <div>
             <img src={features_2} alt={'UPBGE Screenshot #2'} />
           </div>
         </WideHSection>
-
         <WideHSection>
           <div>
             <SectionTitle>Scripting & Logic Support</SectionTitle>
@@ -102,35 +100,37 @@ const Features = () => {
               develop game logic, although there are 3 additional and complete
               methods that the game developer can use:
             </p>
-            <BulletList>
+            <BulletListInside>
               <br />
               <li>
-                <p>The Logic Bricks system.</p> This system is a well tested
+                <strong>The Logic Bricks System</strong><br />
+                This system is a well tested
                 system (around 20 years) and its main advantages are its speed
                 and ease of use. No programming knowledge is required to use
                 them.
               </li>
               <li>
-                <p>The Logic Nodes system.</p> This system is a Visual Scripting
+                <strong>The Logic Nodes System</strong><br />
+                This system is a Visual Scripting
                 system developed atop the UPBGE node interface to create
                 gameplay elements inside UPBGE editor. Its main advantages are
                 its versatility and ease of use. No programming knowledge is
                 required to use them.
               </li>
               <li>
-                <p>The Python Components system.</p> Basically the Python
+                <strong>The Python Components System</strong><br />
+                Basically the Python
                 Components are modules that can be attached to game objects.
                 Each one serves a specific purpose. No programming knowledge is
                 required to use them, although such knowledge is necessary for
                 the development of new or custom components.
               </li>
-            </BulletList>
+            </BulletListInside>
           </div>
           <div className={'md:order-first mt-24'}>
             <img src={features_3} alt={'UPBGE Screenshot #1'} />
           </div>
         </WideHSection>
-
         <WideHSection>
           <div>
             <SectionTitle>Animation System</SectionTitle>
@@ -145,7 +145,6 @@ const Features = () => {
               different node properties of both materials and geometry node
               trees. Even grease pencil objects can be animated.
             </p>
-
             <p>
               <br />
               To make animations, the developer can use any of the following
@@ -171,7 +170,6 @@ const Features = () => {
             </Video>
           </div>
         </WideHSection>
-
         <Section className={'max-w-7xl'}>
           <div className={'grid grid-cols-1 lg:grid-cols-3 gap-x-2 gap-y-4'}>
             <GridSection>
@@ -190,7 +188,6 @@ const Features = () => {
                 static objects and a kinematic character controller.
               </p>
             </GridSection>
-
             <GridSection>
               <GridSectionTitle>OpenXR</GridSectionTitle>
               <p>
@@ -205,12 +202,11 @@ const Features = () => {
                 requires some set up steps.
               </p>
             </GridSection>
-
             <GridSection>
               <GridSectionTitle>Multiplatform Editor</GridSectionTitle>
               <p>
-                The UPBGE editor works in 64-bit on Windows (7, 8, 10, & 11), Linux (x64 and arm), and macOS
-                (x64 and arm) and it has a small size
+                The UPBGE editor works in 64-bit on Windows (7, 8, 10, & 11), Linux (x64 & arm), and macOS
+                (x64 & arm) and it has a small size
                 (around 170MB).
               </p>
               <p>
@@ -219,7 +215,6 @@ const Features = () => {
                 downloaded through an easy to use script).
               </p>
             </GridSection>
-
             <GridSection>
               <GridSectionTitle>Navigation System</GridSectionTitle>
               <p>
@@ -232,7 +227,6 @@ const Features = () => {
                 many cases and comes with a navmesh generation toolset.
               </p>
             </GridSection>
-
             <GridSection>
               <GridSectionTitle>Audio System</GridSectionTitle>
               <p>
@@ -246,7 +240,6 @@ const Features = () => {
                 effects like delay, reverse or fading.
               </p>
             </GridSection>
-
             <GridSection>
               <GridSectionTitle>Multiplatform Deployment</GridSectionTitle>
               <p>
