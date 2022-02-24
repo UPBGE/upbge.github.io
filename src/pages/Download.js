@@ -41,7 +41,7 @@ const Download = () => {
                 <div>
                   <BulletListInside>
                     <li><strong>UPBGE 0.3+</strong>&nbsp;is based on latest&nbsp;<strong>Blender</strong>&nbsp;source</li>
-                    <li><strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;<strong>Blender 2.7.9.7</strong>&nbsp;source</li>
+                    <li><strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;<strong>Blender 2.79.7</strong>&nbsp;source</li>
                   </BulletListInside>
                 </div>
             </TabSection>
@@ -392,7 +392,6 @@ const Download = () => {
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
                             <li>macOS Intel requires version 10+</li>
-                            <li>macOS Apple Silicon requires version 11+</li>
                             <li>dmg extension can be extracted with&nbsp;
                               <a href='https://www.7-zip.org/' target={'_blank'} rel='noreferrer'><strong>7zip</strong></a>
                             </li>
