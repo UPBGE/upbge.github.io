@@ -13,3 +13,5 @@ export const WideHSection = tw(HSection)`gap-x-12`
 export const GridSection = tw.div`bg-gray-100 dark:bg-gray-950 py-4 px-8 rounded-lg`
 export const GridSectionTitle = tw(SectionTitle)`text-left lg:text-center`
 export const GridSectionTitleCentered = tw(SectionTitle)`text-center`
+
+export const TabSection = tw(GridSection)`flex flex-col gap-6`

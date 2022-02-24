@@ -1,4 +1,4 @@
-import { GridSection, SectionTitle, WideHSection } from '../common/Section'
+import { SectionTitle, WideHSection, TabSection } from '../common/Section'
 
 import { BulletListInside } from '../common/List'
 import Button from '../common/Button'
@@ -10,7 +10,6 @@ import { isWinPhone, isIOS, isWindows, isMacOs } from 'react-device-detect'
 import { useState } from 'react'
 
 import logo_name from '../assets/images/logo_web_name.png'
-import tw from 'tailwind-styled-components'
 
 let sta
 if (isWindows || isWinPhone) {
@@ -20,8 +19,6 @@ if (isWindows || isWinPhone) {
 } else {
   sta = 1
 }
-
-const TabSection = tw(GridSection)`flex flex-col gap-6`
 
 const Download = () => {
   const [tabIndex, setTabIndex] = useState(sta)
