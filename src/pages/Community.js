@@ -52,15 +52,17 @@ const Community = () => {
                   title={'Facebook'}
                   to={'https://www.facebook.com/groups/2161613970761242'}
                   image={facebook}
-		  hashtag={'https://www.facebook.com/hashtag/upbge'}>
-                  Official Facebook Group<br/>& UPBGE #hashtag
+                  hashtag={'https://www.facebook.com/hashtag/upbge'}>
+                  Official Facebook Group
+                  <br />& UPBGE #hashtag
                 </CardSection>
                 <CardSection
                   title={'Twitter'}
                   to={'https://www.twitter.com/upbge1'}
                   image={twitter}
-		  hashtag={'https://www.twitter.com/hashtag/upbge'}>
-                  Official Twitter Page<br/>& UPBGE #hashtag
+                  hashtag={'https://www.twitter.com/hashtag/upbge'}>
+                  Official Twitter Page
+                  <br />& UPBGE #hashtag
                 </CardSection>
                 <CardSection
                   title={'TikTok'}
@@ -82,7 +84,9 @@ const Community = () => {
                 </CardSection>
                 <CardSection
                   title={'StackExchange'}
-                  to={'https://blender.stackexchange.com/questions/tagged/game-engine'}
+                  to={
+                    'https://blender.stackexchange.com/questions/tagged/game-engine'
+                  }
                   image={bse}>
                   Discuss & share UPBGE at BlenderStackExchange
                 </CardSection>
@@ -96,20 +100,27 @@ const Community = () => {
                   title={'Steam'}
                   to={'https://steamdb.info/tech/Engine/BlenderGameEngine'}
                   image={steam}>
-                  'Blender GameEngine' Category
+                  &apos;Blender GameEngine&apos; Category
                 </CardSection>
                 <CardSection
                   title={'IRC'}
-                  to={'https://blender.chat/channel/gameengines-armoury-godot-up-bge-panda-etc'}
+                  to={
+                    'https://blender.chat/channel/gameengines-armoury-godot-up-bge-panda-etc'
+                  }
                   image={b3d_irc}>
-                  (inactive) 'BGE' Channel<br/>at Blender IRC
+                  (inactive) &apos;BGE&apos; Channel
+                  <br />
+                  at Blender IRC
                 </CardSection>
                 <CardSection
                   title={'YouTube'}
-                  to={'https://www.youtube.com/channel/UCvDRAJdVthliAUDnaVY23aA'}
+                  to={
+                    'https://www.youtube.com/channel/UCvDRAJdVthliAUDnaVY23aA'
+                  }
                   image={yt}
-		  hashtag={'https://www.youtube.com/hashtag/upbge'}>
-                  (inactive) YouTube Channel<br/> & UPBGE #hashtag
+                  hashtag={'https://www.youtube.com/hashtag/upbge'}>
+                  (inactive) YouTube Channel
+                  <br /> & UPBGE #hashtag
                 </CardSection>
               </H3Section>
             </div>

@@ -12,7 +12,7 @@ import {
   SectionTitle,
   WideHSection,
 } from '../common/Section'
-import { BulletList, BulletListInside } from '../common/List'
+import { BulletListInside } from '../common/List'
 
 const Video = tw.video`object-cover object-center bg-black`
 
@@ -103,27 +103,28 @@ const Features = () => {
             <BulletListInside>
               <br />
               <li>
-                <strong>The Logic Bricks System</strong><br />
-                This system is a well tested
-                system (around 20 years) and its main advantages are its speed
-                and ease of use. No programming knowledge is required to use
-                them.
+                <strong>The Logic Bricks System</strong>
+                <br />
+                This system is a well tested system (around 20 years) and its
+                main advantages are its speed and ease of use. No programming
+                knowledge is required to use them.
               </li>
               <li>
-                <strong>The Logic Nodes System</strong><br />
-                This system is a Visual Scripting
-                system developed atop the UPBGE node interface to create
-                gameplay elements inside UPBGE editor. Its main advantages are
-                its versatility and ease of use. No programming knowledge is
-                required to use them.
+                <strong>The Logic Nodes System</strong>
+                <br />
+                This system is a Visual Scripting system developed atop the
+                UPBGE node interface to create gameplay elements inside UPBGE
+                editor. Its main advantages are its versatility and ease of use.
+                No programming knowledge is required to use them.
               </li>
               <li>
-                <strong>The Python Components System</strong><br />
-                Basically the Python
-                Components are modules that can be attached to game objects.
-                Each one serves a specific purpose. No programming knowledge is
-                required to use them, although such knowledge is necessary for
-                the development of new or custom components.
+                <strong>The Python Components System</strong>
+                <br />
+                Basically the Python Components are modules that can be attached
+                to game objects. Each one serves a specific purpose. No
+                programming knowledge is required to use them, although such
+                knowledge is necessary for the development of new or custom
+                components.
               </li>
             </BulletListInside>
           </div>
@@ -205,8 +206,8 @@ const Features = () => {
             <GridSection>
               <GridSectionTitle>Multiplatform Editor</GridSectionTitle>
               <p>
-                The UPBGE editor works in 64-bit on Windows (7, 8, 10, & 11), Linux (x64 & arm), and macOS
-                (x64 & arm) and it has a small size
+                The UPBGE editor works in 64-bit on Windows (7, 8, 10, & 11),
+                Linux (x64 & arm), and macOS (x64 & arm) and it has a small size
                 (around 170MB).
               </p>
               <p>

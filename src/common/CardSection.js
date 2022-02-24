@@ -6,7 +6,15 @@ import tw from 'tailwind-styled-components'
 
 const CardContent = tw(GridSection)`h-full`
 
-const CardSection = ({ to, title, image, className, children, external, hashtag }) => {
+const CardSection = ({
+  to,
+  title,
+  image,
+  className,
+  children,
+  external,
+  hashtag,
+}) => {
   let titleComp, imageComp, externalComp, hashtagComp
 
   if (to.startsWith('http')) {
