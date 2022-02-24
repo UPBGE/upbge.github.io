@@ -24,7 +24,7 @@ if (isWindows || isWinPhone) {
 const TabSection = tw(GridSection)`flex flex-col gap-6`
 
 const Download = () => {
-  const [tabIndex, setTabIndex] = useState(0)
+  const [tabIndex, setTabIndex] = useState(sta)
 
   return (
     <div className={'p-10'}>
@@ -59,7 +59,7 @@ const Download = () => {
                 <Tab>UPBGE 0.2.x</Tab>
               </TabList>
               <TabPanel>
-                <Tabs forceRenderTabPanel>
+                <Tabs selectedIndex={tabIndex} onSelect={setTabIndex}>
                   <TabSection>
                     <TabList>
                       <Tab>Windows</Tab>
@@ -404,7 +404,7 @@ const Download = () => {
                 </Tabs>
               </TabPanel>
               <TabPanel>
-                <Tabs forceRenderTabPanel>
+                <Tabs selectedIndex={tabIndex} onSelect={setTabIndex}>
                   <TabSection>
                     <TabList>
                       <Tab>Windows</Tab>
