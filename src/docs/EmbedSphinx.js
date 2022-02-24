@@ -143,6 +143,10 @@ const EmbedSphinx = () => {
   )
 
   useEffect(() => {
+    setQuery(null)
+  }, [url])
+
+  useEffect(() => {
     document.getElementById('doc-content').scrollTop = 0
   }, [content, query, error])
 
