@@ -114,10 +114,10 @@ const Download = () => {
                             <li>
                               7z extension can be extracted with&nbsp;
                               <a
-                                href='https://www.7-zip.org/'
+                                href='https://portableapps.com/apps/utilities/peazip_portable'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>7zip</strong>
+                                <strong>PeaZip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -213,10 +213,10 @@ const Download = () => {
                             <li>
                               xz extension can be extracted with&nbsp;
                               <a
-                                href='https://www.7-zip.org/'
+                                href='https://portableapps.com/apps/utilities/peazip_portable'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>7zip</strong>
+                                <strong>PeaZip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -314,10 +314,10 @@ const Download = () => {
                             <li>
                               dmg extension can be extracted with&nbsp;
                               <a
-                                href='https://www.7-zip.org/'
+                                href='https://portableapps.com/apps/utilities/peazip_portable'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>7zip</strong>
+                                <strong>PeaZip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -450,10 +450,10 @@ const Download = () => {
                             <li>
                               7z extension can be extracted with&nbsp;
                               <a
-                                href='https://www.7-zip.org/'
+                                href='https://portableapps.com/apps/utilities/peazip_portable'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>7zip</strong>
+                                <strong>PeaZip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -533,10 +533,10 @@ const Download = () => {
                             <li>
                               xz extension can be extracted with&nbsp;
                               <a
-                                href='https://www.7-zip.org/'
+                                href='https://portableapps.com/apps/utilities/peazip_portable'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>7zip</strong>
+                                <strong>PeaZip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -613,10 +613,10 @@ const Download = () => {
                             <li>
                               dmg extension can be extracted with&nbsp;
                               <a
-                                href='https://www.7-zip.org/'
+                                href='https://portableapps.com/apps/utilities/peazip_portable'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>7zip</strong>
+                                <strong>PeaZip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
