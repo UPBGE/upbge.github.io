@@ -44,7 +44,7 @@ const Community = () => {
                 </CardSection>
                 <CardSection
                   title={'Discord'}
-                  to={'https://discord.com/invite/DsTJ8Ga'}
+                  to={'https://discord.gg/8PcrtTJW2R'}
                   image={discord}>
                   Official Discord
                 </CardSection>
