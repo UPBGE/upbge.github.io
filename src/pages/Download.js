@@ -31,19 +31,35 @@ const Download = () => {
             <img src={logo_name} alt={'UPBGE Logo with name'} />
             <br />
             <SectionTitle>Stable Release</SectionTitle>
-            <p>Version UPBGE 0.3</p>
+            <p>Version UPBGE 0.30</p>
             <p>Released 4 December 2021</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.3+</strong>&nbsp;is based on latest&nbsp;
-                    <strong>Blender</strong>&nbsp;source
+                    <strong>UPBGE 0.30</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 3.0</strong>&nbsp;source
                   </li>
                   <li>
                     <strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;
                     <strong>Blender 2.79.7</strong>&nbsp;source
+                  </li>
+                </BulletListInside>
+              </div>
+            </TabSection>
+            <br />
+            <br />
+            <SectionTitle>Development Release</SectionTitle>
+            <p>Version UPBGE 0.33 Alpha</p>
+            <p>Released a new build each week</p>
+            <p>&nbsp;</p>
+            <TabSection>
+              <div>
+                <BulletListInside>
+                  <li>
+                    <strong>UPBGE 0.33 Alpha</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 3.3</strong>&nbsp;source
                   </li>
                 </BulletListInside>
               </div>
@@ -62,7 +78,7 @@ const Download = () => {
                       <Tab>Windows</Tab>
                       <Tab>Linux</Tab>
                       <Tab>macOS</Tab>
-                      <Tab>Experimental</Tab>
+                      <Tab>Development</Tab>
                     </TabList>
                     <TabPanel>
                       <TabSection>
@@ -286,6 +302,23 @@ const Download = () => {
                         </div>
                         <hr />
                         <div>
+                          <SectionTitle>Note</SectionTitle>
+                          If a warning exposing that&nbsp;
+                          <em>
+                            &quot;<u>UPBGE is damaged and can’t be opened</u>
+                            &quot;
+                          </em>
+                          &nbsp;appears when executing the app, check
+                          <a
+                            href='https://github.com/UPBGE/upbge/wiki/MacOS-remove-UPBGE-damaged-comment'
+                            target={'_blank'}
+                            rel='noreferrer'>
+                            <strong>&nbsp;this link&nbsp;</strong>
+                          </a>
+                          to know how to fix it.
+                        </div>
+                        <hr />
+                        <div>
                           <SectionTitle>Requirements</SectionTitle>
                           <BulletListInside>
                             <li>
@@ -303,25 +336,12 @@ const Download = () => {
                             <li>
                               <strong>OpenGL:</strong> 4.3+ minimum
                             </li>
-                          </BulletListInside>
-                        </div>
-                        <hr />
-                        <div>
-                          <SectionTitle>Note</SectionTitle>
-                          <BulletListInside>
-                            <li>macOS Intel requires version 10+</li>
-                            <li>macOS Apple Silicon requires version 11+</li>
                             <li>
-                              dmg extension can be extracted with&nbsp;
-                              <a
-                                href='https://portableapps.com/apps/utilities/peazip_portable'
-                                target={'_blank'}
-                                rel='noreferrer'>
-                                <strong>PeaZip</strong>
-                              </a>
+                              <strong>MacOS Intel:</strong> requires version 10+
                             </li>
-                            <li className='list-none ml-4'>
-                              or a similar application
+                            <li>
+                              <strong>MacOS Apple Silicon:</strong> requires
+                              version 11+
                             </li>
                           </BulletListInside>
                         </div>
@@ -361,7 +381,7 @@ const Download = () => {
                     <TabPanel>
                       <TabSection>
                         <div>
-                          <SectionTitle>UPBGE 0.3+ Experimental</SectionTitle>
+                          <SectionTitle>UPBGE 0.3+ Development</SectionTitle>
                           <Button
                             href={
                               'https://mega.nz/folder/t9EEFSaS#JPiOPSInCZyU-SW_-rhEOQ'
@@ -407,7 +427,7 @@ const Download = () => {
                       <Tab>Windows</Tab>
                       <Tab>Linux</Tab>
                       <Tab>macOS</Tab>
-                      <Tab>Experimental</Tab>
+                      <Tab>Development</Tab>
                     </TabList>
                     <TabPanel>
                       <TabSection>
