@@ -29,7 +29,9 @@ const Download = () => {
         <WideHSection>
           <div className={'flex flex-col items-center pt-4'}>
             <img src={logo_name} alt={'UPBGE Logo with name'} />
-            <br />
+            <div>
+              <br />
+            </div>
             <SectionTitle>Stable Release</SectionTitle>
             <p>Version UPBGE 0.30</p>
             <p>Released 4 December 2021</p>
@@ -48,8 +50,10 @@ const Download = () => {
                 </BulletListInside>
               </div>
             </TabSection>
-            <br />
-            <br />
+            <div>
+              <br />
+              <br />
+            </div>
             <SectionTitle>Development Release</SectionTitle>
             <p>Version UPBGE 0.33 Alpha</p>
             <p>Released a new build each week</p>
