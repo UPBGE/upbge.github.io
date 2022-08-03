@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding Inheritance And Composition In Game Scripting &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python Components" href="../python_components/index.html" />
+    <link rel="prev" title="Python and the Game Engine" href="python_game_engine.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> UPBGE Manual
+            <img src="../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python Scripting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction to Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_game_engine.html">Python and the Game Engine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Understanding Inheritance And Composition In Game Scripting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#type-and-inheritance">Type and Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problems-of-inheritance">Problems of Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#composition-over-inheritance">Composition Over Inheritance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-component-model">Dynamic Component Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-inheritance-still-matters">Why Inheritance Still Matters?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mixins-and-traits">Mixins And Traits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mixins-and-components-in-upbge">Mixins and Components in UPBGE</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datablocks/index.html">Datablocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">About</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Python Scripting</a> &raquo;</li>
+      <li>Understanding Inheritance And Composition In Game Scripting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/manual/python/understanding_inheritance_and_composition_in_game_scripting.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="understanding-inheritance-and-composition-in-game-scripting">
+<span id="id1"></span><h1>Understanding Inheritance And Composition In Game Scripting<a class="headerlink" href="#understanding-inheritance-and-composition-in-game-scripting" title="Permalink to this headline"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<p>Let us imagine we are making a video game in which characters can attack each other and receive damage.
+You will likely want to add a few properties like health or max_health to each object and write simple scripts
+to calculate them when the character gets hit or drinks a potion. Pretty simple, isn’t it?</p>
+<p>In many cases, writing game scripts doesn’t require much more knowledge than that.
+A game engine is supposed to handle most of the heavy lifting for you, and all you need to do is declaring
+a few such variables, or writing a few conditional statements, loops, or functions to stitch them together.
+There is a reason why writing game logic is called ‘scripting’ even when it’s done with a compiled
+language like C#, after all.</p>
+<p>But what if you want to try something more complex, like creating an RPG where you can bash a door or a
+chest until it breaks open? Do you see the resemblance between hitting an enemy with a sword and
+doing the same to a crate?</p>
+<p>Of course, you can simply add the same variables to the crate and copy and paste the same code you used
+to calculate a character’s health. But what if there are many similar cases and you have to paste the
+same code to hundreds of them? Wouldn’t it make your project challenging to understand or modify?</p>
+<p>Although software engineering is not a popular topic among most game developers, some of its principles
+like DRY or SOLID can offer a helpful guide in such a situation.</p>
+<p>And with slight exaggeration, we can say that the entire idea of software design revolves around the
+concept of generalisation and abstraction, which is a tool invented to solve precisely such a kind of problem.
+In other words, how can we generalise the idea of something that can be damaged into a reusable code so
+that we don’t have to repeatedly copy and paste the same code over and over?</p>
+<p>Object-Oriented Programming or OOP is a software paradigm that provides powerful tools we can utilise
+to solve such a problem. Even though it has seen increasing challenges over the years, it remains one of
+the most widely used software paradigms, well supported by popular languages like Python or C#.
+So, let’s look into the concept briefly in the next chapter.</p>
+</section>
+<section id="type-and-inheritance">
+<h2>Type and Inheritance<a class="headerlink" href="#type-and-inheritance" title="Permalink to this headline"></a></h2>
+<p>To put it simply, a type in an OOP language determines an object’s nature (i.e. properties and behaviours).
+It also applies to a dynamically typed language like Python, which allows you to write code without caring
+too much about types. You know that you can change the value of a variable from abc to ABC by invoking
+its ‘upper()’ API because it has the type of str which declares upper() as its method.</p>
+<p>But the real benefit of having a type system goes further than allowing you to figure out what functions
+an existing object provides. It can also serve as a tool to express a set of common characteristics that
+things can share, like the fact that they can be damaged, for example.</p>
+<p>A character can be attacked and receives damage, and so can a crate. In other words, they are both something
+capable of being damaged and probably also destroyed after getting hit repeatedly. Let’s generalise this
+idea as Damageable type as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Damageable</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_health</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="n">init_health</span>
+
+  <span class="k">def</span> <span class="nf">damage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">-</span> <span class="n">amount</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">destroyed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>But how can you use (or ‘reuse’) it to eliminate the repetition? And that is where the concept of ‘inheritance’
+comes in.</p>
+<p>If you want to make your character or a crate class damageable, you can simply make them ‘inherit’ or derive
+from ‘Damageable’ type like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Character</span><span class="p">(</span><span class="n">Damageable</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">Crate</span><span class="p">(</span><span class="n">Damageable</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="n">character</span> <span class="o">=</span> <span class="n">Character</span><span class="p">()</span>
+
+<span class="n">character</span><span class="o">.</span><span class="n">damage</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">crate</span><span class="o">.</span><span class="n">damage</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">character</span><span class="o">.</span><span class="n">health</span><span class="p">)</span> <span class="c1"># Prints &quot;60&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">character</span><span class="o">.</span><span class="n">destroyed</span><span class="p">)</span> <span class="c1"># Prints &quot;False&quot;</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">health</span><span class="p">)</span> <span class="c1"># Prints &quot;0&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">destroyed</span><span class="p">)</span> <span class="c1"># Prints &quot;True&quot;</span>
+</pre></div>
+</div>
+<p>As you can see, inheritance is a powerful tool to generalise ideas and promote code reuse. But
+it is not without problems which we will discuss in the following chapter.</p>
+</section>
+<section id="problems-of-inheritance">
+<h2>Problems of Inheritance<a class="headerlink" href="#problems-of-inheritance" title="Permalink to this headline"></a></h2>
+<p>We just made a crate damageable by deriving it from Damageable type. But what if we also want to
+add some other features, like being able to be opened? Maybe we could define another class Openable
+to describe the concept of something which can be opened. But can an object inherit from both of those types?</p>
+<p>This can pose a serious issue in a language that does not allow multiple inheritance like C#.
+And even with languages that do, deriving from multiple parents may bring more headaches than
+benefits sometimes, causing issues like the infamous Diamond Problem.</p>
+<p>Furthermore, it can also introduce additional challenges in the context of game development.
+Typically a game engine handles all performance-critical operations in its native layer while
+exposing a small set of features as a scripting API in a higher-level language like C# or Python
+to offer better productivity and ease of use for its users.</p>
+<p>Because of this, some game engines (e.g. a famous private one that keeps them “united” :-)) do
+not allow instantiating such game-related classes
+directly in the scripting layer, making it difficult or even impossible to extend them by subtyping,
+as we discussed in the previous chapter.</p>
+<p>And even those that do (e.g. Godot), the typical workflow they provide involves providing initial
+parameters from the editor, which the engine uses to instantiate objects for the user. So, if you create
+game objects directly in code, you’ll lose all the conveniences the editor provides. (This, however, is not
+the case in UPBGE as it has a unique feature that allows you to combine both approaches. We will discuss
+this feature later.)</p>
+<p>Due to such limitations, it is often desirable to take a different approach to promote code reuse when
+working on a game project. Fortunately, a design principle can be used to overcome this particular problem
+called Composition Over Inheritance, which also works well when writing game scripts.</p>
+</section>
+<section id="composition-over-inheritance">
+<h2>Composition Over Inheritance<a class="headerlink" href="#composition-over-inheritance" title="Permalink to this headline"></a></h2>
+<p>The basic idea of composition is implementing each feature of an object as a modular ‘component’. By doing so,
+we can compose such elements to describe the behaviours and properties of the whole.</p>
+<p>For example, instead of making the Crate class inherit from Damageable type, we can rename the latter
+to HitBox and make it a property of the enclosing class:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HitBox</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">init_health</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="n">init_health</span>
+
+  <span class="k">def</span> <span class="nf">damage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">-</span> <span class="n">amount</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">destroyed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="k">class</span> <span class="nc">Crate</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">hit_box</span> <span class="o">=</span> <span class="n">HitBox</span><span class="p">()</span>
+
+<span class="n">crate</span> <span class="o">=</span> <span class="n">Crate</span><span class="p">()</span>
+
+<span class="n">crate</span><span class="o">.</span><span class="n">hit_box</span><span class="o">.</span><span class="n">damage</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">hit_box</span><span class="o">.</span><span class="n">health</span><span class="p">)</span> <span class="c1"># Prints &quot;20&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">hit_box</span><span class="o">.</span><span class="n">destroyed</span><span class="p">)</span> <span class="c1"># Prints &quot;False&quot;</span>
+
+<span class="n">crate</span><span class="o">.</span><span class="n">hit_box</span><span class="o">.</span><span class="n">damage</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">hit_box</span><span class="o">.</span><span class="n">health</span><span class="p">)</span> <span class="c1"># Prints &quot;0&quot;</span>
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">hit_box</span><span class="o">.</span><span class="n">destroyed</span><span class="p">)</span> <span class="c1"># Prints &quot;True&quot;</span>
+</pre></div>
+</div>
+<p>Similarly, we can also make the crate ‘openable’ by creating a Door component and assign an
+instance of it as a property of Crate:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Door</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opened</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="bp">True</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="n">opened</span>
+
+  <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span>
+
+  <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="k">class</span> <span class="nc">Crate</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">hit_box</span> <span class="o">=</span> <span class="n">HitBox</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">door</span> <span class="o">=</span> <span class="n">Door</span><span class="p">()</span>
+
+<span class="n">crate</span> <span class="o">=</span> <span class="n">Crate</span><span class="p">()</span>
+
+<span class="n">crate</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span><span class="p">)</span> <span class="c1"># Prints &quot;True&quot;</span>
+
+<span class="n">crate</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">crate</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span><span class="p">)</span> <span class="c1"># Prints &quot;False&quot;</span>
+</pre></div>
+</div>
+<p>In this way, you can add as many features to an object as you like without the concern of
+introducing potential conflict in the type hierarchy.</p>
+</section>
+<section id="dynamic-component-model">
+<h2>Dynamic Component Model<a class="headerlink" href="#dynamic-component-model" title="Permalink to this headline"></a></h2>
+<p>Let’s take the idea one step further and generalise the concept of components itself. What if
+we replace individual properties like door or hit_box with a generic list?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Crate</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="n">crate</span> <span class="o">=</span> <span class="n">Crate</span><span class="p">()</span>
+
+<span class="n">crate</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;hit_box&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">HitBox</span><span class="p">()</span> <span class="c1"># Now the crate can be damaged.</span>
+<span class="n">crate</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;door&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Door</span><span class="p">()</span> <span class="c1"># And it becomes openable.</span>
+</pre></div>
+</div>
+<p>As you see, now we can attach an arbitrary behaviour to an existing object without modifying the
+class definition. And what if we make the Character class damageable in the same manner?
+Wouldn’t it make Character look almost identical with Crate?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Character</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="n">character</span> <span class="o">=</span> <span class="n">Character</span><span class="p">()</span>
+
+<span class="n">character</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;hit_box&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">HitBox</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>They look similar indeed! Then why not replace them both with something more generic, like GameObject?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GameObject</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">components</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="n">character</span> <span class="o">=</span> <span class="n">GameObject</span><span class="p">(</span><span class="s2">&quot;Character&quot;</span><span class="p">)</span>
+<span class="n">character</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;hit_box&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">HitBox</span><span class="p">()</span>
+
+<span class="n">crate</span> <span class="o">=</span> <span class="n">GameObject</span><span class="p">(</span><span class="s2">&quot;Crate&quot;</span><span class="p">)</span>
+<span class="n">crate</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;hit_box&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">HitBox</span><span class="p">()</span>
+<span class="n">crate</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;door&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Door</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you want to make it a bit more precise, you can define a common base type to represent
+a component, like Component and derive both HitBox and Door from it. Using Python’s typing
+support for clarity, the code would look like the following example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+
+<span class="k">class</span> <span class="nc">Component</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span> <span class="c1"># Indicates that this is an abstract base class</span>
+  <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">GameObject</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Component</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Door</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+  <span class="o">...</span>
+
+<span class="k">class</span> <span class="nc">HitBox</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+  <span class="o">...</span>
+</pre></div>
+</div>
+<p>In fact, this is what objects and components in game engines are all about. They may
+be named differently or have slightly different APIs, depending on the game engine you choose.
+But be it GameObject/MonoBehaviour in other game engine or KX_GameObject/KX_PythonComponent in UPBGE,
+the core idea behind it remains the same nonetheless.</p>
+<p>The dynamic nature - namely, the ability to define arbitrary behaviour as a component and
+attach it to an object without modifying its source - of the compositional pattern fits
+game development so well that many game engines enforce it as the only viable method to
+write game scripts.</p>
+<p>But could it be a ‘silver bullet’ of software design pattern? If composition is so good
+for everything, why almost all major OOP languages still support inheritance?</p>
+</section>
+<section id="why-inheritance-still-matters">
+<h2>Why Inheritance Still Matters?<a class="headerlink" href="#why-inheritance-still-matters" title="Permalink to this headline"></a></h2>
+<p>One prominent case where using inheritance over composition would make sense is when
+the concepts you want to represent as types have an is-a relationship with each other.</p>
+<p>Suppose you want to make an inventory system that can store things like food or weapons.
+Both an apple and a dagger may take up some space if you put them in your inventory, and
+they may also have other common traits like having specific weight and so on.</p>
+<p>In other words, we can say that any item has a specific inventory slot size and weight.
+As long as Potion or Weapon is an Item, it inherits common properties like inventory_size
+or weight from its parent type. Bearing that in mind, it shouldn’t be difficult to see how
+saying that “a dagger is an item” is much more intuitive than saying that “it contains a
+component with item-specific properties and behaviours”.</p>
+<p>Another disadvantage of using the compositional pattern could be its dynamic nature itself.
+As with most things in software development, there is a trade-off relationship between
+dynamically attaching properties or behaviours of an object and statically defining them.</p>
+<p>Remember our first version of Character class that directly extends Damageable?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">character</span> <span class="o">=</span> <span class="n">Character</span><span class="p">()</span>
+<span class="n">character</span><span class="o">.</span><span class="n">damage</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, compare that with a componentised version:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">character</span> <span class="o">=</span> <span class="n">GameObject</span><span class="p">(</span><span class="s2">&quot;Character&quot;</span><span class="p">)</span>
+
+<span class="c1"># Let&#39;s assume that the engine added HitBox component automatically.</span>
+<span class="n">character</span><span class="o">.</span><span class="n">components</span><span class="p">[</span><span class="s2">&quot;hit_box&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">damage</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Can you see the difference? Aside from being slightly more verbose, the latter version
+is also much more prone to errors. With the former example, a decent Python IDE with a proper
+setup will autocomplete methods like damage and warn you if you accidentally make a typo,
+like when you type character.destroeyd instead of character.destroyed, for example.</p>
+<p>And in case you want to rename a method or property, like changing damage to hit, for instance,
+you rely on refactoring support that most IDEs provide to perform the task without an error.</p>
+<p>However, you will lose all such conveniences with the dynamic approach as your IDE won’t be
+able to infer proper types in that case, which could become a significant issue if your
+project grows larger and more complex.</p>
+<p>Now, examine this method signature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heal</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Can you guess the proper usage of that API or how to implement its body if you are
+a developer? If you are not sure, how about this version?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heal</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n">GameObject</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span>
+</pre></div>
+</div>
+<p>Now you know that you are expected to pass a GameObject instance as the first parameter
+and specify the amount you want to heal as a float value. But what is a GameObject really?</p>
+<p>As we learned from the previous chapter, it’s just something that contains components.
+It may mean anything - anything from a character to a house. You may make a good guess from
+the method name and assume it would expect a GameObject with a Hitbox attached to it, but
+nobody will stop you if you pass an actual house as long as it’s also a GameObject.</p>
+<p>Also, others may not be as smart as you and may have difficulty guessing the proper type of
+object to pass as the first parameter without having good documentation.</p>
+<p>But what if we haven’t adopted the component approach but just used the plain inheritance model instead?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">heal</span><span class="p">(</span><span class="n">target</span><span class="p">:</span> <span class="n">Damageable</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Now it became immediately apparent what the function expects as its first parameter.
+If you use an IDE, it will also let you know that the target argument supports damage method,
+which you can use to implement the function body as target.damage(-amount). Furthermore, it will
+also warn you if you attempt to pass a non-Damageable type object like a House, all of which can
+help you maintain your codebase as it grows in size.</p>
+<p>However, there was a good reason why we considered adopting the more dynamic approach before,
+and we may still want to keep some of its benefits.</p>
+<p>Suppose you want to derive your Crate class directly from Openable type instead of attaching a
+Door component to it as we did before. Wouldn’t it be still nice if you can assign different kinds
+of doors - like one with an animation, or another with a locking mechanism, and so on - without
+having to rewrite the Crate class every time?</p>
+<p>A language feature or a design pattern called mixin can provide an answer to this question.</p>
+</section>
+<section id="mixins-and-traits">
+<h2>Mixins And Traits<a class="headerlink" href="#mixins-and-traits" title="Permalink to this headline"></a></h2>
+<p>According to a relevant Wikipedia article, a mixin is “a class that contains methods
+for use by other classes without having to be the parent class of those other classes”.</p>
+<p>Such a class is sometimes called a trait and often named as an adjective like Damageable or
+Openable to describe a specific aspect or characteristic of the target object.</p>
+<p>The idea is, you can define various aspects of an object as “traits” and “mix them in” as
+needed. It is a powerful tool that provides a way to add behaviours to an existing class in a
+compositional manner without erasing the type information as the component pattern does.</p>
+<p>Let’s make our Crate class again using the technique:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The same class we saw at the beginning, now acting as a &#39;trait&#39;.</span>
+<span class="k">class</span> <span class="nc">Damageable</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="mi">100</span>
+
+  <span class="k">def</span> <span class="nf">damage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">-</span> <span class="n">amount</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">destroyed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="c1"># Tha same Door class, now renamed as appropriate for a trait</span>
+<span class="k">class</span> <span class="nc">Openable</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span>
+
+  <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span>
+
+  <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c1"># Let&#39;s assume there is a base class for all items, named as `Item`.</span>
+<span class="c1"># Now you can &quot;mix&quot; useful traits into Item as follows:</span>
+<span class="k">class</span> <span class="nc">Crate</span><span class="p">(</span><span class="n">Damageable</span><span class="p">,</span> <span class="n">Openable</span><span class="p">,</span> <span class="n">Item</span><span class="p">):</span>
+  <span class="k">pass</span>
+
+<span class="n">crate</span> <span class="o">=</span> <span class="n">Crate</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">crate</span><span class="p">,</span> <span class="n">Damageable</span><span class="p">))</span> <span class="c1"># Returns &quot;True&quot;</span>
+
+<span class="n">crate</span><span class="o">.</span><span class="n">damage</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="c1"># Much better than crate.components[&quot;hit_box&quot;].damage(50)</span>
+<span class="n">crate</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You may have noticed how intuitive the class definition reads now. Even without any
+comment or having to read the source code, you can immediately see the purpose of the
+Crate class as it’s a “damageable and openable item”, indeed.</p>
+<p>Also, because the class is a proper subtype of both Damageable and Openable, an IDE will
+be able to autocomplete such methods like damage(amount) or open() for you. It also enables
+you to tighten the type signature when you write an API like
+def heal(damageable: Damageable, amount: Float) -&gt; None so that an IDE can warn you if you
+attempt to pass an object with a wrong type by mistake.</p>
+<p>But how can we preserve the dynamic nature of the component model? What if I want to add crates
+in the game editor and make some of them have a unique animation when they open?</p>
+<p>Of course, you can still benefit from the dynamic nature of using components, well, by
+using components! In fact, mixins and components are not mutually exclusive concepts since
+you can write a trait that relies on a component to implement a behaviour.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Door</span><span class="p">(</span><span class="n">Component</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span>
+
+<span class="k">class</span> <span class="nc">Openable</span><span class="p">:</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">door</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Door</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Door</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">))</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">opened</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span>
+
+  <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span>
+
+  <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="k">class</span> <span class="nc">Crate</span><span class="p">(</span><span class="n">Openable</span><span class="p">,</span> <span class="n">GameObject</span><span class="p">):</span>
+  <span class="k">pass</span>
+</pre></div>
+</div>
+<p>As the trait is now mixed into a GameObject, it can reference its components property
+from which it can find a suitable component to work with, in this case, a Door. And the
+fact that the Door class is a component means that you can dynamically assign a specific
+implementation of it from the game editor without modifying the source code of either
+Crate or Openable.</p>
+<p>If you want to add an animation to some of the crates, for example, you can write a special
+subtype of Door like class AnimatedDoor(Door) and attach it to a game object with the
+Openable trait. As long as the target object has the trait, it wouldn’t matter if it’s
+a crate or a gate. And as long as the component derives from Door, it will work perfectly
+fine with any Openable object, be it an animated door or one that requires a key to
+open it, for instance.</p>
+</section>
+<section id="mixins-and-components-in-upbge">
+<h2>Mixins and Components in UPBGE<a class="headerlink" href="#mixins-and-components-in-upbge" title="Permalink to this headline"></a></h2>
+<p>As shown in the previous chapters, the component model and mixins are powerful tools
+to design your software while maintaining a clean separation of concern between
+classes responsible for different functionalities.</p>
+<p>To reap the full benefits of these design patterns, however, it is necessary to have
+a proper programming environment that supports such concepts.</p>
+<p>An older version of C# (before 8.0), for example, didn’t allow providing a default
+implementation of a method defined in an interface, thus severely limiting its usefulness when used as a trait.</p>
+<p>And while most of the game engines enforced either the component model (e.g. private one that keeps them united) or
+the inheritance model (e.g. Godot) on their users, few, if any, support both of them like UPBGE now does.</p>
+<p>With its recent introduction of the custom game object feature, you can define
+either static or dynamic (i.e. component-based) traits and mix them into any
+game object in UPBGE. It provides programmers with a powerful tool to design
+and organise game-related classes without sacrificing the ability to
+configure them graphically within UPBGE.</p>
+<p>The example code shown above will work almost verbatim on UPBGE if you simply
+replace GameObject with KX_GameObject and Component with KX_PythonComponent like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Door</span><span class="p">(</span><span class="n">KX_PythonComponent</span><span class="p">):</span>
+  <span class="n">args</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">((</span>
+    <span class="p">(</span><span class="s2">&quot;Open&quot;</span><span class="p">,</span> <span class="bp">True</span><span class="p">),</span>
+  <span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;Open&quot;</span><span class="p">]</span>
+
+<span class="c1"># A dynamic trait based on component</span>
+<span class="k">class</span> <span class="nc">Openable</span><span class="p">:</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">door</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Door</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">o</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Door</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">components</span><span class="p">))</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">opened</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span>
+
+  <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">True</span>
+
+  <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">door</span><span class="o">.</span><span class="n">opened</span> <span class="o">=</span> <span class="bp">False</span>
+
+<span class="c1"># An example of a static trait</span>
+<span class="k">class</span> <span class="nc">Damageable</span><span class="p">:</span>
+  <span class="n">health</span><span class="p">:</span> <span class="nb">float</span>
+
+  <span class="k">def</span> <span class="nf">damage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">-</span> <span class="n">amount</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">destroyed</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="k">class</span> <span class="nc">Crate</span><span class="p">(</span><span class="n">Openable</span><span class="p">,</span> <span class="n">Damageable</span><span class="p">,</span> <span class="n">KX_GameObject</span><span class="p">):</span>
+  <span class="n">args</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">((</span>
+    <span class="p">(</span><span class="s2">&quot;Health&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+  <span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">health</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s2">&quot;Health&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now you can assign different initial health values to each crate in UPBGE or add an animated
+door to some of them without writing a new class for such cases. Also, when you write
+scripts, you can directly invoke any API they define without having to look up nested
+components or losing the valuable type information.</p>
+<p>Those are some of the few unique advantages that UPBGE has over its competitors.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_game_engine.html" class="btn btn-neutral float-left" title="Python and the Game Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../python_components/index.html" class="btn btn-neutral float-right" title="Python Components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright This page is licensed under a CC-BY-SA 4.0 Int. License..</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

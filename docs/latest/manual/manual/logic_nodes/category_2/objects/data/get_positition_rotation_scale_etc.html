@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Positition / Rotation / Scale etc. &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/css/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <link rel="next" title="Get Unique Name" href="get_unique_name.html" />
+    <link rel="prev" title="Get Axis Vector" href="get_axis_vector.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../../index.html" class="icon icon-home"> UPBGE Manual
+            <img src="../../../../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../logic/index.html">Logic Bricks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../index.html">Logic Nodes</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../category_1/index.html">Category 1</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../index.html">Category 2</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../animation/index.html">Animation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lights/index.html">Lights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../nodes/index.html">Nodes</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">Objects</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../transformation/index.html">Transformation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../properties/index.html">Properties</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html">Data</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="get_axis_vector.html">Get Axis Vector</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Get Positition / Rotation / Scale etc.</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#input">Input</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="get_unique_name.html">Get Unique Name</a></li>
+<li class="toctree-l5"><a class="reference internal" href="replace_mesh.html">Replace Mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="set_position_rotation_scale_etc.html">Set Position / Rotation / Scale etc.</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../add_object.html">Add Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../get_child_by_index.html">Get Child By Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../get_child_by_name.html">Get Child By Name</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../get_object.html">Get Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../get_owner.html">Get Owner</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../get_parent.html">Get Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remove_object.html">Remove Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../remove_parent.html">Remove Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../send_message.html">Send Message</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../set_curve_points.html">Set Curve Points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../set_parent.html">Set Parent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../set_visibility.html">Set Visibility</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sound/index.html">Sound</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python/index.html">Python Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../datablocks/index.html">Datablocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../release/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../about/index.html">About</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Logic Nodes</a> &raquo;</li>
+          <li><a href="../../index.html">Category 2</a> &raquo;</li>
+          <li><a href="../index.html">Objects</a> &raquo;</li>
+          <li><a href="index.html">Data</a> &raquo;</li>
+      <li>Get Positition / Rotation / Scale etc.</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../../_sources/manual/logic_nodes/category_2/objects/data/get_positition_rotation_scale_etc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="get-positition-rotation-scale-etc">
+<h1>Get Positition / Rotation / Scale etc.<a class="headerlink" href="#get-positition-rotation-scale-etc" title="Permalink to this headline"></a></h1>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
+<p>Get characteristics of an object to use in another node</p>
+</section>
+<section id="input">
+<h2>Input<a class="headerlink" href="#input" title="Permalink to this headline"></a></h2>
+<dl>
+<dt>Object</dt><dd><p>The condition for this node start</p>
+</dd>
+<dt>Options</dt><dd><p>Name
+nome do objeto na scene collection?</p>
+<p>Scale
+Escala atual do objeto X, Y e Z</p>
+<p>Transform Global and Local</p>
+<p>Torque Global and Local</p>
+<p>Velocity Global and Local</p>
+<p>Rotation Global and Local</p>
+<p>Position Global and Local
+Global =
+Local = If object</p>
+</dd>
+</dl>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline"></a></h2>
+<dl class="simple">
+<dt>Value</dt><dd><p><strong>True</strong> if the node performed successfully.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="get_axis_vector.html" class="btn btn-neutral float-left" title="Get Axis Vector" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="get_unique_name.html" class="btn btn-neutral float-right" title="Get Unique Name" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright This page is licensed under a CC-BY-SA 4.0 Int. License..</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

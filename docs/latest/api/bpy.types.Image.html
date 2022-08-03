@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image(ID) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.Image.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/js/version_switch.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ImageFormatSettings(bpy_struct)" href="bpy.types.ImageFormatSettings.html" />
+    <link rel="prev" title="IMAGE_UL_udim_tiles(UIList)" href="bpy.types.IMAGE_UL_udim_tiles.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> UPBGE 0.34 + Blender 3.4.0 Alpha Python API
+            <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart: New to Blender or scripting and want to get your feet wet?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview: A more complete explanation of Python integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage: examples of how to use the API reference docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice: Conventions to follow for writing good scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks: Hints to help you while writing scripts for Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotcha's: Some of the problems you may encounter when writing scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log: List of changes since last Blender release</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.34 + Blender 3.4.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="bpy.types.html">Types (bpy.types)</a> &raquo;</li>
+      <li>Image(ID)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="image-id">
+<h1>Image(ID)<a class="headerlink" href="#image-id" title="Permalink to this heading"></a></h1>
+<section id="image-data">
+<h2>Image Data<a class="headerlink" href="#image-data" title="Permalink to this heading"></a></h2>
+<p>The Image data-block is a shallow wrapper around image or video file(s)
+(on disk, as packed data, or generated).</p>
+<p>All actual data like the pixel buffer, size, resolution etc. is
+cached in an <a class="reference internal" href="imbuf.types.html#imbuf.types.ImBuf" title="imbuf.types.ImBuf"><code class="xref py py-class docutils literal notranslate"><span class="pre">imbuf.types.ImBuf</span></code></a> image buffer (or several buffers
+in some cases, like UDIM textures, multi-views, animations…).</p>
+<p>Several properties and functions of the Image data-block are then actually
+using/modifying its image buffer, and not the Image data-block itself.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>One key limitation is that image buffers are not shared between different
+Image data-blocks, and they are not duplicated when copying an image.</p>
+<p>So until a modified image buffer is saved on disk, duplicating its Image
+data-block will not propagate the underlying buffer changes to the new Image.</p>
+</div>
+<p>This example script generates an Image data-block with a given size,
+change its first pixel, rescale it, and duplicates the image.</p>
+<p>The duplicated image still has the same size and colors as the original image
+at its creation, all editing in the original image’s buffer is ‘lost’ in its copy.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+<span class="n">image_src</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">images</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;src&#39;</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">102</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_src</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_src</span><span class="o">.</span><span class="n">pixels</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="n">image_src</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+<span class="n">image_src</span><span class="o">.</span><span class="n">pixels</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">image_src</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_src</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_src</span><span class="o">.</span><span class="n">pixels</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="n">image_dest</span> <span class="o">=</span> <span class="n">image_src</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">image_dest</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_dest</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_dest</span><span class="o">.</span><span class="n">pixels</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.Image">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">Image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image" title="Permalink to this definition"></a></dt>
+<dd><p>Image data-block referencing an external or packed image</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.alpha_mode">
+<span class="sig-name descname"><span class="pre">alpha_mode</span></span><a class="headerlink" href="#bpy.types.Image.alpha_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Representation of alpha in the image file, to convert to and from when saving and loading the image</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STRAIGHT</span></code>
+Straight – Store RGB and alpha channels separately with alpha acting as a mask, also known as unassociated alpha. Commonly used by image editing applications and file formats like PNG.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PREMUL</span></code>
+Premultiplied – Store RGB channels with alpha multiplied in, also known as associated alpha. The natural format for renders and used by file formats like OpenEXR.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHANNEL_PACKED</span></code>
+Channel Packed – Different images are packed in the RGB and alpha channels, and they should not affect each other. Channel packing is commonly used by game engines to save memory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None – Ignore alpha channel from the file and make image fully opaque.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘STRAIGHT’, ‘PREMUL’, ‘CHANNEL_PACKED’, ‘NONE’], default ‘STRAIGHT’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.bindcode">
+<span class="sig-name descname"><span class="pre">bindcode</span></span><a class="headerlink" href="#bpy.types.Image.bindcode" title="Permalink to this definition"></a></dt>
+<dd><p>OpenGL bindcode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int in [0, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.channels">
+<span class="sig-name descname"><span class="pre">channels</span></span><a class="headerlink" href="#bpy.types.Image.channels" title="Permalink to this definition"></a></dt>
+<dd><p>Number of channels in pixels buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int in [0, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.colorspace_settings">
+<span class="sig-name descname"><span class="pre">colorspace_settings</span></span><a class="headerlink" href="#bpy.types.Image.colorspace_settings" title="Permalink to this definition"></a></dt>
+<dd><p>Input color space settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ColorManagedInputColorspaceSettings.html#bpy.types.ColorManagedInputColorspaceSettings" title="bpy.types.ColorManagedInputColorspaceSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorManagedInputColorspaceSettings</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.depth">
+<span class="sig-name descname"><span class="pre">depth</span></span><a class="headerlink" href="#bpy.types.Image.depth" title="Permalink to this definition"></a></dt>
+<dd><p>Image bit depth</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int in [0, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.display_aspect">
+<span class="sig-name descname"><span class="pre">display_aspect</span></span><a class="headerlink" href="#bpy.types.Image.display_aspect" title="Permalink to this definition"></a></dt>
+<dd><p>Display Aspect for this image, does not affect rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float array of 2 items in [0.1, inf], default (1.0, 1.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.file_format">
+<span class="sig-name descname"><span class="pre">file_format</span></span><a class="headerlink" href="#bpy.types.Image.file_format" title="Permalink to this definition"></a></dt>
+<dd><p>Format used for re-saving this file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/image_type_items.html#rna-enum-image-type-items"><span class="std std-ref">Image Type Items</span></a>, default ‘TARGA’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><a class="headerlink" href="#bpy.types.Image.filepath" title="Permalink to this definition"></a></dt>
+<dd><p>Image/Movie file name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.filepath_raw">
+<span class="sig-name descname"><span class="pre">filepath_raw</span></span><a class="headerlink" href="#bpy.types.Image.filepath_raw" title="Permalink to this definition"></a></dt>
+<dd><p>Image/Movie file name (without data refreshing)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.frame_duration">
+<span class="sig-name descname"><span class="pre">frame_duration</span></span><a class="headerlink" href="#bpy.types.Image.frame_duration" title="Permalink to this definition"></a></dt>
+<dd><p>Duration (in frames) of the image (1 when not a video/sequence)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int in [0, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.generated_color">
+<span class="sig-name descname"><span class="pre">generated_color</span></span><a class="headerlink" href="#bpy.types.Image.generated_color" title="Permalink to this definition"></a></dt>
+<dd><p>Fill color for the generated image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float array of 4 items in [0, inf], default (0.0, 0.0, 0.0, 0.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.generated_height">
+<span class="sig-name descname"><span class="pre">generated_height</span></span><a class="headerlink" href="#bpy.types.Image.generated_height" title="Permalink to this definition"></a></dt>
+<dd><p>Generated image height</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int in [1, 65536], default 1024</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.generated_type">
+<span class="sig-name descname"><span class="pre">generated_type</span></span><a class="headerlink" href="#bpy.types.Image.generated_type" title="Permalink to this definition"></a></dt>
+<dd><p>Generated image type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/image_generated_type_items.html#rna-enum-image-generated-type-items"><span class="std std-ref">Image Generated Type Items</span></a>, default ‘UV_GRID’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.generated_width">
+<span class="sig-name descname"><span class="pre">generated_width</span></span><a class="headerlink" href="#bpy.types.Image.generated_width" title="Permalink to this definition"></a></dt>
+<dd><p>Generated image width</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int in [1, 65536], default 1024</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.has_data">
+<span class="sig-name descname"><span class="pre">has_data</span></span><a class="headerlink" href="#bpy.types.Image.has_data" title="Permalink to this definition"></a></dt>
+<dd><p>True if the image data is loaded into memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.is_dirty">
+<span class="sig-name descname"><span class="pre">is_dirty</span></span><a class="headerlink" href="#bpy.types.Image.is_dirty" title="Permalink to this definition"></a></dt>
+<dd><p>Image has changed and is not saved</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.is_float">
+<span class="sig-name descname"><span class="pre">is_float</span></span><a class="headerlink" href="#bpy.types.Image.is_float" title="Permalink to this definition"></a></dt>
+<dd><p>True if this image is stored in floating-point buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.is_multiview">
+<span class="sig-name descname"><span class="pre">is_multiview</span></span><a class="headerlink" href="#bpy.types.Image.is_multiview" title="Permalink to this definition"></a></dt>
+<dd><p>Image has more than one view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.is_stereo_3d">
+<span class="sig-name descname"><span class="pre">is_stereo_3d</span></span><a class="headerlink" href="#bpy.types.Image.is_stereo_3d" title="Permalink to this definition"></a></dt>
+<dd><p>Image has left and right views</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.packed_file">
+<span class="sig-name descname"><span class="pre">packed_file</span></span><a class="headerlink" href="#bpy.types.Image.packed_file" title="Permalink to this definition"></a></dt>
+<dd><p>First packed file of the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.PackedFile.html#bpy.types.PackedFile" title="bpy.types.PackedFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">PackedFile</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.packed_files">
+<span class="sig-name descname"><span class="pre">packed_files</span></span><a class="headerlink" href="#bpy.types.Image.packed_files" title="Permalink to this definition"></a></dt>
+<dd><p>Collection of packed images</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.ImagePackedFile.html#bpy.types.ImagePackedFile" title="bpy.types.ImagePackedFile"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagePackedFile</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.pixels">
+<span class="sig-name descname"><span class="pre">pixels</span></span><a class="headerlink" href="#bpy.types.Image.pixels" title="Permalink to this definition"></a></dt>
+<dd><p>Image buffer pixels in floating-point values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.render_slots">
+<span class="sig-name descname"><span class="pre">render_slots</span></span><a class="headerlink" href="#bpy.types.Image.render_slots" title="Permalink to this definition"></a></dt>
+<dd><p>Render slots of the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RenderSlots.html#bpy.types.RenderSlots" title="bpy.types.RenderSlots"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderSlots</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.RenderSlot.html#bpy.types.RenderSlot" title="bpy.types.RenderSlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderSlot</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.resolution">
+<span class="sig-name descname"><span class="pre">resolution</span></span><a class="headerlink" href="#bpy.types.Image.resolution" title="Permalink to this definition"></a></dt>
+<dd><p>X/Y pixels per meter, for the image buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float array of 2 items in [-inf, inf], default (0.0, 0.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.size">
+<span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#bpy.types.Image.size" title="Permalink to this definition"></a></dt>
+<dd><p>Width and height of the image buffer in pixels, zero when image data can’t be loaded</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int array of 2 items in [-inf, inf], default (0, 0), (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.source">
+<span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#bpy.types.Image.source" title="Permalink to this definition"></a></dt>
+<dd><p>Where the image comes from</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE</span></code>
+Single Image – Single image file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEQUENCE</span></code>
+Image Sequence – Multiple image files, as a sequence.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MOVIE</span></code>
+Movie – Movie file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERATED</span></code>
+Generated – Generated image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEWER</span></code>
+Viewer – Compositing node viewer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TILED</span></code>
+UDIM Tiles – Tiled UDIM image texture.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘FILE’, ‘SEQUENCE’, ‘MOVIE’, ‘GENERATED’, ‘VIEWER’, ‘TILED’], default ‘FILE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.stereo_3d_format">
+<span class="sig-name descname"><span class="pre">stereo_3d_format</span></span><a class="headerlink" href="#bpy.types.Image.stereo_3d_format" title="Permalink to this definition"></a></dt>
+<dd><p>Settings for stereo 3d</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Stereo3dFormat.html#bpy.types.Stereo3dFormat" title="bpy.types.Stereo3dFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">Stereo3dFormat</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.tiles">
+<span class="sig-name descname"><span class="pre">tiles</span></span><a class="headerlink" href="#bpy.types.Image.tiles" title="Permalink to this definition"></a></dt>
+<dd><p>Tiles of the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.UDIMTiles.html#bpy.types.UDIMTiles" title="bpy.types.UDIMTiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">UDIMTiles</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.UDIMTile.html#bpy.types.UDIMTile" title="bpy.types.UDIMTile"><code class="xref py py-class docutils literal notranslate"><span class="pre">UDIMTile</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Image.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#bpy.types.Image.type" title="Permalink to this definition"></a></dt>
+<dd><p>How to generate the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘IMAGE’, ‘MULTILAYER’, ‘UV_TEST’, ‘RENDER_RESULT’, ‘COMPOSITING’], default ‘IMAGE’, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.use_deinterlace">
+<span class="sig-name descname"><span class="pre">use_deinterlace</span></span><a class="headerlink" href="#bpy.types.Image.use_deinterlace" title="Permalink to this definition"></a></dt>
+<dd><p>Deinterlace movie file on load</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.use_generated_float">
+<span class="sig-name descname"><span class="pre">use_generated_float</span></span><a class="headerlink" href="#bpy.types.Image.use_generated_float" title="Permalink to this definition"></a></dt>
+<dd><p>Generate floating-point buffer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.use_half_precision">
+<span class="sig-name descname"><span class="pre">use_half_precision</span></span><a class="headerlink" href="#bpy.types.Image.use_half_precision" title="Permalink to this definition"></a></dt>
+<dd><p>Use 16 bits per channel to lower the memory usage during rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.use_multiview">
+<span class="sig-name descname"><span class="pre">use_multiview</span></span><a class="headerlink" href="#bpy.types.Image.use_multiview" title="Permalink to this definition"></a></dt>
+<dd><p>Use Multiple Views (when available)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.use_view_as_render">
+<span class="sig-name descname"><span class="pre">use_view_as_render</span></span><a class="headerlink" href="#bpy.types.Image.use_view_as_render" title="Permalink to this definition"></a></dt>
+<dd><p>Apply render part of display transformation when displaying this image on the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Image.views_format">
+<span class="sig-name descname"><span class="pre">views_format</span></span><a class="headerlink" href="#bpy.types.Image.views_format" title="Permalink to this definition"></a></dt>
+<dd><p>Mode to load image views</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/views_format_items.html#rna-enum-views-format-items"><span class="std std-ref">Views Format Items</span></a>, default ‘INDIVIDUAL’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.save_render">
+<span class="sig-name descname"><span class="pre">save_render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scene</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.save_render" title="Permalink to this definition"></a></dt>
+<dd><p>Save image to a specific path using a scenes render settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Save path</p></li>
+<li><p><strong>scene</strong> (<a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene" title="bpy.types.Scene"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene</span></code></a>, (optional)) – Scene to take image parameters from</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.save" title="Permalink to this definition"></a></dt>
+<dd><p>Save image to its source path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.pack">
+<span class="sig-name descname"><span class="pre">pack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_len</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.pack" title="Permalink to this definition"></a></dt>
+<dd><p>Pack an image as embedded data into the .blend file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – data, Raw data (bytes, exact content of the embedded file)</p></li>
+<li><p><strong>data_len</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – data_len, length of given data (mandatory if data is provided)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.unpack">
+<span class="sig-name descname"><span class="pre">unpack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'USE_LOCAL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.unpack" title="Permalink to this definition"></a></dt>
+<dd><p>Save an image packed in the .blend file to disk</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>method</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/unpack_method_items.html#rna-enum-unpack-method-items"><span class="std std-ref">Unpack Method Items</span></a>, (optional)) – method, How to unpack</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.reload">
+<span class="sig-name descname"><span class="pre">reload</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.reload" title="Permalink to this definition"></a></dt>
+<dd><p>Reload the image from its source path</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.update" title="Permalink to this definition"></a></dt>
+<dd><p>Update the display image from the floating-point buffer</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.scale">
+<span class="sig-name descname"><span class="pre">scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.scale" title="Permalink to this definition"></a></dt>
+<dd><p>Scale the buffer of the image, in pixels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>width</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em>) – Width</p></li>
+<li><p><strong>height</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em>) – Height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.gl_touch">
+<span class="sig-name descname"><span class="pre">gl_touch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pass_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.gl_touch" title="Permalink to this definition"></a></dt>
+<dd><p>Delay the image from being cleaned from the cache due inactivity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame, Frame of image sequence or movie</p></li>
+<li><p><strong>layer_index</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Layer, Index of layer that should be loaded</p></li>
+<li><p><strong>pass_index</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pass, Index of pass that should be loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error, OpenGL error value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int in [-inf, inf]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.gl_load">
+<span class="sig-name descname"><span class="pre">gl_load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pass_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.gl_load" title="Permalink to this definition"></a></dt>
+<dd><p>Load the image into an OpenGL texture. On success, image.bindcode will contain the OpenGL texture bindcode. Colors read from the texture will be in scene linear color space and have premultiplied or straight alpha matching the image alpha mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame, Frame of image sequence or movie</p></li>
+<li><p><strong>layer_index</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Layer, Index of layer that should be loaded</p></li>
+<li><p><strong>pass_index</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pass, Index of pass that should be loaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Error, OpenGL error value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int in [-inf, inf]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.gl_free">
+<span class="sig-name descname"><span class="pre">gl_free</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.gl_free" title="Permalink to this definition"></a></dt>
+<dd><p>Free the image from OpenGL graphics memory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.filepath_from_user">
+<span class="sig-name descname"><span class="pre">filepath_from_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.filepath_from_user" title="Permalink to this definition"></a></dt>
+<dd><p>Return the absolute path to the filepath of an image frame specified by the image user</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>image_user</strong> (<a class="reference internal" href="bpy.types.ImageUser.html#bpy.types.ImageUser" title="bpy.types.ImageUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageUser</span></code></a>, (optional)) – Image user of the image to get filepath for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>File Path, The resulting filepath from the image and its user</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.buffers_free">
+<span class="sig-name descname"><span class="pre">buffers_free</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.buffers_free" title="Permalink to this definition"></a></dt>
+<dd><p>Free the image buffers from memory</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.bl_rna_get_subclass" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Image.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Image.bl_rna_get_subclass_py" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bpy.types.Image.type" title="bpy.types.Image.type">type</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name" title="bpy.types.ID.name"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name_full" title="bpy.types.ID.name_full"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name_full</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_evaluated" title="bpy.types.ID.is_evaluated"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_evaluated</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.original" title="bpy.types.ID.original"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.original</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.users" title="bpy.types.ID.users"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.users</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_fake_user" title="bpy.types.ID.use_fake_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_fake_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_extra_user" title="bpy.types.ID.use_extra_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_extra_user</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_embedded_data" title="bpy.types.ID.is_embedded_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_embedded_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.tag" title="bpy.types.ID.tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_library_indirect" title="bpy.types.ID.is_library_indirect"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_library_indirect</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library" title="bpy.types.ID.library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library_weak_reference" title="bpy.types.ID.library_weak_reference"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library_weak_reference</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_data" title="bpy.types.ID.asset_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_library" title="bpy.types.ID.override_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview" title="bpy.types.ID.preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.evaluated_get" title="bpy.types.ID.evaluated_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.evaluated_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.copy" title="bpy.types.ID.copy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.copy</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_mark" title="bpy.types.ID.asset_mark"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_mark</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_clear" title="bpy.types.ID.asset_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_generate_preview" title="bpy.types.ID.asset_generate_preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_generate_preview</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_create" title="bpy.types.ID.override_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_hierarchy_create" title="bpy.types.ID.override_hierarchy_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_hierarchy_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_template_create" title="bpy.types.ID.override_template_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_template_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_clear" title="bpy.types.ID.user_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_remap" title="bpy.types.ID.user_remap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_remap</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.make_local" title="bpy.types.ID.make_local"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.make_local</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_of_id" title="bpy.types.ID.user_of_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_of_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_create" title="bpy.types.ID.animation_data_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_clear" title="bpy.types.ID.animation_data_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.update_tag" title="bpy.types.ID.update_tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.update_tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview_ensure" title="bpy.types.ID.preview_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass" title="bpy.types.ID.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass_py" title="bpy.types.ID.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass_py</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.context.html#bpy.context.edit_image" title="bpy.context.edit_image"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.context.edit_image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendData.html#bpy.types.BlendData.images" title="bpy.types.BlendData.images"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendData.images</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataImages.html#bpy.types.BlendDataImages.load" title="bpy.types.BlendDataImages.load"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataImages.load</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataImages.html#bpy.types.BlendDataImages.new" title="bpy.types.BlendDataImages.new"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataImages.new</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataImages.html#bpy.types.BlendDataImages.remove" title="bpy.types.BlendDataImages.remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataImages.remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Brush.html#bpy.types.Brush.clone_image" title="bpy.types.Brush.clone_image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Brush.clone_image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.CameraBackgroundImage.html#bpy.types.CameraBackgroundImage.image" title="bpy.types.CameraBackgroundImage.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">CameraBackgroundImage.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.CompositorNodeCryptomatteV2.html#bpy.types.CompositorNodeCryptomatteV2.image" title="bpy.types.CompositorNodeCryptomatteV2.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompositorNodeCryptomatteV2.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.CompositorNodeImage.html#bpy.types.CompositorNodeImage.image" title="bpy.types.CompositorNodeImage.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompositorNodeImage.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ImagePaint.html#bpy.types.ImagePaint.canvas" title="bpy.types.ImagePaint.canvas"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagePaint.canvas</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ImagePaint.html#bpy.types.ImagePaint.clone_image" title="bpy.types.ImagePaint.clone_image"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagePaint.clone_image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ImagePaint.html#bpy.types.ImagePaint.stencil_image" title="bpy.types.ImagePaint.stencil_image"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagePaint.stencil_image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ImageTexture.html#bpy.types.ImageTexture.image" title="bpy.types.ImageTexture.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageTexture.image</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Material.html#bpy.types.Material.texture_paint_images" title="bpy.types.Material.texture_paint_images"><code class="xref py py-class docutils literal notranslate"><span class="pre">Material.texture_paint_images</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.MaterialGPencilStyle.html#bpy.types.MaterialGPencilStyle.fill_image" title="bpy.types.MaterialGPencilStyle.fill_image"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaterialGPencilStyle.fill_image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.MaterialGPencilStyle.html#bpy.types.MaterialGPencilStyle.stroke_image" title="bpy.types.MaterialGPencilStyle.stroke_image"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaterialGPencilStyle.stroke_image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.MovieTrackingPlaneTrack.html#bpy.types.MovieTrackingPlaneTrack.image" title="bpy.types.MovieTrackingPlaneTrack.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">MovieTrackingPlaneTrack.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.NodeSocketImage.html#bpy.types.NodeSocketImage.default_value" title="bpy.types.NodeSocketImage.default_value"><code class="xref py py-class docutils literal notranslate"><span class="pre">NodeSocketImage.default_value</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.NodeSocketInterfaceImage.html#bpy.types.NodeSocketInterfaceImage.default_value" title="bpy.types.NodeSocketInterfaceImage.default_value"><code class="xref py py-class docutils literal notranslate"><span class="pre">NodeSocketInterfaceImage.default_value</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.PaintModeSettings.html#bpy.types.PaintModeSettings.canvas_image" title="bpy.types.PaintModeSettings.canvas_image"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaintModeSettings.canvas_image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ProxyImageProperty.html#bpy.types.ProxyImageProperty.value" title="bpy.types.ProxyImageProperty.value"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyImageProperty.value</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ShaderNodeTexEnvironment.html#bpy.types.ShaderNodeTexEnvironment.image" title="bpy.types.ShaderNodeTexEnvironment.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderNodeTexEnvironment.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ShaderNodeTexImage.html#bpy.types.ShaderNodeTexImage.image" title="bpy.types.ShaderNodeTexImage.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderNodeTexImage.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.SpaceImageEditor.html#bpy.types.SpaceImageEditor.image" title="bpy.types.SpaceImageEditor.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceImageEditor.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.TextureNodeImage.html#bpy.types.TextureNodeImage.image" title="bpy.types.TextureNodeImage.image"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextureNodeImage.image</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.UILayout.html#bpy.types.UILayout.template_image_layers" title="bpy.types.UILayout.template_image_layers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UILayout.template_image_layers</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.IMAGE_UL_udim_tiles.html" class="btn btn-neutral float-left" title="IMAGE_UL_udim_tiles(UIList)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.ImageFormatSettings.html" class="btn btn-neutral float-right" title="ImageFormatSettings(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Foundation.
+      <span class="commit">Revision <code><a href=https://developer.blender.org/rB72105a589635>72105a589635</a> - 31/07/2022</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            3.4 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

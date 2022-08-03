@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poselib Operators &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.poselib.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/js/version_switch.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Preferences Operators" href="bpy.ops.preferences.html" />
+    <link rel="prev" title="Pose Operators" href="bpy.ops.pose.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> UPBGE 0.34 + Blender 3.4.0 Alpha Python API
+            <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart: New to Blender or scripting and want to get your feet wet?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview: A more complete explanation of Python integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage: examples of how to use the API reference docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice: Conventions to follow for writing good scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks: Hints to help you while writing scripts for Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotcha's: Some of the problems you may encounter when writing scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log: List of changes since last Blender release</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.34 + Blender 3.4.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="bpy.ops.html">Operators (bpy.ops)</a> &raquo;</li>
+      <li>Poselib Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.poselib">
+<span id="poselib-operators"></span><h1>Poselib Operators<a class="headerlink" href="#module-bpy.ops.poselib" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.action_sanitize">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">action_sanitize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.action_sanitize" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Make action suitable for use as a Legacy Pose Library</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.apply_pose">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">apply_pose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.apply_pose" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Apply specified Legacy Pose Library pose to the rig</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pose_index</strong> (<em>int in</em><em> [</em><em>-2</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pose, Index of the pose to apply (-2 for no change to pose, -1 for poselib active pose)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.apply_pose_asset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">apply_pose_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blend_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.apply_pose_asset" title="Permalink to this definition"></a></dt>
+<dd><p>Apply the given Pose Action to the rig</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blend_factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blend Factor, Amount that the pose is applied on top of the existing poses</p></li>
+<li><p><strong>flipped</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Apply Flipped, When enabled, applies the pose flipped over the X-axis</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.apply_pose_asset_for_keymap">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">apply_pose_asset_for_keymap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.apply_pose_asset_for_keymap" title="Permalink to this definition"></a></dt>
+<dd><p>Apply the given Pose Action to the rig</p>
+<dl class="field-list simple">
+<dt class="field-odd">File</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$431">addons/pose_library/operators.py:431</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.blend_pose_asset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">blend_pose_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blend_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.blend_pose_asset" title="Permalink to this definition"></a></dt>
+<dd><p>Blend the given Pose Action to the rig</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blend_factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blend Factor, Amount that the pose is applied on top of the existing poses</p></li>
+<li><p><strong>flipped</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Apply Flipped, When enabled, applies the pose flipped over the X-axis</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.blend_pose_asset_for_keymap">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">blend_pose_asset_for_keymap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.blend_pose_asset_for_keymap" title="Permalink to this definition"></a></dt>
+<dd><p>Blend the given Pose Action to the rig</p>
+<dl class="field-list simple">
+<dt class="field-odd">File</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$403">addons/pose_library/operators.py:403</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.browse_interactive">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">browse_interactive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.browse_interactive" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Interactively browse Legacy Pose Library poses in 3D-View</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pose_index</strong> (<em>int in</em><em> [</em><em>-2</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pose, Index of the pose to apply (-2 for no change to pose, -1 for poselib active pose)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.convert_old_object_poselib">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">convert_old_object_poselib</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.convert_old_object_poselib" title="Permalink to this definition"></a></dt>
+<dd><p>Create a pose asset for each pose marker in this legacy pose library data-block</p>
+<dl class="field-list simple">
+<dt class="field-odd">File</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$487">addons/pose_library/operators.py:487</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.convert_old_poselib">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">convert_old_poselib</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.convert_old_poselib" title="Permalink to this definition"></a></dt>
+<dd><p>Create a pose asset for each pose marker in the current action</p>
+<dl class="field-list simple">
+<dt class="field-odd">File</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$453">addons/pose_library/operators.py:453</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.copy_as_asset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">copy_as_asset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.copy_as_asset" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new pose asset on the clipboard, to be pasted into an Asset Browser</p>
+<dl class="field-list simple">
+<dt class="field-odd">File</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$210">addons/pose_library/operators.py:210</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.create_pose_asset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">create_pose_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activate_new_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.create_pose_asset" title="Permalink to this definition"></a></dt>
+<dd><p>Create a new Action that contains the pose of the selected bones, and mark it as Asset. The asset will be stored in the current blend file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pose_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Pose Name</p></li>
+<li><p><strong>activate_new_action</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Activate New Action</p></li>
+</ul>
+</dd>
+<dt class="field-even">File</dt>
+<dd class="field-even"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$87">addons/pose_library/operators.py:87</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.new">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.new" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Add New Legacy Pose Library to active Object</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.paste_asset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">paste_asset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.paste_asset" title="Permalink to this definition"></a></dt>
+<dd><p>Paste the Asset that was previously copied using Copy As Asset</p>
+<dl class="field-list simple">
+<dt class="field-odd">File</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$285">addons/pose_library/operators.py:285</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.pose_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">pose_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Pose'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.pose_add" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Add the current Pose to the active Legacy Pose Library</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame, Frame to store pose on</p></li>
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Pose Name, Name of newly added Pose</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.pose_asset_select_bones">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">pose_asset_select_bones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.pose_asset_select_bones" title="Permalink to this definition"></a></dt>
+<dd><p>Select those bones that are used in this pose</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select</p></li>
+<li><p><strong>flipped</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flipped</p></li>
+</ul>
+</dd>
+<dt class="field-even">File</dt>
+<dd class="field-even"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$324">addons/pose_library/operators.py:324</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.pose_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">pose_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UP'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.pose_move" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Move the pose up or down in the active Legacy Pose Library</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pose</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pose, The pose to move</p></li>
+<li><p><strong>direction</strong> (<em>enum in</em><em> [</em><em>'UP'</em><em>, </em><em>'DOWN'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Direction, Direction to move the chosen pose towards</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.pose_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">pose_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.pose_remove" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Remove nth pose from the active Legacy Pose Library</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pose</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pose, The pose to remove</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.pose_rename">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">pose_rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RenamedPose'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.pose_rename" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Rename specified pose from the active Legacy Pose Library</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – New Pose Name, New name for pose</p></li>
+<li><p><strong>pose</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pose, The pose to rename</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.restore_previous_action">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">restore_previous_action</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.restore_previous_action" title="Permalink to this definition"></a></dt>
+<dd><p>Switch back to the previous Action, after creating a pose asset</p>
+<dl class="field-list simple">
+<dt class="field-odd">File</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/pose_library/operators.py$163">addons/pose_library/operators.py:163</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.poselib.unlink">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.poselib.</span></span><span class="sig-name descname"><span class="pre">unlink</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.poselib.unlink" title="Permalink to this definition"></a></dt>
+<dd><p>Deprecated, will be removed in Blender 3.3. Remove Legacy Pose Library from active Object</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.pose.html" class="btn btn-neutral float-left" title="Pose Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.preferences.html" class="btn btn-neutral float-right" title="Preferences Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Foundation.
+      <span class="commit">Revision <code><a href=https://developer.blender.org/rB72105a589635>72105a589635</a> - 31/07/2022</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            3.4 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

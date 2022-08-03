@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpaceClipEditor(Space) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.SpaceClipEditor.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/js/version_switch.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SpaceConsole(Space)" href="bpy.types.SpaceConsole.html" />
+    <link rel="prev" title="Space(bpy_struct)" href="bpy.types.Space.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> UPBGE 0.34 + Blender 3.4.0 Alpha Python API
+            <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart: New to Blender or scripting and want to get your feet wet?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview: A more complete explanation of Python integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage: examples of how to use the API reference docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice: Conventions to follow for writing good scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks: Hints to help you while writing scripts for Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotcha's: Some of the problems you may encounter when writing scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log: List of changes since last Blender release</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.34 + Blender 3.4.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="bpy.types.html">Types (bpy.types)</a> &raquo;</li>
+      <li>SpaceClipEditor(Space)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spaceclipeditor-space">
+<h1>SpaceClipEditor(Space)<a class="headerlink" href="#spaceclipeditor-space" title="Permalink to this heading"></a></h1>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Space.html#bpy.types.Space" title="bpy.types.Space"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">SpaceClipEditor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Space</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceClipEditor" title="Permalink to this definition"></a></dt>
+<dd><p>Clip editor space data</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.annotation_source">
+<span class="sig-name descname"><span class="pre">annotation_source</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.annotation_source" title="Permalink to this definition"></a></dt>
+<dd><p>Where the annotation comes from</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CLIP</span></code>
+Clip – Show annotation data-block which belongs to movie clip.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRACK</span></code>
+Track – Show annotation data-block which belongs to active track.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘CLIP’, ‘TRACK’], default ‘CLIP’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.blend_factor">
+<span class="sig-name descname"><span class="pre">blend_factor</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.blend_factor" title="Permalink to this definition"></a></dt>
+<dd><p>Overlay blending factor of rasterized mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.7</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.clip">
+<span class="sig-name descname"><span class="pre">clip</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.clip" title="Permalink to this definition"></a></dt>
+<dd><p>Movie clip displayed and edited in this space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MovieClip.html#bpy.types.MovieClip" title="bpy.types.MovieClip"><code class="xref py py-class docutils literal notranslate"><span class="pre">MovieClip</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.clip_user">
+<span class="sig-name descname"><span class="pre">clip_user</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.clip_user" title="Permalink to this definition"></a></dt>
+<dd><p>Parameters defining which frame of the movie clip is displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MovieClipUser.html#bpy.types.MovieClipUser" title="bpy.types.MovieClipUser"><code class="xref py py-class docutils literal notranslate"><span class="pre">MovieClipUser</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.cursor_location">
+<span class="sig-name descname"><span class="pre">cursor_location</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.cursor_location" title="Permalink to this definition"></a></dt>
+<dd><p>2D cursor location for this view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float array of 2 items in [-inf, inf], default (0.0, 0.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.lock_selection">
+<span class="sig-name descname"><span class="pre">lock_selection</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.lock_selection" title="Permalink to this definition"></a></dt>
+<dd><p>Lock viewport to selected markers during playback</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.lock_time_cursor">
+<span class="sig-name descname"><span class="pre">lock_time_cursor</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.lock_time_cursor" title="Permalink to this definition"></a></dt>
+<dd><p>Lock curves view to time cursor during playback and tracking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.mask">
+<span class="sig-name descname"><span class="pre">mask</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.mask" title="Permalink to this definition"></a></dt>
+<dd><p>Mask displayed and edited in this space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Mask.html#bpy.types.Mask" title="bpy.types.Mask"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mask</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.mask_display_type">
+<span class="sig-name descname"><span class="pre">mask_display_type</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.mask_display_type" title="Permalink to this definition"></a></dt>
+<dd><p>Display type for mask splines</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTLINE</span></code>
+Outline – Display white edges with black outline.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DASH</span></code>
+Dash – Display dashed black-white edges.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BLACK</span></code>
+Black – Display black edges.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WHITE</span></code>
+White – Display white edges.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘OUTLINE’, ‘DASH’, ‘BLACK’, ‘WHITE’], default ‘OUTLINE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.mask_overlay_mode">
+<span class="sig-name descname"><span class="pre">mask_overlay_mode</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.mask_overlay_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Overlay mode of rasterized mask</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ALPHACHANNEL</span></code>
+Alpha Channel – Show alpha channel of the mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMBINED</span></code>
+Combined – Combine space background image with the mask.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘ALPHACHANNEL’, ‘COMBINED’], default ‘ALPHACHANNEL’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.mode" title="Permalink to this definition"></a></dt>
+<dd><p>Editing context being displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/clip_editor_mode_items.html#rna-enum-clip-editor-mode-items"><span class="std std-ref">Clip Editor Mode Items</span></a>, default ‘TRACKING’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.path_length">
+<span class="sig-name descname"><span class="pre">path_length</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.path_length" title="Permalink to this definition"></a></dt>
+<dd><p>Length of displaying path, in frames</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int in [0, inf], default 20</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.pivot_point">
+<span class="sig-name descname"><span class="pre">pivot_point</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.pivot_point" title="Permalink to this definition"></a></dt>
+<dd><p>Pivot center for rotation/scaling</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BOUNDING_BOX_CENTER</span></code>
+Bounding Box Center – Pivot around bounding box center of selected object(s).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+2D Cursor – Pivot around the 2D cursor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INDIVIDUAL_ORIGINS</span></code>
+Individual Origins – Pivot around each object’s own origin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MEDIAN_POINT</span></code>
+Median Point – Pivot around the median point of selected objects.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘BOUNDING_BOX_CENTER’, ‘CURSOR’, ‘INDIVIDUAL_ORIGINS’, ‘MEDIAN_POINT’], default ‘MEDIAN_POINT’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.scopes">
+<span class="sig-name descname"><span class="pre">scopes</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.scopes" title="Permalink to this definition"></a></dt>
+<dd><p>Scopes to visualize movie clip statistics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MovieClipScopes.html#bpy.types.MovieClipScopes" title="bpy.types.MovieClipScopes"><code class="xref py py-class docutils literal notranslate"><span class="pre">MovieClipScopes</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_annotation">
+<span class="sig-name descname"><span class="pre">show_annotation</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_annotation" title="Permalink to this definition"></a></dt>
+<dd><p>Show annotations for this view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_blue_channel">
+<span class="sig-name descname"><span class="pre">show_blue_channel</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_blue_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Show blue channel in the frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_bundles">
+<span class="sig-name descname"><span class="pre">show_bundles</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_bundles" title="Permalink to this definition"></a></dt>
+<dd><p>Show projection of 3D markers into footage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_disabled">
+<span class="sig-name descname"><span class="pre">show_disabled</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_disabled" title="Permalink to this definition"></a></dt>
+<dd><p>Show disabled tracks from the footage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_filters">
+<span class="sig-name descname"><span class="pre">show_filters</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_filters" title="Permalink to this definition"></a></dt>
+<dd><p>Show filters for graph editor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_graph_frames">
+<span class="sig-name descname"><span class="pre">show_graph_frames</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_graph_frames" title="Permalink to this definition"></a></dt>
+<dd><p>Show curve for per-frame average error (camera motion should be solved first)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_graph_hidden">
+<span class="sig-name descname"><span class="pre">show_graph_hidden</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_graph_hidden" title="Permalink to this definition"></a></dt>
+<dd><p>Include channels from objects/bone that aren’t visible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_graph_only_selected">
+<span class="sig-name descname"><span class="pre">show_graph_only_selected</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_graph_only_selected" title="Permalink to this definition"></a></dt>
+<dd><p>Only include channels relating to selected objects and data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_graph_tracks_error">
+<span class="sig-name descname"><span class="pre">show_graph_tracks_error</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_graph_tracks_error" title="Permalink to this definition"></a></dt>
+<dd><p>Display the reprojection error curve for selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_graph_tracks_motion">
+<span class="sig-name descname"><span class="pre">show_graph_tracks_motion</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_graph_tracks_motion" title="Permalink to this definition"></a></dt>
+<dd><p>Display the speed curves (in “x” direction red, in “y” direction green) for the selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_green_channel">
+<span class="sig-name descname"><span class="pre">show_green_channel</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_green_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Show green channel in the frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_grid">
+<span class="sig-name descname"><span class="pre">show_grid</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_grid" title="Permalink to this definition"></a></dt>
+<dd><p>Show grid showing lens distortion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_marker_pattern">
+<span class="sig-name descname"><span class="pre">show_marker_pattern</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_marker_pattern" title="Permalink to this definition"></a></dt>
+<dd><p>Show pattern boundbox for markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_marker_search">
+<span class="sig-name descname"><span class="pre">show_marker_search</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_marker_search" title="Permalink to this definition"></a></dt>
+<dd><p>Show search boundbox for markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_mask_overlay">
+<span class="sig-name descname"><span class="pre">show_mask_overlay</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_mask_overlay" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_mask_spline">
+<span class="sig-name descname"><span class="pre">show_mask_spline</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_mask_spline" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_metadata">
+<span class="sig-name descname"><span class="pre">show_metadata</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_metadata" title="Permalink to this definition"></a></dt>
+<dd><p>Show metadata of clip</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_names">
+<span class="sig-name descname"><span class="pre">show_names</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_names" title="Permalink to this definition"></a></dt>
+<dd><p>Show track names and status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_red_channel">
+<span class="sig-name descname"><span class="pre">show_red_channel</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_red_channel" title="Permalink to this definition"></a></dt>
+<dd><p>Show red channel in the frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_region_hud">
+<span class="sig-name descname"><span class="pre">show_region_hud</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_region_hud" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_region_toolbar">
+<span class="sig-name descname"><span class="pre">show_region_toolbar</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_region_toolbar" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_region_ui">
+<span class="sig-name descname"><span class="pre">show_region_ui</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_region_ui" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_seconds">
+<span class="sig-name descname"><span class="pre">show_seconds</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_seconds" title="Permalink to this definition"></a></dt>
+<dd><p>Show timing in seconds not frames</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_stable">
+<span class="sig-name descname"><span class="pre">show_stable</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_stable" title="Permalink to this definition"></a></dt>
+<dd><p>Show stable footage in editor (if stabilization is enabled)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_tiny_markers">
+<span class="sig-name descname"><span class="pre">show_tiny_markers</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_tiny_markers" title="Permalink to this definition"></a></dt>
+<dd><p>Show markers in a more compact manner</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.show_track_path">
+<span class="sig-name descname"><span class="pre">show_track_path</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.show_track_path" title="Permalink to this definition"></a></dt>
+<dd><p>Show path of how track moves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.use_grayscale_preview">
+<span class="sig-name descname"><span class="pre">use_grayscale_preview</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.use_grayscale_preview" title="Permalink to this definition"></a></dt>
+<dd><p>Display frame in grayscale mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.use_manual_calibration">
+<span class="sig-name descname"><span class="pre">use_manual_calibration</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.use_manual_calibration" title="Permalink to this definition"></a></dt>
+<dd><p>Use manual calibration helpers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.use_mute_footage">
+<span class="sig-name descname"><span class="pre">use_mute_footage</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.use_mute_footage" title="Permalink to this definition"></a></dt>
+<dd><p>Mute footage and show black background instead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.view">
+<span class="sig-name descname"><span class="pre">view</span></span><a class="headerlink" href="#bpy.types.SpaceClipEditor.view" title="Permalink to this definition"></a></dt>
+<dd><p>Type of the clip editor view</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CLIP</span></code>
+Clip – Show editing clip preview.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GRAPH</span></code>
+Graph – Show graph view for active element.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOPESHEET</span></code>
+Dopesheet – Dopesheet view for tracking data.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>enum in [‘CLIP’, ‘GRAPH’, ‘DOPESHEET’], default ‘CLIP’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceClipEditor.bl_rna_get_subclass" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceClipEditor.bl_rna_get_subclass_py" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.draw_handler_add">
+<span class="sig-name descname"><span class="pre">draw_handler_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceClipEditor.draw_handler_add" title="Permalink to this definition"></a></dt>
+<dd><p>Add a new draw handler to this space type.
+It will be called every time the specified region in the space type will be drawn.
+Note: All arguments are positional only for now.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>function</em>) – A function that will be called when the region is drawn.
+It gets the specified arguments as input.</p></li>
+<li><p><strong>args</strong> (<em>tuple</em>) – Arguments that will be passed to the callback.</p></li>
+<li><p><strong>region_type</strong> (<em>str</em>) – The region type the callback draws in; usually <code class="docutils literal notranslate"><span class="pre">WINDOW</span></code>. (<a class="reference internal" href="bpy.types.Region.html#bpy.types.Region.type" title="bpy.types.Region.type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Region.type</span></code></a>)</p></li>
+<li><p><strong>draw_type</strong> (<em>str</em>) – Usually <code class="docutils literal notranslate"><span class="pre">POST_PIXEL</span></code> for 2D drawing and <code class="docutils literal notranslate"><span class="pre">POST_VIEW</span></code> for 3D drawing. In some cases <code class="docutils literal notranslate"><span class="pre">PRE_VIEW</span></code> can be used. <code class="docutils literal notranslate"><span class="pre">BACKDROP</span></code> can be used for backdrops in the node editor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Handler that can be removed later on.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceClipEditor.draw_handler_remove">
+<span class="sig-name descname"><span class="pre">draw_handler_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceClipEditor.draw_handler_remove" title="Permalink to this definition"></a></dt>
+<dd><p>Remove a draw handler that was added previously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> (<em>object</em>) – The draw handler that should be removed.</p></li>
+<li><p><strong>region_type</strong> (<em>str</em>) – Region type the callback was added to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.type" title="bpy.types.Space.type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.type</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.show_locked_time" title="bpy.types.Space.show_locked_time"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.show_locked_time</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.show_region_header" title="bpy.types.Space.show_region_header"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.show_region_header</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.bl_rna_get_subclass" title="bpy.types.Space.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.bl_rna_get_subclass_py" title="bpy.types.Space.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.bl_rna_get_subclass_py</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.draw_handler_add" title="bpy.types.Space.draw_handler_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.draw_handler_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.draw_handler_remove" title="bpy.types.Space.draw_handler_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.draw_handler_remove</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.Space.html" class="btn btn-neutral float-left" title="Space(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.SpaceConsole.html" class="btn btn-neutral float-right" title="SpaceConsole(Space)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Foundation.
+      <span class="commit">Revision <code><a href=https://developer.blender.org/rB72105a589635>72105a589635</a> - 31/07/2022</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            3.4 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

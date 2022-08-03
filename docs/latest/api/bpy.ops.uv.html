@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uv Operators &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.uv.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/js/version_switch.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="View2D Operators" href="bpy.ops.view2d.html" />
+    <link rel="prev" title="Ui Operators" href="bpy.ops.ui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> UPBGE 0.34 + Blender 3.4.0 Alpha Python API
+            <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart: New to Blender or scripting and want to get your feet wet?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview: A more complete explanation of Python integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage: examples of how to use the API reference docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice: Conventions to follow for writing good scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks: Hints to help you while writing scripts for Blender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotcha's: Some of the problems you may encounter when writing scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log: List of changes since last Blender release</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.34 + Blender 3.4.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="bpy.ops.html">Operators (bpy.ops)</a> &raquo;</li>
+      <li>Uv Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.uv">
+<span id="uv-operators"></span><h1>Uv Operators<a class="headerlink" href="#module-bpy.ops.uv" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.align">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">align</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ALIGN_AUTO'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.align" title="Permalink to this definition"></a></dt>
+<dd><p>Align selected UV vertices to an axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>axis</strong> (<em>enum in</em><em> [</em><em>'ALIGN_S'</em><em>, </em><em>'ALIGN_T'</em><em>, </em><em>'ALIGN_U'</em><em>, </em><em>'ALIGN_AUTO'</em><em>, </em><em>'ALIGN_X'</em><em>, </em><em>'ALIGN_Y'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Axis, Axis to align UV locations on</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_S</span></code>
+Straighten – Align UVs along the line defined by the endpoints.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_T</span></code>
+Straighten X – Align UVs along the line defined by the endpoints along the X axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_U</span></code>
+Straighten Y – Align UVs along the line defined by the endpoints along the Y axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_AUTO</span></code>
+Align Auto – Automatically choose the axis on which there is most alignment already.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_X</span></code>
+Align X – Align UVs on X axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_Y</span></code>
+Align Y – Align UVs on Y axis.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.average_islands_scale">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">average_islands_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale_uv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.average_islands_scale" title="Permalink to this definition"></a></dt>
+<dd><p>Average the size of separate UV islands, based on their area in 3D space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scale_uv</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Non-Uniform, Scale U and V independently</p></li>
+<li><p><strong>shear</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shear, Reduce shear within islands</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.cube_project">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">cube_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cube_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.cube_project" title="Permalink to this definition"></a></dt>
+<dd><p>Project the UV vertices of the mesh over the six faces of a cube</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cube_size</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cube Size, Size of the cube to project on</p></li>
+<li><p><strong>correct_aspect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct Aspect, Map UVs taking image aspect ratio into account</p></li>
+<li><p><strong>clip_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clip to Bounds, Clip UV coordinates to bounds after unwrapping</p></li>
+<li><p><strong>scale_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scale to Bounds, Scale UV coordinates to bounds after unwrapping</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.cursor_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">cursor_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.cursor_set" title="Permalink to this definition"></a></dt>
+<dd><p>Set 2D cursor location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>location</strong> (<em>float array of 2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Cursor location in normalized (0.0 to 1.0) coordinates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.cylinder_project">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">cylinder_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VIEW_ON_EQUATOR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POLAR_ZX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.cylinder_project" title="Permalink to this definition"></a></dt>
+<dd><p>Project the UV vertices of the mesh over the curved wall of a cylinder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (<em>enum in</em><em> [</em><em>'VIEW_ON_EQUATOR'</em><em>, </em><em>'VIEW_ON_POLES'</em><em>, </em><em>'ALIGN_TO_OBJECT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Direction, Direction of the sphere or cylinder</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW_ON_EQUATOR</span></code>
+View on Equator – 3D view is on the equator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW_ON_POLES</span></code>
+View on Poles – 3D view is on the poles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_TO_OBJECT</span></code>
+Align to Object – Align according to object transform.</p></li>
+</ul>
+</p></li>
+<li><p><strong>align</strong> (<em>enum in</em><em> [</em><em>'POLAR_ZX'</em><em>, </em><em>'POLAR_ZY'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Align, How to determine rotation around the pole</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">POLAR_ZX</span></code>
+Polar ZX – Polar 0 is X.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POLAR_ZY</span></code>
+Polar ZY – Polar 0 is Y.</p></li>
+</ul>
+</p></li>
+<li><p><strong>radius</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius, Radius of the sphere or cylinder</p></li>
+<li><p><strong>correct_aspect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct Aspect, Map UVs taking image aspect ratio into account</p></li>
+<li><p><strong>clip_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clip to Bounds, Clip UV coordinates to bounds after unwrapping</p></li>
+<li><p><strong>scale_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scale to Bounds, Scale UV coordinates to bounds after unwrapping</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.export_layout">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">export_layout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modified</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PNG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1024,</span> <span class="pre">1024)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.export_layout" title="Permalink to this definition"></a></dt>
+<dd><p>Export UV layout to file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – filepath</p></li>
+<li><p><strong>export_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All UVs, Export all UVs in this mesh (not just visible ones)</p></li>
+<li><p><strong>modified</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Modified, Exports UVs from the modified mesh</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'SVG'</em><em>, </em><em>'EPS'</em><em>, </em><em>'PNG'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Format, File format to export the UV layout to</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SVG</span></code>
+Scalable Vector Graphic (.svg) – Export the UV layout to a vector SVG file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EPS</span></code>
+Encapsulate PostScript (.eps) – Export the UV layout to a vector EPS file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PNG</span></code>
+PNG Image (.png) – Export the UV layout to a bitmap image.</p></li>
+</ul>
+</p></li>
+<li><p><strong>size</strong> (<em>int array of 2 items in</em><em> [</em><em>8</em><em>, </em><em>32768</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – size, Dimensions of the exported file</p></li>
+<li><p><strong>opacity</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill Opacity, Set amount of opacity for exported UV layout</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – check_existing</p></li>
+</ul>
+</dd>
+<dt class="field-even">File</dt>
+<dd class="field-even"><p><a class="reference external" href="https://developer.blender.org/diffusion/BA/addons/io_mesh_uv_layout/__init__.py$118">addons/io_mesh_uv_layout/__init__.py:118</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.follow_active_quads">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">follow_active_quads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LENGTH_AVERAGE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.follow_active_quads" title="Permalink to this definition"></a></dt>
+<dd><p>Follow UVs from active quads along continuous face loops</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'EVEN'</em><em>, </em><em>'LENGTH'</em><em>, </em><em>'LENGTH_AVERAGE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Edge Length Mode, Method to space UV edge loops</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EVEN</span></code>
+Even – Space all UVs evenly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LENGTH</span></code>
+Length – Average space UVs edge length of each loop.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LENGTH_AVERAGE</span></code>
+Length Average – Average space UVs edge length of each loop.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">File</dt>
+<dd class="field-even"><p><a class="reference external" href="https://developer.blender.org/diffusion/B/browse/master/release/scripts/startup/bl_operators/uvcalc_follow_active.py$257">startup/bl_operators/uvcalc_follow_active.py:257</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.hide" title="Permalink to this definition"></a></dt>
+<dd><p>Hide (un)selected UV vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected rather than selected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.lightmap_pack">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">lightmap_pack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">PREF_CONTEXT</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SEL_FACES'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PREF_PACK_IN_ONE</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PREF_NEW_UVLAYER</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PREF_APPLY_IMAGE</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PREF_IMG_PX_SIZE</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">512</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PREF_BOX_DIV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">PREF_MARGIN_DIV</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.lightmap_pack" title="Permalink to this definition"></a></dt>
+<dd><p>Pack each faces UV’s into the UV bounds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>PREF_CONTEXT</strong> (<em>enum in</em><em> [</em><em>'SEL_FACES'</em><em>, </em><em>'ALL_FACES'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Selection</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEL_FACES</span></code>
+Selected Faces – Space all UVs evenly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL_FACES</span></code>
+All Faces – Average space UVs edge length of each loop.</p></li>
+</ul>
+</p></li>
+<li><p><strong>PREF_PACK_IN_ONE</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Share Texture Space, Objects share texture space, map all objects into a single UV map</p></li>
+<li><p><strong>PREF_NEW_UVLAYER</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – New UV Map, Create a new UV map for every mesh packed</p></li>
+<li><p><strong>PREF_APPLY_IMAGE</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – New Image, Assign new images for every mesh (only one if Share Texture Space is enabled)</p></li>
+<li><p><strong>PREF_IMG_PX_SIZE</strong> (<em>int in</em><em> [</em><em>64</em><em>, </em><em>5000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Image Size, Width and height for the new image</p></li>
+<li><p><strong>PREF_BOX_DIV</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>48</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pack Quality, Pre-packing before the complex boxpack</p></li>
+<li><p><strong>PREF_MARGIN_DIV</strong> (<em>float in</em><em> [</em><em>0.001</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Margin, Size of the margin as a division of the UV</p></li>
+</ul>
+</dd>
+<dt class="field-even">File</dt>
+<dd class="field-even"><p><a class="reference external" href="https://developer.blender.org/diffusion/B/browse/master/release/scripts/startup/bl_operators/uvcalc_lightmap.py$658">startup/bl_operators/uvcalc_lightmap.py:658</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.mark_seam">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">mark_seam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.mark_seam" title="Permalink to this definition"></a></dt>
+<dd><p>Mark selected UV edges as seams</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clear</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clear Seams, Clear instead of marking seams</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.minimize_stretch">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">minimize_stretch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fill_holes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.minimize_stretch" title="Permalink to this definition"></a></dt>
+<dd><p>Reduce UV stretching by relaxing angles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fill_holes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill Holes, Virtual fill holes in mesh before unwrapping, to better avoid overlaps and preserve symmetry</p></li>
+<li><p><strong>blend</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blend, Blend factor between stretch minimized and original</p></li>
+<li><p><strong>iterations</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Iterations, Number of iterations to run, 0 is unlimited when run interactively</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.pack_islands">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">pack_islands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">udim_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST_UDIM'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.pack_islands" title="Permalink to this definition"></a></dt>
+<dd><p>Transform all islands so that they fill up the UV/UDIM space as much as possible</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>udim_source</strong> (<em>enum in</em><em> [</em><em>'CLOSEST_UDIM'</em><em>, </em><em>'ACTIVE_UDIM'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Pack to</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLOSEST_UDIM</span></code>
+Closest UDIM – Pack islands to closest UDIM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE_UDIM</span></code>
+Active UDIM – Pack islands to active UDIM image tile or UDIM grid tile where 2D cursor is located.</p></li>
+</ul>
+</p></li>
+<li><p><strong>rotate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Rotate, Rotate islands for best fit</p></li>
+<li><p><strong>margin</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Margin, Space between islands</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.pin">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">pin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.pin" title="Permalink to this definition"></a></dt>
+<dd><p>Set/clear selected UV vertices as anchored between multiple unwrap operations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clear</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clear, Clear pinning for the selection instead of setting it</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.project_from_view">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">project_from_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orthographic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">camera_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.project_from_view" title="Permalink to this definition"></a></dt>
+<dd><p>Project the UV vertices of the mesh as seen in current 3D view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orthographic</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orthographic, Use orthographic projection</p></li>
+<li><p><strong>camera_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Camera Bounds, Map UVs to the camera region taking resolution and aspect into account</p></li>
+<li><p><strong>correct_aspect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct Aspect, Map UVs taking image aspect ratio into account</p></li>
+<li><p><strong>clip_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clip to Bounds, Clip UV coordinates to bounds after unwrapping</p></li>
+<li><p><strong>scale_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scale to Bounds, Scale UV coordinates to bounds after unwrapping</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.remove_doubles">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">remove_doubles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.02</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.remove_doubles" title="Permalink to this definition"></a></dt>
+<dd><p>Selected UV vertices that are within a radius of each other are welded together</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Merge Distance, Maximum distance between welded vertices</p></li>
+<li><p><strong>use_unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Merge selected to other unselected vertices</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.reset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.reset" title="Permalink to this definition"></a></dt>
+<dd><p>Reset UV projection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.reveal">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">reveal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.reveal" title="Permalink to this definition"></a></dt>
+<dd><p>Reveal all hidden UV vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.rip">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">rip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.rip" title="Permalink to this definition"></a></dt>
+<dd><p>Rip selected vertices or a selected region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+<li><p><strong>location</strong> (<em>float array of 2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location in normalized coordinates, 0.0 to 1.0 is within the image bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.rip_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">rip_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">UV_OT_rip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.rip_move" title="Permalink to this definition"></a></dt>
+<dd><p>Unstitch UV’s and move the result</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>UV_OT_rip</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">UV_OT_rip</span></code>, (optional)) – UV Rip, Rip selected vertices or a selected region</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.seams_from_islands">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">seams_from_islands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mark_seams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mark_sharp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.seams_from_islands" title="Permalink to this definition"></a></dt>
+<dd><p>Set mesh seams according to island setup in the UV editor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mark_seams</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mark Seams, Mark boundary edges as seams</p></li>
+<li><p><strong>mark_sharp</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mark Sharp, Mark boundary edges as sharp</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toggle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_passthrough</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select" title="Permalink to this definition"></a></dt>
+<dd><p>Select UV vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+<li><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Remove from selection</p></li>
+<li><p><strong>toggle</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Toggle Selection, Toggle the selection</p></li>
+<li><p><strong>deselect_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect On Nothing, Deselect all when nothing under the cursor</p></li>
+<li><p><strong>select_passthrough</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Select Unselected, Ignore the select action when the element is already selected</p></li>
+<li><p><strong>location</strong> (<em>float array of 2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location in normalized coordinates, 0.0 to 1.0 is within the image bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_all" title="Permalink to this definition"></a></dt>
+<dd><p>Change selection of all UV vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>action</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'SELECT'</em><em>, </em><em>'DESELECT'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pinned</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_box" title="Permalink to this definition"></a></dt>
+<dd><p>Select UV vertices using box selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pinned</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pinned, Border select pinned UVs only</p></li>
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'SET'</em><em>, </em><em>'ADD'</em><em>, </em><em>'SUB'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_circle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_circle" title="Permalink to this definition"></a></dt>
+<dd><p>Select UV vertices using circle selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X</p></li>
+<li><p><strong>y</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y</p></li>
+<li><p><strong>radius</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'SET'</em><em>, </em><em>'ADD'</em><em>, </em><em>'SUB'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_edge_ring">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_edge_ring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_edge_ring" title="Permalink to this definition"></a></dt>
+<dd><p>Select an edge ring of connected UV vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection rather than clearing the existing selection</p></li>
+<li><p><strong>location</strong> (<em>float array of 2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location in normalized coordinates, 0.0 to 1.0 is within the image bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_lasso">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_lasso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_lasso" title="Permalink to this definition"></a></dt>
+<dd><p>Select UVs using lasso selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'SET'</em><em>, </em><em>'ADD'</em><em>, </em><em>'SUB'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_less</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_less" title="Permalink to this definition"></a></dt>
+<dd><p>Deselect UV vertices at the boundary of each selection region</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_linked" title="Permalink to this definition"></a></dt>
+<dd><p>Select all UV vertices linked to the active UV map</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_linked_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_linked_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_linked_pick" title="Permalink to this definition"></a></dt>
+<dd><p>Select all UV vertices linked under the mouse</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection rather than clearing the existing selection</p></li>
+<li><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Deselect linked UV vertices rather than selecting them</p></li>
+<li><p><strong>location</strong> (<em>float array of 2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location in normalized coordinates, 0.0 to 1.0 is within the image bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_loop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_loop" title="Permalink to this definition"></a></dt>
+<dd><p>Select a loop of connected UV vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection rather than clearing the existing selection</p></li>
+<li><p><strong>location</strong> (<em>float array of 2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location in normalized coordinates, 0.0 to 1.0 is within the image bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_mode">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VERTEX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_mode" title="Permalink to this definition"></a></dt>
+<dd><p>Change UV selection mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/mesh_select_mode_uv_items.html#rna-enum-mesh-select-mode-uv-items"><span class="std std-ref">Mesh Select Mode Uv Items</span></a>, (optional)) – Type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_more</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_more" title="Permalink to this definition"></a></dt>
+<dd><p>Select more UV vertices connected to initial selection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_overlap">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_overlap" title="Permalink to this definition"></a></dt>
+<dd><p>Select all UV faces which overlap each other</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection rather than clearing the existing selection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_pinned">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_pinned</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_pinned" title="Permalink to this definition"></a></dt>
+<dd><p>Select all pinned UV vertices</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_similar">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_similar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PIN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compare</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EQUAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_similar" title="Permalink to this definition"></a></dt>
+<dd><p>Select similar UVs by property types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'PIN'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type</p></li>
+<li><p><strong>compare</strong> (<em>enum in</em><em> [</em><em>'EQUAL'</em><em>, </em><em>'GREATER'</em><em>, </em><em>'LESS'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Compare</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.select_split">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">select_split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.select_split" title="Permalink to this definition"></a></dt>
+<dd><p>Select only entirely selected faces</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.shortest_path_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">shortest_path_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_face_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_topology_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.shortest_path_pick" title="Permalink to this definition"></a></dt>
+<dd><p>Select shortest path between two selections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_face_step</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Face Stepping, Traverse connected faces (includes diagonals and edge-rings)</p></li>
+<li><p><strong>use_topology_distance</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Topology Distance, Find the minimum number of steps, ignoring spatial distance</p></li>
+<li><p><strong>use_fill</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill Region, Select all paths between the source/destination elements</p></li>
+<li><p><strong>skip</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselected, Number of deselected elements in the repetitive sequence</p></li>
+<li><p><strong>nth</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Selected, Number of selected elements in the repetitive sequence</p></li>
+<li><p><strong>offset</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset, Offset from the starting point</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.shortest_path_select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">shortest_path_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_face_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_topology_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.shortest_path_select" title="Permalink to this definition"></a></dt>
+<dd><p>Selected shortest path between two vertices/edges/faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_face_step</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Face Stepping, Traverse connected faces (includes diagonals and edge-rings)</p></li>
+<li><p><strong>use_topology_distance</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Topology Distance, Find the minimum number of steps, ignoring spatial distance</p></li>
+<li><p><strong>use_fill</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill Region, Select all paths between the source/destination elements</p></li>
+<li><p><strong>skip</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselected, Number of deselected elements in the repetitive sequence</p></li>
+<li><p><strong>nth</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Selected, Number of selected elements in the repetitive sequence</p></li>
+<li><p><strong>offset</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset, Offset from the starting point</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.smart_project">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">smart_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.15192</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">island_margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.smart_project" title="Permalink to this definition"></a></dt>
+<dd><p>Projection unwraps the selected faces of mesh objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle_limit</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1.5708</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Angle Limit, Lower for more projection groups, higher for less distortion</p></li>
+<li><p><strong>island_margin</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Island Margin, Margin to reduce bleed from adjacent islands</p></li>
+<li><p><strong>area_weight</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Area Weight, Weight projection’s vector by faces with larger areas</p></li>
+<li><p><strong>correct_aspect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct Aspect, Map UVs taking image aspect ratio into account</p></li>
+<li><p><strong>scale_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scale to Bounds, Scale UV coordinates to bounds after unwrapping</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.snap_cursor">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">snap_cursor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PIXELS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.snap_cursor" title="Permalink to this definition"></a></dt>
+<dd><p>Snap cursor to target type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> (<em>enum in</em><em> [</em><em>'PIXELS'</em><em>, </em><em>'SELECTED'</em><em>, </em><em>'ORIGIN'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target, Target to snap the selected UVs to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.snap_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">snap_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PIXELS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.snap_selected" title="Permalink to this definition"></a></dt>
+<dd><p>Snap selected UV vertices to target type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>target</strong> (<em>enum in</em><em> [</em><em>'PIXELS'</em><em>, </em><em>'CURSOR'</em><em>, </em><em>'CURSOR_OFFSET'</em><em>, </em><em>'ADJACENT_UNSELECTED'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target, Target to snap the selected UVs to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.sphere_project">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">sphere_project</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VIEW_ON_EQUATOR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POLAR_ZX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clip_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale_to_bounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.sphere_project" title="Permalink to this definition"></a></dt>
+<dd><p>Project the UV vertices of the mesh over the curved surface of a sphere</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (<em>enum in</em><em> [</em><em>'VIEW_ON_EQUATOR'</em><em>, </em><em>'VIEW_ON_POLES'</em><em>, </em><em>'ALIGN_TO_OBJECT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Direction, Direction of the sphere or cylinder</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW_ON_EQUATOR</span></code>
+View on Equator – 3D view is on the equator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW_ON_POLES</span></code>
+View on Poles – 3D view is on the poles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALIGN_TO_OBJECT</span></code>
+Align to Object – Align according to object transform.</p></li>
+</ul>
+</p></li>
+<li><p><strong>align</strong> (<em>enum in</em><em> [</em><em>'POLAR_ZX'</em><em>, </em><em>'POLAR_ZY'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Align, How to determine rotation around the pole</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">POLAR_ZX</span></code>
+Polar ZX – Polar 0 is X.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POLAR_ZY</span></code>
+Polar ZY – Polar 0 is Y.</p></li>
+</ul>
+</p></li>
+<li><p><strong>correct_aspect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct Aspect, Map UVs taking image aspect ratio into account</p></li>
+<li><p><strong>clip_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clip to Bounds, Clip UV coordinates to bounds after unwrapping</p></li>
+<li><p><strong>scale_to_bounds</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scale to Bounds, Scale UV coordinates to bounds after unwrapping</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.stitch">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">stitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_islands</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static_island</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_object_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">midpoint_snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear_seams</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VERTEX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stored_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VERTEX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects_selection_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.stitch" title="Permalink to this definition"></a></dt>
+<dd><p>Stitch selected UV vertices by proximity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_limit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Limit, Stitch UVs within a specified limit distance</p></li>
+<li><p><strong>snap_islands</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Snap Islands, Snap islands together (on edge stitch mode, rotates the islands too)</p></li>
+<li><p><strong>limit</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Limit, Limit distance in normalized coordinates</p></li>
+<li><p><strong>static_island</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Static Island, Island that stays in place when stitching islands</p></li>
+<li><p><strong>active_object_index</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Active Object, Index of the active object</p></li>
+<li><p><strong>midpoint_snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Snap at Midpoint, UVs are stitched at midpoint instead of at static island</p></li>
+<li><p><strong>clear_seams</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clear Seams, Clear seams of stitched edges</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'VERTEX'</em><em>, </em><em>'EDGE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Operation Mode, Use vertex or edge stitching</p></li>
+<li><p><strong>stored_mode</strong> (<em>enum in</em><em> [</em><em>'VERTEX'</em><em>, </em><em>'EDGE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Stored Operation Mode, Use vertex or edge stitching</p></li>
+<li><p><strong>selection</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">SelectedUvElement</span></code>, (optional)) – Selection</p></li>
+<li><p><strong>objects_selection_count</strong> (<em>int array of 6 items in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Objects Selection Count</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.unwrap">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">unwrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ANGLE_BASED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_holes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_aspect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_subsurf_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.unwrap" title="Permalink to this definition"></a></dt>
+<dd><p>Unwrap the mesh of the object being edited</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (<em>enum in</em><em> [</em><em>'ANGLE_BASED'</em><em>, </em><em>'CONFORMAL'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Method, Unwrapping method (Angle Based usually gives better results than Conformal, while being somewhat slower)</p></li>
+<li><p><strong>fill_holes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill Holes, Virtual fill holes in mesh before unwrapping, to better avoid overlaps and preserve symmetry</p></li>
+<li><p><strong>correct_aspect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct Aspect, Map UVs taking image aspect ratio into account</p></li>
+<li><p><strong>use_subsurf_data</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Subdivision Surface, Map UVs taking vertex position after Subdivision Surface modifier has been applied</p></li>
+<li><p><strong>margin</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Margin, Space between islands</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.uv.weld">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.uv.</span></span><span class="sig-name descname"><span class="pre">weld</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.uv.weld" title="Permalink to this definition"></a></dt>
+<dd><p>Weld selected UV vertices together</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.ui.html" class="btn btn-neutral float-left" title="Ui Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.view2d.html" class="btn btn-neutral float-right" title="View2D Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Foundation.
+      <span class="commit">Revision <code><a href=https://developer.blender.org/rB72105a589635>72105a589635</a> - 31/07/2022</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            3.4 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
