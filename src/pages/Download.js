@@ -55,15 +55,15 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Development Release</SectionTitle>
-            <p>Version UPBGE 0.34 Alpha</p>
+            <p>Version UPBGE 0.35 Alpha</p>
             <p>Released a new build each week</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.34 Alpha</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 3.4</strong>&nbsp;source
+                    <strong>UPBGE 0.35 Alpha</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 3.5</strong>&nbsp;source
                   </li>
                 </BulletListInside>
               </div>
