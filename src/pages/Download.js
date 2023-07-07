@@ -33,15 +33,15 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Stable Release</SectionTitle>
-            <p>Version UPBGE 0.30</p>
-            <p>Released 4 December 2021</p>
+            <p>Version UPBGE 0.36</p>
+            <p>Released 7 July 2023</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.30</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 3.0</strong>&nbsp;source
+                    <strong>UPBGE 0.36</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 3.6</strong>&nbsp;source
                   </li>
                   <li>
                     <strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;
@@ -55,15 +55,15 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Development Release</SectionTitle>
-            <p>Version UPBGE 0.36 Alpha</p>
+            <p>Version UPBGE 0.40 Alpha</p>
             <p>Released a new build each week</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.36 Alpha</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 3.6</strong>&nbsp;source
+                    <strong>UPBGE 0.40 Alpha</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 4.0</strong>&nbsp;source
                   </li>
                 </BulletListInside>
               </div>
@@ -90,7 +90,7 @@ const Download = () => {
                           <SectionTitle>Windows 8.1, 10, & 11</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-windows-x86_64.7z'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-windows-x86_64.7z'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -100,7 +100,7 @@ const Download = () => {
                           <SectionTitle>Windows 7</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-windows7-x86_64.7z'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-windows7-x86_64.7z'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -155,7 +155,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
+                                href='https://mega.nz/folder/solC3STS#_HoXukLgI3P_XYtDv4B3jA'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -187,7 +187,7 @@ const Download = () => {
                           <SectionTitle>Linux x64</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-linux-x86_64.tar.xz'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-linux-x86_64.tar.xz'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -254,7 +254,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
+                                href='https://mega.nz/folder/solC3STS#_HoXukLgI3P_XYtDv4B3jA'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -286,7 +286,7 @@ const Download = () => {
                           <SectionTitle>macOS Intel (10.13+)</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-macOS-x86_64.dmg'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-macOS-x86_64.dmg'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -296,12 +296,8 @@ const Download = () => {
                           <SectionTitle>
                             macOS Apple Silicon (11.0+)
                           </SectionTitle>
-                          <Button
-                            href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.30/UPBGE-0.30-macOS-arm64.dmg'
-                            }
-                            target={'_blank'}>
-                            Download (64-bit)
+                          <Button href={''} target={'_blank'}>
+                            Not available yet
                           </Button>
                         </div>
                         <hr />
@@ -356,7 +352,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/RsFSSZjA#rTNA_4nBbLp0BSTX9-DqSA'
+                                href='https://mega.nz/folder/solC3STS#_HoXukLgI3P_XYtDv4B3jA'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -385,7 +381,7 @@ const Download = () => {
                     <TabPanel>
                       <TabSection>
                         <div>
-                          <SectionTitle>UPBGE 0.3+ Development</SectionTitle>
+                          <SectionTitle>UPBGE 0.4+ Development</SectionTitle>
                           <Button
                             href={
                               'https://mega.nz/folder/t9EEFSaS#JPiOPSInCZyU-SW_-rhEOQ'
