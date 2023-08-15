@@ -337,11 +337,12 @@ const Download = () => {
                               <strong>OpenGL:</strong> 4.3+ minimum
                             </li>
                             <li>
-                              <strong>MacOS Intel:</strong> requires version 10+
+                              <strong>MacOS Intel:</strong> requires version
+                              10.15+
                             </li>
                             <li>
                               <strong>MacOS Apple Silicon:</strong> requires
-                              version 11+
+                              version 11.2+
                             </li>
                           </BulletListInside>
                         </div>
