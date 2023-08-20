@@ -90,7 +90,7 @@ const Download = () => {
                           <SectionTitle>Windows 8.1, 10, & 11</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-windows-x86_64.7z'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-windows-x86_64.7z'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -100,7 +100,7 @@ const Download = () => {
                           <SectionTitle>Windows 7</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-windows7-x86_64.7z'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-windows7-x86_64.7z'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -155,7 +155,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/solC3STS#_HoXukLgI3P_XYtDv4B3jA'
+                                href='https://mega.nz/folder/x5UARbpZ#ZBfV0ow8GTNRNxnBwFuchg'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -187,7 +187,7 @@ const Download = () => {
                           <SectionTitle>Linux x64</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-linux-x86_64.tar.xz'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-linux-x86_64.tar.xz'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -254,7 +254,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/solC3STS#_HoXukLgI3P_XYtDv4B3jA'
+                                href='https://mega.nz/folder/x5UARbpZ#ZBfV0ow8GTNRNxnBwFuchg'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -286,7 +286,7 @@ const Download = () => {
                           <SectionTitle>macOS Intel (10.13+)</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36/upbge-0.36-macOS-x86_64.dmg'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-macOS-x86_64.dmg'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -353,7 +353,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/solC3STS#_HoXukLgI3P_XYtDv4B3jA'
+                                href='https://mega.nz/folder/x5UARbpZ#ZBfV0ow8GTNRNxnBwFuchg'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
