@@ -33,15 +33,15 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Stable Release</SectionTitle>
-            <p>Version UPBGE 0.36</p>
-            <p>Released 7 July 2023</p>
+            <p>Version UPBGE 0.36.1</p>
+            <p>Released 20 August 2023</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.36</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 3.6</strong>&nbsp;source
+                    <strong>UPBGE 0.36.1</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 3.6.2</strong>&nbsp;source
                   </li>
                   <li>
                     <strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;
