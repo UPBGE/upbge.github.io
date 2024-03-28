@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ToolSettings(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.ToolSettings.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TrackToConstraint(Constraint)" href="bpy.types.TrackToConstraint.html" />
+    <link rel="prev" title="TintGpencilModifier(GpencilModifier)" href="bpy.types.TintGpencilModifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">ToolSettings(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="toolsettings-bpy-struct">
+<h1>ToolSettings(bpy_struct)<a class="headerlink" href="#toolsettings-bpy-struct" title="Link to this heading"></a></h1>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">ToolSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.ToolSettings" title="Link to this definition"></a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.annotation_stroke_placement_view2d">
+<span class="sig-name descname"><span class="pre">annotation_stroke_placement_view2d</span></span><a class="headerlink" href="#bpy.types.ToolSettings.annotation_stroke_placement_view2d" title="Link to this definition"></a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">IMAGE</span></code>
+Image – Stick stroke to the image.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Stick stroke to the view.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘IMAGE’, ‘VIEW’], default ‘VIEW’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.annotation_stroke_placement_view3d">
+<span class="sig-name descname"><span class="pre">annotation_stroke_placement_view3d</span></span><a class="headerlink" href="#bpy.types.ToolSettings.annotation_stroke_placement_view3d" title="Link to this definition"></a></dt>
+<dd><p>How annotation strokes are orientated in 3D space</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Draw stroke at 3D cursor location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Stick stroke to the view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Stick stroke to surfaces.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘CURSOR’, ‘VIEW’, ‘SURFACE’], default ‘CURSOR’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.annotation_thickness">
+<span class="sig-name descname"><span class="pre">annotation_thickness</span></span><a class="headerlink" href="#bpy.types.ToolSettings.annotation_thickness" title="Link to this definition"></a></dt>
+<dd><p>Thickness of annotation strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 10], default 3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.auto_keying_mode">
+<span class="sig-name descname"><span class="pre">auto_keying_mode</span></span><a class="headerlink" href="#bpy.types.ToolSettings.auto_keying_mode" title="Link to this definition"></a></dt>
+<dd><p>Mode of automatic keyframe insertion for Objects, Bones and Masks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ADD_REPLACE_KEYS’, ‘REPLACE_KEYS’], default ‘ADD_REPLACE_KEYS’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.curve_paint_settings">
+<span class="sig-name descname"><span class="pre">curve_paint_settings</span></span><a class="headerlink" href="#bpy.types.ToolSettings.curve_paint_settings" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.CurvePaintSettings.html#bpy.types.CurvePaintSettings" title="bpy.types.CurvePaintSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurvePaintSettings</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.curves_sculpt">
+<span class="sig-name descname"><span class="pre">curves_sculpt</span></span><a class="headerlink" href="#bpy.types.ToolSettings.curves_sculpt" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.CurvesSculpt.html#bpy.types.CurvesSculpt" title="bpy.types.CurvesSculpt"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurvesSculpt</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.custom_bevel_profile_preset">
+<span class="sig-name descname"><span class="pre">custom_bevel_profile_preset</span></span><a class="headerlink" href="#bpy.types.ToolSettings.custom_bevel_profile_preset" title="Link to this definition"></a></dt>
+<dd><p>Used for defining a profile’s path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.CurveProfile.html#bpy.types.CurveProfile" title="bpy.types.CurveProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurveProfile</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.double_threshold">
+<span class="sig-name descname"><span class="pre">double_threshold</span></span><a class="headerlink" href="#bpy.types.ToolSettings.double_threshold" title="Link to this definition"></a></dt>
+<dd><p>Threshold distance for Auto Merge</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.001</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_interpolate">
+<span class="sig-name descname"><span class="pre">gpencil_interpolate</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_interpolate" title="Link to this definition"></a></dt>
+<dd><p>Settings for Grease Pencil Interpolation tools</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.GPencilInterpolateSettings.html#bpy.types.GPencilInterpolateSettings" title="bpy.types.GPencilInterpolateSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPencilInterpolateSettings</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_paint">
+<span class="sig-name descname"><span class="pre">gpencil_paint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_paint" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.GpPaint.html#bpy.types.GpPaint" title="bpy.types.GpPaint"><code class="xref py py-class docutils literal notranslate"><span class="pre">GpPaint</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_sculpt">
+<span class="sig-name descname"><span class="pre">gpencil_sculpt</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_sculpt" title="Link to this definition"></a></dt>
+<dd><p>Settings for stroke sculpting tools and brushes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.GPencilSculptSettings.html#bpy.types.GPencilSculptSettings" title="bpy.types.GPencilSculptSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">GPencilSculptSettings</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_sculpt_paint">
+<span class="sig-name descname"><span class="pre">gpencil_sculpt_paint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_sculpt_paint" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.GpSculptPaint.html#bpy.types.GpSculptPaint" title="bpy.types.GpSculptPaint"><code class="xref py py-class docutils literal notranslate"><span class="pre">GpSculptPaint</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_selectmode_edit">
+<span class="sig-name descname"><span class="pre">gpencil_selectmode_edit</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_selectmode_edit" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/grease_pencil_selectmode_items.html#rna-enum-grease-pencil-selectmode-items"><span class="std std-ref">Grease Pencil Selectmode Items</span></a>, default ‘POINT’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_stroke_placement_view3d">
+<span class="sig-name descname"><span class="pre">gpencil_stroke_placement_view3d</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_stroke_placement_view3d" title="Link to this definition"></a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ORIGIN</span></code>
+Origin – Draw stroke at Object origin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Draw stroke at 3D cursor location.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Stick stroke to surfaces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STROKE</span></code>
+Stroke – Stick stroke to other strokes.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ORIGIN’, ‘CURSOR’, ‘SURFACE’, ‘STROKE’], default ‘ORIGIN’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_stroke_snap_mode">
+<span class="sig-name descname"><span class="pre">gpencil_stroke_snap_mode</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_stroke_snap_mode" title="Link to this definition"></a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+All Points – Snap to all points.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENDS</span></code>
+End Points – Snap to first and last points and interpolate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIRST</span></code>
+First Point – Snap to first point.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NONE’, ‘ENDS’, ‘FIRST’], default ‘NONE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_vertex_paint">
+<span class="sig-name descname"><span class="pre">gpencil_vertex_paint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_vertex_paint" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.GpVertexPaint.html#bpy.types.GpVertexPaint" title="bpy.types.GpVertexPaint"><code class="xref py py-class docutils literal notranslate"><span class="pre">GpVertexPaint</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.gpencil_weight_paint">
+<span class="sig-name descname"><span class="pre">gpencil_weight_paint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.gpencil_weight_paint" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.GpWeightPaint.html#bpy.types.GpWeightPaint" title="bpy.types.GpWeightPaint"><code class="xref py py-class docutils literal notranslate"><span class="pre">GpWeightPaint</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.image_paint">
+<span class="sig-name descname"><span class="pre">image_paint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.image_paint" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ImagePaint.html#bpy.types.ImagePaint" title="bpy.types.ImagePaint"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImagePaint</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.keyframe_type">
+<span class="sig-name descname"><span class="pre">keyframe_type</span></span><a class="headerlink" href="#bpy.types.ToolSettings.keyframe_type" title="Link to this definition"></a></dt>
+<dd><p>Type of keyframes to create when inserting keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/beztriple_keyframe_type_items.html#rna-enum-beztriple-keyframe-type-items"><span class="std std-ref">Beztriple Keyframe Type Items</span></a>, default ‘KEYFRAME’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.lock_markers">
+<span class="sig-name descname"><span class="pre">lock_markers</span></span><a class="headerlink" href="#bpy.types.ToolSettings.lock_markers" title="Link to this definition"></a></dt>
+<dd><p>Prevent marker editing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.lock_object_mode">
+<span class="sig-name descname"><span class="pre">lock_object_mode</span></span><a class="headerlink" href="#bpy.types.ToolSettings.lock_object_mode" title="Link to this definition"></a></dt>
+<dd><p>Restrict selection to objects using the same mode as the active object, to prevent accidental mode switch when selecting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.mesh_select_mode">
+<span class="sig-name descname"><span class="pre">mesh_select_mode</span></span><a class="headerlink" href="#bpy.types.ToolSettings.mesh_select_mode" title="Link to this definition"></a></dt>
+<dd><p>Which mesh elements selection works on</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean array of 3 items, default (True, True, True)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.normal_vector">
+<span class="sig-name descname"><span class="pre">normal_vector</span></span><a class="headerlink" href="#bpy.types.ToolSettings.normal_vector" title="Link to this definition"></a></dt>
+<dd><p>Normal Vector used to copy, add or multiply</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.paint_mode">
+<span class="sig-name descname"><span class="pre">paint_mode</span></span><a class="headerlink" href="#bpy.types.ToolSettings.paint_mode" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.PaintModeSettings.html#bpy.types.PaintModeSettings" title="bpy.types.PaintModeSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">PaintModeSettings</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.particle_edit">
+<span class="sig-name descname"><span class="pre">particle_edit</span></span><a class="headerlink" href="#bpy.types.ToolSettings.particle_edit" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ParticleEdit.html#bpy.types.ParticleEdit" title="bpy.types.ParticleEdit"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParticleEdit</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.plane_axis">
+<span class="sig-name descname"><span class="pre">plane_axis</span></span><a class="headerlink" href="#bpy.types.ToolSettings.plane_axis" title="Link to this definition"></a></dt>
+<dd><p>The axis used for placing the base region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/axis_xyz_items.html#rna-enum-axis-xyz-items"><span class="std std-ref">Axis Xyz Items</span></a>, default ‘Z’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.plane_axis_auto">
+<span class="sig-name descname"><span class="pre">plane_axis_auto</span></span><a class="headerlink" href="#bpy.types.ToolSettings.plane_axis_auto" title="Link to this definition"></a></dt>
+<dd><p>Select the closest axis when placing objects (surface overrides)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.plane_depth">
+<span class="sig-name descname"><span class="pre">plane_depth</span></span><a class="headerlink" href="#bpy.types.ToolSettings.plane_depth" title="Link to this definition"></a></dt>
+<dd><p>The initial depth used when placing the cursor</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Start placing on the surface, using the 3D cursor position as a fallback.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR_PLANE</span></code>
+Cursor Plane – Start placement using a point projected onto the orientation axis at the 3D cursor position.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR_VIEW</span></code>
+Cursor View – Start placement using a point projected onto the view plane at the 3D cursor position.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘SURFACE’, ‘CURSOR_PLANE’, ‘CURSOR_VIEW’], default ‘SURFACE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.plane_orientation">
+<span class="sig-name descname"><span class="pre">plane_orientation</span></span><a class="headerlink" href="#bpy.types.ToolSettings.plane_orientation" title="Link to this definition"></a></dt>
+<dd><p>The initial depth used when placing the cursor</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Use the surface normal (using the transform orientation as a fallback).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Use the current transform orientation.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘SURFACE’, ‘DEFAULT’], default ‘SURFACE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.proportional_distance">
+<span class="sig-name descname"><span class="pre">proportional_distance</span></span><a class="headerlink" href="#bpy.types.ToolSettings.proportional_distance" title="Link to this definition"></a></dt>
+<dd><p>Display size for proportional editing circle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-05, 5000], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.proportional_edit_falloff">
+<span class="sig-name descname"><span class="pre">proportional_edit_falloff</span></span><a class="headerlink" href="#bpy.types.ToolSettings.proportional_edit_falloff" title="Link to this definition"></a></dt>
+<dd><p>Falloff type for proportional editing mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, default ‘SMOOTH’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.proportional_size">
+<span class="sig-name descname"><span class="pre">proportional_size</span></span><a class="headerlink" href="#bpy.types.ToolSettings.proportional_size" title="Link to this definition"></a></dt>
+<dd><p>Display size for proportional editing circle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-05, 5000], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.sculpt">
+<span class="sig-name descname"><span class="pre">sculpt</span></span><a class="headerlink" href="#bpy.types.ToolSettings.sculpt" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Sculpt.html#bpy.types.Sculpt" title="bpy.types.Sculpt"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sculpt</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.sequencer_tool_settings">
+<span class="sig-name descname"><span class="pre">sequencer_tool_settings</span></span><a class="headerlink" href="#bpy.types.ToolSettings.sequencer_tool_settings" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.SequencerToolSettings.html#bpy.types.SequencerToolSettings" title="bpy.types.SequencerToolSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequencerToolSettings</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.show_uv_local_view">
+<span class="sig-name descname"><span class="pre">show_uv_local_view</span></span><a class="headerlink" href="#bpy.types.ToolSettings.show_uv_local_view" title="Link to this definition"></a></dt>
+<dd><p>Display only faces with the currently displayed image assigned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_anim_element">
+<span class="sig-name descname"><span class="pre">snap_anim_element</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_anim_element" title="Link to this definition"></a></dt>
+<dd><p>Type of element to snap to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/snap_animation_element_items.html#rna-enum-snap-animation-element-items"><span class="std std-ref">Snap Animation Element Items</span></a>, default ‘FRAME’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_elements">
+<span class="sig-name descname"><span class="pre">snap_elements</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_elements" title="Link to this definition"></a></dt>
+<dd><p>Type of element to snap to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, default {‘INCREMENT’}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_elements_base">
+<span class="sig-name descname"><span class="pre">snap_elements_base</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_elements_base" title="Link to this definition"></a></dt>
+<dd><p>Type of element for the ‘Snap With’ to snap to</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INCREMENT</span></code>
+Increment – Snap to increments.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VERTEX</span></code>
+Vertex – Snap to vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EDGE</span></code>
+Edge – Snap to edges.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FACE</span></code>
+Face – Snap by projecting onto faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VOLUME</span></code>
+Volume – Snap to volume.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EDGE_MIDPOINT</span></code>
+Edge Center – Snap to the middle of edges.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EDGE_PERPENDICULAR</span></code>
+Edge Perpendicular – Snap to the nearest point on an edge.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum set in {‘INCREMENT’, ‘VERTEX’, ‘EDGE’, ‘FACE’, ‘VOLUME’, ‘EDGE_MIDPOINT’, ‘EDGE_PERPENDICULAR’}, default {‘INCREMENT’}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_elements_individual">
+<span class="sig-name descname"><span class="pre">snap_elements_individual</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_elements_individual" title="Link to this definition"></a></dt>
+<dd><p>Type of element for individual transformed elements to snap to</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FACE_PROJECT</span></code>
+Face Project – Snap by projecting onto faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FACE_NEAREST</span></code>
+Face Nearest – Snap to nearest point on faces.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum set in {‘FACE_PROJECT’, ‘FACE_NEAREST’}, default {‘FACE_PROJECT’}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_elements_tool">
+<span class="sig-name descname"><span class="pre">snap_elements_tool</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_elements_tool" title="Link to this definition"></a></dt>
+<dd><p>The target to use while snapping</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">GEOMETRY</span></code>
+Geometry – Snap to all geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Use the current snap settings.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘GEOMETRY’, ‘DEFAULT’], default ‘GEOMETRY’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_face_nearest_steps">
+<span class="sig-name descname"><span class="pre">snap_face_nearest_steps</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_face_nearest_steps" title="Link to this definition"></a></dt>
+<dd><p>Number of steps to break transformation into for face nearest snapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 100], default 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_node_element">
+<span class="sig-name descname"><span class="pre">snap_node_element</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_node_element" title="Link to this definition"></a></dt>
+<dd><p>Type of element to snap to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/snap_node_element_items.html#rna-enum-snap-node-element-items"><span class="std std-ref">Snap Node Element Items</span></a>, default ‘GRID’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_target">
+<span class="sig-name descname"><span class="pre">snap_target</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_target" title="Link to this definition"></a></dt>
+<dd><p>Which part to snap onto the target</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, default ‘CLOSEST’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.snap_uv_element">
+<span class="sig-name descname"><span class="pre">snap_uv_element</span></span><a class="headerlink" href="#bpy.types.ToolSettings.snap_uv_element" title="Link to this definition"></a></dt>
+<dd><p>Type of element to snap to</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">INCREMENT</span></code>
+Increment – Snap to increments of grid.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VERTEX</span></code>
+Vertex – Snap to vertices.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘INCREMENT’, ‘VERTEX’], default ‘INCREMENT’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.statvis">
+<span class="sig-name descname"><span class="pre">statvis</span></span><a class="headerlink" href="#bpy.types.ToolSettings.statvis" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshStatVis.html#bpy.types.MeshStatVis" title="bpy.types.MeshStatVis"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshStatVis</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.transform_pivot_point">
+<span class="sig-name descname"><span class="pre">transform_pivot_point</span></span><a class="headerlink" href="#bpy.types.ToolSettings.transform_pivot_point" title="Link to this definition"></a></dt>
+<dd><p>Pivot center for rotation/scaling</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BOUNDING_BOX_CENTER</span></code>
+Bounding Box Center – Pivot around bounding box center of selected object(s).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Pivot around the 3D cursor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INDIVIDUAL_ORIGINS</span></code>
+Individual Origins – Pivot around each object’s own origin.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MEDIAN_POINT</span></code>
+Median Point – Pivot around the median point of selected objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE_ELEMENT</span></code>
+Active Element – Pivot around active object.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘BOUNDING_BOX_CENTER’, ‘CURSOR’, ‘INDIVIDUAL_ORIGINS’, ‘MEDIAN_POINT’, ‘ACTIVE_ELEMENT’], default ‘MEDIAN_POINT’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.unified_paint_settings">
+<span class="sig-name descname"><span class="pre">unified_paint_settings</span></span><a class="headerlink" href="#bpy.types.ToolSettings.unified_paint_settings" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.UnifiedPaintSettings.html#bpy.types.UnifiedPaintSettings" title="bpy.types.UnifiedPaintSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnifiedPaintSettings</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_auto_normalize">
+<span class="sig-name descname"><span class="pre">use_auto_normalize</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_auto_normalize" title="Link to this definition"></a></dt>
+<dd><p>Ensure all bone-deforming vertex groups add up to 1.0 while weight painting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_edge_path_live_unwrap">
+<span class="sig-name descname"><span class="pre">use_edge_path_live_unwrap</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_edge_path_live_unwrap" title="Link to this definition"></a></dt>
+<dd><p>Changing edge seams recalculates UV unwrap</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_automerge_strokes">
+<span class="sig-name descname"><span class="pre">use_gpencil_automerge_strokes</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_automerge_strokes" title="Link to this definition"></a></dt>
+<dd><p>Join by distance last drawn stroke with previous strokes in the active layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_draw_additive">
+<span class="sig-name descname"><span class="pre">use_gpencil_draw_additive</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_draw_additive" title="Link to this definition"></a></dt>
+<dd><p>When creating new frames, the strokes from the previous/active frame are included as the basis for the new one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_draw_onback">
+<span class="sig-name descname"><span class="pre">use_gpencil_draw_onback</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_draw_onback" title="Link to this definition"></a></dt>
+<dd><p>When draw new strokes, the new stroke is drawn below of all strokes in the layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_select_mask_point">
+<span class="sig-name descname"><span class="pre">use_gpencil_select_mask_point</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_select_mask_point" title="Link to this definition"></a></dt>
+<dd><p>Only sculpt selected stroke points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_select_mask_segment">
+<span class="sig-name descname"><span class="pre">use_gpencil_select_mask_segment</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_select_mask_segment" title="Link to this definition"></a></dt>
+<dd><p>Only sculpt selected stroke points between other strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_select_mask_stroke">
+<span class="sig-name descname"><span class="pre">use_gpencil_select_mask_stroke</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_select_mask_stroke" title="Link to this definition"></a></dt>
+<dd><p>Only sculpt selected stroke</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_stroke_endpoints">
+<span class="sig-name descname"><span class="pre">use_gpencil_stroke_endpoints</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_stroke_endpoints" title="Link to this definition"></a></dt>
+<dd><p>Only use the first and last parts of the stroke for snapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_thumbnail_list">
+<span class="sig-name descname"><span class="pre">use_gpencil_thumbnail_list</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_thumbnail_list" title="Link to this definition"></a></dt>
+<dd><p>Show compact list of color instead of thumbnails</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_vertex_select_mask_point">
+<span class="sig-name descname"><span class="pre">use_gpencil_vertex_select_mask_point</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_vertex_select_mask_point" title="Link to this definition"></a></dt>
+<dd><p>Only paint selected stroke points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_vertex_select_mask_segment">
+<span class="sig-name descname"><span class="pre">use_gpencil_vertex_select_mask_segment</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_vertex_select_mask_segment" title="Link to this definition"></a></dt>
+<dd><p>Only paint selected stroke points between other strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_vertex_select_mask_stroke">
+<span class="sig-name descname"><span class="pre">use_gpencil_vertex_select_mask_stroke</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_vertex_select_mask_stroke" title="Link to this definition"></a></dt>
+<dd><p>Only paint selected stroke</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_gpencil_weight_data_add">
+<span class="sig-name descname"><span class="pre">use_gpencil_weight_data_add</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_gpencil_weight_data_add" title="Link to this definition"></a></dt>
+<dd><p>When creating new strokes, the weight data is added according to the current vertex group and weight, if no vertex group selected, weight is not added</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_keyframe_cycle_aware">
+<span class="sig-name descname"><span class="pre">use_keyframe_cycle_aware</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_keyframe_cycle_aware" title="Link to this definition"></a></dt>
+<dd><p>For channels with cyclic extrapolation, keyframe insertion is automatically remapped inside the cycle time range, and keeps ends in sync. Curves newly added to actions with a Manual Frame Range and Cyclic Animation are automatically made cyclic</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_keyframe_insert_auto">
+<span class="sig-name descname"><span class="pre">use_keyframe_insert_auto</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_keyframe_insert_auto" title="Link to this definition"></a></dt>
+<dd><p>Automatic keyframe insertion for Objects, Bones and Masks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_keyframe_insert_keyingset">
+<span class="sig-name descname"><span class="pre">use_keyframe_insert_keyingset</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_keyframe_insert_keyingset" title="Link to this definition"></a></dt>
+<dd><p>Automatic keyframe insertion using active Keying Set only</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_lock_relative">
+<span class="sig-name descname"><span class="pre">use_lock_relative</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_lock_relative" title="Link to this definition"></a></dt>
+<dd><p>Display bone-deforming groups as if all locked deform groups were deleted, and the remaining ones were re-normalized</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_mesh_automerge">
+<span class="sig-name descname"><span class="pre">use_mesh_automerge</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_mesh_automerge" title="Link to this definition"></a></dt>
+<dd><p>Automatically merge vertices moved to the same location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_mesh_automerge_and_split">
+<span class="sig-name descname"><span class="pre">use_mesh_automerge_and_split</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_mesh_automerge_and_split" title="Link to this definition"></a></dt>
+<dd><p>Automatically split edges and faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_multipaint">
+<span class="sig-name descname"><span class="pre">use_multipaint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_multipaint" title="Link to this definition"></a></dt>
+<dd><p>Paint across the weights of all selected bones, maintaining their relative influence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_proportional_action">
+<span class="sig-name descname"><span class="pre">use_proportional_action</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_proportional_action" title="Link to this definition"></a></dt>
+<dd><p>Proportional editing in action editor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_proportional_connected">
+<span class="sig-name descname"><span class="pre">use_proportional_connected</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_proportional_connected" title="Link to this definition"></a></dt>
+<dd><p>Proportional Editing using connected geometry only</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_proportional_edit">
+<span class="sig-name descname"><span class="pre">use_proportional_edit</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_proportional_edit" title="Link to this definition"></a></dt>
+<dd><p>Proportional edit mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_proportional_edit_mask">
+<span class="sig-name descname"><span class="pre">use_proportional_edit_mask</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_proportional_edit_mask" title="Link to this definition"></a></dt>
+<dd><p>Proportional editing mask mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_proportional_edit_objects">
+<span class="sig-name descname"><span class="pre">use_proportional_edit_objects</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_proportional_edit_objects" title="Link to this definition"></a></dt>
+<dd><p>Proportional editing object mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_proportional_fcurve">
+<span class="sig-name descname"><span class="pre">use_proportional_fcurve</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_proportional_fcurve" title="Link to this definition"></a></dt>
+<dd><p>Proportional editing in F-Curve editor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_proportional_projected">
+<span class="sig-name descname"><span class="pre">use_proportional_projected</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_proportional_projected" title="Link to this definition"></a></dt>
+<dd><p>Proportional Editing using screen space locations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_record_with_nla">
+<span class="sig-name descname"><span class="pre">use_record_with_nla</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_record_with_nla" title="Link to this definition"></a></dt>
+<dd><p>Add a new NLA Track + Strip for every loop/pass made over the animation to allow non-destructive tweaking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap">
+<span class="sig-name descname"><span class="pre">use_snap</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap" title="Link to this definition"></a></dt>
+<dd><p>Snap during transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_align_rotation">
+<span class="sig-name descname"><span class="pre">use_snap_align_rotation</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_align_rotation" title="Link to this definition"></a></dt>
+<dd><p>Align rotation with the snapping target</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_anim">
+<span class="sig-name descname"><span class="pre">use_snap_anim</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_anim" title="Link to this definition"></a></dt>
+<dd><p>Enable snapping when transforming keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_backface_culling">
+<span class="sig-name descname"><span class="pre">use_snap_backface_culling</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_backface_culling" title="Link to this definition"></a></dt>
+<dd><p>Exclude back facing geometry from snapping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_edit">
+<span class="sig-name descname"><span class="pre">use_snap_edit</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_edit" title="Link to this definition"></a></dt>
+<dd><p>Snap onto non-active objects in Edit Mode (Edit Mode Only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_grid_absolute">
+<span class="sig-name descname"><span class="pre">use_snap_grid_absolute</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_grid_absolute" title="Link to this definition"></a></dt>
+<dd><p>Absolute grid alignment while translating (based on the pivot center)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_node">
+<span class="sig-name descname"><span class="pre">use_snap_node</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_node" title="Link to this definition"></a></dt>
+<dd><p>Snap Node during transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_nonedit">
+<span class="sig-name descname"><span class="pre">use_snap_nonedit</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_nonedit" title="Link to this definition"></a></dt>
+<dd><p>Snap onto objects not in Edit Mode (Edit Mode Only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_peel_object">
+<span class="sig-name descname"><span class="pre">use_snap_peel_object</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_peel_object" title="Link to this definition"></a></dt>
+<dd><p>Consider objects as whole when finding volume center</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_rotate">
+<span class="sig-name descname"><span class="pre">use_snap_rotate</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_rotate" title="Link to this definition"></a></dt>
+<dd><p>Rotate is affected by the snapping settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_scale">
+<span class="sig-name descname"><span class="pre">use_snap_scale</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_scale" title="Link to this definition"></a></dt>
+<dd><p>Scale is affected by snapping settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_selectable">
+<span class="sig-name descname"><span class="pre">use_snap_selectable</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_selectable" title="Link to this definition"></a></dt>
+<dd><p>Snap only onto objects that are selectable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_self">
+<span class="sig-name descname"><span class="pre">use_snap_self</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_self" title="Link to this definition"></a></dt>
+<dd><p>Snap onto itself only if enabled (Edit Mode Only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_sequencer">
+<span class="sig-name descname"><span class="pre">use_snap_sequencer</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_sequencer" title="Link to this definition"></a></dt>
+<dd><p>Snap to strip edges or current frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_time_absolute">
+<span class="sig-name descname"><span class="pre">use_snap_time_absolute</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_time_absolute" title="Link to this definition"></a></dt>
+<dd><p>Absolute time alignment while translating</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_to_same_target">
+<span class="sig-name descname"><span class="pre">use_snap_to_same_target</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_to_same_target" title="Link to this definition"></a></dt>
+<dd><p>Snap only to target that source was initially near (Face Nearest Only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_translate">
+<span class="sig-name descname"><span class="pre">use_snap_translate</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_translate" title="Link to this definition"></a></dt>
+<dd><p>Move is affected by snapping settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_uv">
+<span class="sig-name descname"><span class="pre">use_snap_uv</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_uv" title="Link to this definition"></a></dt>
+<dd><p>Snap UV during transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_snap_uv_grid_absolute">
+<span class="sig-name descname"><span class="pre">use_snap_uv_grid_absolute</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_snap_uv_grid_absolute" title="Link to this definition"></a></dt>
+<dd><p>Absolute grid alignment while translating (based on the pivot center)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_transform_correct_face_attributes">
+<span class="sig-name descname"><span class="pre">use_transform_correct_face_attributes</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_transform_correct_face_attributes" title="Link to this definition"></a></dt>
+<dd><p>Correct data such as UVs and color attributes when transforming</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_transform_correct_keep_connected">
+<span class="sig-name descname"><span class="pre">use_transform_correct_keep_connected</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_transform_correct_keep_connected" title="Link to this definition"></a></dt>
+<dd><p>During the Face Attributes correction, merge attributes connected to the same vertex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_transform_data_origin">
+<span class="sig-name descname"><span class="pre">use_transform_data_origin</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_transform_data_origin" title="Link to this definition"></a></dt>
+<dd><p>Transform object origins, while leaving the shape in place</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_transform_pivot_point_align">
+<span class="sig-name descname"><span class="pre">use_transform_pivot_point_align</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_transform_pivot_point_align" title="Link to this definition"></a></dt>
+<dd><p>Only transform object locations, without affecting rotation or scaling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_transform_skip_children">
+<span class="sig-name descname"><span class="pre">use_transform_skip_children</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_transform_skip_children" title="Link to this definition"></a></dt>
+<dd><p>Transform the parents, leaving the children in place</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.use_uv_select_sync">
+<span class="sig-name descname"><span class="pre">use_uv_select_sync</span></span><a class="headerlink" href="#bpy.types.ToolSettings.use_uv_select_sync" title="Link to this definition"></a></dt>
+<dd><p>Keep UV and edit mode mesh selection in sync</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.uv_relax_method">
+<span class="sig-name descname"><span class="pre">uv_relax_method</span></span><a class="headerlink" href="#bpy.types.ToolSettings.uv_relax_method" title="Link to this definition"></a></dt>
+<dd><p>Algorithm used for UV relaxation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LAPLACIAN</span></code>
+Laplacian – Use Laplacian method for relaxation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HC</span></code>
+HC – Use HC method for relaxation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COTAN</span></code>
+Geometry – Use Geometry (cotangent) relaxation, making UVs follow the underlying 3D geometry.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘LAPLACIAN’, ‘HC’, ‘COTAN’], default ‘LAPLACIAN’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.uv_sculpt">
+<span class="sig-name descname"><span class="pre">uv_sculpt</span></span><a class="headerlink" href="#bpy.types.ToolSettings.uv_sculpt" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.UvSculpt.html#bpy.types.UvSculpt" title="bpy.types.UvSculpt"><code class="xref py py-class docutils literal notranslate"><span class="pre">UvSculpt</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.uv_sculpt_all_islands">
+<span class="sig-name descname"><span class="pre">uv_sculpt_all_islands</span></span><a class="headerlink" href="#bpy.types.ToolSettings.uv_sculpt_all_islands" title="Link to this definition"></a></dt>
+<dd><p>Brush operates on all islands</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.uv_sculpt_lock_borders">
+<span class="sig-name descname"><span class="pre">uv_sculpt_lock_borders</span></span><a class="headerlink" href="#bpy.types.ToolSettings.uv_sculpt_lock_borders" title="Link to this definition"></a></dt>
+<dd><p>Disable editing of boundary edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.uv_select_mode">
+<span class="sig-name descname"><span class="pre">uv_select_mode</span></span><a class="headerlink" href="#bpy.types.ToolSettings.uv_select_mode" title="Link to this definition"></a></dt>
+<dd><p>UV selection and display mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/mesh_select_mode_uv_items.html#rna-enum-mesh-select-mode-uv-items"><span class="std std-ref">Mesh Select Mode Uv Items</span></a>, default ‘VERTEX’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.uv_sticky_select_mode">
+<span class="sig-name descname"><span class="pre">uv_sticky_select_mode</span></span><a class="headerlink" href="#bpy.types.ToolSettings.uv_sticky_select_mode" title="Link to this definition"></a></dt>
+<dd><p>Method for extending UV vertex selection</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>
+Disabled – Sticky vertex selection disabled.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARED_LOCATION</span></code>
+Shared Location – Select UVs that are at the same location and share a mesh vertex.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARED_VERTEX</span></code>
+Shared Vertex – Select UVs that share a mesh vertex, whether or not they are at the same location.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘DISABLED’, ‘SHARED_LOCATION’, ‘SHARED_VERTEX’], default ‘SHARED_LOCATION’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.vertex_group_subset">
+<span class="sig-name descname"><span class="pre">vertex_group_subset</span></span><a class="headerlink" href="#bpy.types.ToolSettings.vertex_group_subset" title="Link to this definition"></a></dt>
+<dd><p>Filter Vertex groups for Display</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code>
+All – All Vertex Groups.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BONE_DEFORM</span></code>
+Deform – Vertex Groups assigned to Deform Bones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OTHER_DEFORM</span></code>
+Other – Vertex Groups assigned to non Deform Bones.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ALL’, ‘BONE_DEFORM’, ‘OTHER_DEFORM’], default ‘ALL’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.vertex_group_user">
+<span class="sig-name descname"><span class="pre">vertex_group_user</span></span><a class="headerlink" href="#bpy.types.ToolSettings.vertex_group_user" title="Link to this definition"></a></dt>
+<dd><p>Display unweighted vertices</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>
+Active – Show vertices with no weights in the active group.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code>
+All – Show vertices with no weights in any group.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NONE’, ‘ACTIVE’, ‘ALL’], default ‘NONE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.vertex_group_weight">
+<span class="sig-name descname"><span class="pre">vertex_group_weight</span></span><a class="headerlink" href="#bpy.types.ToolSettings.vertex_group_weight" title="Link to this definition"></a></dt>
+<dd><p>Weight to assign in vertex groups</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.vertex_paint">
+<span class="sig-name descname"><span class="pre">vertex_paint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.vertex_paint" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.VertexPaint.html#bpy.types.VertexPaint" title="bpy.types.VertexPaint"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexPaint</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.weight_paint">
+<span class="sig-name descname"><span class="pre">weight_paint</span></span><a class="headerlink" href="#bpy.types.ToolSettings.weight_paint" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.VertexPaint.html#bpy.types.VertexPaint" title="bpy.types.VertexPaint"><code class="xref py py-class docutils literal notranslate"><span class="pre">VertexPaint</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.workspace_tool_type">
+<span class="sig-name descname"><span class="pre">workspace_tool_type</span></span><a class="headerlink" href="#bpy.types.ToolSettings.workspace_tool_type" title="Link to this definition"></a></dt>
+<dd><p>Action when dragging in the viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘DEFAULT’, ‘FALLBACK’], default ‘FALLBACK’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.ToolSettings.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.ToolSettings.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.ToolSettings.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Context.html#bpy.types.Context.tool_settings" title="bpy.types.Context.tool_settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">Context.tool_settings</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene.tool_settings" title="bpy.types.Scene.tool_settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene.tool_settings</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.TintGpencilModifier.html" class="btn btn-neutral float-left" title="TintGpencilModifier(GpencilModifier)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.TrackToConstraint.html" class="btn btn-neutral float-right" title="TrackToConstraint(Constraint)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

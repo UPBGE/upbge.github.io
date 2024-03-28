@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View3DOverlay(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.View3DOverlay.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="View3DShading(bpy_struct)" href="bpy.types.View3DShading.html" />
+    <link rel="prev" title="View3DCursor(bpy_struct)" href="bpy.types.View3DCursor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">View3DOverlay(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="view3doverlay-bpy-struct">
+<h1>View3DOverlay(bpy_struct)<a class="headerlink" href="#view3doverlay-bpy-struct" title="Link to this heading"></a></h1>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">View3DOverlay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.View3DOverlay" title="Link to this definition"></a></dt>
+<dd><p>Settings for display of overlays in the 3D viewport</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.backwire_opacity">
+<span class="sig-name descname"><span class="pre">backwire_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.backwire_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity when rendering transparent wires</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.bone_wire_alpha">
+<span class="sig-name descname"><span class="pre">bone_wire_alpha</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.bone_wire_alpha" title="Link to this definition"></a></dt>
+<dd><p>Maximum opacity of bones in wireframe display mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.display_handle">
+<span class="sig-name descname"><span class="pre">display_handle</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.display_handle" title="Link to this definition"></a></dt>
+<dd><p>Limit the display of curve handles in edit mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NONE’, ‘SELECTED’, ‘ALL’], default ‘SELECTED’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.fade_inactive_alpha">
+<span class="sig-name descname"><span class="pre">fade_inactive_alpha</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.fade_inactive_alpha" title="Link to this definition"></a></dt>
+<dd><p>Strength of the fade effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.gpencil_fade_layer">
+<span class="sig-name descname"><span class="pre">gpencil_fade_layer</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.gpencil_fade_layer" title="Link to this definition"></a></dt>
+<dd><p>Fade layer opacity for Grease Pencil layers except the active one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.gpencil_fade_objects">
+<span class="sig-name descname"><span class="pre">gpencil_fade_objects</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.gpencil_fade_objects" title="Link to this definition"></a></dt>
+<dd><p>Fade factor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.gpencil_grid_opacity">
+<span class="sig-name descname"><span class="pre">gpencil_grid_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.gpencil_grid_opacity" title="Link to this definition"></a></dt>
+<dd><p>Canvas grid opacity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.1, 1], default 0.9</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.gpencil_vertex_paint_opacity">
+<span class="sig-name descname"><span class="pre">gpencil_vertex_paint_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.gpencil_vertex_paint_opacity" title="Link to this definition"></a></dt>
+<dd><p>Vertex Paint mix factor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.grid_lines">
+<span class="sig-name descname"><span class="pre">grid_lines</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.grid_lines" title="Link to this definition"></a></dt>
+<dd><p>Number of grid lines to display in perspective view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 1024], default 16</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.grid_scale">
+<span class="sig-name descname"><span class="pre">grid_scale</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.grid_scale" title="Link to this definition"></a></dt>
+<dd><p>Multiplier for the distance between 3D View grid lines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.grid_scale_unit">
+<span class="sig-name descname"><span class="pre">grid_scale_unit</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.grid_scale_unit" title="Link to this definition"></a></dt>
+<dd><p>Grid cell size scaled by scene unit system settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.grid_subdivisions">
+<span class="sig-name descname"><span class="pre">grid_subdivisions</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.grid_subdivisions" title="Link to this definition"></a></dt>
+<dd><p>Number of subdivisions between grid lines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 1024], default 10</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.normals_constant_screen_size">
+<span class="sig-name descname"><span class="pre">normals_constant_screen_size</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.normals_constant_screen_size" title="Link to this definition"></a></dt>
+<dd><p>Screen size for normals in the 3D view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100000], default 7.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.normals_length">
+<span class="sig-name descname"><span class="pre">normals_length</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.normals_length" title="Link to this definition"></a></dt>
+<dd><p>Display size for normals in the 3D view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-05, 100000], default 0.02</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.retopology_offset">
+<span class="sig-name descname"><span class="pre">retopology_offset</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.retopology_offset" title="Link to this definition"></a></dt>
+<dd><p>Offset used to draw edit mesh in front of other geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.sculpt_curves_cage_opacity">
+<span class="sig-name descname"><span class="pre">sculpt_curves_cage_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.sculpt_curves_cage_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity of the cage overlay in curves sculpt mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.sculpt_mode_face_sets_opacity">
+<span class="sig-name descname"><span class="pre">sculpt_mode_face_sets_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.sculpt_mode_face_sets_opacity" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.sculpt_mode_mask_opacity">
+<span class="sig-name descname"><span class="pre">sculpt_mode_mask_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.sculpt_mode_mask_opacity" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.75</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_annotation">
+<span class="sig-name descname"><span class="pre">show_annotation</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_annotation" title="Link to this definition"></a></dt>
+<dd><p>Show annotations for this view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_axis_x">
+<span class="sig-name descname"><span class="pre">show_axis_x</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_axis_x" title="Link to this definition"></a></dt>
+<dd><p>Show the X axis line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_axis_y">
+<span class="sig-name descname"><span class="pre">show_axis_y</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_axis_y" title="Link to this definition"></a></dt>
+<dd><p>Show the Y axis line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_axis_z">
+<span class="sig-name descname"><span class="pre">show_axis_z</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_axis_z" title="Link to this definition"></a></dt>
+<dd><p>Show the Z axis line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_bones">
+<span class="sig-name descname"><span class="pre">show_bones</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_bones" title="Link to this definition"></a></dt>
+<dd><p>Display bones (disable to show motion paths only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_cursor">
+<span class="sig-name descname"><span class="pre">show_cursor</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_cursor" title="Link to this definition"></a></dt>
+<dd><p>Display 3D Cursor Overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_curve_normals">
+<span class="sig-name descname"><span class="pre">show_curve_normals</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_curve_normals" title="Link to this definition"></a></dt>
+<dd><p>Display 3D curve normals in editmode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_edge_bevel_weight">
+<span class="sig-name descname"><span class="pre">show_edge_bevel_weight</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_edge_bevel_weight" title="Link to this definition"></a></dt>
+<dd><p>Display weights created for the Bevel modifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_edge_crease">
+<span class="sig-name descname"><span class="pre">show_edge_crease</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_edge_crease" title="Link to this definition"></a></dt>
+<dd><p>Display creases created for Subdivision Surface modifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_edge_seams">
+<span class="sig-name descname"><span class="pre">show_edge_seams</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_edge_seams" title="Link to this definition"></a></dt>
+<dd><p>Display UV unwrapping seams</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_edge_sharp">
+<span class="sig-name descname"><span class="pre">show_edge_sharp</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_edge_sharp" title="Link to this definition"></a></dt>
+<dd><p>Display sharp edges, used with the Edge Split modifier</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_edges">
+<span class="sig-name descname"><span class="pre">show_edges</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_edges" title="Link to this definition"></a></dt>
+<dd><p>Highlight selected edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_extra_edge_angle">
+<span class="sig-name descname"><span class="pre">show_extra_edge_angle</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_extra_edge_angle" title="Link to this definition"></a></dt>
+<dd><p>Display selected edge angle, using global values when set in the transform panel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_extra_edge_length">
+<span class="sig-name descname"><span class="pre">show_extra_edge_length</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_extra_edge_length" title="Link to this definition"></a></dt>
+<dd><p>Display selected edge lengths, using global values when set in the transform panel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_extra_face_angle">
+<span class="sig-name descname"><span class="pre">show_extra_face_angle</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_extra_face_angle" title="Link to this definition"></a></dt>
+<dd><p>Display the angles in the selected edges, using global values when set in the transform panel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_extra_face_area">
+<span class="sig-name descname"><span class="pre">show_extra_face_area</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_extra_face_area" title="Link to this definition"></a></dt>
+<dd><p>Display the area of selected faces, using global values when set in the transform panel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_extra_indices">
+<span class="sig-name descname"><span class="pre">show_extra_indices</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_extra_indices" title="Link to this definition"></a></dt>
+<dd><p>Display the index numbers of selected vertices, edges, and faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_extras">
+<span class="sig-name descname"><span class="pre">show_extras</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_extras" title="Link to this definition"></a></dt>
+<dd><p>Object details, including empty wire, cameras and other visual guides</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_face_center">
+<span class="sig-name descname"><span class="pre">show_face_center</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_face_center" title="Link to this definition"></a></dt>
+<dd><p>Display face center when face selection is enabled in solid shading modes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_face_normals">
+<span class="sig-name descname"><span class="pre">show_face_normals</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_face_normals" title="Link to this definition"></a></dt>
+<dd><p>Display face normals as lines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_face_orientation">
+<span class="sig-name descname"><span class="pre">show_face_orientation</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_face_orientation" title="Link to this definition"></a></dt>
+<dd><p>Show the Face Orientation Overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_faces">
+<span class="sig-name descname"><span class="pre">show_faces</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_faces" title="Link to this definition"></a></dt>
+<dd><p>Highlight selected faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_fade_inactive">
+<span class="sig-name descname"><span class="pre">show_fade_inactive</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_fade_inactive" title="Link to this definition"></a></dt>
+<dd><p>Fade inactive geometry using the viewport background color</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_floor">
+<span class="sig-name descname"><span class="pre">show_floor</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_floor" title="Link to this definition"></a></dt>
+<dd><p>Show the ground plane grid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_freestyle_edge_marks">
+<span class="sig-name descname"><span class="pre">show_freestyle_edge_marks</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_freestyle_edge_marks" title="Link to this definition"></a></dt>
+<dd><p>Display Freestyle edge marks, used with the Freestyle renderer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_freestyle_face_marks">
+<span class="sig-name descname"><span class="pre">show_freestyle_face_marks</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_freestyle_face_marks" title="Link to this definition"></a></dt>
+<dd><p>Display Freestyle face marks, used with the Freestyle renderer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_light_colors">
+<span class="sig-name descname"><span class="pre">show_light_colors</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_light_colors" title="Link to this definition"></a></dt>
+<dd><p>Show light colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_look_dev">
+<span class="sig-name descname"><span class="pre">show_look_dev</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_look_dev" title="Link to this definition"></a></dt>
+<dd><p>Show HDRI preview spheres</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_motion_paths">
+<span class="sig-name descname"><span class="pre">show_motion_paths</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_motion_paths" title="Link to this definition"></a></dt>
+<dd><p>Show the Motion Paths Overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_object_origins">
+<span class="sig-name descname"><span class="pre">show_object_origins</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_object_origins" title="Link to this definition"></a></dt>
+<dd><p>Show object center dots</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_object_origins_all">
+<span class="sig-name descname"><span class="pre">show_object_origins_all</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_object_origins_all" title="Link to this definition"></a></dt>
+<dd><p>Show the object origin center dot for all (selected and unselected) objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_onion_skins">
+<span class="sig-name descname"><span class="pre">show_onion_skins</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_onion_skins" title="Link to this definition"></a></dt>
+<dd><p>Show the Onion Skinning Overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_ortho_grid">
+<span class="sig-name descname"><span class="pre">show_ortho_grid</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_ortho_grid" title="Link to this definition"></a></dt>
+<dd><p>Show grid in orthographic side view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_outline_selected">
+<span class="sig-name descname"><span class="pre">show_outline_selected</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_outline_selected" title="Link to this definition"></a></dt>
+<dd><p>Show an outline highlight around selected objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_overlays">
+<span class="sig-name descname"><span class="pre">show_overlays</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_overlays" title="Link to this definition"></a></dt>
+<dd><p>Display overlays like gizmos and outlines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_paint_wire">
+<span class="sig-name descname"><span class="pre">show_paint_wire</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_paint_wire" title="Link to this definition"></a></dt>
+<dd><p>Use wireframe display in painting modes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_relationship_lines">
+<span class="sig-name descname"><span class="pre">show_relationship_lines</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_relationship_lines" title="Link to this definition"></a></dt>
+<dd><p>Show dashed lines indicating parent or constraint relationships</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_retopology">
+<span class="sig-name descname"><span class="pre">show_retopology</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_retopology" title="Link to this definition"></a></dt>
+<dd><p>Hide the solid mesh and offset the overlay towards the view. Selection is occluded by inactive geometry, unless X-Ray is enabled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_sculpt_curves_cage">
+<span class="sig-name descname"><span class="pre">show_sculpt_curves_cage</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_sculpt_curves_cage" title="Link to this definition"></a></dt>
+<dd><p>Show original curves that are currently being edited</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_sculpt_face_sets">
+<span class="sig-name descname"><span class="pre">show_sculpt_face_sets</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_sculpt_face_sets" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_sculpt_mask">
+<span class="sig-name descname"><span class="pre">show_sculpt_mask</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_sculpt_mask" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_split_normals">
+<span class="sig-name descname"><span class="pre">show_split_normals</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_split_normals" title="Link to this definition"></a></dt>
+<dd><p>Display vertex-per-face normals as lines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_stats">
+<span class="sig-name descname"><span class="pre">show_stats</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_stats" title="Link to this definition"></a></dt>
+<dd><p>Display scene statistics overlay text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_statvis">
+<span class="sig-name descname"><span class="pre">show_statvis</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_statvis" title="Link to this definition"></a></dt>
+<dd><p>Display statistical information about the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_text">
+<span class="sig-name descname"><span class="pre">show_text</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_text" title="Link to this definition"></a></dt>
+<dd><p>Display overlay text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_vertex_normals">
+<span class="sig-name descname"><span class="pre">show_vertex_normals</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_vertex_normals" title="Link to this definition"></a></dt>
+<dd><p>Display vertex normals as lines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_viewer_attribute">
+<span class="sig-name descname"><span class="pre">show_viewer_attribute</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_viewer_attribute" title="Link to this definition"></a></dt>
+<dd><p>Show attribute overlay for active viewer node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_weight">
+<span class="sig-name descname"><span class="pre">show_weight</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_weight" title="Link to this definition"></a></dt>
+<dd><p>Display weights in editmode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_wireframes">
+<span class="sig-name descname"><span class="pre">show_wireframes</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_wireframes" title="Link to this definition"></a></dt>
+<dd><p>Show face edges wires</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_wpaint_contours">
+<span class="sig-name descname"><span class="pre">show_wpaint_contours</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_wpaint_contours" title="Link to this definition"></a></dt>
+<dd><p>Show contour lines formed by points with the same interpolated weight</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.show_xray_bone">
+<span class="sig-name descname"><span class="pre">show_xray_bone</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.show_xray_bone" title="Link to this definition"></a></dt>
+<dd><p>Show the bone selection overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.texture_paint_mode_opacity">
+<span class="sig-name descname"><span class="pre">texture_paint_mode_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.texture_paint_mode_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity of the texture paint mode stencil mask overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_debug_freeze_view_culling">
+<span class="sig-name descname"><span class="pre">use_debug_freeze_view_culling</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_debug_freeze_view_culling" title="Link to this definition"></a></dt>
+<dd><p>Freeze view culling bounds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_canvas_xray">
+<span class="sig-name descname"><span class="pre">use_gpencil_canvas_xray</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_canvas_xray" title="Link to this definition"></a></dt>
+<dd><p>Show Canvas grid in front</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_edit_lines">
+<span class="sig-name descname"><span class="pre">use_gpencil_edit_lines</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_edit_lines" title="Link to this definition"></a></dt>
+<dd><p>Show Edit Lines when editing strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_fade_gp_objects">
+<span class="sig-name descname"><span class="pre">use_gpencil_fade_gp_objects</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_fade_gp_objects" title="Link to this definition"></a></dt>
+<dd><p>Fade Grease Pencil Objects, except the active one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_fade_layers">
+<span class="sig-name descname"><span class="pre">use_gpencil_fade_layers</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_fade_layers" title="Link to this definition"></a></dt>
+<dd><p>Toggle fading of Grease Pencil layers except the active one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_fade_objects">
+<span class="sig-name descname"><span class="pre">use_gpencil_fade_objects</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_fade_objects" title="Link to this definition"></a></dt>
+<dd><p>Fade all viewport objects with a full color layer to improve visibility</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_grid">
+<span class="sig-name descname"><span class="pre">use_gpencil_grid</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_grid" title="Link to this definition"></a></dt>
+<dd><p>Display a grid over grease pencil paper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_multiedit_line_only">
+<span class="sig-name descname"><span class="pre">use_gpencil_multiedit_line_only</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_multiedit_line_only" title="Link to this definition"></a></dt>
+<dd><p>Show Edit Lines only in multiframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_onion_skin">
+<span class="sig-name descname"><span class="pre">use_gpencil_onion_skin</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_onion_skin" title="Link to this definition"></a></dt>
+<dd><p>Show ghosts of the keyframes before and after the current frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_show_directions">
+<span class="sig-name descname"><span class="pre">use_gpencil_show_directions</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_show_directions" title="Link to this definition"></a></dt>
+<dd><p>Show stroke drawing direction with a bigger green dot (start) and smaller red dot (end) points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_gpencil_show_material_name">
+<span class="sig-name descname"><span class="pre">use_gpencil_show_material_name</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_gpencil_show_material_name" title="Link to this definition"></a></dt>
+<dd><p>Show material name assigned to each stroke</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.use_normals_constant_screen_size">
+<span class="sig-name descname"><span class="pre">use_normals_constant_screen_size</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.use_normals_constant_screen_size" title="Link to this definition"></a></dt>
+<dd><p>Keep size of normals constant in relation to 3D view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.vertex_opacity">
+<span class="sig-name descname"><span class="pre">vertex_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.vertex_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity for edit vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.vertex_paint_mode_opacity">
+<span class="sig-name descname"><span class="pre">vertex_paint_mode_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.vertex_paint_mode_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity of the texture paint mode stencil mask overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.viewer_attribute_opacity">
+<span class="sig-name descname"><span class="pre">viewer_attribute_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.viewer_attribute_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity of the attribute that is currently visualized</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.weight_paint_mode_opacity">
+<span class="sig-name descname"><span class="pre">weight_paint_mode_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.weight_paint_mode_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity of the weight paint mode overlay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.wireframe_opacity">
+<span class="sig-name descname"><span class="pre">wireframe_opacity</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.wireframe_opacity" title="Link to this definition"></a></dt>
+<dd><p>Opacity of the displayed edges (1.0 for opaque)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.wireframe_threshold">
+<span class="sig-name descname"><span class="pre">wireframe_threshold</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.wireframe_threshold" title="Link to this definition"></a></dt>
+<dd><p>Adjust the angle threshold for displaying edges (1.0 for all)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.xray_alpha_bone">
+<span class="sig-name descname"><span class="pre">xray_alpha_bone</span></span><a class="headerlink" href="#bpy.types.View3DOverlay.xray_alpha_bone" title="Link to this definition"></a></dt>
+<dd><p>Opacity to use for bone selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.View3DOverlay.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.View3DOverlay.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.View3DOverlay.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.SpaceView3D.html#bpy.types.SpaceView3D.overlay" title="bpy.types.SpaceView3D.overlay"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceView3D.overlay</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.View3DCursor.html" class="btn btn-neutral float-left" title="View3DCursor(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.View3DShading.html" class="btn btn-neutral float-right" title="View3DShading(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

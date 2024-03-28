@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curve(ID) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.Curve.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CurveMap(bpy_struct)" href="bpy.types.CurveMap.html" />
+    <link rel="prev" title="CryptomatteEntry(bpy_struct)" href="bpy.types.CryptomatteEntry.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">Curve(ID)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="curve-id">
+<h1>Curve(ID)<a class="headerlink" href="#curve-id" title="Link to this heading"></a></h1>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a></p>
+<p>subclasses —
+<a class="reference internal" href="bpy.types.SurfaceCurve.html#bpy.types.SurfaceCurve" title="bpy.types.SurfaceCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">SurfaceCurve</span></code></a>, <a class="reference internal" href="bpy.types.TextCurve.html#bpy.types.TextCurve" title="bpy.types.TextCurve"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextCurve</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.Curve">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">Curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Curve" title="Link to this definition"></a></dt>
+<dd><p>Curve data-block storing curves, splines and NURBS</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Curve.animation_data">
+<span class="sig-name descname"><span class="pre">animation_data</span></span><a class="headerlink" href="#bpy.types.Curve.animation_data" title="Link to this definition"></a></dt>
+<dd><p>Animation data for this data-block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.AnimData.html#bpy.types.AnimData" title="bpy.types.AnimData"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimData</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_depth">
+<span class="sig-name descname"><span class="pre">bevel_depth</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_depth" title="Link to this definition"></a></dt>
+<dd><p>Radius of the bevel geometry, not including extrusion</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_factor_end">
+<span class="sig-name descname"><span class="pre">bevel_factor_end</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_factor_end" title="Link to this definition"></a></dt>
+<dd><p>Define where along the spline the curve geometry ends (0 for the beginning, 1 for the end)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_factor_mapping_end">
+<span class="sig-name descname"><span class="pre">bevel_factor_mapping_end</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_factor_mapping_end" title="Link to this definition"></a></dt>
+<dd><p>Determine how the geometry end factor is mapped to a spline</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RESOLUTION</span></code>
+Resolution – Map the geometry factor to the number of subdivisions of a spline (U resolution).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEGMENTS</span></code>
+Segments – Map the geometry factor to the length of a segment and to the number of subdivisions of a segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPLINE</span></code>
+Spline – Map the geometry factor to the length of a spline.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘RESOLUTION’, ‘SEGMENTS’, ‘SPLINE’], default ‘RESOLUTION’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_factor_mapping_start">
+<span class="sig-name descname"><span class="pre">bevel_factor_mapping_start</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_factor_mapping_start" title="Link to this definition"></a></dt>
+<dd><p>Determine how the geometry start factor is mapped to a spline</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">RESOLUTION</span></code>
+Resolution – Map the geometry factor to the number of subdivisions of a spline (U resolution).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEGMENTS</span></code>
+Segments – Map the geometry factor to the length of a segment and to the number of subdivisions of a segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPLINE</span></code>
+Spline – Map the geometry factor to the length of a spline.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘RESOLUTION’, ‘SEGMENTS’, ‘SPLINE’], default ‘RESOLUTION’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_factor_start">
+<span class="sig-name descname"><span class="pre">bevel_factor_start</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_factor_start" title="Link to this definition"></a></dt>
+<dd><p>Define where along the spline the curve geometry starts (0 for the beginning, 1 for the end)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_mode">
+<span class="sig-name descname"><span class="pre">bevel_mode</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_mode" title="Link to this definition"></a></dt>
+<dd><p>Determine how to build the curve’s bevel geometry</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ROUND</span></code>
+Round – Use circle for the section of the curve’s bevel geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OBJECT</span></code>
+Object – Use an object for the section of the curve’s bevel geometry segment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROFILE</span></code>
+Profile – Use a custom profile for each quarter of curve’s bevel geometry.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ROUND’, ‘OBJECT’, ‘PROFILE’], default ‘ROUND’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_object">
+<span class="sig-name descname"><span class="pre">bevel_object</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_object" title="Link to this definition"></a></dt>
+<dd><p>The name of the Curve object that defines the bevel shape</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_profile">
+<span class="sig-name descname"><span class="pre">bevel_profile</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_profile" title="Link to this definition"></a></dt>
+<dd><p>The path for the curve’s custom profile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.CurveProfile.html#bpy.types.CurveProfile" title="bpy.types.CurveProfile"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurveProfile</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.bevel_resolution">
+<span class="sig-name descname"><span class="pre">bevel_resolution</span></span><a class="headerlink" href="#bpy.types.Curve.bevel_resolution" title="Link to this definition"></a></dt>
+<dd><p>The number of segments in each quarter-circle of the bevel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 32], default 4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.dimensions">
+<span class="sig-name descname"><span class="pre">dimensions</span></span><a class="headerlink" href="#bpy.types.Curve.dimensions" title="Link to this definition"></a></dt>
+<dd><p>Select 2D or 3D curve type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">2D</span></code>
+2D – Clamp the Z axis of the curve.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">3D</span></code>
+3D – Allow editing on the Z axis of this curve, also allows tilt and curve radius to be used.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘2D’, ‘3D’], default ‘2D’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.eval_time">
+<span class="sig-name descname"><span class="pre">eval_time</span></span><a class="headerlink" href="#bpy.types.Curve.eval_time" title="Link to this definition"></a></dt>
+<dd><p>Parametric position along the length of the curve that Objects ‘following’ it should be at (position is evaluated by dividing by the ‘Path Length’ value)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.extrude">
+<span class="sig-name descname"><span class="pre">extrude</span></span><a class="headerlink" href="#bpy.types.Curve.extrude" title="Link to this definition"></a></dt>
+<dd><p>Length of the depth added in the local Z direction along the curve, perpendicular to its normals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.fill_mode">
+<span class="sig-name descname"><span class="pre">fill_mode</span></span><a class="headerlink" href="#bpy.types.Curve.fill_mode" title="Link to this definition"></a></dt>
+<dd><p>Mode of filling curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘FULL’, ‘BACK’, ‘FRONT’, ‘HALF’], default ‘FULL’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Curve.is_editmode">
+<span class="sig-name descname"><span class="pre">is_editmode</span></span><a class="headerlink" href="#bpy.types.Curve.is_editmode" title="Link to this definition"></a></dt>
+<dd><p>True when used in editmode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Curve.materials">
+<span class="sig-name descname"><span class="pre">materials</span></span><a class="headerlink" href="#bpy.types.Curve.materials" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.IDMaterials.html#bpy.types.IDMaterials" title="bpy.types.IDMaterials"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDMaterials</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Material.html#bpy.types.Material" title="bpy.types.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">Material</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.offset">
+<span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#bpy.types.Curve.offset" title="Link to this definition"></a></dt>
+<dd><p>Distance to move the curve parallel to its normals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.path_duration">
+<span class="sig-name descname"><span class="pre">path_duration</span></span><a class="headerlink" href="#bpy.types.Curve.path_duration" title="Link to this definition"></a></dt>
+<dd><p>The number of frames that are needed to traverse the path, defining the maximum value for the ‘Evaluation Time’ setting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 1048574], default 100</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.render_resolution_u">
+<span class="sig-name descname"><span class="pre">render_resolution_u</span></span><a class="headerlink" href="#bpy.types.Curve.render_resolution_u" title="Link to this definition"></a></dt>
+<dd><p>Surface resolution in U direction used while rendering (zero uses preview resolution)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 1024], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.render_resolution_v">
+<span class="sig-name descname"><span class="pre">render_resolution_v</span></span><a class="headerlink" href="#bpy.types.Curve.render_resolution_v" title="Link to this definition"></a></dt>
+<dd><p>Surface resolution in V direction used while rendering (zero uses preview resolution)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 1024], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.resolution_u">
+<span class="sig-name descname"><span class="pre">resolution_u</span></span><a class="headerlink" href="#bpy.types.Curve.resolution_u" title="Link to this definition"></a></dt>
+<dd><p>Number of computed points in the U direction between every pair of control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 1024], default 12</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.resolution_v">
+<span class="sig-name descname"><span class="pre">resolution_v</span></span><a class="headerlink" href="#bpy.types.Curve.resolution_v" title="Link to this definition"></a></dt>
+<dd><p>The number of computed points in the V direction between every pair of control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 1024], default 12</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Curve.shape_keys">
+<span class="sig-name descname"><span class="pre">shape_keys</span></span><a class="headerlink" href="#bpy.types.Curve.shape_keys" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Key.html#bpy.types.Key" title="bpy.types.Key"><code class="xref py py-class docutils literal notranslate"><span class="pre">Key</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Curve.splines">
+<span class="sig-name descname"><span class="pre">splines</span></span><a class="headerlink" href="#bpy.types.Curve.splines" title="Link to this definition"></a></dt>
+<dd><p>Collection of splines in this curve data object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.CurveSplines.html#bpy.types.CurveSplines" title="bpy.types.CurveSplines"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurveSplines</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Spline.html#bpy.types.Spline" title="bpy.types.Spline"><code class="xref py py-class docutils literal notranslate"><span class="pre">Spline</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.taper_object">
+<span class="sig-name descname"><span class="pre">taper_object</span></span><a class="headerlink" href="#bpy.types.Curve.taper_object" title="Link to this definition"></a></dt>
+<dd><p>Curve object name that defines the taper (width)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.taper_radius_mode">
+<span class="sig-name descname"><span class="pre">taper_radius_mode</span></span><a class="headerlink" href="#bpy.types.Curve.taper_radius_mode" title="Link to this definition"></a></dt>
+<dd><p>Determine how the effective radius of the spline point is computed when a taper object is specified</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERRIDE</span></code>
+Override – Override the radius of the spline point with the taper radius.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MULTIPLY</span></code>
+Multiply – Multiply the radius of the spline point by the taper radius.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Add – Add the radius of the bevel point to the taper radius.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘OVERRIDE’, ‘MULTIPLY’, ‘ADD’], default ‘OVERRIDE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.texspace_location">
+<span class="sig-name descname"><span class="pre">texspace_location</span></span><a class="headerlink" href="#bpy.types.Curve.texspace_location" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.texspace_size">
+<span class="sig-name descname"><span class="pre">texspace_size</span></span><a class="headerlink" href="#bpy.types.Curve.texspace_size" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.twist_mode">
+<span class="sig-name descname"><span class="pre">twist_mode</span></span><a class="headerlink" href="#bpy.types.Curve.twist_mode" title="Link to this definition"></a></dt>
+<dd><p>The type of tilt calculation for 3D Curves</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Z_UP</span></code>
+Z-Up – Use Z-Up axis to calculate the curve twist at each point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MINIMUM</span></code>
+Minimum – Use the least twist over the entire curve.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TANGENT</span></code>
+Tangent – Use the tangent to calculate twist.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘Z_UP’, ‘MINIMUM’, ‘TANGENT’], default ‘MINIMUM’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.twist_smooth">
+<span class="sig-name descname"><span class="pre">twist_smooth</span></span><a class="headerlink" href="#bpy.types.Curve.twist_smooth" title="Link to this definition"></a></dt>
+<dd><p>Smoothing iteration for tangents</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_auto_texspace">
+<span class="sig-name descname"><span class="pre">use_auto_texspace</span></span><a class="headerlink" href="#bpy.types.Curve.use_auto_texspace" title="Link to this definition"></a></dt>
+<dd><p>Adjust active object’s texture space automatically when transforming object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_deform_bounds">
+<span class="sig-name descname"><span class="pre">use_deform_bounds</span></span><a class="headerlink" href="#bpy.types.Curve.use_deform_bounds" title="Link to this definition"></a></dt>
+<dd><p>Option for curve-deform: Use the mesh bounds to clamp the deformation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_fill_caps">
+<span class="sig-name descname"><span class="pre">use_fill_caps</span></span><a class="headerlink" href="#bpy.types.Curve.use_fill_caps" title="Link to this definition"></a></dt>
+<dd><p>Fill caps for beveled curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_map_taper">
+<span class="sig-name descname"><span class="pre">use_map_taper</span></span><a class="headerlink" href="#bpy.types.Curve.use_map_taper" title="Link to this definition"></a></dt>
+<dd><p>Map effect of the taper object to the beveled part of the curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_path">
+<span class="sig-name descname"><span class="pre">use_path</span></span><a class="headerlink" href="#bpy.types.Curve.use_path" title="Link to this definition"></a></dt>
+<dd><p>Enable the curve to become a translation path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_path_clamp">
+<span class="sig-name descname"><span class="pre">use_path_clamp</span></span><a class="headerlink" href="#bpy.types.Curve.use_path_clamp" title="Link to this definition"></a></dt>
+<dd><p>Clamp the curve path children so they can’t travel past the start/end point of the curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_path_follow">
+<span class="sig-name descname"><span class="pre">use_path_follow</span></span><a class="headerlink" href="#bpy.types.Curve.use_path_follow" title="Link to this definition"></a></dt>
+<dd><p>Make curve path children rotate along the path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_radius">
+<span class="sig-name descname"><span class="pre">use_radius</span></span><a class="headerlink" href="#bpy.types.Curve.use_radius" title="Link to this definition"></a></dt>
+<dd><p>Option for paths and curve-deform: apply the curve radius to objects following it and to deformed objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Curve.use_stretch">
+<span class="sig-name descname"><span class="pre">use_stretch</span></span><a class="headerlink" href="#bpy.types.Curve.use_stretch" title="Link to this definition"></a></dt>
+<dd><p>Option for curve-deform: make deformed child stretch along entire path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Curve.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Curve.transform" title="Link to this definition"></a></dt>
+<dd><p>Transform curve by a matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 4 * 4 items in [-inf, inf]) – Matrix</p></li>
+<li><p><strong>shape_keys</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Transform Shape Keys</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Curve.validate_material_indices">
+<span class="sig-name descname"><span class="pre">validate_material_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Curve.validate_material_indices" title="Link to this definition"></a></dt>
+<dd><p>Validate material indices of splines or letters, return True when the curve has had invalid indices corrected (to default 0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Curve.update_gpu_tag">
+<span class="sig-name descname"><span class="pre">update_gpu_tag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Curve.update_gpu_tag" title="Link to this definition"></a></dt>
+<dd><p>update_gpu_tag</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Curve.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Curve.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Curve.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Curve.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name" title="bpy.types.ID.name"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name_full" title="bpy.types.ID.name_full"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name_full</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_evaluated" title="bpy.types.ID.is_evaluated"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_evaluated</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.original" title="bpy.types.ID.original"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.original</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.users" title="bpy.types.ID.users"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.users</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_fake_user" title="bpy.types.ID.use_fake_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_fake_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_extra_user" title="bpy.types.ID.use_extra_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_extra_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_embedded_data" title="bpy.types.ID.is_embedded_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_embedded_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_missing" title="bpy.types.ID.is_missing"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_missing</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_runtime_data" title="bpy.types.ID.is_runtime_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_runtime_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.tag" title="bpy.types.ID.tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_library_indirect" title="bpy.types.ID.is_library_indirect"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_library_indirect</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library" title="bpy.types.ID.library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library_weak_reference" title="bpy.types.ID.library_weak_reference"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library_weak_reference</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_data" title="bpy.types.ID.asset_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_library" title="bpy.types.ID.override_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview" title="bpy.types.ID.preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.evaluated_get" title="bpy.types.ID.evaluated_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.evaluated_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.copy" title="bpy.types.ID.copy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.copy</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_mark" title="bpy.types.ID.asset_mark"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_mark</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_clear" title="bpy.types.ID.asset_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_generate_preview" title="bpy.types.ID.asset_generate_preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_generate_preview</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_create" title="bpy.types.ID.override_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_hierarchy_create" title="bpy.types.ID.override_hierarchy_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_hierarchy_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_template_create" title="bpy.types.ID.override_template_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_template_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_clear" title="bpy.types.ID.user_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_remap" title="bpy.types.ID.user_remap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_remap</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.make_local" title="bpy.types.ID.make_local"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.make_local</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_of_id" title="bpy.types.ID.user_of_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_of_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_create" title="bpy.types.ID.animation_data_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_clear" title="bpy.types.ID.animation_data_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.update_tag" title="bpy.types.ID.update_tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.update_tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview_ensure" title="bpy.types.ID.preview_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass" title="bpy.types.ID.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass_py" title="bpy.types.ID.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass_py</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.context.html#bpy.context.curve" title="bpy.context.curve"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.context.curve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendData.html#bpy.types.BlendData.curves" title="bpy.types.BlendData.curves"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendData.curves</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataCurves.html#bpy.types.BlendDataCurves.new" title="bpy.types.BlendDataCurves.new"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataCurves.new</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.BlendDataCurves.html#bpy.types.BlendDataCurves.remove" title="bpy.types.BlendDataCurves.remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataCurves.remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.to_curve" title="bpy.types.Object.to_curve"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.to_curve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ProxyCurveProperty.html#bpy.types.ProxyCurveProperty.value" title="bpy.types.ProxyCurveProperty.value"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyCurveProperty.value</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.CryptomatteEntry.html" class="btn btn-neutral float-left" title="CryptomatteEntry(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.CurveMap.html" class="btn btn-neutral float-right" title="CurveMap(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

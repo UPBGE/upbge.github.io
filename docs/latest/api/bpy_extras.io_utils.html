@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bpy_extras submodule (bpy_extras.io_utils) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy_extras.io_utils.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bpy_extras submodule (bpy_extras.image_utils)" href="bpy_extras.image_utils.html" />
+    <link rel="prev" title="bpy_extras submodule (bpy_extras.object_utils)" href="bpy_extras.object_utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+      <li class="breadcrumb-item active">bpy_extras submodule (bpy_extras.io_utils)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy_extras.io_utils">
+<span id="bpy-extras-submodule-bpy-extras-io-utils"></span><h1>bpy_extras submodule (bpy_extras.io_utils)<a class="headerlink" href="#module-bpy_extras.io_utils" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.orientation_helper">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">orientation_helper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis_forward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.orientation_helper" title="Link to this definition"></a></dt>
+<dd><p>A decorator for import/export classes, generating properties needed by the axis conversion system and IO helpers,
+with specified default values (axes).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.axis_conversion">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">axis_conversion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_forward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_forward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.axis_conversion" title="Link to this definition"></a></dt>
+<dd><p>Each argument us an axis in [‘X’, ‘Y’, ‘Z’, ‘-X’, ‘-Y’, ‘-Z’]
+where the first 2 are a source and the second 2 are the target.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.axis_conversion_ensure">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">axis_conversion_ensure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">operator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forward_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">up_attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.axis_conversion_ensure" title="Link to this definition"></a></dt>
+<dd><p>Function to ensure an operator has valid axis conversion settings, intended
+to be used from <a class="reference internal" href="bpy.types.Operator.html#bpy.types.Operator.check" title="bpy.types.Operator.check"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Operator.check</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>operator</strong> (<a class="reference internal" href="bpy.types.Operator.html#bpy.types.Operator" title="bpy.types.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Operator</span></code></a>) – the operator to access axis attributes from.</p></li>
+<li><p><strong>forward_attr</strong> (<em>string</em>) – attribute storing the forward axis</p></li>
+<li><p><strong>up_attr</strong> (<em>string</em>) – attribute storing the up axis</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the value was modified.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.create_derived_objects">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">create_derived_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objects</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.create_derived_objects" title="Link to this definition"></a></dt>
+<dd><p>This function takes a sequence of objects, returning their instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>depsgraph</strong> (<a class="reference internal" href="bpy.types.Depsgraph.html#bpy.types.Depsgraph" title="bpy.types.Depsgraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Depsgraph</span></code></a>) – The evaluated depsgraph.</p></li>
+<li><p><strong>objects</strong> (sequence of <a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Object</span></code></a>) – A sequencer of objects.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary where each key is an object from <cite>objects</cite>,
+values are lists of (<a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Object</span></code></a>, <a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a>) tuples representing instances.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.unpack_list">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">unpack_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_tuples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.unpack_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.unpack_face_list">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">unpack_face_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_of_tuples</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.unpack_face_list" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.path_reference">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">path_reference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_src</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_dst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_subdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">library</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.path_reference" title="Link to this definition"></a></dt>
+<dd><p>Return a filepath relative to a destination directory, for use with
+exporters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em>) – the file path to return,
+supporting blenders relative ‘//’ prefix.</p></li>
+<li><p><strong>base_src</strong> (<em>string</em>) – the directory the <em>filepath</em> is relative too
+(normally the blend file).</p></li>
+<li><p><strong>base_dst</strong> (<em>string</em>) – the directory the <em>filepath</em> will be referenced from
+(normally the export path).</p></li>
+<li><p><strong>mode</strong> (<em>string</em>) – the method used get the path in
+[‘AUTO’, ‘ABSOLUTE’, ‘RELATIVE’, ‘MATCH’, ‘STRIP’, ‘COPY’]</p></li>
+<li><p><strong>copy_subdir</strong> (<em>string</em>) – the subdirectory of <em>base_dst</em> to use when mode=’COPY’.</p></li>
+<li><p><strong>copy_set</strong> (<em>set</em>) – collect from/to pairs when mode=’COPY’,
+pass to <em>path_reference_copy</em> when exporting is done.</p></li>
+<li><p><strong>library</strong> (<a class="reference internal" href="bpy.types.Library.html#bpy.types.Library" title="bpy.types.Library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Library</span></code></a> or None) – The library this path is relative to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the new filepath.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.path_reference_copy">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">path_reference_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">copy_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">report=&lt;built-in</span> <span class="pre">function</span> <span class="pre">print&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.path_reference_copy" title="Link to this definition"></a></dt>
+<dd><p>Execute copying files of path_reference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>copy_set</strong> (<em>set</em>) – set of (from, to) pairs to copy.</p></li>
+<li><p><strong>report</strong> (<em>function</em>) – function used for reporting warnings, takes a string argument.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.unique_name">
+<span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">unique_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean_func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.unique_name" title="Link to this definition"></a></dt>
+<dd><p>Helper function for storing unique names which may have special characters
+stripped and restricted to a maximum length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (any hashable object associated with the <em>name</em>.) – unique item this name belongs to, name_dict[key] will be reused
+when available.
+This can be the object, mesh, material, etc instance itself.</p></li>
+<li><p><strong>name</strong> (<em>string</em>) – The name used to create a unique value in <em>name_dict</em>.</p></li>
+<li><p><strong>name_dict</strong> (<em>dict</em>) – This is used to cache namespace to ensure no collisions
+occur, this should be an empty dict initially and only modified by this
+function.</p></li>
+<li><p><strong>clean_func</strong> (<em>function</em>) – Function to call on <em>name</em> before creating a unique value.</p></li>
+<li><p><strong>sep</strong> (<em>string</em>) – Separator to use when between the name and a number when a
+duplicate name is found.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.ExportHelper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">ExportHelper</span></span><a class="headerlink" href="#bpy_extras.io_utils.ExportHelper" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.ExportHelper.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.ExportHelper.check" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.ExportHelper.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.ExportHelper.invoke" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.ImportHelper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy_extras.io_utils.</span></span><span class="sig-name descname"><span class="pre">ImportHelper</span></span><a class="headerlink" href="#bpy_extras.io_utils.ImportHelper" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.ImportHelper.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.ImportHelper.check" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy_extras.io_utils.ImportHelper.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">_event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy_extras.io_utils.ImportHelper.invoke" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy_extras.object_utils.html" class="btn btn-neutral float-left" title="bpy_extras submodule (bpy_extras.object_utils)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy_extras.image_utils.html" class="btn btn-neutral float-right" title="bpy_extras submodule (bpy_extras.image_utils)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

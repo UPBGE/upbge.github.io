@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Material(ID) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.Material.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MaterialGPencilStyle(bpy_struct)" href="bpy.types.MaterialGPencilStyle.html" />
+    <link rel="prev" title="MaskSplines(bpy_struct)" href="bpy.types.MaskSplines.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">Material(ID)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="material-id">
+<h1>Material(ID)<a class="headerlink" href="#material-id" title="Link to this heading"></a></h1>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.Material">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">Material</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Material" title="Link to this definition"></a></dt>
+<dd><p>Material data-block to define the appearance of geometric objects for rendering</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.alpha_threshold">
+<span class="sig-name descname"><span class="pre">alpha_threshold</span></span><a class="headerlink" href="#bpy.types.Material.alpha_threshold" title="Link to this definition"></a></dt>
+<dd><p>A pixel is rendered only if its alpha value is above this threshold</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Material.animation_data">
+<span class="sig-name descname"><span class="pre">animation_data</span></span><a class="headerlink" href="#bpy.types.Material.animation_data" title="Link to this definition"></a></dt>
+<dd><p>Animation data for this data-block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.AnimData.html#bpy.types.AnimData" title="bpy.types.AnimData"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimData</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.blend_method">
+<span class="sig-name descname"><span class="pre">blend_method</span></span><a class="headerlink" href="#bpy.types.Material.blend_method" title="Link to this definition"></a></dt>
+<dd><p>Blend Mode for Transparent Faces</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OPAQUE</span></code>
+Opaque – Render surface without transparency.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLIP</span></code>
+Alpha Clip – Use the alpha threshold to clip the visibility (binary visibility).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HASHED</span></code>
+Alpha Hashed – Use noise to dither the binary visibility (works well with multi-samples).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BLEND</span></code>
+Alpha Blend – Render polygon transparent, depending on alpha channel of the texture.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘OPAQUE’, ‘CLIP’, ‘HASHED’, ‘BLEND’], default ‘OPAQUE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.diffuse_color">
+<span class="sig-name descname"><span class="pre">diffuse_color</span></span><a class="headerlink" href="#bpy.types.Material.diffuse_color" title="Link to this definition"></a></dt>
+<dd><p>Diffuse color of the material</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float array of 4 items in [0, inf], default (0.8, 0.8, 0.8, 0.8)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Material.grease_pencil">
+<span class="sig-name descname"><span class="pre">grease_pencil</span></span><a class="headerlink" href="#bpy.types.Material.grease_pencil" title="Link to this definition"></a></dt>
+<dd><p>Grease pencil color settings for material</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MaterialGPencilStyle.html#bpy.types.MaterialGPencilStyle" title="bpy.types.MaterialGPencilStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaterialGPencilStyle</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Material.is_grease_pencil">
+<span class="sig-name descname"><span class="pre">is_grease_pencil</span></span><a class="headerlink" href="#bpy.types.Material.is_grease_pencil" title="Link to this definition"></a></dt>
+<dd><p>True if this material has grease pencil data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.line_color">
+<span class="sig-name descname"><span class="pre">line_color</span></span><a class="headerlink" href="#bpy.types.Material.line_color" title="Link to this definition"></a></dt>
+<dd><p>Line color used for Freestyle line rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float array of 4 items in [0, inf], default (0.0, 0.0, 0.0, 0.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.line_priority">
+<span class="sig-name descname"><span class="pre">line_priority</span></span><a class="headerlink" href="#bpy.types.Material.line_priority" title="Link to this definition"></a></dt>
+<dd><p>The line color of a higher priority is used at material boundaries</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 32767], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Material.lineart">
+<span class="sig-name descname"><span class="pre">lineart</span></span><a class="headerlink" href="#bpy.types.Material.lineart" title="Link to this definition"></a></dt>
+<dd><p>Line art settings for material</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MaterialLineArt.html#bpy.types.MaterialLineArt" title="bpy.types.MaterialLineArt"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaterialLineArt</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.metallic">
+<span class="sig-name descname"><span class="pre">metallic</span></span><a class="headerlink" href="#bpy.types.Material.metallic" title="Link to this definition"></a></dt>
+<dd><p>Amount of mirror reflection for raytrace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Material.node_tree">
+<span class="sig-name descname"><span class="pre">node_tree</span></span><a class="headerlink" href="#bpy.types.Material.node_tree" title="Link to this definition"></a></dt>
+<dd><p>Node tree for node based materials</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.NodeTree.html#bpy.types.NodeTree" title="bpy.types.NodeTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">NodeTree</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.paint_active_slot">
+<span class="sig-name descname"><span class="pre">paint_active_slot</span></span><a class="headerlink" href="#bpy.types.Material.paint_active_slot" title="Link to this definition"></a></dt>
+<dd><p>Index of active texture paint slot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 32767], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.paint_clone_slot">
+<span class="sig-name descname"><span class="pre">paint_clone_slot</span></span><a class="headerlink" href="#bpy.types.Material.paint_clone_slot" title="Link to this definition"></a></dt>
+<dd><p>Index of clone texture paint slot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 32767], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.pass_index">
+<span class="sig-name descname"><span class="pre">pass_index</span></span><a class="headerlink" href="#bpy.types.Material.pass_index" title="Link to this definition"></a></dt>
+<dd><p>Index number for the “Material Index” render pass</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 32767], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.preview_render_type">
+<span class="sig-name descname"><span class="pre">preview_render_type</span></span><a class="headerlink" href="#bpy.types.Material.preview_render_type" title="Link to this definition"></a></dt>
+<dd><p>Type of preview render</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FLAT</span></code>
+Flat – Flat XY plane.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPHERE</span></code>
+Sphere – Sphere.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CUBE</span></code>
+Cube – Cube.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HAIR</span></code>
+Hair – Hair strands.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHADERBALL</span></code>
+Shader Ball – Shader ball.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLOTH</span></code>
+Cloth – Cloth.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLUID</span></code>
+Fluid – Fluid.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘FLAT’, ‘SPHERE’, ‘CUBE’, ‘HAIR’, ‘SHADERBALL’, ‘CLOTH’, ‘FLUID’], default ‘SPHERE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.refraction_depth">
+<span class="sig-name descname"><span class="pre">refraction_depth</span></span><a class="headerlink" href="#bpy.types.Material.refraction_depth" title="Link to this definition"></a></dt>
+<dd><p>Approximate the thickness of the object to compute two refraction events (0 is disabled)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.roughness">
+<span class="sig-name descname"><span class="pre">roughness</span></span><a class="headerlink" href="#bpy.types.Material.roughness" title="Link to this definition"></a></dt>
+<dd><p>Roughness of the material</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.shadow_method">
+<span class="sig-name descname"><span class="pre">shadow_method</span></span><a class="headerlink" href="#bpy.types.Material.shadow_method" title="Link to this definition"></a></dt>
+<dd><p>Shadow mapping method</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None – Material will cast no shadow.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPAQUE</span></code>
+Opaque – Material will cast shadows without transparency.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLIP</span></code>
+Alpha Clip – Use the alpha threshold to clip the visibility (binary visibility).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HASHED</span></code>
+Alpha Hashed – Use noise to dither the binary visibility and use filtering to reduce the noise.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NONE’, ‘OPAQUE’, ‘CLIP’, ‘HASHED’], default ‘OPAQUE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.show_transparent_back">
+<span class="sig-name descname"><span class="pre">show_transparent_back</span></span><a class="headerlink" href="#bpy.types.Material.show_transparent_back" title="Link to this definition"></a></dt>
+<dd><p>Render multiple transparent layers (may introduce transparency sorting problems)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.specular_color">
+<span class="sig-name descname"><span class="pre">specular_color</span></span><a class="headerlink" href="#bpy.types.Material.specular_color" title="Link to this definition"></a></dt>
+<dd><p>Specular color of the material</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Color" title="mathutils.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Color</span></code></a> of 3 items in [0, inf], default (1.0, 1.0, 1.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.specular_intensity">
+<span class="sig-name descname"><span class="pre">specular_intensity</span></span><a class="headerlink" href="#bpy.types.Material.specular_intensity" title="Link to this definition"></a></dt>
+<dd><p>How intense (bright) the specular reflection is</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Material.texture_paint_images">
+<span class="sig-name descname"><span class="pre">texture_paint_images</span></span><a class="headerlink" href="#bpy.types.Material.texture_paint_images" title="Link to this definition"></a></dt>
+<dd><p>Texture images used for texture painting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Image.html#bpy.types.Image" title="bpy.types.Image"><code class="xref py py-class docutils literal notranslate"><span class="pre">Image</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Material.texture_paint_slots">
+<span class="sig-name descname"><span class="pre">texture_paint_slots</span></span><a class="headerlink" href="#bpy.types.Material.texture_paint_slots" title="Link to this definition"></a></dt>
+<dd><p>Texture slots defining the mapping and influence of textures</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.TexPaintSlot.html#bpy.types.TexPaintSlot" title="bpy.types.TexPaintSlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">TexPaintSlot</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.use_backface_culling">
+<span class="sig-name descname"><span class="pre">use_backface_culling</span></span><a class="headerlink" href="#bpy.types.Material.use_backface_culling" title="Link to this definition"></a></dt>
+<dd><p>Use back face culling to hide the back side of faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.use_nodes">
+<span class="sig-name descname"><span class="pre">use_nodes</span></span><a class="headerlink" href="#bpy.types.Material.use_nodes" title="Link to this definition"></a></dt>
+<dd><p>Use shader nodes to render the material</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.use_preview_world">
+<span class="sig-name descname"><span class="pre">use_preview_world</span></span><a class="headerlink" href="#bpy.types.Material.use_preview_world" title="Link to this definition"></a></dt>
+<dd><p>Use the current world background to light the preview render</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.use_screen_refraction">
+<span class="sig-name descname"><span class="pre">use_screen_refraction</span></span><a class="headerlink" href="#bpy.types.Material.use_screen_refraction" title="Link to this definition"></a></dt>
+<dd><p>Use raytraced screen space refractions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Material.use_sss_translucency">
+<span class="sig-name descname"><span class="pre">use_sss_translucency</span></span><a class="headerlink" href="#bpy.types.Material.use_sss_translucency" title="Link to this definition"></a></dt>
+<dd><p>Add translucency effect to subsurface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Material.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Material.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Material.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Material.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name" title="bpy.types.ID.name"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name_full" title="bpy.types.ID.name_full"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name_full</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_evaluated" title="bpy.types.ID.is_evaluated"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_evaluated</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.original" title="bpy.types.ID.original"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.original</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.users" title="bpy.types.ID.users"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.users</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_fake_user" title="bpy.types.ID.use_fake_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_fake_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_extra_user" title="bpy.types.ID.use_extra_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_extra_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_embedded_data" title="bpy.types.ID.is_embedded_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_embedded_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_missing" title="bpy.types.ID.is_missing"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_missing</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_runtime_data" title="bpy.types.ID.is_runtime_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_runtime_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.tag" title="bpy.types.ID.tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_library_indirect" title="bpy.types.ID.is_library_indirect"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_library_indirect</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library" title="bpy.types.ID.library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library_weak_reference" title="bpy.types.ID.library_weak_reference"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library_weak_reference</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_data" title="bpy.types.ID.asset_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_library" title="bpy.types.ID.override_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview" title="bpy.types.ID.preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.evaluated_get" title="bpy.types.ID.evaluated_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.evaluated_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.copy" title="bpy.types.ID.copy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.copy</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_mark" title="bpy.types.ID.asset_mark"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_mark</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_clear" title="bpy.types.ID.asset_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_generate_preview" title="bpy.types.ID.asset_generate_preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_generate_preview</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_create" title="bpy.types.ID.override_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_hierarchy_create" title="bpy.types.ID.override_hierarchy_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_hierarchy_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_template_create" title="bpy.types.ID.override_template_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_template_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_clear" title="bpy.types.ID.user_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_remap" title="bpy.types.ID.user_remap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_remap</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.make_local" title="bpy.types.ID.make_local"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.make_local</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_of_id" title="bpy.types.ID.user_of_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_of_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_create" title="bpy.types.ID.animation_data_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_clear" title="bpy.types.ID.animation_data_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.update_tag" title="bpy.types.ID.update_tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.update_tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview_ensure" title="bpy.types.ID.preview_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass" title="bpy.types.ID.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass_py" title="bpy.types.ID.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass_py</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.context.html#bpy.context.material" title="bpy.context.material"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.context.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ArrayGpencilModifier.html#bpy.types.ArrayGpencilModifier.material" title="bpy.types.ArrayGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">ArrayGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendData.html#bpy.types.BlendData.materials" title="bpy.types.BlendData.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendData.materials</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataMaterials.html#bpy.types.BlendDataMaterials.create_gpencil_data" title="bpy.types.BlendDataMaterials.create_gpencil_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMaterials.create_gpencil_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataMaterials.html#bpy.types.BlendDataMaterials.new" title="bpy.types.BlendDataMaterials.new"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMaterials.new</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataMaterials.html#bpy.types.BlendDataMaterials.remove" title="bpy.types.BlendDataMaterials.remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMaterials.remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataMaterials.html#bpy.types.BlendDataMaterials.remove_gpencil_data" title="bpy.types.BlendDataMaterials.remove_gpencil_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMaterials.remove_gpencil_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BrushGpencilSettings.html#bpy.types.BrushGpencilSettings.material" title="bpy.types.BrushGpencilSettings.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">BrushGpencilSettings.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BrushGpencilSettings.html#bpy.types.BrushGpencilSettings.material_alt" title="bpy.types.BrushGpencilSettings.material_alt"><code class="xref py py-class docutils literal notranslate"><span class="pre">BrushGpencilSettings.material_alt</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ColorGpencilModifier.html#bpy.types.ColorGpencilModifier.material" title="bpy.types.ColorGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Curve.html#bpy.types.Curve.materials" title="bpy.types.Curve.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">Curve.materials</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Curves.html#bpy.types.Curves.materials" title="bpy.types.Curves.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">Curves.materials</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.DashGpencilModifierData.html#bpy.types.DashGpencilModifierData.material" title="bpy.types.DashGpencilModifierData.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">DashGpencilModifierData.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.EnvelopeGpencilModifier.html#bpy.types.EnvelopeGpencilModifier.material" title="bpy.types.EnvelopeGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnvelopeGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.GeometryNodeInputMaterial.html#bpy.types.GeometryNodeInputMaterial.material" title="bpy.types.GeometryNodeInputMaterial.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeometryNodeInputMaterial.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.GreasePencil.html#bpy.types.GreasePencil.materials" title="bpy.types.GreasePencil.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">GreasePencil.materials</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.HookGpencilModifier.html#bpy.types.HookGpencilModifier.material" title="bpy.types.HookGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">HookGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.IDMaterials.html#bpy.types.IDMaterials.append" title="bpy.types.IDMaterials.append"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDMaterials.append</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.IDMaterials.html#bpy.types.IDMaterials.pop" title="bpy.types.IDMaterials.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDMaterials.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.LatticeGpencilModifier.html#bpy.types.LatticeGpencilModifier.material" title="bpy.types.LatticeGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatticeGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.LengthGpencilModifier.html#bpy.types.LengthGpencilModifier.material" title="bpy.types.LengthGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">LengthGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.LineartGpencilModifier.html#bpy.types.LineartGpencilModifier.target_material" title="bpy.types.LineartGpencilModifier.target_material"><code class="xref py py-class docutils literal notranslate"><span class="pre">LineartGpencilModifier.target_material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.MaterialSlot.html#bpy.types.MaterialSlot.material" title="bpy.types.MaterialSlot.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">MaterialSlot.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Mesh.html#bpy.types.Mesh.materials" title="bpy.types.Mesh.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.materials</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.MetaBall.html#bpy.types.MetaBall.materials" title="bpy.types.MetaBall.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetaBall.materials</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.MirrorGpencilModifier.html#bpy.types.MirrorGpencilModifier.material" title="bpy.types.MirrorGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">MirrorGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.MultiplyGpencilModifier.html#bpy.types.MultiplyGpencilModifier.material" title="bpy.types.MultiplyGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiplyGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.NodeSocketMaterial.html#bpy.types.NodeSocketMaterial.default_value" title="bpy.types.NodeSocketMaterial.default_value"><code class="xref py py-class docutils literal notranslate"><span class="pre">NodeSocketMaterial.default_value</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.NodeTreeInterfaceSocketMaterial.html#bpy.types.NodeTreeInterfaceSocketMaterial.default_value" title="bpy.types.NodeTreeInterfaceSocketMaterial.default_value"><code class="xref py py-class docutils literal notranslate"><span class="pre">NodeTreeInterfaceSocketMaterial.default_value</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.NoiseGpencilModifier.html#bpy.types.NoiseGpencilModifier.material" title="bpy.types.NoiseGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">NoiseGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.active_material" title="bpy.types.Object.active_material"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.active_material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.OffsetGpencilModifier.html#bpy.types.OffsetGpencilModifier.material" title="bpy.types.OffsetGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">OffsetGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.OpacityGpencilModifier.html#bpy.types.OpacityGpencilModifier.material" title="bpy.types.OpacityGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">OpacityGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.OutlineGpencilModifier.html#bpy.types.OutlineGpencilModifier.material" title="bpy.types.OutlineGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutlineGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.OutlineGpencilModifier.html#bpy.types.OutlineGpencilModifier.outline_material" title="bpy.types.OutlineGpencilModifier.outline_material"><code class="xref py py-class docutils literal notranslate"><span class="pre">OutlineGpencilModifier.outline_material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.PointCloud.html#bpy.types.PointCloud.materials" title="bpy.types.PointCloud.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">PointCloud.materials</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ProxyMaterialProperty.html#bpy.types.ProxyMaterialProperty.value" title="bpy.types.ProxyMaterialProperty.value"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyMaterialProperty.value</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ShrinkwrapGpencilModifier.html#bpy.types.ShrinkwrapGpencilModifier.material" title="bpy.types.ShrinkwrapGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShrinkwrapGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.SimplifyGpencilModifier.html#bpy.types.SimplifyGpencilModifier.material" title="bpy.types.SimplifyGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">SimplifyGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.SmoothGpencilModifier.html#bpy.types.SmoothGpencilModifier.material" title="bpy.types.SmoothGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmoothGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.SubdivGpencilModifier.html#bpy.types.SubdivGpencilModifier.material" title="bpy.types.SubdivGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">SubdivGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.TextureGpencilModifier.html#bpy.types.TextureGpencilModifier.material" title="bpy.types.TextureGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">TextureGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ThickGpencilModifier.html#bpy.types.ThickGpencilModifier.material" title="bpy.types.ThickGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">ThickGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.TintGpencilModifier.html#bpy.types.TintGpencilModifier.material" title="bpy.types.TintGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">TintGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ViewLayer.html#bpy.types.ViewLayer.material_override" title="bpy.types.ViewLayer.material_override"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewLayer.material_override</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Volume.html#bpy.types.Volume.materials" title="bpy.types.Volume.materials"><code class="xref py py-class docutils literal notranslate"><span class="pre">Volume.materials</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WeightAngleGpencilModifier.html#bpy.types.WeightAngleGpencilModifier.material" title="bpy.types.WeightAngleGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">WeightAngleGpencilModifier.material</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WeightProxGpencilModifier.html#bpy.types.WeightProxGpencilModifier.material" title="bpy.types.WeightProxGpencilModifier.material"><code class="xref py py-class docutils literal notranslate"><span class="pre">WeightProxGpencilModifier.material</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.MaskSplines.html" class="btn btn-neutral float-left" title="MaskSplines(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.MaterialGPencilStyle.html" class="btn btn-neutral float-right" title="MaterialGPencilStyle(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

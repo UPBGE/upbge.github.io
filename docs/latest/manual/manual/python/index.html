@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Scripting &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme_overrides.css?v=5e9f35f9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f4332903"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction to Scripting" href="introduction.html" />
+    <link rel="prev" title="Draw" href="../logic_nodes/utility/draw.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Scripting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction to Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_game_engine.html">Python and the Game Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html">Understanding Inheritance And Composition In Game Scripting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datablocks/index.html">Datablocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Python Scripting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/manual/python/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python-scripting">
+<span id="python-index"></span><h1>Python Scripting<a class="headerlink" href="#python-scripting" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Scripting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#why-script-when-you-can-logic-brick-it">Why Script When You Can Logic Brick It?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#sane-replacement-for-large-scale-logic-bricked-objects">Sane Replacement for Large-Scale Logic-Bricked Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#better-handling-of-multiple-objects">Better Handling of Multiple Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#access-to-upbge-s-advanced-features">Access to UPBGE’s Advanced Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#use-features-that-are-not-part-of-upbge">Use Features That Are Not Part of UPBGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#keep-track-of-your-changes-with-a-version-control-system">Keep Track of Your Changes with a Version Control System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#debug-your-game-while-it-runs">Debug Your Game While It Runs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#so-what-exactly-is-python">So What Exactly Is Python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#flexible-data-types">Flexible Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#indentation">Indentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#oop-object-oriented-programming">OOP - Object-Oriented Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#where-to-learn-python">Where to Learn Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#online-material">Online Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#offline-material">Offline Material</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#python-built-in-help">Python Built-in Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="python_game_engine.html">Python and the Game Engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_game_engine.html#integrating-python-in-the-game-engine">Integrating Python in the Game Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_game_engine.html#writing-your-python-scripts">Writing Your Python Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_game_engine.html#designing-your-python-script-study-example">Designing Your Python Script - Study Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_game_engine.html#using-the-game-engine-api-application-programming-interface">Using the Game Engine API - Application Programming Interface</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html">Understanding Inheritance And Composition In Game Scripting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#type-and-inheritance">Type and Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#problems-of-inheritance">Problems of Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#composition-over-inheritance">Composition Over Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#dynamic-component-model">Dynamic Component Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#why-inheritance-still-matters">Why Inheritance Still Matters?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#mixins-and-traits">Mixins And Traits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance_and_composition_in_game_scripting.html#mixins-and-components-in-upbge">Mixins and Components in UPBGE</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../logic_nodes/utility/draw.html" class="btn btn-neutral float-left" title="Draw" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction to Scripting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

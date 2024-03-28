@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SpaceView3D(Space) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.SpaceView3D.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Speaker(ID)" href="bpy.types.Speaker.html" />
+    <link rel="prev" title="SpaceUVEditor(bpy_struct)" href="bpy.types.SpaceUVEditor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">SpaceView3D(Space)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="spaceview3d-space">
+<h1>SpaceView3D(Space)<a class="headerlink" href="#spaceview3d-space" title="Link to this heading"></a></h1>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Space.html#bpy.types.Space" title="bpy.types.Space"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">SpaceView3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Space</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceView3D" title="Link to this definition"></a></dt>
+<dd><p>3D View space data</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.camera">
+<span class="sig-name descname"><span class="pre">camera</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.camera" title="Link to this definition"></a></dt>
+<dd><p>Active camera used in this view (when unlocked from the scene’s active camera)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.clip_end">
+<span class="sig-name descname"><span class="pre">clip_end</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.clip_end" title="Link to this definition"></a></dt>
+<dd><p>3D View far clipping distance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-06, inf], default 1000.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.clip_start">
+<span class="sig-name descname"><span class="pre">clip_start</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.clip_start" title="Link to this definition"></a></dt>
+<dd><p>3D View near clipping distance (perspective view only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-06, inf], default 0.01</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.icon_from_show_object_viewport">
+<span class="sig-name descname"><span class="pre">icon_from_show_object_viewport</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.icon_from_show_object_viewport" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [-inf, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.lens">
+<span class="sig-name descname"><span class="pre">lens</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.lens" title="Link to this definition"></a></dt>
+<dd><p>Viewport lens angle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1, 250], default 50.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.local_view">
+<span class="sig-name descname"><span class="pre">local_view</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.local_view" title="Link to this definition"></a></dt>
+<dd><p>Display an isolated subset of objects, apart from the scene visibility</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bpy.types.SpaceView3D" title="bpy.types.SpaceView3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceView3D</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.lock_bone">
+<span class="sig-name descname"><span class="pre">lock_bone</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.lock_bone" title="Link to this definition"></a></dt>
+<dd><p>3D View center is locked to this bone’s position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.lock_camera">
+<span class="sig-name descname"><span class="pre">lock_camera</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.lock_camera" title="Link to this definition"></a></dt>
+<dd><p>Enable view navigation within the camera view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.lock_cursor">
+<span class="sig-name descname"><span class="pre">lock_cursor</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.lock_cursor" title="Link to this definition"></a></dt>
+<dd><p>3D View center is locked to the cursor’s position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.lock_object">
+<span class="sig-name descname"><span class="pre">lock_object</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.lock_object" title="Link to this definition"></a></dt>
+<dd><p>3D View center is locked to this object’s position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.mirror_xr_session">
+<span class="sig-name descname"><span class="pre">mirror_xr_session</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.mirror_xr_session" title="Link to this definition"></a></dt>
+<dd><p>Synchronize the viewer perspective of virtual reality sessions with this 3D viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.overlay">
+<span class="sig-name descname"><span class="pre">overlay</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.overlay" title="Link to this definition"></a></dt>
+<dd><p>Settings for display of overlays in the 3D viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.View3DOverlay.html#bpy.types.View3DOverlay" title="bpy.types.View3DOverlay"><code class="xref py py-class docutils literal notranslate"><span class="pre">View3DOverlay</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.region_3d">
+<span class="sig-name descname"><span class="pre">region_3d</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.region_3d" title="Link to this definition"></a></dt>
+<dd><p>3D region for this space. When the space is in quad view, the camera region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RegionView3D.html#bpy.types.RegionView3D" title="bpy.types.RegionView3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegionView3D</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.region_quadviews">
+<span class="sig-name descname"><span class="pre">region_quadviews</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.region_quadviews" title="Link to this definition"></a></dt>
+<dd><p>3D regions (the third one defines quad view settings, the fourth one is same as ‘region_3d’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.RegionView3D.html#bpy.types.RegionView3D" title="bpy.types.RegionView3D"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegionView3D</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.render_border_max_x">
+<span class="sig-name descname"><span class="pre">render_border_max_x</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.render_border_max_x" title="Link to this definition"></a></dt>
+<dd><p>Maximum X value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.render_border_max_y">
+<span class="sig-name descname"><span class="pre">render_border_max_y</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.render_border_max_y" title="Link to this definition"></a></dt>
+<dd><p>Maximum Y value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.render_border_min_x">
+<span class="sig-name descname"><span class="pre">render_border_min_x</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.render_border_min_x" title="Link to this definition"></a></dt>
+<dd><p>Minimum X value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.render_border_min_y">
+<span class="sig-name descname"><span class="pre">render_border_min_y</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.render_border_min_y" title="Link to this definition"></a></dt>
+<dd><p>Minimum Y value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.shading">
+<span class="sig-name descname"><span class="pre">shading</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.shading" title="Link to this definition"></a></dt>
+<dd><p>Settings for shading in the 3D viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.View3DShading.html#bpy.types.View3DShading" title="bpy.types.View3DShading"><code class="xref py py-class docutils literal notranslate"><span class="pre">View3DShading</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_bundle_names">
+<span class="sig-name descname"><span class="pre">show_bundle_names</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_bundle_names" title="Link to this definition"></a></dt>
+<dd><p>Show names for reconstructed tracks objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_camera_path">
+<span class="sig-name descname"><span class="pre">show_camera_path</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_camera_path" title="Link to this definition"></a></dt>
+<dd><p>Show reconstructed camera path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo">
+<span class="sig-name descname"><span class="pre">show_gizmo</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo" title="Link to this definition"></a></dt>
+<dd><p>Show gizmos of all types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_camera_dof_distance">
+<span class="sig-name descname"><span class="pre">show_gizmo_camera_dof_distance</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_camera_dof_distance" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust camera focus distance (depends on limits display)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_camera_lens">
+<span class="sig-name descname"><span class="pre">show_gizmo_camera_lens</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_camera_lens" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust camera focal length or orthographic scale</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_context">
+<span class="sig-name descname"><span class="pre">show_gizmo_context</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_context" title="Link to this definition"></a></dt>
+<dd><p>Context sensitive gizmos for the active item</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_empty_force_field">
+<span class="sig-name descname"><span class="pre">show_gizmo_empty_force_field</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_empty_force_field" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust the force field</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_empty_image">
+<span class="sig-name descname"><span class="pre">show_gizmo_empty_image</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_empty_image" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust image size and position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_light_look_at">
+<span class="sig-name descname"><span class="pre">show_gizmo_light_look_at</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_light_look_at" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust the direction of the light</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_light_size">
+<span class="sig-name descname"><span class="pre">show_gizmo_light_size</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_light_size" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust spot and area size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_navigate">
+<span class="sig-name descname"><span class="pre">show_gizmo_navigate</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_navigate" title="Link to this definition"></a></dt>
+<dd><p>Viewport navigation gizmo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_object_rotate">
+<span class="sig-name descname"><span class="pre">show_gizmo_object_rotate</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_object_rotate" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust rotation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_object_scale">
+<span class="sig-name descname"><span class="pre">show_gizmo_object_scale</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_object_scale" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust scale</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_object_translate">
+<span class="sig-name descname"><span class="pre">show_gizmo_object_translate</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_object_translate" title="Link to this definition"></a></dt>
+<dd><p>Gizmo to adjust location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_gizmo_tool">
+<span class="sig-name descname"><span class="pre">show_gizmo_tool</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_gizmo_tool" title="Link to this definition"></a></dt>
+<dd><p>Active tool gizmo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_armature">
+<span class="sig-name descname"><span class="pre">show_object_select_armature</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_armature" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of armatures</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_camera">
+<span class="sig-name descname"><span class="pre">show_object_select_camera</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_camera" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of cameras</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_curve">
+<span class="sig-name descname"><span class="pre">show_object_select_curve</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_curve" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_curves">
+<span class="sig-name descname"><span class="pre">show_object_select_curves</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_curves" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of hair curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_empty">
+<span class="sig-name descname"><span class="pre">show_object_select_empty</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_empty" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of empties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_font">
+<span class="sig-name descname"><span class="pre">show_object_select_font</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_font" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of text objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_grease_pencil">
+<span class="sig-name descname"><span class="pre">show_object_select_grease_pencil</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_grease_pencil" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of grease pencil objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_lattice">
+<span class="sig-name descname"><span class="pre">show_object_select_lattice</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_lattice" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of lattices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_light">
+<span class="sig-name descname"><span class="pre">show_object_select_light</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_light" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of lights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_light_probe">
+<span class="sig-name descname"><span class="pre">show_object_select_light_probe</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_light_probe" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of light probes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_mesh">
+<span class="sig-name descname"><span class="pre">show_object_select_mesh</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_mesh" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of mesh objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_meta">
+<span class="sig-name descname"><span class="pre">show_object_select_meta</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_meta" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of metaballs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_pointcloud">
+<span class="sig-name descname"><span class="pre">show_object_select_pointcloud</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_pointcloud" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of point clouds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_speaker">
+<span class="sig-name descname"><span class="pre">show_object_select_speaker</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_speaker" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of speakers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_surf">
+<span class="sig-name descname"><span class="pre">show_object_select_surf</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_surf" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of surfaces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_select_volume">
+<span class="sig-name descname"><span class="pre">show_object_select_volume</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_select_volume" title="Link to this definition"></a></dt>
+<dd><p>Allow selection of volumes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_armature">
+<span class="sig-name descname"><span class="pre">show_object_viewport_armature</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_armature" title="Link to this definition"></a></dt>
+<dd><p>Show armatures</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_camera">
+<span class="sig-name descname"><span class="pre">show_object_viewport_camera</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_camera" title="Link to this definition"></a></dt>
+<dd><p>Show cameras</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_curve">
+<span class="sig-name descname"><span class="pre">show_object_viewport_curve</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_curve" title="Link to this definition"></a></dt>
+<dd><p>Show curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_curves">
+<span class="sig-name descname"><span class="pre">show_object_viewport_curves</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_curves" title="Link to this definition"></a></dt>
+<dd><p>Show hair curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_empty">
+<span class="sig-name descname"><span class="pre">show_object_viewport_empty</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_empty" title="Link to this definition"></a></dt>
+<dd><p>Show empties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_font">
+<span class="sig-name descname"><span class="pre">show_object_viewport_font</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_font" title="Link to this definition"></a></dt>
+<dd><p>Show text objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_grease_pencil">
+<span class="sig-name descname"><span class="pre">show_object_viewport_grease_pencil</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_grease_pencil" title="Link to this definition"></a></dt>
+<dd><p>Show grease pencil objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_lattice">
+<span class="sig-name descname"><span class="pre">show_object_viewport_lattice</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_lattice" title="Link to this definition"></a></dt>
+<dd><p>Show lattices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_light">
+<span class="sig-name descname"><span class="pre">show_object_viewport_light</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_light" title="Link to this definition"></a></dt>
+<dd><p>Show lights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_light_probe">
+<span class="sig-name descname"><span class="pre">show_object_viewport_light_probe</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_light_probe" title="Link to this definition"></a></dt>
+<dd><p>Show light probes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_mesh">
+<span class="sig-name descname"><span class="pre">show_object_viewport_mesh</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_mesh" title="Link to this definition"></a></dt>
+<dd><p>Show mesh objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_meta">
+<span class="sig-name descname"><span class="pre">show_object_viewport_meta</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_meta" title="Link to this definition"></a></dt>
+<dd><p>Show metaballs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_pointcloud">
+<span class="sig-name descname"><span class="pre">show_object_viewport_pointcloud</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_pointcloud" title="Link to this definition"></a></dt>
+<dd><p>Show point clouds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_speaker">
+<span class="sig-name descname"><span class="pre">show_object_viewport_speaker</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_speaker" title="Link to this definition"></a></dt>
+<dd><p>Show speakers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_surf">
+<span class="sig-name descname"><span class="pre">show_object_viewport_surf</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_surf" title="Link to this definition"></a></dt>
+<dd><p>Show surfaces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_object_viewport_volume">
+<span class="sig-name descname"><span class="pre">show_object_viewport_volume</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_object_viewport_volume" title="Link to this definition"></a></dt>
+<dd><p>Show volumes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_reconstruction">
+<span class="sig-name descname"><span class="pre">show_reconstruction</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_reconstruction" title="Link to this definition"></a></dt>
+<dd><p>Display reconstruction data from active movie clip</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_region_asset_shelf">
+<span class="sig-name descname"><span class="pre">show_region_asset_shelf</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_region_asset_shelf" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_region_hud">
+<span class="sig-name descname"><span class="pre">show_region_hud</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_region_hud" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_region_tool_header">
+<span class="sig-name descname"><span class="pre">show_region_tool_header</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_region_tool_header" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_region_toolbar">
+<span class="sig-name descname"><span class="pre">show_region_toolbar</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_region_toolbar" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_region_ui">
+<span class="sig-name descname"><span class="pre">show_region_ui</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_region_ui" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_stereo_3d_cameras">
+<span class="sig-name descname"><span class="pre">show_stereo_3d_cameras</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_stereo_3d_cameras" title="Link to this definition"></a></dt>
+<dd><p>Show the left and right cameras</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_stereo_3d_convergence_plane">
+<span class="sig-name descname"><span class="pre">show_stereo_3d_convergence_plane</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_stereo_3d_convergence_plane" title="Link to this definition"></a></dt>
+<dd><p>Show the stereo 3D convergence plane</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_stereo_3d_volume">
+<span class="sig-name descname"><span class="pre">show_stereo_3d_volume</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_stereo_3d_volume" title="Link to this definition"></a></dt>
+<dd><p>Show the stereo 3D frustum volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.show_viewer">
+<span class="sig-name descname"><span class="pre">show_viewer</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.show_viewer" title="Link to this definition"></a></dt>
+<dd><p>Display non-final geometry from viewer nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.stereo_3d_camera">
+<span class="sig-name descname"><span class="pre">stereo_3d_camera</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.stereo_3d_camera" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘LEFT’, ‘RIGHT’, ‘S3D’], default ‘S3D’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.stereo_3d_convergence_plane_alpha">
+<span class="sig-name descname"><span class="pre">stereo_3d_convergence_plane_alpha</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.stereo_3d_convergence_plane_alpha" title="Link to this definition"></a></dt>
+<dd><p>Opacity (alpha) of the convergence plane</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.15</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.stereo_3d_eye">
+<span class="sig-name descname"><span class="pre">stereo_3d_eye</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.stereo_3d_eye" title="Link to this definition"></a></dt>
+<dd><p>Current stereo eye being displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘LEFT_EYE’, ‘RIGHT_EYE’], default ‘LEFT_EYE’, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.stereo_3d_volume_alpha">
+<span class="sig-name descname"><span class="pre">stereo_3d_volume_alpha</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.stereo_3d_volume_alpha" title="Link to this definition"></a></dt>
+<dd><p>Opacity (alpha) of the cameras’ frustum volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.05</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.tracks_display_size">
+<span class="sig-name descname"><span class="pre">tracks_display_size</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.tracks_display_size" title="Link to this definition"></a></dt>
+<dd><p>Display size of tracks from reconstructed data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.tracks_display_type">
+<span class="sig-name descname"><span class="pre">tracks_display_type</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.tracks_display_type" title="Link to this definition"></a></dt>
+<dd><p>Viewport display style for tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘PLAIN_AXES’, ‘ARROWS’, ‘SINGLE_ARROW’, ‘CIRCLE’, ‘CUBE’, ‘SPHERE’, ‘CONE’], default ‘PLAIN_AXES’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.use_local_camera">
+<span class="sig-name descname"><span class="pre">use_local_camera</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.use_local_camera" title="Link to this definition"></a></dt>
+<dd><p>Use a local camera in this view, rather than scene’s active camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.use_local_collections">
+<span class="sig-name descname"><span class="pre">use_local_collections</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.use_local_collections" title="Link to this definition"></a></dt>
+<dd><p>Display a different set of collections in this viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.use_render_border">
+<span class="sig-name descname"><span class="pre">use_render_border</span></span><a class="headerlink" href="#bpy.types.SpaceView3D.use_render_border" title="Link to this definition"></a></dt>
+<dd><p>Use a region within the frame size for rendered viewport (when not viewing through the camera)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceView3D.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceView3D.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.draw_handler_add">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">draw_handler_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">draw_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceView3D.draw_handler_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new draw handler to this space type.
+It will be called every time the specified region in the space type will be drawn.
+Note: All arguments are positional only for now.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>callback</strong> (<em>function</em>) – A function that will be called when the region is drawn.
+It gets the specified arguments as input.</p></li>
+<li><p><strong>args</strong> (<em>tuple</em>) – Arguments that will be passed to the callback.</p></li>
+<li><p><strong>region_type</strong> (<em>str</em>) – The region type the callback draws in; usually <code class="docutils literal notranslate"><span class="pre">WINDOW</span></code>. (<a class="reference internal" href="bpy.types.Region.html#bpy.types.Region.type" title="bpy.types.Region.type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Region.type</span></code></a>)</p></li>
+<li><p><strong>draw_type</strong> (<em>str</em>) – Usually <code class="docutils literal notranslate"><span class="pre">POST_PIXEL</span></code> for 2D drawing and <code class="docutils literal notranslate"><span class="pre">POST_VIEW</span></code> for 3D drawing. In some cases <code class="docutils literal notranslate"><span class="pre">PRE_VIEW</span></code> can be used. <code class="docutils literal notranslate"><span class="pre">BACKDROP</span></code> can be used for backdrops in the node editor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Handler that can be removed later on.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SpaceView3D.draw_handler_remove">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">draw_handler_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SpaceView3D.draw_handler_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove a draw handler that was added previously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> (<em>object</em>) – The draw handler that should be removed.</p></li>
+<li><p><strong>region_type</strong> (<em>str</em>) – Region type the callback was added to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.type" title="bpy.types.Space.type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.type</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.show_locked_time" title="bpy.types.Space.show_locked_time"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.show_locked_time</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.show_region_header" title="bpy.types.Space.show_region_header"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.show_region_header</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.bl_rna_get_subclass" title="bpy.types.Space.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.bl_rna_get_subclass_py" title="bpy.types.Space.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.bl_rna_get_subclass_py</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.draw_handler_add" title="bpy.types.Space.draw_handler_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.draw_handler_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Space.html#bpy.types.Space.draw_handler_remove" title="bpy.types.Space.draw_handler_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">Space.draw_handler_remove</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.local_view_get" title="bpy.types.Object.local_view_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.local_view_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.local_view_set" title="bpy.types.Object.local_view_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.local_view_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.visible_get" title="bpy.types.Object.visible_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.visible_get</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.visible_in_viewport_get" title="bpy.types.Object.visible_in_viewport_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.visible_in_viewport_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="#bpy.types.SpaceView3D.local_view" title="bpy.types.SpaceView3D.local_view"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceView3D.local_view</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.SpaceUVEditor.html" class="btn btn-neutral float-left" title="SpaceUVEditor(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.Speaker.html" class="btn btn-neutral float-right" title="Speaker(ID)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

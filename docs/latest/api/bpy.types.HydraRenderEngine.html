@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HydraRenderEngine(RenderEngine) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.HydraRenderEngine.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ID(bpy_struct)" href="bpy.types.ID.html" />
+    <link rel="prev" title="HueCorrectModifier(SequenceModifier)" href="bpy.types.HueCorrectModifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">HydraRenderEngine(RenderEngine)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hydrarenderengine-renderengine">
+<h1>HydraRenderEngine(RenderEngine)<a class="headerlink" href="#hydrarenderengine-renderengine" title="Link to this heading"></a></h1>
+<p>Base class for integrating USD Hydra based renderers.</p>
+<section id="usd-hydra-based-renderer">
+<h2>USD Hydra Based Renderer<a class="headerlink" href="#usd-hydra-based-renderer" title="Link to this heading"></a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">CustomHydraRenderEngine</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">HydraRenderEngine</span><span class="p">):</span>
+    <span class="c1"># Identifier and name in the user interface.</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;CUSTOM_HYDRA_RENDERER&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Custom Hydra Renderer&quot;</span>
+
+    <span class="c1"># Name of the render plugin.</span>
+    <span class="n">bl_delegate_id</span> <span class="o">=</span> <span class="s2">&quot;HdCustomRendererPlugin&quot;</span>
+
+    <span class="c1"># Register path to plugin.</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">pxr.Plug</span>
+        <span class="n">pxr</span><span class="o">.</span><span class="n">Plug</span><span class="o">.</span><span class="n">Registry</span><span class="p">()</span><span class="o">.</span><span class="n">RegisterPlugins</span><span class="p">([</span><span class="s1">&#39;/path/to/plugin&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Render settings that will be passed to the delegate.</span>
+    <span class="k">def</span> <span class="nf">get_render_settings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">engine_type</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;myBoolean&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+            <span class="s1">&#39;myValue&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+            <span class="s1">&#39;aovToken:Depth&#39;</span><span class="p">:</span> <span class="s2">&quot;depth&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+    <span class="c1"># RenderEngine methods for update, render and draw are implemented in</span>
+    <span class="c1"># HydraRenderEngine. Optionally extra work can be done before or after</span>
+    <span class="c1"># by implementing the methods like this.</span>
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">depsgraph</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">depsgraph</span><span class="p">)</span>
+        <span class="c1"># Do extra work here</span>
+
+    <span class="k">def</span> <span class="nf">update_render_passes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scene</span><span class="p">,</span> <span class="n">render_layer</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">render_layer</span><span class="o">.</span><span class="n">use_pass_z</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_pass</span><span class="p">(</span><span class="n">scene</span><span class="p">,</span> <span class="n">render_layer</span><span class="p">,</span> <span class="s1">&#39;Depth&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;VALUE&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Registration</span>
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">CustomHydraRenderEngine</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">CustomHydraRenderEngine</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine" title="bpy.types.RenderEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">HydraRenderEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">RenderEngine</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine" title="Link to this definition"></a></dt>
+<dd><p>Base class from USD Hydra based renderers</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine.get_render_settings">
+<span class="sig-name descname"><span class="pre">get_render_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">engine_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine.get_render_settings" title="Link to this definition"></a></dt>
+<dd><p>Provide render settings for <cite>HdRenderDelegate</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine.render" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine.update" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine.view_draw">
+<span class="sig-name descname"><span class="pre">view_draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine.view_draw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine.view_update">
+<span class="sig-name descname"><span class="pre">view_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine.view_update" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.HydraRenderEngine.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.HydraRenderEngine.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.is_animation" title="bpy.types.RenderEngine.is_animation"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.is_animation</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.is_preview" title="bpy.types.RenderEngine.is_preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.is_preview</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.camera_override" title="bpy.types.RenderEngine.camera_override"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.camera_override</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.layer_override" title="bpy.types.RenderEngine.layer_override"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.layer_override</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.resolution_x" title="bpy.types.RenderEngine.resolution_x"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.resolution_x</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.resolution_y" title="bpy.types.RenderEngine.resolution_y"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.resolution_y</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.temporary_directory" title="bpy.types.RenderEngine.temporary_directory"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.temporary_directory</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.render" title="bpy.types.RenderEngine.render"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.render</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.use_highlight_tiles" title="bpy.types.RenderEngine.use_highlight_tiles"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.use_highlight_tiles</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_idname" title="bpy.types.RenderEngine.bl_idname"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_idname</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_label" title="bpy.types.RenderEngine.bl_label"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_label</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_preview" title="bpy.types.RenderEngine.bl_use_preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_preview</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_postprocess" title="bpy.types.RenderEngine.bl_use_postprocess"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_postprocess</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_eevee_viewport" title="bpy.types.RenderEngine.bl_use_eevee_viewport"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_eevee_viewport</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_custom_freestyle" title="bpy.types.RenderEngine.bl_use_custom_freestyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_custom_freestyle</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_image_save" title="bpy.types.RenderEngine.bl_use_image_save"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_image_save</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_gpu_context" title="bpy.types.RenderEngine.bl_use_gpu_context"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_gpu_context</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_shading_nodes_custom" title="bpy.types.RenderEngine.bl_use_shading_nodes_custom"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_shading_nodes_custom</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_spherical_stereo" title="bpy.types.RenderEngine.bl_use_spherical_stereo"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_spherical_stereo</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_stereo_viewport" title="bpy.types.RenderEngine.bl_use_stereo_viewport"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_stereo_viewport</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_use_alembic_procedural" title="bpy.types.RenderEngine.bl_use_alembic_procedural"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_use_alembic_procedural</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update" title="bpy.types.RenderEngine.update"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.render" title="bpy.types.RenderEngine.render"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.render</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.render_frame_finish" title="bpy.types.RenderEngine.render_frame_finish"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.render_frame_finish</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.draw" title="bpy.types.RenderEngine.draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.draw</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bake" title="bpy.types.RenderEngine.bake"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bake</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.view_update" title="bpy.types.RenderEngine.view_update"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.view_update</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.view_draw" title="bpy.types.RenderEngine.view_draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.view_draw</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update_script_node" title="bpy.types.RenderEngine.update_script_node"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update_script_node</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update_render_passes" title="bpy.types.RenderEngine.update_render_passes"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update_render_passes</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.tag_redraw" title="bpy.types.RenderEngine.tag_redraw"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.tag_redraw</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.tag_update" title="bpy.types.RenderEngine.tag_update"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.tag_update</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.begin_result" title="bpy.types.RenderEngine.begin_result"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.begin_result</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update_result" title="bpy.types.RenderEngine.update_result"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update_result</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.end_result" title="bpy.types.RenderEngine.end_result"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.end_result</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.add_pass" title="bpy.types.RenderEngine.add_pass"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.add_pass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.get_result" title="bpy.types.RenderEngine.get_result"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.get_result</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.test_break" title="bpy.types.RenderEngine.test_break"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.test_break</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.pass_by_index_get" title="bpy.types.RenderEngine.pass_by_index_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.pass_by_index_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.active_view_get" title="bpy.types.RenderEngine.active_view_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.active_view_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.active_view_set" title="bpy.types.RenderEngine.active_view_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.active_view_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.camera_shift_x" title="bpy.types.RenderEngine.camera_shift_x"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.camera_shift_x</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.camera_model_matrix" title="bpy.types.RenderEngine.camera_model_matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.camera_model_matrix</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.use_spherical_stereo" title="bpy.types.RenderEngine.use_spherical_stereo"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.use_spherical_stereo</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update_stats" title="bpy.types.RenderEngine.update_stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update_stats</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.frame_set" title="bpy.types.RenderEngine.frame_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.frame_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update_progress" title="bpy.types.RenderEngine.update_progress"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update_progress</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update_memory_stats" title="bpy.types.RenderEngine.update_memory_stats"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update_memory_stats</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.report" title="bpy.types.RenderEngine.report"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.report</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.error_set" title="bpy.types.RenderEngine.error_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.error_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bind_display_space_shader" title="bpy.types.RenderEngine.bind_display_space_shader"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bind_display_space_shader</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.unbind_display_space_shader" title="bpy.types.RenderEngine.unbind_display_space_shader"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.unbind_display_space_shader</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.support_display_space_shader" title="bpy.types.RenderEngine.support_display_space_shader"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.support_display_space_shader</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.get_preview_pixel_size" title="bpy.types.RenderEngine.get_preview_pixel_size"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.get_preview_pixel_size</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.free_blender_memory" title="bpy.types.RenderEngine.free_blender_memory"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.free_blender_memory</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.tile_highlight_set" title="bpy.types.RenderEngine.tile_highlight_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.tile_highlight_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.tile_highlight_clear_all" title="bpy.types.RenderEngine.tile_highlight_clear_all"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.tile_highlight_clear_all</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.register_pass" title="bpy.types.RenderEngine.register_pass"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.register_pass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_rna_get_subclass" title="bpy.types.RenderEngine.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bl_rna_get_subclass_py" title="bpy.types.RenderEngine.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bl_rna_get_subclass_py</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.HueCorrectModifier.html" class="btn btn-neutral float-left" title="HueCorrectModifier(SequenceModifier)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.ID.html" class="btn btn-neutral float-right" title="ID(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

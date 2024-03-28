@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grease Pencil Operators &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.grease_pencil.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Image Operators" href="bpy.ops.image.html" />
+    <link rel="prev" title="Graph Operators" href="bpy.ops.graph.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Grease Pencil Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.grease_pencil">
+<span id="grease-pencil-operators"></span><h1>Grease Pencil Operators<a class="headerlink" href="#module-bpy.ops.grease_pencil" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.brush_stroke">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">brush_stroke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NORMAL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.brush_stroke" title="Link to this definition"></a></dt>
+<dd><p>Draw a new stroke in the active Grease Pencil object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stroke</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorStrokeElement</span></code>, (optional)) – Stroke</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'NORMAL'</em><em>, </em><em>'INVERT'</em><em>, </em><em>'SMOOTH'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Stroke Mode, Action taken when a paint stroke is made</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code>
+Regular – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert action of brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code>
+Smooth – Switch brush to smooth mode for duration of stroke.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.delete_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">delete_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ACTIVE_FRAME'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.delete_frame" title="Link to this definition"></a></dt>
+<dd><p>Delete Grease Pencil Frame(s)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'ACTIVE_FRAME'</em><em>, </em><em>'ALL_FRAMES'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Type, Method used for deleting Grease Pencil frames</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE_FRAME</span></code>
+Active Frame – Deletes current frame in the active layer.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL_FRAMES</span></code>
+All Active Frames – Delete active frames for all layers.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.dissolve">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">dissolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POINTS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.dissolve" title="Link to this definition"></a></dt>
+<dd><p>Delete selected points without splitting strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'POINTS'</em><em>, </em><em>'BETWEEN'</em><em>, </em><em>'UNSELECT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Type, Method used for dissolving stroke points</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POINTS</span></code>
+Dissolve – Dissolve selected points.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BETWEEN</span></code>
+Dissolve Between – Dissolve points between selected points.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNSELECT</span></code>
+Dissolve Unselect – Dissolve all unselected points.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.draw_mode_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">draw_mode_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.draw_mode_toggle" title="Link to this definition"></a></dt>
+<dd><p>Enter/Exit draw mode for grease pencil</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.insert_blank_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">insert_blank_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.insert_blank_frame" title="Link to this definition"></a></dt>
+<dd><p>Insert a blank frame on the current scene frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_layers</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All Layers, Insert a blank frame in all editable layers</p></li>
+<li><p><strong>duration</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>1048574</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Duration</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.layer_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">layer_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_layer_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GP_Layer'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.layer_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new Grease Pencil layer in the active object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_layer_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of the new layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.layer_group_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">layer_group_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_layer_group_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GP_Group'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.layer_group_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new Grease Pencil layer group in the active object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_layer_group_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of the new layer group</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.layer_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">layer_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.layer_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove the active Grease Pencil layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.layer_reorder">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">layer_reorder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_layer_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GP_Layer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ABOVE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.layer_reorder" title="Link to this definition"></a></dt>
+<dd><p>Reorder the active Grease Pencil layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_layer_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Target Name, Name of the target layer</p></li>
+<li><p><strong>location</strong> (<em>enum in</em><em> [</em><em>'ABOVE'</em><em>, </em><em>'BELOW'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.select_all" title="Link to this definition"></a></dt>
+<dd><p>(De)select all visible strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'SELECT'</em><em>, </em><em>'DESELECT'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.select_alternate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">select_alternate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deselect_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.select_alternate" title="Link to this definition"></a></dt>
+<dd><p>Select alternated points in strokes with already selected points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deselect_ends</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect Ends, (De)select the first and last point of each stroke</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.select_ends">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">select_ends</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount_start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">amount_end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.select_ends" title="Link to this definition"></a></dt>
+<dd><p>Select end points of strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amount_start</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Amount Start, Number of points to select from the start</p></li>
+<li><p><strong>amount_end</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Amount End, Number of points to select from the end</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">select_less</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.select_less" title="Link to this definition"></a></dt>
+<dd><p>Shrink the selection by one point</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">select_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.select_linked" title="Link to this definition"></a></dt>
+<dd><p>Select all points in curves with any point selection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">select_more</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.select_more" title="Link to this definition"></a></dt>
+<dd><p>Grow the selection by one point</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.select_random">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">select_random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.select_random" title="Link to this definition"></a></dt>
+<dd><p>Selects random points from the current strokes selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ratio</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Ratio, Portion of items to select randomly</p></li>
+<li><p><strong>seed</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Random Seed, Seed for the random number generator</p></li>
+<li><p><strong>action</strong> (<em>enum in</em><em> [</em><em>'SELECT'</em><em>, </em><em>'DESELECT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Action, Selection action to execute</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.set_selection_mode">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">set_selection_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POINT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.set_selection_mode" title="Link to this definition"></a></dt>
+<dd><p>Change the selection mode for Grease Pencil strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/grease_pencil_selectmode_items.html#rna-enum-grease-pencil-selectmode-items"><span class="std std-ref">Grease Pencil Selectmode Items</span></a>, (optional)) – Mode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.stroke_simplify">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">stroke_simplify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.stroke_simplify" title="Link to this definition"></a></dt>
+<dd><p>Simplify selected strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.grease_pencil.stroke_smooth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.grease_pencil.</span></span><span class="sig-name descname"><span class="pre">stroke_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_ends</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_opacity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.grease_pencil.stroke_smooth" title="Link to this definition"></a></dt>
+<dd><p>Smooth selected strokes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>iterations</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Iterations</p></li>
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p></li>
+<li><p><strong>smooth_ends</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Endpoints</p></li>
+<li><p><strong>keep_shape</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keep Shape</p></li>
+<li><p><strong>smooth_position</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Position</p></li>
+<li><p><strong>smooth_radius</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>smooth_opacity</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Opacity</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.graph.html" class="btn btn-neutral float-left" title="Graph Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.image.html" class="btn btn-neutral float-right" title="Image Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

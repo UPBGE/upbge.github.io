@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Depsgraph(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.Depsgraph.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DepsgraphObjectInstance(bpy_struct)" href="bpy.types.DepsgraphObjectInstance.html" />
+    <link rel="prev" title="DelaySensor(Sensor)" href="bpy.types.DelaySensor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">Depsgraph(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="depsgraph-bpy-struct">
+<h1>Depsgraph(bpy_struct)<a class="headerlink" href="#depsgraph-bpy-struct" title="Link to this heading"></a></h1>
+<section id="dependency-graph-evaluated-id-example">
+<h2>Dependency graph: Evaluated ID example<a class="headerlink" href="#dependency-graph-evaluated-id-example" title="Link to this heading"></a></h2>
+<p>This example demonstrates access to the evaluated ID (such as object, material, etc.) state from
+an original ID.
+This is needed every time one needs to access state with animation, constraints, and modifiers
+taken into account.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">OBJECT_OT_evaluated_example</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Access evaluated object state and do something with it&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;DEG Access Evaluated Object&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.evaluated_example&quot;</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># This is an original object. Its data does not have any modifiers applied.</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">obj</span><span class="o">.</span><span class="n">type</span> <span class="o">!=</span> <span class="s1">&#39;MESH&#39;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;No active mesh object to get info from&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+        <span class="c1"># Evaluated object exists within a specific dependency graph.</span>
+        <span class="c1"># We will request evaluated object from the dependency graph which corresponds to the</span>
+        <span class="c1"># current scene and view layer.</span>
+        <span class="c1">#</span>
+        <span class="c1"># NOTE: This call ensure the dependency graph is fully evaluated. This might be expensive</span>
+        <span class="c1"># if changes were made made to the scene, but is needed to ensure no dangling or incorrect</span>
+        <span class="c1"># pointers are exposed.</span>
+        <span class="n">depsgraph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evaluated_depsgraph_get</span><span class="p">()</span>
+        <span class="c1"># Actually request evaluated object.</span>
+        <span class="c1">#</span>
+        <span class="c1"># This object has animation and drivers applied on it, together with constraints and</span>
+        <span class="c1"># modifiers.</span>
+        <span class="c1">#</span>
+        <span class="c1"># For mesh objects the object.data will be a mesh with all modifiers applied.</span>
+        <span class="c1"># This means that in access to vertices or faces after modifier stack happens via fields of</span>
+        <span class="c1"># object_eval.object.</span>
+        <span class="c1">#</span>
+        <span class="c1"># For other types of objects the object_eval.data does not have modifiers applied on it,</span>
+        <span class="c1"># but has animation applied.</span>
+        <span class="c1">#</span>
+        <span class="c1"># NOTE: All ID types have `evaluated_get()`, including materials, node trees, worlds.</span>
+        <span class="n">object_eval</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">evaluated_get</span><span class="p">(</span><span class="n">depsgraph</span><span class="p">)</span>
+        <span class="n">mesh_eval</span> <span class="o">=</span> <span class="n">object_eval</span><span class="o">.</span><span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="sa">f</span><span class="s2">&quot;Number of evaluated vertices: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh_eval</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_evaluated_example</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">OBJECT_OT_evaluated_example</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="dependency-graph-original-object-example">
+<h2>Dependency graph: Original object example<a class="headerlink" href="#dependency-graph-original-object-example" title="Link to this heading"></a></h2>
+<p>This example demonstrates access to the original ID.
+Such access is needed to check whether object is selected, or to compare pointers.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">OBJECT_OT_original_example</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Access original object and do something with it&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;DEG Access Original Object&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.original_example&quot;</span>
+
+    <span class="k">def</span> <span class="nf">check_object_selected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_eval</span><span class="p">):</span>
+        <span class="c1"># Selection depends on a context and is only valid for original objects. This means we need</span>
+        <span class="c1"># to request the original object from the known evaluated one.</span>
+        <span class="c1">#</span>
+        <span class="c1"># NOTE: All ID types have an `original` field.</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">object_eval</span><span class="o">.</span><span class="n">original</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">select_get</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># NOTE: It seems redundant to iterate over original objects to request evaluated ones</span>
+        <span class="c1"># just to get original back. But we want to keep example as short as possible, but in real</span>
+        <span class="c1"># world there are cases when evaluated object is coming from a more meaningful source.</span>
+        <span class="n">depsgraph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evaluated_depsgraph_get</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">editable_objects</span><span class="p">:</span>
+            <span class="n">object_eval</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">evaluated_get</span><span class="p">(</span><span class="n">depsgraph</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_object_selected</span><span class="p">(</span><span class="n">object_eval</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="sa">f</span><span class="s2">&quot;Object is selected: </span><span class="si">{</span><span class="n">object_eval</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_original_example</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">OBJECT_OT_original_example</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="dependency-graph-iterate-over-all-object-instances">
+<h2>Dependency graph: Iterate over all object instances<a class="headerlink" href="#dependency-graph-iterate-over-all-object-instances" title="Link to this heading"></a></h2>
+<p>Sometimes it is needed to know all the instances with their matrices (for example, when writing an
+exporter or a custom render engine).
+This example shows how to access all objects and instances in the scene.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">OBJECT_OT_object_instances</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Access original object and do something with it&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;DEG Iterate Object Instances&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.object_instances&quot;</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">depsgraph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evaluated_depsgraph_get</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">object_instance</span> <span class="ow">in</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">object_instances</span><span class="p">:</span>
+            <span class="c1"># This is an object which is being instanced.</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="n">object_instance</span><span class="o">.</span><span class="n">object</span>
+            <span class="c1"># `is_instance` denotes whether the object is coming from instances (as an opposite of</span>
+            <span class="c1"># being an emitting object. )</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">object_instance</span><span class="o">.</span><span class="n">is_instance</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Object </span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">object_instance</span><span class="o">.</span><span class="n">matrix_world</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Instanced will additionally have fields like uv, random_id and others which are</span>
+                <span class="c1"># specific for instances. See Python API for DepsgraphObjectInstance for details,</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Instance of </span><span class="si">{</span><span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> at </span><span class="si">{</span><span class="n">object_instance</span><span class="o">.</span><span class="n">matrix_world</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_object_instances</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">OBJECT_OT_object_instances</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="dependency-graph-object-to-mesh">
+<h2>Dependency graph: Object.to_mesh()<a class="headerlink" href="#dependency-graph-object-to-mesh" title="Link to this heading"></a></h2>
+<p>Function to get a mesh from any object with geometry. It is typically used by exporters, render
+engines and tools that need to access the evaluated mesh as displayed in the viewport.</p>
+<p>Object.to_mesh() is closely interacting with dependency graph: its behavior depends on whether it
+is used on original or evaluated object.</p>
+<p>When is used on original object, the result mesh is calculated from the object without taking
+animation or modifiers into account:</p>
+<ul class="simple">
+<li><p>For meshes this is similar to duplicating the source mesh.</p></li>
+<li><p>For curves this disables own modifiers, and modifiers of objects used as bevel and taper.</p></li>
+<li><p>For metaballs this produces an empty mesh since polygonization is done as a modifier evaluation.</p></li>
+</ul>
+<p>When is used on evaluated object all modifiers are taken into account.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The result mesh is owned by the object. It can be freed by calling <cite>object.to_mesh_clear()</cite>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The result mesh must be treated as temporary, and can not be referenced from objects in the main
+database. If the mesh intended to be used in a persistent manner use bpy.data.meshes.new_from_object()
+instead.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If object does not have geometry (i.e. camera) the functions returns None.</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">OBJECT_OT_object_to_mesh</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert selected object to mesh and show number of vertices&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;DEG Object to Mesh&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.object_to_mesh&quot;</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># Access input original object.</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;No active mesh object to convert to mesh&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+        <span class="c1"># Avoid annoying None checks later on.</span>
+        <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;MESH&#39;</span><span class="p">,</span> <span class="s1">&#39;CURVE&#39;</span><span class="p">,</span> <span class="s1">&#39;SURFACE&#39;</span><span class="p">,</span> <span class="s1">&#39;FONT&#39;</span><span class="p">,</span> <span class="s1">&#39;META&#39;</span><span class="p">}:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;Object can not be converted to mesh&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+        <span class="n">depsgraph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evaluated_depsgraph_get</span><span class="p">()</span>
+        <span class="c1"># Invoke to_mesh() for original object.</span>
+        <span class="n">mesh_from_orig</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_mesh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh_from_orig</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span><span class="si">}</span><span class="s2"> in new mesh without modifiers.&quot;</span><span class="p">)</span>
+        <span class="c1"># Remove temporary mesh.</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">to_mesh_clear</span><span class="p">()</span>
+        <span class="c1"># Invoke to_mesh() for evaluated object.</span>
+        <span class="n">object_eval</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">evaluated_get</span><span class="p">(</span><span class="n">depsgraph</span><span class="p">)</span>
+        <span class="n">mesh_from_eval</span> <span class="o">=</span> <span class="n">object_eval</span><span class="o">.</span><span class="n">to_mesh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh_from_eval</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span><span class="si">}</span><span class="s2"> in new mesh with modifiers.&quot;</span><span class="p">)</span>
+        <span class="c1"># Remove temporary mesh.</span>
+        <span class="n">object_eval</span><span class="o">.</span><span class="n">to_mesh_clear</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_object_to_mesh</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">OBJECT_OT_object_to_mesh</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="dependency-graph-bpy-data-meshes-new-from-object">
+<h2>Dependency graph: bpy.data.meshes.new_from_object()<a class="headerlink" href="#dependency-graph-bpy-data-meshes-new-from-object" title="Link to this heading"></a></h2>
+<p>Function to copy a new mesh from any object with geometry. The mesh is added to the main
+database and can be referenced by objects. Typically used by tools that create new objects
+or apply modifiers.</p>
+<p>When is used on original object, the result mesh is calculated from the object without taking
+animation or modifiers into account:</p>
+<ul class="simple">
+<li><p>For meshes this is similar to duplicating the source mesh.</p></li>
+<li><p>For curves this disables own modifiers, and modifiers of objects used as bevel and taper.</p></li>
+<li><p>For metaballs this produces an empty mesh since polygonization is done as a modifier evaluation.</p></li>
+</ul>
+<p>When is used on evaluated object all modifiers are taken into account.</p>
+<p>All the references (such as materials) are re-mapped to original. This ensures validity and
+consistency of the main database.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If object does not have geometry (i.e. camera) the functions returns None.</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">OBJECT_OT_mesh_from_object</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert selected object to mesh and show number of vertices&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;DEG Mesh From Object&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.mesh_from_object&quot;</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># Access input original object.</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;No active mesh object to convert to mesh&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+        <span class="c1"># Avoid annoying None checks later on.</span>
+        <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;MESH&#39;</span><span class="p">,</span> <span class="s1">&#39;CURVE&#39;</span><span class="p">,</span> <span class="s1">&#39;SURFACE&#39;</span><span class="p">,</span> <span class="s1">&#39;FONT&#39;</span><span class="p">,</span> <span class="s1">&#39;META&#39;</span><span class="p">}:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;Object can not be converted to mesh&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+        <span class="n">depsgraph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evaluated_depsgraph_get</span><span class="p">()</span>
+        <span class="n">object_eval</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">evaluated_get</span><span class="p">(</span><span class="n">depsgraph</span><span class="p">)</span>
+        <span class="n">mesh_from_eval</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">new_from_object</span><span class="p">(</span><span class="n">object_eval</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh_from_eval</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span><span class="si">}</span><span class="s2"> in new mesh, and is ready for use!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_mesh_from_object</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">OBJECT_OT_mesh_from_object</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="dependency-graph-simple-exporter">
+<h2>Dependency graph: Simple exporter<a class="headerlink" href="#dependency-graph-simple-exporter" title="Link to this heading"></a></h2>
+<p>This example is a combination of all previous ones, and shows how to write a simple exporter
+script.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">OBJECT_OT_simple_exporter</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simple (fake) exporter of selected objects&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;DEG Export Selected&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.simple_exporter&quot;</span>
+
+    <span class="n">apply_modifiers</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">BoolProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Apply Modifiers&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">depsgraph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evaluated_depsgraph_get</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">object_instance</span> <span class="ow">in</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">object_instances</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_object_instance_from_selected</span><span class="p">(</span><span class="n">object_instance</span><span class="p">):</span>
+                <span class="c1"># We only export selected objects</span>
+                <span class="k">continue</span>
+            <span class="c1"># NOTE: This will create a mesh for every instance, which is not ideal at all. In</span>
+            <span class="c1"># reality destination format will support some sort of instancing mechanism, so the</span>
+            <span class="c1"># code here will simply say &quot;instance this object at object_instance.matrix_world&quot;.</span>
+            <span class="n">mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_mesh_for_object_instance</span><span class="p">(</span><span class="n">object_instance</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mesh</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Happens for non-geometry objects.</span>
+                <span class="k">continue</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Exporting mesh with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">vertices</span><span class="p">)</span><span class="si">}</span><span class="s2"> vertices &quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot;at </span><span class="si">{</span><span class="n">object_instance</span><span class="o">.</span><span class="n">matrix_world</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">object_instace</span><span class="o">.</span><span class="n">to_mesh_clear</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">is_object_instance_from_selected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_instance</span><span class="p">):</span>
+        <span class="c1"># For instanced objects we check selection of their instancer (more accurately: check</span>
+        <span class="c1"># selection status of the original object corresponding to the instancer).</span>
+        <span class="k">if</span> <span class="n">object_instance</span><span class="o">.</span><span class="n">parent</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">object_instance</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">original</span><span class="o">.</span><span class="n">select_get</span><span class="p">()</span>
+        <span class="c1"># For non-instanced objects we check selection state of the original object.</span>
+        <span class="k">return</span> <span class="n">object_instance</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">original</span><span class="o">.</span><span class="n">select_get</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">create_mesh_for_object_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">object_instance</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_modifiers</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">object_instance</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">to_mesh</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">object_instance</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">original</span><span class="o">.</span><span class="n">to_mesh</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_simple_exporter</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">OBJECT_OT_simple_exporter</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="dependency-graph-object-to-curve">
+<h2>Dependency graph: Object.to_curve()<a class="headerlink" href="#dependency-graph-object-to-curve" title="Link to this heading"></a></h2>
+<p>Function to get a curve from text and curve objects. It is typically used by exporters, render
+engines, and tools that need to access the curve representing the object.</p>
+<p>The function takes the evaluated dependency graph as a required parameter and optionally a boolean
+apply_modifiers which defaults to false. If apply_modifiers is true and the object is a curve object,
+the spline deform modifiers are applied on the control points. Note that constructive modifiers and
+modifiers that are not spline-enabled will not be applied. So modifiers like Array will not be applied
+and deform modifiers that have Apply On Spline disabled will not be applied.</p>
+<p>If the object is a text object. The text will be converted into a 3D curve and returned. Modifiers are
+never applied on text objects and apply_modifiers will be ignored. If the object is neither a curve nor
+a text object, an error will be reported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The resulting curve is owned by the object. It can be freed by calling <cite>object.to_curve_clear()</cite>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The resulting curve must be treated as temporary, and can not be referenced from objects in the main
+database.</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">OBJECT_OT_object_to_curve</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert selected object to curve and show number of splines&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;DEG Object to Curve&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.object_to_curve&quot;</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># Access input original object.</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;No active object to convert to curve&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+        <span class="k">if</span> <span class="n">obj</span><span class="o">.</span><span class="n">type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;CURVE&#39;</span><span class="p">,</span> <span class="s1">&#39;FONT&#39;</span><span class="p">}:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;Object can not be converted to curve&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+        <span class="n">depsgraph</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">evaluated_depsgraph_get</span><span class="p">()</span>
+        <span class="c1"># Invoke to_curve() without applying modifiers.</span>
+        <span class="n">curve_without_modifiers</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_curve</span><span class="p">(</span><span class="n">depsgraph</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">curve_without_modifiers</span><span class="o">.</span><span class="n">splines</span><span class="p">)</span><span class="si">}</span><span class="s2"> splines in a new curve without modifiers.&quot;</span><span class="p">)</span>
+        <span class="c1"># Remove temporary curve.</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">to_curve_clear</span><span class="p">()</span>
+        <span class="c1"># Invoke to_curve() with applying modifiers.</span>
+        <span class="n">curve_with_modifiers</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">to_curve</span><span class="p">(</span><span class="n">depsgraph</span><span class="p">,</span> <span class="n">apply_modifiers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">curve_with_modifiers</span><span class="o">.</span><span class="n">splines</span><span class="p">)</span><span class="si">}</span><span class="s2"> splines in new curve with modifiers.&quot;</span><span class="p">)</span>
+        <span class="c1"># Remove temporary curve.</span>
+        <span class="n">obj</span><span class="o">.</span><span class="n">to_curve_clear</span><span class="p">()</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_object_to_curve</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">OBJECT_OT_object_to_curve</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">Depsgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.ids">
+<span class="sig-name descname"><span class="pre">ids</span></span><a class="headerlink" href="#bpy.types.Depsgraph.ids" title="Link to this definition"></a></dt>
+<dd><p>All evaluated data-blocks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.mode">
+<span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#bpy.types.Depsgraph.mode" title="Link to this definition"></a></dt>
+<dd><p>Evaluation mode</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEWPORT</span></code>
+Viewport – Viewport non-rendered mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RENDER</span></code>
+Render – Render.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘VIEWPORT’, ‘RENDER’], default ‘VIEWPORT’, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.object_instances">
+<span class="sig-name descname"><span class="pre">object_instances</span></span><a class="headerlink" href="#bpy.types.Depsgraph.object_instances" title="Link to this definition"></a></dt>
+<dd><p>All object instances to display or render (Warning: Only use this as an iterator, never as a sequence, and do not keep any references to its items)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.DepsgraphObjectInstance.html#bpy.types.DepsgraphObjectInstance" title="bpy.types.DepsgraphObjectInstance"><code class="xref py py-class docutils literal notranslate"><span class="pre">DepsgraphObjectInstance</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.objects">
+<span class="sig-name descname"><span class="pre">objects</span></span><a class="headerlink" href="#bpy.types.Depsgraph.objects" title="Link to this definition"></a></dt>
+<dd><p>Evaluated objects in the dependency graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.scene">
+<span class="sig-name descname"><span class="pre">scene</span></span><a class="headerlink" href="#bpy.types.Depsgraph.scene" title="Link to this definition"></a></dt>
+<dd><p>Original scene dependency graph is built for</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene" title="bpy.types.Scene"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.scene_eval">
+<span class="sig-name descname"><span class="pre">scene_eval</span></span><a class="headerlink" href="#bpy.types.Depsgraph.scene_eval" title="Link to this definition"></a></dt>
+<dd><p>Scene at its evaluated state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene" title="bpy.types.Scene"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.updates">
+<span class="sig-name descname"><span class="pre">updates</span></span><a class="headerlink" href="#bpy.types.Depsgraph.updates" title="Link to this definition"></a></dt>
+<dd><p>Updates to data-blocks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.DepsgraphUpdate.html#bpy.types.DepsgraphUpdate" title="bpy.types.DepsgraphUpdate"><code class="xref py py-class docutils literal notranslate"><span class="pre">DepsgraphUpdate</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.view_layer">
+<span class="sig-name descname"><span class="pre">view_layer</span></span><a class="headerlink" href="#bpy.types.Depsgraph.view_layer" title="Link to this definition"></a></dt>
+<dd><p>Original view layer dependency graph is built for</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ViewLayer.html#bpy.types.ViewLayer" title="bpy.types.ViewLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewLayer</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.view_layer_eval">
+<span class="sig-name descname"><span class="pre">view_layer_eval</span></span><a class="headerlink" href="#bpy.types.Depsgraph.view_layer_eval" title="Link to this definition"></a></dt>
+<dd><p>View layer at its evaluated state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ViewLayer.html#bpy.types.ViewLayer" title="bpy.types.ViewLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewLayer</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.debug_relations_graphviz">
+<span class="sig-name descname"><span class="pre">debug_relations_graphviz</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.debug_relations_graphviz" title="Link to this definition"></a></dt>
+<dd><p>debug_relations_graphviz</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – File Name, Output path for the graphviz debug file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.debug_stats_gnuplot">
+<span class="sig-name descname"><span class="pre">debug_stats_gnuplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.debug_stats_gnuplot" title="Link to this definition"></a></dt>
+<dd><p>debug_stats_gnuplot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – File Name, Output path for the gnuplot debug file</p></li>
+<li><p><strong>output_filepath</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Output File Name, File name where gnuplot script will save the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.debug_tag_update">
+<span class="sig-name descname"><span class="pre">debug_tag_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.debug_tag_update" title="Link to this definition"></a></dt>
+<dd><p>debug_tag_update</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.debug_stats">
+<span class="sig-name descname"><span class="pre">debug_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.debug_stats" title="Link to this definition"></a></dt>
+<dd><p>Report the number of elements in the Dependency Graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>string, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.update" title="Link to this definition"></a></dt>
+<dd><p>Re-evaluate any modified data-blocks, for example for animation or modifiers. This invalidates all references to evaluated data-blocks from this dependency graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.id_eval_get">
+<span class="sig-name descname"><span class="pre">id_eval_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.id_eval_get" title="Link to this definition"></a></dt>
+<dd><p>id_eval_get</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a>) – Original ID to get evaluated complementary part for</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Evaluated ID for the given original one</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.id_type_updated">
+<span class="sig-name descname"><span class="pre">id_type_updated</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.id_type_updated" title="Link to this definition"></a></dt>
+<dd><p>id_type_updated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/id_type_items.html#rna-enum-id-type-items"><span class="std std-ref">Id Type Items</span></a>) – ID Type</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Updated, True if any datablock with this type was added, updated or removed</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Depsgraph.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Depsgraph.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.BlendDataMeshes.html#bpy.types.BlendDataMeshes.new_from_object" title="bpy.types.BlendDataMeshes.new_from_object"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMeshes.new_from_object</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Context.html#bpy.types.Context.evaluated_depsgraph_get" title="bpy.types.Context.evaluated_depsgraph_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">Context.evaluated_depsgraph_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.evaluated_get" title="bpy.types.ID.evaluated_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.evaluated_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.calc_matrix_camera" title="bpy.types.Object.calc_matrix_camera"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.calc_matrix_camera</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.camera_fit_coords" title="bpy.types.Object.camera_fit_coords"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.camera_fit_coords</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.closest_point_on_mesh" title="bpy.types.Object.closest_point_on_mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.closest_point_on_mesh</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.crazyspace_eval" title="bpy.types.Object.crazyspace_eval"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.crazyspace_eval</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.ray_cast" title="bpy.types.Object.ray_cast"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.ray_cast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.to_curve" title="bpy.types.Object.to_curve"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.to_curve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.to_mesh" title="bpy.types.Object.to_mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.to_mesh</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.bake" title="bpy.types.RenderEngine.bake"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.bake</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.draw" title="bpy.types.RenderEngine.draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.draw</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.render" title="bpy.types.RenderEngine.render"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.render</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.update" title="bpy.types.RenderEngine.update"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.update</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.view_draw" title="bpy.types.RenderEngine.view_draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.view_draw</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.view_update" title="bpy.types.RenderEngine.view_update"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.view_update</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene.ray_cast" title="bpy.types.Scene.ray_cast"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene.ray_cast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ShaderNodeTexPointDensity.html#bpy.types.ShaderNodeTexPointDensity.cache_point_density" title="bpy.types.ShaderNodeTexPointDensity.cache_point_density"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderNodeTexPointDensity.cache_point_density</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ShaderNodeTexPointDensity.html#bpy.types.ShaderNodeTexPointDensity.calc_point_density" title="bpy.types.ShaderNodeTexPointDensity.calc_point_density"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderNodeTexPointDensity.calc_point_density</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ShaderNodeTexPointDensity.html#bpy.types.ShaderNodeTexPointDensity.calc_point_density_minmax" title="bpy.types.ShaderNodeTexPointDensity.calc_point_density_minmax"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShaderNodeTexPointDensity.calc_point_density_minmax</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ViewLayer.html#bpy.types.ViewLayer.depsgraph" title="bpy.types.ViewLayer.depsgraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewLayer.depsgraph</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.DelaySensor.html" class="btn btn-neutral float-left" title="DelaySensor(Sensor)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.DepsgraphObjectInstance.html" class="btn btn-neutral float-right" title="DepsgraphObjectInstance(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

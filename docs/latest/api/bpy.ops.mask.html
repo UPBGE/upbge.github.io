@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mask Operators &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.mask.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Material Operators" href="bpy.ops.material.html" />
+    <link rel="prev" title="Marker Operators" href="bpy.ops.marker.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Mask Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.mask">
+<span id="mask-operators"></span><h1>Mask Operators<a class="headerlink" href="#module-bpy.ops.mask" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.add_feather_vertex">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">add_feather_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.add_feather_vertex" title="Link to this definition"></a></dt>
+<dd><p>Add vertex to feather</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Location of vertex in normalized space</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.add_feather_vertex_slide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">add_feather_vertex_slide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MASK_OT_add_feather_vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MASK_OT_slide_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.add_feather_vertex_slide" title="Link to this definition"></a></dt>
+<dd><p>Add new vertex to feather and slide it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MASK_OT_add_feather_vertex</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">MASK_OT_add_feather_vertex</span></code>, (optional)) – Add Feather Vertex, Add vertex to feather</p></li>
+<li><p><strong>MASK_OT_slide_point</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">MASK_OT_slide_point</span></code>, (optional)) – Slide Point, Slide control points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.add_vertex">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">add_vertex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.add_vertex" title="Link to this definition"></a></dt>
+<dd><p>Add vertex to active spline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Location of vertex in normalized space</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.add_vertex_slide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">add_vertex_slide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MASK_OT_add_vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">MASK_OT_slide_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.add_vertex_slide" title="Link to this definition"></a></dt>
+<dd><p>Add new vertex and slide it</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MASK_OT_add_vertex</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">MASK_OT_add_vertex</span></code>, (optional)) – Add Vertex, Add vertex to active spline</p></li>
+<li><p><strong>MASK_OT_slide_point</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">MASK_OT_slide_point</span></code>, (optional)) – Slide Point, Slide control points</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.copy_splines">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">copy_splines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.copy_splines" title="Link to this definition"></a></dt>
+<dd><p>Copy the selected splines to the internal clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.cyclic_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">cyclic_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.cyclic_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle cyclic for selected splines</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.delete" title="Link to this definition"></a></dt>
+<dd><p>Delete selected control points or splines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.duplicate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">duplicate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.duplicate" title="Link to this definition"></a></dt>
+<dd><p>Duplicate selected control points and segments between them</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.duplicate_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">duplicate_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">MASK_OT_duplicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.duplicate_move" title="Link to this definition"></a></dt>
+<dd><p>Duplicate mask and move</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>MASK_OT_duplicate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">MASK_OT_duplicate</span></code>, (optional)) – Duplicate Mask, Duplicate selected control points and segments between them</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.feather_weight_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">feather_weight_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.feather_weight_clear" title="Link to this definition"></a></dt>
+<dd><p>Reset the feather weight to zero</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.handle_type_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">handle_type_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTO'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.handle_type_set" title="Link to this definition"></a></dt>
+<dd><p>Set type of handles for selected control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'AUTO'</em><em>, </em><em>'VECTOR'</em><em>, </em><em>'ALIGNED'</em><em>, </em><em>'ALIGNED_DOUBLESIDE'</em><em>, </em><em>'FREE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type, Spline type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.hide_view_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">hide_view_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.hide_view_clear" title="Link to this definition"></a></dt>
+<dd><p>Reveal temporarily hidden mask layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.hide_view_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">hide_view_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.hide_view_set" title="Link to this definition"></a></dt>
+<dd><p>Temporarily hide mask layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected rather than selected layers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.layer_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">layer_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UP'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.layer_move" title="Link to this definition"></a></dt>
+<dd><p>Move the active layer up/down in the list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direction</strong> (<em>enum in</em><em> [</em><em>'UP'</em><em>, </em><em>'DOWN'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Direction, Direction to move the active layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.layer_new">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">layer_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.layer_new" title="Link to this definition"></a></dt>
+<dd><p>Add new mask layer for masking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of new mask layer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.layer_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">layer_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.layer_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove mask layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.new">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.new" title="Link to this definition"></a></dt>
+<dd><p>Create new mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of new mask</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.normals_make_consistent">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">normals_make_consistent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.normals_make_consistent" title="Link to this definition"></a></dt>
+<dd><p>Recalculate the direction of selected handles</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.parent_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">parent_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.parent_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the mask’s parenting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.parent_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">parent_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.parent_set" title="Link to this definition"></a></dt>
+<dd><p>Set the mask’s parenting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.paste_splines">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">paste_splines</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.paste_splines" title="Link to this definition"></a></dt>
+<dd><p>Paste splines from the internal clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.primitive_circle_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">primitive_circle_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.primitive_circle_add" title="Link to this definition"></a></dt>
+<dd><p>Add new circle-shaped spline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Size, Size of new circle</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Location of new circle</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.primitive_square_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">primitive_square_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.primitive_square_add" title="Link to this definition"></a></dt>
+<dd><p>Add new square-shaped spline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Size, Size of new circle</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Location of new circle</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toggle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_passthrough</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select" title="Link to this definition"></a></dt>
+<dd><p>Select spline points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+<li><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Remove from selection</p></li>
+<li><p><strong>toggle</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Toggle Selection, Toggle the selection</p></li>
+<li><p><strong>deselect_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect On Nothing, Deselect all when nothing under the cursor</p></li>
+<li><p><strong>select_passthrough</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Select Unselected, Ignore the select action when the element is already selected</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Location of vertex in normalized space</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_all" title="Link to this definition"></a></dt>
+<dd><p>Change selection of all curve points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'SELECT'</em><em>, </em><em>'DESELECT'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_box" title="Link to this definition"></a></dt>
+<dd><p>Select curve points using box selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'SET'</em><em>, </em><em>'ADD'</em><em>, </em><em>'SUB'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_circle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_circle" title="Link to this definition"></a></dt>
+<dd><p>Select curve points using circle selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X</p></li>
+<li><p><strong>y</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y</p></li>
+<li><p><strong>radius</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'SET'</em><em>, </em><em>'ADD'</em><em>, </em><em>'SUB'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_lasso">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_lasso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_lasso" title="Link to this definition"></a></dt>
+<dd><p>Select curve points using lasso selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'SET'</em><em>, </em><em>'ADD'</em><em>, </em><em>'SUB'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_less</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_less" title="Link to this definition"></a></dt>
+<dd><p>Deselect spline points at the boundary of each selection region</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_linked" title="Link to this definition"></a></dt>
+<dd><p>Select all curve points linked to already selected ones</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_linked_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_linked_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_linked_pick" title="Link to this definition"></a></dt>
+<dd><p>(De)select all points linked to the curve under the mouse cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">select_more</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.select_more" title="Link to this definition"></a></dt>
+<dd><p>Select more spline points connected to initial selection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.shape_key_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">shape_key_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.shape_key_clear" title="Link to this definition"></a></dt>
+<dd><p>Remove mask shape keyframe for active mask layer at the current frame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.shape_key_feather_reset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">shape_key_feather_reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.shape_key_feather_reset" title="Link to this definition"></a></dt>
+<dd><p>Reset feather weights on all selected points animation values</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.shape_key_insert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">shape_key_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.shape_key_insert" title="Link to this definition"></a></dt>
+<dd><p>Insert mask shape keyframe for active mask layer at the current frame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.shape_key_rekey">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">shape_key_rekey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feather</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.shape_key_rekey" title="Link to this definition"></a></dt>
+<dd><p>Recalculate animation data on selected points for frames selected in the dopesheet</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location</p></li>
+<li><p><strong>feather</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Feather</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.slide_point">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">slide_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">slide_feather</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_new_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.slide_point" title="Link to this definition"></a></dt>
+<dd><p>Slide control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>slide_feather</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Slide Feather, First try to slide feather instead of vertex</p></li>
+<li><p><strong>is_new_point</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Slide New Point, Newly created vertex is being slid</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.slide_spline_curvature">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">slide_spline_curvature</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.slide_spline_curvature" title="Link to this definition"></a></dt>
+<dd><p>Slide a point on the spline to define its curvature</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.mask.switch_direction">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.mask.</span></span><span class="sig-name descname"><span class="pre">switch_direction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.mask.switch_direction" title="Link to this definition"></a></dt>
+<dd><p>Switch direction of selected splines</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.marker.html" class="btn btn-neutral float-left" title="Marker Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.material.html" class="btn btn-neutral float-right" title="Material Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

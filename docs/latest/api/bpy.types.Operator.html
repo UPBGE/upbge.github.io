@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operator(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.Operator.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OperatorFileListElement(PropertyGroup)" href="bpy.types.OperatorFileListElement.html" />
+    <link rel="prev" title="OpacityGpencilModifier(GpencilModifier)" href="bpy.types.OpacityGpencilModifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">Operator(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="operator-bpy-struct">
+<h1>Operator(bpy_struct)<a class="headerlink" href="#operator-bpy-struct" title="Link to this heading"></a></h1>
+<section id="basic-operator-example">
+<h2>Basic Operator Example<a class="headerlink" href="#basic-operator-example" title="Link to this heading"></a></h2>
+<p>This script shows simple operator which prints a message.</p>
+<p>Since the operator only has an <a class="reference internal" href="#bpy.types.Operator.execute" title="bpy.types.Operator.execute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.execute</span></code></a> function it takes no
+user input.</p>
+<p>The function should return <code class="docutils literal notranslate"><span class="pre">{'FINISHED'}</span></code> or <code class="docutils literal notranslate"><span class="pre">{'CANCELLED'}</span></code>, the latter
+meaning that operator execution was aborted without making any changes, and
+saving an undo entry isn’t necessary. If an error is detected after some changes
+have already been made, use the <code class="docutils literal notranslate"><span class="pre">{'FINISHED'}</span></code> return code, or the behavior
+of undo will be confusing for the user.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Operator subclasses must be registered before accessing them from blender.</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">HelloWorldOperator</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;wm.hello_world&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Minimal Operator&quot;</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="c1"># Only needed if you want to add into a dynamic menu.</span>
+<span class="k">def</span> <span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">HelloWorldOperator</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello World Operator&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the view menu (required to also use F3 search &quot;Hello World Operator&quot; for quick access).</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">HelloWorldOperator</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_view</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+<span class="c1"># Test call to the newly defined operator.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">hello_world</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="invoke-function">
+<h2>Invoke Function<a class="headerlink" href="#invoke-function" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="#bpy.types.Operator.invoke" title="bpy.types.Operator.invoke"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.invoke</span></code></a> is used to initialize the operator from the context
+at the moment the operator is called.
+invoke() is typically used to assign properties which are then used by
+execute().
+Some operators don’t have an execute() function, removing the ability to be
+repeated from a script or macro.</p>
+<p>This example shows how to define an operator which gets mouse input to
+execute a function and that this operator can be invoked or executed from
+the python api.</p>
+<p>Also notice this operator defines its own properties, these are different
+to typical class properties because blender registers them with the
+operator, to use as arguments when called, saved for operator undo/redo and
+automatically added into the user interface.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">SimpleMouseOperator</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; This operator shows the mouse location,</span>
+<span class="sd">        this string is used for the tooltip and API docs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;wm.mouse_position&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Invoke Mouse Operator&quot;</span>
+
+    <span class="n">x</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">()</span>
+    <span class="n">y</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># rather than printing, use the report function,</span>
+        <span class="c1"># this way the message appears in the header,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;Mouse coords are </span><span class="si">%d</span><span class="s2"> </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_y</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+
+<span class="c1"># Only needed if you want to add into a dynamic menu.</span>
+<span class="k">def</span> <span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">SimpleMouseOperator</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Simple Mouse Operator&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the view menu (required to also use F3 search &quot;Simple Mouse Operator&quot; for quick access)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">SimpleMouseOperator</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_view</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+<span class="c1"># Test call to the newly defined operator.</span>
+<span class="c1"># Here we call the operator and invoke it, meaning that the settings are taken</span>
+<span class="c1"># from the mouse.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">mouse_position</span><span class="p">(</span><span class="s1">&#39;INVOKE_DEFAULT&#39;</span><span class="p">)</span>
+
+<span class="c1"># Another test call, this time call execute() directly with pre-defined settings.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">mouse_position</span><span class="p">(</span><span class="s1">&#39;EXEC_DEFAULT&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">66</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="calling-a-file-selector">
+<h2>Calling a File Selector<a class="headerlink" href="#calling-a-file-selector" title="Link to this heading"></a></h2>
+<p>This example shows how an operator can use the file selector.</p>
+<p>Notice the invoke function calls a window manager method and returns
+<code class="docutils literal notranslate"><span class="pre">{'RUNNING_MODAL'}</span></code>, this means the file selector stays open and the operator does not
+exit immediately after invoke finishes.</p>
+<p>The file selector runs the operator, calling <a class="reference internal" href="#bpy.types.Operator.execute" title="bpy.types.Operator.execute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.execute</span></code></a> when the
+user confirms.</p>
+<p>The <a class="reference internal" href="#bpy.types.Operator.poll" title="bpy.types.Operator.poll"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.poll</span></code></a> function is optional, used to check if the operator
+can run.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">ExportSomeData</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test exporter which just writes hello world&quot;&quot;&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;export.some_data&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Export Some Data&quot;</span>
+
+    <span class="n">filepath</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span><span class="n">subtype</span><span class="o">=</span><span class="s2">&quot;FILE_PATH&quot;</span><span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">poll</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Hello World &quot;</span> <span class="o">+</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">window_manager</span><span class="o">.</span><span class="n">fileselect_add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;RUNNING_MODAL&#39;</span><span class="p">}</span>
+
+
+<span class="c1"># Only needed if you want to add into a dynamic menu.</span>
+<span class="k">def</span> <span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator_context</span> <span class="o">=</span> <span class="s1">&#39;INVOKE_DEFAULT&#39;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">ExportSomeData</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Text Export Operator&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the file selector (required to also use F3 search &quot;Text Export Operator&quot; for quick access)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">ExportSomeData</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">TOPBAR_MT_file_export</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+
+<span class="c1"># test call</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">export</span><span class="o">.</span><span class="n">some_data</span><span class="p">(</span><span class="s1">&#39;INVOKE_DEFAULT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="dialog-box">
+<h2>Dialog Box<a class="headerlink" href="#dialog-box" title="Link to this heading"></a></h2>
+<p>This operator uses its <a class="reference internal" href="#bpy.types.Operator.invoke" title="bpy.types.Operator.invoke"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.invoke</span></code></a> function to call a popup.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">DialogOperator</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.dialog_operator&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Simple Dialog Operator&quot;</span>
+
+    <span class="n">my_float</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Some Floating Point&quot;</span><span class="p">)</span>
+    <span class="n">my_bool</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">BoolProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Toggle Option&quot;</span><span class="p">)</span>
+    <span class="n">my_string</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;String Value&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;Popup Values: </span><span class="si">%f</span><span class="s2">, </span><span class="si">%d</span><span class="s2">, &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">my_float</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_bool</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_string</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="n">message</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">wm</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">window_manager</span>
+        <span class="k">return</span> <span class="n">wm</span><span class="o">.</span><span class="n">invoke_props_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+
+<span class="c1"># Only needed if you want to add into a dynamic menu.</span>
+<span class="k">def</span> <span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">DialogOperator</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Dialog Operator&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the object menu (required to also use F3 search &quot;Dialog Operator&quot; for quick access)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">DialogOperator</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_object</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+<span class="c1"># Test call.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">dialog_operator</span><span class="p">(</span><span class="s1">&#39;INVOKE_DEFAULT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-drawing">
+<h2>Custom Drawing<a class="headerlink" href="#custom-drawing" title="Link to this heading"></a></h2>
+<p>By default operator properties use an automatic user interface layout.
+If you need more control you can create your own layout with a
+<a class="reference internal" href="#bpy.types.Operator.draw" title="bpy.types.Operator.draw"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.draw</span></code></a> function.</p>
+<p>This works like the <a class="reference internal" href="bpy.types.Panel.html#bpy.types.Panel" title="bpy.types.Panel"><code class="xref py py-class docutils literal notranslate"><span class="pre">Panel</span></code></a> and <a class="reference internal" href="bpy.types.Menu.html#bpy.types.Menu" title="bpy.types.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">Menu</span></code></a> draw functions, its used
+for dialogs and file selectors.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">CustomDrawOperator</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.custom_draw&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Simple Modal Operator&quot;</span>
+
+    <span class="n">filepath</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span><span class="n">subtype</span><span class="o">=</span><span class="s2">&quot;FILE_PATH&quot;</span><span class="p">)</span>
+
+    <span class="n">my_float</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Float&quot;</span><span class="p">)</span>
+    <span class="n">my_bool</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">BoolProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Toggle Option&quot;</span><span class="p">)</span>
+    <span class="n">my_string</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;String Value&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">wm</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">window_manager</span>
+        <span class="k">return</span> <span class="n">wm</span><span class="o">.</span><span class="n">invoke_props_dialog</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">column</span><span class="p">()</span>
+        <span class="n">col</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Custom Interface!&quot;</span><span class="p">)</span>
+
+        <span class="n">row</span> <span class="o">=</span> <span class="n">col</span><span class="o">.</span><span class="n">row</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">prop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;my_float&quot;</span><span class="p">)</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">prop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;my_bool&quot;</span><span class="p">)</span>
+
+        <span class="n">col</span><span class="o">.</span><span class="n">prop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;my_string&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Only needed if you want to add into a dynamic menu.</span>
+<span class="k">def</span> <span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">CustomDrawOperator</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Custom Draw Operator&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the object menu (required to also use F3 search &quot;Custom Draw Operator&quot; for quick access).</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">CustomDrawOperator</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_object</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+<span class="c1"># test call</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">custom_draw</span><span class="p">(</span><span class="s1">&#39;INVOKE_DEFAULT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="modal-execution">
+<span id="modal-operator"></span><h2>Modal Execution<a class="headerlink" href="#modal-execution" title="Link to this heading"></a></h2>
+<p>This operator defines a <a class="reference internal" href="#bpy.types.Operator.modal" title="bpy.types.Operator.modal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.modal</span></code></a> function that will keep being
+run to handle events until it returns <code class="docutils literal notranslate"><span class="pre">{'FINISHED'}</span></code> or <code class="docutils literal notranslate"><span class="pre">{'CANCELLED'}</span></code>.</p>
+<p>Modal operators run every time a new event is detected, such as a mouse click
+or key press. Conversely, when no new events are detected, the modal operator
+will not run. Modal operators are especially useful for interactive tools, an
+operator can have its own state where keys toggle options as the operator runs.
+Grab, Rotate, Scale, and Fly-Mode are examples of modal operators.</p>
+<p><a class="reference internal" href="#bpy.types.Operator.invoke" title="bpy.types.Operator.invoke"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.invoke</span></code></a> is used to initialize the operator as being active
+by returning <code class="docutils literal notranslate"><span class="pre">{'RUNNING_MODAL'}</span></code>, initializing the modal loop.</p>
+<p>Notice <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> and <code class="docutils literal notranslate"><span class="pre">__del__()</span></code> are declared.
+For other operator types they are not useful but for modal operators they will
+be called before the <a class="reference internal" href="#bpy.types.Operator.invoke" title="bpy.types.Operator.invoke"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operator.invoke</span></code></a> and after the operator finishes.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+
+<span class="k">class</span> <span class="nc">ModalOperator</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.modal_operator&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Simple Modal Operator&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;End&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="mf">100.0</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">modal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;MOUSEMOVE&#39;</span><span class="p">:</span>  <span class="c1"># Apply</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_x</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;LEFTMOUSE&#39;</span><span class="p">:</span>  <span class="c1"># Confirm</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+        <span class="k">elif</span> <span class="n">event</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="p">{</span><span class="s1">&#39;RIGHTMOUSE&#39;</span><span class="p">,</span> <span class="s1">&#39;ESC&#39;</span><span class="p">}:</span>  <span class="c1"># Cancel</span>
+            <span class="c1"># Revert all changes that have been made</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_loc_x</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;CANCELLED&#39;</span><span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;RUNNING_MODAL&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_loc_x</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">mouse_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+        <span class="n">context</span><span class="o">.</span><span class="n">window_manager</span><span class="o">.</span><span class="n">modal_handler_add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;RUNNING_MODAL&#39;</span><span class="p">}</span>
+
+
+<span class="c1"># Only needed if you want to add into a dynamic menu.</span>
+<span class="k">def</span> <span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">ModalOperator</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Modal Operator&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the object menu (required to also use F3 search &quot;Modal Operator&quot; for quick access).</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">ModalOperator</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_object</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+<span class="c1"># test call</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">modal_operator</span><span class="p">(</span><span class="s1">&#39;INVOKE_DEFAULT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="enum-search-popup">
+<h2>Enum Search Popup<a class="headerlink" href="#enum-search-popup" title="Link to this heading"></a></h2>
+<p>You may want to have an operator prompt the user to select an item
+from a search field, this can be done using <code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Operator.invoke_search_popup</span></code>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="kn">from</span> <span class="nn">bpy.props</span> <span class="kn">import</span> <span class="n">EnumProperty</span>
+
+
+<span class="k">class</span> <span class="nc">SearchEnumOperator</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.search_enum_operator&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Search Enum Operator&quot;</span>
+    <span class="n">bl_property</span> <span class="o">=</span> <span class="s2">&quot;my_search&quot;</span>
+
+    <span class="n">my_search</span><span class="p">:</span> <span class="n">EnumProperty</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My Search&quot;</span><span class="p">,</span>
+        <span class="n">items</span><span class="o">=</span><span class="p">(</span>
+            <span class="p">(</span><span class="s1">&#39;FOO&#39;</span><span class="p">,</span> <span class="s2">&quot;Foo&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span> <span class="s2">&quot;Bar&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;BAZ&#39;</span><span class="p">,</span> <span class="s2">&quot;Baz&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;Selected:&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_search</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="nf">invoke</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">window_manager</span><span class="o">.</span><span class="n">invoke_search_popup</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;RUNNING_MODAL&#39;</span><span class="p">}</span>
+
+
+<span class="c1"># Only needed if you want to add into a dynamic menu.</span>
+<span class="k">def</span> <span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">SearchEnumOperator</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Search Enum Operator&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the object menu (required to also use F3 search &quot;Search Enum Operator&quot; for quick access)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">SearchEnumOperator</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_object</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+<span class="c1"># test call</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">search_enum_operator</span><span class="p">(</span><span class="s1">&#39;INVOKE_DEFAULT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.Operator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">Operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator" title="Link to this definition"></a></dt>
+<dd><p>Storage of an operator being executed, or registered after execution</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_cursor_pending">
+<span class="sig-name descname"><span class="pre">bl_cursor_pending</span></span><a class="headerlink" href="#bpy.types.Operator.bl_cursor_pending" title="Link to this definition"></a></dt>
+<dd><p>Cursor to use when waiting for the user to select a location to activate the operator (when <code class="docutils literal notranslate"><span class="pre">bl_options</span></code> has <code class="docutils literal notranslate"><span class="pre">DEPENDS_ON_CURSOR</span></code> set)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/window_cursor_items.html#rna-enum-window-cursor-items"><span class="std std-ref">Window Cursor Items</span></a>, default ‘DEFAULT’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_description">
+<span class="sig-name descname"><span class="pre">bl_description</span></span><a class="headerlink" href="#bpy.types.Operator.bl_description" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><a class="headerlink" href="#bpy.types.Operator.bl_idname" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><a class="headerlink" href="#bpy.types.Operator.bl_label" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_options">
+<span class="sig-name descname"><span class="pre">bl_options</span></span><a class="headerlink" href="#bpy.types.Operator.bl_options" title="Link to this definition"></a></dt>
+<dd><p>Options for this operator type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum set in <a class="reference internal" href="bpy_types_enum_items/operator_type_flag_items.html#rna-enum-operator-type-flag-items"><span class="std std-ref">Operator Type Flag Items</span></a>, default {‘REGISTER’}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_translation_context">
+<span class="sig-name descname"><span class="pre">bl_translation_context</span></span><a class="headerlink" href="#bpy.types.Operator.bl_translation_context" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “Operator”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_undo_group">
+<span class="sig-name descname"><span class="pre">bl_undo_group</span></span><a class="headerlink" href="#bpy.types.Operator.bl_undo_group" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Operator.has_reports">
+<span class="sig-name descname"><span class="pre">has_reports</span></span><a class="headerlink" href="#bpy.types.Operator.has_reports" title="Link to this definition"></a></dt>
+<dd><p>Operator has a set of reports (warnings and errors) from last execution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Operator.layout">
+<span class="sig-name descname"><span class="pre">layout</span></span><a class="headerlink" href="#bpy.types.Operator.layout" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.UILayout.html#bpy.types.UILayout" title="bpy.types.UILayout"><code class="xref py py-class docutils literal notranslate"><span class="pre">UILayout</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Operator.macros">
+<span class="sig-name descname"><span class="pre">macros</span></span><a class="headerlink" href="#bpy.types.Operator.macros" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Macro.html#bpy.types.Macro" title="bpy.types.Macro"><code class="xref py py-class docutils literal notranslate"><span class="pre">Macro</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Operator.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#bpy.types.Operator.name" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Operator.options">
+<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#bpy.types.Operator.options" title="Link to this definition"></a></dt>
+<dd><p>Runtime options</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.OperatorOptions.html#bpy.types.OperatorOptions" title="bpy.types.OperatorOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorOptions</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Operator.properties">
+<span class="sig-name descname"><span class="pre">properties</span></span><a class="headerlink" href="#bpy.types.Operator.properties" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.OperatorProperties.html#bpy.types.OperatorProperties" title="bpy.types.OperatorProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorProperties</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_property">
+<span class="sig-name descname"><span class="pre">bl_property</span></span><a class="headerlink" href="#bpy.types.Operator.bl_property" title="Link to this definition"></a></dt>
+<dd><p>The name of a property to use as this operators primary property.
+Currently this is only used to select the default property when
+expanding an operator into a menu.
+:type: string</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.report" title="Link to this definition"></a></dt>
+<dd><p>report</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/wm_report_items.html#rna-enum-wm-report-items"><span class="std std-ref">Wm Report Items</span></a>) – Type</p></li>
+<li><p><strong>message</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Report Message</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.is_repeat">
+<span class="sig-name descname"><span class="pre">is_repeat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.is_repeat" title="Link to this definition"></a></dt>
+<dd><p>is_repeat</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.poll">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.poll" title="Link to this definition"></a></dt>
+<dd><p>Test if the operator can be called or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.execute" title="Link to this definition"></a></dt>
+<dd><p>Execute the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>enum set in <a class="reference internal" href="bpy_types_enum_items/operator_return_items.html#rna-enum-operator-return-items"><span class="std std-ref">Operator Return Items</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.check" title="Link to this definition"></a></dt>
+<dd><p>Check the operator settings, return True to signal a change to redraw</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.invoke">
+<span class="sig-name descname"><span class="pre">invoke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.invoke" title="Link to this definition"></a></dt>
+<dd><p>Invoke the operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>enum set in <a class="reference internal" href="bpy_types_enum_items/operator_return_items.html#rna-enum-operator-return-items"><span class="std std-ref">Operator Return Items</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.modal">
+<span class="sig-name descname"><span class="pre">modal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.modal" title="Link to this definition"></a></dt>
+<dd><p>Modal operator function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>enum set in <a class="reference internal" href="bpy_types_enum_items/operator_return_items.html#rna-enum-operator-return-items"><span class="std std-ref">Operator Return Items</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.draw" title="Link to this definition"></a></dt>
+<dd><p>Draw function for the operator</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.cancel">
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.cancel" title="Link to this definition"></a></dt>
+<dd><p>Called when the operator is canceled</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.description">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">properties</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.description" title="Link to this definition"></a></dt>
+<dd><p>Compute a description string that depends on parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.as_keywords">
+<span class="sig-name descname"><span class="pre">as_keywords</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.as_keywords" title="Link to this definition"></a></dt>
+<dd><p>Return a copy of the properties as a dictionary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Operator.poll_message_set">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">poll_message_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Operator.poll_message_set" title="Link to this definition"></a></dt>
+<dd><p>Set the message to show in the tool-tip when poll fails.</p>
+<p>When message is callable, additional user defined positional arguments are passed to the message function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>string</em><em> or </em><em>a callable that returns a string</em><em> or </em><em>None.</em>) – The message or a function that returns the message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.context.html#bpy.context.active_operator" title="bpy.context.active_operator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.context.active_operator</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.SpaceFileBrowser.html#bpy.types.SpaceFileBrowser.active_operator" title="bpy.types.SpaceFileBrowser.active_operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceFileBrowser.active_operator</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.SpaceFileBrowser.html#bpy.types.SpaceFileBrowser.operator" title="bpy.types.SpaceFileBrowser.operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpaceFileBrowser.operator</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.fileselect_add" title="bpy.types.WindowManager.fileselect_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.fileselect_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.invoke_confirm" title="bpy.types.WindowManager.invoke_confirm"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.invoke_confirm</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.invoke_popup" title="bpy.types.WindowManager.invoke_popup"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.invoke_popup</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.invoke_props_dialog" title="bpy.types.WindowManager.invoke_props_dialog"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.invoke_props_dialog</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.invoke_props_popup" title="bpy.types.WindowManager.invoke_props_popup"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.invoke_props_popup</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.invoke_search_popup" title="bpy.types.WindowManager.invoke_search_popup"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.invoke_search_popup</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.modal_handler_add" title="bpy.types.WindowManager.modal_handler_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.modal_handler_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.WindowManager.html#bpy.types.WindowManager.operators" title="bpy.types.WindowManager.operators"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowManager.operators</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.OpacityGpencilModifier.html" class="btn btn-neutral float-left" title="OpacityGpencilModifier(GpencilModifier)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.OperatorFileListElement.html" class="btn btn-neutral float-right" title="OperatorFileListElement(PropertyGroup)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

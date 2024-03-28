@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anim Operators &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.anim.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Armature Operators" href="bpy.ops.armature.html" />
+    <link rel="prev" title="Action Operators" href="bpy.ops.action.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Anim Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.anim">
+<span id="anim-operators"></span><h1>Anim Operators<a class="headerlink" href="#module-bpy.ops.anim" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.change_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">change_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.change_frame" title="Link to this definition"></a></dt>
+<dd><p>Interactively change the current frame number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>float in</em><em> [</em><em>-1.04857e+06</em><em>, </em><em>1.04857e+06</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Snap</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channel_select_keys">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channel_select_keys</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channel_select_keys" title="Link to this definition"></a></dt>
+<dd><p>Select all keyframes of channel under mouse</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channel_view_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channel_view_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_preview_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channel_view_pick" title="Link to this definition"></a></dt>
+<dd><p>Reset viewable area to show the channel under the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Handles, Include handles of keyframes when calculating extents</p></li>
+<li><p><strong>use_preview_range</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Preview Range, Ignore frames outside of the preview range</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_clean_empty">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_clean_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_clean_empty" title="Link to this definition"></a></dt>
+<dd><p>Delete all empty animation data containers from visible data-blocks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_click">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_click</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">children_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_click" title="Link to this definition"></a></dt>
+<dd><p>Handle mouse clicks over animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend Select</p></li>
+<li><p><strong>extend_range</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend Range, Selection of active channel to clicked channel</p></li>
+<li><p><strong>children_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select Children Only</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_collapse">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_collapse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_collapse" title="Link to this definition"></a></dt>
+<dd><p>Collapse (close) all selected expandable animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Collapse all channels (not just selected ones)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_delete" title="Link to this definition"></a></dt>
+<dd><p>Delete all selected animation channels</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_editable_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_editable_toggle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PROTECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_editable_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle editability of selected channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'DISABLE'</em><em>, </em><em>'ENABLE'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mode</p></li>
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'PROTECT'</em><em>, </em><em>'MUTE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_expand">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_expand" title="Link to this definition"></a></dt>
+<dd><p>Expand (open) all selected expandable animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Expand all channels (not just selected ones)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_fcurves_enable">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_fcurves_enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_fcurves_enable" title="Link to this definition"></a></dt>
+<dd><p>Clear ‘disabled’ tag from all F-Curves to get broken F-Curves working again</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_group">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'New</span> <span class="pre">Group'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_group" title="Link to this definition"></a></dt>
+<dd><p>Add selected F-Curves to a new group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of newly created group</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DOWN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_move" title="Link to this definition"></a></dt>
+<dd><p>Rearrange selected animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direction</strong> (<em>enum in</em><em> [</em><em>'TOP'</em><em>, </em><em>'UP'</em><em>, </em><em>'DOWN'</em><em>, </em><em>'BOTTOM'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Direction</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_rename">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_rename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_rename" title="Link to this definition"></a></dt>
+<dd><p>Rename animation channel under mouse</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_select_all" title="Link to this definition"></a></dt>
+<dd><p>Toggle selection of all animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'SELECT'</em><em>, </em><em>'DESELECT'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_select_box" title="Link to this definition"></a></dt>
+<dd><p>Select all animation channels within the specified region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Deselect rather than select items</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_select_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_select_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_select_filter" title="Link to this definition"></a></dt>
+<dd><p>Start entering text which filters the set of channels shown to only include those with matching names</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_setting_disable">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_setting_disable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DISABLE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PROTECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_setting_disable" title="Link to this definition"></a></dt>
+<dd><p>Disable specified setting on all selected animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'DISABLE'</em><em>, </em><em>'ENABLE'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mode</p></li>
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'PROTECT'</em><em>, </em><em>'MUTE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_setting_enable">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_setting_enable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ENABLE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PROTECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_setting_enable" title="Link to this definition"></a></dt>
+<dd><p>Enable specified setting on all selected animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'DISABLE'</em><em>, </em><em>'ENABLE'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mode</p></li>
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'PROTECT'</em><em>, </em><em>'MUTE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_setting_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_setting_toggle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PROTECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_setting_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle specified setting on all selected animation channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (<em>enum in</em><em> [</em><em>'TOGGLE'</em><em>, </em><em>'DISABLE'</em><em>, </em><em>'ENABLE'</em><em>, </em><em>'INVERT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mode</p></li>
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'PROTECT'</em><em>, </em><em>'MUTE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_ungroup">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_ungroup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_ungroup" title="Link to this definition"></a></dt>
+<dd><p>Remove selected F-Curves from their current groups</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.channels_view_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">channels_view_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_preview_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.channels_view_selected" title="Link to this definition"></a></dt>
+<dd><p>Reset viewable area to show the selected channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>include_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Handles, Include handles of keyframes when calculating extents</p></li>
+<li><p><strong>use_preview_range</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Preview Range, Ignore frames outside of the preview range</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.clear_useless_actions">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">clear_useless_actions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">only_unused</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.clear_useless_actions" title="Link to this definition"></a></dt>
+<dd><p>Mark actions with no F-Curves for deletion after save and reload of file preserving “action libraries”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>only_unused</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Unused, Only unused (Fake User only) actions get considered</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/anim.py#L325">startup/bl_operators/anim.py:325</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.copy_driver_button">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">copy_driver_button</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.copy_driver_button" title="Link to this definition"></a></dt>
+<dd><p>Copy the driver for the highlighted button</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.driver_button_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">driver_button_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.driver_button_add" title="Link to this definition"></a></dt>
+<dd><p>Add driver for the property under the cursor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.driver_button_edit">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">driver_button_edit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.driver_button_edit" title="Link to this definition"></a></dt>
+<dd><p>Edit the drivers for the connected property represented by the highlighted button</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.driver_button_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">driver_button_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.driver_button_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove the driver(s) for the connected property(s) represented by the highlighted button</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Delete drivers for all elements of the array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.end_frame_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">end_frame_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.end_frame_set" title="Link to this definition"></a></dt>
+<dd><p>Set the current frame as the preview or scene end frame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_clear_button">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_clear_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_clear_button" title="Link to this definition"></a></dt>
+<dd><p>Clear all keyframes on the currently active property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Clear keyframes from all elements of the array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_clear_v3d">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_clear_v3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_clear_v3d" title="Link to this definition"></a></dt>
+<dd><p>Remove all keyframe animation for selected objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_delete" title="Link to this definition"></a></dt>
+<dd><p>Delete keyframes on the current frame for all properties in the specified Keying Set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'DEFAULT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keying Set, The Keying Set to use</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_delete_button">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_delete_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_delete_button" title="Link to this definition"></a></dt>
+<dd><p>Delete current keyframe of current UI-active property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Delete keyframes from all elements of the array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_delete_by_name">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_delete_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_delete_by_name" title="Link to this definition"></a></dt>
+<dd><p>Alternate access to ‘Delete Keyframe’ for keymaps to use</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Keying Set, The Keying Set to use</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_delete_v3d">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_delete_v3d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_delete_v3d" title="Link to this definition"></a></dt>
+<dd><p>Remove keyframes on current frame for selected objects and bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_insert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_insert" title="Link to this definition"></a></dt>
+<dd><p>Insert keyframes on the current frame for all properties in the specified Keying Set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'DEFAULT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keying Set, The Keying Set to use</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_insert_button">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_insert_button</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_insert_button" title="Link to this definition"></a></dt>
+<dd><p>Insert a keyframe for current UI-active property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Insert a keyframe for all element of the array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_insert_by_name">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_insert_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_insert_by_name" title="Link to this definition"></a></dt>
+<dd><p>Alternate access to ‘Insert Keyframe’ for keymaps to use</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Keying Set, The Keying Set to use</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyframe_insert_menu">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyframe_insert_menu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">always_prompt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyframe_insert_menu" title="Link to this definition"></a></dt>
+<dd><p>Insert Keyframes for specified Keying Set, with menu of available Keying Sets if undefined</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'DEFAULT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keying Set, The Keying Set to use</p></li>
+<li><p><strong>always_prompt</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Always Show Menu</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keying_set_active_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keying_set_active_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keying_set_active_set" title="Link to this definition"></a></dt>
+<dd><p>Set a new active keying set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'DEFAULT'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keying Set, The Keying Set to use</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keying_set_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keying_set_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keying_set_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new (empty) keying set to the active Scene</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keying_set_export">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keying_set_export</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keying_set_export" title="Link to this definition"></a></dt>
+<dd><p>Export Keying Set to a Python script</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – filepath</p></li>
+<li><p><strong>filter_folder</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter folders</p></li>
+<li><p><strong>filter_text</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter text</p></li>
+<li><p><strong>filter_python</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Python</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/anim.py#L49">startup/bl_operators/anim.py:49</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keying_set_path_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keying_set_path_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keying_set_path_add" title="Link to this definition"></a></dt>
+<dd><p>Add empty path to active keying set</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keying_set_path_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keying_set_path_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keying_set_path_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove active Path from active keying set</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keying_set_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keying_set_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keying_set_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove the active keying set</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyingset_button_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyingset_button_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyingset_button_add" title="Link to this definition"></a></dt>
+<dd><p>Add current UI-active property to current keying set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Add all elements of the array to a Keying Set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.keyingset_button_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">keyingset_button_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.keyingset_button_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove current UI-active property from current keying set</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.paste_driver_button">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">paste_driver_button</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.paste_driver_button" title="Link to this definition"></a></dt>
+<dd><p>Paste the driver in the internal clipboard to the highlighted button</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.previewrange_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">previewrange_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.previewrange_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear preview range</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.previewrange_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">previewrange_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.previewrange_set" title="Link to this definition"></a></dt>
+<dd><p>Interactively define frame range used for playback</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.start_frame_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">start_frame_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.start_frame_set" title="Link to this definition"></a></dt>
+<dd><p>Set the current frame as the preview or scene start frame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.anim.update_animated_transform_constraints">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.anim.</span></span><span class="sig-name descname"><span class="pre">update_animated_transform_constraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_convert_to_radians</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.anim.update_animated_transform_constraints" title="Link to this definition"></a></dt>
+<dd><p>Update f-curves/drivers affecting Transform constraints (use it with files from 2.70 and earlier)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_convert_to_radians</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Convert to Radians, Convert f-curves/drivers affecting rotations to radians.Warning: Use this only once</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/anim.py#L361">startup/bl_operators/anim.py:361</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.action.html" class="btn btn-neutral float-left" title="Action Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.armature.html" class="btn btn-neutral float-right" title="Armature Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

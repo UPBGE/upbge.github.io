@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Markup Style Guide &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme_overrides.css?v=5e9f35f9" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f4332903"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Commit Guidelines" href="commit.html" />
+    <link rel="prev" title="Writing Style Guide" href="writing_style.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python/index.html">Python Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datablocks/index.html">Datablocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Contribute</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="about.html">About the UPBGE Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contribute.html">Contribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guidelines.html">Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing_style.html">Writing Style Guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Markup Style Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conventions">Conventions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#headings">Headings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#text-styling">Text Styling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interface-elements">Interface Elements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-samples">Code Samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#images">Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#videos">Videos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#useful-constructs">Useful Constructs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-references-and-linkage">Cross References and Linkage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commit.html">Commit Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.html">Maintenance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="license.html">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="whats_new.html">What’s New</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Contribute</a></li>
+      <li class="breadcrumb-item active">Markup Style Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/manual/contribute/markup_style.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="markup-style-guide">
+<h1>Markup Style Guide<a class="headerlink" href="#markup-style-guide" title="Link to this heading"></a></h1>
+<p>This page covers the conventions for writing and use of the reStructuredText (RST) markup syntax.</p>
+<section id="conventions">
+<h2>Conventions<a class="headerlink" href="#conventions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Three (3) space indentation.</p></li>
+<li><p>Lines should be less than 120 characters long.</p></li>
+<li><p>Use <em>italics</em> for <em>button/menu names</em>.</p></li>
+</ul>
+<p>Other loose conventions:</p>
+<ul class="simple">
+<li><p>Avoid Unicode characters.</p></li>
+<li><dl class="simple">
+<dt>Avoid heavily wrapped text</dt><dd><p>(i.e. sentences can have their own lines).</p>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="headings">
+<h2>Headings<a class="headerlink" href="#headings" title="Link to this heading"></a></h2>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">#################</span>
+<span class="gh">  Document Part</span>
+<span class="gh">#################</span>
+
+<span class="gh">================</span>
+<span class="gh">Document Chapter</span>
+<span class="gh">================</span>
+
+<span class="gh">Document Section</span>
+<span class="gh">++++++++++++++++</span>
+
+<span class="gh">Document Subsection</span>
+<span class="gh">-------------------</span>
+
+<span class="gh">Document Subsubsection</span>
+<span class="gh">^^^^^^^^^^^^^^^^^^^^^^</span>
+
+<span class="gh">Document Paragraph</span>
+<span class="gh">&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><em>Parts</em> should only be used for contents or index pages. Each <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file should only have one chapter heading (<code class="docutils literal notranslate"><span class="pre">=</span></code>) per file - top heading.</p>
+</div>
+</section>
+<section id="text-styling">
+<h2>Text Styling<a class="headerlink" href="#text-styling" title="Link to this heading"></a></h2>
+<p>See the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">overview on ReStructuredText</a> for more information on how to style the various elements of the documentation and on how to add lists, tables, pictures and code blocks. The <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html">Sphinx reference</a> provides more insight into additional constructs.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Do not manually format/break lines in <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files; use your editor’s <em>wrap text</em> functionality. 80 characters is standard line length for computer files.</p>
+</div>
+<p>The following are useful markups for text styling:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="ge">*italic*</span>
+<span class="gs">**bold**</span>
+<span class="s">``literal``</span>
+</pre></div>
+</div>
+</section>
+<section id="interface-elements">
+<h2>Interface Elements<a class="headerlink" href="#interface-elements" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">:kbd:`LMB`</span></code> - keyboard and mouse shortcuts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">*Mirror*</span></code> - interface labels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:menuselection:`3D</span> <span class="pre">Viewport</span> <span class="pre">--&gt;</span> <span class="pre">Add</span> <span class="pre">--&gt;</span> <span class="pre">Mesh</span> <span class="pre">--&gt;</span> <span class="pre">Monkey`</span></code> - menus.</p></li>
+</ul>
+</section>
+<section id="code-samples">
+<h2>Code Samples<a class="headerlink" href="#code-samples" title="Link to this heading"></a></h2>
+<p>There is support for syntax highlighting if the programming language is provided, and line numbers can be optionally shown with the <code class="docutils literal notranslate"><span class="pre">:linenos:</span></code> option:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> python
+   <span class="nc">:linenos:</span>
+
+   import bpy
+   def some_function():
+<span class="cp">       ...</span>
+</pre></div>
+</div>
+</section>
+<section id="images">
+<h2>Images<a class="headerlink" href="#images" title="Link to this heading"></a></h2>
+<p>Figures are used to place images:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> /images/interface_window-system_splash_current.png
+
+   Image caption
+</pre></div>
+</div>
+<p>For consistency, and since it would be good to ensure that screenshots are all of similar size when floated next to text, writers should take screenshots in the following manner:</p>
+<ol class="arabic simple">
+<li><p>Prepare the area you would like to capture making sure to <em>use the default theme and setting</em>. (In some cases you may not want to use the default settings e.g. if some options are hidden behind a checkbox.)</p></li>
+<li><p>Zoom to the maximum zoom level (hold <kbd class="kbd docutils literal notranslate">NumpadPlus</kbd> or <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">MMB</kbd></kbd> or similar).</p></li>
+<li><p>Zoom out eight zoom levels (<kbd class="kbd docutils literal notranslate">NumpadMinus</kbd> – eight times).</p></li>
+<li><p>In some cases you will want to leave a small margin around the thing you are trying to capture. This should be around 30px but does not have to be exact.</p></li>
+</ol>
+<p>This can be applied to several parts of the interface but might not work for all cases.</p>
+<p>If really needed, use additinal <em>directives</em> for image formatting:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> /images/Logic_Nodes/once_node.png
+   <span class="nc">:align:</span> right
+   <span class="nc">:width:</span> 215
+   <span class="nc">:alt:</span> Once Node (placeholder if .png image file is missing)
+</pre></div>
+</div>
+<section id="files">
+<h3>Files<a class="headerlink" href="#files" title="Link to this heading"></a></h3>
+<dl>
+<dt>No Caps, No Gaps</dt><dd><p>Lower case filenames underscore between words.</p>
+</dd>
+<dt>Sort Usefully</dt><dd><p>Order naming with specific identifiers at the end.</p>
+</dd>
+<dt>Format</dt><dd><p>Use <code class="docutils literal notranslate"><span class="pre">.png</span></code> for images that have solid colors such as screenshots of the Blender interface, and <code class="docutils literal notranslate"><span class="pre">.jpg</span></code> for images with a high amount of color variance, such as sample renders and photographs.</p>
+<p>Do not use animated <code class="docutils literal notranslate"><span class="pre">.gif</span></code> files, these are hard to maintain, can be distracting and are usually large in file size. Instead use a video if needed (see <a class="reference internal" href="#videos">Videos</a> below).</p>
+</dd>
+<dt>Location</dt><dd><p>Place the images in the <code class="docutils literal notranslate"><span class="pre">manual/images</span></code> folder, and use subfolders, if needed.</p>
+</dd>
+<dt>Naming</dt><dd><p>For naming files use dashes to separate chapters and sections, and use underscore to connect sections that are two or more words, i.e. for image files:</p>
+<p><code class="docutils literal notranslate"><span class="pre">chapter-subsection-sub_subsection-id.png</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">interface-splash-current.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interface-undo_redo-last.png</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">interface-undo_redo-repeat_history-menu.png</span></code></p></li>
+</ul>
+<p>Do not use special characters or spaces!</p>
+</dd>
+</dl>
+</section>
+<section id="usage-guides">
+<h3>Usage Guides<a class="headerlink" href="#usage-guides" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Avoid specifying the resolution of the image, so that the theme can handle the images consistently and provide the best layout across different screen sizes.</p></li>
+<li><p>When documenting a panel or section of the UI, it is better to use a single image that shows all of the relevant areas (rather than multiple images for each icon or button) placed at the top of the section you are writing, and then explain the features in the order that they appear in the image.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important that the manual can be maintained long term. UI and tool options change, so try to avoid having a lot of images (when they are not especially necessary). Otherwise, this becomes too much of a maintenance burden.</p>
+</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="videos">
+<h2>Videos<a class="headerlink" href="#videos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is from Blender manual. It might not be suitable for <em>UPBGE-Docs</em> developers.</p>
+</div>
+<p>Videos can be embedded from Blender’s self-hosted <a class="reference external" href="https://joinpeertube.org/">PeerTube</a> instance, which can be found at <a class="reference external" href="https://video.blender.org/">video.blender.org</a>. To embed a video use the following directive:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">peertube</span><span class="p">::</span> ID
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ID</span></code> is found in the video’s URL, e.g.:</p>
+<p>ID for <code class="docutils literal notranslate"><span class="pre">https://video.blender.org/videos/watch/47448bc1-0cc0-4bd1-b6c8-9115d8f7e08c</span></code></p>
+<p>is <code class="docutils literal notranslate"><span class="pre">47448bc1-0cc0-4bd1-b6c8-9115d8f7e08c</span></code>.</p>
+<p>To get a new video uploaded, contact a <a class="reference external" href="https://projects.blender.org/blender/documentation">Documentation Project Administrator</a>.</p>
+<section id="id1">
+<h3>Usage Guides<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Avoid adding videos that rely on voice or words, as this is difficult to translate.</p></li>
+<li><p>Do not embed video tutorials as a means of explaining a feature, the writing itself should explain it adequately. (Though you may include a link to the video at the bottom of the page under the heading <code class="docutils literal notranslate"><span class="pre">Tutorials</span></code>.)</p></li>
+</ul>
+</section>
+</section>
+<section id="useful-constructs">
+<h2>Useful Constructs<a class="headerlink" href="#useful-constructs" title="Link to this heading"></a></h2>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">|BLENDER_VERSION|</span></code> - Resolves to the current Blender version.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:abbr:`SSAO</span> <span class="pre">(Screen</span> <span class="pre">Space</span> <span class="pre">Ambient</span> <span class="pre">Occlusion)`</span></code> -
+Abbreviations display the full text as a tooltip for the reader.</p>
+<blockquote>
+<div><p><abbr title="This is example of abbreviation">Hover mouse over here</abbr></p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:term:`Manifold`</span></code> - Links to an entry in the <a class="reference internal" href="../glossary/index.html"><span class="doc">Glossary</span></a>.</p></li>
+</ul>
+</section>
+<section id="cross-references-and-linkage">
+<h2>Cross References and Linkage<a class="headerlink" href="#cross-references-and-linkage" title="Link to this heading"></a></h2>
+<p>You can link to another part of the Manual with folder path:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="na">:doc:</span><span class="nv">`The Title &lt;/section/path/to/file&gt;`</span>
+</pre></div>
+</div>
+<p>To link to a specific section in another file (or the same one), explicit labels are available:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_explicit-label:</span>           [&quot;link to this&quot; directive, single _underscore]
+
+(section or image which needs to be referenced)
+
+Some text <span class="na">:ref:</span><span class="nv">`Optional Title &lt;explicit-label&gt;`</span>.  [&quot;link from this&quot; directive]
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Explicit labels should immediatelly preceed the title. I.e.:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_explicit label:</span>
+
+<span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> images/path-to-image.png
+
+<span class="gh">=====</span>
+<span class="gh">Title</span>
+<span class="gh">=====</span>
+</pre></div>
+</div>
+<p>will not work. Should be:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">figure</span><span class="p">::</span> images/path-to-image.png
+
+<span class="p">..</span> <span class="nt">_explicit label:</span>
+
+<span class="gh">=====</span>
+<span class="gh">Title</span>
+<span class="gh">=====</span>
+</pre></div>
+</div>
+</div>
+<p>Linking to a title in the <em>same file</em>:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="gh">Titles are Targets</span>
+<span class="gh">==================</span>
+
+Body text.
+
+Implicit references, like <span class="s">`Titles are Targets`_</span> [single underscore_]
+</pre></div>
+</div>
+<p>Linking to the outside world:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="s">`Blender Website </span><span class="si">&lt;https://www.blender.org&gt;</span><span class="s">`__</span> [double underscore__]
+</pre></div>
+</div>
+<section id="context-sensitive-manual-access">
+<h3>Context Sensitive Manual Access<a class="headerlink" href="#context-sensitive-manual-access" title="Link to this heading"></a></h3>
+<p>It is possible to link to a specific part of the manual from inside the Blender by opening the context menu (right click) of a property or operator and selecting <em>Online Manual</em>. In order for this to work, this needs to be accounted for in the documentation. To link a property or operator to a specific part of the manual you need to add an external reference link tag whose ID matches Blender’s RNA tag. The easiest way to find out what is the tag for a property, is to open the context menu of the property/operator and select <em>Online Python Reference</em> to extract the tag from the URL. Some examples of how this looks in the RST document are given below:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_bpy.types.FluidDomainSettings.use_fractions:</span>
+
+Fractional Obstacles
+   Enables finer resolution in fluid / obstacle regions (second order obstacles)...
+
+<span class="p">   ..</span> <span class="nt">_bpy.types.FluidDomainSettings.fractions_distance:</span>
+
+   Obstacle Distance
+      Determines how far apart fluid and obstacles are...
+</pre></div>
+</div>
+<p>For an operator:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="nt">_bpy.ops.curve.subdivide:</span>
+
+<span class="gh">Subdivide</span>
+<span class="gh">=========</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<p>To learn more about reStructuredText, see:</p>
+<dl class="simple">
+<dt><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">Sphinx RST Primer</a></dt><dd><p>Good basic introduction.</p>
+</dd>
+<dt><a class="reference external" href="https://docutils.sourceforge.io/docs/ref/rst/restructuredtext.html">reStructuredText Markup</a></dt><dd><p>Verbose reStructuredText cheat-sheet.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="writing_style.html" class="btn btn-neutral float-left" title="Writing Style Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="commit.html" class="btn btn-neutral float-right" title="Commit Guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

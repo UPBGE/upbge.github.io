@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio System (aud) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/aud.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="OpenGL Wrapper (bgl)" href="bgl.html" />
+    <link rel="prev" title="widget" href="widget.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Audio System (aud)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-aud">
+<span id="audio-system-aud"></span><h1>Audio System (aud)<a class="headerlink" href="#module-aud" title="Link to this heading"></a></h1>
+<p>Audaspace (pronounced “outer space”) is a high level audio library.</p>
+<section id="basic-sound-playback">
+<h2>Basic Sound Playback<a class="headerlink" href="#basic-sound-playback" title="Link to this heading"></a></h2>
+<p>This script shows how to use the classes: <a class="reference internal" href="#aud.Device" title="aud.Device"><code class="xref py py-class docutils literal notranslate"><span class="pre">Device</span></code></a>, <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> and
+<a class="reference internal" href="#aud.Handle" title="aud.Handle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Handle</span></code></a>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">aud</span>
+
+<span class="n">device</span> <span class="o">=</span> <span class="n">aud</span><span class="o">.</span><span class="n">Device</span><span class="p">()</span>
+<span class="c1"># load sound file (it can be a video file with audio)</span>
+<span class="n">sound</span> <span class="o">=</span> <span class="n">aud</span><span class="o">.</span><span class="n">Sound</span><span class="p">(</span><span class="s1">&#39;music.ogg&#39;</span><span class="p">)</span>
+
+<span class="c1"># play the audio, this return a handle to control play/pause</span>
+<span class="n">handle</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">sound</span><span class="p">)</span>
+<span class="c1"># if the audio is not too big and will be used often you can buffer it</span>
+<span class="n">sound_buffered</span> <span class="o">=</span> <span class="n">aud</span><span class="o">.</span><span class="n">Sound</span><span class="o">.</span><span class="n">cache</span><span class="p">(</span><span class="n">sound</span><span class="p">)</span>
+<span class="n">handle_buffered</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">play</span><span class="p">(</span><span class="n">sound_buffered</span><span class="p">)</span>
+
+<span class="c1"># stop the sounds (otherwise they play until their ends)</span>
+<span class="n">handle</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">handle_buffered</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.AP_LOCATION">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">AP_LOCATION</span></span><a class="headerlink" href="#aud.AP_LOCATION" title="Link to this definition"></a></dt>
+<dd><p>Constant value 3</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.AP_ORIENTATION">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">AP_ORIENTATION</span></span><a class="headerlink" href="#aud.AP_ORIENTATION" title="Link to this definition"></a></dt>
+<dd><p>Constant value 4</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.AP_PANNING">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">AP_PANNING</span></span><a class="headerlink" href="#aud.AP_PANNING" title="Link to this definition"></a></dt>
+<dd><p>Constant value 1</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.AP_PITCH">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">AP_PITCH</span></span><a class="headerlink" href="#aud.AP_PITCH" title="Link to this definition"></a></dt>
+<dd><p>Constant value 2</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.AP_VOLUME">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">AP_VOLUME</span></span><a class="headerlink" href="#aud.AP_VOLUME" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_INVALID">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_INVALID</span></span><a class="headerlink" href="#aud.CHANNELS_INVALID" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_MONO">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_MONO</span></span><a class="headerlink" href="#aud.CHANNELS_MONO" title="Link to this definition"></a></dt>
+<dd><p>Constant value 1</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_STEREO">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_STEREO</span></span><a class="headerlink" href="#aud.CHANNELS_STEREO" title="Link to this definition"></a></dt>
+<dd><p>Constant value 2</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_STEREO_LFE">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_STEREO_LFE</span></span><a class="headerlink" href="#aud.CHANNELS_STEREO_LFE" title="Link to this definition"></a></dt>
+<dd><p>Constant value 3</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_SURROUND4">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_SURROUND4</span></span><a class="headerlink" href="#aud.CHANNELS_SURROUND4" title="Link to this definition"></a></dt>
+<dd><p>Constant value 4</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_SURROUND5">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_SURROUND5</span></span><a class="headerlink" href="#aud.CHANNELS_SURROUND5" title="Link to this definition"></a></dt>
+<dd><p>Constant value 5</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_SURROUND51">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_SURROUND51</span></span><a class="headerlink" href="#aud.CHANNELS_SURROUND51" title="Link to this definition"></a></dt>
+<dd><p>Constant value 6</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_SURROUND61">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_SURROUND61</span></span><a class="headerlink" href="#aud.CHANNELS_SURROUND61" title="Link to this definition"></a></dt>
+<dd><p>Constant value 7</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CHANNELS_SURROUND71">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CHANNELS_SURROUND71</span></span><a class="headerlink" href="#aud.CHANNELS_SURROUND71" title="Link to this definition"></a></dt>
+<dd><p>Constant value 8</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_AAC">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_AAC</span></span><a class="headerlink" href="#aud.CODEC_AAC" title="Link to this definition"></a></dt>
+<dd><p>Constant value 1</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_AC3">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_AC3</span></span><a class="headerlink" href="#aud.CODEC_AC3" title="Link to this definition"></a></dt>
+<dd><p>Constant value 2</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_FLAC">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_FLAC</span></span><a class="headerlink" href="#aud.CODEC_FLAC" title="Link to this definition"></a></dt>
+<dd><p>Constant value 3</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_INVALID">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_INVALID</span></span><a class="headerlink" href="#aud.CODEC_INVALID" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_MP2">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_MP2</span></span><a class="headerlink" href="#aud.CODEC_MP2" title="Link to this definition"></a></dt>
+<dd><p>Constant value 4</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_MP3">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_MP3</span></span><a class="headerlink" href="#aud.CODEC_MP3" title="Link to this definition"></a></dt>
+<dd><p>Constant value 5</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_OPUS">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_OPUS</span></span><a class="headerlink" href="#aud.CODEC_OPUS" title="Link to this definition"></a></dt>
+<dd><p>Constant value 8</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_PCM">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_PCM</span></span><a class="headerlink" href="#aud.CODEC_PCM" title="Link to this definition"></a></dt>
+<dd><p>Constant value 6</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CODEC_VORBIS">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CODEC_VORBIS</span></span><a class="headerlink" href="#aud.CODEC_VORBIS" title="Link to this definition"></a></dt>
+<dd><p>Constant value 7</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_AC3">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_AC3</span></span><a class="headerlink" href="#aud.CONTAINER_AC3" title="Link to this definition"></a></dt>
+<dd><p>Constant value 1</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_FLAC">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_FLAC</span></span><a class="headerlink" href="#aud.CONTAINER_FLAC" title="Link to this definition"></a></dt>
+<dd><p>Constant value 2</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_INVALID">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_INVALID</span></span><a class="headerlink" href="#aud.CONTAINER_INVALID" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_MATROSKA">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_MATROSKA</span></span><a class="headerlink" href="#aud.CONTAINER_MATROSKA" title="Link to this definition"></a></dt>
+<dd><p>Constant value 3</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_MP2">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_MP2</span></span><a class="headerlink" href="#aud.CONTAINER_MP2" title="Link to this definition"></a></dt>
+<dd><p>Constant value 4</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_MP3">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_MP3</span></span><a class="headerlink" href="#aud.CONTAINER_MP3" title="Link to this definition"></a></dt>
+<dd><p>Constant value 5</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_OGG">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_OGG</span></span><a class="headerlink" href="#aud.CONTAINER_OGG" title="Link to this definition"></a></dt>
+<dd><p>Constant value 6</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.CONTAINER_WAV">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">CONTAINER_WAV</span></span><a class="headerlink" href="#aud.CONTAINER_WAV" title="Link to this definition"></a></dt>
+<dd><p>Constant value 7</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.DISTANCE_MODEL_EXPONENT">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DISTANCE_MODEL_EXPONENT</span></span><a class="headerlink" href="#aud.DISTANCE_MODEL_EXPONENT" title="Link to this definition"></a></dt>
+<dd><p>Constant value 5</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.DISTANCE_MODEL_EXPONENT_CLAMPED">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DISTANCE_MODEL_EXPONENT_CLAMPED</span></span><a class="headerlink" href="#aud.DISTANCE_MODEL_EXPONENT_CLAMPED" title="Link to this definition"></a></dt>
+<dd><p>Constant value 6</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.DISTANCE_MODEL_INVALID">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DISTANCE_MODEL_INVALID</span></span><a class="headerlink" href="#aud.DISTANCE_MODEL_INVALID" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.DISTANCE_MODEL_INVERSE">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DISTANCE_MODEL_INVERSE</span></span><a class="headerlink" href="#aud.DISTANCE_MODEL_INVERSE" title="Link to this definition"></a></dt>
+<dd><p>Constant value 1</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.DISTANCE_MODEL_INVERSE_CLAMPED">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DISTANCE_MODEL_INVERSE_CLAMPED</span></span><a class="headerlink" href="#aud.DISTANCE_MODEL_INVERSE_CLAMPED" title="Link to this definition"></a></dt>
+<dd><p>Constant value 2</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.DISTANCE_MODEL_LINEAR">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DISTANCE_MODEL_LINEAR</span></span><a class="headerlink" href="#aud.DISTANCE_MODEL_LINEAR" title="Link to this definition"></a></dt>
+<dd><p>Constant value 3</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.DISTANCE_MODEL_LINEAR_CLAMPED">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DISTANCE_MODEL_LINEAR_CLAMPED</span></span><a class="headerlink" href="#aud.DISTANCE_MODEL_LINEAR_CLAMPED" title="Link to this definition"></a></dt>
+<dd><p>Constant value 4</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.FORMAT_FLOAT32">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">FORMAT_FLOAT32</span></span><a class="headerlink" href="#aud.FORMAT_FLOAT32" title="Link to this definition"></a></dt>
+<dd><p>Constant value 36</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.FORMAT_FLOAT64">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">FORMAT_FLOAT64</span></span><a class="headerlink" href="#aud.FORMAT_FLOAT64" title="Link to this definition"></a></dt>
+<dd><p>Constant value 40</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.FORMAT_INVALID">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">FORMAT_INVALID</span></span><a class="headerlink" href="#aud.FORMAT_INVALID" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.FORMAT_S16">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">FORMAT_S16</span></span><a class="headerlink" href="#aud.FORMAT_S16" title="Link to this definition"></a></dt>
+<dd><p>Constant value 18</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.FORMAT_S24">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">FORMAT_S24</span></span><a class="headerlink" href="#aud.FORMAT_S24" title="Link to this definition"></a></dt>
+<dd><p>Constant value 19</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.FORMAT_S32">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">FORMAT_S32</span></span><a class="headerlink" href="#aud.FORMAT_S32" title="Link to this definition"></a></dt>
+<dd><p>Constant value 20</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.FORMAT_U8">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">FORMAT_U8</span></span><a class="headerlink" href="#aud.FORMAT_U8" title="Link to this definition"></a></dt>
+<dd><p>Constant value 1</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_11025">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_11025</span></span><a class="headerlink" href="#aud.RATE_11025" title="Link to this definition"></a></dt>
+<dd><p>Constant value 11025</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_16000">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_16000</span></span><a class="headerlink" href="#aud.RATE_16000" title="Link to this definition"></a></dt>
+<dd><p>Constant value 16000</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_192000">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_192000</span></span><a class="headerlink" href="#aud.RATE_192000" title="Link to this definition"></a></dt>
+<dd><p>Constant value 192000</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_22050">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_22050</span></span><a class="headerlink" href="#aud.RATE_22050" title="Link to this definition"></a></dt>
+<dd><p>Constant value 22050</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_32000">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_32000</span></span><a class="headerlink" href="#aud.RATE_32000" title="Link to this definition"></a></dt>
+<dd><p>Constant value 32000</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_44100">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_44100</span></span><a class="headerlink" href="#aud.RATE_44100" title="Link to this definition"></a></dt>
+<dd><p>Constant value 44100</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_48000">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_48000</span></span><a class="headerlink" href="#aud.RATE_48000" title="Link to this definition"></a></dt>
+<dd><p>Constant value 48000</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_8000">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_8000</span></span><a class="headerlink" href="#aud.RATE_8000" title="Link to this definition"></a></dt>
+<dd><p>Constant value 8000</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_88200">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_88200</span></span><a class="headerlink" href="#aud.RATE_88200" title="Link to this definition"></a></dt>
+<dd><p>Constant value 88200</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_96000">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_96000</span></span><a class="headerlink" href="#aud.RATE_96000" title="Link to this definition"></a></dt>
+<dd><p>Constant value 96000</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.RATE_INVALID">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">RATE_INVALID</span></span><a class="headerlink" href="#aud.RATE_INVALID" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.STATUS_INVALID">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">STATUS_INVALID</span></span><a class="headerlink" href="#aud.STATUS_INVALID" title="Link to this definition"></a></dt>
+<dd><p>Constant value 0</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.STATUS_PAUSED">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">STATUS_PAUSED</span></span><a class="headerlink" href="#aud.STATUS_PAUSED" title="Link to this definition"></a></dt>
+<dd><p>Constant value 2</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.STATUS_PLAYING">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">STATUS_PLAYING</span></span><a class="headerlink" href="#aud.STATUS_PLAYING" title="Link to this definition"></a></dt>
+<dd><p>Constant value 1</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="aud.STATUS_STOPPED">
+<span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">STATUS_STOPPED</span></span><a class="headerlink" href="#aud.STATUS_STOPPED" title="Link to this definition"></a></dt>
+<dd><p>Constant value 3</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.Device">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">Device</span></span><a class="headerlink" href="#aud.Device" title="Link to this definition"></a></dt>
+<dd><p>Device objects represent an audio output backend like OpenAL or SDL, but might also represent a file output or RAM buffer output.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Device.lock">
+<span class="sig-name descname"><span class="pre">lock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Device.lock" title="Link to this definition"></a></dt>
+<dd><p>Locks the device so that it’s guaranteed, that no samples are
+read from the streams until <a class="reference internal" href="#aud.Device.unlock" title="aud.Device.unlock"><code class="xref py py-meth docutils literal notranslate"><span class="pre">unlock()</span></code></a> is called.
+This is useful if you want to do start/stop/pause/resume some
+sounds at the same time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The device has to be unlocked as often as locked to be
+able to continue playback.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure the time between locking and unlocking is
+as short as possible to avoid clicks.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Device.play">
+<span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Device.play" title="Link to this definition"></a></dt>
+<dd><p>Plays a sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sound</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The sound to play.</p></li>
+<li><p><strong>keep</strong> (<em>bool</em>) – See <a class="reference internal" href="#aud.Handle.keep" title="aud.Handle.keep"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Handle.keep</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The playback handle with which playback can be
+controlled with.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Handle" title="aud.Handle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Handle</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Device.stopAll">
+<span class="sig-name descname"><span class="pre">stopAll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Device.stopAll" title="Link to this definition"></a></dt>
+<dd><p>Stops all playing and paused sounds.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Device.unlock">
+<span class="sig-name descname"><span class="pre">unlock</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Device.unlock" title="Link to this definition"></a></dt>
+<dd><p>Unlocks the device after a lock call, see <a class="reference internal" href="#aud.Device.lock" title="aud.Device.lock"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lock()</span></code></a> for
+details.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.channels">
+<span class="sig-name descname"><span class="pre">channels</span></span><a class="headerlink" href="#aud.Device.channels" title="Link to this definition"></a></dt>
+<dd><p>The channel count of the device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.distance_model">
+<span class="sig-name descname"><span class="pre">distance_model</span></span><a class="headerlink" href="#aud.Device.distance_model" title="Link to this definition"></a></dt>
+<dd><p>The distance model of the device.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://www.openal.org/documentation/">OpenAL Documentation</a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.doppler_factor">
+<span class="sig-name descname"><span class="pre">doppler_factor</span></span><a class="headerlink" href="#aud.Device.doppler_factor" title="Link to this definition"></a></dt>
+<dd><p>The doppler factor of the device.
+This factor is a scaling factor for the velocity vectors in doppler calculation. So a value bigger than 1 will exaggerate the effect as it raises the velocity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.format">
+<span class="sig-name descname"><span class="pre">format</span></span><a class="headerlink" href="#aud.Device.format" title="Link to this definition"></a></dt>
+<dd><p>The native sample format of the device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.listener_location">
+<span class="sig-name descname"><span class="pre">listener_location</span></span><a class="headerlink" href="#aud.Device.listener_location" title="Link to this definition"></a></dt>
+<dd><p>The listeners’s location in 3D space, a 3D tuple of floats.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.listener_orientation">
+<span class="sig-name descname"><span class="pre">listener_orientation</span></span><a class="headerlink" href="#aud.Device.listener_orientation" title="Link to this definition"></a></dt>
+<dd><p>The listener’s orientation in 3D space as quaternion, a 4 float tuple.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.listener_velocity">
+<span class="sig-name descname"><span class="pre">listener_velocity</span></span><a class="headerlink" href="#aud.Device.listener_velocity" title="Link to this definition"></a></dt>
+<dd><p>The listener’s velocity in 3D space, a 3D tuple of floats.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.rate">
+<span class="sig-name descname"><span class="pre">rate</span></span><a class="headerlink" href="#aud.Device.rate" title="Link to this definition"></a></dt>
+<dd><p>The sampling rate of the device in Hz.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.speed_of_sound">
+<span class="sig-name descname"><span class="pre">speed_of_sound</span></span><a class="headerlink" href="#aud.Device.speed_of_sound" title="Link to this definition"></a></dt>
+<dd><p>The speed of sound of the device.
+The speed of sound in air is typically 343.3 m/s.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Device.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><a class="headerlink" href="#aud.Device.volume" title="Link to this definition"></a></dt>
+<dd><p>The overall volume of the device.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.DynamicMusic">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">DynamicMusic</span></span><a class="headerlink" href="#aud.DynamicMusic" title="Link to this definition"></a></dt>
+<dd><p>The DynamicMusic object allows to play music depending on a current scene, scene changes are managed by the class, with the possibility of custom transitions.
+The default transition is a crossfade effect, and the default scene is silent and has id 0</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.DynamicMusic.addScene">
+<span class="sig-name descname"><span class="pre">addScene</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.DynamicMusic.addScene" title="Link to this definition"></a></dt>
+<dd><p>Adds a new scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>scene</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The scene sound.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The new scene id.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.DynamicMusic.addTransition">
+<span class="sig-name descname"><span class="pre">addTransition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ini</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transition</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.DynamicMusic.addTransition" title="Link to this definition"></a></dt>
+<dd><p>Adds a new scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ini</strong> (<em>int</em>) – the initial scene foor the transition.</p></li>
+<li><p><strong>end</strong> (<em>int</em>) – The final scene for the transition.</p></li>
+<li><p><strong>transition</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The transition sound.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>false if the ini or end scenes don’t exist, true othrwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.DynamicMusic.pause">
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.DynamicMusic.pause" title="Link to this definition"></a></dt>
+<dd><p>Pauses playback of the scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.DynamicMusic.resume">
+<span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.DynamicMusic.resume" title="Link to this definition"></a></dt>
+<dd><p>Resumes playback of the scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.DynamicMusic.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.DynamicMusic.stop" title="Link to this definition"></a></dt>
+<dd><p>Stops playback of the scene.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.DynamicMusic.fadeTime">
+<span class="sig-name descname"><span class="pre">fadeTime</span></span><a class="headerlink" href="#aud.DynamicMusic.fadeTime" title="Link to this definition"></a></dt>
+<dd><p>The length in seconds of the crossfade transition</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.DynamicMusic.position">
+<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#aud.DynamicMusic.position" title="Link to this definition"></a></dt>
+<dd><p>The playback position of the scene in seconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.DynamicMusic.scene">
+<span class="sig-name descname"><span class="pre">scene</span></span><a class="headerlink" href="#aud.DynamicMusic.scene" title="Link to this definition"></a></dt>
+<dd><p>The current scene</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.DynamicMusic.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#aud.DynamicMusic.status" title="Link to this definition"></a></dt>
+<dd><p>Whether the scene is playing, paused or stopped (=invalid).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.DynamicMusic.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><a class="headerlink" href="#aud.DynamicMusic.volume" title="Link to this definition"></a></dt>
+<dd><p>The volume of the scene.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.Handle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">Handle</span></span><a class="headerlink" href="#aud.Handle" title="Link to this definition"></a></dt>
+<dd><p>Handle objects are playback handles that can be used to control playback of a sound. If a sound is played back multiple times then there are as many handles.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Handle.pause">
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Handle.pause" title="Link to this definition"></a></dt>
+<dd><p>Pauses playback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Handle.resume">
+<span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Handle.resume" title="Link to this definition"></a></dt>
+<dd><p>Resumes playback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Handle.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Handle.stop" title="Link to this definition"></a></dt>
+<dd><p>Stops playback.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This makes the handle invalid.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.attenuation">
+<span class="sig-name descname"><span class="pre">attenuation</span></span><a class="headerlink" href="#aud.Handle.attenuation" title="Link to this definition"></a></dt>
+<dd><p>This factor is used for distance based attenuation of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.cone_angle_inner">
+<span class="sig-name descname"><span class="pre">cone_angle_inner</span></span><a class="headerlink" href="#aud.Handle.cone_angle_inner" title="Link to this definition"></a></dt>
+<dd><p>The opening angle of the inner cone of the source. If the cone values of a source are set there are two (audible) cones with the apex at the <a class="reference internal" href="#aud.Handle.location" title="aud.Handle.location"><code class="xref py py-attr docutils literal notranslate"><span class="pre">location</span></code></a> of the source and with infinite height, heading in the direction of the source’s <a class="reference internal" href="#aud.Handle.orientation" title="aud.Handle.orientation"><code class="xref py py-attr docutils literal notranslate"><span class="pre">orientation</span></code></a>.
+In the inner cone the volume is normal. Outside the outer cone the volume will be <a class="reference internal" href="#aud.Handle.cone_volume_outer" title="aud.Handle.cone_volume_outer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cone_volume_outer</span></code></a> and in the area between the volume will be interpolated linearly.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.cone_angle_outer">
+<span class="sig-name descname"><span class="pre">cone_angle_outer</span></span><a class="headerlink" href="#aud.Handle.cone_angle_outer" title="Link to this definition"></a></dt>
+<dd><p>The opening angle of the outer cone of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Handle.cone_angle_inner" title="aud.Handle.cone_angle_inner"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cone_angle_inner</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.cone_volume_outer">
+<span class="sig-name descname"><span class="pre">cone_volume_outer</span></span><a class="headerlink" href="#aud.Handle.cone_volume_outer" title="Link to this definition"></a></dt>
+<dd><p>The volume outside the outer cone of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Handle.cone_angle_inner" title="aud.Handle.cone_angle_inner"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cone_angle_inner</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.distance_maximum">
+<span class="sig-name descname"><span class="pre">distance_maximum</span></span><a class="headerlink" href="#aud.Handle.distance_maximum" title="Link to this definition"></a></dt>
+<dd><p>The maximum distance of the source.
+If the listener is further away the source volume will be 0.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.distance_reference">
+<span class="sig-name descname"><span class="pre">distance_reference</span></span><a class="headerlink" href="#aud.Handle.distance_reference" title="Link to this definition"></a></dt>
+<dd><p>The reference distance of the source.
+At this distance the volume will be exactly <a class="reference internal" href="#aud.Handle.volume" title="aud.Handle.volume"><code class="xref py py-attr docutils literal notranslate"><span class="pre">volume</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.keep">
+<span class="sig-name descname"><span class="pre">keep</span></span><a class="headerlink" href="#aud.Handle.keep" title="Link to this definition"></a></dt>
+<dd><p>Whether the sound should be kept paused in the device when its end is reached.
+This can be used to seek the sound to some position and start playback again.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If this is set to true and you forget stopping this equals a memory leak as the handle exists until the device is destroyed.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.location">
+<span class="sig-name descname"><span class="pre">location</span></span><a class="headerlink" href="#aud.Handle.location" title="Link to this definition"></a></dt>
+<dd><p>The source’s location in 3D space, a 3D tuple of floats.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.loop_count">
+<span class="sig-name descname"><span class="pre">loop_count</span></span><a class="headerlink" href="#aud.Handle.loop_count" title="Link to this definition"></a></dt>
+<dd><p>The (remaining) loop count of the sound. A negative value indicates infinity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.orientation">
+<span class="sig-name descname"><span class="pre">orientation</span></span><a class="headerlink" href="#aud.Handle.orientation" title="Link to this definition"></a></dt>
+<dd><p>The source’s orientation in 3D space as quaternion, a 4 float tuple.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.pitch">
+<span class="sig-name descname"><span class="pre">pitch</span></span><a class="headerlink" href="#aud.Handle.pitch" title="Link to this definition"></a></dt>
+<dd><p>The pitch of the sound.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.position">
+<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#aud.Handle.position" title="Link to this definition"></a></dt>
+<dd><p>The playback position of the sound in seconds.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.relative">
+<span class="sig-name descname"><span class="pre">relative</span></span><a class="headerlink" href="#aud.Handle.relative" title="Link to this definition"></a></dt>
+<dd><p>Whether the source’s location, velocity and orientation is relative or absolute to the listener.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#aud.Handle.status" title="Link to this definition"></a></dt>
+<dd><p>Whether the sound is playing, paused or stopped (=invalid).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.velocity">
+<span class="sig-name descname"><span class="pre">velocity</span></span><a class="headerlink" href="#aud.Handle.velocity" title="Link to this definition"></a></dt>
+<dd><p>The source’s velocity in 3D space, a 3D tuple of floats.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><a class="headerlink" href="#aud.Handle.volume" title="Link to this definition"></a></dt>
+<dd><p>The volume of the sound.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.volume_maximum">
+<span class="sig-name descname"><span class="pre">volume_maximum</span></span><a class="headerlink" href="#aud.Handle.volume_maximum" title="Link to this definition"></a></dt>
+<dd><p>The maximum volume of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Handle.volume_minimum">
+<span class="sig-name descname"><span class="pre">volume_minimum</span></span><a class="headerlink" href="#aud.Handle.volume_minimum" title="Link to this definition"></a></dt>
+<dd><p>The minimum volume of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.PlaybackManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">PlaybackManager</span></span><a class="headerlink" href="#aud.PlaybackManager" title="Link to this definition"></a></dt>
+<dd><p>A PlabackManager object allows to easily control groups os sounds organized in categories.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.addCategory">
+<span class="sig-name descname"><span class="pre">addCategory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volume</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.addCategory" title="Link to this definition"></a></dt>
+<dd><p>Adds a category with a custom volume.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>volume</strong> (<em>float</em>) – The volume for ther new category.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The key of the new category.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.clean" title="Link to this definition"></a></dt>
+<dd><p>Cleans all the invalid and finished sound from the playback manager.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.getVolume">
+<span class="sig-name descname"><span class="pre">getVolume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.getVolume" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the volume of a category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>catKey</strong> (<em>int</em>) – the key of the category.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The volume of the cateogry.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.pause">
+<span class="sig-name descname"><span class="pre">pause</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.pause" title="Link to this definition"></a></dt>
+<dd><p>Pauses playback of the category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>catKey</strong> (<em>int</em>) – the key of the category.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.play">
+<span class="sig-name descname"><span class="pre">play</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.play" title="Link to this definition"></a></dt>
+<dd><p>Plays a sound through the playback manager and assigns it to a category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sound</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The sound to play.</p></li>
+<li><p><strong>catKey</strong> (<em>int</em>) – the key of the category in which the sound will be added,
+if it doesn’t exist, a new one will be created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The playback handle with which playback can be controlled with.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Handle" title="aud.Handle"><code class="xref py py-class docutils literal notranslate"><span class="pre">Handle</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.resume">
+<span class="sig-name descname"><span class="pre">resume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.resume" title="Link to this definition"></a></dt>
+<dd><p>Resumes playback of the catgory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>catKey</strong> (<em>int</em>) – the key of the category.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.setVolume">
+<span class="sig-name descname"><span class="pre">setVolume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volume</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">catKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.setVolume" title="Link to this definition"></a></dt>
+<dd><p>Changes the volume of a category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>volume</strong> (<em>float</em>) – the new volume value.</p></li>
+<li><p><strong>catKey</strong> (<em>int</em>) – the key of the category.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.PlaybackManager.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">catKey</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.PlaybackManager.stop" title="Link to this definition"></a></dt>
+<dd><p>Stops playback of the category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>catKey</strong> (<em>int</em>) – the key of the category.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether the action succeeded.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.Sequence">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">Sequence</span></span><a class="headerlink" href="#aud.Sequence" title="Link to this definition"></a></dt>
+<dd><p>This sound represents sequenced entries to play a sound sequence.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sequence.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sequence.add" title="Link to this definition"></a></dt>
+<dd><p>Adds a new entry to the sequence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sound</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The sound this entry should play.</p></li>
+<li><p><strong>begin</strong> (<em>double</em>) – The start time.</p></li>
+<li><p><strong>end</strong> (<em>double</em>) – The end time or a negative value if determined by the sound.</p></li>
+<li><p><strong>skip</strong> (<em>double</em>) – How much seconds should be skipped at the beginning.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The entry added.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.SequenceEntry" title="aud.SequenceEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceEntry</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sequence.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sequence.remove" title="Link to this definition"></a></dt>
+<dd><p>Removes an entry from the sequence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entry</strong> (<a class="reference internal" href="#aud.SequenceEntry" title="aud.SequenceEntry"><code class="xref py py-class docutils literal notranslate"><span class="pre">SequenceEntry</span></code></a>) – The entry to remove.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sequence.setAnimationData">
+<span class="sig-name descname"><span class="pre">setAnimationData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sequence.setAnimationData" title="Link to this definition"></a></dt>
+<dd><p>Writes animation data to a sequence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>int</em>) – The type of animation data.</p></li>
+<li><p><strong>frame</strong> (<em>int</em>) – The frame this data is for.</p></li>
+<li><p><strong>data</strong> (<em>sequence</em><em> of </em><em>float</em>) – The data to write.</p></li>
+<li><p><strong>animated</strong> (<em>bool</em>) – Whether the attribute is animated.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sequence.channels">
+<span class="sig-name descname"><span class="pre">channels</span></span><a class="headerlink" href="#aud.Sequence.channels" title="Link to this definition"></a></dt>
+<dd><p>The channel count of the sequence.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sequence.distance_model">
+<span class="sig-name descname"><span class="pre">distance_model</span></span><a class="headerlink" href="#aud.Sequence.distance_model" title="Link to this definition"></a></dt>
+<dd><p>The distance model of the sequence.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://www.openal.org/documentation/">OpenAL Documentation</a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sequence.doppler_factor">
+<span class="sig-name descname"><span class="pre">doppler_factor</span></span><a class="headerlink" href="#aud.Sequence.doppler_factor" title="Link to this definition"></a></dt>
+<dd><p>The doppler factor of the sequence.
+This factor is a scaling factor for the velocity vectors in doppler calculation. So a value bigger than 1 will exaggerate the effect as it raises the velocity.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sequence.fps">
+<span class="sig-name descname"><span class="pre">fps</span></span><a class="headerlink" href="#aud.Sequence.fps" title="Link to this definition"></a></dt>
+<dd><p>The listeners’s location in 3D space, a 3D tuple of floats.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sequence.muted">
+<span class="sig-name descname"><span class="pre">muted</span></span><a class="headerlink" href="#aud.Sequence.muted" title="Link to this definition"></a></dt>
+<dd><p>Whether the whole sequence is muted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sequence.rate">
+<span class="sig-name descname"><span class="pre">rate</span></span><a class="headerlink" href="#aud.Sequence.rate" title="Link to this definition"></a></dt>
+<dd><p>The sampling rate of the sequence in Hz.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sequence.speed_of_sound">
+<span class="sig-name descname"><span class="pre">speed_of_sound</span></span><a class="headerlink" href="#aud.Sequence.speed_of_sound" title="Link to this definition"></a></dt>
+<dd><p>The speed of sound of the sequence.
+The speed of sound in air is typically 343.3 m/s.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.SequenceEntry">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">SequenceEntry</span></span><a class="headerlink" href="#aud.SequenceEntry" title="Link to this definition"></a></dt>
+<dd><p>SequenceEntry objects represent an entry of a sequenced sound.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.SequenceEntry.move">
+<span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.SequenceEntry.move" title="Link to this definition"></a></dt>
+<dd><p>Moves the entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>begin</strong> (<em>double</em>) – The new start time.</p></li>
+<li><p><strong>end</strong> (<em>double</em>) – The new end time or a negative value if unknown.</p></li>
+<li><p><strong>skip</strong> (<em>double</em>) – How many seconds to skip at the beginning.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.SequenceEntry.setAnimationData">
+<span class="sig-name descname"><span class="pre">setAnimationData</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.SequenceEntry.setAnimationData" title="Link to this definition"></a></dt>
+<dd><p>Writes animation data to a sequenced entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>int</em>) – The type of animation data.</p></li>
+<li><p><strong>frame</strong> (<em>int</em>) – The frame this data is for.</p></li>
+<li><p><strong>data</strong> (<em>sequence</em><em> of </em><em>float</em>) – The data to write.</p></li>
+<li><p><strong>animated</strong> (<em>bool</em>) – Whether the attribute is animated.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.attenuation">
+<span class="sig-name descname"><span class="pre">attenuation</span></span><a class="headerlink" href="#aud.SequenceEntry.attenuation" title="Link to this definition"></a></dt>
+<dd><p>This factor is used for distance based attenuation of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.cone_angle_inner">
+<span class="sig-name descname"><span class="pre">cone_angle_inner</span></span><a class="headerlink" href="#aud.SequenceEntry.cone_angle_inner" title="Link to this definition"></a></dt>
+<dd><p>The opening angle of the inner cone of the source. If the cone values of a source are set there are two (audible) cones with the apex at the <code class="xref py py-attr docutils literal notranslate"><span class="pre">location</span></code> of the source and with infinite height, heading in the direction of the source’s <code class="xref py py-attr docutils literal notranslate"><span class="pre">orientation</span></code>.
+In the inner cone the volume is normal. Outside the outer cone the volume will be <a class="reference internal" href="#aud.SequenceEntry.cone_volume_outer" title="aud.SequenceEntry.cone_volume_outer"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cone_volume_outer</span></code></a> and in the area between the volume will be interpolated linearly.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.cone_angle_outer">
+<span class="sig-name descname"><span class="pre">cone_angle_outer</span></span><a class="headerlink" href="#aud.SequenceEntry.cone_angle_outer" title="Link to this definition"></a></dt>
+<dd><p>The opening angle of the outer cone of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.SequenceEntry.cone_angle_inner" title="aud.SequenceEntry.cone_angle_inner"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cone_angle_inner</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.cone_volume_outer">
+<span class="sig-name descname"><span class="pre">cone_volume_outer</span></span><a class="headerlink" href="#aud.SequenceEntry.cone_volume_outer" title="Link to this definition"></a></dt>
+<dd><p>The volume outside the outer cone of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.SequenceEntry.cone_angle_inner" title="aud.SequenceEntry.cone_angle_inner"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cone_angle_inner</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.distance_maximum">
+<span class="sig-name descname"><span class="pre">distance_maximum</span></span><a class="headerlink" href="#aud.SequenceEntry.distance_maximum" title="Link to this definition"></a></dt>
+<dd><p>The maximum distance of the source.
+If the listener is further away the source volume will be 0.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.distance_reference">
+<span class="sig-name descname"><span class="pre">distance_reference</span></span><a class="headerlink" href="#aud.SequenceEntry.distance_reference" title="Link to this definition"></a></dt>
+<dd><p>The reference distance of the source.
+At this distance the volume will be exactly <code class="xref py py-attr docutils literal notranslate"><span class="pre">volume</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.muted">
+<span class="sig-name descname"><span class="pre">muted</span></span><a class="headerlink" href="#aud.SequenceEntry.muted" title="Link to this definition"></a></dt>
+<dd><p>Whether the entry is muted.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.relative">
+<span class="sig-name descname"><span class="pre">relative</span></span><a class="headerlink" href="#aud.SequenceEntry.relative" title="Link to this definition"></a></dt>
+<dd><p>Whether the source’s location, velocity and orientation is relative or absolute to the listener.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.sound">
+<span class="sig-name descname"><span class="pre">sound</span></span><a class="headerlink" href="#aud.SequenceEntry.sound" title="Link to this definition"></a></dt>
+<dd><p>The sound the entry is representing and will be played in the sequence.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.volume_maximum">
+<span class="sig-name descname"><span class="pre">volume_maximum</span></span><a class="headerlink" href="#aud.SequenceEntry.volume_maximum" title="Link to this definition"></a></dt>
+<dd><p>The maximum volume of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.SequenceEntry.volume_minimum">
+<span class="sig-name descname"><span class="pre">volume_minimum</span></span><a class="headerlink" href="#aud.SequenceEntry.volume_minimum" title="Link to this definition"></a></dt>
+<dd><p>The minimum volume of the source.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#aud.Device.distance_model" title="aud.Device.distance_model"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Device.distance_model</span></code></a></p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.Sound">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">Sound</span></span><a class="headerlink" href="#aud.Sound" title="Link to this definition"></a></dt>
+<dd><p>Sound objects are immutable and represent a sound that can be played simultaneously multiple times. They are called factories because they create reader objects internally that are used for playback.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.buffer">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">buffer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.buffer" title="Link to this definition"></a></dt>
+<dd><p>Creates a sound from a data buffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>) – The data as two dimensional numpy array.</p></li>
+<li><p><strong>rate</strong> (<em>double</em>) – The sample rate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.file">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.file" title="Link to this definition"></a></dt>
+<dd><p>Creates a sound object of a sound file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>string</em>) – Path of the file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the file doesn’t exist or can’t be read you will
+not get an exception immediately, but when you try to start
+playback of that sound.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.list">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.list" title="Link to this definition"></a></dt>
+<dd><p>Creates an empty sound list that can contain several sounds.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>random</strong> (<em>int</em>) – whether the playback will be random or not.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.sawtooth">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sawtooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">48000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.sawtooth" title="Link to this definition"></a></dt>
+<dd><p>Creates a sawtooth sound which plays a sawtooth wave.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – The frequency of the sawtooth wave in Hz.</p></li>
+<li><p><strong>rate</strong> (<em>int</em>) – The sampling rate in Hz. It’s recommended to set this
+value to the playback device’s samling rate to avoid resamping.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.silence">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">silence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">48000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.silence" title="Link to this definition"></a></dt>
+<dd><p>Creates a silence sound which plays simple silence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rate</strong> (<em>int</em>) – The sampling rate in Hz. It’s recommended to set this
+value to the playback device’s samling rate to avoid resamping.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.sine">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">48000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.sine" title="Link to this definition"></a></dt>
+<dd><p>Creates a sine sound which plays a sine wave.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – The frequency of the sine wave in Hz.</p></li>
+<li><p><strong>rate</strong> (<em>int</em>) – The sampling rate in Hz. It’s recommended to set this
+value to the playback device’s samling rate to avoid resamping.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.square">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">48000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.square" title="Link to this definition"></a></dt>
+<dd><p>Creates a square sound which plays a square wave.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – The frequency of the square wave in Hz.</p></li>
+<li><p><strong>rate</strong> (<em>int</em>) – The sampling rate in Hz. It’s recommended to set this
+value to the playback device’s samling rate to avoid resamping.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.triangle">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">triangle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">48000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.triangle" title="Link to this definition"></a></dt>
+<dd><p>Creates a triangle sound which plays a triangle wave.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – The frequency of the triangle wave in Hz.</p></li>
+<li><p><strong>rate</strong> (<em>int</em>) – The sampling rate in Hz. It’s recommended to set this
+value to the playback device’s samling rate to avoid resamping.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.ADSR">
+<span class="sig-name descname"><span class="pre">ADSR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">decay</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sustain</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.ADSR" title="Link to this definition"></a></dt>
+<dd><p>Attack-Decay-Sustain-Release envelopes the volume of a sound.
+Note: there is currently no way to trigger the release with this API.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attack</strong> (<em>float</em>) – The attack time in seconds.</p></li>
+<li><p><strong>decay</strong> (<em>float</em>) – The decay time in seconds.</p></li>
+<li><p><strong>sustain</strong> (<em>float</em>) – The sustain level.</p></li>
+<li><p><strong>release</strong> (<em>float</em>) – The release level.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.accumulate">
+<span class="sig-name descname"><span class="pre">accumulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">additive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.accumulate" title="Link to this definition"></a></dt>
+<dd><p>Accumulates a sound by summing over positive input
+differences thus generating a monotonic sigal.
+If additivity is set to true negative input differences get added too,
+but positive ones with a factor of two.</p>
+<p>Note that with additivity the signal is not monotonic anymore.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>additive</strong> – Whether the accumulation should be additive or not.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.addSound">
+<span class="sig-name descname"><span class="pre">addSound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.addSound" title="Link to this definition"></a></dt>
+<dd><p>Adds a new sound to a sound list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sound</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The sound that will be added to the list.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can only add a sound to a sound list.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.cache">
+<span class="sig-name descname"><span class="pre">cache</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.cache" title="Link to this definition"></a></dt>
+<dd><p>Caches a sound into RAM.</p>
+<p>This saves CPU usage needed for decoding and file access if the
+underlying sound reads from a file on the harddisk,
+but it consumes a lot of memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only known-length factories can be buffered.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Raw PCM data needs a lot of space, only buffer
+short factories.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.data">
+<span class="sig-name descname"><span class="pre">data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.data" title="Link to this definition"></a></dt>
+<dd><p>Retrieves the data of the sound as numpy array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A two dimensional numpy float array.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Best efficiency with cached sounds.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.delay">
+<span class="sig-name descname"><span class="pre">delay</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.delay" title="Link to this definition"></a></dt>
+<dd><p>Delays by playing adding silence in front of the other sound’s data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>float</em>) – How many seconds of silence should be added before the sound.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.envelope">
+<span class="sig-name descname"><span class="pre">envelope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attack</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arthreshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.envelope" title="Link to this definition"></a></dt>
+<dd><p>Delays by playing adding silence in front of the other sound’s data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>attack</strong> (<em>float</em>) – The attack factor.</p></li>
+<li><p><strong>release</strong> (<em>float</em>) – The release factor.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – The general threshold value.</p></li>
+<li><p><strong>arthreshold</strong> (<em>float</em>) – The attack/release threshold value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.fadein">
+<span class="sig-name descname"><span class="pre">fadein</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.fadein" title="Link to this definition"></a></dt>
+<dd><p>Fades a sound in by raising the volume linearly in the given
+time interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>float</em>) – Time in seconds when the fading should start.</p></li>
+<li><p><strong>length</strong> (<em>float</em>) – Time in seconds how long the fading should last.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before the fade starts it plays silence.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.fadeout">
+<span class="sig-name descname"><span class="pre">fadeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.fadeout" title="Link to this definition"></a></dt>
+<dd><p>Fades a sound in by lowering the volume linearly in the given
+time interval.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>float</em>) – Time in seconds when the fading should start.</p></li>
+<li><p><strong>length</strong> (<em>float</em>) – Time in seconds how long the fading should last.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>After the fade this sound plays silence, so that
+the length of the sound is not altered.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.filter" title="Link to this definition"></a></dt>
+<dd><p>Filters a sound with the supplied IIR filter coefficients.
+Without the second parameter you’ll get a FIR filter.</p>
+<p>If the first value of the a sequence is 0,
+it will be set to 1 automatically.
+If the first value of the a sequence is neither 0 nor 1, all
+filter coefficients will be scaled by this value so that it is 1
+in the end, you don’t have to scale yourself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>b</strong> (<em>sequence</em><em> of </em><em>float</em>) – The nominator filter coefficients.</p></li>
+<li><p><strong>a</strong> (<em>sequence</em><em> of </em><em>float</em>) – The denominator filter coefficients.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.highpass">
+<span class="sig-name descname"><span class="pre">highpass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.highpass" title="Link to this definition"></a></dt>
+<dd><p>Creates a second order highpass filter based on the transfer
+function <span class="math notranslate nohighlight">\(H(s) = s^2 / (s^2 + s/Q + 1)\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – The cut off trequency of the highpass.</p></li>
+<li><p><strong>Q</strong> (<em>float</em>) – Q factor of the lowpass.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.join">
+<span class="sig-name descname"><span class="pre">join</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.join" title="Link to this definition"></a></dt>
+<dd><p>Plays two factories in sequence.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sound</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The sound to play second.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The two factories have to have the same specifications
+(channels and samplerate).</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.limit">
+<span class="sig-name descname"><span class="pre">limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.limit" title="Link to this definition"></a></dt>
+<dd><p>Limits a sound within a specific start and end time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start</strong> (<em>float</em>) – Start time in seconds.</p></li>
+<li><p><strong>end</strong> (<em>float</em>) – End time in seconds.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.loop">
+<span class="sig-name descname"><span class="pre">loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">count</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.loop" title="Link to this definition"></a></dt>
+<dd><p>Loops a sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>count</strong> (<em>integer</em>) – How often the sound should be looped.
+Negative values mean endlessly.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a filter function, you might consider using
+<a class="reference internal" href="#aud.Handle.loop_count" title="aud.Handle.loop_count"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Handle.loop_count</span></code></a> instead.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.lowpass">
+<span class="sig-name descname"><span class="pre">lowpass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.lowpass" title="Link to this definition"></a></dt>
+<dd><p>Creates a second order lowpass filter based on the transfer    function <span class="math notranslate nohighlight">\(H(s) = 1 / (s^2 + s/Q + 1)\)</span></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – The cut off trequency of the lowpass.</p></li>
+<li><p><strong>Q</strong> (<em>float</em>) – Q factor of the lowpass.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.mix">
+<span class="sig-name descname"><span class="pre">mix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.mix" title="Link to this definition"></a></dt>
+<dd><p>Mixes two factories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sound</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The sound to mix over the other.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The two factories have to have the same specifications
+(channels and samplerate).</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.modulate">
+<span class="sig-name descname"><span class="pre">modulate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sound</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.modulate" title="Link to this definition"></a></dt>
+<dd><p>Modulates two factories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sound</strong> (<a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a>) – The sound to modulate over the other.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The two factories have to have the same specifications
+(channels and samplerate).</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.mutable">
+<span class="sig-name descname"><span class="pre">mutable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.mutable" title="Link to this definition"></a></dt>
+<dd><p>Creates a sound that will be restarted when sought backwards.
+If the original sound is a sound list, the playing sound can change.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.pingpong">
+<span class="sig-name descname"><span class="pre">pingpong</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.pingpong" title="Link to this definition"></a></dt>
+<dd><p>Plays a sound forward and then backward.
+This is like joining a sound with its reverse.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.pitch">
+<span class="sig-name descname"><span class="pre">pitch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.pitch" title="Link to this definition"></a></dt>
+<dd><p>Changes the pitch of a sound with a specific factor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float</em>) – The factor to change the pitch with.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is done by changing the sample rate of the
+underlying sound, which has to be an integer, so the factor
+value rounded and the factor may not be 100 % accurate.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a filter function, you might consider using
+<a class="reference internal" href="#aud.Handle.pitch" title="aud.Handle.pitch"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Handle.pitch</span></code></a> instead.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.rechannel">
+<span class="sig-name descname"><span class="pre">rechannel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.rechannel" title="Link to this definition"></a></dt>
+<dd><p>Rechannels the sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>channels</strong> (<em>int</em>) – The new channel configuration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.resample">
+<span class="sig-name descname"><span class="pre">resample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high_quality</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.resample" title="Link to this definition"></a></dt>
+<dd><p>Resamples the sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rate</strong> (<em>double</em>) – The new sample rate.</p></li>
+<li><p><strong>high_quality</strong> (<em>bool</em>) – When true use a higher quality but slower resampler.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.reverse">
+<span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.reverse" title="Link to this definition"></a></dt>
+<dd><p>Plays a sound reversed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The sound has to have a finite length and has to be seekable.
+It’s recommended to use this only with factories with
+fast and accurate seeking, which is not true for encoded audio
+files, such ones should be buffered using <a class="reference internal" href="#aud.Sound.cache" title="aud.Sound.cache"><code class="xref py py-meth docutils literal notranslate"><span class="pre">cache()</span></code></a> before
+being played reversed.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If seeking is not accurate in the underlying sound
+you’ll likely hear skips/jumps/cracks.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.sum" title="Link to this definition"></a></dt>
+<dd><p>Sums the samples of a sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.threshold">
+<span class="sig-name descname"><span class="pre">threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.threshold" title="Link to this definition"></a></dt>
+<dd><p>Makes a threshold wave out of an audio wave by setting all samples
+with a amplitude &gt;= threshold to 1, all &lt;= -threshold to -1 and
+all between to 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>threshold</strong> (<em>float</em>) – Threshold value over which an amplitude counts
+non-zero.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.volume">
+<span class="sig-name descname"><span class="pre">volume</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">volume</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.volume" title="Link to this definition"></a></dt>
+<dd><p>Changes the volume of a sound.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>volume</strong> (<em>float</em>) – The new volume..</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created <a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a> object.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#aud.Sound" title="aud.Sound"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sound</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Should be in the range [0, 1] to avoid clipping.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a filter function, you might consider using
+<a class="reference internal" href="#aud.Handle.volume" title="aud.Handle.volume"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Handle.volume</span></code></a> instead.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="aud.Sound.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">container</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bitrate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffersize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#aud.Sound.write" title="Link to this definition"></a></dt>
+<dd><p>Writes the sound to a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>string</em>) – The path to write to.</p></li>
+<li><p><strong>rate</strong> (<em>int</em>) – The sample rate to write with.</p></li>
+<li><p><strong>channels</strong> (<em>int</em>) – The number of channels to write with.</p></li>
+<li><p><strong>format</strong> (<em>int</em>) – The sample format to write with.</p></li>
+<li><p><strong>container</strong> (<em>int</em>) – The container format for the file.</p></li>
+<li><p><strong>codec</strong> (<em>int</em>) – The codec to use in the file.</p></li>
+<li><p><strong>bitrate</strong> (<em>int</em>) – The bitrate to write with.</p></li>
+<li><p><strong>buffersize</strong> (<em>int</em>) – The size of the writing buffer.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sound.length">
+<span class="sig-name descname"><span class="pre">length</span></span><a class="headerlink" href="#aud.Sound.length" title="Link to this definition"></a></dt>
+<dd><p>The sample specification of the sound as a tuple with rate and channel count.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Sound.specs">
+<span class="sig-name descname"><span class="pre">specs</span></span><a class="headerlink" href="#aud.Sound.specs" title="Link to this definition"></a></dt>
+<dd><p>The sample specification of the sound as a tuple with rate and channel count.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.Source">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">Source</span></span><a class="headerlink" href="#aud.Source" title="Link to this definition"></a></dt>
+<dd><p>The source object represents the source position of a binaural sound.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Source.azimuth">
+<span class="sig-name descname"><span class="pre">azimuth</span></span><a class="headerlink" href="#aud.Source.azimuth" title="Link to this definition"></a></dt>
+<dd><p>The azimuth angle.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Source.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><a class="headerlink" href="#aud.Source.distance" title="Link to this definition"></a></dt>
+<dd><p>The distance value. 0 is min, 1 is max.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="aud.Source.elevation">
+<span class="sig-name descname"><span class="pre">elevation</span></span><a class="headerlink" href="#aud.Source.elevation" title="Link to this definition"></a></dt>
+<dd><p>The elevation angle.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.ThreadPool">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">ThreadPool</span></span><a class="headerlink" href="#aud.ThreadPool" title="Link to this definition"></a></dt>
+<dd><p>A ThreadPool is used to parallelize convolution efficiently.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="aud.error">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">aud.</span></span><span class="sig-name descname"><span class="pre">error</span></span><a class="headerlink" href="#aud.error" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="widget.html" class="btn btn-neutral float-left" title="widget" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bgl.html" class="btn btn-neutral float-right" title="OpenGL Wrapper (bgl)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

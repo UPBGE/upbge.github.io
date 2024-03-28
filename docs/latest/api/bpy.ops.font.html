@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Font Operators &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.font.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Geometry Operators" href="bpy.ops.geometry.html" />
+    <link rel="prev" title="Fluid Operators" href="bpy.ops.fluid.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Font Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.font">
+<span id="font-operators"></span><h1>Font Operators<a class="headerlink" href="#module-bpy.ops.font" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.case_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">case_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">case</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LOWER'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.case_set" title="Link to this definition"></a></dt>
+<dd><p>Set font case</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>case</strong> (<em>enum in</em><em> [</em><em>'LOWER'</em><em>, </em><em>'UPPER'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Case, Lower or upper case</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.case_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">case_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.case_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle font case</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.change_character">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">change_character</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.change_character" title="Link to this definition"></a></dt>
+<dd><p>Change font character code</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delta</strong> (<em>int in</em><em> [</em><em>-255</em><em>, </em><em>255</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Delta, Number to increase or decrease character code with</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.change_spacing">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">change_spacing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.change_spacing" title="Link to this definition"></a></dt>
+<dd><p>Change font spacing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delta</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Delta, Amount to decrease or increase character spacing with</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PREVIOUS_CHARACTER'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.delete" title="Link to this definition"></a></dt>
+<dd><p>Delete text by cursor position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'NEXT_CHARACTER'</em><em>, </em><em>'PREVIOUS_CHARACTER'</em><em>, </em><em>'NEXT_WORD'</em><em>, </em><em>'PREVIOUS_WORD'</em><em>, </em><em>'SELECTION'</em><em>, </em><em>'NEXT_OR_SELECTION'</em><em>, </em><em>'PREVIOUS_OR_SELECTION'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type, Which part of the text to delete</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.line_break">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">line_break</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.line_break" title="Link to this definition"></a></dt>
+<dd><p>Insert line break at cursor position</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LINE_BEGIN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.move" title="Link to this definition"></a></dt>
+<dd><p>Move cursor to position type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'LINE_BEGIN'</em><em>, </em><em>'LINE_END'</em><em>, </em><em>'TEXT_BEGIN'</em><em>, </em><em>'TEXT_END'</em><em>, </em><em>'PREVIOUS_CHARACTER'</em><em>, </em><em>'NEXT_CHARACTER'</em><em>, </em><em>'PREVIOUS_WORD'</em><em>, </em><em>'NEXT_WORD'</em><em>, </em><em>'PREVIOUS_LINE'</em><em>, </em><em>'NEXT_LINE'</em><em>, </em><em>'PREVIOUS_PAGE'</em><em>, </em><em>'NEXT_PAGE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type, Where to move cursor to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.move_select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">move_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LINE_BEGIN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.move_select" title="Link to this definition"></a></dt>
+<dd><p>Move the cursor while selecting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'LINE_BEGIN'</em><em>, </em><em>'LINE_END'</em><em>, </em><em>'TEXT_BEGIN'</em><em>, </em><em>'TEXT_END'</em><em>, </em><em>'PREVIOUS_CHARACTER'</em><em>, </em><em>'NEXT_CHARACTER'</em><em>, </em><em>'PREVIOUS_WORD'</em><em>, </em><em>'NEXT_WORD'</em><em>, </em><em>'PREVIOUS_LINE'</em><em>, </em><em>'NEXT_LINE'</em><em>, </em><em>'PREVIOUS_PAGE'</em><em>, </em><em>'NEXT_PAGE'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Type, Where to move cursor to, to make a selection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.open">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hide_props_region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blender</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_movie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_sound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_archive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_btx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_collada</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_alembic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_usd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blenlib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filemode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'THUMBNAIL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.open" title="Link to this definition"></a></dt>
+<dd><p>Load a new font from a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Path to file</p></li>
+<li><p><strong>hide_props_region</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Hide Operator Properties, Collapse the region displaying the operator settings</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Check Existing, Check and warn on overwriting existing files</p></li>
+<li><p><strong>filter_blender</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_backup</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_image</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter image files</p></li>
+<li><p><strong>filter_movie</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter movie files</p></li>
+<li><p><strong>filter_python</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Python files</p></li>
+<li><p><strong>filter_font</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter font files</p></li>
+<li><p><strong>filter_sound</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter sound files</p></li>
+<li><p><strong>filter_text</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter text files</p></li>
+<li><p><strong>filter_archive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter archive files</p></li>
+<li><p><strong>filter_btx</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter btx files</p></li>
+<li><p><strong>filter_collada</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter COLLADA files</p></li>
+<li><p><strong>filter_alembic</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Alembic files</p></li>
+<li><p><strong>filter_usd</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter USD files</p></li>
+<li><p><strong>filter_obj</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OBJ files</p></li>
+<li><p><strong>filter_volume</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OpenVDB volume files</p></li>
+<li><p><strong>filter_folder</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter folders</p></li>
+<li><p><strong>filter_blenlib</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Blender IDs</p></li>
+<li><p><strong>filemode</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>9</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File Browser Mode, The setting for the file browser mode to load a .blend file, a library or a special file</p></li>
+<li><p><strong>relative_path</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Relative Path, Select the file relative to the blend file</p></li>
+<li><p><strong>display_type</strong> (<em>enum in</em><em> [</em><em>'DEFAULT'</em><em>, </em><em>'LIST_VERTICAL'</em><em>, </em><em>'LIST_HORIZONTAL'</em><em>, </em><em>'THUMBNAIL'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Display Type</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Automatically determine display type for files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_VERTICAL</span></code>
+Short List – Display files as short list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_HORIZONTAL</span></code>
+Long List – Display files as a detailed list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">THUMBNAIL</span></code>
+Thumbnails – Display files as thumbnails.</p></li>
+</ul>
+</p></li>
+<li><p><strong>sort_method</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File sorting mode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.select_all" title="Link to this definition"></a></dt>
+<dd><p>Select all text</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.select_word">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">select_word</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.select_word" title="Link to this definition"></a></dt>
+<dd><p>Select word under cursor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.selection_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">selection_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.selection_set" title="Link to this definition"></a></dt>
+<dd><p>Set cursor selection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.style_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">style_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BOLD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.style_set" title="Link to this definition"></a></dt>
+<dd><p>Set font style</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>style</strong> (<em>enum in</em><em> [</em><em>'BOLD'</em><em>, </em><em>'ITALIC'</em><em>, </em><em>'UNDERLINE'</em><em>, </em><em>'SMALL_CAPS'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Style, Style to set selection to</p></li>
+<li><p><strong>clear</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clear, Clear style rather than setting it</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.style_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">style_toggle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BOLD'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.style_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle font style</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>style</strong> (<em>enum in</em><em> [</em><em>'BOLD'</em><em>, </em><em>'ITALIC'</em><em>, </em><em>'UNDERLINE'</em><em>, </em><em>'SMALL_CAPS'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Style, Style to set selection to</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.text_copy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">text_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.text_copy" title="Link to this definition"></a></dt>
+<dd><p>Copy selected text to clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.text_cut">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">text_cut</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.text_cut" title="Link to this definition"></a></dt>
+<dd><p>Cut selected text to clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.text_insert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">text_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.text_insert" title="Link to this definition"></a></dt>
+<dd><p>Insert text at cursor position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Text, Text to insert at the cursor position</p></li>
+<li><p><strong>accent</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accent Mode, Next typed character will strike through previous, for special character input</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.text_paste">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">text_paste</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.text_paste" title="Link to this definition"></a></dt>
+<dd><p>Paste text from clipboard</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Selection, Paste text selected elsewhere rather than copied (X11/Wayland only)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.text_paste_from_file">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">text_paste_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hide_props_region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blender</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_movie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_sound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_archive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_btx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_collada</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_alembic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_usd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blenlib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filemode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.text_paste_from_file" title="Link to this definition"></a></dt>
+<dd><p>Paste contents from file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Path to file</p></li>
+<li><p><strong>hide_props_region</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Hide Operator Properties, Collapse the region displaying the operator settings</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Check Existing, Check and warn on overwriting existing files</p></li>
+<li><p><strong>filter_blender</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_backup</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_image</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter image files</p></li>
+<li><p><strong>filter_movie</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter movie files</p></li>
+<li><p><strong>filter_python</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Python files</p></li>
+<li><p><strong>filter_font</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter font files</p></li>
+<li><p><strong>filter_sound</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter sound files</p></li>
+<li><p><strong>filter_text</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter text files</p></li>
+<li><p><strong>filter_archive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter archive files</p></li>
+<li><p><strong>filter_btx</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter btx files</p></li>
+<li><p><strong>filter_collada</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter COLLADA files</p></li>
+<li><p><strong>filter_alembic</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Alembic files</p></li>
+<li><p><strong>filter_usd</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter USD files</p></li>
+<li><p><strong>filter_obj</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OBJ files</p></li>
+<li><p><strong>filter_volume</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OpenVDB volume files</p></li>
+<li><p><strong>filter_folder</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter folders</p></li>
+<li><p><strong>filter_blenlib</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Blender IDs</p></li>
+<li><p><strong>filemode</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>9</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File Browser Mode, The setting for the file browser mode to load a .blend file, a library or a special file</p></li>
+<li><p><strong>display_type</strong> (<em>enum in</em><em> [</em><em>'DEFAULT'</em><em>, </em><em>'LIST_VERTICAL'</em><em>, </em><em>'LIST_HORIZONTAL'</em><em>, </em><em>'THUMBNAIL'</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – <p>Display Type</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Automatically determine display type for files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_VERTICAL</span></code>
+Short List – Display files as short list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_HORIZONTAL</span></code>
+Long List – Display files as a detailed list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">THUMBNAIL</span></code>
+Thumbnails – Display files as thumbnails.</p></li>
+</ul>
+</p></li>
+<li><p><strong>sort_method</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File sorting mode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.textbox_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">textbox_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.textbox_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new text box</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.textbox_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">textbox_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.textbox_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove the text box</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Index, The current text box</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.font.unlink">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.font.</span></span><span class="sig-name descname"><span class="pre">unlink</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.font.unlink" title="Link to this definition"></a></dt>
+<dd><p>Unlink active font data-block</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.fluid.html" class="btn btn-neutral float-left" title="Fluid Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.geometry.html" class="btn btn-neutral float-right" title="Geometry Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

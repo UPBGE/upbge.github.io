@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RenderSettings(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.RenderSettings.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RenderSlot(bpy_struct)" href="bpy.types.RenderSlot.html" />
+    <link rel="prev" title="RenderResult(bpy_struct)" href="bpy.types.RenderResult.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">RenderSettings(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rendersettings-bpy-struct">
+<h1>RenderSettings(bpy_struct)<a class="headerlink" href="#rendersettings-bpy-struct" title="Link to this heading"></a></h1>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">RenderSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderSettings" title="Link to this definition"></a></dt>
+<dd><p>Rendering settings for a Scene data-block</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bake">
+<span class="sig-name descname"><span class="pre">bake</span></span><a class="headerlink" href="#bpy.types.RenderSettings.bake" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.BakeSettings.html#bpy.types.BakeSettings" title="bpy.types.BakeSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">BakeSettings</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bake_bias">
+<span class="sig-name descname"><span class="pre">bake_bias</span></span><a class="headerlink" href="#bpy.types.RenderSettings.bake_bias" title="Link to this definition"></a></dt>
+<dd><p>Bias towards faces further away from the object (in Blender units)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.001</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bake_margin">
+<span class="sig-name descname"><span class="pre">bake_margin</span></span><a class="headerlink" href="#bpy.types.RenderSettings.bake_margin" title="Link to this definition"></a></dt>
+<dd><p>Extends the baked result as a post process filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 64], default 16</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bake_margin_type">
+<span class="sig-name descname"><span class="pre">bake_margin_type</span></span><a class="headerlink" href="#bpy.types.RenderSettings.bake_margin_type" title="Link to this definition"></a></dt>
+<dd><p>Algorithm to generate the margin</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ADJACENT_FACES</span></code>
+Adjacent Faces – Use pixels from adjacent faces across UV seams.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXTEND</span></code>
+Extend – Extend border pixels outwards.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ADJACENT_FACES’, ‘EXTEND’], default ‘ADJACENT_FACES’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bake_samples">
+<span class="sig-name descname"><span class="pre">bake_samples</span></span><a class="headerlink" href="#bpy.types.RenderSettings.bake_samples" title="Link to this definition"></a></dt>
+<dd><p>Number of samples used for ambient occlusion baking from multires</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [64, 1024], default 256</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bake_type">
+<span class="sig-name descname"><span class="pre">bake_type</span></span><a class="headerlink" href="#bpy.types.RenderSettings.bake_type" title="Link to this definition"></a></dt>
+<dd><p>Choose shading information to bake into the image</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMALS</span></code>
+Normals – Bake normals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISPLACEMENT</span></code>
+Displacement – Bake displacement.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NORMALS’, ‘DISPLACEMENT’], default ‘NORMALS’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bake_user_scale">
+<span class="sig-name descname"><span class="pre">bake_user_scale</span></span><a class="headerlink" href="#bpy.types.RenderSettings.bake_user_scale" title="Link to this definition"></a></dt>
+<dd><p>Instead of automatically normalizing to the range 0 to 1, apply a user scale to the derivative map</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.border_max_x">
+<span class="sig-name descname"><span class="pre">border_max_x</span></span><a class="headerlink" href="#bpy.types.RenderSettings.border_max_x" title="Link to this definition"></a></dt>
+<dd><p>Maximum X value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.border_max_y">
+<span class="sig-name descname"><span class="pre">border_max_y</span></span><a class="headerlink" href="#bpy.types.RenderSettings.border_max_y" title="Link to this definition"></a></dt>
+<dd><p>Maximum Y value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.border_min_x">
+<span class="sig-name descname"><span class="pre">border_min_x</span></span><a class="headerlink" href="#bpy.types.RenderSettings.border_min_x" title="Link to this definition"></a></dt>
+<dd><p>Minimum X value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.border_min_y">
+<span class="sig-name descname"><span class="pre">border_min_y</span></span><a class="headerlink" href="#bpy.types.RenderSettings.border_min_y" title="Link to this definition"></a></dt>
+<dd><p>Minimum Y value for the render region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.dither_intensity">
+<span class="sig-name descname"><span class="pre">dither_intensity</span></span><a class="headerlink" href="#bpy.types.RenderSettings.dither_intensity" title="Link to this definition"></a></dt>
+<dd><p>Amount of dithering noise added to the rendered image to break up banding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#bpy.types.RenderSettings.engine" title="Link to this definition"></a></dt>
+<dd><p>Engine to use for rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘BLENDER_EEVEE’], default ‘BLENDER_EEVEE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.ffmpeg">
+<span class="sig-name descname"><span class="pre">ffmpeg</span></span><a class="headerlink" href="#bpy.types.RenderSettings.ffmpeg" title="Link to this definition"></a></dt>
+<dd><p>FFmpeg related settings for the scene</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.FFmpegSettings.html#bpy.types.FFmpegSettings" title="bpy.types.FFmpegSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">FFmpegSettings</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.file_extension">
+<span class="sig-name descname"><span class="pre">file_extension</span></span><a class="headerlink" href="#bpy.types.RenderSettings.file_extension" title="Link to this definition"></a></dt>
+<dd><p>The file extension used for saving renders</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><a class="headerlink" href="#bpy.types.RenderSettings.filepath" title="Link to this definition"></a></dt>
+<dd><p>Directory/name to save animations, # characters defines the position and length of frame numbers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.film_transparent">
+<span class="sig-name descname"><span class="pre">film_transparent</span></span><a class="headerlink" href="#bpy.types.RenderSettings.film_transparent" title="Link to this definition"></a></dt>
+<dd><p>World background is transparent, for compositing the render over another background</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.filter_size">
+<span class="sig-name descname"><span class="pre">filter_size</span></span><a class="headerlink" href="#bpy.types.RenderSettings.filter_size" title="Link to this definition"></a></dt>
+<dd><p>Width over which the reconstruction filter combines samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 500], default 1.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.fps">
+<span class="sig-name descname"><span class="pre">fps</span></span><a class="headerlink" href="#bpy.types.RenderSettings.fps" title="Link to this definition"></a></dt>
+<dd><p>Framerate, expressed in frames per second</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 32767], default 24</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.fps_base">
+<span class="sig-name descname"><span class="pre">fps_base</span></span><a class="headerlink" href="#bpy.types.RenderSettings.fps_base" title="Link to this definition"></a></dt>
+<dd><p>Framerate base</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-05, 1e+06], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.frame_map_new">
+<span class="sig-name descname"><span class="pre">frame_map_new</span></span><a class="headerlink" href="#bpy.types.RenderSettings.frame_map_new" title="Link to this definition"></a></dt>
+<dd><p>How many frames the Map Old will last</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 900], default 100</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.frame_map_old">
+<span class="sig-name descname"><span class="pre">frame_map_old</span></span><a class="headerlink" href="#bpy.types.RenderSettings.frame_map_old" title="Link to this definition"></a></dt>
+<dd><p>Old mapping value in frames</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 900], default 100</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.hair_subdiv">
+<span class="sig-name descname"><span class="pre">hair_subdiv</span></span><a class="headerlink" href="#bpy.types.RenderSettings.hair_subdiv" title="Link to this definition"></a></dt>
+<dd><p>Additional subdivision along the curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 3], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.hair_type">
+<span class="sig-name descname"><span class="pre">hair_type</span></span><a class="headerlink" href="#bpy.types.RenderSettings.hair_type" title="Link to this definition"></a></dt>
+<dd><p>Curves shape type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘STRAND’, ‘STRIP’], default ‘STRAND’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.has_multiple_engines">
+<span class="sig-name descname"><span class="pre">has_multiple_engines</span></span><a class="headerlink" href="#bpy.types.RenderSettings.has_multiple_engines" title="Link to this definition"></a></dt>
+<dd><p>More than one rendering engine is available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.image_settings">
+<span class="sig-name descname"><span class="pre">image_settings</span></span><a class="headerlink" href="#bpy.types.RenderSettings.image_settings" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ImageFormatSettings.html#bpy.types.ImageFormatSettings" title="bpy.types.ImageFormatSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageFormatSettings</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.is_movie_format">
+<span class="sig-name descname"><span class="pre">is_movie_format</span></span><a class="headerlink" href="#bpy.types.RenderSettings.is_movie_format" title="Link to this definition"></a></dt>
+<dd><p>When true the format is a movie</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.line_thickness">
+<span class="sig-name descname"><span class="pre">line_thickness</span></span><a class="headerlink" href="#bpy.types.RenderSettings.line_thickness" title="Link to this definition"></a></dt>
+<dd><p>Line thickness in pixels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 10000], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.line_thickness_mode">
+<span class="sig-name descname"><span class="pre">line_thickness_mode</span></span><a class="headerlink" href="#bpy.types.RenderSettings.line_thickness_mode" title="Link to this definition"></a></dt>
+<dd><p>Line thickness mode for Freestyle line drawing</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ABSOLUTE</span></code>
+Absolute – Specify unit line thickness in pixels.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELATIVE</span></code>
+Relative – Unit line thickness is scaled by the proportion of the present vertical image resolution to 480 pixels.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ABSOLUTE’, ‘RELATIVE’], default ‘ABSOLUTE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.metadata_input">
+<span class="sig-name descname"><span class="pre">metadata_input</span></span><a class="headerlink" href="#bpy.types.RenderSettings.metadata_input" title="Link to this definition"></a></dt>
+<dd><p>Where to take the metadata from</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SCENE</span></code>
+Scene – Use metadata from the current scene.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STRIPS</span></code>
+Sequencer Strips – Use metadata from the strips in the sequencer.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘SCENE’, ‘STRIPS’], default ‘SCENE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.motion_blur_shutter">
+<span class="sig-name descname"><span class="pre">motion_blur_shutter</span></span><a class="headerlink" href="#bpy.types.RenderSettings.motion_blur_shutter" title="Link to this definition"></a></dt>
+<dd><p>Time taken in frames between shutter open and close</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.motion_blur_shutter_curve">
+<span class="sig-name descname"><span class="pre">motion_blur_shutter_curve</span></span><a class="headerlink" href="#bpy.types.RenderSettings.motion_blur_shutter_curve" title="Link to this definition"></a></dt>
+<dd><p>Curve defining the shutter’s openness over time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.CurveMapping.html#bpy.types.CurveMapping" title="bpy.types.CurveMapping"><code class="xref py py-class docutils literal notranslate"><span class="pre">CurveMapping</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.pixel_aspect_x">
+<span class="sig-name descname"><span class="pre">pixel_aspect_x</span></span><a class="headerlink" href="#bpy.types.RenderSettings.pixel_aspect_x" title="Link to this definition"></a></dt>
+<dd><p>Horizontal aspect ratio - for anamorphic or non-square pixel output</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1, 200], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.pixel_aspect_y">
+<span class="sig-name descname"><span class="pre">pixel_aspect_y</span></span><a class="headerlink" href="#bpy.types.RenderSettings.pixel_aspect_y" title="Link to this definition"></a></dt>
+<dd><p>Vertical aspect ratio - for anamorphic or non-square pixel output</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1, 200], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.preview_pixel_size">
+<span class="sig-name descname"><span class="pre">preview_pixel_size</span></span><a class="headerlink" href="#bpy.types.RenderSettings.preview_pixel_size" title="Link to this definition"></a></dt>
+<dd><p>Pixel size for viewport rendering</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code>
+Automatic – Automatic pixel size, depends on the user interface scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code>
+1× – Render at full resolution.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code>
+2× – Render at 50% resolution.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span></code>
+4× – Render at 25% resolution.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">8</span></code>
+8× – Render at 12.5% resolution.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘AUTO’, ‘1’, ‘2’, ‘4’, ‘8’], default ‘AUTO’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.resolution_percentage">
+<span class="sig-name descname"><span class="pre">resolution_percentage</span></span><a class="headerlink" href="#bpy.types.RenderSettings.resolution_percentage" title="Link to this definition"></a></dt>
+<dd><p>Percentage scale for render resolution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 32767], default 100</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.resolution_x">
+<span class="sig-name descname"><span class="pre">resolution_x</span></span><a class="headerlink" href="#bpy.types.RenderSettings.resolution_x" title="Link to this definition"></a></dt>
+<dd><p>Number of horizontal pixels in the rendered image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [4, 65536], default 1920</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.resolution_y">
+<span class="sig-name descname"><span class="pre">resolution_y</span></span><a class="headerlink" href="#bpy.types.RenderSettings.resolution_y" title="Link to this definition"></a></dt>
+<dd><p>Number of vertical pixels in the rendered image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [4, 65536], default 1080</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.sequencer_gl_preview">
+<span class="sig-name descname"><span class="pre">sequencer_gl_preview</span></span><a class="headerlink" href="#bpy.types.RenderSettings.sequencer_gl_preview" title="Link to this definition"></a></dt>
+<dd><p>Display method used in the sequencer view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/shading_type_items.html#rna-enum-shading-type-items"><span class="std std-ref">Shading Type Items</span></a>, default ‘SOLID’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_child_particles">
+<span class="sig-name descname"><span class="pre">simplify_child_particles</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_child_particles" title="Link to this definition"></a></dt>
+<dd><p>Global child particles percentage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_child_particles_render">
+<span class="sig-name descname"><span class="pre">simplify_child_particles_render</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_child_particles_render" title="Link to this definition"></a></dt>
+<dd><p>Global child particles percentage during rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_gpencil">
+<span class="sig-name descname"><span class="pre">simplify_gpencil</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_gpencil" title="Link to this definition"></a></dt>
+<dd><p>Simplify Grease Pencil drawing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_gpencil_antialiasing">
+<span class="sig-name descname"><span class="pre">simplify_gpencil_antialiasing</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_gpencil_antialiasing" title="Link to this definition"></a></dt>
+<dd><p>Use Antialiasing to smooth stroke edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_gpencil_modifier">
+<span class="sig-name descname"><span class="pre">simplify_gpencil_modifier</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_gpencil_modifier" title="Link to this definition"></a></dt>
+<dd><p>Display modifiers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_gpencil_onplay">
+<span class="sig-name descname"><span class="pre">simplify_gpencil_onplay</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_gpencil_onplay" title="Link to this definition"></a></dt>
+<dd><p>Simplify Grease Pencil only during animation playback</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_gpencil_shader_fx">
+<span class="sig-name descname"><span class="pre">simplify_gpencil_shader_fx</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_gpencil_shader_fx" title="Link to this definition"></a></dt>
+<dd><p>Display Shader Effects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_gpencil_tint">
+<span class="sig-name descname"><span class="pre">simplify_gpencil_tint</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_gpencil_tint" title="Link to this definition"></a></dt>
+<dd><p>Display layer tint</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_gpencil_view_fill">
+<span class="sig-name descname"><span class="pre">simplify_gpencil_view_fill</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_gpencil_view_fill" title="Link to this definition"></a></dt>
+<dd><p>Display fill strokes in the viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_shadows">
+<span class="sig-name descname"><span class="pre">simplify_shadows</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_shadows" title="Link to this definition"></a></dt>
+<dd><p>Resolution percentage of shadows in viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_shadows_render">
+<span class="sig-name descname"><span class="pre">simplify_shadows_render</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_shadows_render" title="Link to this definition"></a></dt>
+<dd><p>Resolution percentage of shadows in viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_subdivision">
+<span class="sig-name descname"><span class="pre">simplify_subdivision</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_subdivision" title="Link to this definition"></a></dt>
+<dd><p>Global maximum subdivision level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 32767], default 6</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_subdivision_render">
+<span class="sig-name descname"><span class="pre">simplify_subdivision_render</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_subdivision_render" title="Link to this definition"></a></dt>
+<dd><p>Global maximum subdivision level during rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 32767], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.simplify_volumes">
+<span class="sig-name descname"><span class="pre">simplify_volumes</span></span><a class="headerlink" href="#bpy.types.RenderSettings.simplify_volumes" title="Link to this definition"></a></dt>
+<dd><p>Resolution percentage of volume objects in viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.stamp_background">
+<span class="sig-name descname"><span class="pre">stamp_background</span></span><a class="headerlink" href="#bpy.types.RenderSettings.stamp_background" title="Link to this definition"></a></dt>
+<dd><p>Color to use behind stamp text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.25)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.stamp_font_size">
+<span class="sig-name descname"><span class="pre">stamp_font_size</span></span><a class="headerlink" href="#bpy.types.RenderSettings.stamp_font_size" title="Link to this definition"></a></dt>
+<dd><p>Size of the font used when rendering stamp text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [8, 64], default 12</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.stamp_foreground">
+<span class="sig-name descname"><span class="pre">stamp_foreground</span></span><a class="headerlink" href="#bpy.types.RenderSettings.stamp_foreground" title="Link to this definition"></a></dt>
+<dd><p>Color to use for stamp text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float array of 4 items in [0, 1], default (0.8, 0.8, 0.8, 1.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.stamp_note_text">
+<span class="sig-name descname"><span class="pre">stamp_note_text</span></span><a class="headerlink" href="#bpy.types.RenderSettings.stamp_note_text" title="Link to this definition"></a></dt>
+<dd><p>Custom text to appear in the stamp note</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.stereo_views">
+<span class="sig-name descname"><span class="pre">stereo_views</span></span><a class="headerlink" href="#bpy.types.RenderSettings.stereo_views" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.SceneRenderView.html#bpy.types.SceneRenderView" title="bpy.types.SceneRenderView"><code class="xref py py-class docutils literal notranslate"><span class="pre">SceneRenderView</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.threads">
+<span class="sig-name descname"><span class="pre">threads</span></span><a class="headerlink" href="#bpy.types.RenderSettings.threads" title="Link to this definition"></a></dt>
+<dd><p>Maximum number of CPU cores to use simultaneously while rendering (for multi-core/CPU systems)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 1024], default 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.threads_mode">
+<span class="sig-name descname"><span class="pre">threads_mode</span></span><a class="headerlink" href="#bpy.types.RenderSettings.threads_mode" title="Link to this definition"></a></dt>
+<dd><p>Determine the amount of render threads used</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code>
+Auto-Detect – Automatically determine the number of threads, based on CPUs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIXED</span></code>
+Fixed – Manually determine the number of threads.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘AUTO’, ‘FIXED’], default ‘AUTO’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_bake_clear">
+<span class="sig-name descname"><span class="pre">use_bake_clear</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_bake_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear Images before baking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_bake_lores_mesh">
+<span class="sig-name descname"><span class="pre">use_bake_lores_mesh</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_bake_lores_mesh" title="Link to this definition"></a></dt>
+<dd><p>Calculate heights against unsubdivided low resolution mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_bake_multires">
+<span class="sig-name descname"><span class="pre">use_bake_multires</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_bake_multires" title="Link to this definition"></a></dt>
+<dd><p>Bake directly from multires object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_bake_selected_to_active">
+<span class="sig-name descname"><span class="pre">use_bake_selected_to_active</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_bake_selected_to_active" title="Link to this definition"></a></dt>
+<dd><p>Bake shading on the surface of selected objects to the active object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_bake_user_scale">
+<span class="sig-name descname"><span class="pre">use_bake_user_scale</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_bake_user_scale" title="Link to this definition"></a></dt>
+<dd><p>Use a user scale for the derivative map</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_border">
+<span class="sig-name descname"><span class="pre">use_border</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_border" title="Link to this definition"></a></dt>
+<dd><p>Render a user-defined render region, within the frame size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_compositing">
+<span class="sig-name descname"><span class="pre">use_compositing</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_compositing" title="Link to this definition"></a></dt>
+<dd><p>Process the render result through the compositing pipeline, if compositing nodes are enabled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_crop_to_border">
+<span class="sig-name descname"><span class="pre">use_crop_to_border</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_crop_to_border" title="Link to this definition"></a></dt>
+<dd><p>Crop the rendered frame to the defined render region size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_file_extension">
+<span class="sig-name descname"><span class="pre">use_file_extension</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_file_extension" title="Link to this definition"></a></dt>
+<dd><p>Add the file format extensions to the rendered file name (eg: filename + .jpg)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_freestyle">
+<span class="sig-name descname"><span class="pre">use_freestyle</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_freestyle" title="Link to this definition"></a></dt>
+<dd><p>Draw stylized strokes using Freestyle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_high_quality_normals">
+<span class="sig-name descname"><span class="pre">use_high_quality_normals</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_high_quality_normals" title="Link to this definition"></a></dt>
+<dd><p>Use high quality tangent space at the cost of lower performance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_lock_interface">
+<span class="sig-name descname"><span class="pre">use_lock_interface</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_lock_interface" title="Link to this definition"></a></dt>
+<dd><p>Lock interface during rendering in favor of giving more memory to the renderer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_motion_blur">
+<span class="sig-name descname"><span class="pre">use_motion_blur</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_motion_blur" title="Link to this definition"></a></dt>
+<dd><p>Use multi-sampled 3D scene motion blur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_multiview">
+<span class="sig-name descname"><span class="pre">use_multiview</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_multiview" title="Link to this definition"></a></dt>
+<dd><p>Use multiple views in the scene</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_overwrite">
+<span class="sig-name descname"><span class="pre">use_overwrite</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_overwrite" title="Link to this definition"></a></dt>
+<dd><p>Overwrite existing files while rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_persistent_data">
+<span class="sig-name descname"><span class="pre">use_persistent_data</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_persistent_data" title="Link to this definition"></a></dt>
+<dd><p>Keep render data around for faster re-renders and animation renders, at the cost of increased memory usage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_placeholder">
+<span class="sig-name descname"><span class="pre">use_placeholder</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_placeholder" title="Link to this definition"></a></dt>
+<dd><p>Create empty placeholder files while rendering frames (similar to Unix ‘touch’)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_render_cache">
+<span class="sig-name descname"><span class="pre">use_render_cache</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_render_cache" title="Link to this definition"></a></dt>
+<dd><p>Save render cache to EXR files (useful for heavy compositing, Note: affects indirectly rendered scenes)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_sequencer">
+<span class="sig-name descname"><span class="pre">use_sequencer</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_sequencer" title="Link to this definition"></a></dt>
+<dd><p>Process the render (and composited) result through the video sequence editor pipeline, if sequencer strips exist</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_sequencer_override_scene_strip">
+<span class="sig-name descname"><span class="pre">use_sequencer_override_scene_strip</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_sequencer_override_scene_strip" title="Link to this definition"></a></dt>
+<dd><p>Use workbench render settings from the sequencer scene, instead of each individual scene used in the strip</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_simplify">
+<span class="sig-name descname"><span class="pre">use_simplify</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_simplify" title="Link to this definition"></a></dt>
+<dd><p>Enable simplification of scene for quicker preview renders</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_single_layer">
+<span class="sig-name descname"><span class="pre">use_single_layer</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_single_layer" title="Link to this definition"></a></dt>
+<dd><p>Only render the active layer. Only affects rendering from the interface, ignored for rendering from command line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_spherical_stereo">
+<span class="sig-name descname"><span class="pre">use_spherical_stereo</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_spherical_stereo" title="Link to this definition"></a></dt>
+<dd><p>Active render engine supports spherical stereo rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp">
+<span class="sig-name descname"><span class="pre">use_stamp</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp" title="Link to this definition"></a></dt>
+<dd><p>Render the stamp info text in the rendered image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_camera">
+<span class="sig-name descname"><span class="pre">use_stamp_camera</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_camera" title="Link to this definition"></a></dt>
+<dd><p>Include the name of the active camera in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_date">
+<span class="sig-name descname"><span class="pre">use_stamp_date</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_date" title="Link to this definition"></a></dt>
+<dd><p>Include the current date in image/video metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_filename">
+<span class="sig-name descname"><span class="pre">use_stamp_filename</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_filename" title="Link to this definition"></a></dt>
+<dd><p>Include the .blend filename in image/video metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_frame">
+<span class="sig-name descname"><span class="pre">use_stamp_frame</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_frame" title="Link to this definition"></a></dt>
+<dd><p>Include the frame number in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_frame_range">
+<span class="sig-name descname"><span class="pre">use_stamp_frame_range</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_frame_range" title="Link to this definition"></a></dt>
+<dd><p>Include the rendered frame range in image/video metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_hostname">
+<span class="sig-name descname"><span class="pre">use_stamp_hostname</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_hostname" title="Link to this definition"></a></dt>
+<dd><p>Include the hostname of the machine that rendered the frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_labels">
+<span class="sig-name descname"><span class="pre">use_stamp_labels</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_labels" title="Link to this definition"></a></dt>
+<dd><p>Display stamp labels (“Camera” in front of camera name, etc.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_lens">
+<span class="sig-name descname"><span class="pre">use_stamp_lens</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_lens" title="Link to this definition"></a></dt>
+<dd><p>Include the active camera’s lens in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_marker">
+<span class="sig-name descname"><span class="pre">use_stamp_marker</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_marker" title="Link to this definition"></a></dt>
+<dd><p>Include the name of the last marker in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_memory">
+<span class="sig-name descname"><span class="pre">use_stamp_memory</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_memory" title="Link to this definition"></a></dt>
+<dd><p>Include the peak memory usage in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_note">
+<span class="sig-name descname"><span class="pre">use_stamp_note</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_note" title="Link to this definition"></a></dt>
+<dd><p>Include a custom note in image/video metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_render_time">
+<span class="sig-name descname"><span class="pre">use_stamp_render_time</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_render_time" title="Link to this definition"></a></dt>
+<dd><p>Include the render time in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_scene">
+<span class="sig-name descname"><span class="pre">use_stamp_scene</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_scene" title="Link to this definition"></a></dt>
+<dd><p>Include the name of the active scene in image/video metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_sequencer_strip">
+<span class="sig-name descname"><span class="pre">use_stamp_sequencer_strip</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_sequencer_strip" title="Link to this definition"></a></dt>
+<dd><p>Include the name of the foreground sequence strip in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.use_stamp_time">
+<span class="sig-name descname"><span class="pre">use_stamp_time</span></span><a class="headerlink" href="#bpy.types.RenderSettings.use_stamp_time" title="Link to this definition"></a></dt>
+<dd><p>Include the rendered frame timecode as HH:MM:SS.FF in image metadata</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.views">
+<span class="sig-name descname"><span class="pre">views</span></span><a class="headerlink" href="#bpy.types.RenderSettings.views" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RenderViews.html#bpy.types.RenderViews" title="bpy.types.RenderViews"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderViews</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.SceneRenderView.html#bpy.types.SceneRenderView" title="bpy.types.SceneRenderView"><code class="xref py py-class docutils literal notranslate"><span class="pre">SceneRenderView</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.views_format">
+<span class="sig-name descname"><span class="pre">views_format</span></span><a class="headerlink" href="#bpy.types.RenderSettings.views_format" title="Link to this definition"></a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">STEREO_3D</span></code>
+Stereo 3D – Single stereo camera system, adjust the stereo settings in the camera panel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MULTIVIEW</span></code>
+Multi-View – Multi camera system, adjust the cameras individually.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘STEREO_3D’, ‘MULTIVIEW’], default ‘STEREO_3D’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.frame_path">
+<span class="sig-name descname"><span class="pre">frame_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2147483648</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderSettings.frame_path" title="Link to this definition"></a></dt>
+<dd><p>Return the absolute path to the filename to be written for a given frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame number to use, if unset the current frame will be used</p></li>
+<li><p><strong>preview</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Preview, Use preview range</p></li>
+<li><p><strong>view</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – View, The name of the view to use to replace the “%” chars</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>File Path, The resulting filepath from the scenes render settings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderSettings.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderSettings.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderSettings.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine.render" title="bpy.types.RenderEngine.render"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderEngine.render</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene.render" title="bpy.types.Scene.render"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene.render</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.RenderResult.html" class="btn btn-neutral float-left" title="RenderResult(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.RenderSlot.html" class="btn btn-neutral float-right" title="RenderSlot(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/4fd142408b81>4fd142408b81</a> - 12/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
