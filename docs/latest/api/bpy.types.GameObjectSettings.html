@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GameObjectSettings(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.GameObjectSettings.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GameProperty(bpy_struct)" href="bpy.types.GameProperty.html" />
+    <link rel="prev" title="GameIntProperty(GameProperty)" href="bpy.types.GameIntProperty.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">GameObjectSettings(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gameobjectsettings-bpy-struct">
+<h1>GameObjectSettings(bpy_struct)<a class="headerlink" href="#gameobjectsettings-bpy-struct" title="Link to this heading"></a></h1>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">GameObjectSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.GameObjectSettings" title="Link to this definition"></a></dt>
+<dd><p>Game engine related settings for the object</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.activity_culling">
+<span class="sig-name descname"><span class="pre">activity_culling</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.activity_culling" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.ObjectActivityCulling.html#bpy.types.ObjectActivityCulling" title="bpy.types.ObjectActivityCulling"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectActivityCulling</span></code></a>, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.actuators">
+<span class="sig-name descname"><span class="pre">actuators</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.actuators" title="Link to this definition"></a></dt>
+<dd><p>Game engine actuators to act on events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Actuator.html#bpy.types.Actuator" title="bpy.types.Actuator"><code class="xref py py-class docutils literal notranslate"><span class="pre">Actuator</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.angular_velocity_max">
+<span class="sig-name descname"><span class="pre">angular_velocity_max</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.angular_velocity_max" title="Link to this definition"></a></dt>
+<dd><p>Clamp angular velocity to this maximum speed, in angle per second</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.angular_velocity_min">
+<span class="sig-name descname"><span class="pre">angular_velocity_min</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.angular_velocity_min" title="Link to this definition"></a></dt>
+<dd><p>Clamp angular velocity to this minimum speed (except when totally still), in angle per second</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.ccd_motion_threshold">
+<span class="sig-name descname"><span class="pre">ccd_motion_threshold</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.ccd_motion_threshold" title="Link to this definition"></a></dt>
+<dd><p>Sets the delta of movement that has to happen in one physics tick to trigger the continuous motion detection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.ccd_swept_sphere_radius">
+<span class="sig-name descname"><span class="pre">ccd_swept_sphere_radius</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.ccd_swept_sphere_radius" title="Link to this definition"></a></dt>
+<dd><p>The radius of the sphere that is used to check for possible collisions when ccd is actived</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100], default 0.9</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.collision_bounds_type">
+<span class="sig-name descname"><span class="pre">collision_bounds_type</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.collision_bounds_type" title="Link to this definition"></a></dt>
+<dd><p>Select the collision shape that better fits the object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘BOX’, ‘SPHERE’, ‘CYLINDER’, ‘CONE’, ‘CONVEX_HULL’, ‘TRIANGLE_MESH’, ‘CAPSULE’, ‘Empty’], default ‘BOX’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.collision_group">
+<span class="sig-name descname"><span class="pre">collision_group</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.collision_group" title="Link to this definition"></a></dt>
+<dd><p>The collision group of the object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean array of 16 items, default (True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.collision_margin">
+<span class="sig-name descname"><span class="pre">collision_margin</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.collision_margin" title="Link to this definition"></a></dt>
+<dd><p>Extra margin around object for collision detection, small amount required for stability</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.04</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.collision_mask">
+<span class="sig-name descname"><span class="pre">collision_mask</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.collision_mask" title="Link to this definition"></a></dt>
+<dd><p>The groups this object can collide with</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean array of 16 items, default (True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.components">
+<span class="sig-name descname"><span class="pre">components</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.components" title="Link to this definition"></a></dt>
+<dd><p>Game engine components</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.PythonProxy.html#bpy.types.PythonProxy" title="bpy.types.PythonProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonProxy</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.controllers">
+<span class="sig-name descname"><span class="pre">controllers</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.controllers" title="Link to this definition"></a></dt>
+<dd><p>Game engine controllers to process events, connecting sensors to actuators</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Controller.html#bpy.types.Controller" title="bpy.types.Controller"><code class="xref py py-class docutils literal notranslate"><span class="pre">Controller</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.custom_object">
+<span class="sig-name descname"><span class="pre">custom_object</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.custom_object" title="Link to this definition"></a></dt>
+<dd><p>Custom game object component for the object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.PythonProxy.html#bpy.types.PythonProxy" title="bpy.types.PythonProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">PythonProxy</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.damping">
+<span class="sig-name descname"><span class="pre">damping</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.damping" title="Link to this definition"></a></dt>
+<dd><p>General movement damping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.04</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.elasticity">
+<span class="sig-name descname"><span class="pre">elasticity</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.elasticity" title="Link to this definition"></a></dt>
+<dd><p>Elasticity of collisions/Bounciness/Restitution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.fall_speed">
+<span class="sig-name descname"><span class="pre">fall_speed</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.fall_speed" title="Link to this definition"></a></dt>
+<dd><p>Maximum speed at which the character will fall</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 55.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.fh_damping">
+<span class="sig-name descname"><span class="pre">fh_damping</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.fh_damping" title="Link to this definition"></a></dt>
+<dd><p>Damping of the spring force, when inside the physics distance area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.fh_distance">
+<span class="sig-name descname"><span class="pre">fh_distance</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.fh_distance" title="Link to this definition"></a></dt>
+<dd><p>Distance of the physics area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 20], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.fh_force">
+<span class="sig-name descname"><span class="pre">fh_force</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.fh_force" title="Link to this definition"></a></dt>
+<dd><p>Upward spring force, when inside the physics distance area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.form_factor">
+<span class="sig-name descname"><span class="pre">form_factor</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.form_factor" title="Link to this definition"></a></dt>
+<dd><p>Form factor scales the inertia tensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100], default 0.4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.friction">
+<span class="sig-name descname"><span class="pre">friction</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.friction" title="Link to this definition"></a></dt>
+<dd><p>Coulomb friction coefficient, when inside the physics distance area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.friction_coefficients">
+<span class="sig-name descname"><span class="pre">friction_coefficients</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.friction_coefficients" title="Link to this definition"></a></dt>
+<dd><p>Relative friction coefficients in the in the X, Y and Z directions, when anisotropic friction is enabled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [0, 1], default (1.0, 1.0, 1.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.jump_max">
+<span class="sig-name descname"><span class="pre">jump_max</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.jump_max" title="Link to this definition"></a></dt>
+<dd><p>The maximum number of jumps the character can make before it hits the ground</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 255], default 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.jump_speed">
+<span class="sig-name descname"><span class="pre">jump_speed</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.jump_speed" title="Link to this definition"></a></dt>
+<dd><p>Upward velocity applied to the character when jumping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 10.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.lock_location_x">
+<span class="sig-name descname"><span class="pre">lock_location_x</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.lock_location_x" title="Link to this definition"></a></dt>
+<dd><p>Disable simulation of linear motion along the X axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.lock_location_y">
+<span class="sig-name descname"><span class="pre">lock_location_y</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.lock_location_y" title="Link to this definition"></a></dt>
+<dd><p>Disable simulation of linear motion along the Y axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.lock_location_z">
+<span class="sig-name descname"><span class="pre">lock_location_z</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.lock_location_z" title="Link to this definition"></a></dt>
+<dd><p>Disable simulation of linear motion along the Z axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.lock_rotation_x">
+<span class="sig-name descname"><span class="pre">lock_rotation_x</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.lock_rotation_x" title="Link to this definition"></a></dt>
+<dd><p>Disable simulation of angular motion along the X axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.lock_rotation_y">
+<span class="sig-name descname"><span class="pre">lock_rotation_y</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.lock_rotation_y" title="Link to this definition"></a></dt>
+<dd><p>Disable simulation of angular motion along the Y axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.lock_rotation_z">
+<span class="sig-name descname"><span class="pre">lock_rotation_z</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.lock_rotation_z" title="Link to this definition"></a></dt>
+<dd><p>Disable simulation of angular motion along the Z axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.mass">
+<span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.mass" title="Link to this definition"></a></dt>
+<dd><p>Mass of the object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.01, 1e+06], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.max_slope">
+<span class="sig-name descname"><span class="pre">max_slope</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.max_slope" title="Link to this definition"></a></dt>
+<dd><p>Maximum slope angle which the character will climb</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1.5708], default 1.5708</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.obstacle_radius">
+<span class="sig-name descname"><span class="pre">obstacle_radius</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.obstacle_radius" title="Link to this definition"></a></dt>
+<dd><p>Radius of object representation in obstacle simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.physics_type">
+<span class="sig-name descname"><span class="pre">physics_type</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.physics_type" title="Link to this definition"></a></dt>
+<dd><p>Select the type of physical representation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NO_COLLISION</span></code>
+No Collision – Disable collision for this object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STATIC</span></code>
+Static – Stationary object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DYNAMIC</span></code>
+Dynamic – Linear physics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGID_BODY</span></code>
+Rigid Body – Linear and angular physics.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SOFT_BODY</span></code>
+Soft Body – Soft body.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SENSOR</span></code>
+Sensor – Collision Sensor, detects static and dynamic objects but not the other collision sensor objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NAVMESH</span></code>
+Navigation Mesh – Navigation mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHARACTER</span></code>
+Character – Simple kinematic physics appropriate for game characters.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NO_COLLISION’, ‘STATIC’, ‘DYNAMIC’, ‘RIGID_BODY’, ‘SOFT_BODY’, ‘SENSOR’, ‘NAVMESH’, ‘CHARACTER’], default ‘STATIC’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.properties">
+<span class="sig-name descname"><span class="pre">properties</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.properties" title="Link to this definition"></a></dt>
+<dd><p>Game engine properties</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.GameProperty.html#bpy.types.GameProperty" title="bpy.types.GameProperty"><code class="xref py py-class docutils literal notranslate"><span class="pre">GameProperty</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.radius">
+<span class="sig-name descname"><span class="pre">radius</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.radius" title="Link to this definition"></a></dt>
+<dd><p>Radius of bounding sphere and material physics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.01, inf], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.rolling_friction">
+<span class="sig-name descname"><span class="pre">rolling_friction</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.rolling_friction" title="Link to this definition"></a></dt>
+<dd><p>Coulomb friction coefficient of rounded shapes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.rotation_damping">
+<span class="sig-name descname"><span class="pre">rotation_damping</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.rotation_damping" title="Link to this definition"></a></dt>
+<dd><p>General rotation damping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.sensors">
+<span class="sig-name descname"><span class="pre">sensors</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.sensors" title="Link to this definition"></a></dt>
+<dd><p>Game engine sensor to detect events</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Sensor.html#bpy.types.Sensor" title="bpy.types.Sensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sensor</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.show_actuators">
+<span class="sig-name descname"><span class="pre">show_actuators</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.show_actuators" title="Link to this definition"></a></dt>
+<dd><p>Shows actuators for this object in the user interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.show_controllers">
+<span class="sig-name descname"><span class="pre">show_controllers</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.show_controllers" title="Link to this definition"></a></dt>
+<dd><p>Shows controllers for this object in the user interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.show_debug_state">
+<span class="sig-name descname"><span class="pre">show_debug_state</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.show_debug_state" title="Link to this definition"></a></dt>
+<dd><p>Print state debug info in the game engine</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.show_sensors">
+<span class="sig-name descname"><span class="pre">show_sensors</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.show_sensors" title="Link to this definition"></a></dt>
+<dd><p>Shows sensors for this object in the user interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.show_state_panel">
+<span class="sig-name descname"><span class="pre">show_state_panel</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.show_state_panel" title="Link to this definition"></a></dt>
+<dd><p>Show state panel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.soft_body">
+<span class="sig-name descname"><span class="pre">soft_body</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.soft_body" title="Link to this definition"></a></dt>
+<dd><p>Settings for Bullet soft body simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.GameSoftBodySettings.html#bpy.types.GameSoftBodySettings" title="bpy.types.GameSoftBodySettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">GameSoftBodySettings</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.states_initial">
+<span class="sig-name descname"><span class="pre">states_initial</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.states_initial" title="Link to this definition"></a></dt>
+<dd><p>Initial state when the game starts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean array of 30 items, default (True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.states_visible">
+<span class="sig-name descname"><span class="pre">states_visible</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.states_visible" title="Link to this definition"></a></dt>
+<dd><p>State determining which controllers are displayed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean array of 30 items, default (True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.step_height">
+<span class="sig-name descname"><span class="pre">step_height</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.step_height" title="Link to this definition"></a></dt>
+<dd><p>Maximum height of steps the character can run over</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.01, 1], default 0.15</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_activity_culling">
+<span class="sig-name descname"><span class="pre">use_activity_culling</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_activity_culling" title="Link to this definition"></a></dt>
+<dd><p>Disable simulation of angular motion along the Z axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_actor">
+<span class="sig-name descname"><span class="pre">use_actor</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_actor" title="Link to this definition"></a></dt>
+<dd><p>Object is detected by the Near and Radar sensor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_all_states">
+<span class="sig-name descname"><span class="pre">use_all_states</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_all_states" title="Link to this definition"></a></dt>
+<dd><p>Set all state bits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_anisotropic_friction">
+<span class="sig-name descname"><span class="pre">use_anisotropic_friction</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_anisotropic_friction" title="Link to this definition"></a></dt>
+<dd><p>Enable anisotropic friction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_ccd_rigid_body">
+<span class="sig-name descname"><span class="pre">use_ccd_rigid_body</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_ccd_rigid_body" title="Link to this definition"></a></dt>
+<dd><p>Enable Continuous Collision Detection for the rigid body</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_collision_bounds">
+<span class="sig-name descname"><span class="pre">use_collision_bounds</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_collision_bounds" title="Link to this definition"></a></dt>
+<dd><p>Specify a collision bounds type other than the default</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_collision_compound">
+<span class="sig-name descname"><span class="pre">use_collision_compound</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_collision_compound" title="Link to this definition"></a></dt>
+<dd><p>Add children to form a compound collision object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_fh_normal">
+<span class="sig-name descname"><span class="pre">use_fh_normal</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_fh_normal" title="Link to this definition"></a></dt>
+<dd><p>Align dynamic game objects along the surface normal, when inside the physics distance area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_ghost">
+<span class="sig-name descname"><span class="pre">use_ghost</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_ghost" title="Link to this definition"></a></dt>
+<dd><p>Object does not react to collisions, like a ghost</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_obstacle_create">
+<span class="sig-name descname"><span class="pre">use_obstacle_create</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_obstacle_create" title="Link to this definition"></a></dt>
+<dd><p>Create representation for obstacle simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_physics_fh">
+<span class="sig-name descname"><span class="pre">use_physics_fh</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_physics_fh" title="Link to this definition"></a></dt>
+<dd><p>React to force field physics settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_record_animation">
+<span class="sig-name descname"><span class="pre">use_record_animation</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_record_animation" title="Link to this definition"></a></dt>
+<dd><p>Record animation objects without physics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_rotate_from_normal">
+<span class="sig-name descname"><span class="pre">use_rotate_from_normal</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_rotate_from_normal" title="Link to this definition"></a></dt>
+<dd><p>Use face normal to rotate object, so that it points away from the surface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.use_sleep">
+<span class="sig-name descname"><span class="pre">use_sleep</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.use_sleep" title="Link to this definition"></a></dt>
+<dd><p>Disable auto (de)activation in physics simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.used_states">
+<span class="sig-name descname"><span class="pre">used_states</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.used_states" title="Link to this definition"></a></dt>
+<dd><p>States which are being used by controllers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean array of 30 items, default (False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False), (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.velocity_max">
+<span class="sig-name descname"><span class="pre">velocity_max</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.velocity_max" title="Link to this definition"></a></dt>
+<dd><p>Clamp velocity to this maximum speed, in distance per second</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.velocity_min">
+<span class="sig-name descname"><span class="pre">velocity_min</span></span><a class="headerlink" href="#bpy.types.GameObjectSettings.velocity_min" title="Link to this definition"></a></dt>
+<dd><p>Clamp velocity to this minimum speed (except when totally still), in distance per second</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.GameObjectSettings.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.GameObjectSettings.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.GameObjectSettings.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.game" title="bpy.types.Object.game"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.game</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.GameIntProperty.html" class="btn btn-neutral float-left" title="GameIntProperty(GameProperty)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.GameProperty.html" class="btn btn-neutral float-right" title="GameProperty(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/1dff62ca3acd>1dff62ca3acd</a> - 10/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

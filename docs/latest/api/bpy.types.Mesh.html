@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mesh(ID) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.Mesh.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MeshCacheModifier(Modifier)" href="bpy.types.MeshCacheModifier.html" />
+    <link rel="prev" title="Menu(bpy_struct)" href="bpy.types.Menu.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">Mesh(ID)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="mesh-id">
+<h1>Mesh(ID)<a class="headerlink" href="#mesh-id" title="Link to this heading"></a></h1>
+<section id="mesh-data">
+<h2>Mesh Data<a class="headerlink" href="#mesh-data" title="Link to this heading"></a></h2>
+<p>The mesh data is accessed in object mode and intended for compact storage,
+for more flexible mesh editing from python see <a class="reference internal" href="bmesh.html#module-bmesh" title="bmesh"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bmesh</span></code></a>.</p>
+<p>Blender stores 4 main arrays to define mesh geometry.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#bpy.types.Mesh.vertices" title="bpy.types.Mesh.vertices"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.vertices</span></code></a> (3 points in space)</p></li>
+<li><p><a class="reference internal" href="#bpy.types.Mesh.edges" title="bpy.types.Mesh.edges"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.edges</span></code></a> (reference 2 vertices)</p></li>
+<li><p><a class="reference internal" href="#bpy.types.Mesh.loops" title="bpy.types.Mesh.loops"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.loops</span></code></a> (reference a single vertex and edge)</p></li>
+<li><p><a class="reference internal" href="#bpy.types.Mesh.polygons" title="bpy.types.Mesh.polygons"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.polygons</span></code></a>: (reference a range of loops)</p></li>
+</ul>
+<p>Each polygon references a slice in the loop array, this way, polygons do not store vertices or corner data such as UVs directly,
+only a reference to loops that the polygon uses.</p>
+<p><a class="reference internal" href="#bpy.types.Mesh.loops" title="bpy.types.Mesh.loops"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.loops</span></code></a>, <a class="reference internal" href="#bpy.types.Mesh.uv_layers" title="bpy.types.Mesh.uv_layers"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.uv_layers</span></code></a> <a class="reference internal" href="#bpy.types.Mesh.vertex_colors" title="bpy.types.Mesh.vertex_colors"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.vertex_colors</span></code></a> are all aligned so the same polygon loop
+indices can be used to find the UVs and vertex colors as with as the vertices.</p>
+<p>To compare mesh API options see: <a class="reference internal" href="info_gotcha.html#info-gotcha-mesh-faces"><span class="std std-ref">NGons and Tessellation Faces</span></a></p>
+<p>This example script prints the vertices and UVs for each polygon, assumes the active object is a mesh with UVs.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+<span class="n">me</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">data</span>
+<span class="n">uv_layer</span> <span class="o">=</span> <span class="n">me</span><span class="o">.</span><span class="n">uv_layers</span><span class="o">.</span><span class="n">active</span><span class="o">.</span><span class="n">data</span>
+
+<span class="k">for</span> <span class="n">poly</span> <span class="ow">in</span> <span class="n">me</span><span class="o">.</span><span class="n">polygons</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Polygon index: </span><span class="si">%d</span><span class="s2">, length: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">poly</span><span class="o">.</span><span class="n">loop_total</span><span class="p">))</span>
+
+    <span class="c1"># range is used here to show how the polygons reference loops,</span>
+    <span class="c1"># for convenience &#39;poly.loop_indices&#39; can be used instead.</span>
+    <span class="k">for</span> <span class="n">loop_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">poly</span><span class="o">.</span><span class="n">loop_start</span><span class="p">,</span> <span class="n">poly</span><span class="o">.</span><span class="n">loop_start</span> <span class="o">+</span> <span class="n">poly</span><span class="o">.</span><span class="n">loop_total</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Vertex: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">me</span><span class="o">.</span><span class="n">loops</span><span class="p">[</span><span class="n">loop_index</span><span class="p">]</span><span class="o">.</span><span class="n">vertex_index</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    UV: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uv_layer</span><span class="p">[</span><span class="n">loop_index</span><span class="p">]</span><span class="o">.</span><span class="n">uv</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.Mesh">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">Mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh" title="Link to this definition"></a></dt>
+<dd><p>Mesh data-block defining geometric surfaces</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.animation_data">
+<span class="sig-name descname"><span class="pre">animation_data</span></span><a class="headerlink" href="#bpy.types.Mesh.animation_data" title="Link to this definition"></a></dt>
+<dd><p>Animation data for this data-block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.AnimData.html#bpy.types.AnimData" title="bpy.types.AnimData"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimData</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><a class="headerlink" href="#bpy.types.Mesh.attributes" title="Link to this definition"></a></dt>
+<dd><p>Geometry attributes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.AttributeGroup.html#bpy.types.AttributeGroup" title="bpy.types.AttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttributeGroup</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Attribute.html#bpy.types.Attribute" title="bpy.types.Attribute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attribute</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.auto_smooth_angle">
+<span class="sig-name descname"><span class="pre">auto_smooth_angle</span></span><a class="headerlink" href="#bpy.types.Mesh.auto_smooth_angle" title="Link to this definition"></a></dt>
+<dd><p>Maximum angle between face normals that will be considered as smooth (unused if custom split normals data are available)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 3.14159], default 0.523599</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.auto_texspace">
+<span class="sig-name descname"><span class="pre">auto_texspace</span></span><a class="headerlink" href="#bpy.types.Mesh.auto_texspace" title="Link to this definition"></a></dt>
+<dd><p>Adjust active object’s texture space automatically when transforming object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.color_attributes">
+<span class="sig-name descname"><span class="pre">color_attributes</span></span><a class="headerlink" href="#bpy.types.Mesh.color_attributes" title="Link to this definition"></a></dt>
+<dd><p>Geometry color attributes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.AttributeGroup.html#bpy.types.AttributeGroup" title="bpy.types.AttributeGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">AttributeGroup</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Attribute.html#bpy.types.Attribute" title="bpy.types.Attribute"><code class="xref py py-class docutils literal notranslate"><span class="pre">Attribute</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.corner_normals">
+<span class="sig-name descname"><span class="pre">corner_normals</span></span><a class="headerlink" href="#bpy.types.Mesh.corner_normals" title="Link to this definition"></a></dt>
+<dd><p>The “slit” normal direction of each face corner, influenced by vertex normals, sharp faces, sharp edges, and custom normals. May be empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshNormalValue.html#bpy.types.MeshNormalValue" title="bpy.types.MeshNormalValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshNormalValue</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.edges">
+<span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#bpy.types.Mesh.edges" title="Link to this definition"></a></dt>
+<dd><p>Edges of the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshEdges.html#bpy.types.MeshEdges" title="bpy.types.MeshEdges"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshEdges</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshEdge.html#bpy.types.MeshEdge" title="bpy.types.MeshEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshEdge</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.has_custom_normals">
+<span class="sig-name descname"><span class="pre">has_custom_normals</span></span><a class="headerlink" href="#bpy.types.Mesh.has_custom_normals" title="Link to this definition"></a></dt>
+<dd><p>True if there are custom split normals data in this mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.is_editmode">
+<span class="sig-name descname"><span class="pre">is_editmode</span></span><a class="headerlink" href="#bpy.types.Mesh.is_editmode" title="Link to this definition"></a></dt>
+<dd><p>True when used in editmode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.loop_triangle_polygons">
+<span class="sig-name descname"><span class="pre">loop_triangle_polygons</span></span><a class="headerlink" href="#bpy.types.Mesh.loop_triangle_polygons" title="Link to this definition"></a></dt>
+<dd><p>The face index for each loop triangle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.ReadOnlyInteger.html#bpy.types.ReadOnlyInteger" title="bpy.types.ReadOnlyInteger"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReadOnlyInteger</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.loop_triangles">
+<span class="sig-name descname"><span class="pre">loop_triangles</span></span><a class="headerlink" href="#bpy.types.Mesh.loop_triangles" title="Link to this definition"></a></dt>
+<dd><p>Tessellation of mesh polygons into triangles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshLoopTriangles.html#bpy.types.MeshLoopTriangles" title="bpy.types.MeshLoopTriangles"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshLoopTriangles</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshLoopTriangle.html#bpy.types.MeshLoopTriangle" title="bpy.types.MeshLoopTriangle"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshLoopTriangle</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.loops">
+<span class="sig-name descname"><span class="pre">loops</span></span><a class="headerlink" href="#bpy.types.Mesh.loops" title="Link to this definition"></a></dt>
+<dd><p>Loops of the mesh (face corners)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshLoops.html#bpy.types.MeshLoops" title="bpy.types.MeshLoops"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshLoops</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshLoop.html#bpy.types.MeshLoop" title="bpy.types.MeshLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshLoop</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.materials">
+<span class="sig-name descname"><span class="pre">materials</span></span><a class="headerlink" href="#bpy.types.Mesh.materials" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.IDMaterials.html#bpy.types.IDMaterials" title="bpy.types.IDMaterials"><code class="xref py py-class docutils literal notranslate"><span class="pre">IDMaterials</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.Material.html#bpy.types.Material" title="bpy.types.Material"><code class="xref py py-class docutils literal notranslate"><span class="pre">Material</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.polygon_normals">
+<span class="sig-name descname"><span class="pre">polygon_normals</span></span><a class="headerlink" href="#bpy.types.Mesh.polygon_normals" title="Link to this definition"></a></dt>
+<dd><p>The normal direction of each face, defined by the winding order and position of its vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshNormalValue.html#bpy.types.MeshNormalValue" title="bpy.types.MeshNormalValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshNormalValue</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.polygons">
+<span class="sig-name descname"><span class="pre">polygons</span></span><a class="headerlink" href="#bpy.types.Mesh.polygons" title="Link to this definition"></a></dt>
+<dd><p>Polygons of the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshPolygons.html#bpy.types.MeshPolygons" title="bpy.types.MeshPolygons"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshPolygons</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshPolygon.html#bpy.types.MeshPolygon" title="bpy.types.MeshPolygon"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshPolygon</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.remesh_mode">
+<span class="sig-name descname"><span class="pre">remesh_mode</span></span><a class="headerlink" href="#bpy.types.Mesh.remesh_mode" title="Link to this definition"></a></dt>
+<dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VOXEL</span></code>
+Voxel – Use the voxel remesher.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QUAD</span></code>
+Quad – Use the quad remesher.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘VOXEL’, ‘QUAD’], default ‘VOXEL’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.remesh_voxel_adaptivity">
+<span class="sig-name descname"><span class="pre">remesh_voxel_adaptivity</span></span><a class="headerlink" href="#bpy.types.Mesh.remesh_voxel_adaptivity" title="Link to this definition"></a></dt>
+<dd><p>Reduces the final face count by simplifying geometry where detail is not needed, generating triangles. A value greater than 0 disables Fix Poles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.remesh_voxel_size">
+<span class="sig-name descname"><span class="pre">remesh_voxel_size</span></span><a class="headerlink" href="#bpy.types.Mesh.remesh_voxel_size" title="Link to this definition"></a></dt>
+<dd><p>Size of the voxel in object space used for volume evaluation. Lower values preserve finer details</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.0001, inf], default 0.1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.shape_keys">
+<span class="sig-name descname"><span class="pre">shape_keys</span></span><a class="headerlink" href="#bpy.types.Mesh.shape_keys" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Key.html#bpy.types.Key" title="bpy.types.Key"><code class="xref py py-class docutils literal notranslate"><span class="pre">Key</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.skin_vertices">
+<span class="sig-name descname"><span class="pre">skin_vertices</span></span><a class="headerlink" href="#bpy.types.Mesh.skin_vertices" title="Link to this definition"></a></dt>
+<dd><p>All skin vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshSkinVertexLayer.html#bpy.types.MeshSkinVertexLayer" title="bpy.types.MeshSkinVertexLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshSkinVertexLayer</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.texco_mesh">
+<span class="sig-name descname"><span class="pre">texco_mesh</span></span><a class="headerlink" href="#bpy.types.Mesh.texco_mesh" title="Link to this definition"></a></dt>
+<dd><p>Derive texture coordinates from another mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bpy.types.Mesh" title="bpy.types.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.texspace_location">
+<span class="sig-name descname"><span class="pre">texspace_location</span></span><a class="headerlink" href="#bpy.types.Mesh.texspace_location" title="Link to this definition"></a></dt>
+<dd><p>Texture space location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.texspace_size">
+<span class="sig-name descname"><span class="pre">texspace_size</span></span><a class="headerlink" href="#bpy.types.Mesh.texspace_size" title="Link to this definition"></a></dt>
+<dd><p>Texture space size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.texture_mesh">
+<span class="sig-name descname"><span class="pre">texture_mesh</span></span><a class="headerlink" href="#bpy.types.Mesh.texture_mesh" title="Link to this definition"></a></dt>
+<dd><p>Use another mesh for texture indices (vertex indices must be aligned)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bpy.types.Mesh" title="bpy.types.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.total_edge_sel">
+<span class="sig-name descname"><span class="pre">total_edge_sel</span></span><a class="headerlink" href="#bpy.types.Mesh.total_edge_sel" title="Link to this definition"></a></dt>
+<dd><p>Selected edge count in editmode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.total_face_sel">
+<span class="sig-name descname"><span class="pre">total_face_sel</span></span><a class="headerlink" href="#bpy.types.Mesh.total_face_sel" title="Link to this definition"></a></dt>
+<dd><p>Selected face count in editmode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.total_vert_sel">
+<span class="sig-name descname"><span class="pre">total_vert_sel</span></span><a class="headerlink" href="#bpy.types.Mesh.total_vert_sel" title="Link to this definition"></a></dt>
+<dd><p>Selected vertex count in editmode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_auto_smooth">
+<span class="sig-name descname"><span class="pre">use_auto_smooth</span></span><a class="headerlink" href="#bpy.types.Mesh.use_auto_smooth" title="Link to this definition"></a></dt>
+<dd><p>Auto smooth (based on smooth/sharp faces/edges and angle between faces), or use custom split normals data if available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_auto_texspace">
+<span class="sig-name descname"><span class="pre">use_auto_texspace</span></span><a class="headerlink" href="#bpy.types.Mesh.use_auto_texspace" title="Link to this definition"></a></dt>
+<dd><p>Adjust active object’s texture space automatically when transforming object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_mirror_topology">
+<span class="sig-name descname"><span class="pre">use_mirror_topology</span></span><a class="headerlink" href="#bpy.types.Mesh.use_mirror_topology" title="Link to this definition"></a></dt>
+<dd><p>Use topology based mirroring (for when both sides of mesh have matching, unique topology)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_mirror_vertex_groups">
+<span class="sig-name descname"><span class="pre">use_mirror_vertex_groups</span></span><a class="headerlink" href="#bpy.types.Mesh.use_mirror_vertex_groups" title="Link to this definition"></a></dt>
+<dd><p>Mirror the left/right vertex groups when painting. The symmetry axis is determined by the symmetry settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_mirror_x">
+<span class="sig-name descname"><span class="pre">use_mirror_x</span></span><a class="headerlink" href="#bpy.types.Mesh.use_mirror_x" title="Link to this definition"></a></dt>
+<dd><p>Enable symmetry in the X axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_mirror_y">
+<span class="sig-name descname"><span class="pre">use_mirror_y</span></span><a class="headerlink" href="#bpy.types.Mesh.use_mirror_y" title="Link to this definition"></a></dt>
+<dd><p>Enable symmetry in the Y axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_mirror_z">
+<span class="sig-name descname"><span class="pre">use_mirror_z</span></span><a class="headerlink" href="#bpy.types.Mesh.use_mirror_z" title="Link to this definition"></a></dt>
+<dd><p>Enable symmetry in the Z axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_paint_mask">
+<span class="sig-name descname"><span class="pre">use_paint_mask</span></span><a class="headerlink" href="#bpy.types.Mesh.use_paint_mask" title="Link to this definition"></a></dt>
+<dd><p>Face selection masking for painting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_paint_mask_vertex">
+<span class="sig-name descname"><span class="pre">use_paint_mask_vertex</span></span><a class="headerlink" href="#bpy.types.Mesh.use_paint_mask_vertex" title="Link to this definition"></a></dt>
+<dd><p>Vertex selection masking for painting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_remesh_fix_poles">
+<span class="sig-name descname"><span class="pre">use_remesh_fix_poles</span></span><a class="headerlink" href="#bpy.types.Mesh.use_remesh_fix_poles" title="Link to this definition"></a></dt>
+<dd><p>Produces less poles and a better topology flow</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_remesh_preserve_paint_mask">
+<span class="sig-name descname"><span class="pre">use_remesh_preserve_paint_mask</span></span><a class="headerlink" href="#bpy.types.Mesh.use_remesh_preserve_paint_mask" title="Link to this definition"></a></dt>
+<dd><p>Keep the current mask on the new mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_remesh_preserve_sculpt_face_sets">
+<span class="sig-name descname"><span class="pre">use_remesh_preserve_sculpt_face_sets</span></span><a class="headerlink" href="#bpy.types.Mesh.use_remesh_preserve_sculpt_face_sets" title="Link to this definition"></a></dt>
+<dd><p>Keep the current Face Sets on the new mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_remesh_preserve_vertex_colors">
+<span class="sig-name descname"><span class="pre">use_remesh_preserve_vertex_colors</span></span><a class="headerlink" href="#bpy.types.Mesh.use_remesh_preserve_vertex_colors" title="Link to this definition"></a></dt>
+<dd><p>Keep the current vertex colors on the new mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.use_remesh_preserve_volume">
+<span class="sig-name descname"><span class="pre">use_remesh_preserve_volume</span></span><a class="headerlink" href="#bpy.types.Mesh.use_remesh_preserve_volume" title="Link to this definition"></a></dt>
+<dd><p>Projects the mesh to preserve the volume and details of the original mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.uv_layer_clone">
+<span class="sig-name descname"><span class="pre">uv_layer_clone</span></span><a class="headerlink" href="#bpy.types.Mesh.uv_layer_clone" title="Link to this definition"></a></dt>
+<dd><p>UV loop layer to be used as cloning source</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshUVLoopLayer.html#bpy.types.MeshUVLoopLayer" title="bpy.types.MeshUVLoopLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshUVLoopLayer</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.uv_layer_clone_index">
+<span class="sig-name descname"><span class="pre">uv_layer_clone_index</span></span><a class="headerlink" href="#bpy.types.Mesh.uv_layer_clone_index" title="Link to this definition"></a></dt>
+<dd><p>Clone UV loop layer index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, inf], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.uv_layer_stencil">
+<span class="sig-name descname"><span class="pre">uv_layer_stencil</span></span><a class="headerlink" href="#bpy.types.Mesh.uv_layer_stencil" title="Link to this definition"></a></dt>
+<dd><p>UV loop layer to mask the painted area</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshUVLoopLayer.html#bpy.types.MeshUVLoopLayer" title="bpy.types.MeshUVLoopLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshUVLoopLayer</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.Mesh.uv_layer_stencil_index">
+<span class="sig-name descname"><span class="pre">uv_layer_stencil_index</span></span><a class="headerlink" href="#bpy.types.Mesh.uv_layer_stencil_index" title="Link to this definition"></a></dt>
+<dd><p>Mask UV loop layer index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, inf], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.uv_layers">
+<span class="sig-name descname"><span class="pre">uv_layers</span></span><a class="headerlink" href="#bpy.types.Mesh.uv_layers" title="Link to this definition"></a></dt>
+<dd><p>All UV loop layers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.UVLoopLayers.html#bpy.types.UVLoopLayers" title="bpy.types.UVLoopLayers"><code class="xref py py-class docutils literal notranslate"><span class="pre">UVLoopLayers</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshUVLoopLayer.html#bpy.types.MeshUVLoopLayer" title="bpy.types.MeshUVLoopLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshUVLoopLayer</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.vertex_colors">
+<span class="sig-name descname"><span class="pre">vertex_colors</span></span><a class="headerlink" href="#bpy.types.Mesh.vertex_colors" title="Link to this definition"></a></dt>
+<dd><p>Legacy vertex color layers. Deprecated, use color attributes instead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.LoopColors.html#bpy.types.LoopColors" title="bpy.types.LoopColors"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoopColors</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshLoopColorLayer.html#bpy.types.MeshLoopColorLayer" title="bpy.types.MeshLoopColorLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshLoopColorLayer</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.vertex_normals">
+<span class="sig-name descname"><span class="pre">vertex_normals</span></span><a class="headerlink" href="#bpy.types.Mesh.vertex_normals" title="Link to this definition"></a></dt>
+<dd><p>The normal direction of each vertex, defined as the average of the surrounding face normals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshNormalValue.html#bpy.types.MeshNormalValue" title="bpy.types.MeshNormalValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshNormalValue</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.vertex_paint_masks">
+<span class="sig-name descname"><span class="pre">vertex_paint_masks</span></span><a class="headerlink" href="#bpy.types.Mesh.vertex_paint_masks" title="Link to this definition"></a></dt>
+<dd><p>Vertex paint mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshPaintMaskLayer.html#bpy.types.MeshPaintMaskLayer" title="bpy.types.MeshPaintMaskLayer"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshPaintMaskLayer</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.vertices">
+<span class="sig-name descname"><span class="pre">vertices</span></span><a class="headerlink" href="#bpy.types.Mesh.vertices" title="Link to this definition"></a></dt>
+<dd><p>Vertices of the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.MeshVertices.html#bpy.types.MeshVertices" title="bpy.types.MeshVertices"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshVertices</span></code></a> <a class="reference internal" href="bpy.types.bpy_prop_collection.html#bpy.types.bpy_prop_collection" title="bpy.types.bpy_prop_collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code></a> of <a class="reference internal" href="bpy.types.MeshVertex.html#bpy.types.MeshVertex" title="bpy.types.MeshVertex"><code class="xref py py-class docutils literal notranslate"><span class="pre">MeshVertex</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.edge_creases">
+<span class="sig-name descname"><span class="pre">edge_creases</span></span><a class="headerlink" href="#bpy.types.Mesh.edge_creases" title="Link to this definition"></a></dt>
+<dd><p>Edge crease values for subdivision surface, corresponding to the “crease_edge” attribute.</p>
+<p>(readonly)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.edge_keys">
+<span class="sig-name descname"><span class="pre">edge_keys</span></span><a class="headerlink" href="#bpy.types.Mesh.edge_keys" title="Link to this definition"></a></dt>
+<dd><p>(readonly)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.Mesh.vertex_creases">
+<span class="sig-name descname"><span class="pre">vertex_creases</span></span><a class="headerlink" href="#bpy.types.Mesh.vertex_creases" title="Link to this definition"></a></dt>
+<dd><p>Vertex crease values for subdivision surface, corresponding to the “crease_vert” attribute.</p>
+<p>(readonly)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.transform" title="Link to this definition"></a></dt>
+<dd><p>Transform mesh vertices by a matrix (Warning: inverts normals if matrix is negative)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 4 * 4 items in [-inf, inf]) – Matrix</p></li>
+<li><p><strong>shape_keys</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Transform Shape Keys</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.flip_normals">
+<span class="sig-name descname"><span class="pre">flip_normals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.flip_normals" title="Link to this definition"></a></dt>
+<dd><p>Invert winding of all polygons (clears tessellation, does not handle custom normals)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.create_normals_split">
+<span class="sig-name descname"><span class="pre">create_normals_split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.create_normals_split" title="Link to this definition"></a></dt>
+<dd><p>Empty split vertex normals</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.calc_normals_split">
+<span class="sig-name descname"><span class="pre">calc_normals_split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.calc_normals_split" title="Link to this definition"></a></dt>
+<dd><p>Calculate split vertex normals, which preserve sharp edges</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.free_normals_split">
+<span class="sig-name descname"><span class="pre">free_normals_split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.free_normals_split" title="Link to this definition"></a></dt>
+<dd><p>Free split vertex normals</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.split_faces">
+<span class="sig-name descname"><span class="pre">split_faces</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.split_faces" title="Link to this definition"></a></dt>
+<dd><p>Split faces based on the edge angle</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.calc_tangents">
+<span class="sig-name descname"><span class="pre">calc_tangents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uvmap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.calc_tangents" title="Link to this definition"></a></dt>
+<dd><p>Compute tangents and bitangent signs, to be used together with the split normals to get a complete tangent space for normal mapping (split normals are also computed if not yet present)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uvmap</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name of the UV map to use for tangent space computation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.free_tangents">
+<span class="sig-name descname"><span class="pre">free_tangents</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.free_tangents" title="Link to this definition"></a></dt>
+<dd><p>Free tangents</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.calc_loop_triangles">
+<span class="sig-name descname"><span class="pre">calc_loop_triangles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.calc_loop_triangles" title="Link to this definition"></a></dt>
+<dd><p>Calculate loop triangle tessellation (supports editmode too)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.calc_smooth_groups">
+<span class="sig-name descname"><span class="pre">calc_smooth_groups</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">use_bitflags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.calc_smooth_groups" title="Link to this definition"></a></dt>
+<dd><p>Calculate smooth groups from sharp edges</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_bitflags</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Produce bitflags groups instead of simple numeric values</p>
+</dd>
+<dt class="field-even">Return (poly_groups, groups)<span class="colon">:</span></dt>
+<dd class="field-even"><p><cite>poly_groups</cite>, Smooth Groups, int array of 1 items in [-inf, inf]</p>
+<p><cite>groups</cite>, Total number of groups, int in [0, inf]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.normals_split_custom_set">
+<span class="sig-name descname"><span class="pre">normals_split_custom_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.normals_split_custom_set" title="Link to this definition"></a></dt>
+<dd><p>Define custom split normals of this mesh (use zero-vectors to keep auto ones)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>normals</strong> (<em>float multi-dimensional array</em><em> of </em><em>1 * 3 items in</em><em> [</em><em>-1</em><em>, </em><em>1</em><em>]</em>) – Normals</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.normals_split_custom_set_from_vertices">
+<span class="sig-name descname"><span class="pre">normals_split_custom_set_from_vertices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">normals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.normals_split_custom_set_from_vertices" title="Link to this definition"></a></dt>
+<dd><p>Define custom split normals of this mesh, from vertices’ normals (use zero-vectors to keep auto ones)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>normals</strong> (<em>float multi-dimensional array</em><em> of </em><em>1 * 3 items in</em><em> [</em><em>-1</em><em>, </em><em>1</em><em>]</em>) – Normals</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calc_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">calc_edges_loose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.update" title="Link to this definition"></a></dt>
+<dd><p>update</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>calc_edges</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Calculate Edges, Force recalculation of edges</p></li>
+<li><p><strong>calc_edges_loose</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Calculate Loose Edges, Calculate the loose state of each edge</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.update_gpu_tag">
+<span class="sig-name descname"><span class="pre">update_gpu_tag</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.update_gpu_tag" title="Link to this definition"></a></dt>
+<dd><p>update_gpu_tag</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.unit_test_compare">
+<span class="sig-name descname"><span class="pre">unit_test_compare</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">7.1526e-06</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.unit_test_compare" title="Link to this definition"></a></dt>
+<dd><p>unit_test_compare</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<a class="reference internal" href="#bpy.types.Mesh" title="bpy.types.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh</span></code></a>, (optional)) – Mesh to compare to</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, Comparison tolerance threshold</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return value, String description of result of comparison</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.clear_geometry">
+<span class="sig-name descname"><span class="pre">clear_geometry</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.clear_geometry" title="Link to this definition"></a></dt>
+<dd><p>Remove all geometry from the mesh. Note that this does not free shape keys or materials</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean_customdata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.validate" title="Link to this definition"></a></dt>
+<dd><p>Validate geometry, return True when the mesh has had invalid geometry corrected/removed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Verbose, Output information about the errors found</p></li>
+<li><p><strong>clean_customdata</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clean Custom Data, Remove temp/cached custom-data layers, like e.g. normals…</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.validate_material_indices">
+<span class="sig-name descname"><span class="pre">validate_material_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.validate_material_indices" title="Link to this definition"></a></dt>
+<dd><p>Validate material indices of polygons, return True when the mesh has had invalid indices corrected (to default 0)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.count_selected_items">
+<span class="sig-name descname"><span class="pre">count_selected_items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.count_selected_items" title="Link to this definition"></a></dt>
+<dd><p>Return the number of selected items (vert, edge, face)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int array of 3 items in [0, inf]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.edge_creases_ensure">
+<span class="sig-name descname"><span class="pre">edge_creases_ensure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.edge_creases_ensure" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.edge_creases_remove">
+<span class="sig-name descname"><span class="pre">edge_creases_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.edge_creases_remove" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.from_pydata">
+<span class="sig-name descname"><span class="pre">from_pydata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vertices</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">faces</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shade_flat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.from_pydata" title="Link to this definition"></a></dt>
+<dd><p>Make a mesh from a list of vertices/edges/faces
+Until we have a nicer way to make geometry, use this.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vertices</strong> (<em>iterable object</em>) – float triplets each representing (X, Y, Z)
+eg: [(0.0, 1.0, 0.5), …].</p></li>
+<li><p><strong>edges</strong> (<em>iterable object</em>) – <p>int pairs, each pair contains two indices to the
+<em>vertices</em> argument. eg: [(1, 2), …]</p>
+<p>When an empty iterable is passed in, the edges are inferred from the polygons.</p>
+</p></li>
+<li><p><strong>faces</strong> (<em>iterable object</em>) – iterator of faces, each faces contains three or more indices to
+the <em>vertices</em> argument. eg: [(5, 6, 8, 9), (1, 2, 3), …]</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Invalid mesh data
+<em>(out of range indices, edges with matching indices,
+2 sided faces… etc)</em> are <strong>not</strong> prevented.
+If the data used for mesh creation isn’t known to be valid,
+run <a class="reference internal" href="#bpy.types.Mesh.validate" title="bpy.types.Mesh.validate"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.validate</span></code></a> after this function.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.shade_flat">
+<span class="sig-name descname"><span class="pre">shade_flat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.shade_flat" title="Link to this definition"></a></dt>
+<dd><p>Render and display faces uniform, using face normals,
+setting the “sharp_face” attribute true for every face</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.shade_smooth">
+<span class="sig-name descname"><span class="pre">shade_smooth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.shade_smooth" title="Link to this definition"></a></dt>
+<dd><p>Render and display faces smooth, using interpolated vertex normals,
+removing the “sharp_face” attribute</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.vertex_creases_ensure">
+<span class="sig-name descname"><span class="pre">vertex_creases_ensure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.vertex_creases_ensure" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.vertex_creases_remove">
+<span class="sig-name descname"><span class="pre">vertex_creases_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.vertex_creases_remove" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.Mesh.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.Mesh.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name" title="bpy.types.ID.name"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name_full" title="bpy.types.ID.name_full"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name_full</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_evaluated" title="bpy.types.ID.is_evaluated"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_evaluated</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.original" title="bpy.types.ID.original"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.original</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.users" title="bpy.types.ID.users"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.users</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_fake_user" title="bpy.types.ID.use_fake_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_fake_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_extra_user" title="bpy.types.ID.use_extra_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_extra_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_embedded_data" title="bpy.types.ID.is_embedded_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_embedded_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_missing" title="bpy.types.ID.is_missing"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_missing</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_runtime_data" title="bpy.types.ID.is_runtime_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_runtime_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.tag" title="bpy.types.ID.tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_library_indirect" title="bpy.types.ID.is_library_indirect"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_library_indirect</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library" title="bpy.types.ID.library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library_weak_reference" title="bpy.types.ID.library_weak_reference"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library_weak_reference</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_data" title="bpy.types.ID.asset_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_library" title="bpy.types.ID.override_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview" title="bpy.types.ID.preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.evaluated_get" title="bpy.types.ID.evaluated_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.evaluated_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.copy" title="bpy.types.ID.copy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.copy</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_mark" title="bpy.types.ID.asset_mark"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_mark</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_clear" title="bpy.types.ID.asset_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_generate_preview" title="bpy.types.ID.asset_generate_preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_generate_preview</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_create" title="bpy.types.ID.override_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_hierarchy_create" title="bpy.types.ID.override_hierarchy_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_hierarchy_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_template_create" title="bpy.types.ID.override_template_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_template_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_clear" title="bpy.types.ID.user_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_remap" title="bpy.types.ID.user_remap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_remap</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.make_local" title="bpy.types.ID.make_local"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.make_local</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_of_id" title="bpy.types.ID.user_of_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_of_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_create" title="bpy.types.ID.animation_data_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_clear" title="bpy.types.ID.animation_data_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.update_tag" title="bpy.types.ID.update_tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.update_tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview_ensure" title="bpy.types.ID.preview_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass" title="bpy.types.ID.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass_py" title="bpy.types.ID.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass_py</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.context.html#bpy.context.mesh" title="bpy.context.mesh"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.context.mesh</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendData.html#bpy.types.BlendData.meshes" title="bpy.types.BlendData.meshes"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendData.meshes</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataMeshes.html#bpy.types.BlendDataMeshes.new" title="bpy.types.BlendDataMeshes.new"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMeshes.new</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataMeshes.html#bpy.types.BlendDataMeshes.new_from_object" title="bpy.types.BlendDataMeshes.new_from_object"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMeshes.new_from_object</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataMeshes.html#bpy.types.BlendDataMeshes.remove" title="bpy.types.BlendDataMeshes.remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataMeshes.remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.EditObjectActuator.html#bpy.types.EditObjectActuator.mesh" title="bpy.types.EditObjectActuator.mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">EditObjectActuator.mesh</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="#bpy.types.Mesh.texco_mesh" title="bpy.types.Mesh.texco_mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.texco_mesh</span></code></a></p></li>
+<li><p><a class="reference internal" href="#bpy.types.Mesh.texture_mesh" title="bpy.types.Mesh.texture_mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.texture_mesh</span></code></a></p></li>
+<li><p><a class="reference internal" href="#bpy.types.Mesh.unit_test_compare" title="bpy.types.Mesh.unit_test_compare"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mesh.unit_test_compare</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.to_mesh" title="bpy.types.Object.to_mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.to_mesh</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ProxyMeshProperty.html#bpy.types.ProxyMeshProperty.value" title="bpy.types.ProxyMeshProperty.value"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProxyMeshProperty.value</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.Menu.html" class="btn btn-neutral float-left" title="Menu(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.MeshCacheModifier.html" class="btn btn-neutral float-right" title="MeshCacheModifier(Modifier)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/1dff62ca3acd>1dff62ca3acd</a> - 10/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
