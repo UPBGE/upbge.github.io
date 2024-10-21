@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RenderEngine(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.RenderEngine.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RenderLayer(bpy_struct)" href="bpy.types.RenderLayer.html" />
+    <link rel="prev" title="RemeshModifier(Modifier)" href="bpy.types.RemeshModifier.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">RenderEngine(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="renderengine-bpy-struct">
+<h1>RenderEngine(bpy_struct)<a class="headerlink" href="#renderengine-bpy-struct" title="Link to this heading"></a></h1>
+<section id="simple-render-engine">
+<h2>Simple Render Engine<a class="headerlink" href="#simple-render-engine" title="Link to this heading"></a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="kn">import</span> <span class="nn">array</span>
+<span class="kn">import</span> <span class="nn">gpu</span>
+<span class="kn">from</span> <span class="nn">gpu_extras.presets</span> <span class="kn">import</span> <span class="n">draw_texture_2d</span>
+
+
+<span class="k">class</span> <span class="nc">CustomRenderEngine</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">RenderEngine</span><span class="p">):</span>
+    <span class="c1"># These three members are used by blender to set up the</span>
+    <span class="c1"># RenderEngine; define its internal name, visible name and capabilities.</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;CUSTOM&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Custom&quot;</span>
+    <span class="n">bl_use_preview</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Init is called whenever a new render engine instance is created. Multiple</span>
+    <span class="c1"># instances may exist at the same time, for example for a viewport and final</span>
+    <span class="c1"># render.</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scene_data</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">draw_data</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># When the render engine instance is destroy, this is called. Clean up any</span>
+    <span class="c1"># render engine data here, for example stopping running render threads.</span>
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># This is the method called by Blender for both final renders (F12) and</span>
+    <span class="c1"># small preview for materials, world and lights.</span>
+    <span class="k">def</span> <span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">depsgraph</span><span class="p">):</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">scene</span>
+        <span class="n">scale</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_percentage</span> <span class="o">/</span> <span class="mf">100.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_x</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size_y</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_y</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+
+        <span class="c1"># Fill the render result with a flat color. The framebuffer is</span>
+        <span class="c1"># defined as a list of pixels, each pixel itself being a list of</span>
+        <span class="c1"># R,G,B,A values.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_preview</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+
+        <span class="n">pixel_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size_x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">size_y</span>
+        <span class="n">rect</span> <span class="o">=</span> <span class="p">[</span><span class="n">color</span><span class="p">]</span> <span class="o">*</span> <span class="n">pixel_count</span>
+
+        <span class="c1"># Here we write the pixel values to the RenderResult</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">begin_result</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size_y</span><span class="p">)</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">passes</span><span class="p">[</span><span class="s2">&quot;Combined&quot;</span><span class="p">]</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">rect</span> <span class="o">=</span> <span class="n">rect</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">end_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+    <span class="c1"># For viewport renders, this method gets called once at the start and</span>
+    <span class="c1"># whenever the scene or 3D viewport changes. This method is where data</span>
+    <span class="c1"># should be read from Blender in the same thread. Typically a render</span>
+    <span class="c1"># thread will be started to do the work while keeping Blender responsive.</span>
+    <span class="k">def</span> <span class="nf">view_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">depsgraph</span><span class="p">):</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">region</span>
+        <span class="n">view3d</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">space_data</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">scene</span>
+
+        <span class="c1"># Get viewport dimensions</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">region</span><span class="o">.</span><span class="n">height</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">scene_data</span><span class="p">:</span>
+            <span class="c1"># First time initialization</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">scene_data</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">first_time</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="c1"># Loop over all datablocks used in the scene.</span>
+            <span class="k">for</span> <span class="n">datablock</span> <span class="ow">in</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">ids</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">first_time</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="c1"># Test which datablocks changed</span>
+            <span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">updates</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Datablock updated: &quot;</span><span class="p">,</span> <span class="n">update</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="c1"># Test if any material was added, removed or changed.</span>
+            <span class="k">if</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">id_type_updated</span><span class="p">(</span><span class="s1">&#39;MATERIAL&#39;</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Materials updated&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Loop over all object instances in the scene.</span>
+        <span class="k">if</span> <span class="n">first_time</span> <span class="ow">or</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">id_type_updated</span><span class="p">(</span><span class="s1">&#39;OBJECT&#39;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">instance</span> <span class="ow">in</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">object_instances</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+    <span class="c1"># For viewport renders, this method is called whenever Blender redraws</span>
+    <span class="c1"># the 3D viewport. The renderer is expected to quickly draw the render</span>
+    <span class="c1"># with OpenGL, and not perform other expensive work.</span>
+    <span class="c1"># Blender will draw overlays for selection and editing on top of the</span>
+    <span class="c1"># rendered image automatically.</span>
+    <span class="k">def</span> <span class="nf">view_draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">depsgraph</span><span class="p">):</span>
+        <span class="n">region</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">region</span>
+        <span class="n">scene</span> <span class="o">=</span> <span class="n">depsgraph</span><span class="o">.</span><span class="n">scene</span>
+
+        <span class="c1"># Get viewport dimensions</span>
+        <span class="n">dimensions</span> <span class="o">=</span> <span class="n">region</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">region</span><span class="o">.</span><span class="n">height</span>
+
+        <span class="c1"># Bind shader that converts from scene linear to display space,</span>
+        <span class="n">gpu</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">blend_set</span><span class="p">(</span><span class="s1">&#39;ALPHA_PREMULT&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bind_display_space_shader</span><span class="p">(</span><span class="n">scene</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw_data</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">draw_data</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">!=</span> <span class="n">dimensions</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_data</span> <span class="o">=</span> <span class="n">CustomDrawData</span><span class="p">(</span><span class="n">dimensions</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">draw_data</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">unbind_display_space_shader</span><span class="p">()</span>
+        <span class="n">gpu</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">blend_set</span><span class="p">(</span><span class="s1">&#39;NONE&#39;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">CustomDrawData</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimensions</span><span class="p">):</span>
+        <span class="c1"># Generate dummy float image buffer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dimensions</span> <span class="o">=</span> <span class="n">dimensions</span>
+        <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">dimensions</span>
+
+        <span class="n">pixels</span> <span class="o">=</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+        <span class="n">pixels</span> <span class="o">=</span> <span class="n">gpu</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Buffer</span><span class="p">(</span><span class="s1">&#39;FLOAT&#39;</span><span class="p">,</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span> <span class="n">pixels</span><span class="p">)</span>
+
+        <span class="c1"># Generate texture</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texture</span> <span class="o">=</span> <span class="n">gpu</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">GPUTexture</span><span class="p">((</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;RGBA16F&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">pixels</span><span class="p">)</span>
+
+        <span class="c1"># Note: This is just a didactic example.</span>
+        <span class="c1"># In this case it would be more convenient to fill the texture with:</span>
+        <span class="c1"># self.texture.clear(&#39;FLOAT&#39;, value=[0.1, 0.2, 0.1, 1.0])</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span>
+
+    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">draw_texture_2d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">texture</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+
+
+<span class="c1"># RenderEngines also need to tell UI Panels that they are compatible with.</span>
+<span class="c1"># We recommend to enable all panels marked as BLENDER_RENDER, and then</span>
+<span class="c1"># exclude any panels that are replaced by custom panels registered by the</span>
+<span class="c1"># render engine, or that are not supported.</span>
+<span class="k">def</span> <span class="nf">get_panels</span><span class="p">():</span>
+    <span class="n">exclude_panels</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;VIEWLAYER_PT_filter&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;VIEWLAYER_PT_layer_passes&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">panels</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">panel</span> <span class="ow">in</span> <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Panel</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">panel</span><span class="p">,</span> <span class="s1">&#39;COMPAT_ENGINES&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="s1">&#39;BLENDER_RENDER&#39;</span> <span class="ow">in</span> <span class="n">panel</span><span class="o">.</span><span class="n">COMPAT_ENGINES</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">panel</span><span class="o">.</span><span class="vm">__name__</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude_panels</span><span class="p">:</span>
+                <span class="n">panels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">panel</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">panels</span>
+
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="c1"># Register the RenderEngine</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">CustomRenderEngine</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">panel</span> <span class="ow">in</span> <span class="n">get_panels</span><span class="p">():</span>
+        <span class="n">panel</span><span class="o">.</span><span class="n">COMPAT_ENGINES</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s1">&#39;CUSTOM&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">CustomRenderEngine</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">panel</span> <span class="ow">in</span> <span class="n">get_panels</span><span class="p">():</span>
+        <span class="k">if</span> <span class="s1">&#39;CUSTOM&#39;</span> <span class="ow">in</span> <span class="n">panel</span><span class="o">.</span><span class="n">COMPAT_ENGINES</span><span class="p">:</span>
+            <span class="n">panel</span><span class="o">.</span><span class="n">COMPAT_ENGINES</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;CUSTOM&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<p>subclasses —
+<a class="reference internal" href="bpy.types.HydraRenderEngine.html#bpy.types.HydraRenderEngine" title="bpy.types.HydraRenderEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">HydraRenderEngine</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">RenderEngine</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine" title="Link to this definition"></a></dt>
+<dd><p>Render engine</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_idname">
+<span class="sig-name descname"><span class="pre">bl_idname</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_idname" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_label">
+<span class="sig-name descname"><span class="pre">bl_label</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_label" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_alembic_procedural">
+<span class="sig-name descname"><span class="pre">bl_use_alembic_procedural</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_alembic_procedural" title="Link to this definition"></a></dt>
+<dd><p>Support loading Alembic data at render time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_custom_freestyle">
+<span class="sig-name descname"><span class="pre">bl_use_custom_freestyle</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_custom_freestyle" title="Link to this definition"></a></dt>
+<dd><p>Handles freestyle rendering on its own, instead of delegating it to EEVEE</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_eevee_viewport">
+<span class="sig-name descname"><span class="pre">bl_use_eevee_viewport</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_eevee_viewport" title="Link to this definition"></a></dt>
+<dd><p>Uses Eevee for viewport shading in LookDev shading mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_gpu_context">
+<span class="sig-name descname"><span class="pre">bl_use_gpu_context</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_gpu_context" title="Link to this definition"></a></dt>
+<dd><p>Enable OpenGL context for the render method, for engines that render using OpenGL</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_image_save">
+<span class="sig-name descname"><span class="pre">bl_use_image_save</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_image_save" title="Link to this definition"></a></dt>
+<dd><p>Save images/movie to disk while rendering an animation. Disabling image saving is only supported when bl_use_postprocess is also disabled</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_postprocess">
+<span class="sig-name descname"><span class="pre">bl_use_postprocess</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_postprocess" title="Link to this definition"></a></dt>
+<dd><p>Apply compositing on render results</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_preview">
+<span class="sig-name descname"><span class="pre">bl_use_preview</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_preview" title="Link to this definition"></a></dt>
+<dd><p>Render engine supports being used for rendering previews of materials, lights and worlds</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_shading_nodes_custom">
+<span class="sig-name descname"><span class="pre">bl_use_shading_nodes_custom</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_shading_nodes_custom" title="Link to this definition"></a></dt>
+<dd><p>Don’t expose Cycles and Eevee shading nodes in the node editor user interface, so own nodes can be used instead</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_spherical_stereo">
+<span class="sig-name descname"><span class="pre">bl_use_spherical_stereo</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_spherical_stereo" title="Link to this definition"></a></dt>
+<dd><p>Support spherical stereo camera models</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_use_stereo_viewport">
+<span class="sig-name descname"><span class="pre">bl_use_stereo_viewport</span></span><a class="headerlink" href="#bpy.types.RenderEngine.bl_use_stereo_viewport" title="Link to this definition"></a></dt>
+<dd><p>Support rendering stereo 3D viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.camera_override">
+<span class="sig-name descname"><span class="pre">camera_override</span></span><a class="headerlink" href="#bpy.types.RenderEngine.camera_override" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.is_animation">
+<span class="sig-name descname"><span class="pre">is_animation</span></span><a class="headerlink" href="#bpy.types.RenderEngine.is_animation" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.is_preview">
+<span class="sig-name descname"><span class="pre">is_preview</span></span><a class="headerlink" href="#bpy.types.RenderEngine.is_preview" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.layer_override">
+<span class="sig-name descname"><span class="pre">layer_override</span></span><a class="headerlink" href="#bpy.types.RenderEngine.layer_override" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean array of 20 items, default (False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">render</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RenderSettings.html#bpy.types.RenderSettings" title="bpy.types.RenderSettings"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderSettings</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.resolution_x">
+<span class="sig-name descname"><span class="pre">resolution_x</span></span><a class="headerlink" href="#bpy.types.RenderEngine.resolution_x" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [-inf, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.resolution_y">
+<span class="sig-name descname"><span class="pre">resolution_y</span></span><a class="headerlink" href="#bpy.types.RenderEngine.resolution_y" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [-inf, inf], default 0, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.temporary_directory">
+<span class="sig-name descname"><span class="pre">temporary_directory</span></span><a class="headerlink" href="#bpy.types.RenderEngine.temporary_directory" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.use_highlight_tiles">
+<span class="sig-name descname"><span class="pre">use_highlight_tiles</span></span><a class="headerlink" href="#bpy.types.RenderEngine.use_highlight_tiles" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.update" title="Link to this definition"></a></dt>
+<dd><p>Export scene data for render</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.render">
+<span class="sig-name descname"><span class="pre">render</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.render" title="Link to this definition"></a></dt>
+<dd><p>Render scene into an image</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.render_frame_finish">
+<span class="sig-name descname"><span class="pre">render_frame_finish</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.render_frame_finish" title="Link to this definition"></a></dt>
+<dd><p>Perform finishing operations after all view layers in a frame were rendered</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.draw">
+<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.draw" title="Link to this definition"></a></dt>
+<dd><p>Draw render image</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bake">
+<span class="sig-name descname"><span class="pre">bake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pass_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pass_filter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.bake" title="Link to this definition"></a></dt>
+<dd><p>Bake passes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pass_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/bake_pass_type_items.html#rna-enum-bake-pass-type-items"><span class="std std-ref">Bake Pass Type Items</span></a>) – Pass, Pass to bake</p></li>
+<li><p><strong>pass_filter</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Pass Filter, Filter to combined, diffuse, glossy and transmission passes</p></li>
+<li><p><strong>width</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Width, Image width</p></li>
+<li><p><strong>height</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Height, Image height</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.view_update">
+<span class="sig-name descname"><span class="pre">view_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.view_update" title="Link to this definition"></a></dt>
+<dd><p>Update on data changes for viewport render</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.view_draw">
+<span class="sig-name descname"><span class="pre">view_draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depsgraph</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.view_draw" title="Link to this definition"></a></dt>
+<dd><p>Draw viewport render</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.update_script_node">
+<span class="sig-name descname"><span class="pre">update_script_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.update_script_node" title="Link to this definition"></a></dt>
+<dd><p>Compile shader script node</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.update_render_passes">
+<span class="sig-name descname"><span class="pre">update_render_passes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">renderlayer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.update_render_passes" title="Link to this definition"></a></dt>
+<dd><p>Update the render passes that will be generated</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.tag_redraw">
+<span class="sig-name descname"><span class="pre">tag_redraw</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.tag_redraw" title="Link to this definition"></a></dt>
+<dd><p>Request redraw for viewport rendering</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.tag_update">
+<span class="sig-name descname"><span class="pre">tag_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.tag_update" title="Link to this definition"></a></dt>
+<dd><p>Request update call for viewport rendering</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.begin_result">
+<span class="sig-name descname"><span class="pre">begin_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">w</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.begin_result" title="Link to this definition"></a></dt>
+<dd><p>Create render result to write linear floating-point render layers and passes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – X</p></li>
+<li><p><strong>y</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Y</p></li>
+<li><p><strong>w</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Width</p></li>
+<li><p><strong>h</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Height</p></li>
+<li><p><strong>layer</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Layer, Single layer to get render result for</p></li>
+<li><p><strong>view</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – View, Single view to get render result for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Result</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RenderResult.html#bpy.types.RenderResult" title="bpy.types.RenderResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderResult</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.update_result">
+<span class="sig-name descname"><span class="pre">update_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.update_result" title="Link to this definition"></a></dt>
+<dd><p>Signal that pixels have been updated and can be redrawn in the user interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>result</strong> (<a class="reference internal" href="bpy.types.RenderResult.html#bpy.types.RenderResult" title="bpy.types.RenderResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderResult</span></code></a>) – Result</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.end_result">
+<span class="sig-name descname"><span class="pre">end_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cancel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_merge_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.end_result" title="Link to this definition"></a></dt>
+<dd><p>All pixels in the render result have been set and are final</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>result</strong> (<a class="reference internal" href="bpy.types.RenderResult.html#bpy.types.RenderResult" title="bpy.types.RenderResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderResult</span></code></a>) – Result</p></li>
+<li><p><strong>cancel</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cancel, Don’t mark tile as done, don’t merge results unless forced</p></li>
+<li><p><strong>highlight</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Highlight, Don’t mark tile as done yet</p></li>
+<li><p><strong>do_merge_results</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Merge Results, Merge results even if cancel=true</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.add_pass">
+<span class="sig-name descname"><span class="pre">add_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chan_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.add_pass" title="Link to this definition"></a></dt>
+<dd><p>Add a pass to the render layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Name, Name of the Pass, without view or channel tag</p></li>
+<li><p><strong>channels</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Channels</p></li>
+<li><p><strong>chan_id</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Channel IDs, Channel names, one character per channel</p></li>
+<li><p><strong>layer</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Layer, Single layer to add render pass to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.get_result">
+<span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.get_result" title="Link to this definition"></a></dt>
+<dd><p>Get final result for non-pixel operations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Result</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="bpy.types.RenderResult.html#bpy.types.RenderResult" title="bpy.types.RenderResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderResult</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.test_break">
+<span class="sig-name descname"><span class="pre">test_break</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.test_break" title="Link to this definition"></a></dt>
+<dd><p>Test if the render operation should been canceled, this is a fast call that should be used regularly for responsiveness</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Break</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.pass_by_index_get">
+<span class="sig-name descname"><span class="pre">pass_by_index_get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.pass_by_index_get" title="Link to this definition"></a></dt>
+<dd><p>pass_by_index_get</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Layer, Name of render layer to get pass for</p></li>
+<li><p><strong>index</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Index, Index of pass to get</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Index, Index of pass to get</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RenderPass.html#bpy.types.RenderPass" title="bpy.types.RenderPass"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderPass</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.active_view_get">
+<span class="sig-name descname"><span class="pre">active_view_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.active_view_get" title="Link to this definition"></a></dt>
+<dd><p>active_view_get</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>View, Single view active</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>string, (never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.active_view_set">
+<span class="sig-name descname"><span class="pre">active_view_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">view</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.active_view_set" title="Link to this definition"></a></dt>
+<dd><p>active_view_set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>view</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – View, Single view to set as active</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.camera_shift_x">
+<span class="sig-name descname"><span class="pre">camera_shift_x</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_spherical_stereo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.camera_shift_x" title="Link to this definition"></a></dt>
+<dd><p>camera_shift_x</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_spherical_stereo</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Spherical Stereo</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Shift X</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.camera_model_matrix">
+<span class="sig-name descname"><span class="pre">camera_model_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_spherical_stereo</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.camera_model_matrix" title="Link to this definition"></a></dt>
+<dd><p>camera_model_matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_spherical_stereo</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Spherical Stereo</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Model Matrix, Normalized camera model matrix</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 4 * 4 items in [-inf, inf]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.use_spherical_stereo">
+<span class="sig-name descname"><span class="pre">use_spherical_stereo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.use_spherical_stereo" title="Link to this definition"></a></dt>
+<dd><p>use_spherical_stereo</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Spherical Stereo</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.update_stats">
+<span class="sig-name descname"><span class="pre">update_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stats</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.update_stats" title="Link to this definition"></a></dt>
+<dd><p>Update and signal to redraw render status text</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stats</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Stats</p></li>
+<li><p><strong>info</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Info</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.frame_set">
+<span class="sig-name descname"><span class="pre">frame_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subframe</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.frame_set" title="Link to this definition"></a></dt>
+<dd><p>Evaluate scene at a different frame (for motion blur)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em>) – Frame</p></li>
+<li><p><strong>subframe</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em>) – Subframe</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.update_progress">
+<span class="sig-name descname"><span class="pre">update_progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">progress</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.update_progress" title="Link to this definition"></a></dt>
+<dd><p>Update progress percentage of render</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>progress</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em>) – Percentage of render that’s done</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.update_memory_stats">
+<span class="sig-name descname"><span class="pre">update_memory_stats</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">memory_used</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">memory_peak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.update_memory_stats" title="Link to this definition"></a></dt>
+<dd><p>Update memory usage statistics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>memory_used</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Current memory usage in megabytes</p></li>
+<li><p><strong>memory_peak</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Peak memory usage in megabytes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.report" title="Link to this definition"></a></dt>
+<dd><p>Report info, warning or error messages</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/wm_report_items.html#rna-enum-wm-report-items"><span class="std std-ref">Wm Report Items</span></a>) – Type</p></li>
+<li><p><strong>message</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Report Message</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.error_set">
+<span class="sig-name descname"><span class="pre">error_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.error_set" title="Link to this definition"></a></dt>
+<dd><p>Set error message displaying after the render is finished</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>message</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Report Message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bind_display_space_shader">
+<span class="sig-name descname"><span class="pre">bind_display_space_shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.bind_display_space_shader" title="Link to this definition"></a></dt>
+<dd><p>Bind GLSL fragment shader that converts linear colors to display space colors using scene color management settings</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.unbind_display_space_shader">
+<span class="sig-name descname"><span class="pre">unbind_display_space_shader</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.unbind_display_space_shader" title="Link to this definition"></a></dt>
+<dd><p>Unbind GLSL display space shader, must always be called after binding the shader</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.support_display_space_shader">
+<span class="sig-name descname"><span class="pre">support_display_space_shader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.support_display_space_shader" title="Link to this definition"></a></dt>
+<dd><p>Test if GLSL display space shader is supported for the combination of graphics card and scene settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Supported</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.get_preview_pixel_size">
+<span class="sig-name descname"><span class="pre">get_preview_pixel_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.get_preview_pixel_size" title="Link to this definition"></a></dt>
+<dd><p>Get the pixel size that should be used for preview rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pixel Size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int in [1, 8]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.free_blender_memory">
+<span class="sig-name descname"><span class="pre">free_blender_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.free_blender_memory" title="Link to this definition"></a></dt>
+<dd><p>Free Blender side memory of render engine</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.tile_highlight_set">
+<span class="sig-name descname"><span class="pre">tile_highlight_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highlight</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.tile_highlight_set" title="Link to this definition"></a></dt>
+<dd><p>Set highlighted state of the given tile</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – X</p></li>
+<li><p><strong>y</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Y</p></li>
+<li><p><strong>width</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Width</p></li>
+<li><p><strong>height</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em>) – Height</p></li>
+<li><p><strong>highlight</strong> (<em>boolean</em>) – Highlight</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.tile_highlight_clear_all">
+<span class="sig-name descname"><span class="pre">tile_highlight_clear_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.tile_highlight_clear_all" title="Link to this definition"></a></dt>
+<dd><p>The temp directory used by Blender</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.register_pass">
+<span class="sig-name descname"><span class="pre">register_pass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scene</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view_layer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">chanid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.register_pass" title="Link to this definition"></a></dt>
+<dd><p>Register a render pass that will be part of the render with the current settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Name</p></li>
+<li><p><strong>channels</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>8</em><em>]</em>) – Channels</p></li>
+<li><p><strong>chanid</strong> (<em>string</em><em>, </em><em>(</em><em>never None</em><em>)</em>) – Channel IDs</p></li>
+<li><p><strong>type</strong> (<em>enum in</em><em> [</em><em>'VALUE'</em><em>, </em><em>'VECTOR'</em><em>, </em><em>'COLOR'</em><em>]</em>) – Type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.RenderEngine.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.RenderEngine.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.RemeshModifier.html" class="btn btn-neutral float-left" title="RemeshModifier(Modifier)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.RenderLayer.html" class="btn btn-neutral float-right" title="RenderLayer(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/1dff62ca3acd>1dff62ca3acd</a> - 10/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
