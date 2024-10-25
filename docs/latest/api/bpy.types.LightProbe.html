@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LightProbe(ID) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.LightProbe.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Lightgroup(bpy_struct)" href="bpy.types.Lightgroup.html" />
+    <link rel="prev" title="Light(ID)" href="bpy.types.Light.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">LightProbe(ID)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lightprobe-id">
+<h1>LightProbe(ID)<a class="headerlink" href="#lightprobe-id" title="Link to this heading"></a></h1>
+<p>base classes — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.LightProbe">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">LightProbe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.LightProbe" title="Link to this definition"></a></dt>
+<dd><p>Light Probe data-block for lighting capture objects</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.animation_data">
+<span class="sig-name descname"><span class="pre">animation_data</span></span><a class="headerlink" href="#bpy.types.LightProbe.animation_data" title="Link to this definition"></a></dt>
+<dd><p>Animation data for this data-block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.AnimData.html#bpy.types.AnimData" title="bpy.types.AnimData"><code class="xref py py-class docutils literal notranslate"><span class="pre">AnimData</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.clip_end">
+<span class="sig-name descname"><span class="pre">clip_end</span></span><a class="headerlink" href="#bpy.types.LightProbe.clip_end" title="Link to this definition"></a></dt>
+<dd><p>Probe clip end, beyond which objects will not appear in reflections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-06, inf], default 40.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.clip_start">
+<span class="sig-name descname"><span class="pre">clip_start</span></span><a class="headerlink" href="#bpy.types.LightProbe.clip_start" title="Link to this definition"></a></dt>
+<dd><p>Probe clip start, below which objects will not appear in reflections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-06, inf], default 0.8</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.falloff">
+<span class="sig-name descname"><span class="pre">falloff</span></span><a class="headerlink" href="#bpy.types.LightProbe.falloff" title="Link to this definition"></a></dt>
+<dd><p>Control how fast the probe influence decreases</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_bake_samples">
+<span class="sig-name descname"><span class="pre">grid_bake_samples</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_bake_samples" title="Link to this definition"></a></dt>
+<dd><p>Number of ray directions to evaluate when baking</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, inf], default 2048</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_capture_emission">
+<span class="sig-name descname"><span class="pre">grid_capture_emission</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_capture_emission" title="Link to this definition"></a></dt>
+<dd><p>Bake emissive surfaces for more accurate lighting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_capture_indirect">
+<span class="sig-name descname"><span class="pre">grid_capture_indirect</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_capture_indirect" title="Link to this definition"></a></dt>
+<dd><p>Bake light bounces from light sources for more accurate lighting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_capture_world">
+<span class="sig-name descname"><span class="pre">grid_capture_world</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_capture_world" title="Link to this definition"></a></dt>
+<dd><p>Bake incoming light from the world, instead of just the visibility, for more accurate lighting, but lose correct blending to surrounding irradiance volumes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_clamp_direct">
+<span class="sig-name descname"><span class="pre">grid_clamp_direct</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_clamp_direct" title="Link to this definition"></a></dt>
+<dd><p>Clamp the direct lighting intensity to reduce noise (0 to disable)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_clamp_indirect">
+<span class="sig-name descname"><span class="pre">grid_clamp_indirect</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_clamp_indirect" title="Link to this definition"></a></dt>
+<dd><p>Clamp the indirect lighting intensity to reduce noise (0 to disable)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 10.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_dilation_radius">
+<span class="sig-name descname"><span class="pre">grid_dilation_radius</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_dilation_radius" title="Link to this definition"></a></dt>
+<dd><p>Radius in grid sample to search valid grid samples to copy into invalid grid samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1, 5], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_dilation_threshold">
+<span class="sig-name descname"><span class="pre">grid_dilation_threshold</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_dilation_threshold" title="Link to this definition"></a></dt>
+<dd><p>Ratio of front-facing surface hits under which a grid sample will reuse neighbors grid sample lighting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_escape_bias">
+<span class="sig-name descname"><span class="pre">grid_escape_bias</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_escape_bias" title="Link to this definition"></a></dt>
+<dd><p>Moves capture points outside objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_irradiance_smoothing">
+<span class="sig-name descname"><span class="pre">grid_irradiance_smoothing</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_irradiance_smoothing" title="Link to this definition"></a></dt>
+<dd><p>Smoother irradiance interpolation but introduce light bleeding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_normal_bias">
+<span class="sig-name descname"><span class="pre">grid_normal_bias</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_normal_bias" title="Link to this definition"></a></dt>
+<dd><p>Offset sampling of the irradiance grid in the surface normal direction to reduce light bleeding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_resolution_x">
+<span class="sig-name descname"><span class="pre">grid_resolution_x</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_resolution_x" title="Link to this definition"></a></dt>
+<dd><p>Number of samples along the x axis of the volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 256], default 4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_resolution_y">
+<span class="sig-name descname"><span class="pre">grid_resolution_y</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_resolution_y" title="Link to this definition"></a></dt>
+<dd><p>Number of samples along the y axis of the volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 256], default 4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_resolution_z">
+<span class="sig-name descname"><span class="pre">grid_resolution_z</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_resolution_z" title="Link to this definition"></a></dt>
+<dd><p>Number of samples along the z axis of the volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 256], default 4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_surface_bias">
+<span class="sig-name descname"><span class="pre">grid_surface_bias</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_surface_bias" title="Link to this definition"></a></dt>
+<dd><p>Moves capture points position away from surfaces to avoid artifacts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.05</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_validity_threshold">
+<span class="sig-name descname"><span class="pre">grid_validity_threshold</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_validity_threshold" title="Link to this definition"></a></dt>
+<dd><p>Ratio of front-facing surface hits under which a grid sample will not be considered for lighting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.4</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.grid_view_bias">
+<span class="sig-name descname"><span class="pre">grid_view_bias</span></span><a class="headerlink" href="#bpy.types.LightProbe.grid_view_bias" title="Link to this definition"></a></dt>
+<dd><p>Offset sampling of the irradiance grid in the viewing direction to reduce light bleeding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.influence_distance">
+<span class="sig-name descname"><span class="pre">influence_distance</span></span><a class="headerlink" href="#bpy.types.LightProbe.influence_distance" title="Link to this definition"></a></dt>
+<dd><p>Influence distance of the probe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 2.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.influence_type">
+<span class="sig-name descname"><span class="pre">influence_type</span></span><a class="headerlink" href="#bpy.types.LightProbe.influence_type" title="Link to this definition"></a></dt>
+<dd><p>Type of influence volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ELIPSOID’, ‘BOX’], default ‘ELIPSOID’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.intensity">
+<span class="sig-name descname"><span class="pre">intensity</span></span><a class="headerlink" href="#bpy.types.LightProbe.intensity" title="Link to this definition"></a></dt>
+<dd><p>Modify the intensity of the lighting captured by this probe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.invert_visibility_collection">
+<span class="sig-name descname"><span class="pre">invert_visibility_collection</span></span><a class="headerlink" href="#bpy.types.LightProbe.invert_visibility_collection" title="Link to this definition"></a></dt>
+<dd><p>Invert visibility collection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.parallax_distance">
+<span class="sig-name descname"><span class="pre">parallax_distance</span></span><a class="headerlink" href="#bpy.types.LightProbe.parallax_distance" title="Link to this definition"></a></dt>
+<dd><p>Lowest corner of the parallax bounding box</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 2.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.parallax_type">
+<span class="sig-name descname"><span class="pre">parallax_type</span></span><a class="headerlink" href="#bpy.types.LightProbe.parallax_type" title="Link to this definition"></a></dt>
+<dd><p>Type of parallax volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘ELIPSOID’, ‘BOX’], default ‘ELIPSOID’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.resolution">
+<span class="sig-name descname"><span class="pre">resolution</span></span><a class="headerlink" href="#bpy.types.LightProbe.resolution" title="Link to this definition"></a></dt>
+<dd><p>Resolution when baked to a texture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘64’, ‘128’, ‘256’, ‘512’, ‘1024’, ‘2048’], default ‘1024’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.show_clip">
+<span class="sig-name descname"><span class="pre">show_clip</span></span><a class="headerlink" href="#bpy.types.LightProbe.show_clip" title="Link to this definition"></a></dt>
+<dd><p>Show the clipping distances in the 3D view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.show_data">
+<span class="sig-name descname"><span class="pre">show_data</span></span><a class="headerlink" href="#bpy.types.LightProbe.show_data" title="Link to this definition"></a></dt>
+<dd><p>Show captured lighting data into the 3D view for debugging purpose</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.show_influence">
+<span class="sig-name descname"><span class="pre">show_influence</span></span><a class="headerlink" href="#bpy.types.LightProbe.show_influence" title="Link to this definition"></a></dt>
+<dd><p>Show the influence volume in the 3D view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.show_parallax">
+<span class="sig-name descname"><span class="pre">show_parallax</span></span><a class="headerlink" href="#bpy.types.LightProbe.show_parallax" title="Link to this definition"></a></dt>
+<dd><p>Show the parallax correction volume in the 3D view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.surfel_density">
+<span class="sig-name descname"><span class="pre">surfel_density</span></span><a class="headerlink" href="#bpy.types.LightProbe.surfel_density" title="Link to this definition"></a></dt>
+<dd><p>Number of surfels per unit distance (higher values improve quality)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#bpy.types.LightProbe.type" title="Link to this definition"></a></dt>
+<dd><p>Type of light probe</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CUBEMAP</span></code>
+Reflection Cubemap – Capture reflections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PLANAR</span></code>
+Reflection Plane.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GRID</span></code>
+Irradiance Volume – Volume used for precomputing indirect lighting.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘CUBEMAP’, ‘PLANAR’, ‘GRID’], default ‘CUBEMAP’, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.use_custom_parallax">
+<span class="sig-name descname"><span class="pre">use_custom_parallax</span></span><a class="headerlink" href="#bpy.types.LightProbe.use_custom_parallax" title="Link to this definition"></a></dt>
+<dd><p>Enable custom settings for the parallax correction volume</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.visibility_bleed_bias">
+<span class="sig-name descname"><span class="pre">visibility_bleed_bias</span></span><a class="headerlink" href="#bpy.types.LightProbe.visibility_bleed_bias" title="Link to this definition"></a></dt>
+<dd><p>Bias for reducing light-bleed on variance shadow maps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.visibility_blur">
+<span class="sig-name descname"><span class="pre">visibility_blur</span></span><a class="headerlink" href="#bpy.types.LightProbe.visibility_blur" title="Link to this definition"></a></dt>
+<dd><p>Filter size of the visibility blur</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.visibility_buffer_bias">
+<span class="sig-name descname"><span class="pre">visibility_buffer_bias</span></span><a class="headerlink" href="#bpy.types.LightProbe.visibility_buffer_bias" title="Link to this definition"></a></dt>
+<dd><p>Bias for reducing self shadowing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.001, 9999], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.visibility_collection">
+<span class="sig-name descname"><span class="pre">visibility_collection</span></span><a class="headerlink" href="#bpy.types.LightProbe.visibility_collection" title="Link to this definition"></a></dt>
+<dd><p>Restrict objects visible for this probe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Collection.html#bpy.types.Collection" title="bpy.types.Collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">Collection</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.LightProbe.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.LightProbe.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.LightProbe.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bpy.types.LightProbe.type" title="bpy.types.LightProbe.type">type</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name" title="bpy.types.ID.name"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name_full" title="bpy.types.ID.name_full"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.name_full</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_evaluated" title="bpy.types.ID.is_evaluated"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_evaluated</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.original" title="bpy.types.ID.original"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.original</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.users" title="bpy.types.ID.users"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.users</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_fake_user" title="bpy.types.ID.use_fake_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_fake_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.use_extra_user" title="bpy.types.ID.use_extra_user"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.use_extra_user</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_embedded_data" title="bpy.types.ID.is_embedded_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_embedded_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_missing" title="bpy.types.ID.is_missing"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_missing</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_runtime_data" title="bpy.types.ID.is_runtime_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_runtime_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.tag" title="bpy.types.ID.tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.is_library_indirect" title="bpy.types.ID.is_library_indirect"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.is_library_indirect</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library" title="bpy.types.ID.library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.library_weak_reference" title="bpy.types.ID.library_weak_reference"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.library_weak_reference</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_data" title="bpy.types.ID.asset_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_data</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_library" title="bpy.types.ID.override_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview" title="bpy.types.ID.preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.evaluated_get" title="bpy.types.ID.evaluated_get"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.evaluated_get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.copy" title="bpy.types.ID.copy"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.copy</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_mark" title="bpy.types.ID.asset_mark"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_mark</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_clear" title="bpy.types.ID.asset_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.asset_generate_preview" title="bpy.types.ID.asset_generate_preview"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.asset_generate_preview</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_create" title="bpy.types.ID.override_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_hierarchy_create" title="bpy.types.ID.override_hierarchy_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_hierarchy_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.override_template_create" title="bpy.types.ID.override_template_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.override_template_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_clear" title="bpy.types.ID.user_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_remap" title="bpy.types.ID.user_remap"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_remap</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.make_local" title="bpy.types.ID.make_local"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.make_local</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.user_of_id" title="bpy.types.ID.user_of_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.user_of_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_create" title="bpy.types.ID.animation_data_create"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_create</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.animation_data_clear" title="bpy.types.ID.animation_data_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.animation_data_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.update_tag" title="bpy.types.ID.update_tag"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.update_tag</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.preview_ensure" title="bpy.types.ID.preview_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.preview_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass" title="bpy.types.ID.bl_rna_get_subclass"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.bl_rna_get_subclass_py" title="bpy.types.ID.bl_rna_get_subclass_py"><code class="xref py py-class docutils literal notranslate"><span class="pre">ID.bl_rna_get_subclass_py</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.context.html#bpy.context.lightprobe" title="bpy.context.lightprobe"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.context.lightprobe</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendData.html#bpy.types.BlendData.lightprobes" title="bpy.types.BlendData.lightprobes"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendData.lightprobes</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.BlendDataProbes.html#bpy.types.BlendDataProbes.new" title="bpy.types.BlendDataProbes.new"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataProbes.new</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.BlendDataProbes.html#bpy.types.BlendDataProbes.remove" title="bpy.types.BlendDataProbes.remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlendDataProbes.remove</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.Light.html" class="btn btn-neutral float-left" title="Light(ID)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.Lightgroup.html" class="btn btn-neutral float-right" title="Lightgroup(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/1dff62ca3acd>1dff62ca3acd</a> - 10/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

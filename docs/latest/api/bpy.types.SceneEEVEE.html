@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SceneEEVEE(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.SceneEEVEE.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SceneGameData(bpy_struct)" href="bpy.types.SceneGameData.html" />
+    <link rel="prev" title="SceneDisplay(bpy_struct)" href="bpy.types.SceneDisplay.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">SceneEEVEE(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sceneeevee-bpy-struct">
+<h1>SceneEEVEE(bpy_struct)<a class="headerlink" href="#sceneeevee-bpy-struct" title="Link to this heading"></a></h1>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">SceneEEVEE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SceneEEVEE" title="Link to this definition"></a></dt>
+<dd><p>Scene display settings for 3D viewport</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bloom_clamp">
+<span class="sig-name descname"><span class="pre">bloom_clamp</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bloom_clamp" title="Link to this definition"></a></dt>
+<dd><p>Maximum intensity a bloom pixel can have (0 to disable)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bloom_color">
+<span class="sig-name descname"><span class="pre">bloom_color</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bloom_color" title="Link to this definition"></a></dt>
+<dd><p>Color applied to the bloom effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Color" title="mathutils.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Color</span></code></a> of 3 items in [0, inf], default (1.0, 1.0, 1.0)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bloom_intensity">
+<span class="sig-name descname"><span class="pre">bloom_intensity</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bloom_intensity" title="Link to this definition"></a></dt>
+<dd><p>Blend factor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 10000], default 0.05</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bloom_knee">
+<span class="sig-name descname"><span class="pre">bloom_knee</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bloom_knee" title="Link to this definition"></a></dt>
+<dd><p>Makes transition between under/over-threshold gradual</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bloom_radius">
+<span class="sig-name descname"><span class="pre">bloom_radius</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bloom_radius" title="Link to this definition"></a></dt>
+<dd><p>Bloom spread distance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100], default 6.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bloom_threshold">
+<span class="sig-name descname"><span class="pre">bloom_threshold</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bloom_threshold" title="Link to this definition"></a></dt>
+<dd><p>Filters out pixels under this level of brightness</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100000], default 0.8</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bokeh_denoise_fac">
+<span class="sig-name descname"><span class="pre">bokeh_denoise_fac</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bokeh_denoise_fac" title="Link to this definition"></a></dt>
+<dd><p>Amount of flicker removal applied to bokeh highlights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.75</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bokeh_max_size">
+<span class="sig-name descname"><span class="pre">bokeh_max_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bokeh_max_size" title="Link to this definition"></a></dt>
+<dd><p>Max size of the bokeh shape for the depth of field (lower is faster)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 2000], default 100.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bokeh_neighbor_max">
+<span class="sig-name descname"><span class="pre">bokeh_neighbor_max</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bokeh_neighbor_max" title="Link to this definition"></a></dt>
+<dd><p>Maximum brightness to consider when rejecting bokeh sprites based on neighborhood (lower is faster)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100000], default 10.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bokeh_overblur">
+<span class="sig-name descname"><span class="pre">bokeh_overblur</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bokeh_overblur" title="Link to this definition"></a></dt>
+<dd><p>Apply blur to each jittered sample to reduce under-sampling artifacts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100], default 5.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bokeh_threshold">
+<span class="sig-name descname"><span class="pre">bokeh_threshold</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.bokeh_threshold" title="Link to this definition"></a></dt>
+<dd><p>Brightness threshold for using sprite base depth of field</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100000], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_auto_bake">
+<span class="sig-name descname"><span class="pre">gi_auto_bake</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_auto_bake" title="Link to this definition"></a></dt>
+<dd><p>Auto bake indirect lighting when editing probes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_cache_info">
+<span class="sig-name descname"><span class="pre">gi_cache_info</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_cache_info" title="Link to this definition"></a></dt>
+<dd><p>Info on current cache status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string, default “”, (readonly, never None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_cubemap_display_size">
+<span class="sig-name descname"><span class="pre">gi_cubemap_display_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_cubemap_display_size" title="Link to this definition"></a></dt>
+<dd><p>Size of the cubemap spheres to debug captured light</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.05, 10], default 0.3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_cubemap_resolution">
+<span class="sig-name descname"><span class="pre">gi_cubemap_resolution</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_cubemap_resolution" title="Link to this definition"></a></dt>
+<dd><p>Size of every cubemaps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘64’, ‘128’, ‘256’, ‘512’, ‘1024’, ‘2048’, ‘4096’], default ‘512’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_diffuse_bounces">
+<span class="sig-name descname"><span class="pre">gi_diffuse_bounces</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_diffuse_bounces" title="Link to this definition"></a></dt>
+<dd><p>Number of times the light is reinjected inside light grids, 0 disable indirect diffuse light</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, inf], default 3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_filter_quality">
+<span class="sig-name descname"><span class="pre">gi_filter_quality</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_filter_quality" title="Link to this definition"></a></dt>
+<dd><p>Take more samples during cubemap filtering to remove artifacts</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1, 8], default 3.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_glossy_clamp">
+<span class="sig-name descname"><span class="pre">gi_glossy_clamp</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_glossy_clamp" title="Link to this definition"></a></dt>
+<dd><p>Clamp pixel intensity to reduce noise inside glossy reflections from reflection cubemaps (0 to disable)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_irradiance_display_size">
+<span class="sig-name descname"><span class="pre">gi_irradiance_display_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_irradiance_display_size" title="Link to this definition"></a></dt>
+<dd><p>Size of the irradiance sample spheres to debug captured light</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_irradiance_pool_size">
+<span class="sig-name descname"><span class="pre">gi_irradiance_pool_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_irradiance_pool_size" title="Link to this definition"></a></dt>
+<dd><p>Size of the irradiance pool, a bigger pool size allows for more irradiance grid in the scene but might not fit into GPU memory and decrease performance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘16’, ‘32’, ‘64’, ‘128’, ‘256’, ‘512’, ‘1024’], default ‘16’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_irradiance_smoothing">
+<span class="sig-name descname"><span class="pre">gi_irradiance_smoothing</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_irradiance_smoothing" title="Link to this definition"></a></dt>
+<dd><p>Smoother irradiance interpolation but introduce light bleeding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_show_cubemaps">
+<span class="sig-name descname"><span class="pre">gi_show_cubemaps</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_show_cubemaps" title="Link to this definition"></a></dt>
+<dd><p>Display captured cubemaps in the viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_show_irradiance">
+<span class="sig-name descname"><span class="pre">gi_show_irradiance</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_show_irradiance" title="Link to this definition"></a></dt>
+<dd><p>Display irradiance samples in the viewport</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gi_visibility_resolution">
+<span class="sig-name descname"><span class="pre">gi_visibility_resolution</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gi_visibility_resolution" title="Link to this definition"></a></dt>
+<dd><p>Size of the shadow map applied to each irradiance sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘8’, ‘16’, ‘32’, ‘64’], default ‘32’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gtao_distance">
+<span class="sig-name descname"><span class="pre">gtao_distance</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gtao_distance" title="Link to this definition"></a></dt>
+<dd><p>Distance of object that contribute to the ambient occlusion effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 100000], default 0.2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gtao_factor">
+<span class="sig-name descname"><span class="pre">gtao_factor</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gtao_factor" title="Link to this definition"></a></dt>
+<dd><p>Factor for ambient occlusion blending</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 1.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.gtao_quality">
+<span class="sig-name descname"><span class="pre">gtao_quality</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.gtao_quality" title="Link to this definition"></a></dt>
+<dd><p>Precision of the horizon search</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.25</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.light_threshold">
+<span class="sig-name descname"><span class="pre">light_threshold</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.light_threshold" title="Link to this definition"></a></dt>
+<dd><p>Minimum light intensity for a light to contribute to the lighting</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.01</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.motion_blur_depth_scale">
+<span class="sig-name descname"><span class="pre">motion_blur_depth_scale</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.motion_blur_depth_scale" title="Link to this definition"></a></dt>
+<dd><p>Lower values will reduce background bleeding onto foreground elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 100.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.motion_blur_max">
+<span class="sig-name descname"><span class="pre">motion_blur_max</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.motion_blur_max" title="Link to this definition"></a></dt>
+<dd><p>Maximum blur distance a pixel can spread over</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, 2048], default 32</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.motion_blur_position">
+<span class="sig-name descname"><span class="pre">motion_blur_position</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.motion_blur_position" title="Link to this definition"></a></dt>
+<dd><p>Offset for the shutter’s time interval, allows to change the motion blur trails</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">START</span></code>
+Start on Frame – The shutter opens at the current frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CENTER</span></code>
+Center on Frame – The shutter is open during the current frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">END</span></code>
+End on Frame – The shutter closes at the current frame.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘START’, ‘CENTER’, ‘END’], default ‘CENTER’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.motion_blur_shutter">
+<span class="sig-name descname"><span class="pre">motion_blur_shutter</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.motion_blur_shutter" title="Link to this definition"></a></dt>
+<dd><p>Time taken in frames between shutter open and close</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.motion_blur_steps">
+<span class="sig-name descname"><span class="pre">motion_blur_steps</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.motion_blur_steps" title="Link to this definition"></a></dt>
+<dd><p>Controls accuracy of motion blur, more steps means longer render time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, inf], default 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.overscan_size">
+<span class="sig-name descname"><span class="pre">overscan_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.overscan_size" title="Link to this definition"></a></dt>
+<dd><p>Percentage of render size to add as overscan to the internal render buffers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 50], default 3.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.ray_split_settings">
+<span class="sig-name descname"><span class="pre">ray_split_settings</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.ray_split_settings" title="Link to this definition"></a></dt>
+<dd><p>Split settings per ray type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UNIFIED</span></code>
+Unified – All ray types use the same settings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPLIT</span></code>
+Split – Settings are individual to each ray type.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘UNIFIED’, ‘SPLIT’], default ‘UNIFIED’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.ray_tracing_method">
+<span class="sig-name descname"><span class="pre">ray_tracing_method</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.ray_tracing_method" title="Link to this definition"></a></dt>
+<dd><p>Select the tracing method used to find scene-ray intersections</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None – No intersection with scene geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCREEN</span></code>
+Screen-Trace – Raytrace against the depth buffer.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NONE’, ‘SCREEN’], default ‘SCREEN’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.reflection_options">
+<span class="sig-name descname"><span class="pre">reflection_options</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.reflection_options" title="Link to this definition"></a></dt>
+<dd><p>Eevee settings for the tracing reflections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RaytraceEEVEE.html#bpy.types.RaytraceEEVEE" title="bpy.types.RaytraceEEVEE"><code class="xref py py-class docutils literal notranslate"><span class="pre">RaytraceEEVEE</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.refraction_options">
+<span class="sig-name descname"><span class="pre">refraction_options</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.refraction_options" title="Link to this definition"></a></dt>
+<dd><p>Eevee settings for the tracing reflections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.RaytraceEEVEE.html#bpy.types.RaytraceEEVEE" title="bpy.types.RaytraceEEVEE"><code class="xref py py-class docutils literal notranslate"><span class="pre">RaytraceEEVEE</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.shadow_cascade_size">
+<span class="sig-name descname"><span class="pre">shadow_cascade_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.shadow_cascade_size" title="Link to this definition"></a></dt>
+<dd><p>Size of sun light shadow maps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘64’, ‘128’, ‘256’, ‘512’, ‘1024’, ‘2048’, ‘4096’], default ‘1024’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.shadow_cube_size">
+<span class="sig-name descname"><span class="pre">shadow_cube_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.shadow_cube_size" title="Link to this definition"></a></dt>
+<dd><p>Size of point and area light shadow maps</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘64’, ‘128’, ‘256’, ‘512’, ‘1024’, ‘2048’, ‘4096’], default ‘512’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.shadow_pool_size">
+<span class="sig-name descname"><span class="pre">shadow_pool_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.shadow_pool_size" title="Link to this definition"></a></dt>
+<dd><p>Size of the shadow pool, a bigger pool size allows for more shadows in the scene but might not fit into GPU memory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘16’, ‘32’, ‘64’, ‘128’, ‘256’, ‘512’, ‘1024’], default ‘16’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.ssr_border_fade">
+<span class="sig-name descname"><span class="pre">ssr_border_fade</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.ssr_border_fade" title="Link to this definition"></a></dt>
+<dd><p>Screen percentage used to fade the SSR</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 0.5], default 0.075</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.ssr_firefly_fac">
+<span class="sig-name descname"><span class="pre">ssr_firefly_fac</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.ssr_firefly_fac" title="Link to this definition"></a></dt>
+<dd><p>Clamp pixel intensity to remove noise (0 to disable)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 10.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.ssr_max_roughness">
+<span class="sig-name descname"><span class="pre">ssr_max_roughness</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.ssr_max_roughness" title="Link to this definition"></a></dt>
+<dd><p>Do not raytrace reflections for roughness above this value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.5</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.ssr_quality">
+<span class="sig-name descname"><span class="pre">ssr_quality</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.ssr_quality" title="Link to this definition"></a></dt>
+<dd><p>Precision of the screen space ray-tracing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.25</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.ssr_thickness">
+<span class="sig-name descname"><span class="pre">ssr_thickness</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.ssr_thickness" title="Link to this definition"></a></dt>
+<dd><p>Pixel thickness used to detect intersection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-06, inf], default 0.2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.sss_jitter_threshold">
+<span class="sig-name descname"><span class="pre">sss_jitter_threshold</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.sss_jitter_threshold" title="Link to this definition"></a></dt>
+<dd><p>Rotate samples that are below this threshold</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.3</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.sss_samples">
+<span class="sig-name descname"><span class="pre">sss_samples</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.sss_samples" title="Link to this definition"></a></dt>
+<dd><p>Number of samples to compute the scattering effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 32], default 7</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.taa_render_samples">
+<span class="sig-name descname"><span class="pre">taa_render_samples</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.taa_render_samples" title="Link to this definition"></a></dt>
+<dd><p>Number of samples per pixel for rendering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, inf], default 64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.taa_samples">
+<span class="sig-name descname"><span class="pre">taa_samples</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.taa_samples" title="Link to this definition"></a></dt>
+<dd><p>Number of samples, unlimited if 0</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [0, inf], default 16</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_bloom">
+<span class="sig-name descname"><span class="pre">use_bloom</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_bloom" title="Link to this definition"></a></dt>
+<dd><p>High brightness pixels generate a glowing effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_bokeh_high_quality_slight_defocus">
+<span class="sig-name descname"><span class="pre">use_bokeh_high_quality_slight_defocus</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_bokeh_high_quality_slight_defocus" title="Link to this definition"></a></dt>
+<dd><p>Sample all pixels in almost in-focus regions to eliminate noise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_bokeh_jittered">
+<span class="sig-name descname"><span class="pre">use_bokeh_jittered</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_bokeh_jittered" title="Link to this definition"></a></dt>
+<dd><p>Jitter camera position to create accurate blurring using render samples</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_gtao">
+<span class="sig-name descname"><span class="pre">use_gtao</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_gtao" title="Link to this definition"></a></dt>
+<dd><p>Enable ambient occlusion to simulate medium scale indirect shadowing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_gtao_bent_normals">
+<span class="sig-name descname"><span class="pre">use_gtao_bent_normals</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_gtao_bent_normals" title="Link to this definition"></a></dt>
+<dd><p>Compute main non occluded direction to sample the environment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_gtao_bounce">
+<span class="sig-name descname"><span class="pre">use_gtao_bounce</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_gtao_bounce" title="Link to this definition"></a></dt>
+<dd><p>An approximation to simulate light bounces giving less occlusion on brighter objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_motion_blur">
+<span class="sig-name descname"><span class="pre">use_motion_blur</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_motion_blur" title="Link to this definition"></a></dt>
+<dd><p>Enable motion blur effect (only in camera view)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_overscan">
+<span class="sig-name descname"><span class="pre">use_overscan</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_overscan" title="Link to this definition"></a></dt>
+<dd><p>Internally render past the image border to avoid screen-space effects disappearing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_shadow_high_bitdepth">
+<span class="sig-name descname"><span class="pre">use_shadow_high_bitdepth</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_shadow_high_bitdepth" title="Link to this definition"></a></dt>
+<dd><p>Use 32-bit shadows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_shadows">
+<span class="sig-name descname"><span class="pre">use_shadows</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_shadows" title="Link to this definition"></a></dt>
+<dd><p>Enable shadow casting from lights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_soft_shadows">
+<span class="sig-name descname"><span class="pre">use_soft_shadows</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_soft_shadows" title="Link to this definition"></a></dt>
+<dd><p>Randomize shadowmaps origin to create soft shadows</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_ssr">
+<span class="sig-name descname"><span class="pre">use_ssr</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_ssr" title="Link to this definition"></a></dt>
+<dd><p>Enable screen space reflection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_ssr_halfres">
+<span class="sig-name descname"><span class="pre">use_ssr_halfres</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_ssr_halfres" title="Link to this definition"></a></dt>
+<dd><p>Raytrace at a lower resolution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_ssr_refraction">
+<span class="sig-name descname"><span class="pre">use_ssr_refraction</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_ssr_refraction" title="Link to this definition"></a></dt>
+<dd><p>Enable screen space Refractions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_taa_reprojection">
+<span class="sig-name descname"><span class="pre">use_taa_reprojection</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_taa_reprojection" title="Link to this definition"></a></dt>
+<dd><p>Denoise image using temporal reprojection (can leave some ghosting)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_volumetric_blending">
+<span class="sig-name descname"><span class="pre">use_volumetric_blending</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_volumetric_blending" title="Link to this definition"></a></dt>
+<dd><p>Enable volumes blending with previous frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_volumetric_lights">
+<span class="sig-name descname"><span class="pre">use_volumetric_lights</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_volumetric_lights" title="Link to this definition"></a></dt>
+<dd><p>Enable scene light interactions with volumetrics</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.use_volumetric_shadows">
+<span class="sig-name descname"><span class="pre">use_volumetric_shadows</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.use_volumetric_shadows" title="Link to this definition"></a></dt>
+<dd><p>Generate shadows from volumetric material (Very expensive)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.volumetric_end">
+<span class="sig-name descname"><span class="pre">volumetric_end</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.volumetric_end" title="Link to this definition"></a></dt>
+<dd><p>End distance of the volumetric effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-06, inf], default 100.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.volumetric_light_clamp">
+<span class="sig-name descname"><span class="pre">volumetric_light_clamp</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.volumetric_light_clamp" title="Link to this definition"></a></dt>
+<dd><p>Maximum light contribution, reducing noise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.volumetric_sample_distribution">
+<span class="sig-name descname"><span class="pre">volumetric_sample_distribution</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.volumetric_sample_distribution" title="Link to this definition"></a></dt>
+<dd><p>Distribute more samples closer to the camera</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.8</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.volumetric_samples">
+<span class="sig-name descname"><span class="pre">volumetric_samples</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.volumetric_samples" title="Link to this definition"></a></dt>
+<dd><p>Number of samples to compute volumetric effects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 256], default 64</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.volumetric_shadow_samples">
+<span class="sig-name descname"><span class="pre">volumetric_shadow_samples</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.volumetric_shadow_samples" title="Link to this definition"></a></dt>
+<dd><p>Number of samples to compute volumetric shadowing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 128], default 16</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.volumetric_start">
+<span class="sig-name descname"><span class="pre">volumetric_start</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.volumetric_start" title="Link to this definition"></a></dt>
+<dd><p>Start distance of the volumetric effect</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [1e-06, inf], default 0.1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.volumetric_tile_size">
+<span class="sig-name descname"><span class="pre">volumetric_tile_size</span></span><a class="headerlink" href="#bpy.types.SceneEEVEE.volumetric_tile_size" title="Link to this definition"></a></dt>
+<dd><p>Control the quality of the volumetric effects (lower size increase vram usage and quality)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘2’, ‘4’, ‘8’, ‘16’], default ‘8’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SceneEEVEE.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.SceneEEVEE.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.SceneEEVEE.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>type</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene.eevee" title="bpy.types.Scene.eevee"><code class="xref py py-class docutils literal notranslate"><span class="pre">Scene.eevee</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.SceneDisplay.html" class="btn btn-neutral float-left" title="SceneDisplay(bpy_struct)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.SceneGameData.html" class="btn btn-neutral float-right" title="SceneGameData(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/1dff62ca3acd>1dff62ca3acd</a> - 10/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

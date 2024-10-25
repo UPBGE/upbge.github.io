@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FieldSettings(bpy_struct) &mdash; Blender Python API</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme_overrides.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/version_switch.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.types.FieldSettings.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=715c20a1"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/js/version_switch.js?v=fa006b38"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FileAssetSelectIDFilter(bpy_struct)" href="bpy.types.FileAssetSelectIDFilter.html" />
+    <link rel="prev" title="FModifierStepped(FModifier)" href="bpy.types.FModifierStepped.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.3+ + Blender 4.0.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgl.html">OpenGL Wrapper (bgl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.types.html">ID Property Access (idprop.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.3+ + Blender 4.0.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.types.html">Types (bpy.types)</a></li>
+      <li class="breadcrumb-item active">FieldSettings(bpy_struct)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fieldsettings-bpy-struct">
+<h1>FieldSettings(bpy_struct)<a class="headerlink" href="#fieldsettings-bpy-struct" title="Link to this heading"></a></h1>
+<p>base class — <a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bpy.types.</span></span><span class="sig-name descname"><span class="pre">FieldSettings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bpy_struct</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.FieldSettings" title="Link to this definition"></a></dt>
+<dd><p>Field settings for an object in physics simulation</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.apply_to_location">
+<span class="sig-name descname"><span class="pre">apply_to_location</span></span><a class="headerlink" href="#bpy.types.FieldSettings.apply_to_location" title="Link to this definition"></a></dt>
+<dd><p>Affect particle’s location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.apply_to_rotation">
+<span class="sig-name descname"><span class="pre">apply_to_rotation</span></span><a class="headerlink" href="#bpy.types.FieldSettings.apply_to_rotation" title="Link to this definition"></a></dt>
+<dd><p>Affect particle’s dynamic rotation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.distance_max">
+<span class="sig-name descname"><span class="pre">distance_max</span></span><a class="headerlink" href="#bpy.types.FieldSettings.distance_max" title="Link to this definition"></a></dt>
+<dd><p>Maximum distance for the field to work</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.distance_min">
+<span class="sig-name descname"><span class="pre">distance_min</span></span><a class="headerlink" href="#bpy.types.FieldSettings.distance_min" title="Link to this definition"></a></dt>
+<dd><p>Minimum distance for the field’s falloff</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.falloff_power">
+<span class="sig-name descname"><span class="pre">falloff_power</span></span><a class="headerlink" href="#bpy.types.FieldSettings.falloff_power" title="Link to this definition"></a></dt>
+<dd><p>How quickly strength falls off with distance from the force field</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 10], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.falloff_type">
+<span class="sig-name descname"><span class="pre">falloff_type</span></span><a class="headerlink" href="#bpy.types.FieldSettings.falloff_type" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘CONE’, ‘SPHERE’, ‘TUBE’], default ‘SPHERE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.flow">
+<span class="sig-name descname"><span class="pre">flow</span></span><a class="headerlink" href="#bpy.types.FieldSettings.flow" title="Link to this definition"></a></dt>
+<dd><p>Convert effector force into air flow velocity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_clump_amount">
+<span class="sig-name descname"><span class="pre">guide_clump_amount</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_clump_amount" title="Link to this definition"></a></dt>
+<dd><p>Amount of clumping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-1, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_clump_shape">
+<span class="sig-name descname"><span class="pre">guide_clump_shape</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_clump_shape" title="Link to this definition"></a></dt>
+<dd><p>Shape of clumping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-0.999, 0.999], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_free">
+<span class="sig-name descname"><span class="pre">guide_free</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_free" title="Link to this definition"></a></dt>
+<dd><p>Guide-free time from particle life’s end</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 0.99], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_kink_amplitude">
+<span class="sig-name descname"><span class="pre">guide_kink_amplitude</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_kink_amplitude" title="Link to this definition"></a></dt>
+<dd><p>The amplitude of the offset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 10], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_kink_axis">
+<span class="sig-name descname"><span class="pre">guide_kink_axis</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_kink_axis" title="Link to this definition"></a></dt>
+<dd><p>Which axis to use for offset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in <a class="reference internal" href="bpy_types_enum_items/axis_xyz_items.html#rna-enum-axis-xyz-items"><span class="std std-ref">Axis Xyz Items</span></a>, default ‘X’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_kink_frequency">
+<span class="sig-name descname"><span class="pre">guide_kink_frequency</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_kink_frequency" title="Link to this definition"></a></dt>
+<dd><p>The frequency of the offset (1/total length)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 10], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_kink_shape">
+<span class="sig-name descname"><span class="pre">guide_kink_shape</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_kink_shape" title="Link to this definition"></a></dt>
+<dd><p>Adjust the offset to the beginning/end</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-0.999, 0.999], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_kink_type">
+<span class="sig-name descname"><span class="pre">guide_kink_type</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_kink_type" title="Link to this definition"></a></dt>
+<dd><p>Type of periodic offset on the curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NONE’, ‘BRAID’, ‘CURL’, ‘RADIAL’, ‘ROLL’, ‘ROTATION’, ‘WAVE’], default ‘NONE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.guide_minimum">
+<span class="sig-name descname"><span class="pre">guide_minimum</span></span><a class="headerlink" href="#bpy.types.FieldSettings.guide_minimum" title="Link to this definition"></a></dt>
+<dd><p>The distance from which particles are affected fully</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.harmonic_damping">
+<span class="sig-name descname"><span class="pre">harmonic_damping</span></span><a class="headerlink" href="#bpy.types.FieldSettings.harmonic_damping" title="Link to this definition"></a></dt>
+<dd><p>Damping of the harmonic force</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.inflow">
+<span class="sig-name descname"><span class="pre">inflow</span></span><a class="headerlink" href="#bpy.types.FieldSettings.inflow" title="Link to this definition"></a></dt>
+<dd><p>Inwards component of the vortex force</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.linear_drag">
+<span class="sig-name descname"><span class="pre">linear_drag</span></span><a class="headerlink" href="#bpy.types.FieldSettings.linear_drag" title="Link to this definition"></a></dt>
+<dd><p>Drag component proportional to velocity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.noise">
+<span class="sig-name descname"><span class="pre">noise</span></span><a class="headerlink" href="#bpy.types.FieldSettings.noise" title="Link to this definition"></a></dt>
+<dd><p>Amount of noise for the force strength</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 10], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.quadratic_drag">
+<span class="sig-name descname"><span class="pre">quadratic_drag</span></span><a class="headerlink" href="#bpy.types.FieldSettings.quadratic_drag" title="Link to this definition"></a></dt>
+<dd><p>Drag component proportional to the square of velocity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.radial_falloff">
+<span class="sig-name descname"><span class="pre">radial_falloff</span></span><a class="headerlink" href="#bpy.types.FieldSettings.radial_falloff" title="Link to this definition"></a></dt>
+<dd><p>Radial falloff power (real gravitational falloff = 2)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 10], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.radial_max">
+<span class="sig-name descname"><span class="pre">radial_max</span></span><a class="headerlink" href="#bpy.types.FieldSettings.radial_max" title="Link to this definition"></a></dt>
+<dd><p>Maximum radial distance for the field to work</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.radial_min">
+<span class="sig-name descname"><span class="pre">radial_min</span></span><a class="headerlink" href="#bpy.types.FieldSettings.radial_min" title="Link to this definition"></a></dt>
+<dd><p>Minimum radial distance for the field’s falloff</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1000], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.rest_length">
+<span class="sig-name descname"><span class="pre">rest_length</span></span><a class="headerlink" href="#bpy.types.FieldSettings.rest_length" title="Link to this definition"></a></dt>
+<dd><p>Rest length of the harmonic force</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#bpy.types.FieldSettings.seed" title="Link to this definition"></a></dt>
+<dd><p>Seed of the noise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int in [1, 128], default 0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><a class="headerlink" href="#bpy.types.FieldSettings.shape" title="Link to this definition"></a></dt>
+<dd><p>Which direction is used to calculate the effector force</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POINT</span></code>
+Point – Field originates from the object center.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LINE</span></code>
+Line – Field originates from the local Z axis of the object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PLANE</span></code>
+Plane – Field originates from the local XY plane of the object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Field originates from the surface of the object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POINTS</span></code>
+Every Point – Field originates from all of the vertices of the object.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘POINT’, ‘LINE’, ‘PLANE’, ‘SURFACE’, ‘POINTS’], default ‘POINT’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.size">
+<span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#bpy.types.FieldSettings.size" title="Link to this definition"></a></dt>
+<dd><p>Size of the turbulence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.source_object">
+<span class="sig-name descname"><span class="pre">source_object</span></span><a class="headerlink" href="#bpy.types.FieldSettings.source_object" title="Link to this definition"></a></dt>
+<dd><p>Select domain object of the smoke simulation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.strength">
+<span class="sig-name descname"><span class="pre">strength</span></span><a class="headerlink" href="#bpy.types.FieldSettings.strength" title="Link to this definition"></a></dt>
+<dd><p>Strength of force field</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [-inf, inf], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.texture">
+<span class="sig-name descname"><span class="pre">texture</span></span><a class="headerlink" href="#bpy.types.FieldSettings.texture" title="Link to this definition"></a></dt>
+<dd><p>Texture to use as force</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Texture.html#bpy.types.Texture" title="bpy.types.Texture"><code class="xref py py-class docutils literal notranslate"><span class="pre">Texture</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.texture_mode">
+<span class="sig-name descname"><span class="pre">texture_mode</span></span><a class="headerlink" href="#bpy.types.FieldSettings.texture_mode" title="Link to this definition"></a></dt>
+<dd><p>How the texture effect is calculated (RGB and Curl need a RGB texture, else Gradient will be used instead)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘CURL’, ‘GRADIENT’, ‘RGB’], default ‘RGB’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.texture_nabla">
+<span class="sig-name descname"><span class="pre">texture_nabla</span></span><a class="headerlink" href="#bpy.types.FieldSettings.texture_nabla" title="Link to this definition"></a></dt>
+<dd><p>Defines size of derivative offset used for calculating gradient and curl</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0.0001, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.type">
+<span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#bpy.types.FieldSettings.type" title="Link to this definition"></a></dt>
+<dd><p>Type of field</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOID</span></code>
+Boid – Create a force that acts as a boid’s predators or target.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CHARGE</span></code>
+Charge – Spherical forcefield based on the charge of particles, only influences other charge force fields.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GUIDE</span></code>
+Curve Guide – Create a force along a curve object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DRAG</span></code>
+Drag – Create a force that dampens motion.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLUID_FLOW</span></code>
+Fluid Flow – Create a force based on fluid simulation velocities.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FORCE</span></code>
+Force – Radial field toward the center of object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HARMONIC</span></code>
+Harmonic – The source of this force field is the zero point of a harmonic oscillator.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LENNARDJ</span></code>
+Lennard-Jones – Forcefield based on the Lennard-Jones potential.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAGNET</span></code>
+Magnetic – Forcefield depends on the speed of the particles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TEXTURE</span></code>
+Texture – Force field based on a texture.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TURBULENCE</span></code>
+Turbulence – Create turbulence with a noise field.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VORTEX</span></code>
+Vortex – Spiraling force that twists the force object’s local Z axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WIND</span></code>
+Wind – Constant force along the force object’s local Z axis.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘NONE’, ‘BOID’, ‘CHARGE’, ‘GUIDE’, ‘DRAG’, ‘FLUID_FLOW’, ‘FORCE’, ‘HARMONIC’, ‘LENNARDJ’, ‘MAGNET’, ‘TEXTURE’, ‘TURBULENCE’, ‘VORTEX’, ‘WIND’], default ‘NONE’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_2d_force">
+<span class="sig-name descname"><span class="pre">use_2d_force</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_2d_force" title="Link to this definition"></a></dt>
+<dd><p>Apply force only in 2D</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_absorption">
+<span class="sig-name descname"><span class="pre">use_absorption</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_absorption" title="Link to this definition"></a></dt>
+<dd><p>Force gets absorbed by collision objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_global_coords">
+<span class="sig-name descname"><span class="pre">use_global_coords</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_global_coords" title="Link to this definition"></a></dt>
+<dd><p>Use effector/global coordinates for turbulence</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_gravity_falloff">
+<span class="sig-name descname"><span class="pre">use_gravity_falloff</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_gravity_falloff" title="Link to this definition"></a></dt>
+<dd><p>Multiply force by 1/distance²</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_guide_path_add">
+<span class="sig-name descname"><span class="pre">use_guide_path_add</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_guide_path_add" title="Link to this definition"></a></dt>
+<dd><p>Based on distance/falloff it adds a portion of the entire path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_guide_path_weight">
+<span class="sig-name descname"><span class="pre">use_guide_path_weight</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_guide_path_weight" title="Link to this definition"></a></dt>
+<dd><p>Use curve weights to influence the particle influence along the curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_max_distance">
+<span class="sig-name descname"><span class="pre">use_max_distance</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_max_distance" title="Link to this definition"></a></dt>
+<dd><p>Use a maximum distance for the field to work</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_min_distance">
+<span class="sig-name descname"><span class="pre">use_min_distance</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_min_distance" title="Link to this definition"></a></dt>
+<dd><p>Use a minimum distance for the field’s falloff</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_multiple_springs">
+<span class="sig-name descname"><span class="pre">use_multiple_springs</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_multiple_springs" title="Link to this definition"></a></dt>
+<dd><p>Every point is affected by multiple springs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_object_coords">
+<span class="sig-name descname"><span class="pre">use_object_coords</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_object_coords" title="Link to this definition"></a></dt>
+<dd><p>Use object/global coordinates for texture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_radial_max">
+<span class="sig-name descname"><span class="pre">use_radial_max</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_radial_max" title="Link to this definition"></a></dt>
+<dd><p>Use a maximum radial distance for the field to work</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_radial_min">
+<span class="sig-name descname"><span class="pre">use_radial_min</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_radial_min" title="Link to this definition"></a></dt>
+<dd><p>Use a minimum radial distance for the field’s falloff</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_root_coords">
+<span class="sig-name descname"><span class="pre">use_root_coords</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_root_coords" title="Link to this definition"></a></dt>
+<dd><p>Texture coordinates from root particle locations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.use_smoke_density">
+<span class="sig-name descname"><span class="pre">use_smoke_density</span></span><a class="headerlink" href="#bpy.types.FieldSettings.use_smoke_density" title="Link to this definition"></a></dt>
+<dd><p>Adjust force strength based on smoke density</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean, default False</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.wind_factor">
+<span class="sig-name descname"><span class="pre">wind_factor</span></span><a class="headerlink" href="#bpy.types.FieldSettings.wind_factor" title="Link to this definition"></a></dt>
+<dd><p>How much the force is reduced when acting parallel to a surface, e.g. cloth</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float in [0, 1], default 0.0</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.z_direction">
+<span class="sig-name descname"><span class="pre">z_direction</span></span><a class="headerlink" href="#bpy.types.FieldSettings.z_direction" title="Link to this definition"></a></dt>
+<dd><p>Effect in full or only positive/negative Z direction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>enum in [‘POSITIVE’, ‘NEGATIVE’, ‘BOTH’], default ‘BOTH’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.bl_rna_get_subclass">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.FieldSettings.bl_rna_get_subclass" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The RNA type or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.types.FieldSettings.bl_rna_get_subclass_py">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bl_rna_get_subclass_py</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.types.FieldSettings.bl_rna_get_subclass_py" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>string</em>) – The RNA type identifier.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The class or default when not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bpy.types.FieldSettings.type" title="bpy.types.FieldSettings.type">type</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p class="rubric">Inherited Properties</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_data" title="bpy.types.bpy_struct.id_data"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_data</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+</ul>
+</td></tr></table>
+<p class="rubric">Inherited Functions</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.as_pointer" title="bpy.types.bpy_struct.as_pointer"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.as_pointer</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_add" title="bpy.types.bpy_struct.driver_add"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_add</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.driver_remove" title="bpy.types.bpy_struct.driver_remove"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.driver_remove</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.get" title="bpy.types.bpy_struct.get"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.get</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_clear" title="bpy.types.bpy_struct.id_properties_clear"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_clear</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ensure" title="bpy.types.bpy_struct.id_properties_ensure"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ensure</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.id_properties_ui" title="bpy.types.bpy_struct.id_properties_ui"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.id_properties_ui</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_hidden" title="bpy.types.bpy_struct.is_property_hidden"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_overridable_library" title="bpy.types.bpy_struct.is_property_overridable_library"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_overridable_library</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_readonly" title="bpy.types.bpy_struct.is_property_readonly"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_readonly</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.is_property_set" title="bpy.types.bpy_struct.is_property_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.is_property_set</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.items" title="bpy.types.bpy_struct.items"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.items</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_delete" title="bpy.types.bpy_struct.keyframe_delete"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_delete</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keyframe_insert" title="bpy.types.bpy_struct.keyframe_insert"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keyframe_insert</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.keys" title="bpy.types.bpy_struct.keys"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.keys</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_from_id" title="bpy.types.bpy_struct.path_from_id"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_from_id</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.path_resolve" title="bpy.types.bpy_struct.path_resolve"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.path_resolve</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.pop" title="bpy.types.bpy_struct.pop"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.pop</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_overridable_library_set" title="bpy.types.bpy_struct.property_overridable_library_set"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_overridable_library_set</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.property_unset" title="bpy.types.bpy_struct.property_unset"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.property_unset</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.type_recast" title="bpy.types.bpy_struct.type_recast"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.type_recast</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct.values" title="bpy.types.bpy_struct.values"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_struct.values</span></code></a></p></li>
+</ul>
+</td></tr></table>
+<p class="rubric">References</p>
+<table class="hlist"><tr><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.field" title="bpy.types.Object.field"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object.field</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.ParticleSettings.html#bpy.types.ParticleSettings.force_field_1" title="bpy.types.ParticleSettings.force_field_1"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParticleSettings.force_field_1</span></code></a></p></li>
+</ul>
+</td><td><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.ParticleSettings.html#bpy.types.ParticleSettings.force_field_2" title="bpy.types.ParticleSettings.force_field_2"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParticleSettings.force_field_2</span></code></a></p></li>
+</ul>
+</td></tr></table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.types.FModifierStepped.html" class="btn btn-neutral float-left" title="FModifierStepped(FModifier)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.types.FileAssetSelectIDFilter.html" class="btn btn-neutral float-right" title="FileAssetSelectIDFilter(bpy_struct)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/1dff62ca3acd>1dff62ca3acd</a> - 10/09/2023</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="document versions">
+    <ul id="versionwrap" role="presentation">
+       <li role="presentation">
+            <span id="version-popover" class="version-btn" tabindex="0" role="button" aria-label="versions selector" aria-haspopup="true" aria-controls="version-vsnlist" aria-disabled="true">
+            4.0 
+            </span>
+            <div class="version-dialog" aria-hidden="true">
+                <div class="version-arrow" aria-hidden="true"></div>
+                <div class="version-title">Versions</div>
+                <ul id="version-vsnlist" class="version-list" role="menu" aria-labelledby="version-popover" aria-hidden="true">
+                    <li role="presentation">Loading...</li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
