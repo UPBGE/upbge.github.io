@@ -39,7 +39,7 @@ const Documentation = () => {
                 </CardSection>
                 <CardSection
                   title={'UPBGE & Blender Python API'}
-                  to={'/docs/latest/api/index.html'}
+                  to={'https://upbge.org/docs/latest/api/index.html'}
                   image={upbge_python_api}>
                   Unified Python API for UPBGE current and Blender
                 </CardSection>
