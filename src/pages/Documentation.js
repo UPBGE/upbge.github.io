@@ -32,24 +32,21 @@ const Documentation = () => {
               <H3Section>
                 <CardSection
                   title={'UPBGE Current Manual'}
-                  to={'/docs/latest/manual/index.html'}
-                  image={upbge_manual}
-                  external={'https://upbge.org/docs/latest/manual/index.html'}>
+                  to={'https://upbge.org/docs/latest/manual/index.html'}
+                  image={upbge_manual}>
                   Learn about the UPBGE game-engine specific contents,
                   including: Game Logic, Physics, Python Programming, and more
                 </CardSection>
                 <CardSection
                   title={'UPBGE & Blender Python API'}
-                  to={'/docs/latest/api/index.html'}
-                  image={upbge_python_api}
-                  external={'https://upbge.org/docs/latest/api/index.html'}>
+                  to={'https://upbge.org/docs/latest/api/index.html'}
+                  image={upbge_python_api}>
                   Unified Python API for UPBGE current and Blender
                 </CardSection>
                 <CardSection
                   title={'Former UPBGE 0.2.5 Manual & API'}
-                  to={'/docs/v0.2.5/index.html'}
-                  image={upbge_old_manual}
-                  external={'https://upbge.org/docs/v0.2.5/index.html'}>
+                  to={'https://upbge.org/docs/v0.2.5/index.html'}
+                  image={upbge_old_manual}>
                   Unified Manual and Python API for former UPBGE 0.2.5 release
                 </CardSection>
                 <CardSection
