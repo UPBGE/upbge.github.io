@@ -33,15 +33,15 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Stable Release</SectionTitle>
-            <p>Version UPBGE 0.36.1</p>
-            <p>Released 20 August 2023</p>
+            <p>Version UPBGE 0.44</p>
+            <p>Released 07 May 2025</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.36.1</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 3.6.2</strong>&nbsp;source
+                    <strong>UPBGE 0.44</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 4.4.3</strong>&nbsp;source
                   </li>
                   <li>
                     <strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;
@@ -55,15 +55,15 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Development Release</SectionTitle>
-            <p>Version UPBGE 0.42 Alpha</p>
+            <p>Version UPBGE 0.45 Alpha</p>
             <p>Released a new build each week</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.42 Alpha</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 4.2</strong>&nbsp;source
+                    <strong>UPBGE 0.45 Alpha</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 4.5</strong>&nbsp;source
                   </li>
                 </BulletListInside>
               </div>
@@ -72,7 +72,7 @@ const Download = () => {
           <div>
             <Tabs forceRenderTabPanel defaultIndex={0}>
               <TabList>
-                <Tab>UPBGE 0.3+</Tab>
+                <Tab>UPBGE 0.4+</Tab>
                 <Tab>UPBGE 0.2.x</Tab>
               </TabList>
               <TabPanel>
@@ -90,20 +90,16 @@ const Download = () => {
                           <SectionTitle>Windows 8.1, 10, & 11</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-windows-x86_64.7z'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-windows-x86_64.7z'
                             }
                             target={'_blank'}>
                             Download (64-bit)
                           </Button>
                         </div>
                         <div>
-                          <SectionTitle>Windows 7</SectionTitle>
-                          <Button
-                            href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-windows7-x86_64.7z'
-                            }
-                            target={'_blank'}>
-                            Download (64-bit)
+                          <SectionTitle>Windows 7 (coming soon)</SectionTitle>
+                          <Button href={'#'} target={'_blank'}>
+                            Unavailable
                           </Button>
                         </div>
                         <hr />
@@ -187,7 +183,7 @@ const Download = () => {
                           <SectionTitle>Linux x64</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-linux-x86_64.tar.xz'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-linux-x86_64.tar.xz'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -286,7 +282,7 @@ const Download = () => {
                           <SectionTitle>macOS Intel (10.13+)</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.36.1/upbge-0.36.1-macOS-x86_64.dmg'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-macos-x86_64.dmg'
                             }
                             target={'_blank'}>
                             Download (64-bit)
@@ -296,8 +292,12 @@ const Download = () => {
                           <SectionTitle>
                             macOS Apple Silicon (11.0+)
                           </SectionTitle>
-                          <Button href={''} target={'_blank'}>
-                            Not available yet
+                          <Button
+                            href={
+                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-macos-arm.dmg'
+                            }
+                            target={'_blank'}>
+                            Download (arm)
                           </Button>
                         </div>
                         <hr />
@@ -384,9 +384,7 @@ const Download = () => {
                         <div>
                           <SectionTitle>UPBGE 0.4+ Development</SectionTitle>
                           <Button
-                            href={
-                              'https://mega.nz/folder/t9EEFSaS#JPiOPSInCZyU-SW_-rhEOQ'
-                            }
+                            href={'https://github.com/UPBGE/upbge/releases'}
                             target={'_blank'}>
                             Browse or download
                           </Button>
