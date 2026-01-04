@@ -81,7 +81,7 @@ const Download = () => {
                     <TabList>
                       <Tab>Windows</Tab>
                       <Tab>Linux</Tab>
-                      <Tab>macOS</Tab>
+                      <Tab>MacOS</Tab>
                       <Tab>Development</Tab>
                     </TabList>
                     <TabPanel>
@@ -266,7 +266,7 @@ const Download = () => {
                       <TabSection>
                         <div>
                           <SectionTitle>
-                            macOS Apple Silicon (13.0+)
+                            MacOS Apple Silicon (13.0+)
                           </SectionTitle>
                           <Button
                             href={
@@ -397,7 +397,7 @@ const Download = () => {
                     <TabList>
                       <Tab>Windows</Tab>
                       <Tab>Linux</Tab>
-                      <Tab>macOS</Tab>
+                      <Tab>MacOS</Tab>
                       <Tab>Development</Tab>
                     </TabList>
                     <TabPanel>
@@ -574,7 +574,7 @@ const Download = () => {
                     <TabPanel>
                       <TabSection>
                         <div>
-                          <SectionTitle>macOS Intel</SectionTitle>
+                          <SectionTitle>MacOS Intel</SectionTitle>
                           <Button
                             href={
                               'https://github.com/UPBGE/upbge/releases/download/v0.2.5b/UPBGEv0.2.5b-b2.79MacOS.zip'
@@ -600,7 +600,7 @@ const Download = () => {
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
-                            <li>macOS Intel requires version 10+</li>
+                            <li>MacOS Intel requires version 10+</li>
                             <li>
                               dmg extension can be extracted with&nbsp;
                               <a
