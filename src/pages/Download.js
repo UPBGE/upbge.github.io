@@ -33,8 +33,8 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Stable Release</SectionTitle>
-            <p>Version UPBGE 0.44</p>
-            <p>Released 07 May 2025</p>
+            <p>Version UPBGE 0.50</p>
+            <p>Released 04 Jan 2026</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
