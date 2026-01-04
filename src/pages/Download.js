@@ -40,8 +40,8 @@ const Download = () => {
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.44</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 4.4.3</strong>&nbsp;source
+                    <strong>UPBGE 0.50</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 5.0.1</strong>&nbsp;source
                   </li>
                   <li>
                     <strong>UPBGE 0.2.5b</strong>&nbsp;is based on legacy&nbsp;
@@ -55,15 +55,15 @@ const Download = () => {
               <br />
             </div>
             <SectionTitle>Development Release</SectionTitle>
-            <p>Version UPBGE 0.50 Alpha</p>
+            <p>Version UPBGE 0.51 Alpha</p>
             <p>Released a new build each week</p>
             <p>&nbsp;</p>
             <TabSection>
               <div>
                 <BulletListInside>
                   <li>
-                    <strong>UPBGE 0.50 Alpha</strong>&nbsp;is based on &nbsp;
-                    <strong>Blender 5.0</strong>&nbsp;source
+                    <strong>UPBGE 0.51 Alpha</strong>&nbsp;is based on &nbsp;
+                    <strong>Blender 5.1</strong>&nbsp;source
                   </li>
                 </BulletListInside>
               </div>
@@ -72,7 +72,7 @@ const Download = () => {
           <div>
             <Tabs forceRenderTabPanel defaultIndex={0}>
               <TabList>
-                <Tab>UPBGE 0.4+</Tab>
+                <Tab>UPBGE 0.5+</Tab>
                 <Tab>UPBGE 0.2.x</Tab>
               </TabList>
               <TabPanel>
@@ -90,16 +90,10 @@ const Download = () => {
                           <SectionTitle>Windows 8.1, 10, & 11</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-windows-x86_64.7z'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.50/upbge-0.50-windows-x64.7z'
                             }
                             target={'_blank'}>
                             Download (64-bit)
-                          </Button>
-                        </div>
-                        <div>
-                          <SectionTitle>Windows 7 (coming soon)</SectionTitle>
-                          <Button href={'#'} target={'_blank'}>
-                            Unavailable
                           </Button>
                         </div>
                         <hr />
@@ -130,10 +124,10 @@ const Download = () => {
                             <li>
                               7z extension can be extracted with&nbsp;
                               <a
-                                href='https://portableapps.com/apps/utilities/peazip_portable'
+                                href='https://www.7-zip.org/'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>PeaZip</strong>
+                                <strong>7-zip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -151,7 +145,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/x5UARbpZ#ZBfV0ow8GTNRNxnBwFuchg'
+                                href='https://mega.nz/folder/kk9XSCIb#VmiLS6ww1DbSC7ZLUDOsUg'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -183,18 +177,10 @@ const Download = () => {
                           <SectionTitle>Linux x64</SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-linux-x86_64.tar.xz'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.50/upbge-0.50-linux-x64.tar.xz'
                             }
                             target={'_blank'}>
                             Download (64-bit)
-                          </Button>
-                        </div>
-                        <div>
-                          <SectionTitle>
-                            Linux aarch64 (coming soon)
-                          </SectionTitle>
-                          <Button href={'#'} target={'_blank'}>
-                            Unavailable
                           </Button>
                         </div>
                         <hr />
@@ -222,17 +208,17 @@ const Download = () => {
                         <div>
                           <SectionTitle>Note</SectionTitle>
                           <BulletListInside>
-                            <li>Builds are compiled from a CentOS 7</li>
+                            <li>Builds are compiled from a Rocky Linux 8</li>
                             <li className='list-none ml-4'>
                               distribution&nbsp;
                             </li>
                             <li>
                               xz extension can be extracted with&nbsp;
                               <a
-                                href='https://portableapps.com/apps/utilities/peazip_portable'
+                                href='https://www.7-zip.org'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>PeaZip</strong>
+                                <strong>7-Zip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -250,7 +236,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/x5UARbpZ#ZBfV0ow8GTNRNxnBwFuchg'
+                                href='https://mega.nz/folder/kk9XSCIb#VmiLS6ww1DbSC7ZLUDOsUg'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -279,22 +265,12 @@ const Download = () => {
                     <TabPanel>
                       <TabSection>
                         <div>
-                          <SectionTitle>macOS Intel (10.13+)</SectionTitle>
-                          <Button
-                            href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-macos-x86_64.dmg'
-                            }
-                            target={'_blank'}>
-                            Download (64-bit)
-                          </Button>
-                        </div>
-                        <div>
                           <SectionTitle>
-                            macOS Apple Silicon (11.0+)
+                            macOS Apple Silicon (13.0+)
                           </SectionTitle>
                           <Button
                             href={
-                              'https://github.com/UPBGE/upbge/releases/download/v0.44/upbge-0.44-macos-arm.dmg'
+                              'https://github.com/UPBGE/upbge/releases/download/v0.50/upbge-0.50-macos-arm64.dmg'
                             }
                             target={'_blank'}>
                             Download (arm)
@@ -334,15 +310,11 @@ const Download = () => {
                               <strong>RAM:</strong> 8GB minimum
                             </li>
                             <li>
-                              <strong>OpenGL:</strong> 4.3+ minimum
-                            </li>
-                            <li>
-                              <strong>MacOS Intel:</strong> requires version
-                              10.15+
+                              <strong>Metal:</strong> 2.2 minimum
                             </li>
                             <li>
                               <strong>MacOS Apple Silicon:</strong> requires
-                              version 11.2+
+                              version 13
                             </li>
                           </BulletListInside>
                         </div>
@@ -353,7 +325,7 @@ const Download = () => {
                             <li>
                               Alternative download links:
                               <a
-                                href='https://mega.nz/folder/x5UARbpZ#ZBfV0ow8GTNRNxnBwFuchg'
+                                href='https://mega.nz/folder/kk9XSCIb#VmiLS6ww1DbSC7ZLUDOsUg'
                                 target={'_blank'}
                                 rel='noreferrer'>
                                 <strong>&nbsp;here</strong>
@@ -382,7 +354,7 @@ const Download = () => {
                     <TabPanel>
                       <TabSection>
                         <div>
-                          <SectionTitle>UPBGE 0.4+ Development</SectionTitle>
+                          <SectionTitle>UPBGE 0.5+ Development</SectionTitle>
                           <Button
                             href={'https://github.com/UPBGE/upbge/releases'}
                             target={'_blank'}>
@@ -469,10 +441,10 @@ const Download = () => {
                             <li>
                               7z extension can be extracted with&nbsp;
                               <a
-                                href='https://portableapps.com/apps/utilities/peazip_portable'
+                                href='https://www.7-zip.org/'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>PeaZip</strong>
+                                <strong>7-Zip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
@@ -632,10 +604,10 @@ const Download = () => {
                             <li>
                               dmg extension can be extracted with&nbsp;
                               <a
-                                href='https://portableapps.com/apps/utilities/peazip_portable'
+                                href='https://www.7-zip.org/'
                                 target={'_blank'}
                                 rel='noreferrer'>
-                                <strong>PeaZip</strong>
+                                <strong>7-Zip</strong>
                               </a>
                             </li>
                             <li className='list-none ml-4'>
