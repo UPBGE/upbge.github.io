@@ -266,7 +266,7 @@ const Download = () => {
                       <TabSection>
                         <div>
                           <SectionTitle>
-                            MacOS Apple Silicon (13.0+)
+                            MacOS Apple Silicon (11.2+)
                           </SectionTitle>
                           <Button
                             href={
@@ -314,7 +314,7 @@ const Download = () => {
                             </li>
                             <li>
                               <strong>MacOS Apple Silicon:</strong> requires
-                              version 13
+                              version 11.2
                             </li>
                           </BulletListInside>
                         </div>
