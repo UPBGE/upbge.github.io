@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Scripting &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme_overrides.css?v=523733c9" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python and the Game Engine" href="python_game_engine.html" />
+    <link rel="prev" title="Python Scripting" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_bricks/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Python Scripting</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction to Scripting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-script-when-you-can-logic-brick-it">Why Script When You Can Logic Brick It?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sane-replacement-for-large-scale-logic-bricked-objects">Sane Replacement for Large-Scale Logic-Bricked Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#better-handling-of-multiple-objects">Better Handling of Multiple Objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#access-to-upbge-s-advanced-features">Access to UPBGE’s Advanced Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-features-that-are-not-part-of-upbge">Use Features That Are Not Part of UPBGE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#keep-track-of-your-changes-with-a-version-control-system">Keep Track of Your Changes with a Version Control System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-your-game-while-it-runs">Debug Your Game While It Runs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#so-what-exactly-is-python">So What Exactly Is Python?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flexible-data-types">Flexible Data Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oop-object-oriented-programming">OOP - Object-Oriented Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#where-to-learn-python">Where to Learn Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#online-material">Online Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#offline-material">Offline Material</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-built-in-help">Python Built-in Help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="python_game_engine.html">Python and the Game Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_inheritance.html">Inheritance And Composition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datablocks/index.html">Data-Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Python Scripting</a></li>
+      <li class="breadcrumb-item active">Introduction to Scripting</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/manual/python_scripting/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction-to-scripting">
+<span id="python-introduction"></span><h1>Introduction to Scripting<a class="headerlink" href="#introduction-to-scripting" title="Link to this heading"></a></h1>
+<p>Congratulations, you finally arrived at one of the most technical parts of the manual. Keep that in mind in case you get lost.</p>
+<p>The UPBGE game engine was once famous for letting you create a full game without touching a single piece of code. Although this may sound attractive, it also leads to a very limited game-making experience. Logic bricks, as presented in <a class="reference internal" href="../logic_bricks/index.html#logic-bricks-index"><span class="std std-ref">Logic Bricks chapter</span></a>, are very handy for quick prototyping. However, once you need to access advanced resources, external libraries and devices, or simply optimize your application, a programming language becomes your new best friend.</p>
+<p>Through the use of a scripting language called <strong>Python</strong>, the game engine (as UPBGE itself) is fully extensible. This programming language is easy to learn, although extremely powerful. Be aware, though, that you will not find a complete guide to learning Python here. There are plenty of resources online and offline that will serve you better. However, even if you are not inclined to study Python deeply now, sooner or later you will find yourself struggling with script files. So, it’s important to know what you are dealing with.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Yes, You Can</strong></p>
+<p>For those experienced Python programmers (or for those catching up with the reference learning material), always remember: if you can do something with Python, chances are, you can do it in the game engine.</p>
+</div>
+<p>After the brief overview in the Python basics, we will explain how to apply your knowledge of Python inside the game engine. You’ll also learn how to access the Python methods, properties, and objects you’ll be using.</p>
+<section id="why-script-when-you-can-logic-brick-it">
+<h2>Why Script When You Can Logic Brick It?<a class="headerlink" href="#why-script-when-you-can-logic-brick-it" title="Link to this heading"></a></h2>
+<p>We can compare logic bricks with real bricks. On the one hand, we have strong elements on which to build our system, but, on the other hand, we have a system as flexible as a blind wall.</p>
+<p>There are many occasions when the same effect can be achieved in different ways. Different phases of the production may also require varied workflows. The reason for picking a particular method is often personal. Nevertheless, we present here a few arguments that may convince you to crack a good Python book and start learning more about it:</p>
+<ul class="simple">
+<li><p>Sane replacement for large-scale logic-bricked objects.</p></li>
+<li><p>Better handling of multiple objects.</p></li>
+<li><p>Access to UPBGE’s advanced features.</p></li>
+<li><p>Use features that are not part of UPBGE.</p></li>
+<li><p>Keep track of your changes with a version control system.</p></li>
+<li><p>Debug your game while it runs.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Logic Brick, the Necessary Good</strong></p>
+<p>You can’t ever get away from logic bricks. Even when using Python exclusively for your game, you will need to invoke the scripts from a Python controller. The ideal is to find the balance that fits your project.</p>
+</div>
+</section>
+<section id="sane-replacement-for-large-scale-logic-bricked-objects">
+<h2>Sane Replacement for Large-Scale Logic-Bricked Objects<a class="headerlink" href="#sane-replacement-for-large-scale-logic-bricked-objects" title="Link to this heading"></a></h2>
+<p>It’s always good to have an excuse to show an image in a programming chapter, and here it is. In the next pìcture you see the logic bricks for Frankie, the main character of the open game <strong>Yo Frankie!</strong></p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/introduction_to_scripting_01.png" src="../../_images/introduction_to_scripting_01.png" />
+<figcaption>
+<p><span class="caption-text">Chapagetti</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This system is well organized: different actions belong to different states and sensors; controllers and actuators are properly named. Nevertheless, it’s not hard to lose yourself trying to understand which sensor connects to which controller. One of the reasons for such a complex project to rely on logic bricks is because <strong>Yo Frankie!</strong> serves as a didactic project for artists wanting to start with the game engine. Anyone with a little programming experience can take the files and expand the game freely. (Have you tried it yet?)</p>
+<p>However, you often aim for performance and workflow. Having everything centralized in a single script file can save you a lot of time.</p>
+<p>Another important aspect while working is to document your project. It’s easy to open a file only a few months old and find yourself completely lost. Script files, on the other hand, are naturally structured to be self-documented. To document logic bricks, you need to rely on text files inside or outside your Blender files (and neat image diagrams). It’s definitively not as handy as inline comments along your code. (Code diagrams can still be useful, but that’s a different topic.)</p>
+</section>
+<section id="better-handling-of-multiple-objects">
+<h2>Better Handling of Multiple Objects<a class="headerlink" href="#better-handling-of-multiple-objects" title="Link to this heading"></a></h2>
+<p>Big projects lead to multiple files, this is an inevitable truth. Even when you use external linking and libraries, it’s crucial to optimize the time spent in changing multiple sets at once. This is one of the weaknesses of logic bricks, they make it hard to automatically change a big range of elements at the same time.</p>
+<p>If you need to change a property name or initial value of an object, you will need to repeat that change in other instances of the same. We have ways to make it easier by using copy and paste of logic bricks/properties between objects or even through logic sharing. Nevertheless, you will still have to update all the Property sensors, controllers, and actuators that may rely on the old value. That’s especially true for objects with logic bricks across them, as we saw, the game engine allows you to link logic bricks from different objects. However, self-contained objects/logic bricks are easier to work with (and with less spaghetti).</p>
+<p>If you thought that before picture was a mess, try to make sense of next picture. Here we have the logic bricks of <strong>Frankie</strong>, plus the objects that have logic bricks connected to it. As you recall, you can restrict the visible logics through the Show Panel option, but this illustrates how difficult it is to get a global view of your system.</p>
+<figure class="align-default" id="id2">
+<img alt="../../_images/introduction_to_scripting_02.png" src="../../_images/introduction_to_scripting_02.png" />
+<figcaption>
+<p><span class="caption-text">Spaghetti</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Once you start to work with scripts, you will see how easy it is to assume control over all your scene elements in a global way. It will give you lots of benefits in the long run.</p>
+</section>
+<section id="access-to-upbge-s-advanced-features">
+<h2>Access to UPBGE’s Advanced Features<a class="headerlink" href="#access-to-upbge-s-advanced-features" title="Link to this heading"></a></h2>
+<p>You will be happy to know that the game engine has a powerful set of features beyond those found in the logic brick’s interface. Also, almost all the functionality found in the logic bricks can be accomplished through an equivalent method of the game engine API (which will be covered in the section “Using the Game Engine API - Application Programming Interface”). The API ranges from tasks that could be performed with logic bricks, such as to change a property in a sensor or to completely remove an object from the game, all the way to functionality not available otherwise, such as playing videos and network connection.</p>
+<p>There are a few reasons for not having all the methods accessible through logic bricks. First, a graphic interface is very limited for complex coding. You may end up with a slow system that is far from optimized. Second, having methods independent from the interface allows it to be expanded more easily and constantly (from a development point of view). Some advanced features, such as mirroring system, dynamic load of meshes, OpenGL calls, and custom constraints would hardly fit in the current game engine interface. They would probably end up not being implemented because of the amount of extra work required. Other things you will find in the game engine built-in methods are: make screenshots; change world settings (gravity, logic tic rates); access the returned data from sensors (pressed keys, mouse position); change object properties (camera lens, light colors, object mass); and many others we will cover in the course of this chapter.</p>
+</section>
+<section id="use-features-that-are-not-part-of-upbge">
+<h2>Use Features That Are Not Part of UPBGE<a class="headerlink" href="#use-features-that-are-not-part-of-upbge" title="Link to this heading"></a></h2>
+<p>No man is an island. No game is an island either (except <strong>Monkey Island</strong>). And the easiest way to integrate your UPBGE game with the exterior world is with Python. If you want to use external devices to control the game input or to tie external applications to your game, you may find Python suitable for that task.</p>
+<p>Here are some examples that showcase what can be done with Python external libraries:</p>
+<ul class="simple">
+<li><p>Grab data off the Internet for game score.</p></li>
+<li><p>Control your game with a Nintendo Wiimote controller.</p></li>
+<li><p>Combine Head-tracking and immersive displays for augmented reality.</p></li>
+</ul>
+<p>Those possibilities go with the previous statement that almost everything that you can do with Python, you can do in the game engine. And since Python can be used with modules written in other languages (properly wrapped), you can virtually use any application as a basis for your system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Cross-Platform, Yes; Cross-Version, Not</strong></p>
+<p>To use external libraries, you must know the Python version they were built against. The Python library you are using must be compatible with the Python version that comes with your UPBGE. It’s also valuable to check how often the library is updated and if it will be maintained in the future.</p>
+</div>
+</section>
+<section id="keep-track-of-your-changes-with-a-version-control-system">
+<h2>Keep Track of Your Changes with a Version Control System<a class="headerlink" href="#keep-track-of-your-changes-with-a-version-control-system" title="Link to this heading"></a></h2>
+<p>If you take a Blender file in two different moments of your production, you will have a hard time finding what has changed between them. This is because UPBGE/Blender’s native file format is a binary type. Binary files are written in a way that you can’t get to them directly, they are designed to be accessed by programs and not by human beings.</p>
+<p>Scripts, on the other hand, are plain text files. You can open a script in any text editor and immediately see the differences between two similar files. Finding those differences are vital to going forward and backward with your experimentations during work. Actually, if you don’t want to check for differences manually, you may want to consider using external script files with a version control system such as Git, SVN, Mercury, or CVN.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>And the Catch Is …</strong></p>
+<p>This works only for scripts maintained outside UPBGE. This is one of the strong reasons to prefer Python Module controllers as opposed to Python Script controllers.</p>
+</div>
+<p>A version control system allows you to move between working versions of your project files. It makes it relatively safe to experiment with different methods in a destructive way. In other words, it’s a system to protect you from yourself. In next image, you can see an application of this. Someone changed the script file online while we were working locally on it. Instead of manually tracking down the differences, we could use a tool to merge both changes into a new file and commit it.</p>
+<figure class="align-default" id="id3">
+<img alt="../../_images/introduction_to_scripting_03.png" src="../../_images/introduction_to_scripting_03.png" />
+<figcaption>
+<p><span class="caption-text">Git diff</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="debug-your-game-while-it-runs">
+<h2>Debug Your Game While It Runs<a class="headerlink" href="#debug-your-game-while-it-runs" title="Link to this heading"></a></h2>
+<p>Interpreted languages (also known as scripting languages) are slower than compiled code. Therefore, to speed up their performance they are precompiled and cached the first time they run (when you launch your game). This is not mandatory, though, and if you are using external Python scripts (instead of those created inside UPBGE), you can use the debugging button to have them reloaded every time they are called.</p>
+<p>In next figure, we have the reload.reload_me module that will be reloaded every frame. That way you can dynamically change the content of your scripts, variables, and functions without having to restart the game. Try it yourself: download the example <a class="reference download internal" download="" href="../../_downloads/81abf0c2d1641c7e4f364b2cf00aa3bf/001_reloadme.zip"><code class="xref download docutils literal notranslate"><span class="pre">001_reloadme.zip</span></code></a> to your computer, extract it and launch debug_python.blend. Play your game, and you will see a spinning cube. The speed of the cube is controlled by the 14th line of the file reload.py, found in the same folder.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># edit the speed value and you will see the rotation changing</span>
+
+<span class="c1"># (try with values from 0.01 to 0.05)</span>
+
+<span class="n">speed</span> <span class="o">=</span> <span class="mf">0.025</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id4">
+<img alt="../../_images/introduction_to_scripting_04.png" src="../../_images/introduction_to_scripting_04.png" />
+<figcaption>
+<p><span class="caption-text">Debugging button at Python Module controller</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Without closing UPBGE or even stopping your game, open the file script.py in a text editor, change this line to 0.05, for example, and save it. You will see the speed changing immediately. Your game is literally being updated at runtime, and you can change any module that’s been called with the debug option on.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Turn It Off When You Leave</strong></p>
+<p>Remember to turn debugging off when you are done with this script. Reloading the script every frame can drastically reduce your performance.</p>
+</div>
+</section>
+<section id="so-what-exactly-is-python">
+<h2>So What Exactly Is Python?<a class="headerlink" href="#so-what-exactly-is-python" title="Link to this heading"></a></h2>
+<p>Now that you are aware of all the benefits of using Python, it’s time to understand what Python is. Once again, we can’t go over all the aspects of the language here. Nevertheless, a general overview is still desirable to help you understand the examples presented in this book.</p>
+<p>To study your scripts, you must be aware of the following aspects:</p>
+<ul class="simple">
+<li><p>Flexible data types;</p></li>
+<li><p>Indentation;</p></li>
+<li><p>OOP, Object-Oriented Programming.</p></li>
+</ul>
+</section>
+<section id="flexible-data-types">
+<h2>Flexible Data Types<a class="headerlink" href="#flexible-data-types" title="Link to this heading"></a></h2>
+<p>Whenever you write a program, you have to use variables to store changing values at runtime. Unlike languages such as C and Java, Python variables are very flexible: they can be declared on the fly when you first use them; you can assign different data types for the same variable; and you can even name them dynamically:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;var_</span><span class="si">%d</span><span class="s2"> = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This snip of code is the equivalent to the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var_0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">var_1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">var_2</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As you can see, the variable names are created at runtime. Therefore, if you name your objects correctly in the Blender file, you can store them in variables named after them. The following code snip assigns the scene objects (retrieved from the game engine) to variables named after their names.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="nb">object</span> <span class="ow">in</span> <span class="n">scene</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
+
+  <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> = object&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">object</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Although we have flexible data types, we must respect variable types while manipulating and passing/returning them to functions. Here you can see a list of the data types you will find in the UPBGE game engine API:</p>
+<ul class="simple">
+<li><p><strong>Integer:</strong> This is the most common of the numerical types. It can store any number that fits in your computer memory. You can perform any regular math operations on it, such as sum, subtraction, division, modulus, and potency.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_integer</span>  <span class="o">=</span> <span class="mi">112358132134</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Float:</strong> This type is very similar to integers, but has a range of numbers that includes fractions. If you divide an even number by its half, Python will automatically convert your integer to a float number.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">simple_float</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="c1"># ~1.618</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Boolean:</strong> As simple as it sounds, this data type stores a true or a false value. It can also be understood as an integer with the value of 1 or 0.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i_am_enjoying_the_manual</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="n">i_am_understanding_the_manual</span> <span class="o">=</span> <span class="n">i_am_enjoying_the_manual</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>List:</strong> A list contains a conjunct of elements ordered by ascending indexes. Although the size of a list can change on the fly, you can’t access a list index that wasn’t created yet (this will crash Python). List can have mixed elements such as integers, strings, and objects.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.14159265359</span><span class="p">,</span> <span class="s2">&quot;PI&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Tuple:</strong> This is another kind of list where elements can’t be overwritten. As with lists, you can read them using indexes. But it’s more common to access all the values at once, assigning them to different variables.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">,</span><span class="n">u</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">l</span><span class="p">,</span><span class="n">e</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># works as: t = 1, u = 2, p = 3, ...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>String:</strong> Whenever you need to store a text, you will use strings. As words are a combination of individual letters, a string consists of individual characters. Indeed, strings can be understood as a list of characters because you can access them using their location index, though you can’t overwrite them (like in a tuple).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">=</span> <span class="s2">&quot;rulez&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Dictionary:</strong> Like a list, a dictionary can store multiple values. Unlike a list, a dictionary is not based on numerical index access. Therefore, we have strings working as “keys” to store and retrieve the individual variables. In fact, anything can be a key to a dictionary, a number, an object, a class …</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_3d_software</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name &quot;</span><span class="p">:</span> <span class="s2">&quot;UPBGE&quot;</span><span class="p">,</span> <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Custom Types:</strong> These are things such as vectors and matrixes. The game engine combines some of the basic data types to create more complex ones. They are mainly used for vectors and matrixes. That way you can interact mathematically with them in a way that basic types won’t do.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mathutils</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="nb">object</span><span class="o">.</span><span class="n">orientation</span> <span class="c1"># the result is a Matrix</span>
+</pre></div>
+</div>
+<section id="indentation">
+<h3>Indentation<a class="headerlink" href="#indentation" title="Link to this heading"></a></h3>
+<p>Indentation, the amount of white spaces or tabs you leave before a new line.</p>
+<p>When coding in a particular programming language, it’s mandatory to follow its general syntax. In that regard, Python is one of the most restricted languages out there. Think of this as a tough grammar exam. You won’t be able to score high unless you follow all the pre-established grammar rules. Now imagine that it could be even worse, as bad as a written legal document. We are talking about strict paragraphs, indentation, information hierarchy, and similar rules.</p>
+<p>As in a legal document, those rules have a raison d’etrê. With strict form/syntax, you can focus more on the content of the text. And ambiguity in the context of code making is fatal.</p>
+<p>Indentation is the most important aspect of Python syntax. Python code uses the indentation level to define where loops, functions, and general nesting start/end. Take a look at this example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="k">def</span> <span class="nf">here_i_am</span><span class="p">():</span> <span class="c1"># definition of the first function</span>
+
+<span class="mi">2</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;m inside the first function.&quot;</span><span class="p">)</span>
+
+<span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;m outside the function.&quot;</span><span class="p">)</span>
+
+<span class="mi">4</span> <span class="k">def</span> <span class="nf">but_I</span><span class="s1">&#39;m_not_here(): # definition of the second function</span>
+
+<span class="mi">5</span>   <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For you can&#39;t see me!&quot;</span><span class="p">)</span>
+
+<span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;m still outside the function.&quot;</span><span class="p">)</span>
+
+<span class="mi">7</span> <span class="n">here_i_am</span><span class="p">()</span> <span class="c1"># calling the first function</span>
+</pre></div>
+</div>
+<p>Here we are defining a function (1–2), calling a built-in print function (3), defining another function (4–5), calling another built-in print function (6), and finally calling the first function we declared (7).</p>
+<p>The output of such script will be:</p>
+<p><cite>I’m outside the function.</cite></p>
+<p><cite>I’m still outside the function.</cite></p>
+<p><cite>I’m inside the first function.</cite></p>
+<p>The first thing you may notice is that Python runs from top to bottom. Therefore, you must define your function before you call it. Secondly, you can see that the second function is never called. So how can the code interpreter determine which print statements to call? The answer is: indentation! Whenever you change the indentation level (lines 1–2, 2–3, 4–5, and 5–6), you determine the hierarchical relation between the elements. Therefore line 2 belongs to the function defined in line 1, line 5 to line 4, and the other lines are all at the same level.</p>
+<p>Python pep-8 standard recommends to use spaces for identation. In the manual we will use 2 spaces identation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Pound Sign, I (Finally) Love You</strong></p>
+<p>If, like me, you never understood the reason for the number/pound sign key (#) on your phone, you will eventually find it very useful. In Python, any text to the right of a pound sign is ignored by the interpreter. Therefore, the pound sign is used to add commentaries to your code or to temporarily deactivate part of it.</p>
+</div>
+</section>
+</section>
+<section id="oop-object-oriented-programming">
+<h2>OOP - Object-Oriented Programming<a class="headerlink" href="#oop-object-oriented-programming" title="Link to this heading"></a></h2>
+<p>Since games deal with 3D world objects, it makes sense to use a language that is oriented to them. The game engine itself is written in C++, a very strong and object-oriented language, and Python OOP capabilities let you handle the game data in a Python-native way. It reflects in the game engine objects having their own set of functions and variables directly accessed from a Python API (to be explained later in this chapter in the section “Using the Game Engine API - Application Programming Interface”).</p>
+<p>In the Python code, you can (and will) create your own classes, modules, and elements. For example, you may want to control some 3D elements as a group defined by your code. It will make it easy to get to all of them at once. Therefore, you can have a custom class that will store all the related objects you want to access and preserve some properties as a group.</p>
+<p>Download the example <a class="reference download internal" download="" href="../../_downloads/f5236477a85a9adb5d40641b77bf2d9b/002_oop.zip"><code class="xref download docutils literal notranslate"><span class="pre">002_oop.zip</span></code></a>, extract it and load the oop.blend file.</p>
+<p>The first script that runs in this file is the init_world.py. Here we are creating two groups to store different kind of elements (cube and sphere). In order to sort the objects between the groups, we go over the entire scene object list and check for objects with a property “cube” or “sphere” and append them to their respective lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ################ #</span>
+<span class="c1">#  init\_world.py  #</span>
+<span class="c1"># ################ #</span>
+
+<span class="kn">import</span> <span class="nn">bge</span>
+<span class="kn">from</span> <span class="nn">bge</span> <span class="kn">import</span> <span class="n">logic</span> <span class="k">as</span> <span class="n">G</span>
+<span class="kn">from</span> <span class="nn">bge</span> <span class="kn">import</span> <span class="n">render</span> <span class="k">as</span> <span class="n">R</span>
+
+<span class="c1"># showing the mouse cursor</span>
+<span class="n">R</span><span class="o">.</span><span class="n">showMouse</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># storing the current scene in a variable</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">getCurrentScene</span><span class="p">()</span>
+
+<span class="c1"># define a class to store all group elements and the click object</span>
+<span class="k">class</span> <span class="nc">Group</span><span class="p">():</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">click</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">objects</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># create new element groups</span>
+<span class="n">cube_group</span>   <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="s2">&quot;cubes&quot;</span><span class="p">)</span>
+<span class="n">sphere_group</span> <span class="o">=</span> <span class="n">Group</span><span class="p">(</span><span class="s2">&quot;sphere&quot;</span><span class="p">)</span>
+
+<span class="c1"># add all objects with an &quot;ui&quot; property to the created element</span>
+<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">scene</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
+  <span class="k">if</span> <span class="s2">&quot;cube&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+    <span class="n">cube_group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="s2">&quot;sphere&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+    <span class="n">sphere_group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="s2">&quot;click&quot;</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">\_group.click = obj&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">obj</span><span class="p">[</span><span class="s2">&quot;click&quot;</span><span class="p">]))</span>
+
+<span class="n">G</span><span class="o">.</span><span class="n">groups</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cube&quot;</span><span class="p">:</span><span class="n">cube_group</span><span class="p">,</span> <span class="s2">&quot;sphere&quot;</span><span class="p">:</span><span class="n">sphere_group</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>After storing them in the global module <cite>bge.logic</cite>, we wait for the user to click in the cube or sphere in the middle of the scene. When that happens, it will toggle the value of the on/off property of the cube or sphere. The following script (which runs every frame) will then hide/unhide the group’s objects accordingly.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># #################### #</span>
+<span class="c1"># visibility\_check.py #</span>
+<span class="c1"># #################### #</span>
+
+<span class="kn">from</span> <span class="nn">bge</span> <span class="kn">import</span> <span class="n">logic</span>
+
+<span class="c1"># defines a function to hide/turn visible all the objects passed as argument</span>
+<span class="k">def</span> <span class="nf">change_visibility</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="n">on_off</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">objects</span><span class="p">:</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="n">on_off</span>
+
+<span class="c1"># retrieve the stored groups to local variables</span>
+<span class="n">cube_group</span>   <span class="o">=</span> <span class="n">logic</span><span class="o">.</span><span class="n">groups</span><span class="p">[</span><span class="s2">&quot;cube&quot;</span><span class="p">]</span>
+<span class="n">sphere_group</span> <span class="o">=</span> <span class="n">logic</span><span class="o">.</span><span class="n">groups</span><span class="p">[</span><span class="s2">&quot;sphere&quot;</span><span class="p">]</span>
+
+<span class="c1"># read the current value of the &quot;on\_off&quot; property in the cube/sphere</span>
+<span class="n">cube_visible</span>   <span class="o">=</span> <span class="n">cube_group</span><span class="o">.</span><span class="n">click</span><span class="p">[</span><span class="s2">&quot;on\_off&quot;</span><span class="p">]</span>
+<span class="n">sphere_visible</span> <span class="o">=</span> <span class="n">sphere_group</span><span class="o">.</span><span class="n">click</span><span class="p">[</span><span class="s2">&quot;on\_off&quot;</span><span class="p">]</span>
+
+<span class="c1"># calls the function into the group object with the visibility flag</span>
+<span class="n">change_visibility</span><span class="p">(</span><span class="n">cube_group</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span> <span class="n">cube_visible</span><span class="p">)</span>
+<span class="n">change_visibility</span><span class="p">(</span><span class="n">sphere_group</span><span class="o">.</span><span class="n">objects</span><span class="p">,</span> <span class="n">sphere_visible</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And we are done with this interaction. Play with the file by adding new elements (tubes, planes, monkeys) and make them interact as we have here. A few copies and pastes should be enough to adapt this code to your new situation. Remember to note the current indentation used.</p>
+</section>
+<section id="where-to-learn-python">
+<h2>Where to Learn Python<a class="headerlink" href="#where-to-learn-python" title="Link to this heading"></a></h2>
+<p>If you have previous experience with another programming language, you will learn Python in no time. If you go over some basic Python tutorials, look at some script examples, and check the UPBGE game engine API, that might be enough. But if learning Python is your first step into coding experience, don’t worry. Take the time to read through the basics of the language, start with the simplest tasks, and never give up.</p>
+<p>Usually, a good way to start is tweaking ready-to-use scripts, which doesn’t require you to understand all the aspects of the language before your first experiments. Also, it gives you a good motivational boost by producing quick results for your efforts. We recommend you first learn Python and then focus on its application in the game engine. But you may be more comfortable messing with game engine files first and then later learning Python more deeply.</p>
+</section>
+<section id="online-material">
+<h2>Online Material<a class="headerlink" href="#online-material" title="Link to this heading"></a></h2>
+<p>Below are some websites where you can learn more about Python.</p>
+<p><a class="reference external" href="http://www.python.org/">http://www.python.org/</a> and <a class="reference external" href="https://docs.python.org/3/tutorial/index.html">https://docs.python.org/3/tutorial/index.html</a></p>
+<p>Learn about new Python versions, API changes, and module documentation.</p>
+<p><a class="reference external" href="https://upbge.org/docs/latest/api/">https://upbge.org/docs/latest/api/</a></p>
+<p>Official Blender + UPBGE API Documentation, all the built-in modules that can be used with the game engine.</p>
+<p><a class="reference external" href="www.blenderartists.org/forum">www.blenderartists.org/forum</a></p>
+<p>Blender Artists forum, you can find good script examples in the Python section (general Blender Python) and in the game engine section.</p>
+<p><a class="reference external" href="http://www.diveintopython3.net">http://www.diveintopython3.net</a></p>
+<p>Dive Into Python 3 covers Python 3 and its differences from Python 2. A complete book available online.</p>
+<p><a class="reference external" href="https://www.learnpython.org/">https://www.learnpython.org/</a></p>
+<p>This interactive tutorial website offers a great introduction to Python for beginners.</p>
+</section>
+<section id="offline-material">
+<h2>Offline Material<a class="headerlink" href="#offline-material" title="Link to this heading"></a></h2>
+<p>Books, there are plenty of them in your nearby library.</p>
+</section>
+<section id="python-built-in-help">
+<h2>Python Built-in Help<a class="headerlink" href="#python-built-in-help" title="Link to this heading"></a></h2>
+<p>You can also access help directly in Python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">python_object</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Python function “dir” creates a list with all the functions/modules/attributes available to be accessed from this object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">python_function</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Python Scripting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_game_engine.html" class="btn btn-neutral float-right" title="Python and the Game Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
