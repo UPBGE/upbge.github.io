@@ -97,7 +97,7 @@ const Features = () => {
               The UPBGE scripting language is Python. UPBGE has a very complete
               Python API that can be used in the embedded editor as well as
               in-game. This scripting language is the most grounded way to
-              develop game logic, although there are 3 additional and complete
+              develop game logic, although there are 4 additional and complete
               methods that the game developer can use:
             </p>
             <BulletListInside>
@@ -125,6 +125,21 @@ const Features = () => {
                 programming knowledge is required to use them, although such
                 knowledge is necessary for the development of new or custom
                 components.
+              </li>
+              <li>
+                <strong>The Node.js / JavaScript SDK (add-on)</strong>
+                <br />
+                An optional add-on that adds JavaScript support in UPBGE:
+                interactive console, JavaScript controllers in the game engine,
+                type definitions, and optional TypeScript. See the{' '}
+                <a
+                  href='https://github.com/UPBGE/upbge-nodejs-sdk'
+                  target='_blank'
+                  rel='noreferrer'
+                  className='text-orange-500 dark:text-orange-400 underline'>
+                  UPBGE Node.js SDK
+                </a>{' '}
+                repository for setup and documentation.
               </li>
             </BulletListInside>
           </div>
