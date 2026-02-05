@@ -13,6 +13,7 @@ import upbge_old_manual from '../assets/images/UPBGE_old_manual.png'
 import blender_manual from '../assets/images/Blender_manual.png'
 import github_logo_new from '../assets/images/Github_Logo_new.png'
 import github_logo from '../assets/images/Github_Logo.png'
+import node_png from '../assets/images/UPBGE_nodejs_sdk.png'
 
 const Documentation = () => {
   return (
@@ -42,6 +43,13 @@ const Documentation = () => {
                   to={'https://upbge.org/docs/latest/api/index.html'}
                   image={upbge_python_api}>
                   Unified Python API for UPBGE current and Blender
+                </CardSection>
+                <CardSection
+                  title={'UPBGE Node.js / JavaScript SDK'}
+                  to={'https://github.com/UPBGE/upbge-nodejs-sdk'}
+                  image={node_png}>
+                  Full SDK for JavaScript in UPBGE: console, controllers,
+                  type definitions, and optional TypeScript support
                 </CardSection>
                 <CardSection
                   title={'Former UPBGE 0.2.5 Manual & API'}
