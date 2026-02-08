@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPU Platform Utilities (gpu.platform) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/gpu.platform.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GPU Capabilities Utilities (gpu.capabilities)" href="gpu.capabilities.html" />
+    <link rel="prev" title="GPU Texture Utilities (gpu.texture)" href="gpu.texture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gpu.types.html">GPU Types (gpu.types)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.matrix.html">GPU Matrix Utilities (gpu.matrix)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.select.html">GPU Select Utilities (gpu.select)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.shader.html">GPU Shader Utilities (gpu.shader)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.state.html">GPU State Utilities (gpu.state)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.texture.html">GPU Texture Utilities (gpu.texture)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GPU Platform Utilities (gpu.platform)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.platform.backend_type_get"><code class="docutils literal notranslate"><span class="pre">backend_type_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.platform.device_type_get"><code class="docutils literal notranslate"><span class="pre">device_type_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.platform.renderer_get"><code class="docutils literal notranslate"><span class="pre">renderer_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.platform.vendor_get"><code class="docutils literal notranslate"><span class="pre">vendor_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.platform.version_get"><code class="docutils literal notranslate"><span class="pre">version_get()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.capabilities.html">GPU Capabilities Utilities (gpu.capabilities)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#geometry-batches">Geometry Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#vertex-buffers">Vertex Buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#index-buffers">Index Buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#shaders">Shaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#batch-creation">Batch Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#offscreen-rendering">Offscreen Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gpu.html">GPU Module (gpu)</a></li>
+      <li class="breadcrumb-item active">GPU Platform Utilities (gpu.platform)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-gpu.platform">
+<span id="gpu-platform-utilities-gpu-platform"></span><h1>GPU Platform Utilities (gpu.platform)<a class="headerlink" href="#module-gpu.platform" title="Link to this heading"></a></h1>
+<p>This module provides access to GPU Platform definitions.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.platform.backend_type_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.platform.</span></span><span class="sig-name descname"><span class="pre">backend_type_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.platform.backend_type_get" title="Link to this definition"></a></dt>
+<dd><p>Get actuve GPU backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Backend type (‘OPENGL’, ‘VULKAN’, ‘METAL’, ‘NONE’, ‘UNKNOWN’).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.platform.device_type_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.platform.</span></span><span class="sig-name descname"><span class="pre">device_type_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.platform.device_type_get" title="Link to this definition"></a></dt>
+<dd><p>Get GPU device type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Device type (‘APPLE’, ‘NVIDIA’, ‘AMD’, ‘INTEL’, ‘SOFTWARE’, ‘QUALCOMM’, ‘UNKNOWN’).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.platform.renderer_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.platform.</span></span><span class="sig-name descname"><span class="pre">renderer_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.platform.renderer_get" title="Link to this definition"></a></dt>
+<dd><p>Get GPU to be used for rendering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GPU name.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.platform.vendor_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.platform.</span></span><span class="sig-name descname"><span class="pre">vendor_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.platform.vendor_get" title="Link to this definition"></a></dt>
+<dd><p>Get GPU vendor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Vendor name.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.platform.version_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.platform.</span></span><span class="sig-name descname"><span class="pre">version_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.platform.version_get" title="Link to this definition"></a></dt>
+<dd><p>Get GPU driver version.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Driver version.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gpu.texture.html" class="btn btn-neutral float-left" title="GPU Texture Utilities (gpu.texture)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gpu.capabilities.html" class="btn btn-neutral float-right" title="GPU Capabilities Utilities (gpu.capabilities)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60gpu.platform.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fgpu.platform.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

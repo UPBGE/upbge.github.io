@@ -1,0 +1,1226 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Graph Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.graph.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Grease Pencil Operators" href="bpy.ops.grease_pencil.html" />
+    <link rel="prev" title="Gpencil Operators" href="bpy.ops.gpencil.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Graph Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.bake_keys"><code class="docutils literal notranslate"><span class="pre">bake_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.blend_offset"><code class="docutils literal notranslate"><span class="pre">blend_offset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.blend_to_default"><code class="docutils literal notranslate"><span class="pre">blend_to_default()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.blend_to_ease"><code class="docutils literal notranslate"><span class="pre">blend_to_ease()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.blend_to_neighbor"><code class="docutils literal notranslate"><span class="pre">blend_to_neighbor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.breakdown"><code class="docutils literal notranslate"><span class="pre">breakdown()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.butterworth_smooth"><code class="docutils literal notranslate"><span class="pre">butterworth_smooth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.clean"><code class="docutils literal notranslate"><span class="pre">clean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.click_insert"><code class="docutils literal notranslate"><span class="pre">click_insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.clickselect"><code class="docutils literal notranslate"><span class="pre">clickselect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.cursor_set"><code class="docutils literal notranslate"><span class="pre">cursor_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.decimate"><code class="docutils literal notranslate"><span class="pre">decimate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.driver_delete_invalid"><code class="docutils literal notranslate"><span class="pre">driver_delete_invalid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.driver_variables_copy"><code class="docutils literal notranslate"><span class="pre">driver_variables_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.driver_variables_paste"><code class="docutils literal notranslate"><span class="pre">driver_variables_paste()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.duplicate"><code class="docutils literal notranslate"><span class="pre">duplicate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.duplicate_move"><code class="docutils literal notranslate"><span class="pre">duplicate_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.ease"><code class="docutils literal notranslate"><span class="pre">ease()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.easing_type"><code class="docutils literal notranslate"><span class="pre">easing_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.equalize_handles"><code class="docutils literal notranslate"><span class="pre">equalize_handles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.euler_filter"><code class="docutils literal notranslate"><span class="pre">euler_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.extrapolation_type"><code class="docutils literal notranslate"><span class="pre">extrapolation_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.fmodifier_add"><code class="docutils literal notranslate"><span class="pre">fmodifier_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.fmodifier_copy"><code class="docutils literal notranslate"><span class="pre">fmodifier_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.fmodifier_paste"><code class="docutils literal notranslate"><span class="pre">fmodifier_paste()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.frame_jump"><code class="docutils literal notranslate"><span class="pre">frame_jump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.gaussian_smooth"><code class="docutils literal notranslate"><span class="pre">gaussian_smooth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.ghost_curves_clear"><code class="docutils literal notranslate"><span class="pre">ghost_curves_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.ghost_curves_create"><code class="docutils literal notranslate"><span class="pre">ghost_curves_create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.handle_type"><code class="docutils literal notranslate"><span class="pre">handle_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.hide"><code class="docutils literal notranslate"><span class="pre">hide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.interpolation_type"><code class="docutils literal notranslate"><span class="pre">interpolation_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.keyframe_insert"><code class="docutils literal notranslate"><span class="pre">keyframe_insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.keyframe_jump"><code class="docutils literal notranslate"><span class="pre">keyframe_jump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.keys_to_samples"><code class="docutils literal notranslate"><span class="pre">keys_to_samples()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.match_slope"><code class="docutils literal notranslate"><span class="pre">match_slope()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.mirror"><code class="docutils literal notranslate"><span class="pre">mirror()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.paste"><code class="docutils literal notranslate"><span class="pre">paste()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.previewrange_set"><code class="docutils literal notranslate"><span class="pre">previewrange_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.push_pull"><code class="docutils literal notranslate"><span class="pre">push_pull()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.reveal"><code class="docutils literal notranslate"><span class="pre">reveal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.samples_to_keys"><code class="docutils literal notranslate"><span class="pre">samples_to_keys()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.scale_average"><code class="docutils literal notranslate"><span class="pre">scale_average()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.scale_from_neighbor"><code class="docutils literal notranslate"><span class="pre">scale_from_neighbor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_all"><code class="docutils literal notranslate"><span class="pre">select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_box"><code class="docutils literal notranslate"><span class="pre">select_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_circle"><code class="docutils literal notranslate"><span class="pre">select_circle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_column"><code class="docutils literal notranslate"><span class="pre">select_column()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_key_handles"><code class="docutils literal notranslate"><span class="pre">select_key_handles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_lasso"><code class="docutils literal notranslate"><span class="pre">select_lasso()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_leftright"><code class="docutils literal notranslate"><span class="pre">select_leftright()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_less"><code class="docutils literal notranslate"><span class="pre">select_less()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_linked"><code class="docutils literal notranslate"><span class="pre">select_linked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.select_more"><code class="docutils literal notranslate"><span class="pre">select_more()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.shear"><code class="docutils literal notranslate"><span class="pre">shear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.smooth"><code class="docutils literal notranslate"><span class="pre">smooth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.snap"><code class="docutils literal notranslate"><span class="pre">snap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.snap_cursor_value"><code class="docutils literal notranslate"><span class="pre">snap_cursor_value()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.sound_to_samples"><code class="docutils literal notranslate"><span class="pre">sound_to_samples()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.time_offset"><code class="docutils literal notranslate"><span class="pre">time_offset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.view_all"><code class="docutils literal notranslate"><span class="pre">view_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.view_frame"><code class="docutils literal notranslate"><span class="pre">view_frame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.graph.view_selected"><code class="docutils literal notranslate"><span class="pre">view_selected()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Graph Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.graph">
+<span id="graph-operators"></span><h1>Graph Operators<a class="headerlink" href="#module-bpy.ops.graph" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.bake_keys">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">bake_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.bake_keys" title="Link to this definition"></a></dt>
+<dd><p>Add keyframes on every frame between the selected keyframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.blend_offset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">blend_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.blend_offset" title="Link to this definition"></a></dt>
+<dd><p>Shift selected keys to the value of the neighboring keys as a block</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset Factor, Control which key to offset towards and how far</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.blend_to_default">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">blend_to_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.blend_to_default" title="Link to this definition"></a></dt>
+<dd><p>Blend selected keys to their default value from their current position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, How much to blend to the default value</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.blend_to_ease">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">blend_to_ease</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.blend_to_ease" title="Link to this definition"></a></dt>
+<dd><p>Blends keyframes from current state to an ease-in or ease-out curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blend, Favor either original data or ease curve</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.blend_to_neighbor">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">blend_to_neighbor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.blend_to_neighbor" title="Link to this definition"></a></dt>
+<dd><p>Blend selected keyframes to their left or right neighbor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blend, The blend factor with 0 being the current frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.breakdown">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">breakdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.breakdown" title="Link to this definition"></a></dt>
+<dd><p>Move selected keyframes to an inbetween position relative to adjacent keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, Favor either the left or the right key</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.butterworth_smooth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">butterworth_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_frequency</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples_per_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend_in_out</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.butterworth_smooth" title="Link to this definition"></a></dt>
+<dd><p>Smooth an F-Curve while maintaining the general shape of the curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cutoff_frequency</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frequency Cutoff (Hz), Lower values give a smoother curve</p></li>
+<li><p><strong>filter_order</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>32</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Order, Higher values produce a harder frequency cutoff</p></li>
+<li><p><strong>samples_per_frame</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>64</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Samples per Frame, How many samples to calculate per frame, helps with subframe data</p></li>
+<li><p><strong>blend</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blend, How much to blend to the smoothed curve</p></li>
+<li><p><strong>blend_in_out</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blend In/Out, Linearly blend the smooth data to the border frames of the selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.clean">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.001</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.clean" title="Link to this definition"></a></dt>
+<dd><p>Simplify F-Curves by removing closely spaced keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold</p></li>
+<li><p><strong>channels</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Channels</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.click_insert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">click_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.click_insert" title="Link to this definition"></a></dt>
+<dd><p>Insert new keyframe at the cursor position for the active F-Curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame Number, Frame to insert keyframe on</p></li>
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value, Value for keyframe on</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.clickselect">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">clickselect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_to_deselect_others</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_select_on_click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mouse_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mouse_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curves</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.clickselect" title="Link to this definition"></a></dt>
+<dd><p>Select keyframes by clicking on them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wait_to_deselect_others</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait to Deselect Others</p></li>
+<li><p><strong>use_select_on_click</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Act on Click, Instead of selecting on mouse press, wait to see if there’s drag event. Otherwise select on mouse release</p></li>
+<li><p><strong>mouse_x</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse X</p></li>
+<li><p><strong>mouse_y</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse Y</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend Select, Toggle keyframe selection instead of leaving newly selected keyframes only</p></li>
+<li><p><strong>deselect_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect On Nothing, Deselect all when nothing under the cursor</p></li>
+<li><p><strong>column</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Column Select, Select all keyframes that occur on the same frame as the one under the mouse</p></li>
+<li><p><strong>curves</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Curves, Select all the keyframes in the curve</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.copy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.copy" title="Link to this definition"></a></dt>
+<dd><p>Copy selected keyframes to the internal clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.cursor_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">cursor_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.cursor_set" title="Link to this definition"></a></dt>
+<dd><p>Interactively set the current frame and value cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>float in</em><em> [</em><em>-1.04857e+06</em><em>, </em><em>1.04857e+06</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame</p></li>
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.decimate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">decimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RATIO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.333333</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_error_margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.decimate" title="Link to this definition"></a></dt>
+<dd><p>Decimate F-Curves by removing keyframes that influence the curve shape the least</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'RATIO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERROR'</span></code>], (optional)) – <p>Mode, Which mode to use for decimation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">RATIO</span></code>
+Ratio – Use a percentage to specify how many keyframes you want to remove.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERROR</span></code>
+Error Margin – Use an error margin to specify how much the curve is allowed to deviate from the original path.</p></li>
+</ul>
+</p></li>
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, The ratio of keyframes to remove</p></li>
+<li><p><strong>remove_error_margin</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Max Error Margin, How much the new decimated curve is allowed to deviate from the original</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.delete" title="Link to this definition"></a></dt>
+<dd><p>Remove all selected keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.driver_delete_invalid">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">driver_delete_invalid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.driver_delete_invalid" title="Link to this definition"></a></dt>
+<dd><p>Delete all visible drivers considered invalid</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.driver_variables_copy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">driver_variables_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.driver_variables_copy" title="Link to this definition"></a></dt>
+<dd><p>Copy the driver variables of the active driver</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.driver_variables_paste">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">driver_variables_paste</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.driver_variables_paste" title="Link to this definition"></a></dt>
+<dd><p>Add copied driver variables to the active driver</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>replace</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Replace Existing, Replace existing driver variables, instead of just appending to the end of the existing list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.duplicate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">duplicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TRANSLATION'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.duplicate" title="Link to this definition"></a></dt>
+<dd><p>Make a copy of all selected keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/transform_mode_type_items.html#rna-enum-transform-mode-type-items"><span class="std std-ref">Transform Mode Type Items</span></a>, (optional)) – Mode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.duplicate_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">duplicate_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">GRAPH_OT_duplicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.duplicate_move" title="Link to this definition"></a></dt>
+<dd><p>Make a copy of all selected keyframes and move them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>GRAPH_OT_duplicate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">GRAPH_OT_duplicate</span></code>, (optional)) – Duplicate Keyframes, Make a copy of all selected keyframes</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.ease">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">ease</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sharpness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.ease" title="Link to this definition"></a></dt>
+<dd><p>Align keyframes on a ease-in or ease-out curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Curve Bend, Defines if the keys should be aligned on an ease-in or ease-out curve</p></li>
+<li><p><strong>sharpness</strong> (<em>float in</em><em> [</em><em>0.001</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Sharpness, Higher values make the change more abrupt</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.easing_type">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">easing_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTO'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.easing_type" title="Link to this definition"></a></dt>
+<dd><p>Set easing type for the F-Curve segments starting from the selected keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/beztriple_interpolation_easing_items.html#rna-enum-beztriple-interpolation-easing-items"><span class="std std-ref">Beztriple Interpolation Easing Items</span></a>, (optional)) – Type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.equalize_handles">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">equalize_handles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LEFT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handle_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.equalize_handles" title="Link to this definition"></a></dt>
+<dd><p>Ensure selected keyframes’ handles have equal length, optionally making them horizontal. Automatic, Automatic Clamped, or Vector handle types will be converted to Aligned</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>side</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LEFT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RIGHT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BOTH'</span></code>], (optional)) – <p>Side, Side of the keyframes’ Bézier handles to affect</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LEFT</span></code>
+Left – Equalize selected keyframes’ left handles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RIGHT</span></code>
+Right – Equalize selected keyframes’ right handles.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOTH</span></code>
+Both – Equalize both of a keyframe’s handles.</p></li>
+</ul>
+</p></li>
+<li><p><strong>handle_length</strong> (<em>float in</em><em> [</em><em>0.1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Handle Length, Length to make selected keyframes’ Bézier handles</p></li>
+<li><p><strong>flatten</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flatten, Make the values of the selected keyframes’ handles the same as their respective keyframes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.euler_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">euler_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.euler_filter" title="Link to this definition"></a></dt>
+<dd><p>Fix large jumps and flips in the selected Euler Rotation F-Curves arising from rotation values being clipped when baking physics</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.extrapolation_type">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">extrapolation_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CONSTANT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.extrapolation_type" title="Link to this definition"></a></dt>
+<dd><p>Set extrapolation mode for selected F-Curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CONSTANT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LINEAR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MAKE_CYCLIC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CLEAR_CYCLIC'</span></code>], (optional)) – <p>Type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CONSTANT</span></code>
+Constant Extrapolation – Values on endpoint keyframes are held.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LINEAR</span></code>
+Linear Extrapolation – Straight-line slope of end segments are extended past the endpoint keyframes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAKE_CYCLIC</span></code>
+Make Cyclic (F-Modifier) – Add Cycles F-Modifier if one does not exist already.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLEAR_CYCLIC</span></code>
+Clear Cyclic (F-Modifier) – Remove Cycles F-Modifier if not needed anymore.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.fmodifier_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">fmodifier_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NULL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.fmodifier_add" title="Link to this definition"></a></dt>
+<dd><p>Add F-Modifier to the active/selected F-Curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/fmodifier_type_items.html#rna-enum-fmodifier-type-items"><span class="std std-ref">Fmodifier Type Items</span></a>, (optional)) – Type</p></li>
+<li><p><strong>only_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Active, Only add F-Modifier to active F-Curve</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.fmodifier_copy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">fmodifier_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.fmodifier_copy" title="Link to this definition"></a></dt>
+<dd><p>Copy the F-Modifier(s) of the active F-Curve</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.fmodifier_paste">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">fmodifier_paste</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.fmodifier_paste" title="Link to this definition"></a></dt>
+<dd><p>Add copied F-Modifiers to the selected F-Curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>only_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Active, Only paste F-Modifiers on active F-Curve</p></li>
+<li><p><strong>replace</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Replace Existing, Replace existing F-Modifiers, instead of just appending to the end of the existing list</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.frame_jump">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">frame_jump</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.frame_jump" title="Link to this definition"></a></dt>
+<dd><p>Place the cursor on the midpoint of selected keyframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.gaussian_smooth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">gaussian_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.33</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.gaussian_smooth" title="Link to this definition"></a></dt>
+<dd><p>Smooth the curve using a Gaussian filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, How much to blend to the default value</p></li>
+<li><p><strong>sigma</strong> (<em>float in</em><em> [</em><em>0.001</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Sigma, The shape of the gaussian distribution, lower values make it sharper</p></li>
+<li><p><strong>filter_width</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>64</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Width, How far to each side the operator will average the key values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.ghost_curves_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">ghost_curves_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.ghost_curves_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear F-Curve snapshots (Ghosts) for active Graph Editor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.ghost_curves_create">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">ghost_curves_create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.ghost_curves_create" title="Link to this definition"></a></dt>
+<dd><p>Create snapshot (Ghosts) of selected F-Curves as background aid for active Graph Editor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.handle_type">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">handle_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FREE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.handle_type" title="Link to this definition"></a></dt>
+<dd><p>Set type of handle for selected keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/keyframe_handle_type_items.html#rna-enum-keyframe-handle-type-items"><span class="std std-ref">Keyframe Handle Type Items</span></a>, (optional)) – Type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.hide" title="Link to this definition"></a></dt>
+<dd><p>Hide selected curves from Graph Editor view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected rather than selected curves</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.interpolation_type">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">interpolation_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CONSTANT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.interpolation_type" title="Link to this definition"></a></dt>
+<dd><p>Set interpolation mode for the F-Curve segments starting from the selected keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/beztriple_interpolation_mode_items.html#rna-enum-beztriple-interpolation-mode-items"><span class="std std-ref">Beztriple Interpolation Mode Items</span></a>, (optional)) – Type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.keyframe_insert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">keyframe_insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ALL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.keyframe_insert" title="Link to this definition"></a></dt>
+<dd><p>Insert keyframes for the specified channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'ALL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SEL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTIVE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR_ACTIVE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR_SEL'</span></code>], (optional)) – <p>Type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code>
+All Channels – Insert a keyframe on all visible and editable F-Curves using each curve’s current value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SEL</span></code>
+Only Selected Channels – Insert a keyframe on selected F-Curves using each curve’s current value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>
+Only Active F-Curve – Insert a keyframe on the active F-Curve using the curve’s current value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR_ACTIVE</span></code>
+Active Channels at Cursor – Insert a keyframe for the active F-Curve at the cursor point.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR_SEL</span></code>
+Selected Channels at Cursor – Insert a keyframe for selected F-Curves at the cursor point.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.keyframe_jump">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">keyframe_jump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">next</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.keyframe_jump" title="Link to this definition"></a></dt>
+<dd><p>Jump to previous/next keyframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>next</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Next Keyframe</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.keys_to_samples">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">keys_to_samples</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.keys_to_samples" title="Link to this definition"></a></dt>
+<dd><p>Convert selected channels to an uneditable set of samples to save storage space</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.match_slope">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">match_slope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.match_slope" title="Link to this definition"></a></dt>
+<dd><p>Blend selected keys to the slope of neighboring ones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, Defines which keys to use as slope and how much to blend towards them</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.mirror">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">mirror</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CFRA'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.mirror" title="Link to this definition"></a></dt>
+<dd><p>Flip selected keyframes over the selected mirror line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CFRA'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'YAXIS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'XAXIS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MARKER'</span></code>], (optional)) – <p>Type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CFRA</span></code>
+By Times Over Current Frame – Flip times of selected keyframes using the current frame as the mirror line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+By Values Over Cursor Value – Flip values of selected keyframes using the cursor value (Y/Horizontal component) as the mirror line.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YAXIS</span></code>
+By Times Over Zero Time – Flip times of selected keyframes, effectively reversing the order they appear in.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">XAXIS</span></code>
+By Values Over Zero Value – Flip values of selected keyframes (i.e. negative values become positive, and vice versa).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MARKER</span></code>
+By Times Over First Selected Marker – Flip times of selected keyframes using the first selected marker as the reference point.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.paste">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">paste</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'START'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.paste" title="Link to this definition"></a></dt>
+<dd><p>Paste keyframes from the internal clipboard for the selected channels, starting on the current frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/keyframe_paste_offset_items.html#rna-enum-keyframe-paste-offset-items"><span class="std std-ref">Keyframe Paste Offset Items</span></a>, (optional)) – Frame Offset, Paste time offset of keys</p></li>
+<li><p><strong>value_offset</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/keyframe_paste_offset_value_items.html#rna-enum-keyframe-paste-offset-value-items"><span class="std std-ref">Keyframe Paste Offset Value Items</span></a>, (optional)) – Value Offset, Paste keys with a value offset</p></li>
+<li><p><strong>merge</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/keyframe_paste_merge_items.html#rna-enum-keyframe-paste-merge-items"><span class="std std-ref">Keyframe Paste Merge Items</span></a>, (optional)) – Type, Method of merging pasted keys and existing</p></li>
+<li><p><strong>flipped</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flipped, Paste keyframes from mirrored bones if they exist</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.previewrange_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">previewrange_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.previewrange_set" title="Link to this definition"></a></dt>
+<dd><p>Set Preview Range based on range of selected keyframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.push_pull">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">push_pull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.push_pull" title="Link to this definition"></a></dt>
+<dd><p>Exaggerate or minimize the value of the selected keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, Control how far to push or pull the keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.reveal">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">reveal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.reveal" title="Link to this definition"></a></dt>
+<dd><p>Make previously hidden curves visible again in Graph Editor view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.samples_to_keys">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">samples_to_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.samples_to_keys" title="Link to this definition"></a></dt>
+<dd><p>Convert selected channels from samples to keyframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.scale_average">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">scale_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.scale_average" title="Link to this definition"></a></dt>
+<dd><p>Scale selected key values by their combined average</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scale Factor, The scale factor applied to the curve segments</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.scale_from_neighbor">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">scale_from_neighbor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">anchor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LEFT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.scale_from_neighbor" title="Link to this definition"></a></dt>
+<dd><p>Increase or decrease the value of selected keys in relationship to the neighboring one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, The factor to scale keys with</p></li>
+<li><p><strong>anchor</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LEFT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RIGHT'</span></code>], (optional)) – Reference Key, Which end of the segment to use as a reference to scale from</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_all" title="Link to this definition"></a></dt>
+<dd><p>Toggle selection of all keyframes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_curve_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_box" title="Link to this definition"></a></dt>
+<dd><p>Select all keyframes within the specified region</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>axis_range</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Axis Range</p></li>
+<li><p><strong>include_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Handles, Are handles tested individually against the selection criteria, independently from their keys. When unchecked, handles are (de)selected in unison with their keys</p></li>
+<li><p><strong>tweak</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Tweak, Operator has been activated using a click-drag event</p></li>
+<li><p><strong>use_curve_selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select Curves, Allow selecting all the keyframes of a curve by selecting the calculated F-curve</p></li>
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_circle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_curve_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_circle" title="Link to this definition"></a></dt>
+<dd><p>Select keyframe points using circle selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X</p></li>
+<li><p><strong>y</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y</p></li>
+<li><p><strong>radius</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+<li><p><strong>include_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Handles, Are handles tested individually against the selection criteria, independently from their keys. When unchecked, handles are (de)selected in unison with their keys</p></li>
+<li><p><strong>use_curve_selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select Curves, Allow selecting all the keyframes of a curve by selecting the curve itself</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_column">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'KEYS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_column" title="Link to this definition"></a></dt>
+<dd><p>Select all keyframes on the specified frame(s)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'KEYS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CFRA'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MARKERS_COLUMN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MARKERS_BETWEEN'</span></code>], (optional)) – Mode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_key_handles">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_key_handles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">left_handle_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right_handle_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'KEEP'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_key_handles" title="Link to this definition"></a></dt>
+<dd><p>For selected keyframes, select/deselect any combination of the key itself and its handles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>left_handle_action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'KEEP'</span></code>], (optional)) – <p>Left Handle, Effect on the left handle</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KEEP</span></code>
+Keep – Leave as is.</p></li>
+</ul>
+</p></li>
+<li><p><strong>right_handle_action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'KEEP'</span></code>], (optional)) – <p>Right Handle, Effect on the right handle</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KEEP</span></code>
+Keep – Leave as is.</p></li>
+</ul>
+</p></li>
+<li><p><strong>key_action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'KEEP'</span></code>], (optional)) – <p>Key, Effect on the key itself</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KEEP</span></code>
+Keep – Leave as is.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_lasso">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_lasso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_smooth_stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_curve_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_lasso" title="Link to this definition"></a></dt>
+<dd><p>Select keyframe points using lasso selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_smooth_stroke</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Stabilize Stroke, Selection lags behind mouse and follows a smoother path</p></li>
+<li><p><strong>smooth_stroke_factor</strong> (<em>float in</em><em> [</em><em>0.5</em><em>, </em><em>0.99</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Factor, Higher values gives a smoother stroke</p></li>
+<li><p><strong>smooth_stroke_radius</strong> (<em>int in</em><em> [</em><em>10</em><em>, </em><em>200</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Radius, Minimum distance from last point before selection continues</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+<li><p><strong>include_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Handles, Are handles tested individually against the selection criteria, independently from their keys. When unchecked, handles are (de)selected in unison with their keys</p></li>
+<li><p><strong>use_curve_selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select Curves, Allow selecting all the keyframes of a curve by selecting the curve itself</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_leftright">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_leftright</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CHECK'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_leftright" title="Link to this definition"></a></dt>
+<dd><p>Select keyframes to the left or the right of the current frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CHECK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LEFT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RIGHT'</span></code>], (optional)) – Mode</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend Select</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_less</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_less" title="Link to this definition"></a></dt>
+<dd><p>Deselect keyframes on ends of selection islands</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_linked" title="Link to this definition"></a></dt>
+<dd><p>Select keyframes occurring in the same F-Curves as selected ones</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">select_more</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.select_more" title="Link to this definition"></a></dt>
+<dd><p>Select keyframes beside already selected ones</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.shear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">shear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FROM_LEFT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.shear" title="Link to this definition"></a></dt>
+<dd><p>Affect the value of the keys linearly, keeping the same relationship between them using either the left or the right key as reference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shear Factor, The amount of shear to apply</p></li>
+<li><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'FROM_LEFT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FROM_RIGHT'</span></code>], (optional)) – <p>Direction, Which end of the segment to use as a reference to shear from</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM_LEFT</span></code>
+From Left – Shear the keys using the left key as reference.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FROM_RIGHT</span></code>
+From Right – Shear the keys using the right key as reference.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.smooth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.smooth" title="Link to this definition"></a></dt>
+<dd><p>Apply weighted moving means to make selected F-Curves less bumpy</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.snap">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">snap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CFRA'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.snap" title="Link to this definition"></a></dt>
+<dd><p>Snap selected keyframes to the chosen times/values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CFRA'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEAREST_FRAME'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEAREST_SECOND'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEAREST_MARKER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'HORIZONTAL'</span></code>], (optional)) – <p>Type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CFRA</span></code>
+Selection to Current Frame – Snap selected keyframes to the current frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+Selection to Cursor Value – Set values of selected keyframes to the cursor value (Y/Horizontal component).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NEAREST_FRAME</span></code>
+Selection to Nearest Frame – Snap selected keyframes to the nearest (whole) frame (use to fix accidental subframe offsets).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NEAREST_SECOND</span></code>
+Selection to Nearest Second – Snap selected keyframes to the nearest second.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NEAREST_MARKER</span></code>
+Selection to Nearest Marker – Snap selected keyframes to the nearest marker.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HORIZONTAL</span></code>
+Flatten Handles – Flatten handles for a smoother transition.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.snap_cursor_value">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">snap_cursor_value</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.snap_cursor_value" title="Link to this definition"></a></dt>
+<dd><p>Place the cursor value on the average value of selected keyframes</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.sound_to_samples">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">sound_to_samples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blender</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_movie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_sound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_archive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_btx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_alembic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_usd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blenlib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filemode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_multiview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_multiview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">low</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">high</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.005</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accumulate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_additive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_square</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sthreshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.sound_to_samples" title="Link to this definition"></a></dt>
+<dd><p>Bakes a sound wave to samples on selected channels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Path to file</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Check Existing, Check and warn on overwriting existing files</p></li>
+<li><p><strong>filter_blender</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_backup</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_image</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter image files</p></li>
+<li><p><strong>filter_movie</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter movie files</p></li>
+<li><p><strong>filter_python</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Python files</p></li>
+<li><p><strong>filter_font</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter font files</p></li>
+<li><p><strong>filter_sound</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter sound files</p></li>
+<li><p><strong>filter_text</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter text files</p></li>
+<li><p><strong>filter_archive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter archive files</p></li>
+<li><p><strong>filter_btx</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter btx files</p></li>
+<li><p><strong>filter_alembic</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Alembic files</p></li>
+<li><p><strong>filter_usd</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter USD files</p></li>
+<li><p><strong>filter_obj</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OBJ files</p></li>
+<li><p><strong>filter_volume</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OpenVDB volume files</p></li>
+<li><p><strong>filter_folder</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter folders</p></li>
+<li><p><strong>filter_blenlib</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Blender IDs</p></li>
+<li><p><strong>filemode</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>9</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File Browser Mode, The setting for the file browser mode to load a .blend file, a library or a special file</p></li>
+<li><p><strong>show_multiview</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Enable Multi-View</p></li>
+<li><p><strong>use_multiview</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Multi-View</p></li>
+<li><p><strong>display_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DEFAULT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIST_VERTICAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIST_HORIZONTAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'THUMBNAIL'</span></code>], (optional)) – <p>Display Type</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Automatically determine display type for files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_VERTICAL</span></code>
+Short List – Display files as short list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_HORIZONTAL</span></code>
+Long List – Display files as a detailed list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">THUMBNAIL</span></code>
+Thumbnails – Display files as thumbnails.</p></li>
+</ul>
+</p></li>
+<li><p><strong>sort_method</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File sorting mode</p></li>
+<li><p><strong>low</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>100000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Lowest Frequency, Cutoff frequency of a high-pass filter that is applied to the audio data</p></li>
+<li><p><strong>high</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>100000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Highest Frequency, Cutoff frequency of a low-pass filter that is applied to the audio data</p></li>
+<li><p><strong>attack</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>2</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Attack Time, Value for the envelope calculation that tells how fast the envelope can rise (the lower the value the steeper it can rise)</p></li>
+<li><p><strong>release</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>5</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Release Time, Value for the envelope calculation that tells how fast the envelope can fall (the lower the value the steeper it can fall)</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, Minimum amplitude value needed to influence the envelope</p></li>
+<li><p><strong>use_accumulate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accumulate, Only the positive differences of the envelope amplitudes are summarized to produce the output</p></li>
+<li><p><strong>use_additive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Additive, The amplitudes of the envelope are summarized (or, when Accumulate is enabled, both positive and negative differences are accumulated)</p></li>
+<li><p><strong>use_square</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Square, The output is a square curve (negative values always result in -1, and positive ones in 1)</p></li>
+<li><p><strong>sthreshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Square Threshold, Square only: all values with an absolute amplitude lower than that result in 0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.time_offset">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">time_offset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.time_offset" title="Link to this definition"></a></dt>
+<dd><p>Shifts the value of selected keys in time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame_offset</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame Offset, How far in frames to offset the animation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.view_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">view_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.view_all" title="Link to this definition"></a></dt>
+<dd><p>Reset viewable area to show full keyframe range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>include_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Handles, Include handles of keyframes when calculating extents</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.view_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">view_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.view_frame" title="Link to this definition"></a></dt>
+<dd><p>Move the view to the current frame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.graph.view_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.graph.</span></span><span class="sig-name descname"><span class="pre">view_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.graph.view_selected" title="Link to this definition"></a></dt>
+<dd><p>Reset viewable area to show selected keyframe range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>include_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Handles, Include handles of keyframes when calculating extents</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.gpencil.html" class="btn btn-neutral float-left" title="Gpencil Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.grease_pencil.html" class="btn btn-neutral float-right" title="Grease Pencil Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.graph.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.graph.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

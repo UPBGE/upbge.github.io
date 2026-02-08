@@ -1,0 +1,494 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Console Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.console.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Constraint Operators" href="bpy.ops.constraint.html" />
+    <link rel="prev" title="Collection Operators" href="bpy.ops.collection.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Console Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.autocomplete"><code class="docutils literal notranslate"><span class="pre">autocomplete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.banner"><code class="docutils literal notranslate"><span class="pre">banner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.clear"><code class="docutils literal notranslate"><span class="pre">clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.clear_line"><code class="docutils literal notranslate"><span class="pre">clear_line()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.copy"><code class="docutils literal notranslate"><span class="pre">copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.copy_as_script"><code class="docutils literal notranslate"><span class="pre">copy_as_script()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.execute"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.history_append"><code class="docutils literal notranslate"><span class="pre">history_append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.history_cycle"><code class="docutils literal notranslate"><span class="pre">history_cycle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.indent"><code class="docutils literal notranslate"><span class="pre">indent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.indent_or_autocomplete"><code class="docutils literal notranslate"><span class="pre">indent_or_autocomplete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.insert"><code class="docutils literal notranslate"><span class="pre">insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.language"><code class="docutils literal notranslate"><span class="pre">language()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.move"><code class="docutils literal notranslate"><span class="pre">move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.paste"><code class="docutils literal notranslate"><span class="pre">paste()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.scrollback_append"><code class="docutils literal notranslate"><span class="pre">scrollback_append()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.select_all"><code class="docutils literal notranslate"><span class="pre">select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.select_set"><code class="docutils literal notranslate"><span class="pre">select_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.select_word"><code class="docutils literal notranslate"><span class="pre">select_word()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.console.unindent"><code class="docutils literal notranslate"><span class="pre">unindent()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Console Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.console">
+<span id="console-operators"></span><h1>Console Operators<a class="headerlink" href="#module-bpy.ops.console" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.autocomplete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">autocomplete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.autocomplete" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the namespace up until the cursor and give a list of options or complete the name if there is only one</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/console.py#L61">startup/bl_operators/console.py:61</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.banner">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">banner</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.banner" title="Link to this definition"></a></dt>
+<dd><p>Print a message when the terminal initializes</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/console.py#L104">startup/bl_operators/console.py:104</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">scrollback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">history</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear text by type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>scrollback</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scrollback, Clear the scrollback history</p></li>
+<li><p><strong>history</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – History, Clear the command history</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.clear_line">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">clear_line</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.clear_line" title="Link to this definition"></a></dt>
+<dd><p>Clear the line and store in history</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.copy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.copy" title="Link to this definition"></a></dt>
+<dd><p>Copy selected text to clipboard</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delete</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Delete Selection, Whether to delete the selection after copying</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.copy_as_script">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">copy_as_script</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.copy_as_script" title="Link to this definition"></a></dt>
+<dd><p>Copy the console contents for use in a script</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/console.py#L82">startup/bl_operators/console.py:82</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NEXT_CHARACTER'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.delete" title="Link to this definition"></a></dt>
+<dd><p>Delete text by cursor position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NEXT_CHARACTER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PREVIOUS_CHARACTER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEXT_WORD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PREVIOUS_WORD'</span></code>], (optional)) – Type, Which part of the text to delete</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.execute">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">interactive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.execute" title="Link to this definition"></a></dt>
+<dd><p>Execute the current console line as a Python expression</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>interactive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – interactive</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/console.py#L38">startup/bl_operators/console.py:38</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.history_append">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">history_append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_character</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_duplicates</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.history_append" title="Link to this definition"></a></dt>
+<dd><p>Append history at cursor position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Text, Text to insert at the cursor position</p></li>
+<li><p><strong>current_character</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cursor, The index of the cursor</p></li>
+<li><p><strong>remove_duplicates</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Remove Duplicates, Remove duplicate items in the history</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.history_cycle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">history_cycle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.history_cycle" title="Link to this definition"></a></dt>
+<dd><p>Cycle through history</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reverse</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Reverse, Reverse cycle history</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.indent">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">indent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.indent" title="Link to this definition"></a></dt>
+<dd><p>Add 4 spaces at line beginning</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.indent_or_autocomplete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">indent_or_autocomplete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.indent_or_autocomplete" title="Link to this definition"></a></dt>
+<dd><p>Indent selected text or autocomplete</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.insert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.insert" title="Link to this definition"></a></dt>
+<dd><p>Insert text at cursor position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Text, Text to insert at the cursor position</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.language">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">language</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.language" title="Link to this definition"></a></dt>
+<dd><p>Set the current language for this console</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>language</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Language</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/console.py#L136">startup/bl_operators/console.py:136</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LINE_BEGIN'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.move" title="Link to this definition"></a></dt>
+<dd><p>Move cursor position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LINE_BEGIN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LINE_END'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PREVIOUS_CHARACTER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEXT_CHARACTER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PREVIOUS_WORD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEXT_WORD'</span></code>], (optional)) – Type, Where to move cursor to</p></li>
+<li><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select, Whether to select while moving</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.paste">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">paste</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.paste" title="Link to this definition"></a></dt>
+<dd><p>Paste text from clipboard</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Selection, Paste text selected elsewhere rather than copied (X11/Wayland only)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.scrollback_append">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">scrollback_append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OUTPUT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.scrollback_append" title="Link to this definition"></a></dt>
+<dd><p>Append scrollback text by type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Text, Text to insert at the cursor position</p></li>
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OUTPUT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INPUT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INFO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERROR'</span></code>], (optional)) – Type, Console output type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.select_all" title="Link to this definition"></a></dt>
+<dd><p>Select all the text</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.select_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">select_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.select_set" title="Link to this definition"></a></dt>
+<dd><p>Set the console selection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.select_word">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">select_word</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.select_word" title="Link to this definition"></a></dt>
+<dd><p>Select word at cursor position</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.console.unindent">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.console.</span></span><span class="sig-name descname"><span class="pre">unindent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.console.unindent" title="Link to this definition"></a></dt>
+<dd><p>Delete 4 spaces from line beginning</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.collection.html" class="btn btn-neutral float-left" title="Collection Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.constraint.html" class="btn btn-neutral float-right" title="Constraint Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.console.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.console.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

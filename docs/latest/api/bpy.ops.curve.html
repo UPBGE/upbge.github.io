@@ -1,0 +1,910 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curve Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.curve.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Curves Operators" href="bpy.ops.curves.html" />
+    <link rel="prev" title="Constraint Operators" href="bpy.ops.constraint.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Curve Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.cyclic_toggle"><code class="docutils literal notranslate"><span class="pre">cyclic_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.de_select_first"><code class="docutils literal notranslate"><span class="pre">de_select_first()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.de_select_last"><code class="docutils literal notranslate"><span class="pre">de_select_last()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.decimate"><code class="docutils literal notranslate"><span class="pre">decimate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.dissolve_verts"><code class="docutils literal notranslate"><span class="pre">dissolve_verts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.draw"><code class="docutils literal notranslate"><span class="pre">draw()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.duplicate"><code class="docutils literal notranslate"><span class="pre">duplicate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.duplicate_move"><code class="docutils literal notranslate"><span class="pre">duplicate_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.extrude"><code class="docutils literal notranslate"><span class="pre">extrude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.extrude_move"><code class="docutils literal notranslate"><span class="pre">extrude_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.handle_type_set"><code class="docutils literal notranslate"><span class="pre">handle_type_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.hide"><code class="docutils literal notranslate"><span class="pre">hide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.make_segment"><code class="docutils literal notranslate"><span class="pre">make_segment()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.match_texture_space"><code class="docutils literal notranslate"><span class="pre">match_texture_space()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.normals_make_consistent"><code class="docutils literal notranslate"><span class="pre">normals_make_consistent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.pen"><code class="docutils literal notranslate"><span class="pre">pen()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.primitive_bezier_circle_add"><code class="docutils literal notranslate"><span class="pre">primitive_bezier_circle_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.primitive_bezier_curve_add"><code class="docutils literal notranslate"><span class="pre">primitive_bezier_curve_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.primitive_nurbs_circle_add"><code class="docutils literal notranslate"><span class="pre">primitive_nurbs_circle_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.primitive_nurbs_curve_add"><code class="docutils literal notranslate"><span class="pre">primitive_nurbs_curve_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.primitive_nurbs_path_add"><code class="docutils literal notranslate"><span class="pre">primitive_nurbs_path_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.radius_set"><code class="docutils literal notranslate"><span class="pre">radius_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.reveal"><code class="docutils literal notranslate"><span class="pre">reveal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_all"><code class="docutils literal notranslate"><span class="pre">select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_less"><code class="docutils literal notranslate"><span class="pre">select_less()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_linked"><code class="docutils literal notranslate"><span class="pre">select_linked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_linked_pick"><code class="docutils literal notranslate"><span class="pre">select_linked_pick()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_more"><code class="docutils literal notranslate"><span class="pre">select_more()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_next"><code class="docutils literal notranslate"><span class="pre">select_next()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_nth"><code class="docutils literal notranslate"><span class="pre">select_nth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_previous"><code class="docutils literal notranslate"><span class="pre">select_previous()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_random"><code class="docutils literal notranslate"><span class="pre">select_random()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_row"><code class="docutils literal notranslate"><span class="pre">select_row()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.select_similar"><code class="docutils literal notranslate"><span class="pre">select_similar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.separate"><code class="docutils literal notranslate"><span class="pre">separate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.shade_flat"><code class="docutils literal notranslate"><span class="pre">shade_flat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.shade_smooth"><code class="docutils literal notranslate"><span class="pre">shade_smooth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.shortest_path_pick"><code class="docutils literal notranslate"><span class="pre">shortest_path_pick()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.smooth"><code class="docutils literal notranslate"><span class="pre">smooth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.smooth_radius"><code class="docutils literal notranslate"><span class="pre">smooth_radius()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.smooth_tilt"><code class="docutils literal notranslate"><span class="pre">smooth_tilt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.smooth_weight"><code class="docutils literal notranslate"><span class="pre">smooth_weight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.spin"><code class="docutils literal notranslate"><span class="pre">spin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.spline_type_set"><code class="docutils literal notranslate"><span class="pre">spline_type_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.spline_weight_set"><code class="docutils literal notranslate"><span class="pre">spline_weight_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.split"><code class="docutils literal notranslate"><span class="pre">split()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.subdivide"><code class="docutils literal notranslate"><span class="pre">subdivide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.switch_direction"><code class="docutils literal notranslate"><span class="pre">switch_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.tilt_clear"><code class="docutils literal notranslate"><span class="pre">tilt_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.curve.vertex_add"><code class="docutils literal notranslate"><span class="pre">vertex_add()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Curve Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.curve">
+<span id="curve-operators"></span><h1>Curve Operators<a class="headerlink" href="#module-bpy.ops.curve" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.cyclic_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">cyclic_toggle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CYCLIC_U'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.cyclic_toggle" title="Link to this definition"></a></dt>
+<dd><p>Make active spline closed/opened loop</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CYCLIC_U'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CYCLIC_V'</span></code>], (optional)) – Direction, Direction to make surface cyclic in</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.de_select_first">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">de_select_first</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.de_select_first" title="Link to this definition"></a></dt>
+<dd><p>(De)select first of visible part of each NURBS</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.de_select_last">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">de_select_last</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.de_select_last" title="Link to this definition"></a></dt>
+<dd><p>(De)select last of visible part of each NURBS</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.decimate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">decimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.decimate" title="Link to this definition"></a></dt>
+<dd><p>Simplify selected curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ratio</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Ratio</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VERT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.delete" title="Link to this definition"></a></dt>
+<dd><p>Delete selected control points or segments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VERT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SEGMENT'</span></code>], (optional)) – Type, Which elements to delete</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.dissolve_verts">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">dissolve_verts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.dissolve_verts" title="Link to this definition"></a></dt>
+<dd><p>Delete selected control points, correcting surrounding handles</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.draw">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">error_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'REFIT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">corner_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.22173</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cyclic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.draw" title="Link to this definition"></a></dt>
+<dd><p>Draw a freehand spline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>error_threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Error, Error distance threshold (in object units)</p></li>
+<li><p><strong>fit_method</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/curve_fit_method_items.html#rna-enum-curve-fit-method-items"><span class="std std-ref">Curve Fit Method Items</span></a>, (optional)) – Fit Method</p></li>
+<li><p><strong>corner_angle</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>3.14159</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Corner Angle</p></li>
+<li><p><strong>use_cyclic</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cyclic</p></li>
+<li><p><strong>stroke</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorStrokeElement</span></code>, (optional)) – Stroke</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.duplicate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">duplicate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.duplicate" title="Link to this definition"></a></dt>
+<dd><p>Duplicate selected control points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.duplicate_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">duplicate_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">CURVE_OT_duplicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.duplicate_move" title="Link to this definition"></a></dt>
+<dd><p>Duplicate curve and move</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CURVE_OT_duplicate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">CURVE_OT_duplicate</span></code>, (optional)) – Duplicate Curve, Duplicate selected control points</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.extrude">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">extrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TRANSLATION'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.extrude" title="Link to this definition"></a></dt>
+<dd><p>Extrude selected control point(s)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/transform_mode_type_items.html#rna-enum-transform-mode-type-items"><span class="std std-ref">Transform Mode Type Items</span></a>, (optional)) – Mode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.extrude_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">extrude_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">CURVE_OT_extrude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.extrude_move" title="Link to this definition"></a></dt>
+<dd><p>Extrude curve and move result</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CURVE_OT_extrude</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">CURVE_OT_extrude</span></code>, (optional)) – Extrude, Extrude selected control point(s)</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.handle_type_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">handle_type_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTOMATIC'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.handle_type_set" title="Link to this definition"></a></dt>
+<dd><p>Set type of handles for selected control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'AUTOMATIC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VECTOR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ALIGNED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FREE_ALIGN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOGGLE_FREE_ALIGN'</span></code>], (optional)) – Type, Spline type</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.hide" title="Link to this definition"></a></dt>
+<dd><p>Hide (un)selected control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected rather than selected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.make_segment">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">make_segment</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.make_segment" title="Link to this definition"></a></dt>
+<dd><p>Join two curves by their selected ends</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.match_texture_space">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">match_texture_space</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.match_texture_space" title="Link to this definition"></a></dt>
+<dd><p>Match texture space to object’s bounding box</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.normals_make_consistent">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">normals_make_consistent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">calc_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.normals_make_consistent" title="Link to this definition"></a></dt>
+<dd><p>Recalculate the direction of selected handles</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>calc_length</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Length, Recalculate handle length</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.pen">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">pen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toggle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_passthrough</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrude_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extrude_handle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VECTOR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">delete_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">insert_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">select_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">move_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_spline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">close_spline_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OFF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toggle_vector</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cycle_handle_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.pen" title="Link to this definition"></a></dt>
+<dd><p>Construct and edit splines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+<li><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Remove from selection</p></li>
+<li><p><strong>toggle</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Toggle Selection, Toggle the selection</p></li>
+<li><p><strong>deselect_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect On Nothing, Deselect all when nothing under the cursor</p></li>
+<li><p><strong>select_passthrough</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Select Unselected, Ignore the select action when the element is already selected</p></li>
+<li><p><strong>extrude_point</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extrude Point, Add a point connected to the last selected point</p></li>
+<li><p><strong>extrude_handle</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'AUTO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VECTOR'</span></code>], (optional)) – Extrude Handle Type, Type of the extruded handle</p></li>
+<li><p><strong>delete_point</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Delete Point, Delete an existing point</p></li>
+<li><p><strong>insert_point</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Insert Point, Insert Point into a curve segment</p></li>
+<li><p><strong>move_segment</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Move Segment, Delete an existing point</p></li>
+<li><p><strong>select_point</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select Point, Select a point or its handles</p></li>
+<li><p><strong>move_point</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Move Point, Move a point or its handles</p></li>
+<li><p><strong>close_spline</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Close Spline, Make a spline cyclic by clicking endpoints</p></li>
+<li><p><strong>close_spline_method</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OFF'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ON_PRESS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ON_CLICK'</span></code>], (optional)) – <p>Close Spline Method, The condition for close spline to activate</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code>
+None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ON_PRESS</span></code>
+On Press – Move handles after closing the spline.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ON_CLICK</span></code>
+On Click – Spline closes on release if not dragged.</p></li>
+</ul>
+</p></li>
+<li><p><strong>toggle_vector</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Toggle Vector, Toggle between Vector and Auto handles</p></li>
+<li><p><strong>cycle_handle_type</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cycle Handle Type, Cycle between all four handle types</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.primitive_bezier_circle_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">primitive_bezier_circle_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter_editmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORLD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.primitive_bezier_circle_add" title="Link to this definition"></a></dt>
+<dd><p>Construct a Bézier Circle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>enter_editmode</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Enter Edit Mode, Enter edit mode when adding this object</p></li>
+<li><p><strong>align</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'WORLD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR'</span></code>], (optional)) – <p>Align, The alignment of the new object</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORLD</span></code>
+World – Align the new object to the world.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Align the new object to the view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Use the 3D cursor orientation for the new object.</p></li>
+</ul>
+</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Location, Location for the newly added object</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="mathutils.html#mathutils.Euler" title="mathutils.Euler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Euler</span></code></a> rotation of 3 items in [-inf, inf], (optional)) – Rotation, Rotation for the newly added object</p></li>
+<li><p><strong>scale</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Scale, Scale for the newly added object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.primitive_bezier_curve_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">primitive_bezier_curve_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter_editmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORLD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.primitive_bezier_curve_add" title="Link to this definition"></a></dt>
+<dd><p>Construct a Bézier Curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>enter_editmode</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Enter Edit Mode, Enter edit mode when adding this object</p></li>
+<li><p><strong>align</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'WORLD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR'</span></code>], (optional)) – <p>Align, The alignment of the new object</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORLD</span></code>
+World – Align the new object to the world.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Align the new object to the view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Use the 3D cursor orientation for the new object.</p></li>
+</ul>
+</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Location, Location for the newly added object</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="mathutils.html#mathutils.Euler" title="mathutils.Euler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Euler</span></code></a> rotation of 3 items in [-inf, inf], (optional)) – Rotation, Rotation for the newly added object</p></li>
+<li><p><strong>scale</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Scale, Scale for the newly added object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.primitive_nurbs_circle_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">primitive_nurbs_circle_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter_editmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORLD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.primitive_nurbs_circle_add" title="Link to this definition"></a></dt>
+<dd><p>Construct a Nurbs Circle</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>enter_editmode</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Enter Edit Mode, Enter edit mode when adding this object</p></li>
+<li><p><strong>align</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'WORLD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR'</span></code>], (optional)) – <p>Align, The alignment of the new object</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORLD</span></code>
+World – Align the new object to the world.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Align the new object to the view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Use the 3D cursor orientation for the new object.</p></li>
+</ul>
+</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Location, Location for the newly added object</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="mathutils.html#mathutils.Euler" title="mathutils.Euler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Euler</span></code></a> rotation of 3 items in [-inf, inf], (optional)) – Rotation, Rotation for the newly added object</p></li>
+<li><p><strong>scale</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Scale, Scale for the newly added object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.primitive_nurbs_curve_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">primitive_nurbs_curve_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter_editmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORLD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.primitive_nurbs_curve_add" title="Link to this definition"></a></dt>
+<dd><p>Construct a Nurbs Curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>enter_editmode</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Enter Edit Mode, Enter edit mode when adding this object</p></li>
+<li><p><strong>align</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'WORLD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR'</span></code>], (optional)) – <p>Align, The alignment of the new object</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORLD</span></code>
+World – Align the new object to the world.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Align the new object to the view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Use the 3D cursor orientation for the new object.</p></li>
+</ul>
+</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Location, Location for the newly added object</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="mathutils.html#mathutils.Euler" title="mathutils.Euler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Euler</span></code></a> rotation of 3 items in [-inf, inf], (optional)) – Rotation, Rotation for the newly added object</p></li>
+<li><p><strong>scale</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Scale, Scale for the newly added object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.primitive_nurbs_path_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">primitive_nurbs_path_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enter_editmode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WORLD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.primitive_nurbs_path_add" title="Link to this definition"></a></dt>
+<dd><p>Construct a Path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>radius</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>enter_editmode</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Enter Edit Mode, Enter edit mode when adding this object</p></li>
+<li><p><strong>align</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'WORLD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR'</span></code>], (optional)) – <p>Align, The alignment of the new object</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORLD</span></code>
+World – Align the new object to the world.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Align the new object to the view.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CURSOR</span></code>
+3D Cursor – Use the 3D cursor orientation for the new object.</p></li>
+</ul>
+</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Location, Location for the newly added object</p></li>
+<li><p><strong>rotation</strong> (<a class="reference internal" href="mathutils.html#mathutils.Euler" title="mathutils.Euler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Euler</span></code></a> rotation of 3 items in [-inf, inf], (optional)) – Rotation, Rotation for the newly added object</p></li>
+<li><p><strong>scale</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Scale, Scale for the newly added object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.radius_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">radius_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.radius_set" title="Link to this definition"></a></dt>
+<dd><p>Set per-point radius which is used for bevel tapering</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>radius</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.reveal">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">reveal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.reveal" title="Link to this definition"></a></dt>
+<dd><p>Reveal hidden control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_all" title="Link to this definition"></a></dt>
+<dd><p>(De)select all control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_less</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_less" title="Link to this definition"></a></dt>
+<dd><p>Deselect control points at the boundary of each selection region</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_linked" title="Link to this definition"></a></dt>
+<dd><p>Select all control points linked to the current selection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_linked_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_linked_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_linked_pick" title="Link to this definition"></a></dt>
+<dd><p>Select all control points linked to already selected ones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Deselect linked control points rather than selecting them</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_more</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_more" title="Link to this definition"></a></dt>
+<dd><p>Select control points at the boundary of each selection region</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_next">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_next" title="Link to this definition"></a></dt>
+<dd><p>Select control points following already selected ones along the curves</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_nth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_nth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">skip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_nth" title="Link to this definition"></a></dt>
+<dd><p>Deselect every Nth point starting from the active one</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>skip</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselected, Number of deselected elements in the repetitive sequence</p></li>
+<li><p><strong>nth</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Selected, Number of selected elements in the repetitive sequence</p></li>
+<li><p><strong>offset</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset, Offset from the starting point</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_previous">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_previous</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_previous" title="Link to this definition"></a></dt>
+<dd><p>Select control points preceding already selected ones along the curves</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_random">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_random" title="Link to this definition"></a></dt>
+<dd><p>Randomly select some control points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ratio</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Ratio, Portion of items to select randomly</p></li>
+<li><p><strong>seed</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Random Seed, Seed for the random number generator</p></li>
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_row">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_row</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_row" title="Link to this definition"></a></dt>
+<dd><p>Select a row of control points including active one. Successive use on the same point switches between U/V directions</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.select_similar">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">select_similar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WEIGHT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compare</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EQUAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.select_similar" title="Link to this definition"></a></dt>
+<dd><p>Select similar curve points by property type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TYPE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RADIUS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WEIGHT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DIRECTION'</span></code>], (optional)) – Type</p></li>
+<li><p><strong>compare</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'EQUAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GREATER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LESS'</span></code>], (optional)) – Compare</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.separate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">separate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.separate" title="Link to this definition"></a></dt>
+<dd><p>Separate selected points from connected unselected points into a new object</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.shade_flat">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">shade_flat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.shade_flat" title="Link to this definition"></a></dt>
+<dd><p>Set shading to flat</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.shade_smooth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">shade_smooth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.shade_smooth" title="Link to this definition"></a></dt>
+<dd><p>Set shading to smooth</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.shortest_path_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">shortest_path_pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.shortest_path_pick" title="Link to this definition"></a></dt>
+<dd><p>Select shortest path between two selections</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.smooth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">smooth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.smooth" title="Link to this definition"></a></dt>
+<dd><p>Flatten angles of selected points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.smooth_radius">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">smooth_radius</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.smooth_radius" title="Link to this definition"></a></dt>
+<dd><p>Interpolate radii of selected points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.smooth_tilt">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">smooth_tilt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.smooth_tilt" title="Link to this definition"></a></dt>
+<dd><p>Interpolate tilt of selected points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.smooth_weight">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">smooth_weight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.smooth_weight" title="Link to this definition"></a></dt>
+<dd><p>Interpolate weight of selected points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.spin">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">spin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.spin" title="Link to this definition"></a></dt>
+<dd><p>Extrude selected boundary row around pivot point and current view axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>center</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center, Center in global view space</p></li>
+<li><p><strong>axis</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-1, 1], (optional)) – Axis, Axis in global view space</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.spline_type_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">spline_type_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POLY'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_handles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.spline_type_set" title="Link to this definition"></a></dt>
+<dd><p>Set type of active spline</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'POLY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BEZIER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NURBS'</span></code>], (optional)) – Type, Spline type</p></li>
+<li><p><strong>use_handles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Handles, Use handles when converting Bézier curves into polygons</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.spline_weight_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">spline_weight_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.spline_weight_set" title="Link to this definition"></a></dt>
+<dd><p>Set softbody goal weight for selected points</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>weight</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Weight</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.split">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.split" title="Link to this definition"></a></dt>
+<dd><p>Split off selected points from connected unselected points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.subdivide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">subdivide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_cuts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.subdivide" title="Link to this definition"></a></dt>
+<dd><p>Subdivide selected segments</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_cuts</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>1000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Number of Cuts</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.switch_direction">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">switch_direction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.switch_direction" title="Link to this definition"></a></dt>
+<dd><p>Switch direction of selected splines</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.tilt_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">tilt_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.tilt_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the tilt of selected control points</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.curve.vertex_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.curve.</span></span><span class="sig-name descname"><span class="pre">vertex_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.curve.vertex_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new control point (linked to only selected end-curve one, if any)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Location, Location to add new vertex at</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.constraint.html" class="btn btn-neutral float-left" title="Constraint Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.curves.html" class="btn btn-neutral float-right" title="Curves Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.curve.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.curve.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

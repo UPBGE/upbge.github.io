@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. Camera Movement &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme_overrides.css?v=523733c9" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="2. Player Movement" href="player_movement.html" />
+    <link rel="prev" title="Preparation" href="preparation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introducing_logic_bricks/index.html">Introducing Logic Bricks</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Introducing Logic Nodes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../moving_cube.html">Moving A Cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../first_person_shooter.html">First Person Shooter</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">2D Side Scroller</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introducing_python_scripting/index.html">Introducing Python Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introducing_python_components/index.html">Introducing Python Components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logic_bricks/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python_scripting/index.html">Python Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datablocks/index.html">Data-Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deployment/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute/index.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Tutorials</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Introducing Logic Nodes</a></li>
+          <li class="breadcrumb-item"><a href="index.html">2D Side Scroller</a></li>
+      <li class="breadcrumb-item active">1. Camera Movement</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/manual/tutorials/introducing_logic_nodes/2d_side_scroller/camera_movement.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="camera-movement">
+<span id="d-scroller-camera-movement"></span><h1>1. Camera Movement<a class="headerlink" href="#camera-movement" title="Link to this heading"></a></h1>
+<p>In 2d scroller games, camera is usually showing player from the side, and it moves perpendicularly together with the player. If you press <kbd class="kbd docutils literal notranslate">Numpad</kbd> <kbd class="kbd docutils literal notranslate">0</kbd> (zero - camera perspective), or <kbd class="kbd docutils literal notranslate">Numpad</kbd> <kbd class="kbd docutils literal notranslate">3</kbd>, you should see player from same perspective (press <kbd class="kbd docutils literal notranslate">Numpad</kbd> <kbd class="kbd docutils literal notranslate">,</kbd> (comma) to focus the player).</p>
+<ul class="simple">
+<li><p>Add a new logic tree, name it ‘player_2d_camera’, and set ‘Fake User’.</p></li>
+<li><p>Next add, from left to right, <span class="ln">Get World Position</span>, set ‘player’ as Object - it will get player’s position, so camera knows where to go, following the player.</p></li>
+<li><p>Add <span class="ln">Separate XYZ</span> vector node, to separate 3D vector into separate XYZ coordinates from ‘World Position’; connect the sockets.</p></li>
+<li><p>Under above node, add 2 <span class="ln">Float</span> nodes - one will set camera distance from player, the other will set following speed. Select both ‘Float’ nodes, hit <kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">J</kbd> - this will group both nodes into a frame, for better organization. Rename top node to ‘camera distance’, and set value to i.e. <code class="docutils literal notranslate"><span class="pre">30.0</span></code>; rename bottom one to ‘slow camera’, set value to i.e. <code class="docutils literal notranslate"><span class="pre">0.15</span></code> (with node selected - side <span class="menuselection">N-panel &gt; Node &gt; Label</span>). Also, with frame selected, rename it i.e. into ‘camera custom’, and also change frame color (below ‘Label’).</p></li>
+<li><p>Next add <span class="ln">Math</span> node, set operation to <code class="docutils literal notranslate"><span class="pre">Add</span></code>, connect <code class="docutils literal notranslate"><span class="pre">X</span></code> coordinate from <span class="ln">Separate XYZ</span> into <code class="docutils literal notranslate"><span class="pre">A</span></code> socket, and <code class="docutils literal notranslate"><span class="pre">Float</span></code> output socket from <span class="ln">camera distance</span> into <code class="docutils literal notranslate"><span class="pre">B</span></code> socket. This will get player’s <code class="docutils literal notranslate"><span class="pre">X</span></code> position (horizontal) and set camera’s <code class="docutils literal notranslate"><span class="pre">X</span></code> position accordingly.</p></li>
+<li><p>Add another <span class="ln">Math</span> node under the first one, connect <code class="docutils literal notranslate"><span class="pre">Z</span></code> coordinate from <span class="ln">Separate XYZ</span> into <code class="docutils literal notranslate"><span class="pre">A</span></code> socket, and set <code class="docutils literal notranslate"><span class="pre">B</span></code> value to <code class="docutils literal notranslate"><span class="pre">1.0</span></code>.</p></li>
+<li><p>Add <span class="ln">Combine XYZ</span> node, connect top <span class="ln">Math</span> node into <code class="docutils literal notranslate"><span class="pre">X</span></code>, bottom <span class="ln">Math</span> node into <code class="docutils literal notranslate"><span class="pre">Z</span></code>, and <code class="docutils literal notranslate"><span class="pre">Y</span></code> socket from <span class="ln">Separate XYZ</span> directly into <code class="docutils literal notranslate"><span class="pre">Y</span></code> socket.</p></li>
+<li><p>Above first <span class="ln">Math</span> node, add <span class="ln">Active Camera</span>, next another <span class="ln">Get World Position</span> above <span class="ln">Combine XYZ</span>, and connect <code class="docutils literal notranslate"><span class="pre">Camera</span></code> as Object.</p></li>
+<li><p>Next add <span class="ln">Vector Math</span> node, set ‘Operation’ to <code class="docutils literal notranslate"><span class="pre">Add</span></code>, connect <span class="ln">Get World Position</span> into top <code class="docutils literal notranslate"><span class="pre">Vector</span> <span class="pre">1</span></code> socket, <span class="ln">Combine XYZ</span> into <code class="docutils literal notranslate"><span class="pre">Vector</span> <span class="pre">2</span></code> socket.</p></li>
+<li><p>Next add another <span class="ln">Vector Math</span>, set ‘Operation’ to <code class="docutils literal notranslate"><span class="pre">Scale</span></code>, connect previous node into <code class="docutils literal notranslate"><span class="pre">Vector</span> <span class="pre">1</span></code>, and <span class="ln">slow follow</span> into <code class="docutils literal notranslate"><span class="pre">Scale</span></code>.</p></li>
+<li><p>Add <span class="ln">On Update</span> above last node, next <span class="ln">Set World Position</span> node; connect <span class="ln">On Update</span> into <code class="docutils literal notranslate"><span class="pre">Condition</span></code> socket, <span class="ln">Active Camera</span> as Object, and last <span class="ln">Vector Math</span> into <code class="docutils literal notranslate"><span class="pre">Value</span></code> socket.</p></li>
+<li><p>With ‘player’ selected, <span class="menuselection">Apply To Selected</span>.</p></li>
+</ul>
+<p>Done.</p>
+<figure class="align-center" id="id1" style="width: 100%">
+<img alt="../../../../_images/ln-2d-player_camera.png" src="../../../../_images/ln-2d-player_camera.png" />
+<figcaption>
+<p><span class="caption-text">2D player camera nodes setup</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="preparation.html" class="btn btn-neutral float-left" title="Preparation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="player_movement.html" class="btn btn-neutral float-right" title="2. Player Movement" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

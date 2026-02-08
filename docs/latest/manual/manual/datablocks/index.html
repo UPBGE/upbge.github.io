@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data-Blocks &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme_overrides.css?v=523733c9" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deployment" href="../deployment/index.html" />
+    <link rel="prev" title="World Physics" href="../physics/world.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_bricks/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_scripting/index.html">Python Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/index.html">Physics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data-Blocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#data-block-types">Data-Block Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#object-related-datablocks">Object-related Datablocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-related-datablocks">File-related Datablocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-datablocks">Other Datablocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#life-time">Life Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#protected">Protected</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sharing">Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-single-user">Making Single User</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#removing-data-blocks">Removing Data-Blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data-Blocks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/manual/datablocks/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-blocks">
+<span id="dbl-data-blocks-index"></span><h1>Data-Blocks<a class="headerlink" href="#data-blocks" title="Link to this heading"></a></h1>
+<p>This page is based on Blender Manual <a class="reference external" href="https://docs.blender.org/manual/en/latest/files/data_blocks.html">Data-blocks</a>. Please see the link for additional details.</p>
+<hr class="docutils" />
+<p>The base unit for any Blender project is the data-block. Examples of data-blocks include <em>mesh</em>, <em>object</em>, <em>material</em>, <em>texture</em>, <em>node tree</em>, <em>scene</em>, <em>text</em>, <em>brush</em>, and even <em>workspaces</em>.</p>
+<figure class="align-right" id="id1" style="width: 35%">
+<img alt="../../_images/dbl-outliner-blender_file_mode.png" src="../../_images/dbl-outliner-blender_file_mode.png" />
+<figcaption>
+<p><span class="caption-text">Blender File mode in Outliner</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>A data-block is a generic abstraction of very different kinds of data, which features a common set of basic features, properties and behaviors.</p>
+<p>Some common characteristics:</p>
+<ul class="simple">
+<li><p>They are the primary contents of the blend-file.</p></li>
+<li><p>They can reference each other, for reuse and instancing (child/parent, object/object-data, materials/images, in modifiers or constraints too …).</p></li>
+<li><p>Their names are unique within a blend-file, for a given type.</p></li>
+<li><p>They can be added/removed/edited/duplicated.</p></li>
+<li><p>They can be linked between files (only enabled for a limited set of data-blocks).</p></li>
+<li><p>They can have their own animation data.</p></li>
+<li><p>They can have custom properties.</p></li>
+</ul>
+<p>User will typically interact with the higher level data types (objects, meshes etc.). When doing more complex projects, managing data-blocks becomes more important, especially when inter-linking blend-files. The main editor for that is the <a class="reference internal" href="../tutorials/getting_started/blender_basic.html#gs-outliner-editor"><span class="std std-ref">Outliner Editor</span></a>.</p>
+<figure class="align-right" id="id2" style="width: 35%">
+<img alt="../../_images/dbl-types-icons.png" src="../../_images/dbl-types-icons.png" />
+<figcaption>
+<p><span class="caption-text">Data-block types with their icons</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Not all data in Blender is a data-block; i.e. bones, sequence strips or vertex groups are not - they belong to armature, scene and mesh types respectively.</p>
+<section id="data-block-types">
+<span id="dbl-data-block-types"></span><h2>Data-Block Types<a class="headerlink" href="#data-block-types" title="Link to this heading"></a></h2>
+<p>For reference, here is a table of data-block types stored in blend-files.</p>
+<dl class="simple">
+<dt>Link</dt><dd><p>Library Linking, supports being linked into other blend-files.</p>
+</dd>
+<dt>Pack</dt><dd><p>File Packing, supports file contents being packed into the blend-file (<strong>not</strong> applicable for most data-blocks which have no file reference).</p>
+</dd>
+</dl>
+<div class="lead docutils container">
+</div>
+<p>A table-representation of data-blocks supported in UPBGE.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">scroll</kbd> over the table if text is cut/hidden.</p>
+</div>
+<section id="object-related-datablocks">
+<h3>Object-related Datablocks<a class="headerlink" href="#object-related-datablocks" title="Link to this heading"></a></h3>
+<table class="valign docutils align-default">
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 6.1%" />
+<col style="width: 6.1%" />
+<col style="width: 60.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Link</p></th>
+<th class="head"><p>Pack</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Armature</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Skeleton used to deform meshes; used as data of armature objects, and by the Armature Modifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>Camera</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Used as data by camera objects</p></td>
+</tr>
+<tr class="row-even"><td><p>Collection</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Group and organize objects in scenes; used to instance objects, and in library linking</p></td>
+</tr>
+<tr class="row-odd"><td><p>Empty</p></td>
+<td><p>—</p></td>
+<td><p>—</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Light</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Used as object data by light objects</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mesh</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Geometry made of vertices/edges/faces; used as data of mesh objects</p></td>
+</tr>
+<tr class="row-even"><td><p>Object</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>An entity in the scene with location, scale, rotation; used by scenes &amp; collections</p></td>
+</tr>
+<tr class="row-odd"><td><p>Text</p></td>
+<td><p>✓</p></td>
+<td><p>✗</p></td>
+<td><p>Text data; used by Python scripts and OSL shaders</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="file-related-datablocks">
+<h3>File-related Datablocks<a class="headerlink" href="#file-related-datablocks" title="Link to this heading"></a></h3>
+<table class="valign docutils align-default">
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 6.1%" />
+<col style="width: 6.1%" />
+<col style="width: 60.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Link</p></th>
+<th class="head"><p>Pack</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Image</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>Image files; used by shader nodes and textures</p></td>
+</tr>
+<tr class="row-odd"><td><p>Library</p></td>
+<td><p>✗</p></td>
+<td><p>✓</p></td>
+<td><p>References to an external blend-file; access from the Outliner’s <em>Blender File</em> view</p></td>
+</tr>
+<tr class="row-even"><td><p>Sounds</p></td>
+<td><p>✓</p></td>
+<td><p>✓</p></td>
+<td><p>Reference to sound files; used as data of speaker objects</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other-datablocks">
+<h3>Other Datablocks<a class="headerlink" href="#other-datablocks" title="Link to this heading"></a></h3>
+<table class="valign docutils align-default">
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 6.1%" />
+<col style="width: 6.1%" />
+<col style="width: 60.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Link</p></th>
+<th class="head"><p>Pack</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Action</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Stores animation F-Curves; used as data-block animation data, and the Nonlinear Animation editor</p></td>
+</tr>
+<tr class="row-odd"><td><p>Material</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Set shading and texturing render properties; used by objects, meshes &amp; curves</p></td>
+</tr>
+<tr class="row-even"><td><p>Scene</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Primary store of all data displayed and animated; used as top-level storage for objects &amp; animation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Texture</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>2D/3D textures; used by brushes and modifiers</p></td>
+</tr>
+<tr class="row-even"><td><p>World</p></td>
+<td><p>✓</p></td>
+<td><p>—</p></td>
+<td><p>Define global render environment settings</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="life-time">
+<span id="dbl-life-time"></span><h2>Life Time<a class="headerlink" href="#life-time" title="Link to this heading"></a></h2>
+<p>Every data-block has its usage counted (reference count) - when there is more than one, you can see the number of current users of a data-block to the right of its name in the interface. Blender follows the general rule that unused data is eventually removed.</p>
+<p>Since it is common to add and remove a lot of data while working, this has the advantage of not having to manually manage every single data-block. This works by skipping zero user data-blocks when writing blend-files.</p>
+<figure class="align-right" id="id3" style="width: 50%">
+<img alt="../../_images/dbl-zero_fake_user.png" src="../../_images/dbl-zero_fake_user.png" />
+<figcaption>
+<p><span class="caption-text">Protected (blue shield) data-block</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="protected">
+<span id="dbl-protected"></span><h3>Protected<a class="headerlink" href="#protected" title="Link to this heading"></a></h3>
+<p>Since zero user data-blocks are not saved, there are times when you want to force the data to be kept irrespective of its users.</p>
+<p>If you are building a blend-file to serve as a library of assets that you intend to link to and from other files, you will need to make sure that they do not accidentally get deleted from the library file.</p>
+<p>To protect a data-block, use the button with the shield icon next to its name. The data-block will then never be silently deleted by Blender, but you can still manually remove it if needed.</p>
+</section>
+</section>
+<section id="sharing">
+<h2>Sharing<a class="headerlink" href="#sharing" title="Link to this heading"></a></h2>
+<p>Data-blocks can be shared among other data-blocks.</p>
+<p>Examples where sharing data is common:</p>
+<ul class="simple">
+<li><p>Sharing textures among materials.</p></li>
+<li><p>Sharing meshes between objects (instances).</p></li>
+<li><p>Sharing animated actions between objects, for example to make all the lights dim together.</p></li>
+</ul>
+<p>You can also share data-blocks between files.</p>
+</section>
+<section id="making-single-user">
+<span id="dbl-making-single-user"></span><h2>Making Single User<a class="headerlink" href="#making-single-user" title="Link to this heading"></a></h2>
+<p>When a data-block is shared between several users, you can make a copy of it for a given user. To do so, click on the user count button to the right of its name (number <code class="docutils literal notranslate"><span class="pre">43</span></code> in above image). This will duplicate that data-block and assign the newly created copy to that usage only.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Objects have a set of more advanced actions to become single-user.</p>
+</div>
+</section>
+<section id="removing-data-blocks">
+<h2>Removing Data-Blocks<a class="headerlink" href="#removing-data-blocks" title="Link to this heading"></a></h2>
+<p>As covered in <a class="reference internal" href="#life-time">Life Time</a>, data-blocks are typically removed when they are no longer used. They can also be manually <em>unlinked</em> or <em>deleted</em>.</p>
+<p>Unlinking a data-block means that its user won’t use it anymore. This can be achieved by clicking on the <span class="menuselection">X</span> icon next to a data-block’s name (see above image). If you unlink a data-block from all of its users, it will eventually be deleted by Blender as described above (unless it is a protected one).</p>
+<p>Deleting a data-block directly erases it from the blend-file, automatically unlinking it from all of its users. This can be achieved by <kbd class="kbd docutils literal notranslate">Shift</kbd>-<kbd class="kbd docutils literal notranslate">LMB</kbd> on the <span class="menuselection">X</span> icon next to its name.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Deleting some data-blocks can lead to deletion of some of its users, which would become invalid without them. The main example is that object-data deletion (like mesh, curve, camera …) will also delete all objects using it.</p>
+</div>
+<p>Those two operations are also available in the context menu when <kbd class="kbd docutils literal notranslate">RMB</kbd>-clicking on a data-block in the <em>Outliner</em>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../physics/world.html" class="btn btn-neutral float-left" title="World Physics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../deployment/index.html" class="btn btn-neutral float-right" title="Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

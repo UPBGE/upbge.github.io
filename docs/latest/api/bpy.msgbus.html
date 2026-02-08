@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Message Bus (bpy.msgbus) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.msgbus.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Operators (bpy.ops)" href="bpy.ops.html" />
+    <link rel="prev" title="Data Access (bpy.data)" href="bpy.data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Message Bus (bpy.msgbus)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-use">Example Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.msgbus.clear_by_owner"><code class="docutils literal notranslate"><span class="pre">clear_by_owner()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.msgbus.publish_rna"><code class="docutils literal notranslate"><span class="pre">publish_rna()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.msgbus.subscribe_rna"><code class="docutils literal notranslate"><span class="pre">subscribe_rna()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Message Bus (bpy.msgbus)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.msgbus">
+<span id="message-bus-bpy-msgbus"></span><h1>Message Bus (bpy.msgbus)<a class="headerlink" href="#module-bpy.msgbus" title="Link to this heading"></a></h1>
+<p>The message bus system can be used to receive notifications when properties of
+Blender data-blocks are changed via the data API.</p>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h2>
+<p>The message bus system is triggered by updates via the RNA system. This means
+that the following updates will result in a notification on the message bus:</p>
+<ul class="simple">
+<li><p>Changes via the Python API, for example <code class="docutils literal notranslate"><span class="pre">some_object.location.x</span> <span class="pre">+=</span> <span class="pre">3</span></code>.</p></li>
+<li><p>Changes via the sliders, fields, and buttons in the user interface.</p></li>
+</ul>
+<p>The following updates do <strong>not</strong> trigger message bus notifications:</p>
+<ul class="simple">
+<li><p>Moving objects in the 3D Viewport.</p></li>
+<li><p>Changes performed by the animation system.</p></li>
+</ul>
+<p>Changes done from <code class="docutils literal notranslate"><span class="pre">msgbus</span></code> callbacks are not included in related undo steps,
+so users can easily skip their effects by using Undo followed by Redo.</p>
+<p>Unlike properties <code class="docutils literal notranslate"><span class="pre">update</span></code> callbacks, message bus update callbacks are postponed
+until all operators have finished executing.
+Additionally, for each property the callback is only triggered once per update cycle,
+even if the property was changed multiple times during that period.</p>
+</section>
+<section id="example-use">
+<h2>Example Use<a class="headerlink" href="#example-use" title="Link to this heading"></a></h2>
+<p>Below is an example of subscription to changes in the active object’s location.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+<span class="c1"># Any Python object can act as the subscription&#39;s owner.</span>
+<span class="n">owner</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+
+<span class="n">subscribe_to</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">msgbus_callback</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># This will print:</span>
+    <span class="c1"># Something changed! (1, 2, 3)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Something changed!&quot;</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">msgbus</span><span class="o">.</span><span class="n">subscribe_rna</span><span class="p">(</span>
+    <span class="n">key</span><span class="o">=</span><span class="n">subscribe_to</span><span class="p">,</span>
+    <span class="n">owner</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span>
+    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="n">notify</span><span class="o">=</span><span class="n">msgbus_callback</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Some properties are converted to Python objects when you retrieve them. This
+needs to be avoided in order to create the subscription, by using
+<code class="docutils literal notranslate"><span class="pre">datablock.path_resolve(&quot;property_name&quot;,</span> <span class="pre">False)</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">subscribe_to</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">path_resolve</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is also possible to create subscriptions on a property of all instances of a
+certain type:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">subscribe_to</span> <span class="o">=</span> <span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Object</span><span class="p">,</span> <span class="s2">&quot;location&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.msgbus.clear_by_owner">
+<span class="sig-prename descclassname"><span class="pre">bpy.msgbus.</span></span><span class="sig-name descname"><span class="pre">clear_by_owner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">owner</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.msgbus.clear_by_owner" title="Link to this definition"></a></dt>
+<dd><p>Clear all subscribers using this owner.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.msgbus.publish_rna">
+<span class="sig-prename descclassname"><span class="pre">bpy.msgbus.</span></span><span class="sig-name descname"><span class="pre">publish_rna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.msgbus.publish_rna" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<a class="reference internal" href="bpy.types.Property.html#bpy.types.Property" title="bpy.types.Property"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Property</span></code></a> | <a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> | tuple[<a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a>, str]) – <p>Represents the type of data being subscribed to</p>
+<p>Arguments include
+- A property instance.
+- A struct type.
+- A tuple representing a (struct, property name) pair.</p>
+</p>
+</dd>
+</dl>
+<p>Notify subscribers of changes to this property
+(this typically doesn’t need to be called explicitly since changes will automatically publish updates).
+In some cases it may be useful to publish changes explicitly using more general keys.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.msgbus.subscribe_rna">
+<span class="sig-prename descclassname"><span class="pre">bpy.msgbus.</span></span><span class="sig-name descname"><span class="pre">subscribe_rna</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">notify</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.msgbus.subscribe_rna" title="Link to this definition"></a></dt>
+<dd><p>Register a message bus subscription. It will be cleared when another blend file is
+loaded, or can be cleared explicitly via <a class="reference internal" href="#bpy.msgbus.clear_by_owner" title="bpy.msgbus.clear_by_owner"><code class="xref py py-func docutils literal notranslate"><span class="pre">bpy.msgbus.clear_by_owner()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<a class="reference internal" href="bpy.types.Property.html#bpy.types.Property" title="bpy.types.Property"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Property</span></code></a> | <a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a> | tuple[<a class="reference internal" href="bpy.types.Struct.html#bpy.types.Struct" title="bpy.types.Struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Struct</span></code></a>, str]) – <p>Represents the type of data being subscribed to</p>
+<p>Arguments include
+- A property instance.
+- A struct type.
+- A tuple representing a (struct, property name) pair.</p>
+</p></li>
+<li><p><strong>owner</strong> (<em>Any</em>) – Handle for this subscription (compared by identity).</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – <p>Change the behavior of the subscriber.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PERSISTENT</span></code> when set, the subscriber will be kept when remapping ID data.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All subscribers will be cleared on file-load. Subscribers can be re-registered on load,
+see <a class="reference internal" href="bpy.app.handlers.html#bpy.app.handlers.load_post" title="bpy.app.handlers.load_post"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.app.handlers.load_post</span></code></a>.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.data.html" class="btn btn-neutral float-left" title="Data Access (bpy.data)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.html" class="btn btn-neutral float-right" title="Operators (bpy.ops)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.msgbus.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.msgbus.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

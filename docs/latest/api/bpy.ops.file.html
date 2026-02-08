@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.file.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fluid Operators" href="bpy.ops.fluid.html" />
+    <link rel="prev" title="Extensions Operators" href="bpy.ops.extensions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.autopack_toggle"><code class="docutils literal notranslate"><span class="pre">autopack_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.bookmark_add"><code class="docutils literal notranslate"><span class="pre">bookmark_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.bookmark_cleanup"><code class="docutils literal notranslate"><span class="pre">bookmark_cleanup()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.bookmark_delete"><code class="docutils literal notranslate"><span class="pre">bookmark_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.bookmark_move"><code class="docutils literal notranslate"><span class="pre">bookmark_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.cancel"><code class="docutils literal notranslate"><span class="pre">cancel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.directory_new"><code class="docutils literal notranslate"><span class="pre">directory_new()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.edit_directory_path"><code class="docutils literal notranslate"><span class="pre">edit_directory_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.execute"><code class="docutils literal notranslate"><span class="pre">execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.external_operation"><code class="docutils literal notranslate"><span class="pre">external_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.filenum"><code class="docutils literal notranslate"><span class="pre">filenum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.filepath_drop"><code class="docutils literal notranslate"><span class="pre">filepath_drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.find_missing_files"><code class="docutils literal notranslate"><span class="pre">find_missing_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.hidedot"><code class="docutils literal notranslate"><span class="pre">hidedot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.highlight"><code class="docutils literal notranslate"><span class="pre">highlight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.make_paths_absolute"><code class="docutils literal notranslate"><span class="pre">make_paths_absolute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.make_paths_relative"><code class="docutils literal notranslate"><span class="pre">make_paths_relative()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.mouse_execute"><code class="docutils literal notranslate"><span class="pre">mouse_execute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.next"><code class="docutils literal notranslate"><span class="pre">next()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.pack_all"><code class="docutils literal notranslate"><span class="pre">pack_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.pack_libraries"><code class="docutils literal notranslate"><span class="pre">pack_libraries()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.parent"><code class="docutils literal notranslate"><span class="pre">parent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.previous"><code class="docutils literal notranslate"><span class="pre">previous()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.refresh"><code class="docutils literal notranslate"><span class="pre">refresh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.rename"><code class="docutils literal notranslate"><span class="pre">rename()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.report_missing_files"><code class="docutils literal notranslate"><span class="pre">report_missing_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.reset_recent"><code class="docutils literal notranslate"><span class="pre">reset_recent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.select"><code class="docutils literal notranslate"><span class="pre">select()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.select_all"><code class="docutils literal notranslate"><span class="pre">select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.select_bookmark"><code class="docutils literal notranslate"><span class="pre">select_bookmark()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.select_box"><code class="docutils literal notranslate"><span class="pre">select_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.select_walk"><code class="docutils literal notranslate"><span class="pre">select_walk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.smoothscroll"><code class="docutils literal notranslate"><span class="pre">smoothscroll()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.sort_column_ui_context"><code class="docutils literal notranslate"><span class="pre">sort_column_ui_context()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.start_filter"><code class="docutils literal notranslate"><span class="pre">start_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.unpack_all"><code class="docutils literal notranslate"><span class="pre">unpack_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.unpack_item"><code class="docutils literal notranslate"><span class="pre">unpack_item()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.unpack_libraries"><code class="docutils literal notranslate"><span class="pre">unpack_libraries()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.file.view_selected"><code class="docutils literal notranslate"><span class="pre">view_selected()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">File Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.file">
+<span id="file-operators"></span><h1>File Operators<a class="headerlink" href="#module-bpy.ops.file" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.autopack_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">autopack_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.autopack_toggle" title="Link to this definition"></a></dt>
+<dd><p>Automatically pack all external files into the .blend file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.bookmark_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">bookmark_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.bookmark_add" title="Link to this definition"></a></dt>
+<dd><p>Add a bookmark for the selected/active directory</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.bookmark_cleanup">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">bookmark_cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.bookmark_cleanup" title="Link to this definition"></a></dt>
+<dd><p>Delete all invalid bookmarks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.bookmark_delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">bookmark_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.bookmark_delete" title="Link to this definition"></a></dt>
+<dd><p>Delete selected bookmark</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int in</em><em> [</em><em>-1</em><em>, </em><em>20000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Index</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.bookmark_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">bookmark_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOP'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.bookmark_move" title="Link to this definition"></a></dt>
+<dd><p>Move the active bookmark up/down in the list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DOWN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BOTTOM'</span></code>], (optional)) – <p>Direction, Direction to move the active bookmark towards</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOP</span></code>
+Top – Top of the list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UP</span></code>
+Up.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DOWN</span></code>
+Down.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BOTTOM</span></code>
+Bottom – Bottom of the list.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.cancel">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.cancel" title="Link to this definition"></a></dt>
+<dd><p>Cancel file operation</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.delete" title="Link to this definition"></a></dt>
+<dd><p>Move selected files to the trash or recycle bin</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.directory_new">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">directory_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.directory_new" title="Link to this definition"></a></dt>
+<dd><p>Create a new directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Directory, Name of new directory</p></li>
+<li><p><strong>open</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Open, Open new directory</p></li>
+<li><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.edit_directory_path">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">edit_directory_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.edit_directory_path" title="Link to this definition"></a></dt>
+<dd><p>Start editing directory field</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.execute">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.execute" title="Link to this definition"></a></dt>
+<dd><p>Execute selected file</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.external_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">external_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OPEN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.external_operation" title="Link to this definition"></a></dt>
+<dd><p>Perform external operation on a file or folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>operation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OPEN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FOLDER_OPEN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'EDIT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FIND'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PLAY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BROWSE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PREVIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PRINT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INSTALL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RUNAS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PROPERTIES'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FOLDER_FIND'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CMD'</span></code>], (optional)) – <p>Operation, Operation to perform on the selected file or path</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OPEN</span></code>
+Open – Open the file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FOLDER_OPEN</span></code>
+Open Folder – Open the folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EDIT</span></code>
+Edit – Edit the file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NEW</span></code>
+New – Create a new file of this type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIND</span></code>
+Find File – Search for files of this type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code>
+Show – Show this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PLAY</span></code>
+Play – Play this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BROWSE</span></code>
+Browse – Browse this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PREVIEW</span></code>
+Preview – Preview this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PRINT</span></code>
+Print – Print this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSTALL</span></code>
+Install – Install this file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RUNAS</span></code>
+Run As User – Run as specific user.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROPERTIES</span></code>
+Properties – Show OS Properties for this item.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FOLDER_FIND</span></code>
+Find in Folder – Search for items in this folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CMD</span></code>
+Command Prompt Here – Open a command prompt here.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.filenum">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">filenum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">increment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.filenum" title="Link to this definition"></a></dt>
+<dd><p>Increment number in filename</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>increment</strong> (<em>int in</em><em> [</em><em>-100</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Increment</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.filepath_drop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">filepath_drop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Path'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.filepath_drop" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.find_missing_files">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">find_missing_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">find_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hide_props_region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blender</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_movie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_sound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_archive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_btx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_alembic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_usd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blenlib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filemode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.find_missing_files" title="Link to this definition"></a></dt>
+<dd><p>Try to find missing external files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>find_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Find All, Find all files in the search path (not just missing)</p></li>
+<li><p><strong>directory</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Directory, Directory of the file</p></li>
+<li><p><strong>hide_props_region</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Hide Operator Properties, Collapse the region displaying the operator settings</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Check Existing, Check and warn on overwriting existing files</p></li>
+<li><p><strong>filter_blender</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_backup</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_image</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter image files</p></li>
+<li><p><strong>filter_movie</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter movie files</p></li>
+<li><p><strong>filter_python</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Python files</p></li>
+<li><p><strong>filter_font</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter font files</p></li>
+<li><p><strong>filter_sound</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter sound files</p></li>
+<li><p><strong>filter_text</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter text files</p></li>
+<li><p><strong>filter_archive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter archive files</p></li>
+<li><p><strong>filter_btx</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter btx files</p></li>
+<li><p><strong>filter_alembic</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Alembic files</p></li>
+<li><p><strong>filter_usd</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter USD files</p></li>
+<li><p><strong>filter_obj</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OBJ files</p></li>
+<li><p><strong>filter_volume</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OpenVDB volume files</p></li>
+<li><p><strong>filter_folder</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter folders</p></li>
+<li><p><strong>filter_blenlib</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Blender IDs</p></li>
+<li><p><strong>filemode</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>9</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File Browser Mode, The setting for the file browser mode to load a .blend file, a library or a special file</p></li>
+<li><p><strong>display_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DEFAULT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIST_VERTICAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIST_HORIZONTAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'THUMBNAIL'</span></code>], (optional)) – <p>Display Type</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Automatically determine display type for files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_VERTICAL</span></code>
+Short List – Display files as short list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_HORIZONTAL</span></code>
+Long List – Display files as a detailed list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">THUMBNAIL</span></code>
+Thumbnails – Display files as thumbnails.</p></li>
+</ul>
+</p></li>
+<li><p><strong>sort_method</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File sorting mode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.hidedot">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">hidedot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.hidedot" title="Link to this definition"></a></dt>
+<dd><p>Toggle hide hidden dot files</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.highlight">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">highlight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.highlight" title="Link to this definition"></a></dt>
+<dd><p>Highlight selected file(s)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.make_paths_absolute">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">make_paths_absolute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.make_paths_absolute" title="Link to this definition"></a></dt>
+<dd><p>Make all paths to external files absolute</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.make_paths_relative">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">make_paths_relative</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.make_paths_relative" title="Link to this definition"></a></dt>
+<dd><p>Make all paths to external files relative to current .blend</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.mouse_execute">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">mouse_execute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.mouse_execute" title="Link to this definition"></a></dt>
+<dd><p>Perform the current execute action for the file under the cursor (e.g. open the file)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.next">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">next</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.next" title="Link to this definition"></a></dt>
+<dd><p>Move to next folder</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.pack_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">pack_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.pack_all" title="Link to this definition"></a></dt>
+<dd><p>Pack all used external files into this .blend</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.pack_libraries">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">pack_libraries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.pack_libraries" title="Link to this definition"></a></dt>
+<dd><p>Store all data-blocks linked from other .blend files in the current .blend file. Library references are preserved so the linked data-blocks can be unpacked again</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.parent">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">parent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.parent" title="Link to this definition"></a></dt>
+<dd><p>Move to parent directory</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.previous">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">previous</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.previous" title="Link to this definition"></a></dt>
+<dd><p>Move to previous folder</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.refresh">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">refresh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.refresh" title="Link to this definition"></a></dt>
+<dd><p>Refresh the file list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.rename">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">rename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.rename" title="Link to this definition"></a></dt>
+<dd><p>Rename file or file directory</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.report_missing_files">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">report_missing_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.report_missing_files" title="Link to this definition"></a></dt>
+<dd><p>Report all missing external files</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.reset_recent">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">reset_recent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.reset_recent" title="Link to this definition"></a></dt>
+<dd><p>Reset recent files</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_to_deselect_others</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_select_on_click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mouse_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mouse_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_activate_if_selected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pass_through</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.select" title="Link to this definition"></a></dt>
+<dd><p>Handle mouse clicks to select and activate items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>wait_to_deselect_others</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait to Deselect Others</p></li>
+<li><p><strong>use_select_on_click</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Act on Click, Instead of selecting on mouse press, wait to see if there’s drag event. Otherwise select on mouse release</p></li>
+<li><p><strong>mouse_x</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse X</p></li>
+<li><p><strong>mouse_y</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse Y</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+<li><p><strong>fill</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill, Select everything beginning with the last selection</p></li>
+<li><p><strong>open</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Open, Open a directory when selecting it</p></li>
+<li><p><strong>deselect_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect On Nothing, Deselect all when nothing under the cursor</p></li>
+<li><p><strong>only_activate_if_selected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Activate if Selected, Do not change selection if the item under the cursor is already selected, only activate it</p></li>
+<li><p><strong>pass_through</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pass Through, Even on successful execution, pass the event on so other operators can execute on it as well</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.select_all" title="Link to this definition"></a></dt>
+<dd><p>Select or deselect all files</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.select_bookmark">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">select_bookmark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.select_bookmark" title="Link to this definition"></a></dt>
+<dd><p>Select a bookmarked directory</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dir</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Directory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.select_box" title="Link to this definition"></a></dt>
+<dd><p>Activate/select the file(s) contained in the border</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.select_walk">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">select_walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UP'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.select_walk" title="Link to this definition"></a></dt>
+<dd><p>Select/Deselect files by walking through them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'UP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DOWN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LEFT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RIGHT'</span></code>], (optional)) – Walk Direction, Select/Deselect element in this direction</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+<li><p><strong>fill</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill, Select everything beginning with the last selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.smoothscroll">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">smoothscroll</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.smoothscroll" title="Link to this definition"></a></dt>
+<dd><p>Smooth scroll to make editable file visible</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.sort_column_ui_context">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">sort_column_ui_context</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.sort_column_ui_context" title="Link to this definition"></a></dt>
+<dd><p>Change sorting to use column under cursor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.start_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">start_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.start_filter" title="Link to this definition"></a></dt>
+<dd><p>Start entering filter text</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.unpack_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">unpack_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'USE_LOCAL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.unpack_all" title="Link to this definition"></a></dt>
+<dd><p>Unpack all files packed into this .blend to external ones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>method</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'USE_LOCAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WRITE_LOCAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'USE_ORIGINAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WRITE_ORIGINAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'KEEP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'REMOVE'</span></code>], (optional)) – Method, How to unpack</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.unpack_item">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">unpack_item</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'USE_LOCAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">19785</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.unpack_item" title="Link to this definition"></a></dt>
+<dd><p>Unpack this file to an external file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'USE_LOCAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WRITE_LOCAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'USE_ORIGINAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WRITE_ORIGINAL'</span></code>], (optional)) – Method, How to unpack</p></li>
+<li><p><strong>id_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – ID Name, Name of ID block to unpack</p></li>
+<li><p><strong>id_type</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – ID Type, Identifier type of ID block</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.unpack_libraries">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">unpack_libraries</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.unpack_libraries" title="Link to this definition"></a></dt>
+<dd><p>Restore all packed linked data-blocks to their original locations</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.file.view_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.file.</span></span><span class="sig-name descname"><span class="pre">view_selected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.file.view_selected" title="Link to this definition"></a></dt>
+<dd><p>Scroll the selected files into view</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.extensions.html" class="btn btn-neutral float-left" title="Extensions Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.fluid.html" class="btn btn-neutral float-right" title="Fluid Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.file.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.file.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

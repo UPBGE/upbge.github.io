@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quickstart &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/info_quickstart.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Overview" href="info_overview.html" />
+    <link rel="prev" title="UPBGE 0.5+ + Blender 5.1 Python API Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#before-starting">Before Starting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-scripts">Running Scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts">Key Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-access">Data Access</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-data-blocks">Accessing Data-Blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-collections">Accessing Collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-attributes">Accessing Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#data-creation-removal">Data Creation/Removal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-properties">Custom Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#context">Context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operators-tools">Operators (Tools)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operator-poll">Operator Poll()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#integration">Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-operator">Example Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-panel">Example Panel</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#types">Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#native-types">Native Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-types">Internal Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mathutils-types">Mathutils Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#animation">Animation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quickstart</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quickstart">
+<span id="info-quickstart"></span><h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
+<p>This <abbr title="Application Programming Interface">API</abbr> is generally stable
+but some areas are still being extended and improved.</p>
+<p class="rubric">Blender Python API features:</p>
+<ul class="simple">
+<li><p>Edit any data the user interface can (Scenes, Meshes, Particles etc.).</p></li>
+<li><p>Modify user preferences, keymaps and themes.</p></li>
+<li><p>Run tools with own settings.</p></li>
+<li><p>Create user interface elements such as menus, headers and panels.</p></li>
+<li><p>Create new tools.</p></li>
+<li><p>Create interactive tools.</p></li>
+<li><p>Create new rendering engines that integrate with Blender.</p></li>
+<li><p>Subscribe to changes to data and it’s properties.</p></li>
+<li><p>Define new settings in existing Blender data.</p></li>
+<li><p>Draw in the 3D Viewport using Python.</p></li>
+</ul>
+<p class="rubric">(Still) missing features:</p>
+<ul class="simple">
+<li><p>Create new space types.</p></li>
+<li><p>Assign custom properties to every type.</p></li>
+</ul>
+<section id="before-starting">
+<h2>Before Starting<a class="headerlink" href="#before-starting" title="Link to this heading"></a></h2>
+<p>This document is intended to familiarize you with Blender Python API
+but not to fully cover each topic.</p>
+<p>A quick list of helpful things to know before starting:</p>
+<ul>
+<li><p>Enable <a class="reference external" href="https://docs.blender.org/manual/en/dev/editors/preferences/interface.html#bpy-types-preferencesview-show-developer-ui" title="(in Blender 5.1 Manual v5.1)"><span class="xref std std-ref">Developer Extra</span></a>
+and <a class="reference external" href="https://docs.blender.org/manual/en/dev/editors/preferences/interface.html#bpy-types-preferencesview-show-tooltips-python" title="(in Blender 5.1 Manual v5.1)"><span class="xref std std-ref">Python Tooltips</span></a>.</p></li>
+<li><p>The <a class="reference external" href="https://docs.blender.org/manual/en/dev/editors/python_console.html#bpy-types-spaceconsole" title="(in Blender 5.1 Manual v5.1)"><span class="xref std std-ref">Python Console</span></a>
+is great for testing one-liners; it has autocompletion so you can inspect the API quickly.</p></li>
+<li><p>Button tooltips show Python attributes and operator names (when enabled see above).</p></li>
+<li><p>The context menu of buttons directly links to this API documentation (when enabled see above).</p></li>
+<li><p>Many python examples can be found in the text editor’s template menu.</p></li>
+<li><p>To examine further scripts distributed with Blender, see:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/startup/bl_ui</span></code> for the user interface.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scripts/startup/bl_operators</span></code> for operators.</p></li>
+</ul>
+<p>Exact location depends on platform, see:
+<a class="reference external" href="https://docs.blender.org/manual/en/dev/advanced/blender_directory_layout.html#blender-directory-layout" title="(in Blender 5.1 Manual v5.1)"><span class="xref std std-ref">directory layout docs</span></a>.</p>
+</li>
+</ul>
+<section id="running-scripts">
+<h3>Running Scripts<a class="headerlink" href="#running-scripts" title="Link to this heading"></a></h3>
+<p>The two most common ways to execute Python scripts are using the built-in
+text editor or entering commands in the Python console.
+Both the <em>Text Editor</em> and <em>Python Console</em> are space types you can select from the header.
+Rather than manually configuring your spaces for Python development,
+you can use the <em>Scripting</em> workspace accessible from the Topbar tabs.</p>
+<p>From the text editor you can open <code class="docutils literal notranslate"><span class="pre">.py</span></code> files or paste them from the clipboard, then test using <em>Run Script</em>.
+The Python Console is typically used for typing in snippets and for testing to get immediate feedback,
+but can also have entire scripts pasted into it.
+Scripts can also run from the command line with Blender but to learn scripting in Blender this isn’t essential.</p>
+</section>
+</section>
+<section id="key-concepts">
+<h2>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading"></a></h2>
+<section id="data-access">
+<h3>Data Access<a class="headerlink" href="#data-access" title="Link to this heading"></a></h3>
+<section id="accessing-data-blocks">
+<h4>Accessing Data-Blocks<a class="headerlink" href="#accessing-data-blocks" title="Link to this heading"></a></h4>
+<p>You can access Blender’s data with the Python API in the same way as the animation system or user interface;
+this implies that any setting that can be changed via a button can also be changed with Python.
+Accessing data from the currently loaded blend-file is done with the module <a class="reference internal" href="bpy.data.html#module-bpy.data" title="bpy.data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.data</span></code></a>.
+It gives access to library data, for example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span>
+<span class="go">&lt;bpy_collection[3], BlendDataObjects&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">scenes</span>
+<span class="go">&lt;bpy_collection[1], BlendDataScenes&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span>
+<span class="go">&lt;bpy_collection[1], BlendDataMaterials&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-collections">
+<h4>Accessing Collections<a class="headerlink" href="#accessing-collections" title="Link to this heading"></a></h4>
+<p>You will notice that an index as well as a string can be used to access members of the collection.
+Unlike Python dictionaries, both methods are available;
+however, the index of a member may change while running Blender.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">)</span>
+<span class="go">[bpy.data.objects[&quot;Cube&quot;], bpy.data.objects[&quot;Plane&quot;]]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s1">&#39;Cube&#39;</span><span class="p">]</span>
+<span class="go">bpy.data.objects[&quot;Cube&quot;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">bpy.data.objects[&quot;Cube&quot;]</span>
+</pre></div>
+</div>
+</section>
+<section id="accessing-attributes">
+<h4>Accessing Attributes<a class="headerlink" href="#accessing-attributes" title="Link to this heading"></a></h4>
+<p>Once you have a data-block, such as a material, object, collection, etc.,
+its attributes can be accessed much like you would change a setting using the graphical interface.
+In fact, the tooltip for each button also displays the Python attribute
+which can help in finding what settings to change in a script.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Camera&#39;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">scenes</span><span class="p">[</span><span class="s2">&quot;Scene&quot;</span><span class="p">]</span>
+<span class="go">bpy.data.scenes[&#39;Scene&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;MyMaterial&quot;</span><span class="p">)</span>
+<span class="go">bpy.data.materials[&#39;MyMaterial&#39;]</span>
+</pre></div>
+</div>
+<p>For testing what data to access it’s useful to use the Python Console, which is its own space type.
+This supports auto-complete, giving you a fast way to explore the data in your file.</p>
+<p>Example of a data path that can be quickly found via the console:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">scenes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_percentage</span>
+<span class="go">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">scenes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;Torus&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">vertices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">x</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</section>
+<section id="data-creation-removal">
+<h4>Data Creation/Removal<a class="headerlink" href="#data-creation-removal" title="Link to this heading"></a></h4>
+<p>When you are familiar with other Python APIs you may be surprised that
+new data-blocks in the bpy API cannot be created by calling the class:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Mesh</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;blender_console&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">bpy_struct.__new__(type): expected a single argument</span>
+</pre></div>
+</div>
+<p>This is an intentional part of the API design.
+The Blender Python API can’t create Blender data that exists outside the main Blender database
+(accessed through <a class="reference internal" href="bpy.data.html#module-bpy.data" title="bpy.data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.data</span></code></a>), because this data is managed by Blender (save, load, undo, append, etc).</p>
+<p>Data is added and removed via methods on the collections in <a class="reference internal" href="bpy.data.html#module-bpy.data" title="bpy.data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.data</span></code></a>, e.g:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mesh</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyMesh&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+<span class="go">&lt;bpy_struct, Mesh(&quot;MyMesh.001&quot;)&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="custom-properties">
+<span id="info-quickstart-custom-properties"></span><h4>Custom Properties<a class="headerlink" href="#custom-properties" title="Link to this heading"></a></h4>
+<p>Python can access properties on any data-block that has an ID
+(data that can be linked in and accessed from <a class="reference internal" href="bpy.data.html#module-bpy.data" title="bpy.data"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.data</span></code></a>).
+When assigning a property, you can pick your own names,
+these will be created when needed or overwritten if they already exist.</p>
+<p>This data is saved with the blend-file and copied with objects, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="p">[</span><span class="s2">&quot;MyOwnProperty&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="k">if</span> <span class="s2">&quot;SomeProp&quot;</span> <span class="ow">in</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Property found&quot;</span><span class="p">)</span>
+
+<span class="c1"># Use the get function like a Python dictionary</span>
+<span class="c1"># which can have a fallback value.</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">scenes</span><span class="p">[</span><span class="s2">&quot;Scene&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;test_prop&quot;</span><span class="p">,</span> <span class="s2">&quot;fallback value&quot;</span><span class="p">)</span>
+
+<span class="c1"># Dictionaries can be assigned as long as they only use basic types.</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">collections</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;MyTestCollection&quot;</span><span class="p">)</span>
+<span class="n">collection</span><span class="p">[</span><span class="s2">&quot;MySettings&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;foo&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">:</span> <span class="s2">&quot;spam&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">:</span> <span class="p">{}}</span>
+
+<span class="k">del</span> <span class="n">collection</span><span class="p">[</span><span class="s2">&quot;MySettings&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that these properties can only be assigned basic Python types:</p>
+<ul class="simple">
+<li><p>int, float, string</p></li>
+<li><p>array of ints or floats</p></li>
+<li><p>dictionary (only string keys are supported, values must be basic types too)</p></li>
+</ul>
+<p>These properties are valid outside of Python. They can be animated by curves or used in driver paths.</p>
+<p>For a list of types that support custom properties see:
+<a class="reference internal" href="bpy_types_custom_properties.html#bpy-types-custom-properties"><span class="std std-ref">types supporting custom properties</span></a>.</p>
+</section>
+</section>
+<section id="context">
+<h3>Context<a class="headerlink" href="#context" title="Link to this heading"></a></h3>
+<p>While it’s useful to be able to access data directly by name or as a list,
+it’s more common to operate on the user’s selection.
+The context is always available from <code class="docutils literal notranslate"><span class="pre">bpy.context</span></code> and can be used to get the active object, scene,
+tool settings along with many other attributes.</p>
+<p>Some common use cases are:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">selected_objects</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">visible_bones</span>
+</pre></div>
+</div>
+<p>Note that the context is read-only, which means that these values cannot be modified directly.
+But they can be changed by running API functions or by using the data API.</p>
+<p>So <code class="docutils literal notranslate"><span class="pre">bpy.context.active_object</span> <span class="pre">=</span> <span class="pre">obj</span></code> will raise an error.
+But <code class="docutils literal notranslate"><span class="pre">bpy.context.view_layer.objects.active</span> <span class="pre">=</span> <span class="pre">obj</span></code> works as expected.</p>
+<p>The context attributes change depending on where they are accessed.
+The 3D Viewport has different context members than the Python Console,
+so take care when accessing context attributes that the user state is known.</p>
+<p>See <a class="reference internal" href="bpy.context.html#module-bpy.context" title="bpy.context"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.context</span></code></a> API reference.</p>
+</section>
+<section id="operators-tools">
+<h3>Operators (Tools)<a class="headerlink" href="#operators-tools" title="Link to this heading"></a></h3>
+<p>Operators are tools generally accessed by the user from buttons, menu items or key shortcuts.
+From the user perspective they are a tool but Python can run these with its own settings
+through the <a class="reference internal" href="bpy.ops.html#module-bpy.ops" title="bpy.ops"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.ops</span></code></a> module.</p>
+<p>Examples:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">flip_normals</span><span class="p">()</span>
+<span class="go">{&#39;FINISHED&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">hide</span><span class="p">(</span><span class="n">unselected</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">{&#39;FINISHED&#39;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">transform_apply</span><span class="p">()</span>
+<span class="go">{&#39;FINISHED&#39;}</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <a class="reference external" href="https://docs.blender.org/manual/en/dev/advanced/operators.html#bpy-ops-wm-operator-cheat-sheet" title="(in Blender 5.1 Manual v5.1)"><span class="xref std std-ref">Operator Cheat Sheet</span></a>
+gives a list of all operators and their default values in Python syntax, along with the generated docs.
+This is a good way to get an overview of all Blender’s operators.</p>
+</div>
+<section id="operator-poll">
+<h4>Operator Poll()<a class="headerlink" href="#operator-poll" title="Link to this heading"></a></h4>
+<p>Many operators have a “poll” function which checks if the cursor
+is in a valid area or if the object is in the correct mode (Edit Mode, Weight Paint Mode, etc).
+When an operator’s poll function fails within Python, an exception is raised.</p>
+<p>For example, calling <code class="docutils literal notranslate"><span class="pre">bpy.ops.view3d.render_border()</span></code> from the console raises the following error:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">Operator</span> <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">view3d</span><span class="o">.</span><span class="n">render_border</span><span class="o">.</span><span class="n">poll</span><span class="p">()</span> <span class="n">failed</span><span class="p">,</span> <span class="n">context</span> <span class="ow">is</span> <span class="n">incorrect</span>
+</pre></div>
+</div>
+<p>In this case the context must be the 3D Viewport with an active camera.</p>
+<p>To avoid using try-except clauses wherever operators are called, you can call the operators
+own <code class="docutils literal notranslate"><span class="pre">poll()</span></code> function to check if it can run the operator in the current context.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">view3d</span><span class="o">.</span><span class="n">render_border</span><span class="o">.</span><span class="n">poll</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">view3d</span><span class="o">.</span><span class="n">render_border</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="integration">
+<h2>Integration<a class="headerlink" href="#integration" title="Link to this heading"></a></h2>
+<p>Python scripts can integrate with Blender in the following ways:</p>
+<ul class="simple">
+<li><p>By defining a render engine.</p></li>
+<li><p>By defining operators.</p></li>
+<li><p>By defining menus, headers and panels.</p></li>
+<li><p>By inserting new buttons into existing menus, headers and panels.</p></li>
+</ul>
+<p>In Python, this is done by defining a class, which is a subclass of an existing type.</p>
+<section id="example-operator">
+<h3>Example Operator<a class="headerlink" href="#example-operator" title="Link to this heading"></a></h3>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">ob</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">objects</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SimpleOperator</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tooltip&quot;&quot;&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.simple_operator&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Simple Object Operator&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">poll</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">context</span><span class="o">.</span><span class="n">active_object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">main</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">menu_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="n">SimpleOperator</span><span class="o">.</span><span class="n">bl_idname</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">SimpleOperator</span><span class="o">.</span><span class="n">bl_label</span><span class="p">)</span>
+
+
+<span class="c1"># Register and add to the &quot;object&quot; menu (required to also use F3 search &quot;Simple Object Operator&quot; for quick access).</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">SimpleOperator</span><span class="p">)</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_object</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">SimpleOperator</span><span class="p">)</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">VIEW3D_MT_object</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">menu_func</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+
+    <span class="c1"># Test call.</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">simple_operator</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Once this script runs, <code class="docutils literal notranslate"><span class="pre">SimpleOperator</span></code> is registered with Blender
+and can be called from Operator Search or added to the toolbar.</p>
+<p>To run the script:</p>
+<ol class="arabic simple">
+<li><p>Start Blender and switch to the Scripting workspace.</p></li>
+<li><p>Click the <em>New</em> button in the text editor to create a new text data-block.</p></li>
+<li><p>Copy the code from above and paste it into the text editor.</p></li>
+<li><p>Click on the <em>Run Script</em> button.</p></li>
+<li><p>Move your cursor into the 3D Viewport,
+open the <a class="reference external" href="https://docs.blender.org/manual/en/dev/interface/operators.html#bpy-ops-wm-search-menu" title="(in Blender 5.1 Manual v5.1)"><span class="xref std std-ref">Operator Search menu</span></a>,
+and type “Simple”.</p></li>
+<li><p>Click on the “Simple Operator” item found in search.</p></li>
+</ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The class members with the <code class="docutils literal notranslate"><span class="pre">bl_</span></code> prefix are documented in the API reference <a class="reference internal" href="bpy.types.Operator.html#bpy.types.Operator" title="bpy.types.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Operator</span></code></a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The output from the <code class="docutils literal notranslate"><span class="pre">main</span></code> function is sent to the terminal;
+in order to see this, be sure to <a class="reference internal" href="info_tips_and_tricks.html#use-the-terminal"><span class="std std-ref">use the terminal</span></a>.</p>
+</div>
+</section>
+<section id="example-panel">
+<h3>Example Panel<a class="headerlink" href="#example-panel" title="Link to this heading"></a></h3>
+<p>Panels are registered as a class, like an operator.
+Notice the extra <code class="docutils literal notranslate"><span class="pre">bl_</span></code> variables used to set the context they display in.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">HelloWorldPanel</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a Panel in the Object properties window&quot;&quot;&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Hello World Panel&quot;</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;OBJECT_PT_hello&quot;</span>
+    <span class="n">bl_space_type</span> <span class="o">=</span> <span class="s1">&#39;PROPERTIES&#39;</span>
+    <span class="n">bl_region_type</span> <span class="o">=</span> <span class="s1">&#39;WINDOW&#39;</span>
+    <span class="n">bl_context</span> <span class="o">=</span> <span class="s2">&quot;object&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="n">layout</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span>
+
+        <span class="n">obj</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span>
+
+        <span class="n">row</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">row</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s1">&#39;WORLD_DATA&#39;</span><span class="p">)</span>
+
+        <span class="n">row</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">row</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;Active object is: &quot;</span> <span class="o">+</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">row</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">prop</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+
+        <span class="n">row</span> <span class="o">=</span> <span class="n">layout</span><span class="o">.</span><span class="n">row</span><span class="p">()</span>
+        <span class="n">row</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="s2">&quot;mesh.primitive_cube_add&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">HelloWorldPanel</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">unregister</span><span class="p">():</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_class</span><span class="p">(</span><span class="n">HelloWorldPanel</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>To run the script:</p>
+<ol class="arabic simple">
+<li><p>Start Blender and switch to the Scripting workspace.</p></li>
+<li><p>Click the <em>New</em> button in the text editor to create a new text data-block.</p></li>
+<li><p>Copy the code from above and paste it into the text editor.</p></li>
+<li><p>Click on the <em>Run Script</em> button.</p></li>
+</ol>
+<p>To view the results:</p>
+<ol class="arabic simple">
+<li><p>Select the default cube.</p></li>
+<li><p>Click on the Object properties icon in the buttons panel (far right; appears as a tiny cube).</p></li>
+<li><p>Scroll down to see a panel named “Hello World Panel”.</p></li>
+<li><p>Changing the object name also updates <em>Hello World Panel’s</em> name: field.</p></li>
+</ol>
+<p>Note the row distribution and the label and properties that are defined through the code.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="bpy.types.Panel.html#bpy.types.Panel" title="bpy.types.Panel"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Panel</span></code></a></p>
+</div>
+</section>
+</section>
+<section id="types">
+<h2>Types<a class="headerlink" href="#types" title="Link to this heading"></a></h2>
+<p>Blender defines a number of Python types but also uses Python native types.
+Blender’s Python API can be split up into three categories.</p>
+<section id="native-types">
+<h3>Native Types<a class="headerlink" href="#native-types" title="Link to this heading"></a></h3>
+<p>In simple cases returning a number or a string as a custom type would be cumbersome,
+so these are accessed as normal Python types.</p>
+<ul>
+<li><p>Blender float, int, boolean -&gt; float, int, boolean</p></li>
+<li><p>Blender enumerator -&gt; string</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">rotation_mode</span> <span class="o">=</span> <span class="s1">&#39;AXIS_ANGLE&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Blender enumerator (multiple) -&gt; set of strings</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setting multiple snap targets.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">tool_settings</span><span class="o">.</span><span class="n">snap_elements_base</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;VERTEX&#39;</span><span class="p">,</span> <span class="s1">&#39;EDGE&#39;</span><span class="p">}</span>
+
+<span class="c1"># Passing as an operator argument for report types.</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">({</span><span class="s1">&#39;WARNING&#39;</span><span class="p">,</span> <span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;Some message!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="internal-types">
+<h3>Internal Types<a class="headerlink" href="#internal-types" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a> is used for Blender data-blocks and collections.
+Also for data that contains its own attributes: collections, meshes, bones, scenes, etc.</p>
+<p>There are two main types that wrap Blender’s data, one for data-blocks
+(known internally as <code class="docutils literal notranslate"><span class="pre">bpy_struct</span></code>), another for properties.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span>
+<span class="go">bpy.data.objects[&#39;Cube&#39;]</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">objects</span>
+<span class="go">bpy.data.scenes[&#39;Scene&#39;].objects</span>
+</pre></div>
+</div>
+<p>Note that these types reference Blender’s data so modifying them is visible immediately.</p>
+</section>
+<section id="mathutils-types">
+<h3>Mathutils Types<a class="headerlink" href="#mathutils-types" title="Link to this heading"></a></h3>
+<p>Accessible from <a class="reference internal" href="mathutils.html#module-mathutils" title="mathutils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mathutils</span></code></a> are vectors, quaternions, Euler angles, matrix and color types.
+Some attributes such as <a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.location" title="bpy.types.Object.location"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Object.location</span></code></a>,
+<a class="reference internal" href="bpy.types.PoseBone.html#bpy.types.PoseBone.rotation_euler" title="bpy.types.PoseBone.rotation_euler"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.PoseBone.rotation_euler</span></code></a> and <code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Scene.cursor_location</span></code>
+can be accessed as special math types which can be used together and manipulated in various useful ways.</p>
+<p>Example of a matrix, vector multiplication:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">matrix_world</span> <span class="o">@</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">verts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">co</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>mathutils types keep a reference to Blender’s internal data so changes can
+be applied back.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modifies the Z axis in place.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="mf">2.0</span>
+
+<span class="c1"># Location variable holds a reference to the object too.</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span>
+<span class="n">location</span> <span class="o">*=</span> <span class="mf">2.0</span>
+
+<span class="c1"># Copying the value drops the reference so the value can be passed to</span>
+<span class="c1"># functions and modified without unwanted side effects.</span>
+<span class="n">location</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="animation">
+<h2>Animation<a class="headerlink" href="#animation" title="Link to this heading"></a></h2>
+<p>There are two ways to add keyframes through Python.</p>
+<p>The first is through key properties directly, which is like inserting a keyframe from the button as a user.
+You can also manually create the curves and keyframe data, then set the path to the property.
+Here are examples of both methods. Both insert a keyframe on the active object’s Z axis.</p>
+<p>Simple example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">location</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">location</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Using low-level functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span>
+
+<span class="c1"># Create the action, with a slot for the object, a layer, and a keyframe strip:</span>
+<span class="n">action</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">actions</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;MyAction&quot;</span><span class="p">)</span>
+<span class="n">slot</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">slots</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">id_type</span><span class="p">,</span> <span class="n">obj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">strip</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;MyLayer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strips</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;KEYFRAME&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a channelbag to hold the F-Curves for the slot:</span>
+<span class="n">channelbag</span> <span class="o">=</span> <span class="n">strip</span><span class="o">.</span><span class="n">channelbag</span><span class="p">(</span><span class="n">slot</span><span class="p">,</span> <span class="n">ensure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Create the F-Curve with two keyframes:</span>
+<span class="n">fcu_z</span> <span class="o">=</span> <span class="n">channelbag</span><span class="o">.</span><span class="n">fcurves</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fcu_z</span><span class="o">.</span><span class="n">keyframe_points</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fcu_z</span><span class="o">.</span><span class="n">keyframe_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">co</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="n">fcu_z</span><span class="o">.</span><span class="n">keyframe_points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">co</span> <span class="o">=</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">1.0</span>
+
+<span class="c1"># Assign the action and the slot to the object:</span>
+<span class="n">adt</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">animation_data_create</span><span class="p">()</span>
+<span class="n">adt</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">action</span>
+<span class="n">adt</span><span class="o">.</span><span class="n">action_slot</span> <span class="o">=</span> <span class="n">slot</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="UPBGE 0.5+ + Blender 5.1 Python API Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="info_overview.html" class="btn btn-neutral float-right" title="API Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60info_quickstart.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Finfo_quickstart.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>freestyle.utils submodule (freestyle.utils.ContextFunctions) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/freestyle.utils.ContextFunctions.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GPU Module (gpu)" href="gpu.html" />
+    <link rel="prev" title="Freestyle Utilities (freestyle.utils)" href="freestyle.utils.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="freestyle.types.html">Freestyle Types (freestyle.types)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.predicates.html">Freestyle Predicates (freestyle.predicates)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.functions.html">Freestyle Functions (freestyle.functions)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.chainingiterators.html">Freestyle Chaining Iterators (freestyle.chainingiterators)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.shaders.html">Freestyle Shaders (freestyle.shaders)</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="freestyle.utils.html">Freestyle Utilities (freestyle.utils)</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">freestyle.utils submodule (freestyle.utils.ContextFunctions)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.get_border"><code class="docutils literal notranslate"><span class="pre">get_border()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.get_canvas_height"><code class="docutils literal notranslate"><span class="pre">get_canvas_height()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.get_canvas_width"><code class="docutils literal notranslate"><span class="pre">get_canvas_width()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.get_selected_fedge"><code class="docutils literal notranslate"><span class="pre">get_selected_fedge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.get_time_stamp"><code class="docutils literal notranslate"><span class="pre">get_time_stamp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.load_map"><code class="docutils literal notranslate"><span class="pre">load_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.read_complete_view_map_pixel"><code class="docutils literal notranslate"><span class="pre">read_complete_view_map_pixel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.read_directional_view_map_pixel"><code class="docutils literal notranslate"><span class="pre">read_directional_view_map_pixel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.utils.ContextFunctions.read_map_pixel"><code class="docutils literal notranslate"><span class="pre">read_map_pixel()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.getCurrentScene"><code class="docutils literal notranslate"><span class="pre">getCurrentScene()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.integrate"><code class="docutils literal notranslate"><span class="pre">integrate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.angle_x_normal"><code class="docutils literal notranslate"><span class="pre">angle_x_normal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.bound"><code class="docutils literal notranslate"><span class="pre">bound()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.bounding_box"><code class="docutils literal notranslate"><span class="pre">bounding_box()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.curvature_from_stroke_vertex"><code class="docutils literal notranslate"><span class="pre">curvature_from_stroke_vertex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.find_matching_vertex"><code class="docutils literal notranslate"><span class="pre">find_matching_vertex()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.get_chain_length"><code class="docutils literal notranslate"><span class="pre">get_chain_length()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.get_object_name"><code class="docutils literal notranslate"><span class="pre">get_object_name()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.get_strokes"><code class="docutils literal notranslate"><span class="pre">get_strokes()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.get_test_stroke"><code class="docutils literal notranslate"><span class="pre">get_test_stroke()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.is_poly_clockwise"><code class="docutils literal notranslate"><span class="pre">is_poly_clockwise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.iter_distance_along_stroke"><code class="docutils literal notranslate"><span class="pre">iter_distance_along_stroke()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.iter_distance_from_camera"><code class="docutils literal notranslate"><span class="pre">iter_distance_from_camera()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.iter_distance_from_object"><code class="docutils literal notranslate"><span class="pre">iter_distance_from_object()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.iter_material_value"><code class="docutils literal notranslate"><span class="pre">iter_material_value()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.iter_t2d_along_stroke"><code class="docutils literal notranslate"><span class="pre">iter_t2d_along_stroke()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.material_from_fedge"><code class="docutils literal notranslate"><span class="pre">material_from_fedge()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.normal_at_I0D"><code class="docutils literal notranslate"><span class="pre">normal_at_I0D()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.pairwise"><code class="docutils literal notranslate"><span class="pre">pairwise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.rgb_to_bw"><code class="docutils literal notranslate"><span class="pre">rgb_to_bw()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.simplify"><code class="docutils literal notranslate"><span class="pre">simplify()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.stroke_curvature"><code class="docutils literal notranslate"><span class="pre">stroke_curvature()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.stroke_normal"><code class="docutils literal notranslate"><span class="pre">stroke_normal()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.tripplewise"><code class="docutils literal notranslate"><span class="pre">tripplewise()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.BoundingBox"><code class="docutils literal notranslate"><span class="pre">BoundingBox</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="freestyle.utils.html#freestyle.utils.StrokeCollector"><code class="docutils literal notranslate"><span class="pre">StrokeCollector</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="freestyle.html">Freestyle Module (freestyle)</a></li>
+          <li class="breadcrumb-item"><a href="freestyle.utils.html">Freestyle Utilities (freestyle.utils)</a></li>
+      <li class="breadcrumb-item active">freestyle.utils submodule (freestyle.utils.ContextFunctions)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-freestyle.utils.ContextFunctions">
+<span id="freestyle-utils-submodule-freestyle-utils-contextfunctions"></span><h1>freestyle.utils submodule (freestyle.utils.ContextFunctions)<a class="headerlink" href="#module-freestyle.utils.ContextFunctions" title="Link to this heading"></a></h1>
+<p>The Blender Freestyle.ContextFunctions submodule</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.get_border">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">get_border</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.get_border" title="Link to this definition"></a></dt>
+<dd><p>Returns the border.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A tuple of 4 numbers (xmin, ymin, xmax, ymax).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.get_canvas_height">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">get_canvas_height</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.get_canvas_height" title="Link to this definition"></a></dt>
+<dd><p>Returns the canvas height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The canvas height.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.get_canvas_width">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">get_canvas_width</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.get_canvas_width" title="Link to this definition"></a></dt>
+<dd><p>Returns the canvas width.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The canvas width.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.get_selected_fedge">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">get_selected_fedge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.get_selected_fedge" title="Link to this definition"></a></dt>
+<dd><p>Returns the selected FEdge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The selected FEdge.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">FEdge</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.get_time_stamp">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">get_time_stamp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.get_time_stamp" title="Link to this definition"></a></dt>
+<dd><p>Returns the system time stamp.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The system time stamp.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.load_map">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">load_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.load_map" title="Link to this definition"></a></dt>
+<dd><p>Loads an image map for further reading.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_name</strong> (<em>str</em>) – The name of the image file.</p></li>
+<li><p><strong>map_name</strong> (<em>str</em>) – The name that will be used to access this image.</p></li>
+<li><p><strong>num_levels</strong> (<em>int</em>) – The number of levels in the map pyramid
+(default = 4). If num_levels == 0, the complete pyramid is
+built.</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – The sigma value of the gaussian function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.read_complete_view_map_pixel">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">read_complete_view_map_pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.read_complete_view_map_pixel" title="Link to this definition"></a></dt>
+<dd><p>Reads a pixel in the complete view map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>int</em>) – The level of the pyramid in which we wish to read the
+pixel.</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – The x coordinate of the pixel we wish to read. The origin
+is in the lower-left corner.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – The y coordinate of the pixel we wish to read. The origin
+is in the lower-left corner.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The floating-point value stored for that pixel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.read_directional_view_map_pixel">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">read_directional_view_map_pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.read_directional_view_map_pixel" title="Link to this definition"></a></dt>
+<dd><p>Reads a pixel in one of the oriented view map images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orientation</strong> (<em>int</em>) – The number telling which orientation we want to
+check.</p></li>
+<li><p><strong>level</strong> (<em>int</em>) – The level of the pyramid in which we wish to read the
+pixel.</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – The x coordinate of the pixel we wish to read. The origin
+is in the lower-left corner.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – The y coordinate of the pixel we wish to read. The origin
+is in the lower-left corner.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The floating-point value stored for that pixel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="freestyle.utils.ContextFunctions.read_map_pixel">
+<span class="sig-prename descclassname"><span class="pre">freestyle.utils.ContextFunctions.</span></span><span class="sig-name descname"><span class="pre">read_map_pixel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">map_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.utils.ContextFunctions.read_map_pixel" title="Link to this definition"></a></dt>
+<dd><p>Reads a pixel in a user-defined map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>map_name</strong> (<em>str</em>) – The name of the map.</p></li>
+<li><p><strong>level</strong> (<em>int</em>) – The level of the pyramid in which we wish to read the
+pixel.</p></li>
+<li><p><strong>x</strong> (<em>int</em>) – The x coordinate of the pixel we wish to read. The origin
+is in the lower-left corner.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – The y coordinate of the pixel we wish to read. The origin
+is in the lower-left corner.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The floating-point value stored for that pixel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="freestyle.utils.html" class="btn btn-neutral float-left" title="Freestyle Utilities (freestyle.utils)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gpu.html" class="btn btn-neutral float-right" title="GPU Module (gpu)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60freestyle.utils.ContextFunctions.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Ffreestyle.utils.ContextFunctions.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1206 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Definitions (bpy.props) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.props.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Game Types (bge.types)" href="bge.types.html" />
+    <link rel="prev" title="Application Timers (bpy.app.timers)" href="bpy.app.timers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Property Definitions (bpy.props)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#assigning-to-existing-classes">Assigning to Existing Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operator-example">Operator Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#propertygroup-example">PropertyGroup Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collection-example">Collection Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-example">Update Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getter-setter-example">Getter/Setter Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.BoolProperty"><code class="docutils literal notranslate"><span class="pre">BoolProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.BoolVectorProperty"><code class="docutils literal notranslate"><span class="pre">BoolVectorProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.CollectionProperty"><code class="docutils literal notranslate"><span class="pre">CollectionProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.EnumProperty"><code class="docutils literal notranslate"><span class="pre">EnumProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.FloatProperty"><code class="docutils literal notranslate"><span class="pre">FloatProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.FloatVectorProperty"><code class="docutils literal notranslate"><span class="pre">FloatVectorProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.IntProperty"><code class="docutils literal notranslate"><span class="pre">IntProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.IntVectorProperty"><code class="docutils literal notranslate"><span class="pre">IntVectorProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.PointerProperty"><code class="docutils literal notranslate"><span class="pre">PointerProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.RemoveProperty"><code class="docutils literal notranslate"><span class="pre">RemoveProperty()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpy.props.StringProperty"><code class="docutils literal notranslate"><span class="pre">StringProperty()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Property Definitions (bpy.props)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.props">
+<span id="property-definitions-bpy-props"></span><h1>Property Definitions (bpy.props)<a class="headerlink" href="#module-bpy.props" title="Link to this heading"></a></h1>
+<p>This module defines properties to extend Blender’s internal data. The result of these functions is used to assign properties to classes registered with Blender and can’t be used directly.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All parameters to these functions must be passed as keywords.</p>
+</div>
+<section id="assigning-to-existing-classes">
+<h2>Assigning to Existing Classes<a class="headerlink" href="#assigning-to-existing-classes" title="Link to this heading"></a></h2>
+<p>Custom properties can be added to any subclass of an <code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Bone</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">PoseBone</span></code>.</p>
+<p>These properties can be animated, accessed by the user interface and Python
+like Blender’s existing properties.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Access to these properties might happen in threaded context, on a per-data-block level.
+This has to be carefully considered when using accessors or update callbacks.</p>
+<p>Typically, these callbacks should not affect any other data that the one owned by their data-block.
+When accessing external non-Blender data, thread safety mechanisms should be considered.</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+<span class="c1"># Assign a custom property to an existing type.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">custom_float</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Property&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test the property is there.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">custom_float</span> <span class="o">=</span> <span class="mf">5.0</span>
+</pre></div>
+</div>
+</section>
+<section id="operator-example">
+<h2>Operator Example<a class="headerlink" href="#operator-example" title="Link to this heading"></a></h2>
+<p>A common use of custom properties is for Python based <code class="xref py py-class docutils literal notranslate"><span class="pre">Operator</span></code>
+classes. Test this code by running it in the text editor, or by clicking the
+button in the 3D View-port’s Tools panel. The latter will show the properties
+in the Redo panel and allow you to change them.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OBJECT_OT_property_example</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Operator</span><span class="p">):</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object.property_example&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Property Example&quot;</span>
+    <span class="n">bl_options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;REGISTER&#39;</span><span class="p">,</span> <span class="s1">&#39;UNDO&#39;</span><span class="p">}</span>
+
+    <span class="n">my_float</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Some Floating Point&quot;</span><span class="p">)</span>
+    <span class="n">my_bool</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">BoolProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Toggle Option&quot;</span><span class="p">)</span>
+    <span class="n">my_string</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;String Value&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">report</span><span class="p">(</span>
+            <span class="p">{</span><span class="s1">&#39;INFO&#39;</span><span class="p">},</span> <span class="s2">&quot;F: </span><span class="si">{:.2f}</span><span class="s2">  B: </span><span class="si">{!s}</span><span class="s2">  S: </span><span class="si">{!r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">my_float</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_bool</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_string</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My float:&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_float</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My bool:&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_bool</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;My string:&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">my_string</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;FINISHED&#39;</span><span class="p">}</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">OBJECT_PT_property_example</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Panel</span><span class="p">):</span>
+    <span class="n">bl_idname</span> <span class="o">=</span> <span class="s2">&quot;object_PT_property_example&quot;</span>
+    <span class="n">bl_label</span> <span class="o">=</span> <span class="s2">&quot;Property Example&quot;</span>
+    <span class="n">bl_space_type</span> <span class="o">=</span> <span class="s1">&#39;VIEW_3D&#39;</span>
+    <span class="n">bl_region_type</span> <span class="o">=</span> <span class="s1">&#39;UI&#39;</span>
+    <span class="n">bl_category</span> <span class="o">=</span> <span class="s2">&quot;Tool&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># You can set the property values that should be used when the user</span>
+        <span class="c1"># presses the button in the UI.</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">operator</span><span class="p">(</span><span class="s1">&#39;object.property_example&#39;</span><span class="p">)</span>
+        <span class="n">props</span><span class="o">.</span><span class="n">my_bool</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">props</span><span class="o">.</span><span class="n">my_string</span> <span class="o">=</span> <span class="s2">&quot;Shouldn&#39;t that be 47?&quot;</span>
+
+        <span class="c1"># You can set properties dynamically:</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="p">:</span>
+            <span class="n">props</span><span class="o">.</span><span class="n">my_float</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">props</span><span class="o">.</span><span class="n">my_float</span> <span class="o">=</span> <span class="mi">327</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_OT_property_example</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">OBJECT_PT_property_example</span><span class="p">)</span>
+
+<span class="c1"># Demo call. Be sure to also test in the 3D Viewport.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">property_example</span><span class="p">(</span>
+    <span class="n">my_float</span><span class="o">=</span><span class="mi">47</span><span class="p">,</span>
+    <span class="n">my_bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">my_string</span><span class="o">=</span><span class="s2">&quot;Shouldn&#39;t that be 327?&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="propertygroup-example">
+<h2>PropertyGroup Example<a class="headerlink" href="#propertygroup-example" title="Link to this heading"></a></h2>
+<p>PropertyGroups can be used for collecting custom settings into one value
+to avoid many individual settings mixed in together.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MaterialSettings</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">PropertyGroup</span><span class="p">):</span>
+    <span class="n">my_int</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">()</span>
+    <span class="n">my_float</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">()</span>
+    <span class="n">my_string</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">()</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">MaterialSettings</span><span class="p">)</span>
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Material</span><span class="o">.</span><span class="n">my_settings</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">PointerProperty</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">MaterialSettings</span><span class="p">)</span>
+
+<span class="c1"># Test the new settings work.</span>
+<span class="n">material</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">material</span><span class="o">.</span><span class="n">my_settings</span><span class="o">.</span><span class="n">my_int</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">material</span><span class="o">.</span><span class="n">my_settings</span><span class="o">.</span><span class="n">my_float</span> <span class="o">=</span> <span class="mf">3.0</span>
+<span class="n">material</span><span class="o">.</span><span class="n">my_settings</span><span class="o">.</span><span class="n">my_string</span> <span class="o">=</span> <span class="s2">&quot;Foo&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="collection-example">
+<h2>Collection Example<a class="headerlink" href="#collection-example" title="Link to this heading"></a></h2>
+<p>Custom properties can be added to any subclass of an <code class="xref py py-class docutils literal notranslate"><span class="pre">ID</span></code>,
+<code class="xref py py-class docutils literal notranslate"><span class="pre">Bone</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">PoseBone</span></code>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="c1"># Assign a collection.</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SceneSettingItem</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">PropertyGroup</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Property&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Unknown&quot;</span><span class="p">)</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">IntProperty</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Test Property&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_class</span><span class="p">(</span><span class="n">SceneSettingItem</span><span class="p">)</span>
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">my_settings</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">CollectionProperty</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">SceneSettingItem</span><span class="p">)</span>
+
+<span class="c1"># Assume an armature object selected.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding 2 values!&quot;</span><span class="p">)</span>
+
+<span class="n">my_item</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">my_settings</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">my_item</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Spam&quot;</span>
+<span class="n">my_item</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">my_item</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">my_settings</span><span class="o">.</span><span class="n">add</span><span class="p">()</span>
+<span class="n">my_item</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Eggs&quot;</span>
+<span class="n">my_item</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="k">for</span> <span class="n">my_item</span> <span class="ow">in</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">my_settings</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_item</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">my_item</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="update-example">
+<h2>Update Example<a class="headerlink" href="#update-example" title="Link to this heading"></a></h2>
+<p>It can be useful to perform an action when a property is changed and can be
+used to update other properties or synchronize with external data.</p>
+<p>All properties define update functions except for CollectionProperty.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember that these callbacks may be executed in threaded context.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the property belongs to an Operator, the update callback’s first
+parameter will be an OperatorProperties instance, rather than an instance
+of the operator itself. This means you can’t access other internal functions
+of the operator, only its other properties.</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">update_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;my test function&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">testprop</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">(</span><span class="n">update</span><span class="o">=</span><span class="n">update_func</span><span class="p">)</span>
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">testprop</span> <span class="o">=</span> <span class="mf">11.0</span>
+
+<span class="c1"># &gt;&gt;&gt; my test function &lt;bpy_struct, Scene(&quot;Scene&quot;)&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="getter-setter-example">
+<h2>Getter/Setter Example<a class="headerlink" href="#getter-setter-example" title="Link to this heading"></a></h2>
+<p>Accessor functions can be used for boolean, int, float, string and enum properties.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">get</span></code> or <code class="docutils literal notranslate"><span class="pre">set</span></code> callbacks are defined, the property will not be stored in the ID properties
+automatically. Instead, the <code class="docutils literal notranslate"><span class="pre">get</span></code> and <code class="docutils literal notranslate"><span class="pre">set</span></code> functions will be called when the property
+is respectively read or written from the API, and are responsible to handle the data storage.</p>
+<p>Note that:</p>
+<ul class="simple">
+<li><p>It is illegal to define a <code class="docutils literal notranslate"><span class="pre">set</span></code> callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one.</p></li>
+<li><p>When a <code class="docutils literal notranslate"><span class="pre">get</span></code> callback is defined but no <code class="docutils literal notranslate"><span class="pre">set</span></code> one, the property is read-only.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">get_transform</span></code> and <code class="docutils literal notranslate"><span class="pre">set_transform</span></code> can be used when the returned value needs to be modified,
+but the default internal storage is still used. They can only transform the value before it is
+set or returned, but do not control how/where that data is stored.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is possible to define both <code class="docutils literal notranslate"><span class="pre">get</span></code>/<code class="docutils literal notranslate"><span class="pre">set</span></code> and <code class="docutils literal notranslate"><span class="pre">get_transform</span></code>/<code class="docutils literal notranslate"><span class="pre">set_transform</span></code> callbacks
+for a same property. In practice however, this should rarely be needed, as most ‘transform’
+operation can also happen within a <code class="docutils literal notranslate"><span class="pre">get</span></code>/<code class="docutils literal notranslate"><span class="pre">set</span></code> callback.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Remember that these callbacks may be executed in threaded context.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Take care when accessing other properties in these callbacks, as it can easily trigger
+complex issues, such as infinite loops (if e.g. two properties try to also set the other
+property’s value in their own <code class="docutils literal notranslate"><span class="pre">set</span></code> callback), or unexpected side effects due to changes
+in data, caused e.g. by an <code class="docutils literal notranslate"><span class="pre">update</span></code> callback.</p>
+</div>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="n">scene</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">scene</span>
+
+
+<span class="c1"># Simple property reading/writing from &#39;custom&#39; IDProperties.</span>
+<span class="c1"># This is similar to what the RNA would do internally, albeit using it own separate,</span>
+<span class="c1"># internal &#39;system&#39; IDProperty storage, since Blender 5.0.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_float</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;testprop&quot;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_float</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;testprop&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">test_float</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">FloatProperty</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="n">get_float</span><span class="p">,</span> <span class="nb">set</span><span class="o">=</span><span class="n">set_float</span><span class="p">)</span>
+
+<span class="c1"># Testing the property:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_float:&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">test_float</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">test_float</span> <span class="o">=</span> <span class="mf">7.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_float:&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">test_float</span><span class="p">)</span>
+
+<span class="c1"># The above outputs:</span>
+<span class="c1"># test_float: 0.0</span>
+<span class="c1"># test_float: 7.5</span>
+
+
+<span class="c1"># Read-only string property, returns the current date.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_date</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">test_date</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="n">get_date</span><span class="p">)</span>
+
+<span class="c1"># Testing the property:</span>
+<span class="c1"># scene.test_date = &quot;blah&quot;   # This would fail, property is read-only.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_date:&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">test_date</span><span class="p">)</span>
+
+<span class="c1"># The above outputs something like:</span>
+<span class="c1"># test_date: 2018-03-14 11:36:53.158653</span>
+
+
+<span class="c1"># Boolean array.</span>
+<span class="c1"># - Set function stores a single boolean value, returned as the second component.</span>
+<span class="c1"># - Array getters must return a list or tuple.</span>
+<span class="c1"># - Array size must match the property vector size exactly.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_array</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;somebool&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="bp">self</span><span class="p">[</span><span class="s2">&quot;somebool&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">test_array</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">BoolVectorProperty</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get_array</span><span class="p">,</span> <span class="nb">set</span><span class="o">=</span><span class="n">set_array</span><span class="p">)</span>
+
+<span class="c1"># Testing the property:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_array:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">test_array</span><span class="p">))</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">test_array</span> <span class="o">=</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_array:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">test_array</span><span class="p">))</span>
+
+<span class="c1"># The above outputs:</span>
+<span class="c1"># test_array: (True, True)</span>
+<span class="c1"># test_array: (True, False)</span>
+
+
+<span class="c1"># Boolean array, using &#39;transform&#39; accessors.</span>
+<span class="c1"># Note how the same result is achieved as with previous get/set example, but using default RNA storage.</span>
+<span class="c1"># Transform accessors also have access to more information.</span>
+<span class="c1"># Also note how the stored data _is_ a two-items array.</span>
+<span class="c1"># - Set function stores a single boolean value, returned as the second component.</span>
+<span class="c1"># - Array getters must return a list or tuple.</span>
+<span class="c1"># - Array size must match the property vector size exactly.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_array_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="n">is_set</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stored data:&quot;</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="s2">&quot;(is set:&quot;</span><span class="p">,</span> <span class="n">is_set</span><span class="p">,</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_array_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="n">is_set</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New data:&quot;</span><span class="p">,</span> <span class="n">new_value</span><span class="p">,</span> <span class="s2">&quot;; Stored data:&quot;</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="s2">&quot;(is set:&quot;</span><span class="p">,</span> <span class="n">is_set</span><span class="p">,</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span><span class="p">,</span> <span class="n">new_value</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">new_value</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">test_array_transform</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">BoolVectorProperty</span><span class="p">(</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">get_transform</span><span class="o">=</span><span class="n">get_array_transform</span><span class="p">,</span> <span class="n">set_transform</span><span class="o">=</span><span class="n">set_array_transform</span><span class="p">)</span>
+
+<span class="c1"># Testing the property:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_array_transform:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">test_array_transform</span><span class="p">))</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">test_array_transform</span> <span class="o">=</span> <span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_array_transform:&quot;</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">scene</span><span class="o">.</span><span class="n">test_array_transform</span><span class="p">))</span>
+
+<span class="c1"># The above outputs:</span>
+<span class="c1"># Stored data: (False, False) (is set: False )</span>
+<span class="c1"># test_array_transform: (True, False)</span>
+<span class="c1"># New data: (True, False) ; Stored data: (False, False) (is set: False )</span>
+<span class="c1"># Stored data: (True, False) (is set: True )</span>
+<span class="c1"># test_array_transform: (True, False)</span>
+
+
+<span class="c1"># Enum property.</span>
+<span class="c1"># Note: the getter/setter callback must use integer identifiers!</span>
+<span class="n">test_items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;RED&quot;</span><span class="p">,</span> <span class="s2">&quot;Red&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;GREEN&quot;</span><span class="p">,</span> <span class="s2">&quot;Green&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;BLUE&quot;</span><span class="p">,</span> <span class="s2">&quot;Blue&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;YELLOW&quot;</span><span class="p">,</span> <span class="s2">&quot;Yellow&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_enum</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_enum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;setting value&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">test_enum</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">EnumProperty</span><span class="p">(</span><span class="n">items</span><span class="o">=</span><span class="n">test_items</span><span class="p">,</span> <span class="n">get</span><span class="o">=</span><span class="n">get_enum</span><span class="p">,</span> <span class="nb">set</span><span class="o">=</span><span class="n">set_enum</span><span class="p">)</span>
+
+<span class="c1"># Testing the property:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_enum:&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">test_enum</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">test_enum</span> <span class="o">=</span> <span class="s1">&#39;BLUE&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_enum:&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">test_enum</span><span class="p">)</span>
+
+<span class="c1"># The above outputs something like:</span>
+<span class="c1"># test_enum: YELLOW</span>
+<span class="c1"># setting value 3</span>
+<span class="c1"># test_enum: GREEN</span>
+
+
+<span class="c1"># String, using &#39;transform&#39; accessors to validate data before setting/returning it.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_string_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="n">is_set</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+    <span class="n">is_valid_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">curr_value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stored data:&quot;</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="s2">&quot;(is set:&quot;</span><span class="p">,</span> <span class="n">is_set</span><span class="p">,</span> <span class="s2">&quot;, is valid path:&quot;</span><span class="p">,</span> <span class="n">is_valid_path</span><span class="p">,</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">curr_value</span> <span class="k">if</span> <span class="n">is_valid_path</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">set_string_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_value</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="n">is_set</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+    <span class="n">is_valid_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">new_value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New data:&quot;</span><span class="p">,</span> <span class="n">new_value</span><span class="p">,</span> <span class="s2">&quot;(is_valid_path:&quot;</span><span class="p">,</span> <span class="n">is_valid_path</span><span class="p">,</span> <span class="s2">&quot;);&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Stored data:&quot;</span><span class="p">,</span> <span class="n">curr_value</span><span class="p">,</span> <span class="s2">&quot;(is set:&quot;</span><span class="p">,</span> <span class="n">is_set</span><span class="p">,</span> <span class="s2">&quot;)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_value</span> <span class="k">if</span> <span class="n">is_valid_path</span> <span class="k">else</span> <span class="n">curr_value</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">Scene</span><span class="o">.</span><span class="n">test_string_transform</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">props</span><span class="o">.</span><span class="n">StringProperty</span><span class="p">(</span>
+    <span class="n">subtype</span><span class="o">=</span><span class="s1">&#39;DIR_PATH&#39;</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="s2">&quot;an/invalid/path&quot;</span><span class="p">,</span>
+    <span class="n">get_transform</span><span class="o">=</span><span class="n">get_string_transform</span><span class="p">,</span>
+    <span class="n">set_transform</span><span class="o">=</span><span class="n">set_string_transform</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Testing the property:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_string_transform:&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">test_string_transform</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">test_string_transform</span> <span class="o">=</span> <span class="s2">&quot;try</span><span class="se">\\</span><span class="s2">to</span><span class="se">\\</span><span class="s2">find</span><span class="se">\\</span><span class="s2">me&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test_string_transform:&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">test_string_transform</span><span class="p">)</span>
+
+<span class="c1"># The above outputs something like:</span>
+<span class="c1"># Stored data: an/invalid/path (is set: False , is valid path: False )</span>
+<span class="c1"># test_string_transform:</span>
+<span class="c1"># New data: try\to\find\me (is_valid_path: False ) ; Stored data: an/invalid/path (is set: False )</span>
+<span class="c1"># Stored data: an/invalid/path (is set: True , is valid path: False )</span>
+<span class="c1"># test_string_transform:</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.BoolProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">BoolProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.BoolProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new boolean property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>subtype</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_subtype_number_items.html#rna-enum-property-subtype-number-items"><span class="std std-ref">Property Subtype Number Items</span></a>.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], bool]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, bool], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, bool, bool], bool]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, bool, bool, bool], bool]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.BoolVectorProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">BoolVectorProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.BoolVectorProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new vector boolean property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>default</strong> (<em>Sequence</em><em>[</em><em>bool</em><em>]</em>) – sequence of booleans the length of <em>size</em>.</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>subtype</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_subtype_number_array_items.html#rna-enum-property-subtype-number-array-items"><span class="std std-ref">Property Subtype Number Array Items</span></a>.</p></li>
+<li><p><strong>size</strong> (<em>int</em><em> | </em><em>Sequence</em><em>[</em><em>int</em><em>]</em>) – Vector dimensions in [1, 32]. An int sequence can be used to define multi-dimension arrays.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], Sequence[bool]]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, tuple[bool, …]], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, Sequence[bool], bool], Sequence[bool]]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, Sequence[bool], Sequence[bool], bool], Sequence[bool]]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.CollectionProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">CollectionProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.CollectionProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new collection property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (type[<a class="reference internal" href="bpy.types.PropertyGroup.html#bpy.types.PropertyGroup" title="bpy.types.PropertyGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.PropertyGroup</span></code></a>]) – A subclass of a property group.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_collection_items.html#rna-enum-property-override-flag-collection-items"><span class="std std-ref">Property Override Flag Collection Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.EnumProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">EnumProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">items</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.EnumProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new enumerator property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>items</strong> (Iterable[tuple[str, str, str] | tuple[str, str, str, int] | tuple[str, str, str, int, int] | None] | Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a> | None], Iterable[tuple[str, str, str] | tuple[str, str, str, int] | tuple[str, str, str, int, int] | None]]) – <p>sequence of enum items formatted:
+<code class="docutils literal notranslate"><span class="pre">[(identifier,</span> <span class="pre">name,</span> <span class="pre">description,</span> <span class="pre">icon,</span> <span class="pre">number),</span> <span class="pre">...]</span></code>.</p>
+<p>The first three elements of the tuples are mandatory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">identifier<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The identifier is used for Python access.
+An empty identifier means that the item is a separator</p>
+</dd>
+<dt class="field-even">name<span class="colon">:</span></dt>
+<dd class="field-even"><p>Name for the interface.</p>
+</dd>
+<dt class="field-odd">description<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Used for documentation and tooltips.</p>
+</dd>
+<dt class="field-even">icon<span class="colon">:</span></dt>
+<dd class="field-even"><p>An icon string identifier or integer icon value
+(e.g. returned by <a class="reference internal" href="bpy.types.UILayout.html#bpy.types.UILayout.icon" title="bpy.types.UILayout.icon"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.UILayout.icon</span></code></a>)</p>
+</dd>
+<dt class="field-odd">number<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique value used as the identifier for this item (stored in file data).
+Use when the identifier may need to change. If the <em>ENUM_FLAG</em> option is used,
+the values are bit-masks and should be powers of two.</p>
+</dd>
+</dl>
+<p>When an item only contains 4 items they define <code class="docutils literal notranslate"><span class="pre">(identifier,</span> <span class="pre">name,</span> <span class="pre">description,</span> <span class="pre">number)</span></code>.</p>
+<p>Separators may be added using either None (nameless separator),
+or a regular item tuple with an empty identifier string, in which case the name,
+if non-empty, will be displayed in the UI above the separator line.
+For dynamic values a callback can be passed which returns a list in
+the same format as the static list.
+This function must take 2 arguments <code class="docutils literal notranslate"><span class="pre">(self,</span> <span class="pre">context)</span></code>, <strong>context may be None</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There is a known bug with using a callback,
+Python must keep a reference to the strings returned by the callback or Blender
+will misbehave or even crash.</p>
+</div>
+</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>default</strong> (<em>str</em><em> | </em><em>int</em><em> | </em><em>set</em><em>[</em><em>str</em><em>]</em>) – The default value for this enum, a string from the identifiers used in <em>items</em>, or integer matching an item number.
+If the <em>ENUM_FLAG</em> option is used this must be a set of such string identifiers instead.
+WARNING: Strings cannot be specified for dynamic enums
+(i.e. if a callback function is given as <em>items</em> parameter).</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_enum_items.html#rna-enum-property-flag-enum-items"><span class="std std-ref">Property Flag Enum Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], int]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, int], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, int, bool], int]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, int, int, bool], int]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.FloatProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">FloatProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-3.402823e+38</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.402823e+38</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-3.402823e+38</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.402823e+38</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.FloatProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new float (single precision) property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>min</strong> (<em>float</em>) – Hard minimum, trying to assign a value below will silently assign this minimum instead.</p></li>
+<li><p><strong>max</strong> (<em>float</em>) – Hard maximum, trying to assign a value above will silently assign this maximum instead.</p></li>
+<li><p><strong>soft_min</strong> (<em>float</em>) – Soft minimum (&gt;= <em>min</em>), user won’t be able to drag the widget below this value in the UI.</p></li>
+<li><p><strong>soft_max</strong> (<em>float</em>) – Soft maximum (&lt;= <em>max</em>), user won’t be able to drag the widget above this value in the UI.</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – Step of increment/decrement in UI, in [1, 100], defaults to 3 (WARNING: actual value is /100).</p></li>
+<li><p><strong>precision</strong> (<em>int</em>) – Maximum number of decimal digits to display, in [0, 6]. Fraction is automatically hidden for exact integer values of fields with unit ‘NONE’ or ‘TIME’ (frame count) and step divisible by 100.</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>subtype</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_subtype_number_items.html#rna-enum-property-subtype-number-items"><span class="std std-ref">Property Subtype Number Items</span></a>.</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_unit_items.html#rna-enum-property-unit-items"><span class="std std-ref">Property Unit Items</span></a>.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], float]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, float], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, float, bool], float]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, float, float, bool], float]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.FloatVectorProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">FloatVectorProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">sys.float_info.min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">sys.float_info.max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">sys.float_info.min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">sys.float_info.max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.FloatVectorProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new vector float property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>default</strong> (<em>Sequence</em><em>[</em><em>float</em><em>]</em>) – Sequence of floats the length of <em>size</em>.</p></li>
+<li><p><strong>min</strong> (<em>float</em>) – Hard minimum, trying to assign a value below will silently assign this minimum instead.</p></li>
+<li><p><strong>max</strong> (<em>float</em>) – Hard maximum, trying to assign a value above will silently assign this maximum instead.</p></li>
+<li><p><strong>soft_min</strong> (<em>float</em>) – Soft minimum (&gt;= <em>min</em>), user won’t be able to drag the widget below this value in the UI.</p></li>
+<li><p><strong>soft_max</strong> (<em>float</em>) – Soft maximum (&lt;= <em>max</em>), user won’t be able to drag the widget above this value in the UI.</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>step</strong> (<em>float</em>) – Step of increment/decrement in UI, in [1, 100], defaults to 3 (WARNING: actual value is /100).</p></li>
+<li><p><strong>precision</strong> (<em>int</em>) – Maximum number of decimal digits to display, in [0, 6]. Fraction is automatically hidden for exact integer values of fields with unit ‘NONE’ or ‘TIME’ (frame count) and step divisible by 100.</p></li>
+<li><p><strong>subtype</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_subtype_number_array_items.html#rna-enum-property-subtype-number-array-items"><span class="std std-ref">Property Subtype Number Array Items</span></a>.</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_unit_items.html#rna-enum-property-unit-items"><span class="std std-ref">Property Unit Items</span></a>.</p></li>
+<li><p><strong>size</strong> (<em>int</em><em> | </em><em>Sequence</em><em>[</em><em>int</em><em>]</em>) – Vector dimensions in [1, 32]. An int sequence can be used to define multi-dimension arrays.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], Sequence[float]]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, tuple[float, …]], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, Sequence[float], bool], Sequence[float]]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, Sequence[float], Sequence[float], bool], Sequence[float]]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.IntProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">IntProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2**31</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2**31</span> <span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2**31</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2**31</span> <span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.IntProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new int property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>min</strong> (<em>int</em>) – Hard minimum, trying to assign a value below will silently assign this minimum instead.</p></li>
+<li><p><strong>max</strong> (<em>int</em>) – Hard maximum, trying to assign a value above will silently assign this maximum instead.</p></li>
+<li><p><strong>soft_min</strong> (<em>int</em>) – Soft minimum (&gt;= <em>min</em>), user won’t be able to drag the widget below this value in the UI.</p></li>
+<li><p><strong>soft_max</strong> (<em>int</em>) – Soft maximum (&lt;= <em>max</em>), user won’t be able to drag the widget above this value in the UI.</p></li>
+<li><p><strong>step</strong> (<em>int</em>) – Step of increment/decrement in UI, in [1, 100], defaults to 1 (WARNING: unused currently!).</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>subtype</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_subtype_number_items.html#rna-enum-property-subtype-number-items"><span class="std std-ref">Property Subtype Number Items</span></a>.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], int]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, int], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, int, bool], int]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, int, int, bool], int]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.IntVectorProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">IntVectorProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2**31</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2**31</span> <span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-2**31</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">soft_max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2**31</span> <span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.IntVectorProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new vector int property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>default</strong> (<em>Sequence</em><em>[</em><em>int</em><em>]</em>) – sequence of ints the length of <em>size</em>.</p></li>
+<li><p><strong>min</strong> (<em>int</em>) – Hard minimum, trying to assign a value below will silently assign this minimum instead.</p></li>
+<li><p><strong>max</strong> (<em>int</em>) – Hard maximum, trying to assign a value above will silently assign this maximum instead.</p></li>
+<li><p><strong>soft_min</strong> (<em>int</em>) – Soft minimum (&gt;= <em>min</em>), user won’t be able to drag the widget below this value in the UI.</p></li>
+<li><p><strong>soft_max</strong> (<em>int</em>) – Soft maximum (&lt;= <em>max</em>), user won’t be able to drag the widget above this value in the UI.</p></li>
+<li><p><strong>step</strong> (<em>int</em>) – Step of increment/decrement in UI, in [1, 100], defaults to 1 (WARNING: unused currently!).</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>subtype</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_subtype_number_array_items.html#rna-enum-property-subtype-number-array-items"><span class="std std-ref">Property Subtype Number Array Items</span></a>.</p></li>
+<li><p><strong>size</strong> (<em>int</em><em> | </em><em>Sequence</em><em>[</em><em>int</em><em>]</em>) – Vector dimensions in [1, 32]. An int sequence can be used to define multi-dimension arrays.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], Sequence[int]]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, tuple[int, …]], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, Sequence[int], bool], Sequence[int]]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, Sequence[int], Sequence[int], bool], Sequence[int]]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.PointerProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">PointerProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.PointerProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new pointer property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (type[<a class="reference internal" href="bpy.types.PropertyGroup.html#bpy.types.PropertyGroup" title="bpy.types.PropertyGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.PropertyGroup</span></code></a> | <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.ID</span></code></a>]) – A subclass of PropertyGroup or ID.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>poll</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.ID.html#bpy.types.ID" title="bpy.types.ID"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.ID</span></code></a>], bool]) – <p>Function that determines whether an item is valid for this property.
+The function must take 2 values (self, object) and return a boolean.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The return value will be checked only when assigning an item from the UI, but it is still possible to assign an “invalid” item to the property directly.</p>
+</div>
+</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pointer properties do not support storing references to embedded IDs (e.g. <a class="reference internal" href="bpy.types.Scene.html#bpy.types.Scene.collection" title="bpy.types.Scene.collection"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Scene.collection</span></code></a>, <a class="reference internal" href="bpy.types.Material.html#bpy.types.Material.node_tree" title="bpy.types.Material.node_tree"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Material.node_tree</span></code></a>).
+These should exclusively be referenced and accessed through their owner ID (e.g. the scene or material).</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.RemoveProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">RemoveProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.RemoveProperty" title="Link to this definition"></a></dt>
+<dd><p>Removes a dynamically defined property.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> (<em>type</em>) – The class containing the property (must be a positional argument).</p></li>
+<li><p><strong>attr</strong> (<em>str</em>) – Property name (must be passed as a keyword).</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Typically this function doesn’t need to be accessed directly.
+Instead use <code class="docutils literal notranslate"><span class="pre">del</span> <span class="pre">cls.attr</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.props.StringProperty">
+<span class="sig-prename descclassname"><span class="pre">bpy.props.</span></span><span class="sig-name descname"><span class="pre">StringProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translation_context</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxlen</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ANIMATABLE'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">set()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">update</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">set_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">search_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'SUGGESTION'}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.props.StringProperty" title="Link to this definition"></a></dt>
+<dd><p>Returns a new string property definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name used in the user interface.</p></li>
+<li><p><strong>description</strong> (<em>str</em>) – Text used for the tooltip and api documentation.</p></li>
+<li><p><strong>translation_context</strong> (<em>str</em>) – Text used as context to disambiguate translations.</p></li>
+<li><p><strong>default</strong> (<em>str</em>) – initializer string.</p></li>
+<li><p><strong>maxlen</strong> (<em>int</em>) – maximum length of the string.</p></li>
+<li><p><strong>options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_flag_items.html#rna-enum-property-flag-items"><span class="std std-ref">Property Flag Items</span></a>.</p></li>
+<li><p><strong>override</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_override_flag_items.html#rna-enum-property-override-flag-items"><span class="std std-ref">Property Override Flag Items</span></a>.</p></li>
+<li><p><strong>tags</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – Enumerator of tags that are defined by parent class.</p></li>
+<li><p><strong>subtype</strong> (<em>str</em>) – Enumerator in <a class="reference internal" href="bpy_types_enum_items/property_subtype_string_items.html#rna-enum-property-subtype-string-items"><span class="std std-ref">Property Subtype String Items</span></a>.</p></li>
+<li><p><strong>update</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>], None]) – Function to be called when this value is modified,
+This function must take 2 values (self, context) and return None.
+<em>Warning</em> there are no safety checks to avoid infinite recursion.</p></li>
+<li><p><strong>get</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>], str]) – <p>Function to be called when this value is ‘read’, and the default,
+system-defined storage is not used for this property.
+This function must take 1 value (self) and return the value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">set</span></code> one will make the property read-only (even if <code class="docutils literal notranslate"><span class="pre">READ_ONLY</span></code> option is not set).</p>
+</div>
+</p></li>
+<li><p><strong>set</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, str], None]) – <p>Function to be called when this value is ‘written’, and the default,
+system-defined storage is not used for this property.
+This function must take 2 values (self, value) and return None.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Defining this callback without a matching <code class="docutils literal notranslate"><span class="pre">get</span></code> one is invalid.</p>
+</div>
+</p></li>
+<li><p><strong>get_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, str, bool], str]) – <p>Function to be called when this value is ‘read’,
+if some additional processing must be performed on the stored value.
+This function must take three arguments (self, the stored value,
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits of the property (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>set_transform</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, str, str, bool], str]) – <p>Function to be called when this value is ‘written’,
+if some additional processing must be performed on the given value before storing it.
+This function must take four arguments (self, the given value to store,
+the currently stored value (‘raw’ value, without any <code class="docutils literal notranslate"><span class="pre">get_transform</span></code> applied to it),
+and a boolean indicating if the property is currently set),
+and return the final, transformed value of the property.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The callback is responsible to ensure that value limits (min/max, length…) are respected. Otherwise a ValueError exception is raised.</p>
+</div>
+</p></li>
+<li><p><strong>search</strong> (Callable[[<a class="reference internal" href="bpy.types.bpy_struct.html#bpy.types.bpy_struct" title="bpy.types.bpy_struct"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.bpy_struct</span></code></a>, <a class="reference internal" href="bpy.types.Context.html#bpy.types.Context" title="bpy.types.Context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Context</span></code></a>, str], Iterable[str | tuple[str, str]]]) – <p>Function to be called to show candidates for this string (shown in the UI).
+This function must take 3 values (self, context, edit_text)
+and return a sequence, iterator or generator where each item must be:</p>
+<ul>
+<li><p>A single string (representing a candidate to display).</p></li>
+<li><p>A tuple-pair of strings, where the first is a candidate and the second
+is additional information about the candidate.</p></li>
+</ul>
+</p></li>
+<li><p><strong>search_options</strong> (<em>set</em><em>[</em><em>str</em><em>]</em>) – <p>Set of strings in:</p>
+<ul>
+<li><p>’SORT’ sorts the resulting items.</p></li>
+<li><p>’SUGGESTION’ lets the user enter values not found in search candidates.
+<strong>WARNING</strong> disabling this flag causes the search callback to run on redraw,
+so only disable this flag if it’s not likely to cause performance issues.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.app.timers.html" class="btn btn-neutral float-left" title="Application Timers (bpy.app.timers)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bge.types.html" class="btn btn-neutral float-right" title="Game Types (bge.types)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.props.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.props.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

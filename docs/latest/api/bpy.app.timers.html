@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application Timers (bpy.app.timers) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.app.timers.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Property Definitions (bpy.props)" href="bpy.props.html" />
+    <link rel="prev" title="Application Icons (bpy.app.icons)" href="bpy.app.icons.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.handlers.html">Application Handlers (bpy.app.handlers)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.translations.html">Application Translations (bpy.app.translations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.icons.html">Application Icons (bpy.app.icons)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Application Timers (bpy.app.timers)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-function-in-x-seconds">Run a Function in x Seconds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-function-every-x-seconds">Run a Function every x Seconds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-a-function-n-times-every-x-seconds">Run a Function n times every x seconds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assign-parameters-to-functions">Assign parameters to functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.timers.is_registered"><code class="docutils literal notranslate"><span class="pre">is_registered()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.timers.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.timers.unregister"><code class="docutils literal notranslate"><span class="pre">unregister()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.autoexec_fail"><code class="docutils literal notranslate"><span class="pre">autoexec_fail</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.autoexec_fail_message"><code class="docutils literal notranslate"><span class="pre">autoexec_fail_message</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.autoexec_fail_quiet"><code class="docutils literal notranslate"><span class="pre">autoexec_fail_quiet</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.binary_path"><code class="docutils literal notranslate"><span class="pre">binary_path</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.cachedir"><code class="docutils literal notranslate"><span class="pre">cachedir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug"><code class="docutils literal notranslate"><span class="pre">debug</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_build"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_build</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_eval"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_eval</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_pretty"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_pretty</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_tag"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_tag</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_time"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_events"><code class="docutils literal notranslate"><span class="pre">debug_events</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_freestyle"><code class="docutils literal notranslate"><span class="pre">debug_freestyle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_handlers"><code class="docutils literal notranslate"><span class="pre">debug_handlers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_io"><code class="docutils literal notranslate"><span class="pre">debug_io</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_python"><code class="docutils literal notranslate"><span class="pre">debug_python</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_simdata"><code class="docutils literal notranslate"><span class="pre">debug_simdata</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_value"><code class="docutils literal notranslate"><span class="pre">debug_value</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_wm"><code class="docutils literal notranslate"><span class="pre">debug_wm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.driver_namespace"><code class="docutils literal notranslate"><span class="pre">driver_namespace</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.online_access"><code class="docutils literal notranslate"><span class="pre">online_access</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.online_access_override"><code class="docutils literal notranslate"><span class="pre">online_access_override</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.python_args"><code class="docutils literal notranslate"><span class="pre">python_args</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.render_icon_size"><code class="docutils literal notranslate"><span class="pre">render_icon_size</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.render_preview_size"><code class="docutils literal notranslate"><span class="pre">render_preview_size</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.tempdir"><code class="docutils literal notranslate"><span class="pre">tempdir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.use_event_simulate"><code class="docutils literal notranslate"><span class="pre">use_event_simulate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.use_userpref_skip_save_on_exit"><code class="docutils literal notranslate"><span class="pre">use_userpref_skip_save_on_exit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.background"><code class="docutils literal notranslate"><span class="pre">background</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.factory_startup"><code class="docutils literal notranslate"><span class="pre">factory_startup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.module"><code class="docutils literal notranslate"><span class="pre">module</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.portable"><code class="docutils literal notranslate"><span class="pre">portable</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_branch"><code class="docutils literal notranslate"><span class="pre">build_branch</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_cflags"><code class="docutils literal notranslate"><span class="pre">build_cflags</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_commit_date"><code class="docutils literal notranslate"><span class="pre">build_commit_date</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_commit_time"><code class="docutils literal notranslate"><span class="pre">build_commit_time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_cxxflags"><code class="docutils literal notranslate"><span class="pre">build_cxxflags</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_date"><code class="docutils literal notranslate"><span class="pre">build_date</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_hash"><code class="docutils literal notranslate"><span class="pre">build_hash</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_linkflags"><code class="docutils literal notranslate"><span class="pre">build_linkflags</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_platform"><code class="docutils literal notranslate"><span class="pre">build_platform</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_system"><code class="docutils literal notranslate"><span class="pre">build_system</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_time"><code class="docutils literal notranslate"><span class="pre">build_time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_type"><code class="docutils literal notranslate"><span class="pre">build_type</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_commit_timestamp"><code class="docutils literal notranslate"><span class="pre">build_commit_timestamp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version_cycle"><code class="docutils literal notranslate"><span class="pre">version_cycle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version_string"><code class="docutils literal notranslate"><span class="pre">version_string</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version"><code class="docutils literal notranslate"><span class="pre">version</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version_file"><code class="docutils literal notranslate"><span class="pre">version_file</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.alembic"><code class="docutils literal notranslate"><span class="pre">alembic</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_options"><code class="docutils literal notranslate"><span class="pre">build_options</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.ffmpeg"><code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.ocio"><code class="docutils literal notranslate"><span class="pre">ocio</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.oiio"><code class="docutils literal notranslate"><span class="pre">oiio</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.opensubdiv"><code class="docutils literal notranslate"><span class="pre">opensubdiv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.openvdb"><code class="docutils literal notranslate"><span class="pre">openvdb</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.sdl"><code class="docutils literal notranslate"><span class="pre">sdl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.usd"><code class="docutils literal notranslate"><span class="pre">usd</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.help_text"><code class="docutils literal notranslate"><span class="pre">help_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.is_job_running"><code class="docutils literal notranslate"><span class="pre">is_job_running()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.memory_usage_undo"><code class="docutils literal notranslate"><span class="pre">memory_usage_undo()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.app.html">Application Data (bpy.app)</a></li>
+      <li class="breadcrumb-item active">Application Timers (bpy.app.timers)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.app.timers">
+<span id="application-timers-bpy-app-timers"></span><h1>Application Timers (bpy.app.timers)<a class="headerlink" href="#module-bpy.app.timers" title="Link to this heading"></a></h1>
+<section id="run-a-function-in-x-seconds">
+<h2>Run a Function in x Seconds<a class="headerlink" href="#run-a-function-in-x-seconds" title="Link to this heading"></a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">in_5_seconds</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">timers</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">in_5_seconds</span><span class="p">,</span> <span class="n">first_interval</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="run-a-function-every-x-seconds">
+<h2>Run a Function every x Seconds<a class="headerlink" href="#run-a-function-every-x-seconds" title="Link to this heading"></a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">every_2_seconds</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mf">2.0</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">timers</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">every_2_seconds</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="run-a-function-n-times-every-x-seconds">
+<h2>Run a Function n times every x seconds<a class="headerlink" href="#run-a-function-n-times-every-x-seconds" title="Link to this heading"></a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">run_10_times</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">counter</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">counter</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="mf">0.1</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">timers</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">run_10_times</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="assign-parameters-to-functions">
+<h2>Assign parameters to functions<a class="headerlink" href="#assign-parameters-to-functions" title="Link to this heading"></a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">print_message</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Message:&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">timers</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">print_message</span><span class="p">,</span> <span class="s2">&quot;Hello&quot;</span><span class="p">),</span> <span class="n">first_interval</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">timers</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">print_message</span><span class="p">,</span> <span class="s2">&quot;World&quot;</span><span class="p">),</span> <span class="n">first_interval</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.app.timers.is_registered">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.timers.</span></span><span class="sig-name descname"><span class="pre">is_registered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.app.timers.is_registered" title="Link to this definition"></a></dt>
+<dd><p>Check if this function is registered as a timer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>float</em><em> | </em><em>None</em><em>]</em>) – Function to check.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True when this function is registered, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.app.timers.register">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.timers.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">first_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">persistent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.app.timers.register" title="Link to this definition"></a></dt>
+<dd><p>Add a new function that will be called after the specified amount of seconds.
+The function gets no arguments and is expected to return either None or a float.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code> is returned, the timer will be unregistered.
+A returned number specifies the delay until the function is called again.
+<code class="docutils literal notranslate"><span class="pre">functools.partial</span></code> can be used to assign some parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>float</em><em> | </em><em>None</em><em>]</em>) – The function that should called.</p></li>
+<li><p><strong>first_interval</strong> (<em>float</em>) – Seconds until the callback should be called the first time.</p></li>
+<li><p><strong>persistent</strong> (<em>bool</em>) – Don’t remove timer when a new file is loaded.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.app.timers.unregister">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.timers.</span></span><span class="sig-name descname"><span class="pre">unregister</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.app.timers.unregister" title="Link to this definition"></a></dt>
+<dd><p>Unregister timer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>function</strong> (<em>Callable</em><em>[</em><em>[</em><em>]</em><em>, </em><em>float</em><em> | </em><em>None</em><em>]</em>) – Function to unregister.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.app.icons.html" class="btn btn-neutral float-left" title="Application Icons (bpy.app.icons)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.props.html" class="btn btn-neutral float-right" title="Property Definitions (bpy.props)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.app.timers.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.app.timers.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

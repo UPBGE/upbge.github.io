@@ -1,0 +1,593 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Application Handlers (bpy.app.handlers) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.app.handlers.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Application Translations (bpy.app.translations)" href="bpy.app.translations.html" />
+    <link rel="prev" title="Application Data (bpy.app)" href="bpy.app.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Application Handlers (bpy.app.handlers)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-handler-example">Basic Handler Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#persistent-handler-example">Persistent Handler Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-on-altering-data">Note on Altering Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.animation_playback_post"><code class="docutils literal notranslate"><span class="pre">animation_playback_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.animation_playback_pre"><code class="docutils literal notranslate"><span class="pre">animation_playback_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.annotation_post"><code class="docutils literal notranslate"><span class="pre">annotation_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.annotation_pre"><code class="docutils literal notranslate"><span class="pre">annotation_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.blend_import_post"><code class="docutils literal notranslate"><span class="pre">blend_import_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.blend_import_pre"><code class="docutils literal notranslate"><span class="pre">blend_import_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.composite_cancel"><code class="docutils literal notranslate"><span class="pre">composite_cancel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.composite_post"><code class="docutils literal notranslate"><span class="pre">composite_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.composite_pre"><code class="docutils literal notranslate"><span class="pre">composite_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.depsgraph_update_post"><code class="docutils literal notranslate"><span class="pre">depsgraph_update_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.depsgraph_update_pre"><code class="docutils literal notranslate"><span class="pre">depsgraph_update_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.exit_pre"><code class="docutils literal notranslate"><span class="pre">exit_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.frame_change_post"><code class="docutils literal notranslate"><span class="pre">frame_change_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.frame_change_pre"><code class="docutils literal notranslate"><span class="pre">frame_change_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.game_post"><code class="docutils literal notranslate"><span class="pre">game_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.game_pre"><code class="docutils literal notranslate"><span class="pre">game_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.load_factory_preferences_post"><code class="docutils literal notranslate"><span class="pre">load_factory_preferences_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.load_factory_startup_post"><code class="docutils literal notranslate"><span class="pre">load_factory_startup_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.load_post"><code class="docutils literal notranslate"><span class="pre">load_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.load_post_fail"><code class="docutils literal notranslate"><span class="pre">load_post_fail</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.load_pre"><code class="docutils literal notranslate"><span class="pre">load_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.object_bake_cancel"><code class="docutils literal notranslate"><span class="pre">object_bake_cancel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.object_bake_complete"><code class="docutils literal notranslate"><span class="pre">object_bake_complete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.object_bake_pre"><code class="docutils literal notranslate"><span class="pre">object_bake_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.redo_post"><code class="docutils literal notranslate"><span class="pre">redo_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.redo_pre"><code class="docutils literal notranslate"><span class="pre">redo_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.render_cancel"><code class="docutils literal notranslate"><span class="pre">render_cancel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.render_complete"><code class="docutils literal notranslate"><span class="pre">render_complete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.render_init"><code class="docutils literal notranslate"><span class="pre">render_init</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.render_post"><code class="docutils literal notranslate"><span class="pre">render_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.render_pre"><code class="docutils literal notranslate"><span class="pre">render_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.render_stats"><code class="docutils literal notranslate"><span class="pre">render_stats</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.render_write"><code class="docutils literal notranslate"><span class="pre">render_write</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.save_post"><code class="docutils literal notranslate"><span class="pre">save_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.save_post_fail"><code class="docutils literal notranslate"><span class="pre">save_post_fail</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.save_pre"><code class="docutils literal notranslate"><span class="pre">save_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.translation_update_post"><code class="docutils literal notranslate"><span class="pre">translation_update_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.undo_post"><code class="docutils literal notranslate"><span class="pre">undo_post</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.undo_pre"><code class="docutils literal notranslate"><span class="pre">undo_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.version_update"><code class="docutils literal notranslate"><span class="pre">version_update</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.xr_session_start_pre"><code class="docutils literal notranslate"><span class="pre">xr_session_start_pre</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.app.handlers.persistent"><code class="docutils literal notranslate"><span class="pre">persistent</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.translations.html">Application Translations (bpy.app.translations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.icons.html">Application Icons (bpy.app.icons)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.timers.html">Application Timers (bpy.app.timers)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.autoexec_fail"><code class="docutils literal notranslate"><span class="pre">autoexec_fail</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.autoexec_fail_message"><code class="docutils literal notranslate"><span class="pre">autoexec_fail_message</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.autoexec_fail_quiet"><code class="docutils literal notranslate"><span class="pre">autoexec_fail_quiet</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.binary_path"><code class="docutils literal notranslate"><span class="pre">binary_path</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.cachedir"><code class="docutils literal notranslate"><span class="pre">cachedir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug"><code class="docutils literal notranslate"><span class="pre">debug</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_build"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_build</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_eval"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_eval</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_pretty"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_pretty</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_tag"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_tag</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_depsgraph_time"><code class="docutils literal notranslate"><span class="pre">debug_depsgraph_time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_events"><code class="docutils literal notranslate"><span class="pre">debug_events</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_freestyle"><code class="docutils literal notranslate"><span class="pre">debug_freestyle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_handlers"><code class="docutils literal notranslate"><span class="pre">debug_handlers</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_io"><code class="docutils literal notranslate"><span class="pre">debug_io</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_python"><code class="docutils literal notranslate"><span class="pre">debug_python</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_simdata"><code class="docutils literal notranslate"><span class="pre">debug_simdata</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_value"><code class="docutils literal notranslate"><span class="pre">debug_value</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.debug_wm"><code class="docutils literal notranslate"><span class="pre">debug_wm</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.driver_namespace"><code class="docutils literal notranslate"><span class="pre">driver_namespace</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.online_access"><code class="docutils literal notranslate"><span class="pre">online_access</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.online_access_override"><code class="docutils literal notranslate"><span class="pre">online_access_override</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.python_args"><code class="docutils literal notranslate"><span class="pre">python_args</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.render_icon_size"><code class="docutils literal notranslate"><span class="pre">render_icon_size</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.render_preview_size"><code class="docutils literal notranslate"><span class="pre">render_preview_size</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.tempdir"><code class="docutils literal notranslate"><span class="pre">tempdir</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.use_event_simulate"><code class="docutils literal notranslate"><span class="pre">use_event_simulate</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.use_userpref_skip_save_on_exit"><code class="docutils literal notranslate"><span class="pre">use_userpref_skip_save_on_exit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.background"><code class="docutils literal notranslate"><span class="pre">background</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.factory_startup"><code class="docutils literal notranslate"><span class="pre">factory_startup</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.module"><code class="docutils literal notranslate"><span class="pre">module</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.portable"><code class="docutils literal notranslate"><span class="pre">portable</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_branch"><code class="docutils literal notranslate"><span class="pre">build_branch</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_cflags"><code class="docutils literal notranslate"><span class="pre">build_cflags</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_commit_date"><code class="docutils literal notranslate"><span class="pre">build_commit_date</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_commit_time"><code class="docutils literal notranslate"><span class="pre">build_commit_time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_cxxflags"><code class="docutils literal notranslate"><span class="pre">build_cxxflags</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_date"><code class="docutils literal notranslate"><span class="pre">build_date</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_hash"><code class="docutils literal notranslate"><span class="pre">build_hash</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_linkflags"><code class="docutils literal notranslate"><span class="pre">build_linkflags</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_platform"><code class="docutils literal notranslate"><span class="pre">build_platform</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_system"><code class="docutils literal notranslate"><span class="pre">build_system</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_time"><code class="docutils literal notranslate"><span class="pre">build_time</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_type"><code class="docutils literal notranslate"><span class="pre">build_type</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_commit_timestamp"><code class="docutils literal notranslate"><span class="pre">build_commit_timestamp</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version_cycle"><code class="docutils literal notranslate"><span class="pre">version_cycle</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version_string"><code class="docutils literal notranslate"><span class="pre">version_string</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version"><code class="docutils literal notranslate"><span class="pre">version</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.version_file"><code class="docutils literal notranslate"><span class="pre">version_file</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.alembic"><code class="docutils literal notranslate"><span class="pre">alembic</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.build_options"><code class="docutils literal notranslate"><span class="pre">build_options</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.ffmpeg"><code class="docutils literal notranslate"><span class="pre">ffmpeg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.ocio"><code class="docutils literal notranslate"><span class="pre">ocio</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.oiio"><code class="docutils literal notranslate"><span class="pre">oiio</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.opensubdiv"><code class="docutils literal notranslate"><span class="pre">opensubdiv</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.openvdb"><code class="docutils literal notranslate"><span class="pre">openvdb</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.sdl"><code class="docutils literal notranslate"><span class="pre">sdl</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.usd"><code class="docutils literal notranslate"><span class="pre">usd</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.help_text"><code class="docutils literal notranslate"><span class="pre">help_text()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.is_job_running"><code class="docutils literal notranslate"><span class="pre">is_job_running()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.app.html#bpy.app.memory_usage_undo"><code class="docutils literal notranslate"><span class="pre">memory_usage_undo()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.app.html">Application Data (bpy.app)</a></li>
+      <li class="breadcrumb-item active">Application Handlers (bpy.app.handlers)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.app.handlers">
+<span id="application-handlers-bpy-app-handlers"></span><h1>Application Handlers (bpy.app.handlers)<a class="headerlink" href="#module-bpy.app.handlers" title="Link to this heading"></a></h1>
+<p>This module contains callback lists</p>
+<section id="basic-handler-example">
+<h2>Basic Handler Example<a class="headerlink" href="#basic-handler-example" title="Link to this heading"></a></h2>
+<p>This script shows the most simple example of adding a handler.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">my_handler</span><span class="p">(</span><span class="n">scene</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Frame Change&quot;</span><span class="p">,</span> <span class="n">scene</span><span class="o">.</span><span class="n">frame_current</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">frame_change_pre</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">my_handler</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="persistent-handler-example">
+<h2>Persistent Handler Example<a class="headerlink" href="#persistent-handler-example" title="Link to this heading"></a></h2>
+<p>By default handlers are freed when loading new files, in some cases you may
+want the handler stay running across multiple files (when the handler is
+part of an add-on for example).</p>
+<p>For this the <a class="reference internal" href="#bpy.app.handlers.persistent" title="bpy.app.handlers.persistent"><code class="xref py py-data docutils literal notranslate"><span class="pre">bpy.app.handlers.persistent</span></code></a> decorator needs to be used.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bpy.app.handlers</span><span class="w"> </span><span class="kn">import</span> <span class="n">persistent</span>
+
+
+<span class="nd">@persistent</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_handler</span><span class="p">(</span><span class="n">dummy</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Load Handler:&quot;</span><span class="p">,</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">filepath</span><span class="p">)</span>
+
+
+<span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">handlers</span><span class="o">.</span><span class="n">load_post</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">load_handler</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="note-on-altering-data">
+<h2>Note on Altering Data<a class="headerlink" href="#note-on-altering-data" title="Link to this heading"></a></h2>
+<p>Altering data from handlers should be done carefully. While rendering the
+<code class="docutils literal notranslate"><span class="pre">frame_change_pre</span></code> and <code class="docutils literal notranslate"><span class="pre">frame_change_post</span></code> handlers are called from one
+thread and the viewport updates from a different thread. If the handler changes
+data that is accessed by the viewport, this can cause a crash of Blender. In
+such cases, lock the interface (Render → Lock Interface or
+<a class="reference internal" href="bpy.types.RenderSettings.html#bpy.types.RenderSettings.use_lock_interface" title="bpy.types.RenderSettings.use_lock_interface"><code class="xref py py-data docutils literal notranslate"><span class="pre">bpy.types.RenderSettings.use_lock_interface</span></code></a>) before starting a render.</p>
+<p>Below is an example of a mesh that is altered from a handler:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">frame_change_pre</span><span class="p">(</span><span class="n">scene</span><span class="p">):</span>
+    <span class="c1"># A triangle that shifts in the z direction.</span>
+    <span class="n">zshift</span> <span class="o">=</span> <span class="n">scene</span><span class="o">.</span><span class="n">frame_current</span> <span class="o">*</span> <span class="mf">0.1</span>
+    <span class="n">vertices</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">zshift</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">zshift</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">zshift</span><span class="p">)]</span>
+    <span class="n">triangles</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span>
+
+    <span class="nb">object</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;The Object&quot;</span><span class="p">]</span>
+    <span class="nb">object</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clear_geometry</span><span class="p">()</span>
+    <span class="nb">object</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">from_pydata</span><span class="p">(</span><span class="n">vertices</span><span class="p">,</span> <span class="p">[],</span> <span class="n">triangles</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.animation_playback_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">animation_playback_post</span></span><a class="headerlink" href="#bpy.app.handlers.animation_playback_post" title="Link to this definition"></a></dt>
+<dd><p>on ending animation playback. Accepts two arguments: The scene data-block and the dependency graph being updated</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.animation_playback_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">animation_playback_pre</span></span><a class="headerlink" href="#bpy.app.handlers.animation_playback_pre" title="Link to this definition"></a></dt>
+<dd><p>on starting animation playback. Accepts two arguments: The scene data-block and the dependency graph being updated</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.annotation_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">annotation_post</span></span><a class="headerlink" href="#bpy.app.handlers.annotation_post" title="Link to this definition"></a></dt>
+<dd><p>on drawing an annotation (after). Accepts two arguments: the annotation data-block and dependency graph</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.annotation_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">annotation_pre</span></span><a class="headerlink" href="#bpy.app.handlers.annotation_pre" title="Link to this definition"></a></dt>
+<dd><p>on drawing an annotation (before). Accepts two arguments: the annotation data-block and dependency graph</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.blend_import_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">blend_import_post</span></span><a class="headerlink" href="#bpy.app.handlers.blend_import_post" title="Link to this definition"></a></dt>
+<dd><p>on linking or appending data (after). Accepts one argument: a BlendImportContext</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.blend_import_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">blend_import_pre</span></span><a class="headerlink" href="#bpy.app.handlers.blend_import_pre" title="Link to this definition"></a></dt>
+<dd><p>on linking or appending data (before). Accepts one argument: a BlendImportContext</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.composite_cancel">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">composite_cancel</span></span><a class="headerlink" href="#bpy.app.handlers.composite_cancel" title="Link to this definition"></a></dt>
+<dd><p>on a compositing background job (cancel). Accepts one argument: the scene data-block</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.composite_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">composite_post</span></span><a class="headerlink" href="#bpy.app.handlers.composite_post" title="Link to this definition"></a></dt>
+<dd><p>on a compositing background job (after). Accepts one argument: the scene data-block</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.composite_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">composite_pre</span></span><a class="headerlink" href="#bpy.app.handlers.composite_pre" title="Link to this definition"></a></dt>
+<dd><p>on a compositing background job (before). Accepts one argument: the scene data-block</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.depsgraph_update_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">depsgraph_update_post</span></span><a class="headerlink" href="#bpy.app.handlers.depsgraph_update_post" title="Link to this definition"></a></dt>
+<dd><p>on depsgraph update (post). Accepts two arguments: The scene data-block and the dependency graph being updated</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.depsgraph_update_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">depsgraph_update_pre</span></span><a class="headerlink" href="#bpy.app.handlers.depsgraph_update_pre" title="Link to this definition"></a></dt>
+<dd><p>on depsgraph update (pre). Accepts two arguments: The scene data-block and the dependency graph being updated</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.exit_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">exit_pre</span></span><a class="headerlink" href="#bpy.app.handlers.exit_pre" title="Link to this definition"></a></dt>
+<dd><p>just before Blender shuts down, while all data is still valid. Accepts one boolean argument. True indicates either that a user has been using Blender and exited, or that Blender is exiting in a circumstance that should be treated as if that were the case. False indicates that Blender is running in background mode, or is exiting due to failed command line arguments, etc.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.frame_change_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">frame_change_post</span></span><a class="headerlink" href="#bpy.app.handlers.frame_change_post" title="Link to this definition"></a></dt>
+<dd><p>Called after frame change for playback and rendering, after the data has been evaluated for the new frame. Accepts two arguments: The scene data-block and the dependency graph being updated</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.frame_change_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">frame_change_pre</span></span><a class="headerlink" href="#bpy.app.handlers.frame_change_pre" title="Link to this definition"></a></dt>
+<dd><p>Called after frame change for playback and rendering, before any data is evaluated for the new frame. This makes it possible to change data and relations (for example swap an object to another mesh) for the new frame. Note that this handler is <strong>not</strong> to be used as ‘before the frame changes’ event. The dependency graph is not available in this handler, as data and relations may have been altered and the dependency graph has not yet been updated for that. Accepts two arguments: The scene data-block and the dependency graph being updated</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.game_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">game_post</span></span><a class="headerlink" href="#bpy.app.handlers.game_post" title="Link to this definition"></a></dt>
+<dd><p>on ending the game engine</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.game_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">game_pre</span></span><a class="headerlink" href="#bpy.app.handlers.game_pre" title="Link to this definition"></a></dt>
+<dd><p>on starting the game engine</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.load_factory_preferences_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">load_factory_preferences_post</span></span><a class="headerlink" href="#bpy.app.handlers.load_factory_preferences_post" title="Link to this definition"></a></dt>
+<dd><p>on loading factory preferences (after)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.load_factory_startup_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">load_factory_startup_post</span></span><a class="headerlink" href="#bpy.app.handlers.load_factory_startup_post" title="Link to this definition"></a></dt>
+<dd><p>on loading factory startup (after)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.load_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">load_post</span></span><a class="headerlink" href="#bpy.app.handlers.load_post" title="Link to this definition"></a></dt>
+<dd><p>on loading a new blend file (after). Accepts one argument: the file being loaded, an empty string for the startup-file.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.load_post_fail">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">load_post_fail</span></span><a class="headerlink" href="#bpy.app.handlers.load_post_fail" title="Link to this definition"></a></dt>
+<dd><p>on failure to load a new blend file (after). Accepts one argument: the file being loaded, an empty string for the startup-file.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.load_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">load_pre</span></span><a class="headerlink" href="#bpy.app.handlers.load_pre" title="Link to this definition"></a></dt>
+<dd><p>on loading a new blend file (before).Accepts one argument: the file being loaded, an empty string for the startup-file.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.object_bake_cancel">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">object_bake_cancel</span></span><a class="headerlink" href="#bpy.app.handlers.object_bake_cancel" title="Link to this definition"></a></dt>
+<dd><p>on canceling a bake job; will be called in the main thread. Accepts one argument: the object data-block being baked</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.object_bake_complete">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">object_bake_complete</span></span><a class="headerlink" href="#bpy.app.handlers.object_bake_complete" title="Link to this definition"></a></dt>
+<dd><p>on completing a bake job; will be called in the main thread. Accepts one argument: the object data-block being baked</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.object_bake_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">object_bake_pre</span></span><a class="headerlink" href="#bpy.app.handlers.object_bake_pre" title="Link to this definition"></a></dt>
+<dd><p>before starting a bake job. Accepts one argument: the object data-block being baked</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.redo_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">redo_post</span></span><a class="headerlink" href="#bpy.app.handlers.redo_post" title="Link to this definition"></a></dt>
+<dd><p>on loading a redo step (after)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.redo_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">redo_pre</span></span><a class="headerlink" href="#bpy.app.handlers.redo_pre" title="Link to this definition"></a></dt>
+<dd><p>on loading a redo step (before)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.render_cancel">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">render_cancel</span></span><a class="headerlink" href="#bpy.app.handlers.render_cancel" title="Link to this definition"></a></dt>
+<dd><p>on canceling a render job. Accepts one argument: the scene data-block being rendered</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.render_complete">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">render_complete</span></span><a class="headerlink" href="#bpy.app.handlers.render_complete" title="Link to this definition"></a></dt>
+<dd><p>on completion of render job. Accepts one argument: the scene data-block being rendered</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.render_init">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">render_init</span></span><a class="headerlink" href="#bpy.app.handlers.render_init" title="Link to this definition"></a></dt>
+<dd><p>on initialization of a render job. Accepts one argument: the scene data-block being rendered</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.render_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">render_post</span></span><a class="headerlink" href="#bpy.app.handlers.render_post" title="Link to this definition"></a></dt>
+<dd><p>on render (after)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.render_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">render_pre</span></span><a class="headerlink" href="#bpy.app.handlers.render_pre" title="Link to this definition"></a></dt>
+<dd><p>on render (before)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.render_stats">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">render_stats</span></span><a class="headerlink" href="#bpy.app.handlers.render_stats" title="Link to this definition"></a></dt>
+<dd><p>on printing render statistics. Accepts one argument: the render stats (render/saving time plus in background mode frame/used [peak] memory).</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.render_write">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">render_write</span></span><a class="headerlink" href="#bpy.app.handlers.render_write" title="Link to this definition"></a></dt>
+<dd><p>on writing a render frame (directly after the frame is written)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.save_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">save_post</span></span><a class="headerlink" href="#bpy.app.handlers.save_post" title="Link to this definition"></a></dt>
+<dd><p>on saving a blend file (after). Accepts one argument: the file being saved, an empty string for the startup-file.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.save_post_fail">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">save_post_fail</span></span><a class="headerlink" href="#bpy.app.handlers.save_post_fail" title="Link to this definition"></a></dt>
+<dd><p>on failure to save a blend file (after). Accepts one argument: the file being saved, an empty string for the startup-file.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.save_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">save_pre</span></span><a class="headerlink" href="#bpy.app.handlers.save_pre" title="Link to this definition"></a></dt>
+<dd><p>on saving a blend file (before). Accepts one argument: the file being saved, an empty string for the startup-file.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.translation_update_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">translation_update_post</span></span><a class="headerlink" href="#bpy.app.handlers.translation_update_post" title="Link to this definition"></a></dt>
+<dd><p>on translation settings update</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.undo_post">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">undo_post</span></span><a class="headerlink" href="#bpy.app.handlers.undo_post" title="Link to this definition"></a></dt>
+<dd><p>on loading an undo step (after)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.undo_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">undo_pre</span></span><a class="headerlink" href="#bpy.app.handlers.undo_pre" title="Link to this definition"></a></dt>
+<dd><p>on loading an undo step (before)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.version_update">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">version_update</span></span><a class="headerlink" href="#bpy.app.handlers.version_update" title="Link to this definition"></a></dt>
+<dd><p>on ending the versioning code</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.xr_session_start_pre">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">xr_session_start_pre</span></span><a class="headerlink" href="#bpy.app.handlers.xr_session_start_pre" title="Link to this definition"></a></dt>
+<dd><p>on starting an xr session (before)</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bpy.app.handlers.persistent">
+<span class="sig-prename descclassname"><span class="pre">bpy.app.handlers.</span></span><span class="sig-name descname"><span class="pre">persistent</span></span><a class="headerlink" href="#bpy.app.handlers.persistent" title="Link to this definition"></a></dt>
+<dd><p>Function decorator for callback functions not to be removed when loading new files</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.app.html" class="btn btn-neutral float-left" title="Application Data (bpy.app)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.app.translations.html" class="btn btn-neutral float-right" title="Application Translations (bpy.app.translations)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.app.handlers.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.app.handlers.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

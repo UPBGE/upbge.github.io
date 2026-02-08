@@ -1,0 +1,964 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utilities (bpy.utils) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.utils.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="bpy.utils submodule (bpy.utils.previews)" href="bpy.utils.previews.html" />
+    <link rel="prev" title="Types with Custom Property Support" href="bpy_types_custom_properties.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utilities (bpy.utils)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bpy.utils.previews.html">bpy.utils submodule (bpy.utils.previews)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.utils.units.html">bpy.utils submodule (bpy.utils.units)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.blend_paths"><code class="docutils literal notranslate"><span class="pre">blend_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.escape_identifier"><code class="docutils literal notranslate"><span class="pre">escape_identifier()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.flip_name"><code class="docutils literal notranslate"><span class="pre">flip_name()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.unescape_identifier"><code class="docutils literal notranslate"><span class="pre">unescape_identifier()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.register_class"><code class="docutils literal notranslate"><span class="pre">register_class()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.register_cli_command"><code class="docutils literal notranslate"><span class="pre">register_cli_command()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.unregister_cli_command"><code class="docutils literal notranslate"><span class="pre">unregister_cli_command()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.resource_path"><code class="docutils literal notranslate"><span class="pre">resource_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.unregister_class"><code class="docutils literal notranslate"><span class="pre">unregister_class()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.keyconfig_init"><code class="docutils literal notranslate"><span class="pre">keyconfig_init()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.keyconfig_set"><code class="docutils literal notranslate"><span class="pre">keyconfig_set()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.load_scripts"><code class="docutils literal notranslate"><span class="pre">load_scripts()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.modules_from_path"><code class="docutils literal notranslate"><span class="pre">modules_from_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.preset_find"><code class="docutils literal notranslate"><span class="pre">preset_find()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.preset_paths"><code class="docutils literal notranslate"><span class="pre">preset_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.refresh_script_paths"><code class="docutils literal notranslate"><span class="pre">refresh_script_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.app_template_paths"><code class="docutils literal notranslate"><span class="pre">app_template_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.time_from_frame"><code class="docutils literal notranslate"><span class="pre">time_from_frame()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.register_manual_map"><code class="docutils literal notranslate"><span class="pre">register_manual_map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.unregister_manual_map"><code class="docutils literal notranslate"><span class="pre">unregister_manual_map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.register_preset_path"><code class="docutils literal notranslate"><span class="pre">register_preset_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.unregister_preset_path"><code class="docutils literal notranslate"><span class="pre">unregister_preset_path()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.register_classes_factory"><code class="docutils literal notranslate"><span class="pre">register_classes_factory()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.register_submodule_factory"><code class="docutils literal notranslate"><span class="pre">register_submodule_factory()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.register_tool"><code class="docutils literal notranslate"><span class="pre">register_tool()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.make_rna_paths"><code class="docutils literal notranslate"><span class="pre">make_rna_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.manual_map"><code class="docutils literal notranslate"><span class="pre">manual_map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.manual_language_code"><code class="docutils literal notranslate"><span class="pre">manual_language_code()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.script_path_user"><code class="docutils literal notranslate"><span class="pre">script_path_user()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.extension_path_user"><code class="docutils literal notranslate"><span class="pre">extension_path_user()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.script_paths"><code class="docutils literal notranslate"><span class="pre">script_paths()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.smpte_from_frame"><code class="docutils literal notranslate"><span class="pre">smpte_from_frame()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.smpte_from_seconds"><code class="docutils literal notranslate"><span class="pre">smpte_from_seconds()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.unregister_tool"><code class="docutils literal notranslate"><span class="pre">unregister_tool()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.user_resource"><code class="docutils literal notranslate"><span class="pre">user_resource()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.execfile"><code class="docutils literal notranslate"><span class="pre">execfile()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bpy.utils.expose_bundled_modules"><code class="docutils literal notranslate"><span class="pre">expose_bundled_modules()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Utilities (bpy.utils)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.utils">
+<span id="utilities-bpy-utils"></span><h1>Utilities (bpy.utils)<a class="headerlink" href="#module-bpy.utils" title="Link to this heading"></a></h1>
+<p>This module contains utility functions specific to blender but
+not associated with blenders internal data.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Submodules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.previews.html">bpy.utils submodule (bpy.utils.previews)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.units.html">bpy.utils submodule (bpy.utils.units)</a></li>
+</ul>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.blend_paths">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">blend_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">absolute</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.blend_paths" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of paths to external files referenced by the loaded .blend file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>absolute</strong> (<em>bool</em>) – When true the paths returned are made absolute.</p></li>
+<li><p><strong>packed</strong> (<em>bool</em>) – When true include file paths for packed data.</p></li>
+<li><p><strong>local</strong> (<em>bool</em>) – When true skip linked library paths.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>path list.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.escape_identifier">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">escape_identifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.escape_identifier" title="Link to this definition"></a></dt>
+<dd><p>Simple string escaping function used for animation paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) – text</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The escaped string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.flip_name">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">flip_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_digits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.flip_name" title="Link to this definition"></a></dt>
+<dd><p>Flip a name between left/right sides, useful for
+mirroring bone names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Bone name to flip.</p></li>
+<li><p><strong>strip_digits</strong> (<em>bool</em>) – Whether to remove <code class="docutils literal notranslate"><span class="pre">.###</span></code> suffix.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The flipped name.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.unescape_identifier">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">unescape_identifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.unescape_identifier" title="Link to this definition"></a></dt>
+<dd><p>Simple string un-escape function used for animation paths.
+This performs the reverse of <a class="reference internal" href="#bpy.utils.escape_identifier" title="bpy.utils.escape_identifier"><code class="xref py py-func docutils literal notranslate"><span class="pre">escape_identifier()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) – text</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The un-escaped string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.register_class">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">register_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.register_class" title="Link to this definition"></a></dt>
+<dd><p>Register a subclass of a Blender type class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cls</strong> (type[<a class="reference internal" href="bpy.types.Panel.html#bpy.types.Panel" title="bpy.types.Panel"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Panel</span></code></a> | <a class="reference internal" href="bpy.types.UIList.html#bpy.types.UIList" title="bpy.types.UIList"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.UIList</span></code></a> | <a class="reference internal" href="bpy.types.Menu.html#bpy.types.Menu" title="bpy.types.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Menu</span></code></a> | <a class="reference internal" href="bpy.types.Header.html#bpy.types.Header" title="bpy.types.Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Header</span></code></a> | <a class="reference internal" href="bpy.types.Operator.html#bpy.types.Operator" title="bpy.types.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Operator</span></code></a> | <a class="reference internal" href="bpy.types.KeyingSetInfo.html#bpy.types.KeyingSetInfo" title="bpy.types.KeyingSetInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.KeyingSetInfo</span></code></a> | <a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine" title="bpy.types.RenderEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.RenderEngine</span></code></a> | <a class="reference internal" href="bpy.types.AssetShelf.html#bpy.types.AssetShelf" title="bpy.types.AssetShelf"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.AssetShelf</span></code></a> | <a class="reference internal" href="bpy.types.FileHandler.html#bpy.types.FileHandler" title="bpy.types.FileHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.FileHandler</span></code></a> | <a class="reference internal" href="bpy.types.PropertyGroup.html#bpy.types.PropertyGroup" title="bpy.types.PropertyGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.PropertyGroup</span></code></a> | <a class="reference internal" href="bpy.types.AddonPreferences.html#bpy.types.AddonPreferences" title="bpy.types.AddonPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.AddonPreferences</span></code></a> | <a class="reference internal" href="bpy.types.NodeTree.html#bpy.types.NodeTree" title="bpy.types.NodeTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.NodeTree</span></code></a> | <a class="reference internal" href="bpy.types.Node.html#bpy.types.Node" title="bpy.types.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Node</span></code></a> | <a class="reference internal" href="bpy.types.NodeSocket.html#bpy.types.NodeSocket" title="bpy.types.NodeSocket"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.NodeSocket</span></code></a>]) – Registerable Blender class type.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – if the class is not a subclass of a registerable blender class.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the class has a <em>register</em> class method it will be called
+before registration.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.utils.register_cli_command">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">register_cli_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">execute</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.register_cli_command" title="Link to this definition"></a></dt>
+<dd><p>Register a command, accessible via the (<code class="docutils literal notranslate"><span class="pre">-c</span></code> / <code class="docutils literal notranslate"><span class="pre">--command</span></code>) command-line argument.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>str</em>) – <p>The command identifier (must pass an <code class="docutils literal notranslate"><span class="pre">str.isidentifier</span></code> check).</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">id</span></code> is already registered, a warning is printed and the command is inaccessible to prevent accidents invoking the wrong command.</p>
+</p></li>
+<li><p><strong>execute</strong> (<em>callable</em>) – Callback, taking a single list of strings and returns an int.
+The arguments are built from all command-line arguments following the command id.
+The return value should be 0 for success, 1 on failure (specific error codes from the <code class="docutils literal notranslate"><span class="pre">os</span></code> module can also be used).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>The command handle which can be passed to <a class="reference internal" href="#bpy.utils.unregister_cli_command" title="bpy.utils.unregister_cli_command"><code class="xref py py-func docutils literal notranslate"><span class="pre">unregister_cli_command()</span></code></a>.</p>
+<p>This uses Python’s capsule type however the result should be considered an opaque handle only used for unregistering.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>capsule</p>
+</dd>
+</dl>
+<p><strong>Custom Commands</strong></p>
+<p>Registering commands makes it possible to conveniently expose command line
+functionality via commands passed to (<code class="docutils literal notranslate"><span class="pre">-c</span></code> / <code class="docutils literal notranslate"><span class="pre">--command</span></code>).</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sysinfo_print</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Report basic system information.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">textwrap</span>
+
+    <span class="n">width</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="n">indent</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blender </span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">version_string</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running on: </span><span class="si">{:s}</span><span class="s2">-</span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">platform</span><span class="o">.</span><span class="n">platform</span><span class="p">(),</span> <span class="n">platform</span><span class="o">.</span><span class="n">machine</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Processors: </span><span class="si">{!r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()))</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="c1"># Dump `bpy.app`.</span>
+    <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="c1"># Overly verbose.</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;handlers&quot;</span><span class="p">,</span> <span class="s2">&quot;build_cflags&quot;</span><span class="p">,</span> <span class="s2">&quot;build_cxxflags&quot;</span><span class="p">}:</span>
+            <span class="k">continue</span>
+
+        <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">app</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">attr</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;build_&quot;</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Otherwise ignore.</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;__dir__&quot;</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">attr_sub</span><span class="p">:</span> <span class="n">value_sub</span>
+                <span class="k">for</span> <span class="n">attr_sub</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="c1"># Exclude built-ins.</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">attr_sub</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;n_&quot;</span><span class="p">))</span>
+                <span class="c1"># Exclude methods.</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">callable</span><span class="p">(</span><span class="n">value_sub</span> <span class="o">:=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">attr_sub</span><span class="p">))</span>
+            <span class="p">}</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:s}</span><span class="s2">:</span><span class="se">\n</span><span class="si">{:s}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="n">indent</span><span class="p">)))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sysinfo_command</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">argv</span> <span class="ow">and</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;--help&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Print system information &amp; exit!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">sysinfo_print</span><span class="p">()</span>
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="n">cli_commands</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
+    <span class="n">cli_commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_cli_command</span><span class="p">(</span><span class="s2">&quot;sysinfo&quot;</span><span class="p">,</span> <span class="n">sysinfo_command</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">unregister</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">cli_commands</span><span class="p">:</span>
+        <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_cli_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="n">cli_commands</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Using Python Argument Parsing</strong></p>
+<p>This example shows how the Python <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module can be used with a custom command.</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">argparse</span></code> is generally recommended as it has many useful utilities and
+generates a <code class="docutils literal notranslate"><span class="pre">--help</span></code> message for your command.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">argparse_create</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+        <span class="n">prog</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; --command keyconfig_export&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Write key-configuration to a file.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="s2">&quot;--output&quot;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;output&quot;</span><span class="p">,</span>
+        <span class="n">metavar</span><span class="o">=</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;The path to write the keymap to.&quot;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+        <span class="s2">&quot;-a&quot;</span><span class="p">,</span> <span class="s2">&quot;--all&quot;</span><span class="p">,</span>
+        <span class="n">dest</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+        <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Write all key-maps (not only customized key-maps).&quot;</span><span class="p">,</span>
+        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parser</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">keyconfig_export</span><span class="p">(</span><span class="n">argv</span><span class="p">):</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse_create</span><span class="p">()</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+
+    <span class="c1"># Ensure the key configuration is loaded in background mode.</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">keyconfig_init</span><span class="p">()</span>
+
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">preferences</span><span class="o">.</span><span class="n">keyconfig_export</span><span class="p">(</span>
+        <span class="n">filepath</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">output</span><span class="p">,</span>
+        <span class="nb">all</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">all</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="mi">0</span>
+
+
+<span class="n">cli_commands</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">register</span><span class="p">():</span>
+    <span class="n">cli_commands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">register_cli_command</span><span class="p">(</span><span class="s2">&quot;keyconfig_export&quot;</span><span class="p">,</span> <span class="n">keyconfig_export</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">unregister</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">cmd</span> <span class="ow">in</span> <span class="n">cli_commands</span><span class="p">:</span>
+        <span class="n">bpy</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">unregister_cli_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">)</span>
+    <span class="n">cli_commands</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">register</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bpy.utils.unregister_cli_command">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">unregister_cli_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">handle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.unregister_cli_command" title="Link to this definition"></a></dt>
+<dd><p>Unregister a CLI command.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>handle</strong> (<em>capsule</em>) – The return value of <a class="reference internal" href="#bpy.utils.register_cli_command" title="bpy.utils.register_cli_command"><code class="xref py py-func docutils literal notranslate"><span class="pre">register_cli_command()</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.resource_path">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">resource_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">major</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">bpy.app.version[0]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">minor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">bpy.app.version[1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.resource_path" title="Link to this definition"></a></dt>
+<dd><p>Return the base path for storing system files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em>) – string in [‘USER’, ‘LOCAL’, ‘SYSTEM’].</p></li>
+<li><p><strong>major</strong> (<em>int</em>) – major version, defaults to current.</p></li>
+<li><p><strong>minor</strong> (<em>int</em>) – minor version, defaults to current.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the resource path (not necessarily existing).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.unregister_class">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">unregister_class</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.unregister_class" title="Link to this definition"></a></dt>
+<dd><p>Unload the Python class from blender.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cls</strong> (type[<a class="reference internal" href="bpy.types.Panel.html#bpy.types.Panel" title="bpy.types.Panel"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Panel</span></code></a> | <a class="reference internal" href="bpy.types.UIList.html#bpy.types.UIList" title="bpy.types.UIList"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.UIList</span></code></a> | <a class="reference internal" href="bpy.types.Menu.html#bpy.types.Menu" title="bpy.types.Menu"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Menu</span></code></a> | <a class="reference internal" href="bpy.types.Header.html#bpy.types.Header" title="bpy.types.Header"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Header</span></code></a> | <a class="reference internal" href="bpy.types.Operator.html#bpy.types.Operator" title="bpy.types.Operator"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Operator</span></code></a> | <a class="reference internal" href="bpy.types.KeyingSetInfo.html#bpy.types.KeyingSetInfo" title="bpy.types.KeyingSetInfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.KeyingSetInfo</span></code></a> | <a class="reference internal" href="bpy.types.RenderEngine.html#bpy.types.RenderEngine" title="bpy.types.RenderEngine"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.RenderEngine</span></code></a> | <a class="reference internal" href="bpy.types.AssetShelf.html#bpy.types.AssetShelf" title="bpy.types.AssetShelf"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.AssetShelf</span></code></a> | <a class="reference internal" href="bpy.types.FileHandler.html#bpy.types.FileHandler" title="bpy.types.FileHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.FileHandler</span></code></a> | <a class="reference internal" href="bpy.types.PropertyGroup.html#bpy.types.PropertyGroup" title="bpy.types.PropertyGroup"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.PropertyGroup</span></code></a> | <a class="reference internal" href="bpy.types.AddonPreferences.html#bpy.types.AddonPreferences" title="bpy.types.AddonPreferences"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.AddonPreferences</span></code></a> | <a class="reference internal" href="bpy.types.NodeTree.html#bpy.types.NodeTree" title="bpy.types.NodeTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.NodeTree</span></code></a> | <a class="reference internal" href="bpy.types.Node.html#bpy.types.Node" title="bpy.types.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Node</span></code></a> | <a class="reference internal" href="bpy.types.NodeSocket.html#bpy.types.NodeSocket" title="bpy.types.NodeSocket"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.NodeSocket</span></code></a>]) – Blender type class,
+see <a class="reference internal" href="#bpy.utils.register_class" title="bpy.utils.register_class"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy.utils.register_class</span></code></a> for classes which can
+be registered.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the class has an <em>unregister</em> class method it will be called
+before unregistering.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.keyconfig_init">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">keyconfig_init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.keyconfig_init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.keyconfig_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">keyconfig_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">report</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.keyconfig_set" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.load_scripts">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">load_scripts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">reload_scripts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refresh_scripts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.load_scripts" title="Link to this definition"></a></dt>
+<dd><p>Load scripts and run each modules register function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reload_scripts</strong> (<em>bool</em>) – Causes all scripts to have their unregister method
+called before loading.</p></li>
+<li><p><strong>refresh_scripts</strong> (<em>bool</em>) – only load scripts which are not already loaded
+as modules.</p></li>
+<li><p><strong>extensions</strong> (<em>bool</em>) – Loads additional scripts (add-ons &amp; app-templates).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.modules_from_path">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">modules_from_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loaded_modules</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.modules_from_path" title="Link to this definition"></a></dt>
+<dd><p>Load all modules in a path and return them as a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – this path is scanned for scripts and packages.</p></li>
+<li><p><strong>loaded_modules</strong> (<em>set</em><em>[</em><em>ModuleType</em><em>]</em>) – already loaded module names, files matching these
+names will be ignored.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>all loaded modules.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[ModuleType]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.preset_find">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">preset_find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preset_path</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ext</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'.py'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.preset_find" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.preset_paths">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">preset_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subdir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.preset_paths" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of paths for a specific preset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>subdir</strong> (<em>str</em>) – preset subdirectory (must not be an absolute path).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Script paths.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.refresh_script_paths">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">refresh_script_paths</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.refresh_script_paths" title="Link to this definition"></a></dt>
+<dd><p>Run this after creating new script paths to update sys.path</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.app_template_paths">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">app_template_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.app_template_paths" title="Link to this definition"></a></dt>
+<dd><p>Returns valid application template paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Optional subdir.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>App template paths.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Iterator[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.time_from_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">time_from_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.time_from_frame" title="Link to this definition"></a></dt>
+<dd><p>Returns the time from a frame number .</p>
+<p>If <em>fps</em> and <em>fps_base</em> are not given the current scene is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> (<em>int</em><em> | </em><em>float</em>) – number.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the time in seconds.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>datetime.timedelta</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.register_manual_map">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">register_manual_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manual_hook</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.register_manual_map" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.unregister_manual_map">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">unregister_manual_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manual_hook</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.unregister_manual_map" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.register_preset_path">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">register_preset_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.register_preset_path" title="Link to this definition"></a></dt>
+<dd><p>Register a preset search path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – <p>preset directory (must be an absolute path).</p>
+<p>This path must contain a “presets” subdirectory which will typically contain presets for add-ons.</p>
+<p>You may call <code class="docutils literal notranslate"><span class="pre">bpy.utils.register_preset_path(os.path.dirname(__file__))</span></code> from an add-ons <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file.
+When the <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> is in the same location as a <code class="docutils literal notranslate"><span class="pre">presets</span></code> directory.
+For example an operators preset would be located under: <code class="docutils literal notranslate"><span class="pre">presets/operator/{operator.id}/</span></code>
+where <code class="docutils literal notranslate"><span class="pre">operator.id</span></code> is the <code class="docutils literal notranslate"><span class="pre">bl_idname</span></code> of the operator.</p>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>success</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.unregister_preset_path">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">unregister_preset_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.unregister_preset_path" title="Link to this definition"></a></dt>
+<dd><p>Unregister a preset search path.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – <p>preset directory (must be an absolute path).</p>
+<p>This must match the registered path exactly.</p>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>success</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.register_classes_factory">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">register_classes_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.register_classes_factory" title="Link to this definition"></a></dt>
+<dd><p>Utility function to create register and unregister functions
+which simply registers and unregisters a sequence of classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>classes</strong> (<em>Sequence</em><em>[</em><em>type</em><em>]</em>) – Sequence of classes to register and unregister.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>register and unregister functions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Callable[[], None], Callable[[], None]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.register_submodule_factory">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">register_submodule_factory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">submodule_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.register_submodule_factory" title="Link to this definition"></a></dt>
+<dd><p>Utility function to create register and unregister functions
+which simply load submodules,
+calling their register &amp; unregister functions.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Modules are registered in the order given,
+unregistered in reverse order.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module_name</strong> (<em>str</em>) – The module name, typically <code class="docutils literal notranslate"><span class="pre">__name__</span></code>.</p></li>
+<li><p><strong>submodule_names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em>) – List of submodule names to load and unload.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>register and unregister functions.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[Callable[[], None], Callable[[], None]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.register_tool">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">register_tool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tool_cls</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">after</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.register_tool" title="Link to this definition"></a></dt>
+<dd><p>Register a tool in the toolbar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tool_cls</strong> (type[<a class="reference internal" href="bpy.types.WorkSpaceTool.html#bpy.types.WorkSpaceTool" title="bpy.types.WorkSpaceTool"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.WorkSpaceTool</span></code></a>]) – A tool subclass.</p></li>
+<li><p><strong>after</strong> (<em>Sequence</em><em>[</em><em>str</em><em>] </em><em>| </em><em>set</em><em>[</em><em>str</em><em>] </em><em>| </em><em>None</em>) – Optional identifiers this tool will be added after.</p></li>
+<li><p><strong>separator</strong> (<em>bool</em>) – When true, add a separator before this tool.</p></li>
+<li><p><strong>group</strong> (<em>bool</em>) – When true, add a new nested group of tools.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.make_rna_paths">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">make_rna_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">struct_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enum_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.make_rna_paths" title="Link to this definition"></a></dt>
+<dd><p>Create RNA “paths” from given names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>struct_name</strong> (<em>str</em>) – Name of a RNA struct (like e.g. “Scene”).</p></li>
+<li><p><strong>prop_name</strong> (<em>str</em>) – Name of a RNA struct’s property.</p></li>
+<li><p><strong>enum_name</strong> (<em>str</em>) – Name of a RNA enum identifier.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A triple of three “RNA paths”
+(most_complete_path, “struct.prop”, “struct.prop:’enum’”).
+If no enum_name is given, the third element will always be void.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[str, str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.manual_map">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">manual_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.manual_map" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.manual_language_code">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">manual_language_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.manual_language_code" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The language code used for user manual URL component based on the current language user-preference,
+falling back to the <code class="docutils literal notranslate"><span class="pre">default</span></code> when unavailable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.script_path_user">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">script_path_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.script_path_user" title="Link to this definition"></a></dt>
+<dd><p>returns the env var and falls back to home dir or None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.extension_path_user">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">extension_path_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">package</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.extension_path_user" title="Link to this definition"></a></dt>
+<dd><p>Return a user writable directory associated with an extension.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This allows each extension to have its own user directory to store files.</p>
+<p>The location of the extension it self is not a suitable place to store files
+because it is cleared each upgrade and the users may not have write permissions
+to the repository (typically “System” repositories).</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>package</strong> (<em>str</em>) – The <code class="docutils literal notranslate"><span class="pre">__package__</span></code> of the extension.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Optional subdirectory.</p></li>
+<li><p><strong>create</strong> (<em>bool</em>) – Treat the path as a directory and create it if its not existing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a path.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.script_paths">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">script_paths</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">subdir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user_pref</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_user</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_system_environment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.script_paths" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of valid script paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subdir</strong> (<em>str</em>) – Optional subdir.</p></li>
+<li><p><strong>user_pref</strong> (<em>bool</em>) – Include the user preference script paths.</p></li>
+<li><p><strong>check_all</strong> (<em>bool</em>) – Include local, user and system paths rather just the paths Blender uses.</p></li>
+<li><p><strong>use_user</strong> (<em>bool</em>) – Include user paths</p></li>
+<li><p><strong>use_system_environment</strong> (<em>bool</em>) – Include BLENDER_SYSTEM_SCRIPTS variable path</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>script paths.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.smpte_from_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">smpte_from_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.smpte_from_frame" title="Link to this definition"></a></dt>
+<dd><p>Returns an SMPTE formatted string from the <em>frame</em>:
+<code class="docutils literal notranslate"><span class="pre">HH:MM:SS:FF</span></code>.</p>
+<p>If <em>fps</em> and <em>fps_base</em> are not given the current scene is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> (<em>int</em><em> | </em><em>float</em>) – frame number.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the frame string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.smpte_from_seconds">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">smpte_from_seconds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fps_base</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.smpte_from_seconds" title="Link to this definition"></a></dt>
+<dd><p>Returns an SMPTE formatted string from the <em>time</em>:
+<code class="docutils literal notranslate"><span class="pre">HH:MM:SS:FF</span></code>.</p>
+<p>If <em>fps</em> and <em>fps_base</em> are not given the current scene is used.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>time</strong> (<em>int</em><em> | </em><em>float</em><em> | </em><em>datetime.timedelta</em>) – time in seconds.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the frame string.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.unregister_tool">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">unregister_tool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tool_cls</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.unregister_tool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.user_resource">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">user_resource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resource_type</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">create</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.user_resource" title="Link to this definition"></a></dt>
+<dd><p>Return a user resource path (normally from the users home directory).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource_type</strong> (<em>str</em>) – Resource type in [‘DATAFILES’, ‘CONFIG’, ‘SCRIPTS’, ‘EXTENSIONS’].</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Optional subdirectory.</p></li>
+<li><p><strong>create</strong> (<em>bool</em>) – Treat the path as a directory and create it if its not existing.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a path.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.execfile">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">execfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mod</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.execfile" title="Link to this definition"></a></dt>
+<dd><p>Execute a file path as a Python script.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path of the script to execute.</p></li>
+<li><p><strong>mod</strong> (<em>ModuleType</em><em> | </em><em>None</em>) – Optional cached module, the result of a previous execution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The module which can be passed back in as <code class="docutils literal notranslate"><span class="pre">mod</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ModuleType</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.utils.expose_bundled_modules">
+<span class="sig-prename descclassname"><span class="pre">bpy.utils.</span></span><span class="sig-name descname"><span class="pre">expose_bundled_modules</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.utils.expose_bundled_modules" title="Link to this definition"></a></dt>
+<dd><p>For Blender as a Python module, add bundled VFX library python bindings
+to <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>. These may be used instead of dedicated packages, to ensure
+the libraries are compatible with Blender.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy_types_custom_properties.html" class="btn btn-neutral float-left" title="Types with Custom Property Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.utils.previews.html" class="btn btn-neutral float-right" title="bpy.utils submodule (bpy.utils.previews)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.utils.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.utils.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

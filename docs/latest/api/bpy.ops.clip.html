@@ -1,0 +1,1476 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clip Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.clip.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Cloth Operators" href="bpy.ops.cloth.html" />
+    <link rel="prev" title="Camera Operators" href="bpy.ops.camera.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Clip Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.add_marker"><code class="docutils literal notranslate"><span class="pre">add_marker()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.add_marker_at_click"><code class="docutils literal notranslate"><span class="pre">add_marker_at_click()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.add_marker_move"><code class="docutils literal notranslate"><span class="pre">add_marker_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.add_marker_slide"><code class="docutils literal notranslate"><span class="pre">add_marker_slide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.apply_solution_scale"><code class="docutils literal notranslate"><span class="pre">apply_solution_scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.average_tracks"><code class="docutils literal notranslate"><span class="pre">average_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.bundles_to_mesh"><code class="docutils literal notranslate"><span class="pre">bundles_to_mesh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.camera_preset_add"><code class="docutils literal notranslate"><span class="pre">camera_preset_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.change_frame"><code class="docutils literal notranslate"><span class="pre">change_frame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.clean_tracks"><code class="docutils literal notranslate"><span class="pre">clean_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.clear_solution"><code class="docutils literal notranslate"><span class="pre">clear_solution()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.clear_track_path"><code class="docutils literal notranslate"><span class="pre">clear_track_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.constraint_to_fcurve"><code class="docutils literal notranslate"><span class="pre">constraint_to_fcurve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.copy_tracks"><code class="docutils literal notranslate"><span class="pre">copy_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.create_plane_track"><code class="docutils literal notranslate"><span class="pre">create_plane_track()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.cursor_set"><code class="docutils literal notranslate"><span class="pre">cursor_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.delete_marker"><code class="docutils literal notranslate"><span class="pre">delete_marker()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.delete_proxy"><code class="docutils literal notranslate"><span class="pre">delete_proxy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.delete_track"><code class="docutils literal notranslate"><span class="pre">delete_track()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.detect_features"><code class="docutils literal notranslate"><span class="pre">detect_features()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.disable_markers"><code class="docutils literal notranslate"><span class="pre">disable_markers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.dopesheet_select_channel"><code class="docutils literal notranslate"><span class="pre">dopesheet_select_channel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.dopesheet_view_all"><code class="docutils literal notranslate"><span class="pre">dopesheet_view_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.filter_tracks"><code class="docutils literal notranslate"><span class="pre">filter_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.frame_jump"><code class="docutils literal notranslate"><span class="pre">frame_jump()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_center_current_frame"><code class="docutils literal notranslate"><span class="pre">graph_center_current_frame()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_delete_curve"><code class="docutils literal notranslate"><span class="pre">graph_delete_curve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_delete_knot"><code class="docutils literal notranslate"><span class="pre">graph_delete_knot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_disable_markers"><code class="docutils literal notranslate"><span class="pre">graph_disable_markers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_select"><code class="docutils literal notranslate"><span class="pre">graph_select()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_select_all_markers"><code class="docutils literal notranslate"><span class="pre">graph_select_all_markers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_select_box"><code class="docutils literal notranslate"><span class="pre">graph_select_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.graph_view_all"><code class="docutils literal notranslate"><span class="pre">graph_view_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.hide_tracks"><code class="docutils literal notranslate"><span class="pre">hide_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.hide_tracks_clear"><code class="docutils literal notranslate"><span class="pre">hide_tracks_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.join_tracks"><code class="docutils literal notranslate"><span class="pre">join_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.keyframe_delete"><code class="docutils literal notranslate"><span class="pre">keyframe_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.keyframe_insert"><code class="docutils literal notranslate"><span class="pre">keyframe_insert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.lock_selection_toggle"><code class="docutils literal notranslate"><span class="pre">lock_selection_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.lock_tracks"><code class="docutils literal notranslate"><span class="pre">lock_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.mode_set"><code class="docutils literal notranslate"><span class="pre">mode_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.new_image_from_plane_marker"><code class="docutils literal notranslate"><span class="pre">new_image_from_plane_marker()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.open"><code class="docutils literal notranslate"><span class="pre">open()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.paste_tracks"><code class="docutils literal notranslate"><span class="pre">paste_tracks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.prefetch"><code class="docutils literal notranslate"><span class="pre">prefetch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.rebuild_proxy"><code class="docutils literal notranslate"><span class="pre">rebuild_proxy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.refine_markers"><code class="docutils literal notranslate"><span class="pre">refine_markers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.reload"><code class="docutils literal notranslate"><span class="pre">reload()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.select"><code class="docutils literal notranslate"><span class="pre">select()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.select_all"><code class="docutils literal notranslate"><span class="pre">select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.select_box"><code class="docutils literal notranslate"><span class="pre">select_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.select_circle"><code class="docutils literal notranslate"><span class="pre">select_circle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.select_grouped"><code class="docutils literal notranslate"><span class="pre">select_grouped()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.select_lasso"><code class="docutils literal notranslate"><span class="pre">select_lasso()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_active_clip"><code class="docutils literal notranslate"><span class="pre">set_active_clip()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_axis"><code class="docutils literal notranslate"><span class="pre">set_axis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_origin"><code class="docutils literal notranslate"><span class="pre">set_origin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_plane"><code class="docutils literal notranslate"><span class="pre">set_plane()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_scale"><code class="docutils literal notranslate"><span class="pre">set_scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_scene_frames"><code class="docutils literal notranslate"><span class="pre">set_scene_frames()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_solution_scale"><code class="docutils literal notranslate"><span class="pre">set_solution_scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_solver_keyframe"><code class="docutils literal notranslate"><span class="pre">set_solver_keyframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.set_viewport_background"><code class="docutils literal notranslate"><span class="pre">set_viewport_background()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.setup_tracking_scene"><code class="docutils literal notranslate"><span class="pre">setup_tracking_scene()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.slide_marker"><code class="docutils literal notranslate"><span class="pre">slide_marker()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.slide_plane_marker"><code class="docutils literal notranslate"><span class="pre">slide_plane_marker()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.solve_camera"><code class="docutils literal notranslate"><span class="pre">solve_camera()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.stabilize_2d_add"><code class="docutils literal notranslate"><span class="pre">stabilize_2d_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.stabilize_2d_remove"><code class="docutils literal notranslate"><span class="pre">stabilize_2d_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.stabilize_2d_rotation_add"><code class="docutils literal notranslate"><span class="pre">stabilize_2d_rotation_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.stabilize_2d_rotation_remove"><code class="docutils literal notranslate"><span class="pre">stabilize_2d_rotation_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.stabilize_2d_rotation_select"><code class="docutils literal notranslate"><span class="pre">stabilize_2d_rotation_select()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.stabilize_2d_select"><code class="docutils literal notranslate"><span class="pre">stabilize_2d_select()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.track_color_preset_add"><code class="docutils literal notranslate"><span class="pre">track_color_preset_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.track_copy_color"><code class="docutils literal notranslate"><span class="pre">track_copy_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.track_markers"><code class="docutils literal notranslate"><span class="pre">track_markers()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.track_settings_as_default"><code class="docutils literal notranslate"><span class="pre">track_settings_as_default()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.track_settings_to_track"><code class="docutils literal notranslate"><span class="pre">track_settings_to_track()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.track_to_empty"><code class="docutils literal notranslate"><span class="pre">track_to_empty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.tracking_object_new"><code class="docutils literal notranslate"><span class="pre">tracking_object_new()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.tracking_object_remove"><code class="docutils literal notranslate"><span class="pre">tracking_object_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.tracking_settings_preset_add"><code class="docutils literal notranslate"><span class="pre">tracking_settings_preset_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.update_image_from_plane_marker"><code class="docutils literal notranslate"><span class="pre">update_image_from_plane_marker()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_all"><code class="docutils literal notranslate"><span class="pre">view_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_center_cursor"><code class="docutils literal notranslate"><span class="pre">view_center_cursor()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_ndof"><code class="docutils literal notranslate"><span class="pre">view_ndof()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_pan"><code class="docutils literal notranslate"><span class="pre">view_pan()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_selected"><code class="docutils literal notranslate"><span class="pre">view_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_zoom"><code class="docutils literal notranslate"><span class="pre">view_zoom()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_zoom_in"><code class="docutils literal notranslate"><span class="pre">view_zoom_in()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_zoom_out"><code class="docutils literal notranslate"><span class="pre">view_zoom_out()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.clip.view_zoom_ratio"><code class="docutils literal notranslate"><span class="pre">view_zoom_ratio()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Clip Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.clip">
+<span id="clip-operators"></span><h1>Clip Operators<a class="headerlink" href="#module-bpy.ops.clip" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.add_marker">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">add_marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.add_marker" title="Link to this definition"></a></dt>
+<dd><p>Place new marker at specified location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Location of marker on frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.add_marker_at_click">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">add_marker_at_click</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.add_marker_at_click" title="Link to this definition"></a></dt>
+<dd><p>Place new marker at the desired (clicked) position</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.add_marker_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">add_marker_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">CLIP_OT_add_marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.add_marker_move" title="Link to this definition"></a></dt>
+<dd><p>Add new marker and move it on movie</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CLIP_OT_add_marker</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">CLIP_OT_add_marker</span></code>, (optional)) – Add Marker, Place new marker at specified location</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.add_marker_slide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">add_marker_slide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">CLIP_OT_add_marker</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.add_marker_slide" title="Link to this definition"></a></dt>
+<dd><p>Add new marker and slide it with mouse until mouse button release</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>CLIP_OT_add_marker</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">CLIP_OT_add_marker</span></code>, (optional)) – Add Marker, Place new marker at specified location</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.apply_solution_scale">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">apply_solution_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.apply_solution_scale" title="Link to this definition"></a></dt>
+<dd><p>Apply scale on solution itself to make distance between selected tracks equals to desired</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distance</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Distance, Distance between selected tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.average_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">average_tracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_original</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.average_tracks" title="Link to this definition"></a></dt>
+<dd><p>Average selected tracks into active</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keep_original</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keep Original, Keep original tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.bundles_to_mesh">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">bundles_to_mesh</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.bundles_to_mesh" title="Link to this definition"></a></dt>
+<dd><p>Create vertex cloud using coordinates of reconstructed tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L292">startup/bl_operators/clip.py:292</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.camera_preset_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">camera_preset_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_focal_length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.camera_preset_add" title="Link to this definition"></a></dt>
+<dd><p>Add or remove a Tracking Camera Intrinsics Preset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of the preset, used to make the path name</p></li>
+<li><p><strong>remove_name</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – remove_name</p></li>
+<li><p><strong>remove_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – remove_active</p></li>
+<li><p><strong>use_focal_length</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Focal Length, Include focal length into the preset</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/presets.py#L119">startup/bl_operators/presets.py:119</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.change_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">change_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.change_frame" title="Link to this definition"></a></dt>
+<dd><p>Interactively change the current frame number</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>frame</strong> (<em>int in</em><em> [</em><em>-1048574</em><em>, </em><em>1048574</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Frame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.clean_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">clean_tracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.clean_tracks" title="Link to this definition"></a></dt>
+<dd><p>Clean tracks with high error values or few frames</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frames</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Tracked Frames, Affect tracks which are tracked less than the specified number of frames</p></li>
+<li><p><strong>error</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Reprojection Error, Affect tracks which have a larger reprojection error</p></li>
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DELETE_TRACK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DELETE_SEGMENTS'</span></code>], (optional)) – <p>Action, Cleanup action to execute</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select unclean tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE_TRACK</span></code>
+Delete Track – Delete unclean tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE_SEGMENTS</span></code>
+Delete Segments – Delete unclean segments of tracks.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.clear_solution">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">clear_solution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.clear_solution" title="Link to this definition"></a></dt>
+<dd><p>Clear all calculated data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.clear_track_path">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">clear_track_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'REMAINED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clear_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.clear_track_path" title="Link to this definition"></a></dt>
+<dd><p>Clear tracks after/before current position or clear the whole track</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'UPTO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'REMAINED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ALL'</span></code>], (optional)) – <p>Action, Clear action to execute</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">UPTO</span></code>
+Clear Up To – Clear path up to current frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REMAINED</span></code>
+Clear Remained – Clear path at remaining frames (after current).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code>
+Clear All – Clear the whole path.</p></li>
+</ul>
+</p></li>
+<li><p><strong>clear_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clear Active, Clear active track only instead of all selected tracks</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.constraint_to_fcurve">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">constraint_to_fcurve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.constraint_to_fcurve" title="Link to this definition"></a></dt>
+<dd><p>Create F-Curves for object which will copy object’s movement caused by this constraint</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L530">startup/bl_operators/clip.py:530</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.copy_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">copy_tracks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.copy_tracks" title="Link to this definition"></a></dt>
+<dd><p>Copy the selected tracks to the internal clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.create_plane_track">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">create_plane_track</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.create_plane_track" title="Link to this definition"></a></dt>
+<dd><p>Create new plane track out of selected point tracks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.cursor_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">cursor_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.cursor_set" title="Link to this definition"></a></dt>
+<dd><p>Set 2D cursor location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Cursor location in normalized clip coordinates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.delete_marker">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">delete_marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.delete_marker" title="Link to this definition"></a></dt>
+<dd><p>Delete marker for current frame from selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.delete_proxy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">delete_proxy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.delete_proxy" title="Link to this definition"></a></dt>
+<dd><p>Delete movie clip proxy files from the hard drive</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L359">startup/bl_operators/clip.py:359</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.delete_track">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">delete_track</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.delete_track" title="Link to this definition"></a></dt>
+<dd><p>Delete selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.detect_features">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">detect_features</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">placement</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FRAME'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">margin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">120</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.detect_features" title="Link to this definition"></a></dt>
+<dd><p>Automatically detect features and place markers to track</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>placement</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'FRAME'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INSIDE_GPENCIL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OUTSIDE_GPENCIL'</span></code>], (optional)) – <p>Placement, Placement for detected features</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">FRAME</span></code>
+Whole Frame – Place markers across the whole frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INSIDE_GPENCIL</span></code>
+Inside Annotated Area – Place markers only inside areas outlined with the Annotation tool.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTSIDE_GPENCIL</span></code>
+Outside Annotated Area – Place markers only outside areas outlined with the Annotation tool.</p></li>
+</ul>
+</p></li>
+<li><p><strong>margin</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Margin, Only features further than margin pixels from the image edges are considered</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0.0001</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, Threshold level to consider feature good enough for tracking</p></li>
+<li><p><strong>min_distance</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Distance, Minimal distance accepted between two features</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.disable_markers">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">disable_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DISABLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.disable_markers" title="Link to this definition"></a></dt>
+<dd><p>Disable/enable selected markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DISABLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ENABLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>], (optional)) – <p>Action, Disable action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DISABLE</span></code>
+Disable – Disable selected markers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENABLE</span></code>
+Enable – Enable selected markers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle disabled flag for selected markers.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.dopesheet_select_channel">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">dopesheet_select_channel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.dopesheet_select_channel" title="Link to this definition"></a></dt>
+<dd><p>Select movie tracking channel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Mouse location to select channel</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection rather than clearing the existing selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.dopesheet_view_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">dopesheet_view_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.dopesheet_view_all" title="Link to this definition"></a></dt>
+<dd><p>Reset viewable area to show full keyframe range</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.filter_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">filter_tracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">track_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.filter_tracks" title="Link to this definition"></a></dt>
+<dd><p>Filter tracks which has weirdly looking spikes in motion curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>track_threshold</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Track Threshold, Filter Threshold to select problematic tracks</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L206">startup/bl_operators/clip.py:206</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.frame_jump">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">frame_jump</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PATHSTART'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.frame_jump" title="Link to this definition"></a></dt>
+<dd><p>Jump to special frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>position</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'PATHSTART'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PATHEND'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FAILEDPREV'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FAILNEXT'</span></code>], (optional)) – <p>Position, Position to jump to</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PATHSTART</span></code>
+Path Start – Jump to start of current path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PATHEND</span></code>
+Path End – Jump to end of current path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAILEDPREV</span></code>
+Previous Failed – Jump to previous failed frame.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAILNEXT</span></code>
+Next Failed – Jump to next failed frame.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_center_current_frame">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_center_current_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_center_current_frame" title="Link to this definition"></a></dt>
+<dd><p>Scroll view so current frame would be centered</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_delete_curve">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_delete_curve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_delete_curve" title="Link to this definition"></a></dt>
+<dd><p>Delete track corresponding to the selected curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_delete_knot">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_delete_knot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_delete_knot" title="Link to this definition"></a></dt>
+<dd><p>Delete curve knots</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_disable_markers">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_disable_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DISABLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_disable_markers" title="Link to this definition"></a></dt>
+<dd><p>Disable/enable selected markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DISABLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ENABLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>], (optional)) – <p>Action, Disable action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DISABLE</span></code>
+Disable – Disable selected markers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENABLE</span></code>
+Enable – Enable selected markers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle disabled flag for selected markers.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_select" title="Link to this definition"></a></dt>
+<dd><p>Select graph curves</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Mouse location to select nearest entity</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection rather than clearing the existing selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_select_all_markers">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_select_all_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_select_all_markers" title="Link to this definition"></a></dt>
+<dd><p>Change selection of all markers of active track</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_select_box" title="Link to this definition"></a></dt>
+<dd><p>Select curve points using box selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Deselect rather than select items</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection instead of deselecting everything first</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.graph_view_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">graph_view_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.graph_view_all" title="Link to this definition"></a></dt>
+<dd><p>View all curves in editor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.hide_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">hide_tracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.hide_tracks" title="Link to this definition"></a></dt>
+<dd><p>Hide selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.hide_tracks_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">hide_tracks_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.hide_tracks_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear hide selected tracks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.join_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">join_tracks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.join_tracks" title="Link to this definition"></a></dt>
+<dd><p>Join selected tracks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.keyframe_delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">keyframe_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.keyframe_delete" title="Link to this definition"></a></dt>
+<dd><p>Delete a keyframe from selected tracks at current frame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.keyframe_insert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">keyframe_insert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.keyframe_insert" title="Link to this definition"></a></dt>
+<dd><p>Insert a keyframe to selected tracks at current frame</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.lock_selection_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">lock_selection_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.lock_selection_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle Lock Selection option of the current clip editor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.lock_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">lock_tracks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LOCK'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.lock_tracks" title="Link to this definition"></a></dt>
+<dd><p>Lock/unlock selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LOCK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UNLOCK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>], (optional)) – <p>Action, Lock action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCK</span></code>
+Lock – Lock selected tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNLOCK</span></code>
+Unlock – Unlock selected tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle locked flag for selected tracks.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.mode_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">mode_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TRACKING'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.mode_set" title="Link to this definition"></a></dt>
+<dd><p>Set the clip interaction mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/clip_editor_mode_items.html#rna-enum-clip-editor-mode-items"><span class="std std-ref">Clip Editor Mode Items</span></a>, (optional)) – Mode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.new_image_from_plane_marker">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">new_image_from_plane_marker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.new_image_from_plane_marker" title="Link to this definition"></a></dt>
+<dd><p>Create new image from the content of the plane marker</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.open">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">open</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hide_props_region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blender</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_backup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_movie</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_python</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_font</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_sound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_text</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_archive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_btx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_alembic</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_usd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_volume</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_blenlib</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filemode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relative_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show_multiview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_multiview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">display_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.open" title="Link to this definition"></a></dt>
+<dd><p>Load a sequence of frames or a movie file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>directory</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Directory, Directory of the file</p></li>
+<li><p><strong>files</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorFileListElement</span></code>, (optional)) – Files</p></li>
+<li><p><strong>hide_props_region</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Hide Operator Properties, Collapse the region displaying the operator settings</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Check Existing, Check and warn on overwriting existing files</p></li>
+<li><p><strong>filter_blender</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_backup</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter .blend files</p></li>
+<li><p><strong>filter_image</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter image files</p></li>
+<li><p><strong>filter_movie</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter movie files</p></li>
+<li><p><strong>filter_python</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Python files</p></li>
+<li><p><strong>filter_font</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter font files</p></li>
+<li><p><strong>filter_sound</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter sound files</p></li>
+<li><p><strong>filter_text</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter text files</p></li>
+<li><p><strong>filter_archive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter archive files</p></li>
+<li><p><strong>filter_btx</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter btx files</p></li>
+<li><p><strong>filter_alembic</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Alembic files</p></li>
+<li><p><strong>filter_usd</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter USD files</p></li>
+<li><p><strong>filter_obj</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OBJ files</p></li>
+<li><p><strong>filter_volume</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter OpenVDB volume files</p></li>
+<li><p><strong>filter_folder</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter folders</p></li>
+<li><p><strong>filter_blenlib</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Blender IDs</p></li>
+<li><p><strong>filemode</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>9</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – File Browser Mode, The setting for the file browser mode to load a .blend file, a library or a special file</p></li>
+<li><p><strong>relative_path</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Relative Path, Select the file relative to the blend file</p></li>
+<li><p><strong>show_multiview</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Enable Multi-View</p></li>
+<li><p><strong>use_multiview</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Multi-View</p></li>
+<li><p><strong>display_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DEFAULT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIST_VERTICAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIST_HORIZONTAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'THUMBNAIL'</span></code>], (optional)) – <p>Display Type</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Automatically determine display type for files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_VERTICAL</span></code>
+Short List – Display files as short list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIST_HORIZONTAL</span></code>
+Long List – Display files as a detailed list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">THUMBNAIL</span></code>
+Thumbnails – Display files as thumbnails.</p></li>
+</ul>
+</p></li>
+<li><p><strong>sort_method</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DEFAULT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FILE_SORT_ALPHA'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FILE_SORT_EXTENSION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FILE_SORT_TIME'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FILE_SORT_SIZE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ASSET_CATALOG'</span></code>], (optional)) – <p>File sorting mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code>
+Default – Automatically determine sort method for files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_SORT_ALPHA</span></code>
+Name – Sort the file list alphabetically.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_SORT_EXTENSION</span></code>
+Extension – Sort the file list by extension/type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_SORT_TIME</span></code>
+Modified Date – Sort files by modification time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILE_SORT_SIZE</span></code>
+Size – Sort files by size.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ASSET_CATALOG</span></code>
+Asset Catalog – Sort the asset list so that assets in the same catalog are kept together. Within a single catalog, assets are ordered by name. The catalogs are in order of the flattened catalog hierarchy..</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.paste_tracks">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">paste_tracks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.paste_tracks" title="Link to this definition"></a></dt>
+<dd><p>Paste tracks from the internal clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.prefetch">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">prefetch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.prefetch" title="Link to this definition"></a></dt>
+<dd><p>Prefetch frames from disk for faster playback/tracking</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.rebuild_proxy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">rebuild_proxy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.rebuild_proxy" title="Link to this definition"></a></dt>
+<dd><p>Rebuild all selected proxies and timecode indices in the background</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.refine_markers">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">refine_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">backwards</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.refine_markers" title="Link to this definition"></a></dt>
+<dd><p>Refine selected markers positions by running the tracker from track’s reference to current frame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>backwards</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Backwards, Do backwards tracking</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.reload">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">reload</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.reload" title="Link to this definition"></a></dt>
+<dd><p>Reload clip</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.select" title="Link to this definition"></a></dt>
+<dd><p>Select tracking markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection rather than clearing the existing selection</p></li>
+<li><p><strong>deselect_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect On Nothing, Deselect all when nothing under the cursor</p></li>
+<li><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Mouse location in normalized coordinates, 0.0 to 1.0 is within the image bounds</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.select_all" title="Link to this definition"></a></dt>
+<dd><p>Change selection of all tracking markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.select_box" title="Link to this definition"></a></dt>
+<dd><p>Select markers using box selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.select_circle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">select_circle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.select_circle" title="Link to this definition"></a></dt>
+<dd><p>Select markers using circle selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X</p></li>
+<li><p><strong>y</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y</p></li>
+<li><p><strong>radius</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Radius</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.select_grouped">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">select_grouped</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ESTIMATED'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.select_grouped" title="Link to this definition"></a></dt>
+<dd><p>Select all tracks from specified group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'KEYFRAMED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ESTIMATED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TRACKED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LOCKED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DISABLED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COLOR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FAILED'</span></code>], (optional)) – <p>Action, Clear action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">KEYFRAMED</span></code>
+Keyframed Tracks – Select all keyframed tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ESTIMATED</span></code>
+Estimated Tracks – Select all estimated tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TRACKED</span></code>
+Tracked Tracks – Select all tracked tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCKED</span></code>
+Locked Tracks – Select all locked tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>
+Disabled Tracks – Select all disabled tracks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COLOR</span></code>
+Tracks with Same Color – Select all tracks with same color as active track.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAILED</span></code>
+Failed Tracks – Select all tracks which failed to be reconstructed.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.select_lasso">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">select_lasso</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_smooth_stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.select_lasso" title="Link to this definition"></a></dt>
+<dd><p>Select markers using lasso selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_smooth_stroke</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Stabilize Stroke, Selection lags behind mouse and follows a smoother path</p></li>
+<li><p><strong>smooth_stroke_factor</strong> (<em>float in</em><em> [</em><em>0.5</em><em>, </em><em>0.99</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Factor, Higher values gives a smoother stroke</p></li>
+<li><p><strong>smooth_stroke_radius</strong> (<em>int in</em><em> [</em><em>10</em><em>, </em><em>200</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Radius, Minimum distance from last point before selection continues</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_active_clip">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_active_clip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_active_clip" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L221">startup/bl_operators/clip.py:221</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_axis">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_axis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'X'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_axis" title="Link to this definition"></a></dt>
+<dd><p>Set the direction of a scene axis by rotating the camera (or its parent if present). This assumes that the selected track lies on a real axis connecting it to the origin</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>axis</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>], (optional)) – <p>Axis, Axis to use to align bundle along</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>
+X – Align bundle align X axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code>
+Y – Align bundle align Y axis.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_origin">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_origin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_median</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_origin" title="Link to this definition"></a></dt>
+<dd><p>Set active marker as origin by moving camera (or its parent if present) in 3D space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_median</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Median, Set origin to median point of selected bundles</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_plane">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_plane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">plane</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FLOOR'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_plane" title="Link to this definition"></a></dt>
+<dd><p>Set plane based on 3 selected bundles by moving camera (or its parent if present) in 3D space</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plane</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'FLOOR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WALL'</span></code>], (optional)) – <p>Plane, Plane to be used for orientation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOOR</span></code>
+Floor – Set floor plane.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WALL</span></code>
+Wall – Set wall plane.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_scale">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_scale" title="Link to this definition"></a></dt>
+<dd><p>Set scale of scene by scaling camera (or its parent if present)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distance</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Distance, Distance between selected tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_scene_frames">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_scene_frames</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_scene_frames" title="Link to this definition"></a></dt>
+<dd><p>Set scene’s start and end frame to match clip’s start frame and length</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_solution_scale">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_solution_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_solution_scale" title="Link to this definition"></a></dt>
+<dd><p>Set object solution scale using distance between two selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distance</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Distance, Distance between selected tracks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_solver_keyframe">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_solver_keyframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">keyframe</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'KEYFRAME_A'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_solver_keyframe" title="Link to this definition"></a></dt>
+<dd><p>Set keyframe used by solver</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>keyframe</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'KEYFRAME_A'</span></code>, <code class="docutils literal notranslate"><span class="pre">'KEYFRAME_B'</span></code>], (optional)) – Keyframe, Keyframe to set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.set_viewport_background">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">set_viewport_background</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.set_viewport_background" title="Link to this definition"></a></dt>
+<dd><p>Set current movie clip as a camera background in 3D Viewport (works only when a 3D Viewport is visible)</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L420">startup/bl_operators/clip.py:420</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.setup_tracking_scene">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">setup_tracking_scene</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.setup_tracking_scene" title="Link to this definition"></a></dt>
+<dd><p>Prepare scene for compositing 3D objects into this footage</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L936">startup/bl_operators/clip.py:936</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.slide_marker">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">slide_marker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.slide_marker" title="Link to this definition"></a></dt>
+<dd><p>Slide marker areas</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>offset</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Offset, Offset in floating-point units, 1.0 is the width and height of the image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.slide_plane_marker">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">slide_plane_marker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.slide_plane_marker" title="Link to this definition"></a></dt>
+<dd><p>Slide plane marker areas</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.solve_camera">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">solve_camera</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.solve_camera" title="Link to this definition"></a></dt>
+<dd><p>Solve camera motion from tracks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.stabilize_2d_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">stabilize_2d_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.stabilize_2d_add" title="Link to this definition"></a></dt>
+<dd><p>Add selected tracks to 2D translation stabilization</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.stabilize_2d_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">stabilize_2d_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.stabilize_2d_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove selected track from translation stabilization</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.stabilize_2d_rotation_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">stabilize_2d_rotation_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.stabilize_2d_rotation_add" title="Link to this definition"></a></dt>
+<dd><p>Add selected tracks to 2D rotation stabilization</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.stabilize_2d_rotation_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">stabilize_2d_rotation_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.stabilize_2d_rotation_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove selected track from rotation stabilization</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.stabilize_2d_rotation_select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">stabilize_2d_rotation_select</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.stabilize_2d_rotation_select" title="Link to this definition"></a></dt>
+<dd><p>Select tracks which are used for rotation stabilization</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.stabilize_2d_select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">stabilize_2d_select</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.stabilize_2d_select" title="Link to this definition"></a></dt>
+<dd><p>Select tracks which are used for translation stabilization</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.track_color_preset_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">track_color_preset_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.track_color_preset_add" title="Link to this definition"></a></dt>
+<dd><p>Add or remove a Clip Track Color Preset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of the preset, used to make the path name</p></li>
+<li><p><strong>remove_name</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – remove_name</p></li>
+<li><p><strong>remove_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – remove_active</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/presets.py#L119">startup/bl_operators/presets.py:119</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.track_copy_color">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">track_copy_color</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.track_copy_color" title="Link to this definition"></a></dt>
+<dd><p>Copy color to all selected tracks</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.track_markers">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">track_markers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">backwards</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sequence</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.track_markers" title="Link to this definition"></a></dt>
+<dd><p>Track selected markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backwards</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Backwards, Do backwards tracking</p></li>
+<li><p><strong>sequence</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Track Sequence, Track marker during image sequence rather than single image</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.track_settings_as_default">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">track_settings_as_default</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.track_settings_as_default" title="Link to this definition"></a></dt>
+<dd><p>Copy tracking settings from active track to default settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L965">startup/bl_operators/clip.py:965</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.track_settings_to_track">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">track_settings_to_track</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.track_settings_to_track" title="Link to this definition"></a></dt>
+<dd><p>Copy tracking settings from active track to selected tracks</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L1014">startup/bl_operators/clip.py:1014</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.track_to_empty">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">track_to_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.track_to_empty" title="Link to this definition"></a></dt>
+<dd><p>Create an Empty object which will be copying movement of active track</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/clip.py#L268">startup/bl_operators/clip.py:268</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.tracking_object_new">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">tracking_object_new</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.tracking_object_new" title="Link to this definition"></a></dt>
+<dd><p>Add new object for tracking</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.tracking_object_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">tracking_object_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.tracking_object_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove object for tracking</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.tracking_settings_preset_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">tracking_settings_preset_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.tracking_settings_preset_add" title="Link to this definition"></a></dt>
+<dd><p>Add or remove a motion tracking settings preset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of the preset, used to make the path name</p></li>
+<li><p><strong>remove_name</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – remove_name</p></li>
+<li><p><strong>remove_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – remove_active</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/presets.py#L119">startup/bl_operators/presets.py:119</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.update_image_from_plane_marker">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">update_image_from_plane_marker</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.update_image_from_plane_marker" title="Link to this definition"></a></dt>
+<dd><p>Update current image used by plane marker from the content of the plane marker</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">fit_view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_all" title="Link to this definition"></a></dt>
+<dd><p>View whole image with markers</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fit_view</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fit View, Fit frame to the viewport</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_center_cursor">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_center_cursor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_center_cursor" title="Link to this definition"></a></dt>
+<dd><p>Center the view so that the cursor is in the middle of the view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_ndof">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_ndof</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_ndof" title="Link to this definition"></a></dt>
+<dd><p>Use a 3D mouse device to pan/zoom the view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_pan">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_pan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_pan" title="Link to this definition"></a></dt>
+<dd><p>Pan the view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>offset</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Offset, Offset in floating-point units, 1.0 is the width and height of the image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_selected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_selected" title="Link to this definition"></a></dt>
+<dd><p>View all selected elements</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_zoom">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_zoom</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cursor_init</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_zoom" title="Link to this definition"></a></dt>
+<dd><p>Zoom in/out the view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, Zoom factor, values higher than 1.0 zoom in, lower values zoom out</p></li>
+<li><p><strong>use_cursor_init</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Mouse Position, Allow the initial mouse position to be used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_zoom_in">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_zoom_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_zoom_in" title="Link to this definition"></a></dt>
+<dd><p>Zoom in the view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Cursor location in screen coordinates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_zoom_out">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_zoom_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_zoom_out" title="Link to this definition"></a></dt>
+<dd><p>Zoom out the view</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Location, Cursor location in normalized (0.0 to 1.0) coordinates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.clip.view_zoom_ratio">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.clip.</span></span><span class="sig-name descname"><span class="pre">view_zoom_ratio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.clip.view_zoom_ratio" title="Link to this definition"></a></dt>
+<dd><p>Set the zoom ratio (based on clip size)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ratio</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Ratio, Zoom ratio, 1.0 is 1:1, higher is zoomed in, lower is zoomed out</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.camera.html" class="btn btn-neutral float-left" title="Camera Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.cloth.html" class="btn btn-neutral float-right" title="Cloth Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.clip.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.clip.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

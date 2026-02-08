@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GPU State Utilities (gpu.state) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/gpu.state.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GPU Texture Utilities (gpu.texture)" href="gpu.texture.html" />
+    <link rel="prev" title="GPU Shader Utilities (gpu.shader)" href="gpu.shader.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gpu.types.html">GPU Types (gpu.types)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.matrix.html">GPU Matrix Utilities (gpu.matrix)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.select.html">GPU Select Utilities (gpu.select)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.shader.html">GPU Shader Utilities (gpu.shader)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GPU State Utilities (gpu.state)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.active_framebuffer_get"><code class="docutils literal notranslate"><span class="pre">active_framebuffer_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.blend_get"><code class="docutils literal notranslate"><span class="pre">blend_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.blend_set"><code class="docutils literal notranslate"><span class="pre">blend_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.clip_distances_set"><code class="docutils literal notranslate"><span class="pre">clip_distances_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.color_mask_set"><code class="docutils literal notranslate"><span class="pre">color_mask_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.depth_mask_get"><code class="docutils literal notranslate"><span class="pre">depth_mask_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.depth_mask_set"><code class="docutils literal notranslate"><span class="pre">depth_mask_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.depth_test_get"><code class="docutils literal notranslate"><span class="pre">depth_test_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.depth_test_set"><code class="docutils literal notranslate"><span class="pre">depth_test_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.face_culling_set"><code class="docutils literal notranslate"><span class="pre">face_culling_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.front_facing_set"><code class="docutils literal notranslate"><span class="pre">front_facing_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.line_width_get"><code class="docutils literal notranslate"><span class="pre">line_width_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.line_width_set"><code class="docutils literal notranslate"><span class="pre">line_width_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.point_size_set"><code class="docutils literal notranslate"><span class="pre">point_size_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.program_point_size_set"><code class="docutils literal notranslate"><span class="pre">program_point_size_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.scissor_get"><code class="docutils literal notranslate"><span class="pre">scissor_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.scissor_set"><code class="docutils literal notranslate"><span class="pre">scissor_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.scissor_test_set"><code class="docutils literal notranslate"><span class="pre">scissor_test_set()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.viewport_get"><code class="docutils literal notranslate"><span class="pre">viewport_get()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu.state.viewport_set"><code class="docutils literal notranslate"><span class="pre">viewport_set()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.texture.html">GPU Texture Utilities (gpu.texture)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.platform.html">GPU Platform Utilities (gpu.platform)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.capabilities.html">GPU Capabilities Utilities (gpu.capabilities)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#geometry-batches">Geometry Batches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#vertex-buffers">Vertex Buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#index-buffers">Index Buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#shaders">Shaders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#batch-creation">Batch Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#offscreen-rendering">Offscreen Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="gpu.html">GPU Module (gpu)</a></li>
+      <li class="breadcrumb-item active">GPU State Utilities (gpu.state)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-gpu.state">
+<span id="gpu-state-utilities-gpu-state"></span><h1>GPU State Utilities (gpu.state)<a class="headerlink" href="#module-gpu.state" title="Link to this heading"></a></h1>
+<p>This module provides access to the gpu state.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.active_framebuffer_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">active_framebuffer_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.active_framebuffer_get" title="Link to this definition"></a></dt>
+<dd><p>Return the active frame-buffer in context.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The active framebuffer.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="gpu.types.html#gpu.types.GPUFrameBuffer" title="gpu.types.GPUFrameBuffer"><code class="xref py py-class docutils literal notranslate"><span class="pre">gpu.types.GPUFrameBuffer</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.blend_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">blend_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.blend_get" title="Link to this definition"></a></dt>
+<dd><p>Current blending equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current blend mode.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.blend_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">blend_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.blend_set" title="Link to this definition"></a></dt>
+<dd><p>Defines the fixed pipeline blending equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – <p>The type of blend mode.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code> No blending.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALPHA</span></code> The original color channels are interpolated according to the alpha value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALPHA_PREMULT</span></code> The original color channels are interpolated according to the alpha value with the new colors pre-multiplied by this value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADDITIVE</span></code> The original color channels are added by the corresponding ones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADDITIVE_PREMULT</span></code> The original color channels are added by the corresponding ones that are pre-multiplied by the alpha value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MULTIPLY</span></code> The original color channels are multiplied by the corresponding ones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUBTRACT</span></code> The original color channels are subtracted by the corresponding ones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code> The original color channels are replaced by its complementary color.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.clip_distances_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">clip_distances_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distances_enabled</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.clip_distances_set" title="Link to this definition"></a></dt>
+<dd><p>Sets the number of <code class="docutils literal notranslate"><span class="pre">gl_ClipDistance</span></code> planes used for clip geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distances_enabled</strong> (<em>int</em>) – Number of clip distances enabled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.color_mask_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">color_mask_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.color_mask_set" title="Link to this definition"></a></dt>
+<dd><p>Enable or disable writing of frame buffer color components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r</strong> (<em>bool</em>) – Red component.</p></li>
+<li><p><strong>g</strong> (<em>bool</em>) – Green component.</p></li>
+<li><p><strong>b</strong> (<em>bool</em>) – Blue component.</p></li>
+<li><p><strong>a</strong> (<em>bool</em>) – Alpha component.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.depth_mask_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">depth_mask_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.depth_mask_get" title="Link to this definition"></a></dt>
+<dd><p>Writing status in the depth component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if writing to the depth component is enabled.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.depth_mask_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">depth_mask_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.depth_mask_set" title="Link to this definition"></a></dt>
+<dd><p>Write to depth component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – True for writing to the depth component.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.depth_test_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">depth_test_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.depth_test_get" title="Link to this definition"></a></dt>
+<dd><p>Current depth_test equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current depth test mode.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.depth_test_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">depth_test_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.depth_test_set" title="Link to this definition"></a></dt>
+<dd><p>Defines the depth_test equation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (<em>str</em>) – The depth test equation name.
+Possible values are <code class="docutils literal notranslate"><span class="pre">NONE</span></code>, <code class="docutils literal notranslate"><span class="pre">ALWAYS</span></code>, <code class="docutils literal notranslate"><span class="pre">LESS</span></code>, <code class="docutils literal notranslate"><span class="pre">LESS_EQUAL</span></code>, <code class="docutils literal notranslate"><span class="pre">EQUAL</span></code>, <code class="docutils literal notranslate"><span class="pre">GREATER</span></code> and <code class="docutils literal notranslate"><span class="pre">GREATER_EQUAL</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.face_culling_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">face_culling_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">culling</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.face_culling_set" title="Link to this definition"></a></dt>
+<dd><p>Specify whether none, front-facing or back-facing facets can be culled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>culling</strong> (<em>str</em>) – <code class="docutils literal notranslate"><span class="pre">NONE</span></code>, <code class="docutils literal notranslate"><span class="pre">FRONT</span></code> or <code class="docutils literal notranslate"><span class="pre">BACK</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.front_facing_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">front_facing_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">invert</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.front_facing_set" title="Link to this definition"></a></dt>
+<dd><p>Specifies the orientation of front-facing polygons.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>invert</strong> (<em>bool</em>) – True for clockwise polygons as front-facing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.line_width_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">line_width_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.line_width_get" title="Link to this definition"></a></dt>
+<dd><p>Current width of rasterized lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The current line width.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.line_width_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">line_width_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.line_width_set" title="Link to this definition"></a></dt>
+<dd><p>Specify the width of rasterized lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>width</strong> (<em>float</em>) – New width.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.point_size_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">point_size_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.point_size_set" title="Link to this definition"></a></dt>
+<dd><p>Specify the diameter of rasterized points.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>float</em>) – New diameter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.program_point_size_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">program_point_size_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.program_point_size_set" title="Link to this definition"></a></dt>
+<dd><p>If enabled, the derived point size is taken from the (potentially clipped) shader builtin gl_PointSize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – True for shader builtin gl_PointSize.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.scissor_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">scissor_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.scissor_get" title="Link to this definition"></a></dt>
+<dd><p>Retrieve the scissors of the active framebuffer.
+Note: Only valid between ‘scissor_set’ and a framebuffer rebind.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The scissor of the active framebuffer as a tuple
+(x, y, xsize, ysize).
+x, y: lower left corner of the scissor rectangle, in pixels.
+xsize, ysize: width and height of the scissor rectangle.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.scissor_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">scissor_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ysize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.scissor_set" title="Link to this definition"></a></dt>
+<dd><p>Specifies the scissor area of the active framebuffer.
+Note: The scissor state is not saved upon framebuffer rebind.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – Lower left corner x coordinate, in pixels.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Lower left corner y coordinate, in pixels.</p></li>
+<li><p><strong>xsize</strong> (<em>int</em>) – Width of the scissor rectangle.</p></li>
+<li><p><strong>ysize</strong> (<em>int</em>) – Height of the scissor rectangle.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.scissor_test_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">scissor_test_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.scissor_test_set" title="Link to this definition"></a></dt>
+<dd><p>Enable/disable scissor testing on the active framebuffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enable</strong> (<em>bool</em>) – True - enable scissor testing.
+False - disable scissor testing.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.viewport_get">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">viewport_get</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.viewport_get" title="Link to this definition"></a></dt>
+<dd><p>Viewport of the active framebuffer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The viewport as a tuple (x, y, xsize, ysize).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple[int, int, int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gpu.state.viewport_set">
+<span class="sig-prename descclassname"><span class="pre">gpu.state.</span></span><span class="sig-name descname"><span class="pre">viewport_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ysize</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#gpu.state.viewport_set" title="Link to this definition"></a></dt>
+<dd><p>Specifies the viewport of the active framebuffer.
+Note: The viewport state is not saved upon framebuffer rebind.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>int</em>) – Lower left corner x coordinate, in pixels.</p></li>
+<li><p><strong>y</strong> (<em>int</em>) – Lower left corner y coordinate, in pixels.</p></li>
+<li><p><strong>xsize</strong> (<em>int</em>) – Width of the viewport.</p></li>
+<li><p><strong>ysize</strong> (<em>int</em>) – Height of the viewport.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gpu.shader.html" class="btn btn-neutral float-left" title="GPU Shader Utilities (gpu.shader)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gpu.texture.html" class="btn btn-neutral float-right" title="GPU Texture Utilities (gpu.texture)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60gpu.state.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fgpu.state.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

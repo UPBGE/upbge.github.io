@@ -1,0 +1,2172 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KX_GameObject(SCA_IObject) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bge.types.KX_GameObject.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="KX_LibLoadStatus(EXP_PyObjectPlus)" href="bge.types.KX_LibLoadStatus.html" />
+    <link rel="prev" title="KX_FontObject(KX_GameObject)" href="bge.types.KX_FontObject.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bge.types.html#introduction">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bge.types.html#types">Types</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bge.types.BL_ArmatureBone.html">BL_ArmatureBone(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.BL_ArmatureChannel.html">BL_ArmatureChannel(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.BL_ArmatureConstraint.html">BL_ArmatureConstraint(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.BL_ArmatureObject.html">BL_ArmatureObject(KX_GameObject)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.BL_Shader.html">BL_Shader(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.BL_Texture.html">BL_Texture(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.EXP_ListValue.html">EXP_ListValue(EXP_PropValue)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.EXP_PropValue.html">EXP_PropValue(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.EXP_PyObjectPlus.html">EXP_PyObjectPlus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.EXP_Value.html">EXP_Value(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_2DFilter.html">KX_2DFilter(BL_Shader)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_2DFilterFrameBuffer.html">KX_2DFilterOffScreen(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_2DFilterManager.html">KX_2DFilterManager(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_BlenderMaterial.html">KX_BlenderMaterial(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_Camera.html">KX_Camera(KX_GameObject)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_CharacterWrapper.html">KX_CharacterWrapper(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_CollisionContactPoint.html">KX_CollisionContactPoint(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_ConstraintWrapper.html">KX_ConstraintWrapper(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_FontObject.html">KX_FontObject(KX_GameObject)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">KX_GameObject(SCA_IObject)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bge.types.KX_GameObject"><code class="docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.name"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.name</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.mass"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.mass</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.friction"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.friction</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.isSuspendDynamics"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.isSuspendDynamics</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.linearDamping"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.linearDamping</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.angularDamping"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.angularDamping</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.linVelocityMin"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.linVelocityMin</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.linVelocityMax"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.linVelocityMax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.angularVelocityMin"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.angularVelocityMin</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.angularVelocityMax"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.angularVelocityMax</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.localInertia"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.localInertia</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.parent"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.parent</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.groupMembers"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.groupMembers</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.groupObject"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.groupObject</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.collisionGroup"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.collisionGroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.collisionMask"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.collisionMask</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.collisionCallbacks"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.collisionCallbacks</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.scene"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.scene</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.visible"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.visible</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.layer"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.layer</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.cullingBox"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.cullingBox</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.culled"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.culled</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.color"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.color</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.physicsCulling"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.physicsCulling</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.logicCulling"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.logicCulling</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.physicsCullingRadius"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.physicsCullingRadius</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.logicCullingRadius"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.logicCullingRadius</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.occlusion"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.occlusion</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.position"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.position</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.orientation"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.orientation</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.scaling"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.scaling</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.localOrientation"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.localOrientation</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.worldOrientation"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.worldOrientation</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.localScale"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.localScale</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.worldScale"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.worldScale</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.localPosition"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.localPosition</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.worldPosition"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.worldPosition</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.localTransform"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.localTransform</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.worldTransform"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.worldTransform</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.localLinearVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.localLinearVelocity</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.worldLinearVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.worldLinearVelocity</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.localAngularVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.localAngularVelocity</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.worldAngularVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.worldAngularVelocity</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.gravity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.gravity</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.timeOffset"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.timeOffset</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.blenderObject"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.blenderObject</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.state"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.state</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.meshes"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.meshes</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.batchGroup"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.batchGroup</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.sensors"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.sensors</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.controllers"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.controllers</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.actuators"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.actuators</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.attrDict"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.attrDict</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.components"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.components</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.children"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.children</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.childrenRecursive"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.childrenRecursive</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.life"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.life</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.debug"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.debug</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.debugRecursive"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.debugRecursive</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.currentLodLevel"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.currentLodLevel</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.lodManager"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.lodManager</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.onRemove"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.onRemove</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.logger"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.logger</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.loggerName"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.loggerName</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.endObject"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.endObject()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.replaceMesh"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.replaceMesh()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setVisible"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setVisible()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setOcclusion"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setOcclusion()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.alignAxisToVect"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.alignAxisToVect()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getAxisVect"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getAxisVect()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.applyMovement"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.applyMovement()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.applyRotation"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.applyRotation()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.applyForce"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.applyForce()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.applyTorque"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.applyTorque()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getLinearVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getLinearVelocity()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setLinearVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setLinearVelocity()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getAngularVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getAngularVelocity()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setAngularVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setAngularVelocity()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getVelocity"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getVelocity()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getReactionForce"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getReactionForce()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.applyImpulse"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.applyImpulse()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setDamping"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setDamping()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.suspendPhysics"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.suspendPhysics()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.restorePhysics"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.restorePhysics()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.suspendDynamics"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.suspendDynamics()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.restoreDynamics"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.restoreDynamics()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.enableRigidBody"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.enableRigidBody()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.disableRigidBody"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.disableRigidBody()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setCcdMotionThreshold"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setCcdMotionThreshold()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setCcdSweptSphereRadius"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setCcdSweptSphereRadius()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setParent"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setParent()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.removeParent"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.removeParent()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getPhysicsId"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getPhysicsId()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getPropertyNames"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getPropertyNames()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getDistanceTo"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getDistanceTo()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getVectTo"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getVectTo()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.rayCastTo"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.rayCastTo()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.rayCast"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.rayCast()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.collide"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.collide()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setCollisionMargin"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setCollisionMargin()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.sendMessage"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.sendMessage()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.reinstancePhysicsMesh"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.reinstancePhysicsMesh()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.replacePhysicsShape"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.replacePhysicsShape()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.get"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.get()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.playAction"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.playAction()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.stopAction"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.stopAction()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getActionFrame"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getActionFrame()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.getActionName"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.getActionName()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.setActionFrame"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.setActionFrame()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.isPlayingAction"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.isPlayingAction()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#bge.types.KX_GameObject.addDebugProperty"><code class="docutils literal notranslate"><span class="pre">KX_GameObject.addDebugProperty()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_LibLoadStatus.html">KX_LibLoadStatus(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_LightObject.html">KX_LightObject(KX_GameObject)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_LodLevel.html">KX_LodLevel(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_LodManager.html">KX_LodManager(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_MeshProxy.html">KX_MeshProxy(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_NavMeshObject.html">KX_NavMeshObject(KX_GameObject)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_PolyProxy.html">KX_PolyProxy(SCA_IObject)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_PythonComponent.html">KX_PythonComponent(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_Scene.html">KX_Scene(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_VehicleWrapper.html">KX_VehicleWrapper(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.KX_VertexProxy.html">KX_VertexProxy(SCA_IObject)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_2DFilterActuator.html">SCA_2DFilterActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ANDController.html">SCA_ANDController(SCA_IController)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ActionActuator.html">SCA_ActionActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ActuatorSensor.html">SCA_ActuatorSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_AddObjectActuator.html">SCA_AddObjectActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_AlwaysSensor.html">SCA_AlwaysSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ArmatureActuator.html">SCA_ArmatureActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ArmatureSensor.html">SCA_ArmatureSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_CameraActuator.html">SCA_CameraActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_CollisionSensor.html">SCA_CollisionSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ConstraintActuator.html">SCA_ConstraintActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_DelaySensor.html">SCA_DelaySensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_DynamicActuator.html">SCA_DynamicActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_EndObjectActuator.html">SCA_EndObjectActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_GameActuator.html">SCA_GameActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_IActuator.html">SCA_IActuator(SCA_ILogicBrick)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_IController.html">SCA_IController(SCA_ILogicBrick)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ILogicBrick.html">SCA_ILogicBrick(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_IObject.html">SCA_IObject(EXP_Value)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ISensor.html">SCA_ISensor(SCA_ILogicBrick)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_InputEvent.html">SCA_InputEvent(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_JoystickSensor.html">SCA_JoystickSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_KeyboardSensor.html">SCA_KeyboardSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_MouseActuator.html">SCA_MouseActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_MouseFocusSensor.html">SCA_MouseFocusSensor(SCA_MouseSensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_MouseSensor.html">SCA_MouseSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_NANDController.html">SCA_NANDController(SCA_IController)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_NORController.html">SCA_NORController(SCA_IController)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_NearSensor.html">SCA_NearSensor(KX_CollisionSensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_NetworkMessageActuator.html">SCA_NetworkMessageActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_NetworkMessageSensor.html">SCA_NetworkMessageSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ORController.html">SCA_ORController(SCA_IController)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ObjectActuator.html">SCA_ObjectActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ParentActuator.html">SCA_ParentActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_PropertyActuator.html">SCA_PropertyActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_PropertySensor.html">SCA_PropertySensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_PythonController.html">SCA_PythonController(SCA_IController)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_PythonJoystick.html">SCA_PythonJoystick(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_PythonKeyboard.html">SCA_PythonKeyboard(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_PythonMouse.html">SCA_PythonMouse(EXP_PyObjectPlus)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_RadarSensor.html">SCA_RadarSensor(SCA_NearSensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_RandomActuator.html">SCA_RandomActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_RandomSensor.html">SCA_RandomSensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_RaySensor.html">SCA_RaySensor(SCA_ISensor)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_ReplaceMeshActuator.html">SCA_ReplaceMeshActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_SceneActuator.html">SCA_SceneActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_SoundActuator.html">SCA_SoundActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_StateActuator.html">SCA_StateActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_SteeringActuator.html">SCA_SteeringActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_TrackToActuator.html">SCA_TrackToActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_VibrationActuator.html">SCA_VibrationActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_VisibilityActuator.html">SCA_VisibilityActuator(SCA_IActuator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_XNORController.html">SCA_XNORController(SCA_IController)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bge.types.SCA_XORController.html">SCA_XORController(SCA_IController)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bge.types.html">Game Types (bge.types)</a></li>
+      <li class="breadcrumb-item active">KX_GameObject(SCA_IObject)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kx-gameobject-sca-iobject">
+<h1>KX_GameObject(SCA_IObject)<a class="headerlink" href="#kx-gameobject-sca-iobject" title="Link to this heading"></a></h1>
+<p>base class — <a class="reference internal" href="bge.types.SCA_IObject.html#bge.types.SCA_IObject" title="bge.types.SCA_IObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">SCA_IObject</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">bge.types.</span></span><span class="sig-name descname"><span class="pre">KX_GameObject</span></span><a class="headerlink" href="#bge.types.KX_GameObject" title="Link to this definition"></a></dt>
+<dd><p>All game objects are derived from this class.</p>
+<p>Properties assigned to game objects are accessible as attributes of this class.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Calling ANY method or attribute on an object that has been removed from a scene will raise a SystemError,
+if an object may have been removed since last accessing it use the <a class="reference internal" href="bge.types.EXP_PyObjectPlus.html#bge.types.EXP_PyObjectPlus.invalid" title="bge.types.EXP_PyObjectPlus.invalid"><code class="xref py py-attr docutils literal notranslate"><span class="pre">invalid</span></code></a> attribute to check.</p>
+</div>
+<p>KX_GameObject can be subclassed to extend functionality. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">bge</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CustomGameObject</span><span class="p">(</span><span class="n">bge</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">KX_GameObject</span><span class="p">):</span>
+    <span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_owner</span><span class="p">):</span>
+        <span class="c1"># &quot;old_owner&quot; can just be ignored. At this point, &quot;self&quot; is</span>
+        <span class="c1"># already the object in the scene, and &quot;old_owner&quot; has been</span>
+        <span class="c1"># destroyed.</span>
+
+        <span class="c1"># New attributes can be defined - but we could also use a game</span>
+        <span class="c1"># property, like &quot;self[&#39;rate&#39;]&quot;.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">CustomGameObject</span><span class="o">.</span><span class="n">RATE</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">worldPosition</span><span class="o">.</span><span class="n">z</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rate</span>
+
+        <span class="c1"># switch direction</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">worldPosition</span><span class="o">.</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="o">-</span><span class="n">CustomGameObject</span><span class="o">.</span><span class="n">RATE</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">worldPosition</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">CustomGameObject</span><span class="o">.</span><span class="n">RATE</span>
+
+<span class="c1"># Called first</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mutate</span><span class="p">(</span><span class="n">cont</span><span class="p">):</span>
+    <span class="n">old_object</span> <span class="o">=</span> <span class="n">cont</span><span class="o">.</span><span class="n">owner</span>
+    <span class="n">mutated_object</span> <span class="o">=</span> <span class="n">CustomGameObject</span><span class="p">(</span><span class="n">cont</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+
+    <span class="c1"># After calling the constructor above, references to the old object</span>
+    <span class="c1"># should not be used.</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">old_object</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">mutated_object</span><span class="p">)</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">old_object</span><span class="o">.</span><span class="n">invalid</span><span class="p">)</span>
+    <span class="k">assert</span><span class="p">(</span><span class="n">mutated_object</span> <span class="ow">is</span> <span class="n">cont</span><span class="o">.</span><span class="n">owner</span><span class="p">)</span>
+
+<span class="c1"># Called later - note we are now working with the mutated object.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">cont</span><span class="p">):</span>
+    <span class="n">cont</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>When subclassing objects other than empties and meshes, the specific type
+should be used - e.g. inherit from <a class="reference internal" href="bge.types.BL_ArmatureObject.html#bge.types.BL_ArmatureObject" title="bge.types.BL_ArmatureObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">BL_ArmatureObject</span></code></a> when the object
+to mutate is an armature.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#bge.types.KX_GameObject.name" title="Link to this definition"></a></dt>
+<dd><p>The object’s name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.mass">
+<span class="sig-name descname"><span class="pre">mass</span></span><a class="headerlink" href="#bge.types.KX_GameObject.mass" title="Link to this definition"></a></dt>
+<dd><p>The object’s mass</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The object must have a physics controller for the mass to be applied, otherwise the mass value will be returned as 0.0.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.friction">
+<span class="sig-name descname"><span class="pre">friction</span></span><a class="headerlink" href="#bge.types.KX_GameObject.friction" title="Link to this definition"></a></dt>
+<dd><p>The object’s friction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The object must have a physics controller for the friction to be applied, otherwise the friction value will be returned as 0.0.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.isSuspendDynamics">
+<span class="sig-name descname"><span class="pre">isSuspendDynamics</span></span><a class="headerlink" href="#bge.types.KX_GameObject.isSuspendDynamics" title="Link to this definition"></a></dt>
+<dd><p>The object’s dynamic state (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#bge.types.KX_GameObject.suspendDynamics" title="bge.types.KX_GameObject.suspendDynamics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">suspendDynamics()</span></code></a> and <a class="reference internal" href="#bge.types.KX_GameObject.restoreDynamics" title="bge.types.KX_GameObject.restoreDynamics"><code class="xref py py-meth docutils literal notranslate"><span class="pre">restoreDynamics()</span></code></a> allow you to change the state.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.linearDamping">
+<span class="sig-name descname"><span class="pre">linearDamping</span></span><a class="headerlink" href="#bge.types.KX_GameObject.linearDamping" title="Link to this definition"></a></dt>
+<dd><p>The object’s linear damping, also known as translational damping. Can be set simultaneously with angular damping using the <a class="reference internal" href="#bge.types.KX_GameObject.setDamping" title="bge.types.KX_GameObject.setDamping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setDamping()</span></code></a> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float between 0 and 1 inclusive.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The object must have a physics controller for the linear damping to be applied, otherwise the value will be returned as 0.0.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.angularDamping">
+<span class="sig-name descname"><span class="pre">angularDamping</span></span><a class="headerlink" href="#bge.types.KX_GameObject.angularDamping" title="Link to this definition"></a></dt>
+<dd><p>The object’s angular damping, also known as rotationation damping. Can be set simultaneously with linear damping using the <a class="reference internal" href="#bge.types.KX_GameObject.setDamping" title="bge.types.KX_GameObject.setDamping"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setDamping()</span></code></a> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float between 0 and 1 inclusive.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The object must have a physics controller for the angular damping to be applied, otherwise the value will be returned as 0.0.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.linVelocityMin">
+<span class="sig-name descname"><span class="pre">linVelocityMin</span></span><a class="headerlink" href="#bge.types.KX_GameObject.linVelocityMin" title="Link to this definition"></a></dt>
+<dd><p>Enforces the object keeps moving at a minimum velocity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Applies to dynamic and rigid body objects only.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A value of 0.0 disables this option.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While objects are stationary the minimum velocity will not be applied.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.linVelocityMax">
+<span class="sig-name descname"><span class="pre">linVelocityMax</span></span><a class="headerlink" href="#bge.types.KX_GameObject.linVelocityMax" title="Link to this definition"></a></dt>
+<dd><p>Clamp the maximum linear velocity to prevent objects moving beyond a set speed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Applies to dynamic and rigid body objects only.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A value of 0.0 disables this option (rather than setting it stationary).</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.angularVelocityMin">
+<span class="sig-name descname"><span class="pre">angularVelocityMin</span></span><a class="headerlink" href="#bge.types.KX_GameObject.angularVelocityMin" title="Link to this definition"></a></dt>
+<dd><p>Enforces the object keeps rotating at a minimum velocity. A value of 0.0 disables this.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float (non-negative)</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Applies to dynamic and rigid body objects only.
+While objects are stationary the minimum velocity will not be applied.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.angularVelocityMax">
+<span class="sig-name descname"><span class="pre">angularVelocityMax</span></span><a class="headerlink" href="#bge.types.KX_GameObject.angularVelocityMax" title="Link to this definition"></a></dt>
+<dd><p>Clamp the maximum angular velocity to prevent objects rotating beyond a set speed.
+A value of 0.0 disables clamping; it does not stop rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float (non-negative)</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Applies to dynamic and rigid body objects only.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.localInertia">
+<span class="sig-name descname"><span class="pre">localInertia</span></span><a class="headerlink" href="#bge.types.KX_GameObject.localInertia" title="Link to this definition"></a></dt>
+<dd><p>the object’s inertia vector in local coordinates. Read only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Vector((ix, iy, iz))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.parent">
+<span class="sig-name descname"><span class="pre">parent</span></span><a class="headerlink" href="#bge.types.KX_GameObject.parent" title="Link to this definition"></a></dt>
+<dd><p>The object’s parent object. (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.groupMembers">
+<span class="sig-name descname"><span class="pre">groupMembers</span></span><a class="headerlink" href="#bge.types.KX_GameObject.groupMembers" title="Link to this definition"></a></dt>
+<dd><p>Returns the list of group members if the object is a group object (dupli group instance), otherwise None is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bge.types.EXP_ListValue.html#bge.types.EXP_ListValue" title="bge.types.EXP_ListValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">EXP_ListValue</span></code></a> of <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.groupObject">
+<span class="sig-name descname"><span class="pre">groupObject</span></span><a class="headerlink" href="#bge.types.KX_GameObject.groupObject" title="Link to this definition"></a></dt>
+<dd><p>Returns the group object (dupli group instance) that the object belongs to or None if the object is not part of a group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.collisionGroup">
+<span class="sig-name descname"><span class="pre">collisionGroup</span></span><a class="headerlink" href="#bge.types.KX_GameObject.collisionGroup" title="Link to this definition"></a></dt>
+<dd><p>The object’s collision group.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>integer (bit mask)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.collisionMask">
+<span class="sig-name descname"><span class="pre">collisionMask</span></span><a class="headerlink" href="#bge.types.KX_GameObject.collisionMask" title="Link to this definition"></a></dt>
+<dd><p>The object’s collision mask.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>integer (bit mask)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.collisionCallbacks">
+<span class="sig-name descname"><span class="pre">collisionCallbacks</span></span><a class="headerlink" href="#bge.types.KX_GameObject.collisionCallbacks" title="Link to this definition"></a></dt>
+<dd><p>A list of functions to be called when a collision occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of functions and/or methods</p>
+</dd>
+</dl>
+<p>Callbacks should either accept one argument <cite>(object)</cite>, or four
+arguments <cite>(object, point, normal, points)</cite>. For simplicity, per
+colliding object the first collision point is reported in second
+and third argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function form</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">callback_four</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hit by </span><span class="si">%r</span><span class="s1"> with </span><span class="si">%i</span><span class="s1"> contacts points&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">object</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">callback_three</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hit by </span><span class="si">%r</span><span class="s1"> at </span><span class="si">%s</span><span class="s1"> with normal </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">object</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">callback_one</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hit by </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">object</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">register_callback</span><span class="p">(</span><span class="n">controller</span><span class="p">):</span>
+    <span class="n">controller</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">collisionCallbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">callback_four</span><span class="p">)</span>
+    <span class="n">controller</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">collisionCallbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">callback_three</span><span class="p">)</span>
+    <span class="n">controller</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">collisionCallbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">callback_one</span><span class="p">)</span>
+
+
+<span class="c1"># Method form</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">YourGameEntity</span><span class="p">(</span><span class="n">bge</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">KX_GameObject</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">old_owner</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collisionCallbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_collision_four</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collisionCallbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_collision_three</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">collisionCallbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">on_collision_one</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_collision_four</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">,</span> <span class="n">points</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hit by </span><span class="si">%r</span><span class="s1"> with </span><span class="si">%i</span><span class="s1"> contacts points&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">object</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_collision_three</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hit by </span><span class="si">%r</span><span class="s1"> at </span><span class="si">%s</span><span class="s1"> with normal </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">object</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_collision_one</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hit by </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">object</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For backward compatibility, a callback with variable number of
+arguments (using <cite>*args</cite>) will be passed only the <cite>object</cite>
+argument. Only when there is more than one fixed argument (not
+counting <cite>self</cite> for methods) will the four-argument form be
+used.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.scene">
+<span class="sig-name descname"><span class="pre">scene</span></span><a class="headerlink" href="#bge.types.KX_GameObject.scene" title="Link to this definition"></a></dt>
+<dd><p>The object’s scene. (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bge.types.KX_Scene.html#bge.types.KX_Scene" title="bge.types.KX_Scene"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_Scene</span></code></a> or None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.visible">
+<span class="sig-name descname"><span class="pre">visible</span></span><a class="headerlink" href="#bge.types.KX_GameObject.visible" title="Link to this definition"></a></dt>
+<dd><p>visibility flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Game logic will still run for invisible objects.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.layer">
+<span class="sig-name descname"><span class="pre">layer</span></span><a class="headerlink" href="#bge.types.KX_GameObject.layer" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.3.0: </span>The layer mask used for shadow and real-time cube map render.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>integer (bit mask)</p>
+</dd>
+</dl>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.cullingBox">
+<span class="sig-name descname"><span class="pre">cullingBox</span></span><a class="headerlink" href="#bge.types.KX_GameObject.cullingBox" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.3.0: </span>(You can use bpy.types.Object.bound_box instead) The object’s bounding volume box used for culling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_BoundingBox</span></code></p>
+</dd>
+</dl>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.culled">
+<span class="sig-name descname"><span class="pre">culled</span></span><a class="headerlink" href="#bge.types.KX_GameObject.culled" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.3.0: </span>Returns True if the object is culled, else False.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This variable returns an invalid value if it is called outside the scene’s callbacks <code class="xref py py-attr docutils literal notranslate"><span class="pre">KX_Scene.pre_draw</span></code> and <code class="xref py py-attr docutils literal notranslate"><span class="pre">KX_Scene.post_draw</span></code>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean (read only)</p>
+</dd>
+</dl>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.color">
+<span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#bge.types.KX_GameObject.color" title="Link to this definition"></a></dt>
+<dd><p>The object color of the object. [r, g, b, a]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.physicsCulling">
+<span class="sig-name descname"><span class="pre">physicsCulling</span></span><a class="headerlink" href="#bge.types.KX_GameObject.physicsCulling" title="Link to this definition"></a></dt>
+<dd><p>True if the object suspends its physics depending on its nearest distance to any camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.logicCulling">
+<span class="sig-name descname"><span class="pre">logicCulling</span></span><a class="headerlink" href="#bge.types.KX_GameObject.logicCulling" title="Link to this definition"></a></dt>
+<dd><p>True if the object suspends its logic and animation depending on its nearest distance to any camera.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.physicsCullingRadius">
+<span class="sig-name descname"><span class="pre">physicsCullingRadius</span></span><a class="headerlink" href="#bge.types.KX_GameObject.physicsCullingRadius" title="Link to this definition"></a></dt>
+<dd><p>Suspend object’s physics if this radius is smaller than its nearest distance to any camera
+and <a class="reference internal" href="#bge.types.KX_GameObject.physicsCulling" title="bge.types.KX_GameObject.physicsCulling"><code class="xref py py-data docutils literal notranslate"><span class="pre">physicsCulling</span></code></a> set to <cite>True</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.logicCullingRadius">
+<span class="sig-name descname"><span class="pre">logicCullingRadius</span></span><a class="headerlink" href="#bge.types.KX_GameObject.logicCullingRadius" title="Link to this definition"></a></dt>
+<dd><p>Suspend object’s logic and animation if this radius is smaller than its nearest distance to any camera
+and <a class="reference internal" href="#bge.types.KX_GameObject.logicCulling" title="bge.types.KX_GameObject.logicCulling"><code class="xref py py-data docutils literal notranslate"><span class="pre">logicCulling</span></code></a> set to <cite>True</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.occlusion">
+<span class="sig-name descname"><span class="pre">occlusion</span></span><a class="headerlink" href="#bge.types.KX_GameObject.occlusion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.3.0: </span>occlusion capability flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.position">
+<span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#bge.types.KX_GameObject.position" title="Link to this definition"></a></dt>
+<dd><p>The object’s position. [x, y, z] On write: local position, on read: world position</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.0.1: </span>Use <a class="reference internal" href="#bge.types.KX_GameObject.localPosition" title="bge.types.KX_GameObject.localPosition"><code class="xref py py-attr docutils literal notranslate"><span class="pre">localPosition</span></code></a> and <a class="reference internal" href="#bge.types.KX_GameObject.worldPosition" title="bge.types.KX_GameObject.worldPosition"><code class="xref py py-attr docutils literal notranslate"><span class="pre">worldPosition</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.orientation">
+<span class="sig-name descname"><span class="pre">orientation</span></span><a class="headerlink" href="#bge.types.KX_GameObject.orientation" title="Link to this definition"></a></dt>
+<dd><p>The object’s orientation. 3x3 Matrix. You can also write a Quaternion or Euler vector. On write: local orientation, on read: world orientation</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.0.1: </span>Use <a class="reference internal" href="#bge.types.KX_GameObject.localOrientation" title="bge.types.KX_GameObject.localOrientation"><code class="xref py py-attr docutils literal notranslate"><span class="pre">localOrientation</span></code></a> and <a class="reference internal" href="#bge.types.KX_GameObject.worldOrientation" title="bge.types.KX_GameObject.worldOrientation"><code class="xref py py-attr docutils literal notranslate"><span class="pre">worldOrientation</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.scaling">
+<span class="sig-name descname"><span class="pre">scaling</span></span><a class="headerlink" href="#bge.types.KX_GameObject.scaling" title="Link to this definition"></a></dt>
+<dd><p>The object’s scaling factor. [sx, sy, sz] On write: local scaling, on read: world scaling</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.0.1: </span>Use <a class="reference internal" href="#bge.types.KX_GameObject.localScale" title="bge.types.KX_GameObject.localScale"><code class="xref py py-attr docutils literal notranslate"><span class="pre">localScale</span></code></a> and <a class="reference internal" href="#bge.types.KX_GameObject.worldScale" title="bge.types.KX_GameObject.worldScale"><code class="xref py py-attr docutils literal notranslate"><span class="pre">worldScale</span></code></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.localOrientation">
+<span class="sig-name descname"><span class="pre">localOrientation</span></span><a class="headerlink" href="#bge.types.KX_GameObject.localOrientation" title="Link to this definition"></a></dt>
+<dd><p>The object’s local orientation. 3x3 Matrix. You can also write a Quaternion or Euler vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.worldOrientation">
+<span class="sig-name descname"><span class="pre">worldOrientation</span></span><a class="headerlink" href="#bge.types.KX_GameObject.worldOrientation" title="Link to this definition"></a></dt>
+<dd><p>The object’s world orientation. 3x3 Matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.localScale">
+<span class="sig-name descname"><span class="pre">localScale</span></span><a class="headerlink" href="#bge.types.KX_GameObject.localScale" title="Link to this definition"></a></dt>
+<dd><p>The object’s local scaling factor. [sx, sy, sz]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.worldScale">
+<span class="sig-name descname"><span class="pre">worldScale</span></span><a class="headerlink" href="#bge.types.KX_GameObject.worldScale" title="Link to this definition"></a></dt>
+<dd><p>The object’s world scaling factor. [sx, sy, sz]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.localPosition">
+<span class="sig-name descname"><span class="pre">localPosition</span></span><a class="headerlink" href="#bge.types.KX_GameObject.localPosition" title="Link to this definition"></a></dt>
+<dd><p>The object’s local position. [x, y, z]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.worldPosition">
+<span class="sig-name descname"><span class="pre">worldPosition</span></span><a class="headerlink" href="#bge.types.KX_GameObject.worldPosition" title="Link to this definition"></a></dt>
+<dd><p>The object’s world position. [x, y, z]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.localTransform">
+<span class="sig-name descname"><span class="pre">localTransform</span></span><a class="headerlink" href="#bge.types.KX_GameObject.localTransform" title="Link to this definition"></a></dt>
+<dd><p>The object’s local space transform matrix. 4x4 Matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.worldTransform">
+<span class="sig-name descname"><span class="pre">worldTransform</span></span><a class="headerlink" href="#bge.types.KX_GameObject.worldTransform" title="Link to this definition"></a></dt>
+<dd><p>The object’s world space transform matrix. 4x4 Matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.localLinearVelocity">
+<span class="sig-name descname"><span class="pre">localLinearVelocity</span></span><a class="headerlink" href="#bge.types.KX_GameObject.localLinearVelocity" title="Link to this definition"></a></dt>
+<dd><p>The object’s local linear velocity. [x, y, z]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.worldLinearVelocity">
+<span class="sig-name descname"><span class="pre">worldLinearVelocity</span></span><a class="headerlink" href="#bge.types.KX_GameObject.worldLinearVelocity" title="Link to this definition"></a></dt>
+<dd><p>The object’s world linear velocity. [x, y, z]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.localAngularVelocity">
+<span class="sig-name descname"><span class="pre">localAngularVelocity</span></span><a class="headerlink" href="#bge.types.KX_GameObject.localAngularVelocity" title="Link to this definition"></a></dt>
+<dd><p>The object’s local angular velocity. [x, y, z]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.worldAngularVelocity">
+<span class="sig-name descname"><span class="pre">worldAngularVelocity</span></span><a class="headerlink" href="#bge.types.KX_GameObject.worldAngularVelocity" title="Link to this definition"></a></dt>
+<dd><p>The object’s world angular velocity. [x, y, z]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.gravity">
+<span class="sig-name descname"><span class="pre">gravity</span></span><a class="headerlink" href="#bge.types.KX_GameObject.gravity" title="Link to this definition"></a></dt>
+<dd><p>The object’s gravity. [x, y, z]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.timeOffset">
+<span class="sig-name descname"><span class="pre">timeOffset</span></span><a class="headerlink" href="#bge.types.KX_GameObject.timeOffset" title="Link to this definition"></a></dt>
+<dd><p>adjust the slowparent delay at runtime.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.blenderObject">
+<span class="sig-name descname"><span class="pre">blenderObject</span></span><a class="headerlink" href="#bge.types.KX_GameObject.blenderObject" title="Link to this definition"></a></dt>
+<dd><p>This KX_GameObject’s Object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bpy.types.Object.html#bpy.types.Object" title="bpy.types.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">Object</span></code></a>, (readonly)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.state">
+<span class="sig-name descname"><span class="pre">state</span></span><a class="headerlink" href="#bge.types.KX_GameObject.state" title="Link to this definition"></a></dt>
+<dd><p>the game object’s state bitmask, using the first 30 bits, one bit must always be set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.meshes">
+<span class="sig-name descname"><span class="pre">meshes</span></span><a class="headerlink" href="#bge.types.KX_GameObject.meshes" title="Link to this definition"></a></dt>
+<dd><p>a list meshes for this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="bge.types.KX_MeshProxy.html#bge.types.KX_MeshProxy" title="bge.types.KX_MeshProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_MeshProxy</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Most objects use only 1 mesh.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changes to this list will not update the KX_GameObject.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.batchGroup">
+<span class="sig-name descname"><span class="pre">batchGroup</span></span><a class="headerlink" href="#bge.types.KX_GameObject.batchGroup" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.3.0: </span>The object batch group containing the batched mesh.</p>
+<dl class="field-list simple">
+<dt class="field-odd">type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_BatchGroup</span></code></p>
+</dd>
+</dl>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.sensors">
+<span class="sig-name descname"><span class="pre">sensors</span></span><a class="headerlink" href="#bge.types.KX_GameObject.sensors" title="Link to this definition"></a></dt>
+<dd><p>a sequence of <a class="reference internal" href="bge.types.SCA_ISensor.html#bge.types.SCA_ISensor" title="bge.types.SCA_ISensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">SCA_ISensor</span></code></a> objects with string/index lookups and iterator support.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This attribute is experimental and may be removed (but probably wont be).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changes to this list will not update the KX_GameObject.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.controllers">
+<span class="sig-name descname"><span class="pre">controllers</span></span><a class="headerlink" href="#bge.types.KX_GameObject.controllers" title="Link to this definition"></a></dt>
+<dd><p>a sequence of <a class="reference internal" href="bge.types.SCA_IController.html#bge.types.SCA_IController" title="bge.types.SCA_IController"><code class="xref py py-class docutils literal notranslate"><span class="pre">SCA_IController</span></code></a> objects with string/index lookups and iterator support.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of <a class="reference internal" href="bge.types.SCA_ISensor.html#bge.types.SCA_ISensor" title="bge.types.SCA_ISensor"><code class="xref py py-class docutils literal notranslate"><span class="pre">SCA_ISensor</span></code></a></p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This attribute is experimental and may be removed (but probably wont be).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changes to this list will not update the KX_GameObject.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.actuators">
+<span class="sig-name descname"><span class="pre">actuators</span></span><a class="headerlink" href="#bge.types.KX_GameObject.actuators" title="Link to this definition"></a></dt>
+<dd><p>a list of <a class="reference internal" href="bge.types.SCA_IActuator.html#bge.types.SCA_IActuator" title="bge.types.SCA_IActuator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SCA_IActuator</span></code></a> with string/index lookups and iterator support.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This attribute is experimental and may be removed (but probably wont be).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changes to this list will not update the KX_GameObject.</p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.attrDict">
+<span class="sig-name descname"><span class="pre">attrDict</span></span><a class="headerlink" href="#bge.types.KX_GameObject.attrDict" title="Link to this definition"></a></dt>
+<dd><p>get the objects internal python attribute dictionary for direct (faster) access.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.components">
+<span class="sig-name descname"><span class="pre">components</span></span><a class="headerlink" href="#bge.types.KX_GameObject.components" title="Link to this definition"></a></dt>
+<dd><p>All python components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bge.types.EXP_ListValue.html#bge.types.EXP_ListValue" title="bge.types.EXP_ListValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">EXP_ListValue</span></code></a> of <a class="reference internal" href="bge.types.KX_PythonComponent.html#bge.types.KX_PythonComponent" title="bge.types.KX_PythonComponent"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_PythonComponent</span></code></a>’s</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.children">
+<span class="sig-name descname"><span class="pre">children</span></span><a class="headerlink" href="#bge.types.KX_GameObject.children" title="Link to this definition"></a></dt>
+<dd><p>direct children of this object, (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bge.types.EXP_ListValue.html#bge.types.EXP_ListValue" title="bge.types.EXP_ListValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">EXP_ListValue</span></code></a> of <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>’s</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.childrenRecursive">
+<span class="sig-name descname"><span class="pre">childrenRecursive</span></span><a class="headerlink" href="#bge.types.KX_GameObject.childrenRecursive" title="Link to this definition"></a></dt>
+<dd><p>all children of this object including children’s children, (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bge.types.EXP_ListValue.html#bge.types.EXP_ListValue" title="bge.types.EXP_ListValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">EXP_ListValue</span></code></a> of <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>’s</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.life">
+<span class="sig-name descname"><span class="pre">life</span></span><a class="headerlink" href="#bge.types.KX_GameObject.life" title="Link to this definition"></a></dt>
+<dd><p>The number of frames until the object ends, assumes one frame is 1/60 second (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.debug">
+<span class="sig-name descname"><span class="pre">debug</span></span><a class="headerlink" href="#bge.types.KX_GameObject.debug" title="Link to this definition"></a></dt>
+<dd><p>If true, the object’s debug properties will be displayed on screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.debugRecursive">
+<span class="sig-name descname"><span class="pre">debugRecursive</span></span><a class="headerlink" href="#bge.types.KX_GameObject.debugRecursive" title="Link to this definition"></a></dt>
+<dd><p>If true, the object’s and children’s debug properties will be displayed on screen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.currentLodLevel">
+<span class="sig-name descname"><span class="pre">currentLodLevel</span></span><a class="headerlink" href="#bge.types.KX_GameObject.currentLodLevel" title="Link to this definition"></a></dt>
+<dd><p>The index of the level of detail (LOD) currently used by this object (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.lodManager">
+<span class="sig-name descname"><span class="pre">lodManager</span></span><a class="headerlink" href="#bge.types.KX_GameObject.lodManager" title="Link to this definition"></a></dt>
+<dd><p>Return the lod manager of this object.
+Needed to access to lod manager to set attributes of levels of detail of this object.
+The lod manager is shared between instance objects and can be changed to use the lod levels of an other object.
+If the lod manager is set to <cite>None</cite> the object’s mesh backs to the mesh of the previous first lod level.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bge.types.KX_LodManager.html#bge.types.KX_LodManager" title="bge.types.KX_LodManager"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_LodManager</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.onRemove">
+<span class="sig-name descname"><span class="pre">onRemove</span></span><a class="headerlink" href="#bge.types.KX_GameObject.onRemove" title="Link to this definition"></a></dt>
+<dd><p>A list of callables to run when the KX_GameObject is destroyed.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@gameobj</span><span class="o">.</span><span class="n">onRemove</span><span class="o">.</span><span class="n">append</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">(</span><span class="n">gameobj</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exiting </span><span class="si">%s</span><span class="s1">...&#39;</span> <span class="o">%</span> <span class="n">gameobj</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cont</span> <span class="o">=</span> <span class="n">bge</span><span class="o">.</span><span class="n">logic</span><span class="o">.</span><span class="n">getCurrentController</span><span class="p">()</span>
+<span class="n">gameobj</span> <span class="o">=</span> <span class="n">cont</span><span class="o">.</span><span class="n">owner</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">callback</span><span class="p">():</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;exiting&#39;</span> <span class="o">%</span><span class="n">s</span><span class="o">...</span><span class="s1">&#39; </span><span class="si">% g</span><span class="s1">ameobj.name)</span>
+
+<span class="n">gameobj</span><span class="o">.</span><span class="n">onRemove</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.logger">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#bge.types.KX_GameObject.logger" title="Link to this definition"></a></dt>
+<dd><p>A logger instance that can be used to log messages related to this object (read-only).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">logging.Logger</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.loggerName">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">loggerName</span></span><a class="headerlink" href="#bge.types.KX_GameObject.loggerName" title="Link to this definition"></a></dt>
+<dd><p>A name used to create the logger instance. By default, it takes the form <em>Type[Name]</em>
+and can be optionally overridden as below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@property</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">loggerName</span><span class="p">():</span>
+   <span class="k">return</span> <span class="s2">&quot;MyObject&quot;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.endObject">
+<span class="sig-name descname"><span class="pre">endObject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.endObject" title="Link to this definition"></a></dt>
+<dd><p>Delete this object, can be used in place of the EndObject Actuator.</p>
+<p>The actual removal of the object from the scene is delayed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.replaceMesh">
+<span class="sig-name descname"><span class="pre">replaceMesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">useDisplayMesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">usePhysicsMesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.replaceMesh" title="Link to this definition"></a></dt>
+<dd><p>Replace the mesh of this object with a new mesh. This works the same was as the actuator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<a class="reference internal" href="bge.types.KX_MeshProxy.html#bge.types.KX_MeshProxy" title="bge.types.KX_MeshProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_MeshProxy</span></code></a> or string) – mesh to replace or the meshes name.</p></li>
+<li><p><strong>useDisplayMesh</strong> (<em>boolean</em>) – when enabled the display mesh will be replaced (optional argument).</p></li>
+<li><p><strong>usePhysicsMesh</strong> (<em>boolean</em>) – when enabled the physics mesh will be replaced (optional argument).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setVisible">
+<span class="sig-name descname"><span class="pre">setVisible</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">visible</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setVisible" title="Link to this definition"></a></dt>
+<dd><p>Sets the game object’s visible flag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>visible</strong> (<em>boolean</em>) – the visible state to set.</p></li>
+<li><p><strong>recursive</strong> (<em>boolean</em>) – optional argument to set all childrens visibility flag too, defaults to False if no value passed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setOcclusion">
+<span class="sig-name descname"><span class="pre">setOcclusion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">occlusion</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setOcclusion" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.3.0: </span>Sets the game object’s occlusion capability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">arg occlusion<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the state to set the occlusion to.</p>
+</dd>
+<dt class="field-even">type occlusion<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+<dt class="field-odd">arg recursive<span class="colon">:</span></dt>
+<dd class="field-odd"><p>optional argument to set all childrens visibility flag too, defaults to False if no value passed.</p>
+</dd>
+<dt class="field-even">type recursive<span class="colon">:</span></dt>
+<dd class="field-even"><p>boolean</p>
+</dd>
+</dl>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.alignAxisToVect">
+<span class="sig-name descname"><span class="pre">alignAxisToVect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vect</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.alignAxisToVect" title="Link to this definition"></a></dt>
+<dd><p>Aligns any of the game object’s axis along the given vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>vect</strong> (<em>3D vector</em>) – a vector to align the axis.</p></li>
+<li><p><strong>axis</strong> (<em>integer</em>) – <p>The axis you want to align</p>
+<ul>
+<li><p>0: X axis</p></li>
+<li><p>1: Y axis</p></li>
+<li><p>2: Z axis</p></li>
+</ul>
+</p></li>
+<li><p><strong>factor</strong> (<em>float</em>) – Only rotate a fraction of the distance to the target vector (0.0 - 1.0)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getAxisVect">
+<span class="sig-name descname"><span class="pre">getAxisVect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vect</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getAxisVect" title="Link to this definition"></a></dt>
+<dd><p>Returns the axis vector rotates by the object’s worldspace orientation.
+This is the equivalent of multiplying the vector by the orientation matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>vect</strong> (<em>3D Vector</em>) – a vector to align the axis.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The vector in relation to the objects rotation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>3d vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.applyMovement">
+<span class="sig-name descname"><span class="pre">applyMovement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">movement</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.applyMovement" title="Link to this definition"></a></dt>
+<dd><p>Sets the game object’s movement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>movement</strong> (<em>3D Vector</em>) – movement vector.</p></li>
+<li><p><strong>local</strong> – <ul>
+<li><p>False: you get the “global” movement ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” movement ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p></li>
+<li><p><strong>local</strong> – boolean</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.applyRotation">
+<span class="sig-name descname"><span class="pre">applyRotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rotation</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.applyRotation" title="Link to this definition"></a></dt>
+<dd><p>Sets the game object’s rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rotation</strong> (<em>3D Vector</em>) – rotation vector.</p></li>
+<li><p><strong>local</strong> – <ul>
+<li><p>False: you get the “global” rotation ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” rotation ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p></li>
+<li><p><strong>local</strong> – boolean</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.applyForce">
+<span class="sig-name descname"><span class="pre">applyForce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">force</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.applyForce" title="Link to this definition"></a></dt>
+<dd><p>Sets the game object’s force.</p>
+<p>This requires a dynamic object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>force</strong> (<em>3D Vector</em>) – force vector.</p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – <ul>
+<li><p>False: you get the “global” force ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” force ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.applyTorque">
+<span class="sig-name descname"><span class="pre">applyTorque</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">torque</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.applyTorque" title="Link to this definition"></a></dt>
+<dd><p>Sets the game object’s torque.</p>
+<p>This requires a dynamic object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>torque</strong> (<em>3D Vector</em>) – torque vector.</p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – <ul>
+<li><p>False: you get the “global” torque ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” torque ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getLinearVelocity">
+<span class="sig-name descname"><span class="pre">getLinearVelocity</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getLinearVelocity" title="Link to this definition"></a></dt>
+<dd><p>Gets the game object’s linear velocity.</p>
+<p>This method returns the game object’s velocity through it’s center of mass, ie no angular velocity component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>local</strong> (<em>boolean</em>) – <ul class="simple">
+<li><p>False: you get the “global” velocity ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” velocity ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the object’s linear velocity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Vector((vx, vy, vz))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setLinearVelocity">
+<span class="sig-name descname"><span class="pre">setLinearVelocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setLinearVelocity" title="Link to this definition"></a></dt>
+<dd><p>Sets the game object’s linear velocity.</p>
+<p>This method sets game object’s velocity through it’s center of mass,
+ie no angular velocity component.</p>
+<p>This requires a dynamic object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> (<em>3D Vector</em>) – linear velocity vector.</p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – <ul>
+<li><p>False: you get the “global” velocity ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” velocity ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getAngularVelocity">
+<span class="sig-name descname"><span class="pre">getAngularVelocity</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getAngularVelocity" title="Link to this definition"></a></dt>
+<dd><p>Gets the game object’s angular velocity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>local</strong> (<em>boolean</em>) – <ul class="simple">
+<li><p>False: you get the “global” velocity ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” velocity ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the object’s angular velocity.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Vector((vx, vy, vz))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setAngularVelocity">
+<span class="sig-name descname"><span class="pre">setAngularVelocity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">velocity</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setAngularVelocity" title="Link to this definition"></a></dt>
+<dd><p>Sets the game object’s angular velocity.</p>
+<p>This requires a dynamic object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>velocity</strong> (<em>boolean</em>) – angular velocity vector.</p></li>
+<li><p><strong>local</strong> – <ul>
+<li><p>False: you get the “global” velocity ie: relative to world orientation.</p></li>
+<li><p>True: you get the “local” velocity ie: relative to object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getVelocity">
+<span class="sig-name descname"><span class="pre">getVelocity</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">point</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getVelocity" title="Link to this definition"></a></dt>
+<dd><p>Gets the game object’s velocity at the specified point.</p>
+<p>Gets the game object’s velocity at the specified point, including angular
+components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>point</strong> (<em>3D Vector</em>) – optional point to return the velocity for, in local coordinates, defaults to (0, 0, 0) if no value passed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the velocity at the specified point.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Vector((vx, vy, vz))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getReactionForce">
+<span class="sig-name descname"><span class="pre">getReactionForce</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getReactionForce" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.0.0: </span>Gets the game object’s reaction force.</p>
+<p>The reaction force is the force applied to this object over the last simulation timestep.
+This also includes impulses, eg from collisions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the reaction force of this object.</p>
+</dd>
+<dt class="field-even">rtype<span class="colon">:</span></dt>
+<dd class="field-even"><p>Vector((fx, fy, fz))</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not implemented at the moment. (Removed when switching from Sumo to Bullet)</p>
+</div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.applyImpulse">
+<span class="sig-name descname"><span class="pre">applyImpulse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">impulse</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">local</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.applyImpulse" title="Link to this definition"></a></dt>
+<dd><p>Applies an impulse to the game object.</p>
+<p>This will apply the specified impulse to the game object at the specified point.
+If point != position, applyImpulse will also change the object’s angular momentum.
+Otherwise, only linear momentum will change.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>point</strong> (<em>point</em><em> [</em><em>ix</em><em>, </em><em>iy</em><em>, </em><em>iz</em><em>] </em><em>the point to apply the impulse to</em><em> (</em><em>in world</em><em> or </em><em>local coordinates</em><em>)</em>) – the point to apply the impulse to (in world or local coordinates)</p></li>
+<li><p><strong>impulse</strong> (<em>3D Vector</em>) – impulse vector.</p></li>
+<li><p><strong>local</strong> (<em>boolean</em>) – <ul>
+<li><p>False: you get the “global” impulse ie: relative to world coordinates with world orientation.</p></li>
+<li><p>True: you get the “local” impulse ie: relative to local coordinates with object orientation.</p></li>
+<li><p>Default to False if not passed.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setDamping">
+<span class="sig-name descname"><span class="pre">setDamping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">linear_damping</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angular_damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setDamping" title="Link to this definition"></a></dt>
+<dd><p>Sets both the <a class="reference internal" href="#bge.types.KX_GameObject.linearDamping" title="bge.types.KX_GameObject.linearDamping"><code class="xref py py-attr docutils literal notranslate"><span class="pre">linearDamping</span></code></a> and <a class="reference internal" href="#bge.types.KX_GameObject.angularDamping" title="bge.types.KX_GameObject.angularDamping"><code class="xref py py-attr docutils literal notranslate"><span class="pre">angularDamping</span></code></a> simultaneously. This is more efficient than setting both properties individually.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>linear_damping</strong> (<em>float ∈</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em>) – Linear (“translational”) damping factor.</p></li>
+<li><p><strong>angular_damping</strong> (<em>float ∈</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em>) – Angular (“rotational”) damping factor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.suspendPhysics">
+<span class="sig-name descname"><span class="pre">suspendPhysics</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">freeConstraints</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.suspendPhysics" title="Link to this definition"></a></dt>
+<dd><p>Suspends physics for this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>freeConstraints</strong> (<em>bool</em>) – When set to <cite>True</cite> physics constraints used by the object are deleted.
+Else when <cite>False</cite> (the default) constraints are restored when restoring physics.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.restorePhysics">
+<span class="sig-name descname"><span class="pre">restorePhysics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.restorePhysics" title="Link to this definition"></a></dt>
+<dd><p>Resumes physics for this object. Also reinstates collisions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.suspendDynamics">
+<span class="sig-name descname"><span class="pre">suspendDynamics</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">ghost</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.suspendDynamics" title="Link to this definition"></a></dt>
+<dd><p>Suspends dynamics physics for this object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ghost</strong> (<em>bool</em>) – When set to <cite>True</cite>, collisions with the object will be ignored, similar to the “ghost” checkbox in
+Blender. When <cite>False</cite> (the default), the object becomes static but still collide with other objects.</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#bge.types.KX_GameObject.isSuspendDynamics" title="bge.types.KX_GameObject.isSuspendDynamics"><code class="xref py py-attr docutils literal notranslate"><span class="pre">isSuspendDynamics</span></code></a> allows you to inspect whether the object is in a suspended state.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.restoreDynamics">
+<span class="sig-name descname"><span class="pre">restoreDynamics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.restoreDynamics" title="Link to this definition"></a></dt>
+<dd><p>Resumes dynamics physics for this object. Also reinstates collisions; the object will no longer be a ghost.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The objects linear velocity will be applied from when the dynamics were suspended.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.enableRigidBody">
+<span class="sig-name descname"><span class="pre">enableRigidBody</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.enableRigidBody" title="Link to this definition"></a></dt>
+<dd><p>Enables rigid body physics for this object.</p>
+<p>Rigid body physics allows the object to roll on collisions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.disableRigidBody">
+<span class="sig-name descname"><span class="pre">disableRigidBody</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.disableRigidBody" title="Link to this definition"></a></dt>
+<dd><p>Disables rigid body physics for this object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setCcdMotionThreshold">
+<span class="sig-name descname"><span class="pre">setCcdMotionThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ccd_motion_threshold</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setCcdMotionThreshold" title="Link to this definition"></a></dt>
+<dd><p>Sets <code class="xref py py-attr docutils literal notranslate"><span class="pre">ccdMotionThreshold</span></code> that is the delta of movement that has to happen in one physics tick to trigger the continuous motion detection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ccd_motion_threshold</strong> (<em>float ∈</em><em> [</em><em>0</em><em>, </em><em>100</em><em>]</em>) – delta of movement.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Setting the motion threshold to 0.0 deactive the Collision Continuous Detection (CCD).</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setCcdSweptSphereRadius">
+<span class="sig-name descname"><span class="pre">setCcdSweptSphereRadius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ccd_swept_sphere_radius</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setCcdSweptSphereRadius" title="Link to this definition"></a></dt>
+<dd><p>Sets <code class="xref py py-attr docutils literal notranslate"><span class="pre">ccdSweptSphereRadius</span></code> that is the radius of the sphere that is used to check for possible collisions when ccd is activated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ccd_swept_sphere_radius</strong> (<em>float ∈</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em>) – sphere radius.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setParent">
+<span class="sig-name descname"><span class="pre">setParent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compound</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ghost</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setParent" title="Link to this definition"></a></dt>
+<dd><p>Sets this object’s parent.
+Control the shape status with the optional compound and ghost parameters:</p>
+<p>In that case you can control if it should be ghost or not:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parent</strong> (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>) – new parent object.</p></li>
+<li><p><strong>compound</strong> (<em>boolean</em>) – <p>whether the shape should be added to the parent compound shape.</p>
+<ul>
+<li><p>True: the object shape should be added to the parent compound shape.</p></li>
+<li><p>False: the object should keep its individual shape.</p></li>
+</ul>
+</p></li>
+<li><p><strong>ghost</strong> (<em>boolean</em>) – <p>whether the object should be ghost while parented.</p>
+<ul>
+<li><p>True: if the object should be made ghost while parented.</p></li>
+<li><p>False: if the object should be solid while parented.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the object type is sensor, it stays ghost regardless of ghost parameter</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.removeParent">
+<span class="sig-name descname"><span class="pre">removeParent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.removeParent" title="Link to this definition"></a></dt>
+<dd><p>Removes this objects parent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getPhysicsId">
+<span class="sig-name descname"><span class="pre">getPhysicsId</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getPhysicsId" title="Link to this definition"></a></dt>
+<dd><p>Returns the user data object associated with this game object’s physics controller.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getPropertyNames">
+<span class="sig-name descname"><span class="pre">getPropertyNames</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getPropertyNames" title="Link to this definition"></a></dt>
+<dd><p>Gets a list of all property names.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>All property names for this object.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getDistanceTo">
+<span class="sig-name descname"><span class="pre">getDistanceTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getDistanceTo" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or list [x, y, z]) – a point or another <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> to measure the distance to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>distance to another object or point.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getVectTo">
+<span class="sig-name descname"><span class="pre">getVectTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getVectTo" title="Link to this definition"></a></dt>
+<dd><p>Returns the vector and the distance to another object or point.
+The vector is normalized unless the distance is 0, in which a zero length vector is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or list [x, y, z]) – a point or another <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> to get the vector and distance to.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(distance, globalVector(3), localVector(3))</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>3-tuple (float, 3-tuple (x, y, z), 3-tuple (x, y, z))</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.rayCastTo">
+<span class="sig-name descname"><span class="pre">rayCastTo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.rayCastTo" title="Link to this definition"></a></dt>
+<dd><p>Look towards another point/object and find first object hit within dist that matches prop.</p>
+<p>The ray is always casted from the center of the object, ignoring the object itself.
+The ray is casted towards the center of another object or an explicit [x, y, z] point.
+Use rayCast() if you need to retrieve the hit point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or 3-tuple) – [x, y, z] or object towards which the ray is casted</p></li>
+<li><p><strong>dist</strong> (<em>float</em>) – max distance to look (can be negative =&gt; look behind); 0 or omitted =&gt; detect up to other</p></li>
+<li><p><strong>prop</strong> (<em>string</em>) – property name that object must have; can be omitted =&gt; detect any object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the first object hit or None if no object or object does not match prop</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.rayCast">
+<span class="sig-name descname"><span class="pre">rayCast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objto</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">objfrom</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dist</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">face</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xray</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poly</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0xFFFF</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.rayCast" title="Link to this definition"></a></dt>
+<dd><p>Look from a point/object to another point/object and find first object hit within dist that matches prop.
+if poly is 0, returns a 3-tuple with object reference, hit point and hit normal or (None, None, None) if no hit.
+if poly is 1, returns a 4-tuple with in addition a <a class="reference internal" href="bge.types.KX_PolyProxy.html#bge.types.KX_PolyProxy" title="bge.types.KX_PolyProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_PolyProxy</span></code></a> as 4th element.
+if poly is 2, returns a 5-tuple with in addition a 2D vector with the UV mapping of the hit point as 5th element.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># shoot along the axis gun-gunAim (gunAim should be collision-free)</span>
+<span class="n">obj</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">normal</span> <span class="o">=</span> <span class="n">gun</span><span class="o">.</span><span class="n">rayCast</span><span class="p">(</span><span class="n">gunAim</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">obj</span><span class="p">:</span>
+   <span class="c1"># do something</span>
+   <span class="k">pass</span>
+</pre></div>
+</div>
+<p>The face parameter determines the orientation of the normal.</p>
+<ul class="simple">
+<li><p>0 =&gt; hit normal is always oriented towards the ray origin (as if you casted the ray from outside)</p></li>
+<li><p>1 =&gt; hit normal is the real face normal (only for mesh object, otherwise face has no effect)</p></li>
+</ul>
+<p>The ray has X-Ray capability if xray parameter is 1, otherwise the first object hit (other than self object) stops the ray.
+The prop and xray parameters interact as follow.</p>
+<ul class="simple">
+<li><p>prop off, xray off: return closest hit or no hit if there is no object on the full extend of the ray.</p></li>
+<li><p>prop off, xray on : idem.</p></li>
+<li><p>prop on, xray off: return closest hit if it matches prop, no hit otherwise.</p></li>
+<li><p>prop on, xray on : return closest hit matching prop or no hit if there is no object matching prop on the full extend of the ray.</p></li>
+</ul>
+<p>The <a class="reference internal" href="bge.types.KX_PolyProxy.html#bge.types.KX_PolyProxy" title="bge.types.KX_PolyProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_PolyProxy</span></code></a> 4th element of the return tuple when poly=1 allows to retrieve information on the polygon hit by the ray.
+If there is no hit or the hit object is not a static mesh, None is returned as 4th element.</p>
+<p>The ray ignores collision-free objects and faces that dont have the collision flag enabled, you can however use ghost objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>objto</strong> (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or 3-tuple) – [x, y, z] or object to which the ray is casted</p></li>
+<li><p><strong>objfrom</strong> (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or 3-tuple or None) – [x, y, z] or object from which the ray is casted; None or omitted =&gt; use self object center</p></li>
+<li><p><strong>dist</strong> (<em>float</em>) – max distance to look (can be negative =&gt; look behind); 0 or omitted =&gt; detect up to to</p></li>
+<li><p><strong>prop</strong> (<em>string</em>) – property name that object must have; can be omitted or “” =&gt; detect any object</p></li>
+<li><p><strong>face</strong> (<em>integer</em>) – normal option: 1=&gt;return face normal; 0 or omitted =&gt; normal is oriented towards origin</p></li>
+<li><p><strong>xray</strong> (<em>integer</em>) – X-ray option: 1=&gt;skip objects that don’t match prop; 0 or omitted =&gt; stop on first object</p></li>
+<li><p><strong>poly</strong> (<em>integer</em>) – <p>polygon option: 0, 1 or 2 to return a 3-, 4- or 5-tuple with information on the face hit.</p>
+<ul>
+<li><p>0 or omitted: return value is a 3-tuple (object, hitpoint, hitnormal) or (None, None, None) if no hit</p></li>
+<li><p>1: return value is a 4-tuple and the 4th element is a <a class="reference internal" href="bge.types.KX_PolyProxy.html#bge.types.KX_PolyProxy" title="bge.types.KX_PolyProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_PolyProxy</span></code></a> or None if no hit or the object doesn’t use a mesh collision shape.</p></li>
+<li><p>2: return value is a 5-tuple and the 5th element is a 2-tuple (u, v) with the UV mapping of the hit point or None if no hit, or the object doesn’t use a mesh collision shape, or doesn’t have a UV mapping.</p></li>
+</ul>
+</p></li>
+<li><p><strong>mask</strong> (<em>integer</em><em> (</em><em>bit mask</em><em>)</em>) – collision mask: The collision mask (16 layers mapped to a 16-bit integer) is combined with each object’s collision group, to hit only a subset of the objects in the scene. Only those objects for which <code class="docutils literal notranslate"><span class="pre">collisionGroup</span> <span class="pre">&amp;</span> <span class="pre">mask</span></code> is true can be hit.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>(object, hitpoint, hitnormal) or (object, hitpoint, hitnormal, polygon) or (object, hitpoint, hitnormal, polygon, hituv).</p>
+<ul class="simple">
+<li><p>object, hitpoint and hitnormal are None if no hit.</p></li>
+<li><p>polygon is valid only if the object is valid and is a static object, a dynamic object using mesh collision shape or a soft body object, otherwise it is None</p></li>
+<li><p>hituv is valid only if polygon is valid and the object has a UV mapping, otherwise it is None</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p>3-tuple (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>, 3-tuple (x, y, z), 3-tuple (nx, ny, nz))</p></li>
+<li><p>or 4-tuple (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>, 3-tuple (x, y, z), 3-tuple (nx, ny, nz), <a class="reference internal" href="bge.types.KX_PolyProxy.html#bge.types.KX_PolyProxy" title="bge.types.KX_PolyProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_PolyProxy</span></code></a>)</p></li>
+<li><p>or 5-tuple (<a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>, 3-tuple (x, y, z), 3-tuple (nx, ny, nz), <a class="reference internal" href="bge.types.KX_PolyProxy.html#bge.types.KX_PolyProxy" title="bge.types.KX_PolyProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_PolyProxy</span></code></a>, 2-tuple (u, v))</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ray ignores the object on which the method is called. It is casted from/to object center or explicit [x, y, z] points.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.collide">
+<span class="sig-name descname"><span class="pre">collide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.collide" title="Link to this definition"></a></dt>
+<dd><p>Test if this object collides object <code class="xref py py-data docutils literal notranslate"><span class="pre">obj</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>obj</strong> (string or <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>) – the object to test collision with</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>(collide, points)</p>
+<ul class="simple">
+<li><p>collide, True if this object collides object <code class="xref py py-data docutils literal notranslate"><span class="pre">obj</span></code></p></li>
+<li><p>points, contact point data of the collision or None</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>2-tuple (boolean, list of <a class="reference internal" href="bge.types.KX_CollisionContactPoint.html#bge.types.KX_CollisionContactPoint" title="bge.types.KX_CollisionContactPoint"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_CollisionContactPoint</span></code></a> or None)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setCollisionMargin">
+<span class="sig-name descname"><span class="pre">setCollisionMargin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">margin</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setCollisionMargin" title="Link to this definition"></a></dt>
+<dd><p>Set the objects collision margin.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>margin</strong> (<em>float</em>) – the collision margin distance in blender units.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If this object has no physics controller (a physics ID of zero), this function will raise RuntimeError.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.sendMessage">
+<span class="sig-name descname"><span class="pre">sendMessage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">body</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">to</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.sendMessage" title="Link to this definition"></a></dt>
+<dd><p>Sends a message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>subject</strong> (<em>string</em>) – The subject of the message</p></li>
+<li><p><strong>body</strong> (<em>string</em>) – The body of the message (optional)</p></li>
+<li><p><strong>to</strong> (<em>string</em>) – The name of the object to send the message to (optional)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.reinstancePhysicsMesh">
+<span class="sig-name descname"><span class="pre">reinstancePhysicsMesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gameObject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meshObject</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dupli</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">evaluated</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.reinstancePhysicsMesh" title="Link to this definition"></a></dt>
+<dd><p>Updates the physics system with the changed mesh.</p>
+<p>If no arguments are given the physics mesh will be re-created from the first mesh assigned to the game object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>gameObject</strong> (string, <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a> or None) – optional argument, set the physics shape from this gameObjets mesh.</p></li>
+<li><p><strong>meshObject</strong> (string, <a class="reference internal" href="bge.types.KX_MeshProxy.html#bge.types.KX_MeshProxy" title="bge.types.KX_MeshProxy"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_MeshProxy</span></code></a> or None) – optional argument, set the physics shape from this mesh.</p></li>
+<li><p><strong>dupli</strong> (<em>boolean</em>) – optional argument, duplicate the physics shape.</p></li>
+<li><p><strong>evaluated</strong> (<em>boolean</em>) – optional argument, use evaluated object physics shape (Object with modifiers applied).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if reinstance succeeded, False if it failed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If this object has instances the other instances will be updated too.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The gameObject argument has an advantage that it can convert from a mesh with modifiers applied (such as the Subdivision Surface modifier).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Only triangle mesh type objects are supported currently (not convex hull)</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If the object is a part of a compound object it will fail (parent or child)</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Rebuilding the physics mesh can be slow, running many times per second will give a performance hit.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Duplicate the physics mesh can use much more memory, use this option only for duplicated meshes else use <a class="reference internal" href="#bge.types.KX_GameObject.replacePhysicsShape" title="bge.types.KX_GameObject.replacePhysicsShape"><code class="xref py py-meth docutils literal notranslate"><span class="pre">replacePhysicsShape()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.replacePhysicsShape">
+<span class="sig-name descname"><span class="pre">replacePhysicsShape</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gameObject</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.replacePhysicsShape" title="Link to this definition"></a></dt>
+<dd><p>Replace the current physics shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>gameObject</strong> (string, <a class="reference internal" href="#bge.types.KX_GameObject" title="bge.types.KX_GameObject"><code class="xref py py-class docutils literal notranslate"><span class="pre">KX_GameObject</span></code></a>) – set the physics shape from this gameObjets.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if replace succeeded, False if it failed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Triangle mesh shapes are not supported.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.get" title="Link to this definition"></a></dt>
+<dd><p>Return the value matching key, or the default value if its not found.
+:arg key: the matching key
+:type key: string
+:arg default: optional default value is the key isn’t matching, defaults to None if no value passed.
+:return: The key value or a default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.playAction">
+<span class="sig-name descname"><span class="pre">playAction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">priority</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blendin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">play_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">KX_ACTION_MODE_PLAY</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_weight</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ipo_flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blend_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">KX_ACTION_BLEND_BLEND</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.playAction" title="Link to this definition"></a></dt>
+<dd><p>Plays an action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – the name of the action.</p></li>
+<li><p><strong>start</strong> (<em>float</em>) – the start frame of the action.</p></li>
+<li><p><strong>end</strong> (<em>float</em>) – the end frame of the action.</p></li>
+<li><p><strong>layer</strong> (<em>integer</em>) – the layer the action will play in (actions in different layers are added/blended together).</p></li>
+<li><p><strong>priority</strong> (<em>integer</em>) – only play this action if there isn’t an action currently playing in this layer with a higher (lower number) priority.</p></li>
+<li><p><strong>blendin</strong> (<em>float</em>) – the amount of blending between this animation and the previous one on this layer.</p></li>
+<li><p><strong>play_mode</strong> (<em>integer</em>) – the play mode. one of <a class="reference internal" href="bge.logic.html#gameobject-playaction-mode"><span class="std std-ref">these constants</span></a>.</p></li>
+<li><p><strong>layer_weight</strong> (<em>float</em>) – how much of the previous layer to use for blending.</p></li>
+<li><p><strong>ipo_flags</strong> (<em>integer</em><em> (</em><em>bit mask</em><em>)</em>) – flags for the old IPO behaviors (force, etc).</p></li>
+<li><p><strong>speed</strong> (<em>float</em>) – the playback speed of the action as a factor (1.0 = normal speed, 2.0 = 2x speed, etc).</p></li>
+<li><p><strong>blend_mode</strong> (<em>integer</em>) – how to blend this layer with previous layers. one of <a class="reference internal" href="bge.logic.html#gameobject-playaction-blend"><span class="std std-ref">these constants</span></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.stopAction">
+<span class="sig-name descname"><span class="pre">stopAction</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.stopAction" title="Link to this definition"></a></dt>
+<dd><p>Stop playing the action on the given layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>layer</strong> (<em>integer</em>) – The layer to stop playing, defaults to 0 if no value passed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getActionFrame">
+<span class="sig-name descname"><span class="pre">getActionFrame</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getActionFrame" title="Link to this definition"></a></dt>
+<dd><p>Gets the current frame of the action playing in the supplied layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>layer</strong> (<em>integer</em>) – The layer that you want to get the frame from, defaults to 0 if no value passed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The current frame of the action</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.getActionName">
+<span class="sig-name descname"><span class="pre">getActionName</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.getActionName" title="Link to this definition"></a></dt>
+<dd><p>Gets the name of the current action playing in the supplied layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>layer</strong> (<em>integer</em>) – The layer that you want to get the action name from, defaults to 0 if no value passed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The name of the current action</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.setActionFrame">
+<span class="sig-name descname"><span class="pre">setActionFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.setActionFrame" title="Link to this definition"></a></dt>
+<dd><p>Set the current frame of the action playing in the supplied layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>layer</strong> (<em>integer</em>) – The layer where you want to set the frame, defaults to 0 if no value passed.</p></li>
+<li><p><strong>frame</strong> (<em>float</em>) – The frame to set the action to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.isPlayingAction">
+<span class="sig-name descname"><span class="pre">isPlayingAction</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">layer</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.isPlayingAction" title="Link to this definition"></a></dt>
+<dd><p>Checks to see if there is an action playing in the given layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>layer</strong> (<em>integer</em>) – The layer to check for a playing action, defaults to 0 if no value passed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Whether or not the action is playing</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bge.types.KX_GameObject.addDebugProperty">
+<span class="sig-name descname"><span class="pre">addDebugProperty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">debug</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#bge.types.KX_GameObject.addDebugProperty" title="Link to this definition"></a></dt>
+<dd><p>Adds a single debug property to the debug list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em>) – name of the property that added to the debug list.</p></li>
+<li><p><strong>debug</strong> (<em>boolean</em>) – the debug state, defaults to True if no value passed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bge.types.KX_FontObject.html" class="btn btn-neutral float-left" title="KX_FontObject(KX_GameObject)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bge.types.KX_LibLoadStatus.html" class="btn btn-neutral float-right" title="KX_LibLoadStatus(EXP_PyObjectPlus)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bge.types.KX_GameObject.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbge.types.KX_GameObject.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

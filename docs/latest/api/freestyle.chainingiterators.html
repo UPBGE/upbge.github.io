@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freestyle Chaining Iterators (freestyle.chainingiterators) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/freestyle.chainingiterators.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Freestyle Shaders (freestyle.shaders)" href="freestyle.shaders.html" />
+    <link rel="prev" title="Freestyle Functions (freestyle.functions)" href="freestyle.functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="freestyle.types.html">Freestyle Types (freestyle.types)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.predicates.html">Freestyle Predicates (freestyle.predicates)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.functions.html">Freestyle Functions (freestyle.functions)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Freestyle Chaining Iterators (freestyle.chainingiterators)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.ChainPredicateIterator"><code class="docutils literal notranslate"><span class="pre">ChainPredicateIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.ChainPredicateIterator.__init__"><code class="docutils literal notranslate"><span class="pre">ChainPredicateIterator.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.ChainSilhouetteIterator"><code class="docutils literal notranslate"><span class="pre">ChainSilhouetteIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.ChainSilhouetteIterator.__init__"><code class="docutils literal notranslate"><span class="pre">ChainSilhouetteIterator.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyChainSilhouetteIterator"><code class="docutils literal notranslate"><span class="pre">pyChainSilhouetteIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyChainSilhouetteIterator.init"><code class="docutils literal notranslate"><span class="pre">pyChainSilhouetteIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyChainSilhouetteIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyChainSilhouetteIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator"><code class="docutils literal notranslate"><span class="pre">pyChainSilhouetteGenericIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator.__init__"><code class="docutils literal notranslate"><span class="pre">pyChainSilhouetteGenericIterator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator.init"><code class="docutils literal notranslate"><span class="pre">pyChainSilhouetteGenericIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyChainSilhouetteGenericIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyExternalContourChainingIterator"><code class="docutils literal notranslate"><span class="pre">pyExternalContourChainingIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyExternalContourChainingIterator.checkViewEdge"><code class="docutils literal notranslate"><span class="pre">pyExternalContourChainingIterator.checkViewEdge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyExternalContourChainingIterator.init"><code class="docutils literal notranslate"><span class="pre">pyExternalContourChainingIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyExternalContourChainingIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyExternalContourChainingIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator"><code class="docutils literal notranslate"><span class="pre">pySketchyChainSilhouetteIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.__init__"><code class="docutils literal notranslate"><span class="pre">pySketchyChainSilhouetteIterator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.init"><code class="docutils literal notranslate"><span class="pre">pySketchyChainSilhouetteIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.make_sketchy"><code class="docutils literal notranslate"><span class="pre">pySketchyChainSilhouetteIterator.make_sketchy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pySketchyChainSilhouetteIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainingIterator"><code class="docutils literal notranslate"><span class="pre">pySketchyChainingIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainingIterator.init"><code class="docutils literal notranslate"><span class="pre">pySketchyChainingIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pySketchyChainingIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pySketchyChainingIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsRelativeChainingIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.__init__"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsRelativeChainingIterator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.init"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsRelativeChainingIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsRelativeChainingIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteChainingIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.__init__"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteChainingIterator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.init"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteChainingIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteChainingIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteAndRelativeChainingIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.__init__"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteAndRelativeChainingIterator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.init"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteAndRelativeChainingIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyFillOcclusionsAbsoluteAndRelativeChainingIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator"><code class="docutils literal notranslate"><span class="pre">pyFillQi0AbsoluteAndRelativeChainingIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.__init__"><code class="docutils literal notranslate"><span class="pre">pyFillQi0AbsoluteAndRelativeChainingIterator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.init"><code class="docutils literal notranslate"><span class="pre">pyFillQi0AbsoluteAndRelativeChainingIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyFillQi0AbsoluteAndRelativeChainingIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator"><code class="docutils literal notranslate"><span class="pre">pyNoIdChainSilhouetteIterator</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.__init__"><code class="docutils literal notranslate"><span class="pre">pyNoIdChainSilhouetteIterator.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.init"><code class="docutils literal notranslate"><span class="pre">pyNoIdChainSilhouetteIterator.init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.traverse"><code class="docutils literal notranslate"><span class="pre">pyNoIdChainSilhouetteIterator.traverse()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.shaders.html">Freestyle Shaders (freestyle.shaders)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.utils.html">Freestyle Utilities (freestyle.utils)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="freestyle.html">Freestyle Module (freestyle)</a></li>
+      <li class="breadcrumb-item active">Freestyle Chaining Iterators (freestyle.chainingiterators)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-freestyle.chainingiterators">
+<span id="freestyle-chaining-iterators-freestyle-chainingiterators"></span><h1>Freestyle Chaining Iterators (freestyle.chainingiterators)<a class="headerlink" href="#module-freestyle.chainingiterators" title="Link to this heading"></a></h1>
+<p>This module contains chaining iterators used for the chaining
+operation to construct long strokes by concatenating feature edges
+according to selected chaining rules.  The module is also intended to
+be a collection of examples for defining chaining iterators in Python.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.ChainPredicateIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">ChainPredicateIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.ChainPredicateIterator" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.Iterator" title="freestyle.types.Iterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Iterator</span></code></a> &gt;
+<a class="reference internal" href="freestyle.types.html#freestyle.types.ViewEdgeIterator" title="freestyle.types.ViewEdgeIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.ViewEdgeIterator</span></code></a> &gt;
+<a class="reference internal" href="freestyle.types.html#freestyle.types.ChainingIterator" title="freestyle.types.ChainingIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.ChainingIterator</span></code></a> &gt;
+<a class="reference internal" href="#freestyle.chainingiterators.ChainPredicateIterator" title="freestyle.chainingiterators.ChainPredicateIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChainPredicateIterator</span></code></a></p>
+<p>A “generic” user-controlled ViewEdge iterator. This iterator is in
+particular built from a unary predicate and a binary predicate.
+First, the unary predicate is evaluated for all potential next
+ViewEdges in order to only keep the ones respecting a certain
+constraint. Then, the binary predicate is evaluated on the current
+ViewEdge together with each ViewEdge of the previous selection. The
+first ViewEdge respecting both the unary predicate and the binary
+predicate is kept as the next one. If none of the potential next
+ViewEdge respects these two predicates, None is returned.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.ChainPredicateIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bpred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restrict_to_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">restrict_to_unvisited</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.ChainPredicateIterator.__init__" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brother</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Builds a ChainPredicateIterator from a unary predicate, a binary
+predicate, a starting ViewEdge and its orientation or using the copy constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upred</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a>) – The unary predicate that the next ViewEdge must satisfy.</p></li>
+<li><p><strong>bpred</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate1D" title="freestyle.types.BinaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate1D</span></code></a>) – The binary predicate that the next ViewEdge must
+satisfy together with the actual pointed ViewEdge.</p></li>
+<li><p><strong>restrict_to_selection</strong> (<em>bool</em>) – Indicates whether to force the chaining
+to stay within the set of selected ViewEdges or not.</p></li>
+<li><p><strong>restrict_to_unvisited</strong> (<em>bool</em>) – Indicates whether a ViewEdge that has
+already been chained must be ignored ot not.</p></li>
+<li><p><strong>begin</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.ViewEdge" title="freestyle.types.ViewEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.ViewEdge</span></code></a> | None) – The ViewEdge from where to start the iteration.</p></li>
+<li><p><strong>orientation</strong> (<em>bool</em>) – If true, we’ll look for the next ViewEdge among
+the ViewEdges that surround the ending ViewVertex of begin. If
+false, we’ll search over the ViewEdges surrounding the ending
+ViewVertex of begin.</p></li>
+<li><p><strong>brother</strong> (<a class="reference internal" href="#freestyle.chainingiterators.ChainPredicateIterator" title="freestyle.chainingiterators.ChainPredicateIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChainPredicateIterator</span></code></a>) – A ChainPredicateIterator object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.ChainSilhouetteIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">ChainSilhouetteIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.ChainSilhouetteIterator" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.Iterator" title="freestyle.types.Iterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Iterator</span></code></a> &gt;
+<a class="reference internal" href="freestyle.types.html#freestyle.types.ViewEdgeIterator" title="freestyle.types.ViewEdgeIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.ViewEdgeIterator</span></code></a> &gt;
+<a class="reference internal" href="freestyle.types.html#freestyle.types.ChainingIterator" title="freestyle.types.ChainingIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.ChainingIterator</span></code></a> &gt;
+<a class="reference internal" href="#freestyle.chainingiterators.ChainSilhouetteIterator" title="freestyle.chainingiterators.ChainSilhouetteIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChainSilhouetteIterator</span></code></a></p>
+<p>A ViewEdge Iterator used to follow ViewEdges the most naturally. For
+example, it will follow visible ViewEdges of same nature. As soon, as
+the nature or the visibility changes, the iteration stops (by setting
+the pointed ViewEdge to 0). In the case of an iteration over a set of
+ViewEdge that are both Silhouette and Crease, there will be a
+precedence of the silhouette over the crease criterion.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.ChainSilhouetteIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">restrict_to_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">begin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.ChainSilhouetteIterator.__init__" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brother</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Builds a ChainSilhouetteIterator from the first ViewEdge used for
+iteration and its orientation or the copy constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>restrict_to_selection</strong> (<em>bool</em>) – Indicates whether to force the chaining
+to stay within the set of selected ViewEdges or not.</p></li>
+<li><p><strong>begin</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.ViewEdge" title="freestyle.types.ViewEdge"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.ViewEdge</span></code></a> | None) – The ViewEdge from where to start the iteration.</p></li>
+<li><p><strong>orientation</strong> (<em>bool</em>) – If true, we’ll look for the next ViewEdge among
+the ViewEdges that surround the ending ViewVertex of begin. If
+false, we’ll search over the ViewEdges surrounding the ending
+ViewVertex of begin.</p></li>
+<li><p><strong>brother</strong> (<a class="reference internal" href="#freestyle.chainingiterators.ChainSilhouetteIterator" title="freestyle.chainingiterators.ChainSilhouetteIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">ChainSilhouetteIterator</span></code></a>) – A ChainSilhouetteIterator object.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyChainSilhouetteIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyChainSilhouetteIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyChainSilhouetteIterator" title="Link to this definition"></a></dt>
+<dd><p>Natural chaining iterator that follows the edges of the same nature
+following the topology of objects, with decreasing priority for
+silhouettes, then borders, then suggestive contours, then all other edge
+types.  A ViewEdge is only chained once.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyChainSilhouetteIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyChainSilhouetteIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyChainSilhouetteIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyChainSilhouetteIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyChainSilhouetteGenericIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyChainSilhouetteGenericIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator" title="Link to this definition"></a></dt>
+<dd><p>Natural chaining iterator that follows the edges of the same nature
+following the topology of objects, with decreasing priority for
+silhouettes, then borders, then suggestive contours, then all other
+edge types.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyChainSilhouetteGenericIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stayInSelection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stayInUnvisited</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a pyChainSilhouetteGenericIterator object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stayInSelection</strong> (<em>bool</em>) – True if it is allowed to go out of the selection</p></li>
+<li><p><strong>stayInUnvisited</strong> (<em>bool</em>) – May the same ViewEdge be chained twice</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyChainSilhouetteGenericIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyChainSilhouetteGenericIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyChainSilhouetteGenericIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyExternalContourChainingIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyExternalContourChainingIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyExternalContourChainingIterator" title="Link to this definition"></a></dt>
+<dd><p>Chains by external contour</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyExternalContourChainingIterator.checkViewEdge">
+<span class="sig-name descname"><span class="pre">checkViewEdge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ve</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyExternalContourChainingIterator.checkViewEdge" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyExternalContourChainingIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyExternalContourChainingIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyExternalContourChainingIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyExternalContourChainingIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainSilhouetteIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pySketchyChainSilhouetteIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator" title="Link to this definition"></a></dt>
+<dd><p>Natural chaining iterator with a sketchy multiple touch.  It chains the
+same ViewEdge multiple times to achieve a sketchy effect.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainSilhouetteIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nRounds</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stayInSelection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a pySketchyChainSilhouetteIterator object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nRounds</strong> (<em>int</em>) – Number of times every Viewedge is chained.</p></li>
+<li><p><strong>stayInSelection</strong> (<em>bool</em>) – if False, edges outside of the selection can be chained.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainSilhouetteIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainSilhouetteIterator.make_sketchy">
+<span class="sig-name descname"><span class="pre">make_sketchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ve</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.make_sketchy" title="Link to this definition"></a></dt>
+<dd><p>Creates the sketchy effect by causing the chain to run from
+the start again. (loop over itself again)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainSilhouetteIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainSilhouetteIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainingIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pySketchyChainingIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainingIterator" title="Link to this definition"></a></dt>
+<dd><p>Chaining iterator designed for sketchy style. It chains the same
+ViewEdge several times in order to produce multiple strokes per
+ViewEdge.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainingIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainingIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pySketchyChainingIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pySketchyChainingIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyFillOcclusionsRelativeChainingIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator" title="Link to this definition"></a></dt>
+<dd><p>Chaining iterator that fills small occlusions</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a pyFillOcclusionsRelativeChainingIterator object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>percent</strong> (<em>float</em>) – The maximal length of the occluded part, expressed
+in a percentage of the total chain length.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsRelativeChainingIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyFillOcclusionsAbsoluteChainingIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator" title="Link to this definition"></a></dt>
+<dd><p>Chaining iterator that fills small occlusions</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a pyFillOcclusionsAbsoluteChainingIterator object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>length</strong> (<em>int</em>) – The maximum length of the occluded part in pixels.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteChainingIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyFillOcclusionsAbsoluteAndRelativeChainingIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator" title="Link to this definition"></a></dt>
+<dd><p>Chaining iterator that fills small occlusions regardless of the
+selection.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a pyFillOcclusionsAbsoluteAndRelativeChainingIterator object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>percent</strong> (<em>float</em>) – The maximal length of the occluded part as a
+percentage of the total chain length.</p></li>
+<li><p><strong>l</strong> (<em>float</em>) – Absolute length.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillOcclusionsAbsoluteAndRelativeChainingIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyFillQi0AbsoluteAndRelativeChainingIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator" title="Link to this definition"></a></dt>
+<dd><p>Chaining iterator that fills small occlusions regardless of the
+selection.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a pyFillQi0AbsoluteAndRelativeChainingIterator object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>percent</strong> (<em>float</em>) – The maximal length of the occluded part as a
+percentage of the total chain length.</p></li>
+<li><p><strong>l</strong> (<em>float</em>) – Absolute length.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyFillQi0AbsoluteAndRelativeChainingIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyNoIdChainSilhouetteIterator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.chainingiterators.</span></span><span class="sig-name descname"><span class="pre">pyNoIdChainSilhouetteIterator</span></span><a class="headerlink" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator" title="Link to this definition"></a></dt>
+<dd><p>Natural chaining iterator that follows the edges of the same nature
+following the topology of objects, with decreasing priority for
+silhouettes, then borders, then suggestive contours, then all other edge
+types.  It won’t chain the same ViewEdge twice.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stayInSelection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a pyNoIdChainSilhouetteIterator object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stayInSelection</strong> (<em>bool</em>) – True if it is allowed to go out of the selection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.init">
+<span class="sig-name descname"><span class="pre">init</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.init" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.traverse">
+<span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.chainingiterators.pyNoIdChainSilhouetteIterator.traverse" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="freestyle.functions.html" class="btn btn-neutral float-left" title="Freestyle Functions (freestyle.functions)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="freestyle.shaders.html" class="btn btn-neutral float-right" title="Freestyle Shaders (freestyle.shaders)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60freestyle.chainingiterators.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Ffreestyle.chainingiterators.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

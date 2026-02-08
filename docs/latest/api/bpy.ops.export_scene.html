@@ -1,0 +1,621 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Export Scene Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.export_scene.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Extensions Operators" href="bpy.ops.extensions.html" />
+    <link rel="prev" title="Export Anim Operators" href="bpy.ops.export_anim.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Export Scene Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.export_scene.fbx"><code class="docutils literal notranslate"><span class="pre">fbx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.export_scene.gltf"><code class="docutils literal notranslate"><span class="pre">gltf()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Export Scene Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.export_scene">
+<span id="export-scene-operators"></span><h1>Export Scene Operators<a class="headerlink" href="#module-bpy.ops.export_scene" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.export_scene.fbx">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.export_scene.</span></span><span class="sig-name descname"><span class="pre">fbx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*.fbx'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_visible</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_active_collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">global_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_unit_scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_scale_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FBX_SCALE_NONE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_space_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_space_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_types</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'ARMATURE',</span> <span class="pre">'CAMERA',</span> <span class="pre">'EMPTY',</span> <span class="pre">'LIGHT',</span> <span class="pre">'MESH',</span> <span class="pre">'OTHER'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mesh_modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mesh_modifiers_render</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh_smooth_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OFF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colors_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SRGB'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prioritize_active_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_subsurf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mesh_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_tspace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_triangles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_custom_props</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_leaf_bones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">primary_bone_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Y'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">secondary_bone_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'X'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_armature_deform_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">armature_nodetype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NULL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_anim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_anim_use_all_bones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_anim_use_nla_strips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_anim_use_all_actions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_anim_force_startend_keying</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_anim_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bake_anim_simplify_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">embed_textures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OFF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_batch_own_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_metadata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_forward</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'-Z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Y'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.export_scene.fbx" title="Link to this definition"></a></dt>
+<dd><p>Write a FBX file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Filepath used for exporting the file</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Check Existing, Check and warn on overwriting existing files</p></li>
+<li><p><strong>filter_glob</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – filter_glob</p></li>
+<li><p><strong>use_selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Selected Objects, Export selected and visible objects only</p></li>
+<li><p><strong>use_visible</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Visible Objects, Export visible objects only</p></li>
+<li><p><strong>use_active_collection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Active Collection, Export only objects from the active collection (and its children)</p></li>
+<li><p><strong>collection</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Source Collection, Export only objects from this collection (and its children)</p></li>
+<li><p><strong>global_scale</strong> (<em>float in</em><em> [</em><em>0.001</em><em>, </em><em>1000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Scale, Scale all data (Some importers do not support scaled armatures!)</p></li>
+<li><p><strong>apply_unit_scale</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Apply Unit, Take into account current Blender units settings (if unset, raw Blender Units values are used as-is)</p></li>
+<li><p><strong>apply_scale_options</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'FBX_SCALE_NONE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FBX_SCALE_UNITS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FBX_SCALE_CUSTOM'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FBX_SCALE_ALL'</span></code>], (optional)) – <p>Apply Scalings, How to apply custom and units scalings in generated FBX file (Blender uses FBX scale to detect units on import, but many other applications do not handle the same way)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">FBX_SCALE_NONE</span></code>
+All Local – Apply custom scaling and units scaling to each object transformation, FBX scale remains at 1.0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FBX_SCALE_UNITS</span></code>
+FBX Units Scale – Apply custom scaling to each object transformation, and units scaling to FBX scale.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FBX_SCALE_CUSTOM</span></code>
+FBX Custom Scale – Apply custom scaling to FBX scale, and units scaling to each object transformation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FBX_SCALE_ALL</span></code>
+FBX All – Apply custom scaling and units scaling to FBX scale.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_space_transform</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Space Transform, Apply global space transform to the object rotations. When disabled only the axis space is written to the file and all object transforms are left as-is</p></li>
+<li><p><strong>bake_space_transform</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Apply Transform, Bake space transform into object data, avoids getting unwanted rotations to objects when target space is not aligned with Blender’s space (WARNING! experimental option, use at own risk, known to be broken with armatures/animations)</p></li>
+<li><p><strong>object_types</strong> (enum set in {<code class="docutils literal notranslate"><span class="pre">'EMPTY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CAMERA'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIGHT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ARMATURE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MESH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OTHER'</span></code>}, (optional)) – <p>Object Types, Which kind of object to export</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMPTY</span></code>
+Empty.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CAMERA</span></code>
+Camera.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIGHT</span></code>
+Lamp.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ARMATURE</span></code>
+Armature – WARNING: not supported in dupli/group instances.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MESH</span></code>
+Mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OTHER</span></code>
+Other – Other geometry types, like curve, meta-ball, etc. (converted to meshes).</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_mesh_modifiers</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Apply Modifiers, Apply modifiers to mesh objects (except Armature ones) - WARNING: prevents exporting shape keys</p></li>
+<li><p><strong>use_mesh_modifiers_render</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Modifiers Render Setting, Use render settings when applying modifiers to mesh objects (DISABLED in Blender 2.8)</p></li>
+<li><p><strong>mesh_smooth_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OFF'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FACE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'EDGE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SMOOTH_GROUP'</span></code>], (optional)) – <p>Smoothing, Export smoothing information (prefer ‘Normals Only’ option if your target importer understands custom normals)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code>
+Normals Only – Export only normals instead of writing edge or face smoothing data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FACE</span></code>
+Face – Write face smoothing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EDGE</span></code>
+Edge – Write edge smoothing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH_GROUP</span></code>
+Smoothing Groups – Write face smoothing groups.</p></li>
+</ul>
+</p></li>
+<li><p><strong>colors_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NONE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SRGB'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LINEAR'</span></code>], (optional)) – <p>Vertex Colors, Export vertex color attributes</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None – Do not export color attributes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SRGB</span></code>
+sRGB – Export colors in sRGB color space.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LINEAR</span></code>
+Linear – Export colors in linear color space.</p></li>
+</ul>
+</p></li>
+<li><p><strong>prioritize_active_color</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Prioritize Active Color, Make sure active color will be exported first. Could be important since some other software can discard other color attributes besides the first one</p></li>
+<li><p><strong>use_subsurf</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export Subdivision Surface, Export the last Catmull-Rom subdivision modifier as FBX subdivision (does not apply the modifier even if ‘Apply Modifiers’ is enabled)</p></li>
+<li><p><strong>use_mesh_edges</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Loose Edges, Export loose edges (as two-vertices polygons)</p></li>
+<li><p><strong>use_tspace</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Tangent Space, Add binormal and tangent vectors, together with normal they form the tangent space (will only work correctly with tris/quads only meshes!)</p></li>
+<li><p><strong>use_triangles</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Triangulate Faces, Convert all faces to triangles</p></li>
+<li><p><strong>use_custom_props</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Custom Properties, Export custom properties</p></li>
+<li><p><strong>add_leaf_bones</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Add Leaf Bones, Append a final bone to the end of each chain to specify last bone length (use this when you intend to edit the armature from exported data)</p></li>
+<li><p><strong>primary_bone_axis</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Z'</span></code>], (optional)) – Primary Bone Axis</p></li>
+<li><p><strong>secondary_bone_axis</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Z'</span></code>], (optional)) – Secondary Bone Axis</p></li>
+<li><p><strong>use_armature_deform_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Only Deform Bones, Only write deforming bones (and non-deforming ones when they have deforming children)</p></li>
+<li><p><strong>armature_nodetype</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NULL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ROOT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LIMBNODE'</span></code>], (optional)) – <p>Armature FBXNode Type, FBX type of node (object) used to represent Blender’s armatures (use the Null type unless you experience issues with the other app, as other choices may not import back perfectly into Blender…)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NULL</span></code>
+Null – ‘Null’ FBX node, similar to Blender’s Empty (default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ROOT</span></code>
+Root – ‘Root’ FBX node, supposed to be the root of chains of bones….</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LIMBNODE</span></code>
+LimbNode – ‘LimbNode’ FBX node, a regular joint between two bones….</p></li>
+</ul>
+</p></li>
+<li><p><strong>bake_anim</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Baked Animation, Export baked keyframe animation</p></li>
+<li><p><strong>bake_anim_use_all_bones</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Key All Bones, Force exporting at least one key of animation for all bones (needed with some target applications, like UE4)</p></li>
+<li><p><strong>bake_anim_use_nla_strips</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – NLA Strips, Export each non-muted NLA strip as a separated FBX’s AnimStack, if any, instead of global scene animation</p></li>
+<li><p><strong>bake_anim_use_all_actions</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All Actions, Export each action as a separated FBX’s AnimStack, instead of global scene animation (note that animated objects will get all actions compatible with them, others will get no animation at all)</p></li>
+<li><p><strong>bake_anim_force_startend_keying</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Force Start/End Keying, Always add a keyframe at start and end of actions for animated channels</p></li>
+<li><p><strong>bake_anim_step</strong> (<em>float in</em><em> [</em><em>0.01</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Sampling Rate, How often to evaluate animated values (in frames)</p></li>
+<li><p><strong>bake_anim_simplify_factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Simplify, How much to simplify baked values (0.0 to disable, the higher the more simplified)</p></li>
+<li><p><strong>path_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'AUTO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ABSOLUTE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RELATIVE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MATCH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'STRIP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COPY'</span></code>], (optional)) – <p>Path Mode, Method used to reference paths</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code>
+Auto – Use relative paths with subdirectories only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ABSOLUTE</span></code>
+Absolute – Always write absolute paths.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELATIVE</span></code>
+Relative – Write relative paths where possible.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MATCH</span></code>
+Match – Match absolute/relative setting with input path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STRIP</span></code>
+Strip – Filename only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COPY</span></code>
+Copy – Copy the file to the destination path (or subdirectory).</p></li>
+</ul>
+</p></li>
+<li><p><strong>embed_textures</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Embed Textures, Embed textures in FBX binary file (only for “Copy” path mode!)</p></li>
+<li><p><strong>batch_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OFF'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SCENE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COLLECTION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SCENE_COLLECTION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTIVE_SCENE_COLLECTION'</span></code>], (optional)) – <p>Batch Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OFF</span></code>
+Off – Active scene to file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCENE</span></code>
+Scene – Each scene as a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COLLECTION</span></code>
+Collection – Each collection (data-block ones) as a file, does not include content of children collections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCENE_COLLECTION</span></code>
+Scene Collections – Each collection (including master, non-data-block ones) of each scene as a file, including content from children collections.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE_SCENE_COLLECTION</span></code>
+Active Scene Collections – Each collection (including master, non-data-block one) of the active scene as a file, including content from children collections.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_batch_own_dir</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Batch Own Dir, Create a dir for each exported file</p></li>
+<li><p><strong>use_metadata</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Metadata</p></li>
+<li><p><strong>axis_forward</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Z'</span></code>], (optional)) – Forward</p></li>
+<li><p><strong>axis_up</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'-Z'</span></code>], (optional)) – Up</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/io_scene_fbx/__init__.py#L604">addons_core/io_scene_fbx/__init__.py:604</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.export_scene.gltf">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.export_scene.</span></span><span class="sig-name descname"><span class="pre">gltf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_existing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_import_convert_lighting_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SPEC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gltf_export_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_use_gltfpack</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_tc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_tq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_si</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_sa</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_slb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_vp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_vt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_vn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_vc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_vpi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Integer'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_noq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gltfpack_kn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ui_tab</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GENERAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_copyright</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_image_format</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTO'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_image_add_webp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_image_webp_fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_texture_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_jpeg_quality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_image_quality</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_keep_originals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_texcoords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_normals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gn_mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_draco_mesh_compression_enable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_draco_mesh_compression_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_draco_position_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">14</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_draco_normal_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_draco_texcoord_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_draco_color_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_draco_generic_quantization</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">12</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_tangents</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_materials</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EXPORT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_unused_images</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_unused_textures</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_vertex_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MATERIAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_vertex_color_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Color'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_all_vertex_colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_active_vertex_color_when_no_material</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_attributes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mesh_edges</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mesh_vertices</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_cameras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_visible</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_renderable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_active_collection_with_nested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_active_collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_active_scene</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">at_collection_center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_extras</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_yup</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_apply</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_shared_accessors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_animations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_frame_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_frame_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_force_sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_sampling_interpolation_fallback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LINEAR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_pointer_animation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_animation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ACTIONS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_nla_strips_merged_animation_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Animation'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_def_bones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_hierarchy_flatten_bones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_hierarchy_flatten_objs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_armature_object_remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_leaf_bone</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_optimize_animation_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_optimize_animation_keep_anim_armature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_optimize_animation_keep_anim_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_optimize_disable_viewport</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_negative_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SLIDE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_anim_slide_to_zero</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_bake_animation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_merge_animation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ACTION'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_anim_single_armature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_reset_pose_bones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_current_frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_rest_position_armature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_anim_scene_split_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_skins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_influence_nb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_all_influences</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_morph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_morph_normal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_morph_tangent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_morph_animation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_morph_reset_sk_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_lights</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_try_sparse_sk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_try_omit_sparse_sk</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_gpu_instances</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_action_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_convert_animation_pointer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_nla_strips</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_original_specular</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">will_save_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_hierarchy_full_collections</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_extra_animations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_loglevel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*.glb'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.export_scene.gltf" title="Link to this definition"></a></dt>
+<dd><p>Export scene as glTF 2.0 file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Filepath used for exporting the file</p></li>
+<li><p><strong>check_existing</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Check Existing, Check and warn on overwriting existing files</p></li>
+<li><p><strong>export_import_convert_lighting_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SPEC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COMPAT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RAW'</span></code>], (optional)) – <p>Lighting Mode, Optional backwards compatibility for non-standard render engines. Applies to lights</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPEC</span></code>
+Standard – Physically-based glTF lighting units (cd, lx, nt).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COMPAT</span></code>
+Unitless – Non-physical, unitless lighting. Useful when exposure controls are not available.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RAW</span></code>
+Raw (Deprecated) – Blender lighting strengths with no conversion.</p></li>
+</ul>
+</p></li>
+<li><p><strong>gltf_export_id</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Identifier, Identifier of caller (in case of add-on calling this exporter). Can be useful in case of Extension added by other add-ons</p></li>
+<li><p><strong>export_use_gltfpack</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Gltfpack, Use gltfpack to simplify the mesh and/or compress its textures</p></li>
+<li><p><strong>export_gltfpack_tc</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – KTX2 Compression, Convert all textures to KTX2 with BasisU supercompression</p></li>
+<li><p><strong>export_gltfpack_tq</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Texture Encoding Quality, Texture encoding quality</p></li>
+<li><p><strong>export_gltfpack_si</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mesh Simplification Ratio, Simplify meshes targeting triangle count ratio</p></li>
+<li><p><strong>export_gltfpack_sa</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Aggressive Mesh Simplification, Aggressively simplify to the target ratio disregarding quality</p></li>
+<li><p><strong>export_gltfpack_slb</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Lock Mesh Border Vertices, Lock border vertices during simplification to avoid gaps on connected meshes</p></li>
+<li><p><strong>export_gltfpack_vp</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>16</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Position Quantization, Use N-bit quantization for positions</p></li>
+<li><p><strong>export_gltfpack_vt</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>16</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Texture Coordinate Quantization, Use N-bit quantization for texture coordinates</p></li>
+<li><p><strong>export_gltfpack_vn</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>16</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normal/Tangent Quantization, Use N-bit quantization for normals and tangents</p></li>
+<li><p><strong>export_gltfpack_vc</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>16</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Vertex Color Quantization, Use N-bit quantization for colors</p></li>
+<li><p><strong>export_gltfpack_vpi</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'Integer'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Normalized'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Floating-point'</span></code>], (optional)) – <p>Vertex Position Attributes, Type to use for vertex position attributes</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Integer</span></code>
+Integer – Use integer attributes for positions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Normalized</span></code>
+Normalized – Use normalized attributes for positions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Floating-point</span></code>
+Floating-point – Use floating-point attributes for positions.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_gltfpack_noq</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Disable Quantization, Disable quantization; produces much larger glTF files with no extensions</p></li>
+<li><p><strong>export_gltfpack_kn</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keep Named Nodes, Restrict some optimization to keep named nodes and meshes attached to named nodes so that named nodes can be transformed externally</p></li>
+<li><p><strong>export_format</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Format, Output format. Binary is most efficient, but JSON may be easier to edit later</p></li>
+<li><p><strong>ui_tab</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'GENERAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MESHES'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OBJECTS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ANIMATION'</span></code>], (optional)) – <p>ui_tab, Export setting categories</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GENERAL</span></code>
+General – General settings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MESHES</span></code>
+Meshes – Mesh settings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OBJECTS</span></code>
+Objects – Object settings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ANIMATION</span></code>
+Animation – Animation settings.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_copyright</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Copyright, Legal rights and conditions for the model</p></li>
+<li><p><strong>export_image_format</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'AUTO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'JPEG'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WEBP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NONE'</span></code>], (optional)) – <p>Images, Output format for images. PNG is lossless and generally preferred, but JPEG might be preferable for web applications due to the smaller file size. Alternatively they can be omitted if they are not needed</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTO</span></code>
+Automatic – Save PNGs as PNGs, JPEGs as JPEGs, WebPs as WebPs. For other formats, use PNG.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JPEG</span></code>
+JPEG Format (.jpg) – Save images as JPEGs. (Images that need alpha are saved as PNGs though.) Be aware of a possible loss in quality.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WEBP</span></code>
+WebP Format – Save images as WebPs as main image (no fallback).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None – Don’t export images.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_image_add_webp</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Create WebP, Creates WebP textures for every texture. For already WebP textures, nothing happens</p></li>
+<li><p><strong>export_image_webp_fallback</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – WebP Fallback, For all WebP textures, create a PNG fallback texture</p></li>
+<li><p><strong>export_texture_dir</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Textures, Folder to place texture files in. Relative to the .gltf file</p></li>
+<li><p><strong>export_jpeg_quality</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – JPEG Quality, Quality of JPEG export</p></li>
+<li><p><strong>export_image_quality</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Image Quality, Quality of image export</p></li>
+<li><p><strong>export_keep_originals</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Keep Original, Keep original textures files if possible. WARNING: if you use more than one texture, where pbr standard requires only one, only one texture will be used. This can lead to unexpected results</p></li>
+<li><p><strong>export_texcoords</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – UVs, Export UVs (texture coordinates) with meshes</p></li>
+<li><p><strong>export_normals</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normals, Export vertex normals with meshes</p></li>
+<li><p><strong>export_gn_mesh</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Geometry Nodes Instances (Experimental), Export Geometry nodes instance meshes</p></li>
+<li><p><strong>export_draco_mesh_compression_enable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Draco Mesh Compression, Compress mesh using Draco</p></li>
+<li><p><strong>export_draco_mesh_compression_level</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Compression Level, Compression level (0 = most speed, 6 = most compression, higher values currently not supported)</p></li>
+<li><p><strong>export_draco_position_quantization</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>30</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Position Quantization Bits, Quantization bits for position values (0 = no quantization)</p></li>
+<li><p><strong>export_draco_normal_quantization</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>30</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normal Quantization Bits, Quantization bits for normal values (0 = no quantization)</p></li>
+<li><p><strong>export_draco_texcoord_quantization</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>30</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Texcoord Quantization Bits, Quantization bits for texture coordinate values (0 = no quantization)</p></li>
+<li><p><strong>export_draco_color_quantization</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>30</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Color Quantization Bits, Quantization bits for color values (0 = no quantization)</p></li>
+<li><p><strong>export_draco_generic_quantization</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>30</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Generic Quantization Bits, Quantization bits for generic values like weights or joints (0 = no quantization)</p></li>
+<li><p><strong>export_tangents</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Tangents, Export vertex tangents with meshes</p></li>
+<li><p><strong>export_materials</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'EXPORT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PLACEHOLDER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEWPORT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NONE'</span></code>], (optional)) – <p>Materials, Export materials</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPORT</span></code>
+Export – Export all materials used by included objects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PLACEHOLDER</span></code>
+Placeholder – Do not export materials, but write multiple primitive groups per mesh, keeping material slot information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEWPORT</span></code>
+Viewport – Export minimal materials as defined in Viewport display properties.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+No export – Do not export materials, and combine mesh primitive groups, losing material slot information.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_unused_images</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unused Images, Export images not assigned to any material</p></li>
+<li><p><strong>export_unused_textures</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Prepare Unused Textures, Export image texture nodes not assigned to any material. This feature is not standard and needs an external extension to be included in the glTF file</p></li>
+<li><p><strong>export_vertex_color</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'MATERIAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTIVE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NAME'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NONE'</span></code>], (optional)) – <p>Use Vertex Color, How to export vertex color</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">MATERIAL</span></code>
+Material – Export vertex color when used by material.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>
+Active – Export active vertex color.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NAME</span></code>
+Name – Export vertex color with this name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+None – Do not export vertex color.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_vertex_color_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Vertex Color Name, Name of vertex color to export</p></li>
+<li><p><strong>export_all_vertex_colors</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export All Vertex Colors, Export all vertex colors, even if not used by any material. If no Vertex Color is used in the mesh materials, a fake COLOR_0 will be created, in order to keep material unchanged</p></li>
+<li><p><strong>export_active_vertex_color_when_no_material</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export Active Vertex Color When No Material, When there is no material on object, export active vertex color</p></li>
+<li><p><strong>export_attributes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Attributes, Export Attributes (when starting with underscore)</p></li>
+<li><p><strong>use_mesh_edges</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Loose Edges, Export loose edges as lines, using the material from the first material slot</p></li>
+<li><p><strong>use_mesh_vertices</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Loose Points, Export loose points as glTF points, using the material from the first material slot</p></li>
+<li><p><strong>export_cameras</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cameras, Export cameras</p></li>
+<li><p><strong>use_selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Selected Objects, Export selected objects only</p></li>
+<li><p><strong>use_visible</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Visible Objects, Export visible objects only</p></li>
+<li><p><strong>use_renderable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Renderable Objects, Export renderable objects only</p></li>
+<li><p><strong>use_active_collection_with_nested</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include Nested Collections, Include active collection and nested collections</p></li>
+<li><p><strong>use_active_collection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Active Collection, Export objects in the active collection only</p></li>
+<li><p><strong>use_active_scene</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Active Scene, Export active scene only</p></li>
+<li><p><strong>collection</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Source Collection, Export only objects from this collection (and its children)</p></li>
+<li><p><strong>at_collection_center</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export at Collection Center, Export at Collection center of mass of root objects of the collection</p></li>
+<li><p><strong>export_extras</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Custom Properties, Export custom properties as glTF extras</p></li>
+<li><p><strong>export_yup</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – +Y Up, Export using glTF convention, +Y up</p></li>
+<li><p><strong>export_apply</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Apply Modifiers, Apply modifiers (excluding Armatures) to mesh objects -WARNING: prevents exporting shape keys</p></li>
+<li><p><strong>export_shared_accessors</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shared Accessors, Export Primitives using shared accessors for attributes</p></li>
+<li><p><strong>export_animations</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Animations, Exports active actions and NLA tracks as glTF animations</p></li>
+<li><p><strong>export_frame_range</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Limit to Playback Range, Clips animations to selected playback range</p></li>
+<li><p><strong>export_frame_step</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>120</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Sampling Rate, How often to evaluate animated values (in frames)</p></li>
+<li><p><strong>export_force_sampling</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Always Sample Animations, Apply sampling to all animations</p></li>
+<li><p><strong>export_sampling_interpolation_fallback</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LINEAR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'STEP'</span></code>], (optional)) – <p>Sampling Interpolation Fallback, Interpolation fallback for sampled animations, when the property is not keyed</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LINEAR</span></code>
+Linear – Linear interpolation between keyframes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STEP</span></code>
+Step – No interpolation between keyframes.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_pointer_animation</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export Animation Pointer (Experimental), Export material, Light &amp; Camera animation as Animation Pointer. Available only for baked animation mode ‘NLA Tracks’ and ‘Scene’</p></li>
+<li><p><strong>export_animation_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'ACTIONS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTIVE_ACTIONS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BROADCAST'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NLA_TRACKS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SCENE'</span></code>], (optional)) – <p>Animation Mode, Export Animation mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIONS</span></code>
+Actions – Export actions (actives and on NLA tracks) as separate animations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE_ACTIONS</span></code>
+Active actions merged – All the currently assigned actions become one glTF animation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BROADCAST</span></code>
+Broadcast actions – Broadcast all compatible actions to all objects. Animated objects will get all actions compatible with them, others will get no animation at all.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NLA_TRACKS</span></code>
+NLA Tracks – Export individual NLA Tracks as separate animation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCENE</span></code>
+Scene – Export baked scene as a single animation.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_nla_strips_merged_animation_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Merged Animation Name, Name of single glTF animation to be exported</p></li>
+<li><p><strong>export_def_bones</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export Deformation Bones Only, Export Deformation bones only</p></li>
+<li><p><strong>export_hierarchy_flatten_bones</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flatten Bone Hierarchy, Flatten Bone Hierarchy. Useful in case of non decomposable transformation matrix</p></li>
+<li><p><strong>export_hierarchy_flatten_objs</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flatten Object Hierarchy, Flatten Object Hierarchy. Useful in case of non decomposable transformation matrix</p></li>
+<li><p><strong>export_armature_object_remove</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Remove Armature Object, Remove Armature object if possible. If Armature has multiple root bones, object will not be removed</p></li>
+<li><p><strong>export_leaf_bone</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Add Leaf Bones, Append a final bone to the end of each chain to specify last bone length (use this when you intend to edit the armature from exported data)</p></li>
+<li><p><strong>export_optimize_animation_size</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Optimize Animation Size, Reduce exported file size by removing duplicate keyframes</p></li>
+<li><p><strong>export_optimize_animation_keep_anim_armature</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Force Keeping Channels for Bones, If all keyframes are identical in a rig, force keeping the minimal animation. When off, all possible channels for the bones will be exported, even if empty (minimal animation, 2 keyframes)</p></li>
+<li><p><strong>export_optimize_animation_keep_anim_object</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Force Keeping Channel for Objects, If all keyframes are identical for object transformations, force keeping the minimal animation</p></li>
+<li><p><strong>export_optimize_disable_viewport</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Disable Viewport for Other Objects, When exporting animations, disable viewport for other objects, for performance</p></li>
+<li><p><strong>export_negative_frame</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SLIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CROP'</span></code>], (optional)) – <p>Negative Frames, Negative Frames are slid or cropped</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SLIDE</span></code>
+Slide – Slide animation to start at frame 0.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CROP</span></code>
+Crop – Keep only frames above frame 0.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_anim_slide_to_zero</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Set All glTF Animation Starting at 0, Set all glTF animation starting at 0.0s. Can be useful for looping animations</p></li>
+<li><p><strong>export_bake_animation</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Bake All Objects Animations, Force exporting animation on every object. Can be useful when using constraints or driver. Also useful when exporting only selection</p></li>
+<li><p><strong>export_merge_animation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NLA_TRACK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NONE'</span></code>], (optional)) – <p>Merge Animation, Merge Animations</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NLA_TRACK</span></code>
+NLA Track Names – Merge by NLA Track Names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTION</span></code>
+Actions – Merge by Actions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NONE</span></code>
+No Merge – Do Not Merge Animations.</p></li>
+</ul>
+</p></li>
+<li><p><strong>export_anim_single_armature</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export all Armature Actions, Export all actions, bound to a single armature. WARNING: Option does not support exports including multiple armatures</p></li>
+<li><p><strong>export_reset_pose_bones</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Reset Pose Bones Between Actions, Reset pose bones between each action exported. This is needed when some bones are not keyed on some animations</p></li>
+<li><p><strong>export_current_frame</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Current Frame as Object Rest Transformations, Export the scene in the current animation frame. When off, frame 0 is used as rest transformations for objects</p></li>
+<li><p><strong>export_rest_position_armature</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Rest Position Armature, Export armatures using rest position as joints’ rest pose. When off, current frame pose is used as rest pose</p></li>
+<li><p><strong>export_anim_scene_split_object</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Split Animation by Object, Export Scene as seen in Viewport, But split animation by Object</p></li>
+<li><p><strong>export_skins</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Skinning, Export skinning (armature) data</p></li>
+<li><p><strong>export_influence_nb</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Bone Influences, Choose how many Bone influences to export</p></li>
+<li><p><strong>export_all_influences</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Include All Bone Influences, Allow export of all joint vertex influences. Models may appear incorrectly in many viewers</p></li>
+<li><p><strong>export_morph</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shape Keys, Export shape keys (morph targets)</p></li>
+<li><p><strong>export_morph_normal</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shape Key Normals, Export vertex normals with shape keys (morph targets)</p></li>
+<li><p><strong>export_morph_tangent</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shape Key Tangents, Export vertex tangents with shape keys (morph targets)</p></li>
+<li><p><strong>export_morph_animation</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shape Key Animations, Export shape keys animations (morph targets)</p></li>
+<li><p><strong>export_morph_reset_sk_data</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Reset Shape Keys Between Actions, Reset shape keys between each action exported. This is needed when some SK channels are not keyed on some animations</p></li>
+<li><p><strong>export_lights</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Punctual Lights, Export directional, point, and spot lights. Uses “KHR_lights_punctual” glTF extension</p></li>
+<li><p><strong>export_try_sparse_sk</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Sparse Accessor if Better, Try using Sparse Accessor if it saves space</p></li>
+<li><p><strong>export_try_omit_sparse_sk</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Omitting Sparse Accessor if Data is Empty, Omitting Sparse Accessor if data is empty</p></li>
+<li><p><strong>export_gpu_instances</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – GPU Instances, Export using EXT_mesh_gpu_instancing. Limited to children of a given Empty. Multiple materials might be omitted</p></li>
+<li><p><strong>export_action_filter</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Filter Actions, Filter Actions to be exported</p></li>
+<li><p><strong>export_convert_animation_pointer</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Convert TRS/Weights to Animation Pointer, Export TRS and weights as Animation Pointer. Using KHR_animation_pointer extension</p></li>
+<li><p><strong>export_nla_strips</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Group by NLA Track, When on, multiple actions become part of the same glTF animation if they’re pushed onto NLA tracks with the same name. When off, all the currently assigned actions become one glTF animation</p></li>
+<li><p><strong>export_original_specular</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Export Original PBR Specular, Export original glTF PBR Specular, instead of Blender Principled Shader Specular</p></li>
+<li><p><strong>will_save_settings</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Remember Export Settings, Store glTF export settings in the Blender project</p></li>
+<li><p><strong>export_hierarchy_full_collections</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Full Collection Hierarchy, Export full hierarchy, including intermediate collections</p></li>
+<li><p><strong>export_extra_animations</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Prepare Extra Animations, Export additional animations.This feature is not standard and needs an external extension to be included in the glTF file</p></li>
+<li><p><strong>export_loglevel</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Log Level, Log Level</p></li>
+<li><p><strong>filter_glob</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – filter_glob</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/io_scene_gltf2/__init__.py#L1084">addons_core/io_scene_gltf2/__init__.py:1084</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.export_anim.html" class="btn btn-neutral float-left" title="Export Anim Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.extensions.html" class="btn btn-neutral float-right" title="Extensions Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.export_scene.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.export_scene.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

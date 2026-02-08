@@ -1,0 +1,1034 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Outliner Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.outliner.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Paint Operators" href="bpy.ops.paint.html" />
+    <link rel="prev" title="Object Operators" href="bpy.ops.object.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Outliner Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.action_set"><code class="docutils literal notranslate"><span class="pre">action_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.animdata_operation"><code class="docutils literal notranslate"><span class="pre">animdata_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.clear_filter"><code class="docutils literal notranslate"><span class="pre">clear_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_color_tag_set"><code class="docutils literal notranslate"><span class="pre">collection_color_tag_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_disable"><code class="docutils literal notranslate"><span class="pre">collection_disable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_disable_render"><code class="docutils literal notranslate"><span class="pre">collection_disable_render()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_drop"><code class="docutils literal notranslate"><span class="pre">collection_drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_duplicate"><code class="docutils literal notranslate"><span class="pre">collection_duplicate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_duplicate_linked"><code class="docutils literal notranslate"><span class="pre">collection_duplicate_linked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_enable"><code class="docutils literal notranslate"><span class="pre">collection_enable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_enable_render"><code class="docutils literal notranslate"><span class="pre">collection_enable_render()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_exclude_clear"><code class="docutils literal notranslate"><span class="pre">collection_exclude_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_exclude_set"><code class="docutils literal notranslate"><span class="pre">collection_exclude_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_hide"><code class="docutils literal notranslate"><span class="pre">collection_hide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_hide_inside"><code class="docutils literal notranslate"><span class="pre">collection_hide_inside()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_hierarchy_delete"><code class="docutils literal notranslate"><span class="pre">collection_hierarchy_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_holdout_clear"><code class="docutils literal notranslate"><span class="pre">collection_holdout_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_holdout_set"><code class="docutils literal notranslate"><span class="pre">collection_holdout_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_indirect_only_clear"><code class="docutils literal notranslate"><span class="pre">collection_indirect_only_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_indirect_only_set"><code class="docutils literal notranslate"><span class="pre">collection_indirect_only_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_instance"><code class="docutils literal notranslate"><span class="pre">collection_instance()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_isolate"><code class="docutils literal notranslate"><span class="pre">collection_isolate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_link"><code class="docutils literal notranslate"><span class="pre">collection_link()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_new"><code class="docutils literal notranslate"><span class="pre">collection_new()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_objects_deselect"><code class="docutils literal notranslate"><span class="pre">collection_objects_deselect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_objects_select"><code class="docutils literal notranslate"><span class="pre">collection_objects_select()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_show"><code class="docutils literal notranslate"><span class="pre">collection_show()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.collection_show_inside"><code class="docutils literal notranslate"><span class="pre">collection_show_inside()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.constraint_operation"><code class="docutils literal notranslate"><span class="pre">constraint_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.data_operation"><code class="docutils literal notranslate"><span class="pre">data_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.datastack_drop"><code class="docutils literal notranslate"><span class="pre">datastack_drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.drivers_add_selected"><code class="docutils literal notranslate"><span class="pre">drivers_add_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.drivers_delete_selected"><code class="docutils literal notranslate"><span class="pre">drivers_delete_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.expanded_toggle"><code class="docutils literal notranslate"><span class="pre">expanded_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.hide"><code class="docutils literal notranslate"><span class="pre">hide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.highlight_update"><code class="docutils literal notranslate"><span class="pre">highlight_update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.id_copy"><code class="docutils literal notranslate"><span class="pre">id_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.id_delete"><code class="docutils literal notranslate"><span class="pre">id_delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.id_linked_relocate"><code class="docutils literal notranslate"><span class="pre">id_linked_relocate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.id_operation"><code class="docutils literal notranslate"><span class="pre">id_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.id_paste"><code class="docutils literal notranslate"><span class="pre">id_paste()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.id_remap"><code class="docutils literal notranslate"><span class="pre">id_remap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.item_activate"><code class="docutils literal notranslate"><span class="pre">item_activate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.item_drag_drop"><code class="docutils literal notranslate"><span class="pre">item_drag_drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.item_openclose"><code class="docutils literal notranslate"><span class="pre">item_openclose()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.item_rename"><code class="docutils literal notranslate"><span class="pre">item_rename()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.keyingset_add_selected"><code class="docutils literal notranslate"><span class="pre">keyingset_add_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.keyingset_remove_selected"><code class="docutils literal notranslate"><span class="pre">keyingset_remove_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.lib_operation"><code class="docutils literal notranslate"><span class="pre">lib_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.lib_relocate"><code class="docutils literal notranslate"><span class="pre">lib_relocate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.liboverride_operation"><code class="docutils literal notranslate"><span class="pre">liboverride_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.liboverride_troubleshoot_operation"><code class="docutils literal notranslate"><span class="pre">liboverride_troubleshoot_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.material_drop"><code class="docutils literal notranslate"><span class="pre">material_drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.modifier_operation"><code class="docutils literal notranslate"><span class="pre">modifier_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.object_operation"><code class="docutils literal notranslate"><span class="pre">object_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.operation"><code class="docutils literal notranslate"><span class="pre">operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.orphans_manage"><code class="docutils literal notranslate"><span class="pre">orphans_manage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.orphans_purge"><code class="docutils literal notranslate"><span class="pre">orphans_purge()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.parent_clear"><code class="docutils literal notranslate"><span class="pre">parent_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.parent_drop"><code class="docutils literal notranslate"><span class="pre">parent_drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.scene_drop"><code class="docutils literal notranslate"><span class="pre">scene_drop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.scene_operation"><code class="docutils literal notranslate"><span class="pre">scene_operation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.scroll_page"><code class="docutils literal notranslate"><span class="pre">scroll_page()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.select_all"><code class="docutils literal notranslate"><span class="pre">select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.select_box"><code class="docutils literal notranslate"><span class="pre">select_box()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.select_walk"><code class="docutils literal notranslate"><span class="pre">select_walk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.show_active"><code class="docutils literal notranslate"><span class="pre">show_active()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.show_hierarchy"><code class="docutils literal notranslate"><span class="pre">show_hierarchy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.show_one_level"><code class="docutils literal notranslate"><span class="pre">show_one_level()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.start_filter"><code class="docutils literal notranslate"><span class="pre">start_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.outliner.unhide_all"><code class="docutils literal notranslate"><span class="pre">unhide_all()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Outliner Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.outliner">
+<span id="outliner-operators"></span><h1>Outliner Operators<a class="headerlink" href="#module-bpy.ops.outliner" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.action_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">action_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.action_set" title="Link to this definition"></a></dt>
+<dd><p>Change the active action used</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Action</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.animdata_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">animdata_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLEAR_ANIMDATA'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.animdata_operation" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CLEAR_ANIMDATA'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SET_ACT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CLEAR_ACT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'REFRESH_DRIVERS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CLEAR_DRIVERS'</span></code>], (optional)) – <p>Animation Operation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CLEAR_ANIMDATA</span></code>
+Clear Animation Data – Remove this animation data container.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET_ACT</span></code>
+Set Action.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLEAR_ACT</span></code>
+Unlink Action.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REFRESH_DRIVERS</span></code>
+Refresh Drivers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLEAR_DRIVERS</span></code>
+Clear Drivers.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.clear_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">clear_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.clear_filter" title="Link to this definition"></a></dt>
+<dd><p>Clear the search filter</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_color_tag_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_color_tag_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NONE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_color_tag_set" title="Link to this definition"></a></dt>
+<dd><p>Set a color tag for the selected collections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>color</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/collection_color_items.html#rna-enum-collection-color-items"><span class="std std-ref">Collection Color Items</span></a>, (optional)) – Color Tag</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_disable">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_disable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_disable" title="Link to this definition"></a></dt>
+<dd><p>Disable viewport display in the view layers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_disable_render">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_disable_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_disable_render" title="Link to this definition"></a></dt>
+<dd><p>Do not render this collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_drop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_drop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_drop" title="Link to this definition"></a></dt>
+<dd><p>Drag to move to collection in Outliner</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_duplicate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_duplicate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_duplicate" title="Link to this definition"></a></dt>
+<dd><p>Recursively duplicate the collection, all its children, objects and object data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_duplicate_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_duplicate_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_duplicate_linked" title="Link to this definition"></a></dt>
+<dd><p>Recursively duplicate the collection, all its children and objects, with linked object data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_enable">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_enable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_enable" title="Link to this definition"></a></dt>
+<dd><p>Enable viewport display in the view layers</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_enable_render">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_enable_render</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_enable_render" title="Link to this definition"></a></dt>
+<dd><p>Render the collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_exclude_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_exclude_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_exclude_clear" title="Link to this definition"></a></dt>
+<dd><p>Include collection in the active view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_exclude_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_exclude_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_exclude_set" title="Link to this definition"></a></dt>
+<dd><p>Exclude collection from the active view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_hide" title="Link to this definition"></a></dt>
+<dd><p>Hide the collection in this view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_hide_inside">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_hide_inside</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_hide_inside" title="Link to this definition"></a></dt>
+<dd><p>Hide all the objects and collections inside the collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_hierarchy_delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_hierarchy_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_hierarchy_delete" title="Link to this definition"></a></dt>
+<dd><p>Delete selected collection hierarchies</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_holdout_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_holdout_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_holdout_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear masking of collection in the active view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_holdout_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_holdout_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_holdout_set" title="Link to this definition"></a></dt>
+<dd><p>Mask collection in the active view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_indirect_only_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_indirect_only_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_indirect_only_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear collection contributing only indirectly in the view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_indirect_only_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_indirect_only_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_indirect_only_set" title="Link to this definition"></a></dt>
+<dd><p>Set collection to only contribute indirectly (through shadows and reflections) in the view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_instance">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_instance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_instance" title="Link to this definition"></a></dt>
+<dd><p>Instance selected collections to active scene</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_isolate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_isolate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_isolate" title="Link to this definition"></a></dt>
+<dd><p>Hide all but this collection and its parents</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend current visible collections</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_link">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_link</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_link" title="Link to this definition"></a></dt>
+<dd><p>Link selected collections to active scene</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_new">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">nested</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_new" title="Link to this definition"></a></dt>
+<dd><p>Add a new collection inside selected collection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>nested</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Nested, Add as child of selected collection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_objects_deselect">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_objects_deselect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_objects_deselect" title="Link to this definition"></a></dt>
+<dd><p>Deselect objects in collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_objects_select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_objects_select</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_objects_select" title="Link to this definition"></a></dt>
+<dd><p>Select objects in collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_show">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_show" title="Link to this definition"></a></dt>
+<dd><p>Show the collection in this view layer</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.collection_show_inside">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">collection_show_inside</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.collection_show_inside" title="Link to this definition"></a></dt>
+<dd><p>Show all the objects and collections inside the collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.constraint_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">constraint_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ENABLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.constraint_operation" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'ENABLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DISABLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DELETE'</span></code>], (optional)) – Constraint Operation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.data_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">data_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEFAULT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.data_operation" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DEFAULT'</span></code>], (optional)) – Data Operation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.datastack_drop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">datastack_drop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.datastack_drop" title="Link to this definition"></a></dt>
+<dd><p>Copy or reorder modifiers, constraints, and effects</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">hierarchy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.delete" title="Link to this definition"></a></dt>
+<dd><p>Delete selected objects and collections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hierarchy</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Hierarchy, Delete child objects and collections</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.drivers_add_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">drivers_add_selected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.drivers_add_selected" title="Link to this definition"></a></dt>
+<dd><p>Add drivers to selected items</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.drivers_delete_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">drivers_delete_selected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.drivers_delete_selected" title="Link to this definition"></a></dt>
+<dd><p>Delete drivers assigned to selected items</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.expanded_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">expanded_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.expanded_toggle" title="Link to this definition"></a></dt>
+<dd><p>Expand/Collapse all items</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.hide" title="Link to this definition"></a></dt>
+<dd><p>Hide selected objects and collections</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.highlight_update">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">highlight_update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.highlight_update" title="Link to this definition"></a></dt>
+<dd><p>Update the item highlight based on the current mouse position</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.id_copy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">id_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.id_copy" title="Link to this definition"></a></dt>
+<dd><p>Copy the selected data-blocks to the internal clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.id_delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">id_delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.id_delete" title="Link to this definition"></a></dt>
+<dd><p>Delete the ID under cursor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.id_linked_relocate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">id_linked_relocate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.id_linked_relocate" title="Link to this definition"></a></dt>
+<dd><p>Replace the active linked ID (and its dependencies if any) by another one, from the same or a different library</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.id_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">id_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UNLINK'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.id_operation" title="Link to this definition"></a></dt>
+<dd><p>General data-block management operations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'UNLINK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LOCAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SINGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DELETE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'REMAP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COPY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PASTE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD_FAKE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CLEAR_FAKE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RENAME'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT_LINKED'</span></code>], (optional)) – <p>ID Data Operation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UNLINK</span></code>
+Unlink.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL</span></code>
+Make Local.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SINGLE</span></code>
+Make Single User.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>
+Delete.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REMAP</span></code>
+Remap Users – Make all users of selected data-blocks to use instead current (clicked) one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COPY</span></code>
+Copy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PASTE</span></code>
+Paste.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD_FAKE</span></code>
+Add Fake User – Ensure data-block gets saved even if it isn’t in use (e.g. for motion and material libraries).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLEAR_FAKE</span></code>
+Clear Fake User.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RENAME</span></code>
+Rename.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT_LINKED</span></code>
+Select Linked.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.id_paste">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">id_paste</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.id_paste" title="Link to this definition"></a></dt>
+<dd><p>Paste data-blocks from the internal clipboard</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.id_remap">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">id_remap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OBJECT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">old_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.id_remap" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/id_type_items.html#rna-enum-id-type-items"><span class="std std-ref">Id Type Items</span></a>, (optional)) – ID Type</p></li>
+<li><p><strong>old_id</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Old ID, Old ID’s session uid to remap data from</p></li>
+<li><p><strong>new_id</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – New ID, New ID’s session uid to remap all selected IDs’ users to</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.item_activate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">item_activate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend_range</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recurse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.item_activate" title="Link to this definition"></a></dt>
+<dd><p>Handle mouse clicks to select and activate items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection for activation</p></li>
+<li><p><strong>extend_range</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend Range, Select a range from active element</p></li>
+<li><p><strong>deselect_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect On Nothing, Deselect all when nothing under the cursor</p></li>
+<li><p><strong>recurse</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Recurse, Select objects recursively from active element</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.item_drag_drop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">item_drag_drop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.item_drag_drop" title="Link to this definition"></a></dt>
+<dd><p>Drag and drop element to another place</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.item_openclose">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">item_openclose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.item_openclose" title="Link to this definition"></a></dt>
+<dd><p>Toggle whether item under cursor is enabled or closed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All, Close or open all items</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.item_rename">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">item_rename</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.item_rename" title="Link to this definition"></a></dt>
+<dd><p>Rename the active element</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Active, Rename the active item, rather than the one the mouse is over</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.keyingset_add_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">keyingset_add_selected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.keyingset_add_selected" title="Link to this definition"></a></dt>
+<dd><p>Add selected items (blue-gray rows) to active Keying Set</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.keyingset_remove_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">keyingset_remove_selected</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.keyingset_remove_selected" title="Link to this definition"></a></dt>
+<dd><p>Remove selected items (blue-gray rows) from active Keying Set</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.lib_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">lib_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DELETE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.lib_operation" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DELETE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RELOCATE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RELOAD'</span></code>], (optional)) – <p>Library Operation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE</span></code>
+Delete – Delete this library and all its items.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELOCATE</span></code>
+Relocate – Select a new path for this library, and reload all its data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELOAD</span></code>
+Reload – Reload all data from this library.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.lib_relocate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">lib_relocate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.lib_relocate" title="Link to this definition"></a></dt>
+<dd><p>Relocate the library under cursor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.liboverride_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">liboverride_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OVERRIDE_LIBRARY_CREATE_HIERARCHY'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECTED'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.liboverride_operation" title="Link to this definition"></a></dt>
+<dd><p>Create, reset or clear library override hierarchies</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OVERRIDE_LIBRARY_CREATE_HIERARCHY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OVERRIDE_LIBRARY_RESET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OVERRIDE_LIBRARY_CLEAR_SINGLE'</span></code>], (optional)) – <p>Library Override Operation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERRIDE_LIBRARY_CREATE_HIERARCHY</span></code>
+Make – Create a local override of the selected linked data-blocks, and their hierarchy of dependencies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERRIDE_LIBRARY_RESET</span></code>
+Reset – Reset the selected local overrides to their linked references values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERRIDE_LIBRARY_CLEAR_SINGLE</span></code>
+Clear – Delete the selected local overrides and relink their usages to the linked data-blocks if possible, else reset them and mark them as non editable.</p></li>
+</ul>
+</p></li>
+<li><p><strong>selection_set</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECTED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CONTENT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECTED_AND_CONTENT'</span></code>], (optional)) – <p>Selection Set, Over which part of the tree items to apply the operation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECTED</span></code>
+Selected – Apply the operation over selected data-blocks only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>
+Content – Apply the operation over content of the selected items only (the data-blocks in their sub-tree).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECTED_AND_CONTENT</span></code>
+Selected &amp; Content – Apply the operation over selected data-blocks and all their dependencies.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.liboverride_troubleshoot_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">liboverride_troubleshoot_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OVERRIDE_LIBRARY_RESYNC_HIERARCHY'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">selection_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECTED'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.liboverride_troubleshoot_operation" title="Link to this definition"></a></dt>
+<dd><p>Advanced operations over library override to help fix broken hierarchies</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OVERRIDE_LIBRARY_RESYNC_HIERARCHY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OVERRIDE_LIBRARY_RESYNC_HIERARCHY_ENFORCE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OVERRIDE_LIBRARY_DELETE_HIERARCHY'</span></code>], (optional)) – <p>Library Override Troubleshoot Operation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERRIDE_LIBRARY_RESYNC_HIERARCHY</span></code>
+Resync – Rebuild the selected local overrides from their linked references, as well as their hierarchies of dependencies.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERRIDE_LIBRARY_RESYNC_HIERARCHY_ENFORCE</span></code>
+Resync Enforce – Rebuild the selected local overrides from their linked references, as well as their hierarchies of dependencies, enforcing these hierarchies to match the linked data (i.e. ignoring existing overrides on data-blocks pointer properties).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OVERRIDE_LIBRARY_DELETE_HIERARCHY</span></code>
+Delete – Delete the selected local overrides (including their hierarchies of override dependencies) and relink their usages to the linked data-blocks.</p></li>
+</ul>
+</p></li>
+<li><p><strong>selection_set</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECTED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CONTENT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECTED_AND_CONTENT'</span></code>], (optional)) – <p>Selection Set, Over which part of the tree items to apply the operation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECTED</span></code>
+Selected – Apply the operation over selected data-blocks only.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTENT</span></code>
+Content – Apply the operation over content of the selected items only (the data-blocks in their sub-tree).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECTED_AND_CONTENT</span></code>
+Selected &amp; Content – Apply the operation over selected data-blocks and all their dependencies.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.material_drop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">material_drop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.material_drop" title="Link to this definition"></a></dt>
+<dd><p>Drag material to object in Outliner</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.modifier_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">modifier_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'APPLY'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.modifier_operation" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'APPLY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DELETE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOGVIS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOGREN'</span></code>], (optional)) – Modifier Operation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.object_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">object_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SELECT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.object_operation" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT_HIERARCHY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'REMAP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RENAME'</span></code>], (optional)) – <p>Object Operation</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT_HIERARCHY</span></code>
+Select Hierarchy.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">REMAP</span></code>
+Remap Users – Make all users of selected data-blocks to use instead a new chosen one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RENAME</span></code>
+Rename.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">operation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.operation" title="Link to this definition"></a></dt>
+<dd><p>Context menu for item operations</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.orphans_manage">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">orphans_manage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.orphans_manage" title="Link to this definition"></a></dt>
+<dd><p>Open a window to manage unused data</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.orphans_purge">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">orphans_purge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_local_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_linked_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.orphans_purge" title="Link to this definition"></a></dt>
+<dd><p>Clear all orphaned data-blocks without any users from the file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>do_local_ids</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Local Data-blocks, Include unused local data-blocks into deletion</p></li>
+<li><p><strong>do_linked_ids</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Linked Data-blocks, Include unused linked data-blocks into deletion</p></li>
+<li><p><strong>do_recursive</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Recursive Delete, Recursively check for indirectly unused data-blocks, ensuring that no orphaned data-blocks remain after execution</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.parent_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">parent_clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.parent_clear" title="Link to this definition"></a></dt>
+<dd><p>Drag to clear parent in Outliner</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.parent_drop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">parent_drop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.parent_drop" title="Link to this definition"></a></dt>
+<dd><p>Drag to parent in Outliner</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.scene_drop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">scene_drop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.scene_drop" title="Link to this definition"></a></dt>
+<dd><p>Drag object to scene in Outliner</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.scene_operation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">scene_operation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DELETE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.scene_operation" title="Link to this definition"></a></dt>
+<dd><p>Context menu for scene operations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DELETE'</span></code>], (optional)) – Scene Operation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.scroll_page">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">scroll_page</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">up</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.scroll_page" title="Link to this definition"></a></dt>
+<dd><p>Scroll page up or down</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>up</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Up, Scroll up one page</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.select_all" title="Link to this definition"></a></dt>
+<dd><p>Toggle the Outliner selection of items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.select_box">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">select_box</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweak</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SET'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.select_box" title="Link to this definition"></a></dt>
+<dd><p>Use box selection to select tree elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tweak</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Tweak, Tweak gesture from empty space for box selection</p></li>
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUB'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SET</span></code>
+Set – Set a new selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADD</span></code>
+Extend – Extend existing selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SUB</span></code>
+Subtract – Subtract existing selection.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.select_walk">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">select_walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UP'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">toggle_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.select_walk" title="Link to this definition"></a></dt>
+<dd><p>Use walk navigation to select tree elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'UP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DOWN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LEFT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RIGHT'</span></code>], (optional)) – Walk Direction, Select/Deselect element in this direction</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend selection on walk</p></li>
+<li><p><strong>toggle_all</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Toggle All, Toggle open/close hierarchy</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.show_active">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">show_active</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.show_active" title="Link to this definition"></a></dt>
+<dd><p>Open up the tree and adjust the view so that the active object is shown centered</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.show_hierarchy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">show_hierarchy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.show_hierarchy" title="Link to this definition"></a></dt>
+<dd><p>Open all object entries and close all others</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.show_one_level">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">show_one_level</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">open</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.show_one_level" title="Link to this definition"></a></dt>
+<dd><p>Expand/collapse all entries by one level</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>open</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Open, Expand all entries one level deep</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.start_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">start_filter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.start_filter" title="Link to this definition"></a></dt>
+<dd><p>Start entering filter text</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.outliner.unhide_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.outliner.</span></span><span class="sig-name descname"><span class="pre">unhide_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.outliner.unhide_all" title="Link to this definition"></a></dt>
+<dd><p>Unhide all objects and collections</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.object.html" class="btn btn-neutral float-left" title="Object Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.paint.html" class="btn btn-neutral float-right" title="Paint Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.outliner.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.outliner.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

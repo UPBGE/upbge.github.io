@@ -1,0 +1,831 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armature Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.armature.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Asset Operators" href="bpy.ops.asset.html" />
+    <link rel="prev" title="Anim Operators" href="bpy.ops.anim.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Armature Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.align"><code class="docutils literal notranslate"><span class="pre">align()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.assign_to_collection"><code class="docutils literal notranslate"><span class="pre">assign_to_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.autoside_names"><code class="docutils literal notranslate"><span class="pre">autoside_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.bone_primitive_add"><code class="docutils literal notranslate"><span class="pre">bone_primitive_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.calculate_roll"><code class="docutils literal notranslate"><span class="pre">calculate_roll()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.click_extrude"><code class="docutils literal notranslate"><span class="pre">click_extrude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_add"><code class="docutils literal notranslate"><span class="pre">collection_add()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_assign"><code class="docutils literal notranslate"><span class="pre">collection_assign()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_create_and_assign"><code class="docutils literal notranslate"><span class="pre">collection_create_and_assign()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_deselect"><code class="docutils literal notranslate"><span class="pre">collection_deselect()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_move"><code class="docutils literal notranslate"><span class="pre">collection_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_remove"><code class="docutils literal notranslate"><span class="pre">collection_remove()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_remove_unused"><code class="docutils literal notranslate"><span class="pre">collection_remove_unused()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_select"><code class="docutils literal notranslate"><span class="pre">collection_select()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_show_all"><code class="docutils literal notranslate"><span class="pre">collection_show_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_unassign"><code class="docutils literal notranslate"><span class="pre">collection_unassign()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_unassign_named"><code class="docutils literal notranslate"><span class="pre">collection_unassign_named()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.collection_unsolo_all"><code class="docutils literal notranslate"><span class="pre">collection_unsolo_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.copy_bone_color_to_selected"><code class="docutils literal notranslate"><span class="pre">copy_bone_color_to_selected()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.dissolve"><code class="docutils literal notranslate"><span class="pre">dissolve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.duplicate"><code class="docutils literal notranslate"><span class="pre">duplicate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.duplicate_move"><code class="docutils literal notranslate"><span class="pre">duplicate_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.extrude"><code class="docutils literal notranslate"><span class="pre">extrude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.extrude_forked"><code class="docutils literal notranslate"><span class="pre">extrude_forked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.extrude_move"><code class="docutils literal notranslate"><span class="pre">extrude_move()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.fill"><code class="docutils literal notranslate"><span class="pre">fill()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.flip_names"><code class="docutils literal notranslate"><span class="pre">flip_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.hide"><code class="docutils literal notranslate"><span class="pre">hide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.move_to_collection"><code class="docutils literal notranslate"><span class="pre">move_to_collection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.parent_clear"><code class="docutils literal notranslate"><span class="pre">parent_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.parent_set"><code class="docutils literal notranslate"><span class="pre">parent_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.reveal"><code class="docutils literal notranslate"><span class="pre">reveal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.roll_clear"><code class="docutils literal notranslate"><span class="pre">roll_clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_all"><code class="docutils literal notranslate"><span class="pre">select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_hierarchy"><code class="docutils literal notranslate"><span class="pre">select_hierarchy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_less"><code class="docutils literal notranslate"><span class="pre">select_less()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_linked"><code class="docutils literal notranslate"><span class="pre">select_linked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_linked_pick"><code class="docutils literal notranslate"><span class="pre">select_linked_pick()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_mirror"><code class="docutils literal notranslate"><span class="pre">select_mirror()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_more"><code class="docutils literal notranslate"><span class="pre">select_more()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.select_similar"><code class="docutils literal notranslate"><span class="pre">select_similar()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.separate"><code class="docutils literal notranslate"><span class="pre">separate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.shortest_path_pick"><code class="docutils literal notranslate"><span class="pre">shortest_path_pick()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.split"><code class="docutils literal notranslate"><span class="pre">split()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.subdivide"><code class="docutils literal notranslate"><span class="pre">subdivide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.switch_direction"><code class="docutils literal notranslate"><span class="pre">switch_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.armature.symmetrize"><code class="docutils literal notranslate"><span class="pre">symmetrize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Armature Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.armature">
+<span id="armature-operators"></span><h1>Armature Operators<a class="headerlink" href="#module-bpy.ops.armature" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.align">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">align</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.align" title="Link to this definition"></a></dt>
+<dd><p>Align selected bones to the active bone (or to their parent)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.assign_to_collection">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">assign_to_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_collection_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.assign_to_collection" title="Link to this definition"></a></dt>
+<dd><p>Assign all selected bones to a collection, or unassign them, depending on whether the active bone is already assigned or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection_index</strong> (<em>int in</em><em> [</em><em>-1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Collection Index, Index of the collection to assign selected bones to. When the operator should create a new bone collection, use new_collection_name to define the collection name, and set this parameter to the parent index of the new bone collection</p></li>
+<li><p><strong>new_collection_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of a to-be-added bone collection. Only pass this if you want to create a new bone collection and assign the selected bones to it. To assign to an existing collection, do not include this parameter and use collection_index</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.autoside_names">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">autoside_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'XAXIS'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.autoside_names" title="Link to this definition"></a></dt>
+<dd><p>Automatically renames the selected bones according to which side of the target axis they fall on</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'XAXIS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'YAXIS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ZAXIS'</span></code>], (optional)) – <p>Axis, Axis to tag names with</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">XAXIS</span></code>
+X-Axis – Left/Right.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">YAXIS</span></code>
+Y-Axis – Front/Back.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ZAXIS</span></code>
+Z-Axis – Top/Bottom.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.bone_primitive_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">bone_primitive_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Bone'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.bone_primitive_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new bone located at the 3D cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of the newly created bone</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.calculate_roll">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">calculate_roll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POS_X'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.calculate_roll" title="Link to this definition"></a></dt>
+<dd><p>Automatically fix alignment of select bones’ axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'POS_X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'POS_Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GLOBAL_POS_X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GLOBAL_POS_Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GLOBAL_POS_Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEG_X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NEG_Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GLOBAL_NEG_X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GLOBAL_NEG_Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GLOBAL_NEG_Z'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTIVE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CURSOR'</span></code>], (optional)) – Type</p></li>
+<li><p><strong>axis_flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip Axis, Negate the alignment axis</p></li>
+<li><p><strong>axis_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shortest Rotation, Ignore the axis direction, use the shortest rotation to align</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.click_extrude">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">click_extrude</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.click_extrude" title="Link to this definition"></a></dt>
+<dd><p>Create a new bone going from the last selected joint to the mouse position</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_add">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_add</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_add" title="Link to this definition"></a></dt>
+<dd><p>Add a new bone collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_assign">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_assign" title="Link to this definition"></a></dt>
+<dd><p>Add selected bones to the chosen bone collection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Bone Collection, Name of the bone collection to assign this bone to; empty to assign to the active bone collection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_create_and_assign">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_create_and_assign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_create_and_assign" title="Link to this definition"></a></dt>
+<dd><p>Create a new bone collection and assign all selected bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Bone Collection, Name of the bone collection to create</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_deselect">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_deselect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_deselect" title="Link to this definition"></a></dt>
+<dd><p>Deselect bones of active Bone Collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UP'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_move" title="Link to this definition"></a></dt>
+<dd><p>Change position of active Bone Collection in list of Bone collections</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'UP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DOWN'</span></code>], (optional)) – Direction, Direction to move the active Bone Collection towards</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_remove">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_remove</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_remove" title="Link to this definition"></a></dt>
+<dd><p>Remove the active bone collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_remove_unused">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_remove_unused</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_remove_unused" title="Link to this definition"></a></dt>
+<dd><p>Remove all bone collections that have neither bones nor children. This is done recursively, so bone collections that only have unused children are also removed</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/anim.py#L619">startup/bl_operators/anim.py:619</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_select">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_select</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_select" title="Link to this definition"></a></dt>
+<dd><p>Select bones in active Bone Collection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_show_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_show_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_show_all" title="Link to this definition"></a></dt>
+<dd><p>Show all bone collections</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/anim.py#L574">startup/bl_operators/anim.py:574</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_unassign">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_unassign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_unassign" title="Link to this definition"></a></dt>
+<dd><p>Remove selected bones from the active bone collection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Bone Collection, Name of the bone collection to unassign this bone from; empty to unassign from the active bone collection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_unassign_named">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_unassign_named</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bone_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_unassign_named" title="Link to this definition"></a></dt>
+<dd><p>Unassign the named bone from this bone collection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Bone Collection, Name of the bone collection to unassign this bone from; empty to unassign from the active bone collection</p></li>
+<li><p><strong>bone_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Bone Name, Name of the bone to unassign from the collection; empty to use the active bone</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.collection_unsolo_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">collection_unsolo_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.collection_unsolo_all" title="Link to this definition"></a></dt>
+<dd><p>Clear the ‘solo’ setting on all bone collections</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/anim.py#L597">startup/bl_operators/anim.py:597</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.copy_bone_color_to_selected">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">copy_bone_color_to_selected</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">bone_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'EDIT'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.copy_bone_color_to_selected" title="Link to this definition"></a></dt>
+<dd><p>Copy the bone color of the active bone to all selected bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bone_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'EDIT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'POSE'</span></code>], (optional)) – <p>Type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EDIT</span></code>
+Bone – Copy Bone colors from the active bone to all selected bones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POSE</span></code>
+Pose Bone – Copy Pose Bone colors from the active pose bone to all selected pose bones.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/anim.py#L493">startup/bl_operators/anim.py:493</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.delete">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.delete" title="Link to this definition"></a></dt>
+<dd><p>Remove selected bones from the armature</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm, Prompt for confirmation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.dissolve">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">dissolve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.dissolve" title="Link to this definition"></a></dt>
+<dd><p>Dissolve selected bones from the armature</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.duplicate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">duplicate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_flip_names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.duplicate" title="Link to this definition"></a></dt>
+<dd><p>Make copies of the selected bones within the same armature</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>do_flip_names</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip Names, Try to flip names of the bones, if possible, instead of adding a number extension</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.duplicate_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">duplicate_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ARMATURE_OT_duplicate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.duplicate_move" title="Link to this definition"></a></dt>
+<dd><p>Make copies of the selected bones within the same armature and move them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ARMATURE_OT_duplicate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ARMATURE_OT_duplicate</span></code>, (optional)) – Duplicate Selected Bone(s), Make copies of the selected bones within the same armature</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.extrude">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">extrude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">forked</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.extrude" title="Link to this definition"></a></dt>
+<dd><p>Create new bones from the selected joints</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>forked</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Forked</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.extrude_forked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">extrude_forked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ARMATURE_OT_extrude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.extrude_forked" title="Link to this definition"></a></dt>
+<dd><p>Create new bones from the selected joints and move them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ARMATURE_OT_extrude</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ARMATURE_OT_extrude</span></code>, (optional)) – Extrude, Create new bones from the selected joints</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.extrude_move">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">extrude_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">ARMATURE_OT_extrude</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TRANSFORM_OT_translate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.extrude_move" title="Link to this definition"></a></dt>
+<dd><p>Create new bones from the selected joints and move them</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ARMATURE_OT_extrude</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ARMATURE_OT_extrude</span></code>, (optional)) – Extrude, Create new bones from the selected joints</p></li>
+<li><p><strong>TRANSFORM_OT_translate</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">TRANSFORM_OT_translate</span></code>, (optional)) – Move, Move selected items</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.fill">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">fill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.fill" title="Link to this definition"></a></dt>
+<dd><p>Add bone between selected joint(s) and/or 3D cursor</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.flip_names">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">flip_names</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_strip_numbers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.flip_names" title="Link to this definition"></a></dt>
+<dd><p>Flips (and corrects) the axis suffixes of the names of selected bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>do_strip_numbers</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Strip Numbers, Try to remove right-most dot-number from flipped names.Warning: May result in incoherent naming in some cases</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">hide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.hide" title="Link to this definition"></a></dt>
+<dd><p>Tag selected bones to not be visible in Edit Mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected rather than selected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.move_to_collection">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">move_to_collection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">collection_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_collection_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.move_to_collection" title="Link to this definition"></a></dt>
+<dd><p>Move bones to a collection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>collection_index</strong> (<em>int in</em><em> [</em><em>-1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Collection Index, Index of the collection to move selected bones to. When the operator should create a new bone collection, do not include this parameter and pass new_collection_name</p></li>
+<li><p><strong>new_collection_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of a to-be-added bone collection. Only pass this if you want to create a new bone collection and move the selected bones to it. To move to an existing collection, do not include this parameter and use collection_index</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.parent_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">parent_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLEAR'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.parent_clear" title="Link to this definition"></a></dt>
+<dd><p>Remove the parent-child relationship between selected bones and their parents</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CLEAR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DISCONNECT'</span></code>], (optional)) – Clear Type, What way to clear parenting</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.parent_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">parent_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CONNECTED'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.parent_set" title="Link to this definition"></a></dt>
+<dd><p>Set the active bone as the parent of the selected bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CONNECTED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'OFFSET'</span></code>], (optional)) – Parent Type, Type of parenting</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.reveal">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">reveal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.reveal" title="Link to this definition"></a></dt>
+<dd><p>Reveal all bones hidden in Edit Mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.roll_clear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">roll_clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">roll</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.roll_clear" title="Link to this definition"></a></dt>
+<dd><p>Clear roll for selected bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>roll</strong> (<em>float in</em><em> [</em><em>-6.28319</em><em>, </em><em>6.28319</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Roll</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_all" title="Link to this definition"></a></dt>
+<dd><p>Toggle selection status of all bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_hierarchy">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_hierarchy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'PARENT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_hierarchy" title="Link to this definition"></a></dt>
+<dd><p>Select immediate parent/children of selected bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'PARENT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CHILD'</span></code>], (optional)) – Direction</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend the selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_less</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_less" title="Link to this definition"></a></dt>
+<dd><p>Deselect those bones at the boundary of each selection region</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_linked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_forks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_linked" title="Link to this definition"></a></dt>
+<dd><p>Select all bones linked by parent/child connections to the current selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>all_forks</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All Forks, Follow forks in the parents chain</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_linked_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_linked_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_forks</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_linked_pick" title="Link to this definition"></a></dt>
+<dd><p>(De)select bones linked by parent/child connections under the mouse cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect</p></li>
+<li><p><strong>all_forks</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – All Forks, Follow forks in the parents chain</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_mirror">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_mirror</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_mirror" title="Link to this definition"></a></dt>
+<dd><p>Mirror the bone selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>only_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Active Only, Only operate on the active bone</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend the selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_more</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_more" title="Link to this definition"></a></dt>
+<dd><p>Select those bones connected to the initial selection</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.select_similar">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">select_similar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LENGTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.select_similar" title="Link to this definition"></a></dt>
+<dd><p>Select similar bones by property types</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'CHILDREN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CHILDREN_IMMEDIATE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SIBLINGS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'LENGTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DIRECTION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PREFIX'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUFFIX'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BONE_COLLECTION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COLOR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHAPE'</span></code>], (optional)) – Type</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.separate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">separate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.separate" title="Link to this definition"></a></dt>
+<dd><p>Isolate selected bones into a separate armature</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.shortest_path_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">shortest_path_pick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.shortest_path_pick" title="Link to this definition"></a></dt>
+<dd><p>Select shortest path between two bones</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.split">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.split" title="Link to this definition"></a></dt>
+<dd><p>Split off selected bones from connected unselected bones</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.subdivide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">subdivide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_cuts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.subdivide" title="Link to this definition"></a></dt>
+<dd><p>Break selected bones into chains of smaller bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>number_cuts</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>1000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Number of Cuts</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.switch_direction">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">switch_direction</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.switch_direction" title="Link to this definition"></a></dt>
+<dd><p>Change the direction that a chain of bones points in (head and tail swap)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.armature.symmetrize">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.armature.</span></span><span class="sig-name descname"><span class="pre">symmetrize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NEGATIVE_X'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">copy_bone_colors</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.armature.symmetrize" title="Link to this definition"></a></dt>
+<dd><p>Enforce symmetry, make copies of the selection or use existing</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>direction</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NEGATIVE_X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'POSITIVE_X'</span></code>], (optional)) – Direction, Which sides to copy from and to (when both are selected)</p></li>
+<li><p><strong>copy_bone_colors</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Bone Colors, Copy colors to existing bones</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.anim.html" class="btn btn-neutral float-left" title="Anim Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.asset.html" class="btn btn-neutral float-right" title="Asset Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.armature.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.armature.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

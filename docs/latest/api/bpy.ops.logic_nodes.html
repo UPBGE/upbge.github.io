@@ -1,0 +1,905 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logic Nodes Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.logic_nodes.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Marker Operators" href="bpy.ops.marker.html" />
+    <link rel="prev" title="Logic Operators" href="bpy.ops.logic.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Logic Nodes Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_component"><code class="docutils literal notranslate"><span class="pre">add_component()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_game_property"><code class="docutils literal notranslate"><span class="pre">add_game_property()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_global_category"><code class="docutils literal notranslate"><span class="pre">add_global_category()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_global_property"><code class="docutils literal notranslate"><span class="pre">add_global_property()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_logic_tree_property"><code class="docutils literal notranslate"><span class="pre">add_logic_tree_property()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_portal_in"><code class="docutils literal notranslate"><span class="pre">add_portal_in()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_portal_out"><code class="docutils literal notranslate"><span class="pre">add_portal_out()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_socket"><code class="docutils literal notranslate"><span class="pre">add_socket()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.add_template"><code class="docutils literal notranslate"><span class="pre">add_template()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.apply_logic_tree"><code class="docutils literal notranslate"><span class="pre">apply_logic_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.audio_system"><code class="docutils literal notranslate"><span class="pre">audio_system()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.custom_mainloop"><code class="docutils literal notranslate"><span class="pre">custom_mainloop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.custom_mainloop_tree"><code class="docutils literal notranslate"><span class="pre">custom_mainloop_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.custom_node_templates"><code class="docutils literal notranslate"><span class="pre">custom_node_templates()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.edit_custom_node"><code class="docutils literal notranslate"><span class="pre">edit_custom_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.find_logic_tree"><code class="docutils literal notranslate"><span class="pre">find_logic_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.generate_code"><code class="docutils literal notranslate"><span class="pre">generate_code()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.generate_project"><code class="docutils literal notranslate"><span class="pre">generate_project()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.get_owner"><code class="docutils literal notranslate"><span class="pre">get_owner()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.install_pyfmodex"><code class="docutils literal notranslate"><span class="pre">install_pyfmodex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.install_upbge_stubs"><code class="docutils literal notranslate"><span class="pre">install_upbge_stubs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.install_uplogic"><code class="docutils literal notranslate"><span class="pre">install_uplogic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.key_selector"><code class="docutils literal notranslate"><span class="pre">key_selector()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.load_font"><code class="docutils literal notranslate"><span class="pre">load_font()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.load_image"><code class="docutils literal notranslate"><span class="pre">load_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.load_sound"><code class="docutils literal notranslate"><span class="pre">load_sound()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.move_game_property"><code class="docutils literal notranslate"><span class="pre">move_game_property()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.node_search"><code class="docutils literal notranslate"><span class="pre">node_search()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.open_donate"><code class="docutils literal notranslate"><span class="pre">open_donate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.open_github"><code class="docutils literal notranslate"><span class="pre">open_github()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.open_upbge_docs"><code class="docutils literal notranslate"><span class="pre">open_upbge_docs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.open_upbge_manual"><code class="docutils literal notranslate"><span class="pre">open_upbge_manual()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.pack_new_tree"><code class="docutils literal notranslate"><span class="pre">pack_new_tree()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.register_custom_node"><code class="docutils literal notranslate"><span class="pre">register_custom_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.reload_components"><code class="docutils literal notranslate"><span class="pre">reload_components()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.reload_texts"><code class="docutils literal notranslate"><span class="pre">reload_texts()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.remove_custom_node"><code class="docutils literal notranslate"><span class="pre">remove_custom_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.remove_game_property"><code class="docutils literal notranslate"><span class="pre">remove_game_property()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.remove_global_category"><code class="docutils literal notranslate"><span class="pre">remove_global_category()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.remove_global_property"><code class="docutils literal notranslate"><span class="pre">remove_global_property()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.remove_logic_tree_property"><code class="docutils literal notranslate"><span class="pre">remove_logic_tree_property()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.remove_socket"><code class="docutils literal notranslate"><span class="pre">remove_socket()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.reset_empty_scale"><code class="docutils literal notranslate"><span class="pre">reset_empty_scale()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.save_custom_node"><code class="docutils literal notranslate"><span class="pre">save_custom_node()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.start_ui_preview"><code class="docutils literal notranslate"><span class="pre">start_ui_preview()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.logic_nodes.unapply_logic_tree"><code class="docutils literal notranslate"><span class="pre">unapply_logic_tree()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Logic Nodes Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.logic_nodes">
+<span id="logic-nodes-operators"></span><h1>Logic Nodes Operators<a class="headerlink" href="#module-bpy.ops.logic_nodes" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_component">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">component</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_component" title="Link to this definition"></a></dt>
+<dd><p>Add a python Component to the selected object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>component</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Component Name, Add this Component to the current object</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addcomponent.py#L26">addons_core/bge_netlogic/ops/addcomponent.py:26</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_game_property">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_game_property</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_game_property" title="Link to this definition"></a></dt>
+<dd><p>Adds a property available to the UPBGE</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addgameproperty.py#L17">addons_core/bge_netlogic/ops/addgameproperty.py:17</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_global_category">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_global_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_global_category" title="Link to this definition"></a></dt>
+<dd><p>Add a global value category</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addglobalcategory.py#L16">addons_core/bge_netlogic/ops/addglobalcategory.py:16</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_global_property">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_global_property</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_global_property" title="Link to this definition"></a></dt>
+<dd><p>Add a value accessible from anywhere</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addglobalproperty.py#L17">addons_core/bge_netlogic/ops/addglobalproperty.py:17</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_logic_tree_property">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_logic_tree_property</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_logic_tree_property" title="Link to this definition"></a></dt>
+<dd><p>Adds a property available to the UPBGE</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addlogictreeproperty.py#L20">addons_core/bge_netlogic/ops/addlogictreeproperty.py:20</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_portal_in">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_portal_in</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">portal_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Portal'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'1'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_portal_in" title="Link to this definition"></a></dt>
+<dd><p>Create a new portal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>portal_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Portal Name</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'0'</span></code>, <code class="docutils literal notranslate"><span class="pre">'1'</span></code>, <code class="docutils literal notranslate"><span class="pre">'2'</span></code>, <code class="docutils literal notranslate"><span class="pre">'3'</span></code>, <code class="docutils literal notranslate"><span class="pre">'4'</span></code>, <code class="docutils literal notranslate"><span class="pre">'5'</span></code>, <code class="docutils literal notranslate"><span class="pre">'6'</span></code>, <code class="docutils literal notranslate"><span class="pre">'7'</span></code>, <code class="docutils literal notranslate"><span class="pre">'8'</span></code>, <code class="docutils literal notranslate"><span class="pre">'9'</span></code>, <code class="docutils literal notranslate"><span class="pre">'10'</span></code>, <code class="docutils literal notranslate"><span class="pre">'11'</span></code>, <code class="docutils literal notranslate"><span class="pre">'12'</span></code>, <code class="docutils literal notranslate"><span class="pre">'13'</span></code>, <code class="docutils literal notranslate"><span class="pre">'14'</span></code>], (optional)) – Socket Type</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addportal.py#L30">addons_core/bge_netlogic/ops/addportal.py:30</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_portal_out">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_portal_out</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">portal_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_portal_out" title="Link to this definition"></a></dt>
+<dd><p>Create a new portal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>portal_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Portal Name</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addportal.py#L63">addons_core/bge_netlogic/ops/addportal.py:63</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_socket">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_socket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">socket_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NLListItemSocket'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_socket" title="Link to this definition"></a></dt>
+<dd><p>Add a socket to this node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>socket_type</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – socket_type</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addsocket.py#L18">addons_core/bge_netlogic/ops/addsocket.py:18</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.add_template">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">add_template</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">nl_template_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.add_template" title="Link to this definition"></a></dt>
+<dd><p>Add a template</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nl_template_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – nl_template_name</p></li>
+<li><p><strong>owner</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – owner</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/addtemplate.py#L76">addons_core/bge_netlogic/ops/addtemplate.py:76</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.apply_logic_tree">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">apply_logic_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.apply_logic_tree" title="Link to this definition"></a></dt>
+<dd><p>Apply the current tree to the selected objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>owner</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – owner</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/applylogictree.py#L40">addons_core/bge_netlogic/ops/applylogictree.py:40</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.audio_system">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">audio_system</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.audio_system" title="Link to this definition"></a></dt>
+<dd><p>Select the object this tree is applied to</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/audiosystem.py#L23">addons_core/bge_netlogic/ops/audiosystem.py:23</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.custom_mainloop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">custom_mainloop</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.custom_mainloop" title="Link to this definition"></a></dt>
+<dd><p>Use a custom Mainloop for this scene</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/custommainloop.py#L54">addons_core/bge_netlogic/ops/custommainloop.py:54</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.custom_mainloop_tree">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">custom_mainloop_tree</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.custom_mainloop_tree" title="Link to this definition"></a></dt>
+<dd><p>Use a custom Mainloop for this scene</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/custommainlooptree.py#L28">addons_core/bge_netlogic/ops/custommainlooptree.py:28</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.custom_node_templates">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">custom_node_templates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.custom_node_templates" title="Link to this definition"></a></dt>
+<dd><p>Load Custom Logic Node Templates</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/customnodetemplates.py#L94">addons_core/bge_netlogic/ops/customnodetemplates.py:94</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.edit_custom_node">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">edit_custom_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.edit_custom_node" title="Link to this definition"></a></dt>
+<dd><p>Edit Custom Logic Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – index</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/editcustomnode.py#L20">addons_core/bge_netlogic/ops/editcustomnode.py:20</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.find_logic_tree">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">find_logic_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.find_logic_tree" title="Link to this definition"></a></dt>
+<dd><p>Edit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tree_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – tree_name</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/findlogictree.py#L20">addons_core/bge_netlogic/ops/findlogictree.py:20</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.generate_code">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">generate_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">uplogic_installed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.generate_code" title="Link to this definition"></a></dt>
+<dd><p>Force generation of code, needed only after updating or if encountering issues</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uplogic_installed</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – uplogic_installed</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/generatecode.py#L44">addons_core/bge_netlogic/ops/generatecode.py:44</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.generate_project">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">generate_project</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.generate_project" title="Link to this definition"></a></dt>
+<dd><p>Generate basic structure for a new project</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/generateproject.py#L23">addons_core/bge_netlogic/ops/generateproject.py:23</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.get_owner">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">get_owner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">applied_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.get_owner" title="Link to this definition"></a></dt>
+<dd><p>Select the object this tree is applied to</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>applied_object</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – applied_object</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/getowner.py#L18">addons_core/bge_netlogic/ops/getowner.py:18</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.install_pyfmodex">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">install_pyfmodex</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.install_pyfmodex" title="Link to this definition"></a></dt>
+<dd><p>NOTE: This may take a few seconds and requires internet connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/installpyfmodex.py#L23">addons_core/bge_netlogic/ops/installpyfmodex.py:23</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.install_upbge_stubs">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">install_upbge_stubs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.install_upbge_stubs" title="Link to this definition"></a></dt>
+<dd><p>Downloads the latest version of the upbge-stubs module to support autocomplet in your IDE.NOTE: This may take a few seconds and requires internet connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/installupbgestubs.py#L19">addons_core/bge_netlogic/ops/installupbgestubs.py:19</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.install_uplogic">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">install_uplogic</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.install_uplogic" title="Link to this definition"></a></dt>
+<dd><p>Downloads the latest version of the uplogic module required for running logic nodes.</p>
+<p>NOTE: This may take a few seconds and requires internet connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/installuplogic.py#L67">addons_core/bge_netlogic/ops/installuplogic.py:67</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.key_selector">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">key_selector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">keycode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_socket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.key_selector" title="Link to this definition"></a></dt>
+<dd><p>Undocumented, consider <a class="reference external" href="https://developer.blender.org/">contributing</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>keycode</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – keycode</p></li>
+<li><p><strong>is_socket</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – is_socket</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/keyselector.py#L25">addons_core/bge_netlogic/ops/keyselector.py:25</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.load_font">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">load_font</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*.ttf;*.otf;'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.load_font" title="Link to this definition"></a></dt>
+<dd><p>Load an image file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Filepath used for importing the file</p></li>
+<li><p><strong>filter_glob</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – filter_glob</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/loadfile.py#L80">addons_core/bge_netlogic/ops/loadfile.py:80</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.load_image">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">load_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*.jpg;*.png;*.jpeg;*.JPEG;'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.load_image" title="Link to this definition"></a></dt>
+<dd><p>Load an image file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Filepath used for importing the file</p></li>
+<li><p><strong>filter_glob</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – filter_glob</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/loadfile.py#L55">addons_core/bge_netlogic/ops/loadfile.py:55</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.load_sound">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">load_sound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_glob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'*.wav;*.mp3;*.ogg*'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.load_sound" title="Link to this definition"></a></dt>
+<dd><p>Load a sound file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Filepath used for importing the file</p></li>
+<li><p><strong>filter_glob</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – filter_glob</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/loadfile.py#L29">addons_core/bge_netlogic/ops/loadfile.py:29</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.move_game_property">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">move_game_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.move_game_property" title="Link to this definition"></a></dt>
+<dd><p>Move Game Property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – index</p></li>
+<li><p><strong>direction</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – direction</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/movegameproperty.py#L24">addons_core/bge_netlogic/ops/movegameproperty.py:24</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.node_search">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">node_search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.node_search" title="Link to this definition"></a></dt>
+<dd><p>Search for registered Logic Nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – node</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/nodesearch.py#L81">addons_core/bge_netlogic/ops/nodesearch.py:81</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.open_donate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">open_donate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.open_donate" title="Link to this definition"></a></dt>
+<dd><p>Please consider supporting this Add-On</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/webbuttons.py#L12">addons_core/bge_netlogic/ops/webbuttons.py:12</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.open_github">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">open_github</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.open_github" title="Link to this definition"></a></dt>
+<dd><p>Get involved with development</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/webbuttons.py#L45">addons_core/bge_netlogic/ops/webbuttons.py:45</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.open_upbge_docs">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">open_upbge_docs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.open_upbge_docs" title="Link to this definition"></a></dt>
+<dd><p>UPBGE API Documentation</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/webbuttons.py#L34">addons_core/bge_netlogic/ops/webbuttons.py:34</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.open_upbge_manual">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">open_upbge_manual</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.open_upbge_manual" title="Link to this definition"></a></dt>
+<dd><p>Manual on engine and node usage</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/webbuttons.py#L23">addons_core/bge_netlogic/ops/webbuttons.py:23</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.pack_new_tree">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">pack_new_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_tree_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NewTree'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.pack_new_tree" title="Link to this definition"></a></dt>
+<dd><p>Convert selected Nodes to a new tree. Will be applied to selected object.
+WARNING: All Nodes connected to selection must be selected too</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>new_tree_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – New Tree Name</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/packnewtree.py#L147">addons_core/bge_netlogic/ops/packnewtree.py:147</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.register_custom_node">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">register_custom_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.register_custom_node" title="Link to this definition"></a></dt>
+<dd><p>Register Custom Logic Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text_name</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Node, Register a node defined in a python file</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/registercustomnode.py#L31">addons_core/bge_netlogic/ops/registercustomnode.py:31</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.reload_components">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">reload_components</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.reload_components" title="Link to this definition"></a></dt>
+<dd><p>Reload all components applied to this object</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/reloadcomponents.py#L55">addons_core/bge_netlogic/ops/reloadcomponents.py:55</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.reload_texts">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">reload_texts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.reload_texts" title="Link to this definition"></a></dt>
+<dd><p>Reload all externally saved scripts</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/reloadtexts.py#L17">addons_core/bge_netlogic/ops/reloadtexts.py:17</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.remove_custom_node">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">remove_custom_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.remove_custom_node" title="Link to this definition"></a></dt>
+<dd><p>Remove Custom Logic Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – index</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/removecustomnode.py#L21">addons_core/bge_netlogic/ops/removecustomnode.py:21</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.remove_game_property">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">remove_game_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.remove_game_property" title="Link to this definition"></a></dt>
+<dd><p>Remove this property</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – index</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/removegameproperty.py#L19">addons_core/bge_netlogic/ops/removegameproperty.py:19</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.remove_global_category">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">remove_global_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.remove_global_category" title="Link to this definition"></a></dt>
+<dd><p>Remove a global value category</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/removeglobalcategory.py#L16">addons_core/bge_netlogic/ops/removeglobalcategory.py:16</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.remove_global_property">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">remove_global_property</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.remove_global_property" title="Link to this definition"></a></dt>
+<dd><p>Remove a value accessible from anywhere</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/removeglobalproperty.py#L17">addons_core/bge_netlogic/ops/removeglobalproperty.py:17</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.remove_logic_tree_property">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">remove_logic_tree_property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop_index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.remove_logic_tree_property" title="Link to this definition"></a></dt>
+<dd><p>Remove a value accessible from anywhere</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>prop_index</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – prop_index</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/removelogictreeproperty.py#L25">addons_core/bge_netlogic/ops/removelogictreeproperty.py:25</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.remove_socket">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">remove_socket</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.remove_socket" title="Link to this definition"></a></dt>
+<dd><p>Remove this socket</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/removesocket.py#L17">addons_core/bge_netlogic/ops/removesocket.py:17</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.reset_empty_scale">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">reset_empty_scale</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.reset_empty_scale" title="Link to this definition"></a></dt>
+<dd><p>Reset the volume scale</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/resetemptyscale.py#L17">addons_core/bge_netlogic/ops/resetemptyscale.py:17</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.save_custom_node">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">save_custom_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.save_custom_node" title="Link to this definition"></a></dt>
+<dd><p>Save Custom Logic Node</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>index</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – index</p>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/savecustomnode.py#L20">addons_core/bge_netlogic/ops/savecustomnode.py:20</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.start_ui_preview">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">start_ui_preview</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.start_ui_preview" title="Link to this definition"></a></dt>
+<dd><p>Show this canvas and its children. Children are determined by connected ‘Widget’ sockets, ‘Condition’ sockets don’t matter</p>
+<dl class="field-list simple">
+<dt class="field-odd">File<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/startuipreview.py#L19">addons_core/bge_netlogic/ops/startuipreview.py:19</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.logic_nodes.unapply_logic_tree">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.logic_nodes.</span></span><span class="sig-name descname"><span class="pre">unapply_logic_tree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">from_obj_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.logic_nodes.unapply_logic_tree" title="Link to this definition"></a></dt>
+<dd><p>Remove the tree from the selected objects</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tree_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – tree_name</p></li>
+<li><p><strong>from_obj_name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – from_obj_name</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/addons_core/bge_netlogic/ops/unapplylogictree.py#L26">addons_core/bge_netlogic/ops/unapplylogictree.py:26</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.logic.html" class="btn btn-neutral float-left" title="Logic Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.marker.html" class="btn btn-neutral float-right" title="Marker Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.logic_nodes.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.logic_nodes.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

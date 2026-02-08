@@ -1,0 +1,916 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transform Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.transform.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Ui Operators" href="bpy.ops.ui.html" />
+    <link rel="prev" title="Texture Operators" href="bpy.ops.texture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Transform Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.bbone_resize"><code class="docutils literal notranslate"><span class="pre">bbone_resize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.bend"><code class="docutils literal notranslate"><span class="pre">bend()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.create_orientation"><code class="docutils literal notranslate"><span class="pre">create_orientation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.delete_orientation"><code class="docutils literal notranslate"><span class="pre">delete_orientation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.edge_bevelweight"><code class="docutils literal notranslate"><span class="pre">edge_bevelweight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.edge_crease"><code class="docutils literal notranslate"><span class="pre">edge_crease()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.edge_slide"><code class="docutils literal notranslate"><span class="pre">edge_slide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.from_gizmo"><code class="docutils literal notranslate"><span class="pre">from_gizmo()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.mirror"><code class="docutils literal notranslate"><span class="pre">mirror()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.push_pull"><code class="docutils literal notranslate"><span class="pre">push_pull()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.resize"><code class="docutils literal notranslate"><span class="pre">resize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.rotate"><code class="docutils literal notranslate"><span class="pre">rotate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.rotate_normal"><code class="docutils literal notranslate"><span class="pre">rotate_normal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.select_orientation"><code class="docutils literal notranslate"><span class="pre">select_orientation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.seq_slide"><code class="docutils literal notranslate"><span class="pre">seq_slide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.shear"><code class="docutils literal notranslate"><span class="pre">shear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.shrink_fatten"><code class="docutils literal notranslate"><span class="pre">shrink_fatten()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.skin_resize"><code class="docutils literal notranslate"><span class="pre">skin_resize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.tilt"><code class="docutils literal notranslate"><span class="pre">tilt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.tosphere"><code class="docutils literal notranslate"><span class="pre">tosphere()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.trackball"><code class="docutils literal notranslate"><span class="pre">trackball()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.translate"><code class="docutils literal notranslate"><span class="pre">translate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.vert_crease"><code class="docutils literal notranslate"><span class="pre">vert_crease()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.vert_slide"><code class="docutils literal notranslate"><span class="pre">vert_slide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.vertex_random"><code class="docutils literal notranslate"><span class="pre">vertex_random()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.transform.vertex_warp"><code class="docutils literal notranslate"><span class="pre">vertex_warp()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Transform Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.transform">
+<span id="transform-operators"></span><h1>Transform Operators<a class="headerlink" href="#module-bpy.ops.transform" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.bbone_resize">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">bbone_resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.bbone_resize" title="Link to this definition"></a></dt>
+<dd><p>Scale selected bendy bones display size</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Display Size</p></li>
+<li><p><strong>orient_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.bend">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">bend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.bend" title="Link to this definition"></a></dt>
+<dd><p>Bend selected items between the 3D cursor and the mouse</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float array</em><em> of </em><em>1 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Angle</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.create_orientation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">create_orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_view</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.create_orientation" title="Link to this definition"></a></dt>
+<dd><p>Create transformation orientation from selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name of the new custom orientation</p></li>
+<li><p><strong>use_view</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use View, Use the current view instead of the active object to create the new orientation</p></li>
+<li><p><strong>use</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use After Creation, Select orientation after its creation</p></li>
+<li><p><strong>overwrite</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Overwrite Previous, Overwrite previously created orientation with same name</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.delete_orientation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">delete_orientation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.delete_orientation" title="Link to this definition"></a></dt>
+<dd><p>Delete transformation orientation</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.edge_bevelweight">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">edge_bevelweight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.edge_bevelweight" title="Link to this definition"></a></dt>
+<dd><p>Change the bevel weight of edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-1</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.edge_crease">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">edge_crease</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.edge_crease" title="Link to this definition"></a></dt>
+<dd><p>Change the crease of edges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-1</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.edge_slide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">edge_slide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">single_side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_even</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_clamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'INCREMENT'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_project</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_nonedit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_selectable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_uv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.edge_slide" title="Link to this definition"></a></dt>
+<dd><p>Slide an edge loop along a mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-10</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p></li>
+<li><p><strong>single_side</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Single Side</p></li>
+<li><p><strong>use_even</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Even, Make the edge loop match the shape of the adjacent edge loop</p></li>
+<li><p><strong>flipped</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flipped, When Even mode is active, flips between the two adjacent edge loops</p></li>
+<li><p><strong>use_clamp</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clamp, Clamp within the edge extents</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>snap_elements</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, (optional)) – Snap to Elements</p></li>
+<li><p><strong>use_snap_project</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project Individual Elements</p></li>
+<li><p><strong>snap_target</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, (optional)) – Snap Base, Point on source that will snap to target</p></li>
+<li><p><strong>use_snap_self</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Active</p></li>
+<li><p><strong>use_snap_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Edit</p></li>
+<li><p><strong>use_snap_nonedit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Non-Edited</p></li>
+<li><p><strong>use_snap_selectable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Exclude Non-Selectable</p></li>
+<li><p><strong>snap_point</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Point</p></li>
+<li><p><strong>correct_uv</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct UVs, Correct UV coordinates when transforming</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.from_gizmo">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">from_gizmo</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.from_gizmo" title="Link to this definition"></a></dt>
+<dd><p>Transform selected items by mode type</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.mirror">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">mirror</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.mirror" title="Link to this definition"></a></dt>
+<dd><p>Mirror selected items around one or more axes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>orient_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.push_pull">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">push_pull</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.push_pull" title="Link to this definition"></a></dt>
+<dd><p>Push/Pull selected items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Distance</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.resize">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mouse_dir_constraint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'INCREMENT'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_project</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_nonedit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_selectable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_on_cancel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_duplicated_keyframes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.resize" title="Link to this definition"></a></dt>
+<dd><p>Scale (resize) selected items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Scale</p></li>
+<li><p><strong>mouse_dir_constraint</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Mouse Directional Constraint</p></li>
+<li><p><strong>orient_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>snap_elements</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, (optional)) – Snap to Elements</p></li>
+<li><p><strong>use_snap_project</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project Individual Elements</p></li>
+<li><p><strong>snap_target</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, (optional)) – Snap Base, Point on source that will snap to target</p></li>
+<li><p><strong>use_snap_self</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Active</p></li>
+<li><p><strong>use_snap_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Edit</p></li>
+<li><p><strong>use_snap_nonedit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Non-Edited</p></li>
+<li><p><strong>use_snap_selectable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Exclude Non-Selectable</p></li>
+<li><p><strong>snap_point</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Point</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>texture_space</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Texture Space, Edit object data texture space</p></li>
+<li><p><strong>remove_on_cancel</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Remove on Cancel, Remove elements on cancel</p></li>
+<li><p><strong>use_duplicated_keyframes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Duplicated Keyframes, Transform duplicated keyframes</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.rotate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'INCREMENT'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_project</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_nonedit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_selectable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.rotate" title="Link to this definition"></a></dt>
+<dd><p>Rotate selected items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Angle</p></li>
+<li><p><strong>orient_axis</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/axis_xyz_items.html#rna-enum-axis-xyz-items"><span class="std std-ref">Axis Xyz Items</span></a>, (optional)) – Axis</p></li>
+<li><p><strong>orient_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>snap_elements</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, (optional)) – Snap to Elements</p></li>
+<li><p><strong>use_snap_project</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project Individual Elements</p></li>
+<li><p><strong>snap_target</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, (optional)) – Snap Base, Point on source that will snap to target</p></li>
+<li><p><strong>use_snap_self</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Active</p></li>
+<li><p><strong>use_snap_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Edit</p></li>
+<li><p><strong>use_snap_nonedit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Non-Edited</p></li>
+<li><p><strong>use_snap_selectable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Exclude Non-Selectable</p></li>
+<li><p><strong>snap_point</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Point</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.rotate_normal">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">rotate_normal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.rotate_normal" title="Link to this definition"></a></dt>
+<dd><p>Rotate custom normal of selected items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Angle</p></li>
+<li><p><strong>orient_axis</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/axis_xyz_items.html#rna-enum-axis-xyz-items"><span class="std std-ref">Axis Xyz Items</span></a>, (optional)) – Axis</p></li>
+<li><p><strong>orient_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.select_orientation">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">select_orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.select_orientation" title="Link to this definition"></a></dt>
+<dd><p>Select transformation orientation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>orientation</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.seq_slide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">seq_slide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_restore_handle_selection</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_on_cancel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_duplicated_keyframes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view2d_edge_pan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.seq_slide" title="Link to this definition"></a></dt>
+<dd><p>Slide a sequence strip in time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Offset</p></li>
+<li><p><strong>use_restore_handle_selection</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Restore Handle Selection, Restore handle selection after tweaking</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>texture_space</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Texture Space, Edit object data texture space</p></li>
+<li><p><strong>remove_on_cancel</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Remove on Cancel, Remove elements on cancel</p></li>
+<li><p><strong>use_duplicated_keyframes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Duplicated Keyframes, Transform duplicated keyframes</p></li>
+<li><p><strong>view2d_edge_pan</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edge Pan, Enable edge panning in 2D view</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.shear">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">shear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_axis_ortho</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'X'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.shear" title="Link to this definition"></a></dt>
+<dd><p>Shear selected items along the given axis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Angle</p></li>
+<li><p><strong>orient_axis</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/axis_xyz_items.html#rna-enum-axis-xyz-items"><span class="std std-ref">Axis Xyz Items</span></a>, (optional)) – Axis</p></li>
+<li><p><strong>orient_axis_ortho</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/axis_xyz_items.html#rna-enum-axis-xyz-items"><span class="std std-ref">Axis Xyz Items</span></a>, (optional)) – Axis Ortho</p></li>
+<li><p><strong>orient_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Matrix Orientation</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.shrink_fatten">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">shrink_fatten</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_even_offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.shrink_fatten" title="Link to this definition"></a></dt>
+<dd><p>Shrink/fatten selected vertices along normals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset</p></li>
+<li><p><strong>use_even_offset</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset Even, Scale the offset to give more even thickness</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.skin_resize">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">skin_resize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'INCREMENT'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_project</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_nonedit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_selectable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.skin_resize" title="Link to this definition"></a></dt>
+<dd><p>Scale selected vertices’ skin radii</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Scale</p></li>
+<li><p><strong>orient_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>snap_elements</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, (optional)) – Snap to Elements</p></li>
+<li><p><strong>use_snap_project</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project Individual Elements</p></li>
+<li><p><strong>snap_target</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, (optional)) – Snap Base, Point on source that will snap to target</p></li>
+<li><p><strong>use_snap_self</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Active</p></li>
+<li><p><strong>use_snap_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Edit</p></li>
+<li><p><strong>use_snap_nonedit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Non-Edited</p></li>
+<li><p><strong>use_snap_selectable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Exclude Non-Selectable</p></li>
+<li><p><strong>snap_point</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Point</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.tilt">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">tilt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.tilt" title="Link to this definition"></a></dt>
+<dd><p>Tilt selected control vertices of 3D curve</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Angle</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.tosphere">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">tosphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.tosphere" title="Link to this definition"></a></dt>
+<dd><p>Move selected items outward in a spherical shape around geometric center</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.trackball">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">trackball</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.trackball" title="Link to this definition"></a></dt>
+<dd><p>Trackball style rotation of selected items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float array</em><em> of </em><em>2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Angle</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.transform">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TRANSLATION'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Z'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'INCREMENT'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_project</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_nonedit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_selectable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_normal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_on_cancel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_duplicated_keyframes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center_override</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_automerge_and_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.transform" title="Link to this definition"></a></dt>
+<dd><p>Transform selected items by mode type</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/transform_mode_type_items.html#rna-enum-transform-mode-type-items"><span class="std std-ref">Transform Mode Type Items</span></a>, (optional)) – Mode</p></li>
+<li><p><strong>value</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 4 items in [-inf, inf], (optional)) – Values</p></li>
+<li><p><strong>orient_axis</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/axis_xyz_items.html#rna-enum-axis-xyz-items"><span class="std std-ref">Axis Xyz Items</span></a>, (optional)) – Axis</p></li>
+<li><p><strong>orient_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/transform_orientation_items.html#rna-enum-transform-orientation-items"><span class="std std-ref">Transform Orientation Items</span></a>, (optional)) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/transform_orientation_items.html#rna-enum-transform-orientation-items"><span class="std std-ref">Transform Orientation Items</span></a>, (optional)) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>snap_elements</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, (optional)) – Snap to Elements</p></li>
+<li><p><strong>use_snap_project</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project Individual Elements</p></li>
+<li><p><strong>snap_target</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, (optional)) – Snap Base, Point on source that will snap to target</p></li>
+<li><p><strong>use_snap_self</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Active</p></li>
+<li><p><strong>use_snap_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Edit</p></li>
+<li><p><strong>use_snap_nonedit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Non-Edited</p></li>
+<li><p><strong>use_snap_selectable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Exclude Non-Selectable</p></li>
+<li><p><strong>snap_point</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Point</p></li>
+<li><p><strong>snap_align</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Align with Point Normal</p></li>
+<li><p><strong>snap_normal</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Normal</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>texture_space</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Texture Space, Edit object data texture space</p></li>
+<li><p><strong>remove_on_cancel</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Remove on Cancel, Remove elements on cancel</p></li>
+<li><p><strong>use_duplicated_keyframes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Duplicated Keyframes, Transform duplicated keyframes</p></li>
+<li><p><strong>center_override</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center Override, Force using this center value (when set)</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+<li><p><strong>use_automerge_and_split</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Auto Merge &amp; Split, Forces the use of Auto Merge and Split</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.translate">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">translate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orient_matrix_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GLOBAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constraint_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(False,</span> <span class="pre">False,</span> <span class="pre">False)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_edit_falloff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proportional_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_connected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_proportional_projected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'INCREMENT'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_project</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_nonedit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_selectable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_align</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_normal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gpencil_strokes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor_transform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">texture_space</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_on_cancel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_duplicated_keyframes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">view2d_edge_pan</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_automerge_and_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">translate_origin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.translate" title="Link to this definition"></a></dt>
+<dd><p>Move selected items</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Move</p></li>
+<li><p><strong>orient_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/transform_orientation_items.html#rna-enum-transform-orientation-items"><span class="std std-ref">Transform Orientation Items</span></a>, (optional)) – Orientation, Transformation orientation</p></li>
+<li><p><strong>orient_matrix</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 3 * 3 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>orient_matrix_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/transform_orientation_items.html#rna-enum-transform-orientation-items"><span class="std std-ref">Transform Orientation Items</span></a>, (optional)) – Matrix Orientation</p></li>
+<li><p><strong>constraint_axis</strong> (<em>boolean array</em><em> of </em><em>3 items</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Constraint Axis</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>use_proportional_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Editing</p></li>
+<li><p><strong>proportional_edit_falloff</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/proportional_falloff_items.html#rna-enum-proportional-falloff-items"><span class="std std-ref">Proportional Falloff Items</span></a>, (optional)) – Proportional Falloff, Falloff type for proportional editing mode</p></li>
+<li><p><strong>proportional_size</strong> (<em>float in</em><em> [</em><em>1e-06</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Proportional Size</p></li>
+<li><p><strong>use_proportional_connected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Connected</p></li>
+<li><p><strong>use_proportional_projected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Projected (2D)</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>snap_elements</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, (optional)) – Snap to Elements</p></li>
+<li><p><strong>use_snap_project</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project Individual Elements</p></li>
+<li><p><strong>snap_target</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, (optional)) – Snap Base, Point on source that will snap to target</p></li>
+<li><p><strong>use_snap_self</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Active</p></li>
+<li><p><strong>use_snap_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Edit</p></li>
+<li><p><strong>use_snap_nonedit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Non-Edited</p></li>
+<li><p><strong>use_snap_selectable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Exclude Non-Selectable</p></li>
+<li><p><strong>snap_point</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Point</p></li>
+<li><p><strong>snap_align</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Align with Point Normal</p></li>
+<li><p><strong>snap_normal</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Normal</p></li>
+<li><p><strong>gpencil_strokes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Grease Pencil, Edit selected Grease Pencil strokes</p></li>
+<li><p><strong>cursor_transform</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Transform Cursor</p></li>
+<li><p><strong>texture_space</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edit Texture Space, Edit object data texture space</p></li>
+<li><p><strong>remove_on_cancel</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Remove on Cancel, Remove elements on cancel</p></li>
+<li><p><strong>use_duplicated_keyframes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Duplicated Keyframes, Transform duplicated keyframes</p></li>
+<li><p><strong>view2d_edge_pan</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Edge Pan, Enable edge panning in 2D view</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+<li><p><strong>use_automerge_and_split</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Auto Merge &amp; Split, Forces the use of Auto Merge and Split</p></li>
+<li><p><strong>translate_origin</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Translate Origin, Translate origin instead of selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.vert_crease">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">vert_crease</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.vert_crease" title="Link to this definition"></a></dt>
+<dd><p>Change the crease of vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-1</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.vert_slide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">vert_slide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_even</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flipped</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_clamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mirror</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_elements</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'INCREMENT'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_project</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSEST'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_self</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_edit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_nonedit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_snap_selectable</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">snap_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_uv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">release_confirm</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_accurate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.vert_slide" title="Link to this definition"></a></dt>
+<dd><p>Slide a vertex along a mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>-10</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor</p></li>
+<li><p><strong>use_even</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Even, Make the edge loop match the shape of the adjacent edge loop</p></li>
+<li><p><strong>flipped</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flipped, When Even mode is active, flips between the two adjacent edge loops</p></li>
+<li><p><strong>use_clamp</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Clamp, Clamp within the edge extents</p></li>
+<li><p><strong>direction</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Slide Direction, World-space direction</p></li>
+<li><p><strong>mirror</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mirror Editing</p></li>
+<li><p><strong>snap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Snapping Options</p></li>
+<li><p><strong>snap_elements</strong> (enum set in <a class="reference internal" href="bpy_types_enum_items/snap_element_items.html#rna-enum-snap-element-items"><span class="std std-ref">Snap Element Items</span></a>, (optional)) – Snap to Elements</p></li>
+<li><p><strong>use_snap_project</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project Individual Elements</p></li>
+<li><p><strong>snap_target</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/snap_source_items.html#rna-enum-snap-source-items"><span class="std std-ref">Snap Source Items</span></a>, (optional)) – Snap Base, Point on source that will snap to target</p></li>
+<li><p><strong>use_snap_self</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Active</p></li>
+<li><p><strong>use_snap_edit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Edit</p></li>
+<li><p><strong>use_snap_nonedit</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Include Non-Edited</p></li>
+<li><p><strong>use_snap_selectable</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Target: Exclude Non-Selectable</p></li>
+<li><p><strong>snap_point</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Point</p></li>
+<li><p><strong>correct_uv</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Correct UVs, Correct UV coordinates when transforming</p></li>
+<li><p><strong>release_confirm</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Confirm on Release, Always confirm operation when releasing button</p></li>
+<li><p><strong>use_accurate</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Accurate, Use accurate transformation</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.vertex_random">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">vertex_random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">uniform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.vertex_random" title="Link to this definition"></a></dt>
+<dd><p>Randomize vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Amount, Distance to offset</p></li>
+<li><p><strong>uniform</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Uniform, Increase for uniform offset distance</p></li>
+<li><p><strong>normal</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normal, Align offset direction to normals</p></li>
+<li><p><strong>seed</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>10000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Random Seed, Seed for the random number generator</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.transform.vertex_warp">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.transform.</span></span><span class="sig-name descname"><span class="pre">vertex_warp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">warp_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6.28319</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viewmat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">((0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0),</span> <span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0))</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.transform.vertex_warp" title="Link to this definition"></a></dt>
+<dd><p>Warp vertices around the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>warp_angle</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Warp Angle, Amount to warp about the cursor</p></li>
+<li><p><strong>offset_angle</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset Angle, Angle to use as the basis for warping</p></li>
+<li><p><strong>min</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Min</p></li>
+<li><p><strong>max</strong> (<em>float in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Max</p></li>
+<li><p><strong>viewmat</strong> (<a class="reference internal" href="mathutils.html#mathutils.Matrix" title="mathutils.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Matrix</span></code></a> of 4 * 4 items in [-inf, inf], (optional)) – Matrix</p></li>
+<li><p><strong>center</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 3 items in [-inf, inf], (optional)) – Center</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.texture.html" class="btn btn-neutral float-left" title="Texture Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.ui.html" class="btn btn-neutral float-right" title="Ui Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.transform.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.transform.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

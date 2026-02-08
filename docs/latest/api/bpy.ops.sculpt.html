@@ -1,0 +1,1233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sculpt Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.sculpt.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Sculpt Curves Operators" href="bpy.ops.sculpt_curves.html" />
+    <link rel="prev" title="Script Operators" href="bpy.ops.script.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paint.html">Paint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Sculpt Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.brush_stroke"><code class="docutils literal notranslate"><span class="pre">brush_stroke()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.cloth_filter"><code class="docutils literal notranslate"><span class="pre">cloth_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.color_filter"><code class="docutils literal notranslate"><span class="pre">color_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.detail_flood_fill"><code class="docutils literal notranslate"><span class="pre">detail_flood_fill()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.dynamic_topology_toggle"><code class="docutils literal notranslate"><span class="pre">dynamic_topology_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.dyntopo_detail_size_edit"><code class="docutils literal notranslate"><span class="pre">dyntopo_detail_size_edit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.expand"><code class="docutils literal notranslate"><span class="pre">expand()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_set_box_gesture"><code class="docutils literal notranslate"><span class="pre">face_set_box_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_set_change_visibility"><code class="docutils literal notranslate"><span class="pre">face_set_change_visibility()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_set_edit"><code class="docutils literal notranslate"><span class="pre">face_set_edit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_set_extract"><code class="docutils literal notranslate"><span class="pre">face_set_extract()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_set_lasso_gesture"><code class="docutils literal notranslate"><span class="pre">face_set_lasso_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_set_line_gesture"><code class="docutils literal notranslate"><span class="pre">face_set_line_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_set_polyline_gesture"><code class="docutils literal notranslate"><span class="pre">face_set_polyline_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_sets_create"><code class="docutils literal notranslate"><span class="pre">face_sets_create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_sets_init"><code class="docutils literal notranslate"><span class="pre">face_sets_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.face_sets_randomize_colors"><code class="docutils literal notranslate"><span class="pre">face_sets_randomize_colors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.mask_by_color"><code class="docutils literal notranslate"><span class="pre">mask_by_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.mask_filter"><code class="docutils literal notranslate"><span class="pre">mask_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.mask_from_boundary"><code class="docutils literal notranslate"><span class="pre">mask_from_boundary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.mask_from_cavity"><code class="docutils literal notranslate"><span class="pre">mask_from_cavity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.mask_init"><code class="docutils literal notranslate"><span class="pre">mask_init()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.mesh_filter"><code class="docutils literal notranslate"><span class="pre">mesh_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.optimize"><code class="docutils literal notranslate"><span class="pre">optimize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.paint_mask_extract"><code class="docutils literal notranslate"><span class="pre">paint_mask_extract()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.paint_mask_slice"><code class="docutils literal notranslate"><span class="pre">paint_mask_slice()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.project_line_gesture"><code class="docutils literal notranslate"><span class="pre">project_line_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.sample_detail_size"><code class="docutils literal notranslate"><span class="pre">sample_detail_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.sculptmode_toggle"><code class="docutils literal notranslate"><span class="pre">sculptmode_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.set_persistent_base"><code class="docutils literal notranslate"><span class="pre">set_persistent_base()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.set_pivot_position"><code class="docutils literal notranslate"><span class="pre">set_pivot_position()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.symmetrize"><code class="docutils literal notranslate"><span class="pre">symmetrize()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.trim_box_gesture"><code class="docutils literal notranslate"><span class="pre">trim_box_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.trim_lasso_gesture"><code class="docutils literal notranslate"><span class="pre">trim_lasso_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.trim_line_gesture"><code class="docutils literal notranslate"><span class="pre">trim_line_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.trim_polyline_gesture"><code class="docutils literal notranslate"><span class="pre">trim_polyline_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.uv_sculpt_grab"><code class="docutils literal notranslate"><span class="pre">uv_sculpt_grab()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.uv_sculpt_pinch"><code class="docutils literal notranslate"><span class="pre">uv_sculpt_pinch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.sculpt.uv_sculpt_relax"><code class="docutils literal notranslate"><span class="pre">uv_sculpt_relax()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Sculpt Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.sculpt">
+<span id="sculpt-operators"></span><h1>Sculpt Operators<a class="headerlink" href="#module-bpy.ops.sculpt" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.brush_stroke">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">brush_stroke</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NORMAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brush_toggle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'None'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pen_flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore_background_click</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.brush_stroke" title="Link to this definition"></a></dt>
+<dd><p>Sculpt a stroke into the geometry</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stroke</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorStrokeElement</span></code>, (optional)) – Stroke</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NORMAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Stroke Mode, Action taken when a paint stroke is made</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code>
+Regular – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert action of brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>brush_toggle</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'None'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERASE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MASK'</span></code>], (optional)) – <p>Temporary Brush Toggle Type, Brush to use for duration of stroke</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>
+None – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code>
+Smooth – Switch to smooth brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERASE</span></code>
+Erase – Switch to erase brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MASK</span></code>
+Mask – Switch to mask brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>pen_flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pen Flip, Whether a tablet’s eraser mode is being used</p></li>
+<li><p><strong>override_location</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Override Location, Override the given “location” array by recalculating object space positions from the provided “mouse_event” positions</p></li>
+<li><p><strong>ignore_background_click</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Ignore Background Click, Clicks on the background do not start the stroke</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.cloth_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">cloth_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_mouse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_normal_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_history</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GRAVITY'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'X',</span> <span class="pre">'Y',</span> <span class="pre">'Z'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LOCAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cloth_mass</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cloth_damping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_face_sets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_collisions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.cloth_filter" title="Link to this definition"></a></dt>
+<dd><p>Applies a cloth simulation deformation to the entire mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_mouse</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>0</em><em>, </em><em>16384</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Starting Mouse</p></li>
+<li><p><strong>area_normal_radius</strong> (<em>float in</em><em> [</em><em>0.001</em><em>, </em><em>5</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normal Radius, Radius used for calculating area normal on initial click,in percentage of brush radius</p></li>
+<li><p><strong>strength</strong> (<em>float in</em><em> [</em><em>-10</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Strength, Filter strength</p></li>
+<li><p><strong>iteration_count</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>10000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Repeat, How many times to repeat the filter</p></li>
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'GRAVITY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INFLATE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'EXPAND'</span></code>, <code class="docutils literal notranslate"><span class="pre">'PINCH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SCALE'</span></code>], (optional)) – <p>Filter Type, Operation that is going to be applied to the mesh</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GRAVITY</span></code>
+Gravity – Applies gravity to the simulation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFLATE</span></code>
+Inflate – Inflates the cloth.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXPAND</span></code>
+Expand – Expands the cloth’s dimensions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PINCH</span></code>
+Pinch – Pulls the cloth to the cursor’s start position.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCALE</span></code>
+Scale – Scales the mesh as a soft body using the origin of the object as scale.</p></li>
+</ul>
+</p></li>
+<li><p><strong>force_axis</strong> (enum set in {<code class="docutils literal notranslate"><span class="pre">'X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Z'</span></code>}, (optional)) – <p>Force Axis, Apply the force in the selected axis</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>
+X – Apply force in the X axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code>
+Y – Apply force in the Y axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z</span></code>
+Z – Apply force in the Z axis.</p></li>
+</ul>
+</p></li>
+<li><p><strong>orientation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LOCAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WORLD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>], (optional)) – <p>Orientation, Orientation of the axis to limit the filter force</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL</span></code>
+Local – Use the local axis to limit the force and set the gravity direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORLD</span></code>
+World – Use the global axis to limit the force and set the gravity direction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Use the view axis to limit the force and set the gravity direction.</p></li>
+</ul>
+</p></li>
+<li><p><strong>cloth_mass</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>2</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cloth Mass, Mass of each simulation particle</p></li>
+<li><p><strong>cloth_damping</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cloth Damping, How much the applied forces are propagated through the cloth</p></li>
+<li><p><strong>use_face_sets</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Face Sets, Apply the filter only to the face set under the cursor</p></li>
+<li><p><strong>use_collisions</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Collisions, Collide with other collider objects in the scene</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.color_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">color_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_mouse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_normal_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_history</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FILL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1.0,</span> <span class="pre">1.0,</span> <span class="pre">1.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.color_filter" title="Link to this definition"></a></dt>
+<dd><p>Applies a filter to modify the active color attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_mouse</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>0</em><em>, </em><em>16384</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Starting Mouse</p></li>
+<li><p><strong>area_normal_radius</strong> (<em>float in</em><em> [</em><em>0.001</em><em>, </em><em>5</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normal Radius, Radius used for calculating area normal on initial click,in percentage of brush radius</p></li>
+<li><p><strong>strength</strong> (<em>float in</em><em> [</em><em>-10</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Strength, Filter strength</p></li>
+<li><p><strong>iteration_count</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>10000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Repeat, How many times to repeat the filter</p></li>
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'FILL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'HUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SATURATION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BRIGHTNESS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CONTRAST'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GREEN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BLUE'</span></code>], (optional)) – <p>Filter Type</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">FILL</span></code>
+Fill – Fill with a specific color.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HUE</span></code>
+Hue – Change hue.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SATURATION</span></code>
+Saturation – Change saturation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+Value – Change value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BRIGHTNESS</span></code>
+Brightness – Change brightness.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CONTRAST</span></code>
+Contrast – Change contrast.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code>
+Smooth – Smooth colors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RED</span></code>
+Red – Change red channel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GREEN</span></code>
+Green – Change green channel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BLUE</span></code>
+Blue – Change blue channel.</p></li>
+</ul>
+</p></li>
+<li><p><strong>fill_color</strong> (<a class="reference internal" href="mathutils.html#mathutils.Color" title="mathutils.Color"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Color</span></code></a> of 3 items in [0, inf], (optional)) – Fill Color</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.detail_flood_fill">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">detail_flood_fill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.detail_flood_fill" title="Link to this definition"></a></dt>
+<dd><p>Flood fill the mesh with the selected detail setting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.dynamic_topology_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">dynamic_topology_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.dynamic_topology_toggle" title="Link to this definition"></a></dt>
+<dd><p>Dynamic topology alters the mesh topology while sculpting</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.dyntopo_detail_size_edit">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">dyntopo_detail_size_edit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.dyntopo_detail_size_edit" title="Link to this definition"></a></dt>
+<dd><p>Modify the detail size of dyntopo interactively</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.expand">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">expand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MASK'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">falloff_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GEODESIC'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_mask_preserve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_falloff_gradient</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_modify_active</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_reposition_pivot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_geodesic_move_preview</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_auto_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normal_falloff_smooth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.expand" title="Link to this definition"></a></dt>
+<dd><p>Generic sculpt expand operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'MASK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FACE_SETS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COLOR'</span></code>], (optional)) – Data Target, Data that is going to be modified in the expand operation</p></li>
+<li><p><strong>falloff_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'GEODESIC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOPOLOGY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TOPOLOGY_DIAGONALS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NORMALS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SPHERICAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BOUNDARY_TOPOLOGY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BOUNDARY_FACE_SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTIVE_FACE_SET'</span></code>], (optional)) – Falloff Type, Initial falloff of the expand operation</p></li>
+<li><p><strong>invert</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Invert, Invert the expand active elements</p></li>
+<li><p><strong>use_mask_preserve</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Preserve Previous, Preserve the previous state of the target data</p></li>
+<li><p><strong>use_falloff_gradient</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Falloff Gradient, Expand Using a linear falloff</p></li>
+<li><p><strong>use_modify_active</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Modify Active, Modify the active face set instead of creating a new one</p></li>
+<li><p><strong>use_reposition_pivot</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Reposition Pivot, Reposition the sculpt transform pivot to the boundary of the expand active area</p></li>
+<li><p><strong>max_geodesic_move_preview</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Max Vertex Count for Geodesic Move Preview, Maximum number of vertices in the mesh for using geodesic falloff when moving the origin of expand. If the total number of vertices is greater than this value, the falloff will be set to spherical when moving</p></li>
+<li><p><strong>use_auto_mask</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Auto Create, Fill in mask if nothing is already masked</p></li>
+<li><p><strong>normal_falloff_smooth</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normal Smooth, Blurring steps for normal falloff</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_set_box_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_set_box_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_box_gesture" title="Link to this definition"></a></dt>
+<dd><p>Add a face set in a rectangle defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_set_change_visibility">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_set_change_visibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_face_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_change_visibility" title="Link to this definition"></a></dt>
+<dd><p>Change the visibility of the face sets of the sculpt</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW_ACTIVE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'HIDE_ACTIVE'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle Visibility – Hide all face sets except for the active one.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW_ACTIVE</span></code>
+Show Active Face Set – Show the active face set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE_ACTIVE</span></code>
+Hide Active Face Set – Hide the active face set.</p></li>
+</ul>
+</p></li>
+<li><p><strong>active_face_set</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Active Face Set</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_set_edit">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_set_edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">active_face_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GROW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modify_hidden</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_edit" title="Link to this definition"></a></dt>
+<dd><p>Edits the current active face set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>active_face_set</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Active Face Set</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'GROW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHRINK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DELETE_GEOMETRY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FAIR_POSITIONS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FAIR_TANGENCY'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROW</span></code>
+Grow Face Set – Grows the face set boundary by one face based on mesh topology.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHRINK</span></code>
+Shrink Face Set – Shrinks the face set boundary by one face based on mesh topology.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DELETE_GEOMETRY</span></code>
+Delete Geometry – Deletes the faces that are assigned to the face set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAIR_POSITIONS</span></code>
+Fair Positions – Creates a smooth as possible geometry patch from the face set minimizing changes in vertex positions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FAIR_TANGENCY</span></code>
+Fair Tangency – Creates a smooth as possible geometry patch from the face set minimizing changes in vertex tangents.</p></li>
+</ul>
+</p></li>
+<li><p><strong>strength</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Strength</p></li>
+<li><p><strong>modify_hidden</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Modify Hidden, Apply the edit operation to hidden geometry</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_set_extract">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_set_extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_boundary_loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_shrinkwrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_solidify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_extract" title="Link to this definition"></a></dt>
+<dd><p>Create a new mesh object from the selected face set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_boundary_loop</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Add Boundary Loop, Add an extra edge loop to better preserve the shape when applying a subdivision surface modifier</p></li>
+<li><p><strong>smooth_iterations</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Iterations, Smooth iterations applied to the extracted mesh</p></li>
+<li><p><strong>apply_shrinkwrap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project to Sculpt, Project the extracted mesh into the original sculpt</p></li>
+<li><p><strong>add_solidify</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extract as Solid, Extract the mask as a solid object with a solidify modifier</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_set_lasso_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_set_lasso_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_smooth_stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_lasso_gesture" title="Link to this definition"></a></dt>
+<dd><p>Add a face set in a shape defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_smooth_stroke</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Stabilize Stroke, Selection lags behind mouse and follows a smoother path</p></li>
+<li><p><strong>smooth_stroke_factor</strong> (<em>float in</em><em> [</em><em>0.5</em><em>, </em><em>0.99</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Factor, Higher values gives a smoother stroke</p></li>
+<li><p><strong>smooth_stroke_radius</strong> (<em>int in</em><em> [</em><em>10</em><em>, </em><em>200</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Radius, Minimum distance from last point before selection continues</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_set_line_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_set_line_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_limit_to_segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_line_gesture" title="Link to this definition"></a></dt>
+<dd><p>Add a face set to one side of a line defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xstart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Start</p></li>
+<li><p><strong>xend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X End</p></li>
+<li><p><strong>ystart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Start</p></li>
+<li><p><strong>yend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y End</p></li>
+<li><p><strong>flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip</p></li>
+<li><p><strong>cursor</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cursor, Mouse cursor style to use during the modal operator</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>use_limit_to_segment</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Limit to Segment, Apply the gesture action only to the area that is contained within the segment without extending its effect to the entire line</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_set_polyline_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_set_polyline_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_set_polyline_gesture" title="Link to this definition"></a></dt>
+<dd><p>Add a face set in a shape defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_sets_create">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_sets_create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MASKED'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_sets_create" title="Link to this definition"></a></dt>
+<dd><p>Create a new face set</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'MASKED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VISIBLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ALL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECTION'</span></code>], (optional)) – <p>Mode</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MASKED</span></code>
+Face Set from Masked – Create a new face set from the masked faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VISIBLE</span></code>
+Face Set from Visible – Create a new face set from the visible vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ALL</span></code>
+Face Set Full Mesh – Create an unique face set with all faces in the sculpt.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECTION</span></code>
+Face Set from Edit Mode Selection – Create an face set corresponding to the Edit Mode face selection.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_sets_init">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_sets_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LOOSE_PARTS'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_sets_init" title="Link to this definition"></a></dt>
+<dd><p>Initializes all face sets in the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LOOSE_PARTS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MATERIALS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NORMALS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UV_SEAMS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CREASES'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BEVEL_WEIGHT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHARP_EDGES'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FACE_SET_BOUNDARIES'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOOSE_PARTS</span></code>
+Face Sets from Loose Parts – Create a face set per loose part in the mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MATERIALS</span></code>
+Face Sets from Material Slots – Create a face set per material slot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMALS</span></code>
+Face Sets from Mesh Normals – Create face sets for faces that have similar normal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UV_SEAMS</span></code>
+Face Sets from UV Seams – Create face sets using UV seams as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CREASES</span></code>
+Face Sets from Edge Creases – Create face sets using edge creases as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BEVEL_WEIGHT</span></code>
+Face Sets from Bevel Weight – Create face sets using bevel weights as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARP_EDGES</span></code>
+Face Sets from Sharp Edges – Create face sets using sharp edges as boundaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FACE_SET_BOUNDARIES</span></code>
+Face Sets from Face Set Boundaries – Create a face set per isolated face set.</p></li>
+</ul>
+</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, Minimum value to consider a certain attribute a boundary when creating the face sets</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.face_sets_randomize_colors">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">face_sets_randomize_colors</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.face_sets_randomize_colors" title="Link to this definition"></a></dt>
+<dd><p>Generates a new set of random colors to render the face sets in the viewport</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.mask_by_color">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">mask_by_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">contiguous</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preserve_previous_mask</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mask_by_color" title="Link to this definition"></a></dt>
+<dd><p>Creates a mask based on the active color attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>contiguous</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Contiguous, Mask only contiguous color areas</p></li>
+<li><p><strong>invert</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Invert, Invert the generated mask</p></li>
+<li><p><strong>preserve_previous_mask</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Preserve Previous Mask, Preserve the previous mask and add or subtract the new one generated by the colors</p></li>
+<li><p><strong>threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, How much changes in color affect the mask generation</p></li>
+<li><p><strong>location</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>0</em><em>, </em><em>32767</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Region coordinates of sampling</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.mask_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">mask_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SMOOTH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_iteration_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mask_filter" title="Link to this definition"></a></dt>
+<dd><p>Applies a filter to modify the current mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filter_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHARPEN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'GROW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHRINK'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CONTRAST_INCREASE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CONTRAST_DECREASE'</span></code>], (optional)) – Type, Filter that is going to be applied to the mask</p></li>
+<li><p><strong>iterations</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Iterations, Number of times that the filter is going to be applied</p></li>
+<li><p><strong>auto_iteration_count</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Auto Iteration Count, Use an automatic number of iterations based on the number of vertices of the sculpt</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.mask_from_boundary">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">mask_from_boundary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OPERATOR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MESH'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">propagation_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mask_from_boundary" title="Link to this definition"></a></dt>
+<dd><p>Creates a mask based on the boundaries of the surface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mix_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'MIX'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MULTIPLY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DIVIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUBTRACT'</span></code>], (optional)) – Mode, Mix mode</p></li>
+<li><p><strong>mix_factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>5</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mix Factor</p></li>
+<li><p><strong>settings_source</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OPERATOR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BRUSH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SCENE'</span></code>], (optional)) – <p>Settings, Use settings from here</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPERATOR</span></code>
+Operator – Use settings from operator properties.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BRUSH</span></code>
+Brush – Use settings from brush.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCENE</span></code>
+Scene – Use settings from scene.</p></li>
+</ul>
+</p></li>
+<li><p><strong>boundary_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'MESH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FACE_SETS'</span></code>], (optional)) – <p>Mode, Boundary type to mask</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">MESH</span></code>
+Mesh – Calculate the boundary mask based on disconnected mesh topology islands.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FACE_SETS</span></code>
+Face Sets – Calculate the boundary mask between face sets.</p></li>
+</ul>
+</p></li>
+<li><p><strong>propagation_steps</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>20</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Propagation Steps</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.mask_from_cavity">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">mask_from_cavity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MIX'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'OPERATOR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blur_steps</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_curve</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mask_from_cavity" title="Link to this definition"></a></dt>
+<dd><p>Creates a mask based on the curvature of the surface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mix_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'MIX'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MULTIPLY'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DIVIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ADD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SUBTRACT'</span></code>], (optional)) – Mode, Mix mode</p></li>
+<li><p><strong>mix_factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>5</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mix Factor</p></li>
+<li><p><strong>settings_source</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OPERATOR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BRUSH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SCENE'</span></code>], (optional)) – <p>Settings, Use settings from here</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OPERATOR</span></code>
+Operator – Use settings from operator properties.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BRUSH</span></code>
+Brush – Use settings from brush.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCENE</span></code>
+Scene – Use settings from scene.</p></li>
+</ul>
+</p></li>
+<li><p><strong>factor</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>5</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Factor, The contrast of the cavity mask</p></li>
+<li><p><strong>blur_steps</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>25</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blur, The number of times the cavity mask is blurred</p></li>
+<li><p><strong>use_curve</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Custom Curve</p></li>
+<li><p><strong>invert</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cavity (Inverted)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.mask_init">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">mask_init</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'RANDOM_PER_VERTEX'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mask_init" title="Link to this definition"></a></dt>
+<dd><p>Creates a new mask for the entire mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'RANDOM_PER_VERTEX'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RANDOM_PER_FACE_SET'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RANDOM_PER_LOOSE_PART'</span></code>], (optional)) – Mode</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.mesh_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">mesh_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_mouse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area_normal_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iteration_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">event_history</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'INFLATE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deform_axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'X',</span> <span class="pre">'Y',</span> <span class="pre">'Z'}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LOCAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_smooth_shape_preservation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">surface_smooth_current_vertex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sharpen_smooth_ratio</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sharpen_intensify_detail_strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sharpen_curvature_smooth_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.mesh_filter" title="Link to this definition"></a></dt>
+<dd><p>Applies a filter to modify the current mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>start_mouse</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>0</em><em>, </em><em>16384</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Starting Mouse</p></li>
+<li><p><strong>area_normal_radius</strong> (<em>float in</em><em> [</em><em>0.001</em><em>, </em><em>5</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normal Radius, Radius used for calculating area normal on initial click,in percentage of brush radius</p></li>
+<li><p><strong>strength</strong> (<em>float in</em><em> [</em><em>-10</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Strength, Filter strength</p></li>
+<li><p><strong>iteration_count</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>10000</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Repeat, How many times to repeat the filter</p></li>
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SCALE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INFLATE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SPHERE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RANDOM'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RELAX'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RELAX_FACE_SETS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SURFACE_SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHARPEN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ENHANCE_DETAILS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERASE_DISPLACEMENT'</span></code>], (optional)) – <p>Filter Type, Operation that is going to be applied to the mesh</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code>
+Smooth – Smooth mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCALE</span></code>
+Scale – Scale mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INFLATE</span></code>
+Inflate – Inflate mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPHERE</span></code>
+Sphere – Morph into sphere.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RANDOM</span></code>
+Random – Randomize vertex positions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELAX</span></code>
+Relax – Relax mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RELAX_FACE_SETS</span></code>
+Relax Face Sets – Smooth the edges of all the face sets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE_SMOOTH</span></code>
+Surface Smooth – Smooth the surface of the mesh, preserving the volume.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHARPEN</span></code>
+Sharpen – Sharpen the cavities of the mesh.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENHANCE_DETAILS</span></code>
+Enhance Details – Enhance the high frequency surface detail.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERASE_DISPLACEMENT</span></code>
+Erase Displacement – Deletes the displacement of the Multires Modifier.</p></li>
+</ul>
+</p></li>
+<li><p><strong>deform_axis</strong> (enum set in {<code class="docutils literal notranslate"><span class="pre">'X'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Z'</span></code>}, (optional)) – <p>Deform Axis, Apply the deformation in the selected axis</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>
+X – Deform in the X axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Y</span></code>
+Y – Deform in the Y axis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Z</span></code>
+Z – Deform in the Z axis.</p></li>
+</ul>
+</p></li>
+<li><p><strong>orientation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LOCAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'WORLD'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>], (optional)) – <p>Orientation, Orientation of the axis to limit the filter displacement</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL</span></code>
+Local – Use the local axis to limit the displacement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WORLD</span></code>
+World – Use the global axis to limit the displacement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Use the view axis to limit the displacement.</p></li>
+</ul>
+</p></li>
+<li><p><strong>surface_smooth_shape_preservation</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Shape Preservation, How much of the original shape is preserved when smoothing</p></li>
+<li><p><strong>surface_smooth_current_vertex</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Per Vertex Displacement, How much the position of each individual vertex influences the final result</p></li>
+<li><p><strong>sharpen_smooth_ratio</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Ratio, How much smoothing is applied to polished surfaces</p></li>
+<li><p><strong>sharpen_intensify_detail_strength</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Intensify Details, How much creases and valleys are intensified</p></li>
+<li><p><strong>sharpen_curvature_smooth_iterations</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>10</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Curvature Smooth Iterations, How much smooth the resulting shape is, ignoring high frequency details</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.optimize">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">optimize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.optimize" title="Link to this definition"></a></dt>
+<dd><p>Recalculate the sculpt BVH to improve performance</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.paint_mask_extract">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">paint_mask_extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_boundary_loop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apply_shrinkwrap</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">add_solidify</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.paint_mask_extract" title="Link to this definition"></a></dt>
+<dd><p>Create a new mesh object from the current paint mask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask_threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, Minimum mask value to consider the vertex valid to extract a face from the original mesh</p></li>
+<li><p><strong>add_boundary_loop</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Add Boundary Loop, Add an extra edge loop to better preserve the shape when applying a subdivision surface modifier</p></li>
+<li><p><strong>smooth_iterations</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Iterations, Smooth iterations applied to the extracted mesh</p></li>
+<li><p><strong>apply_shrinkwrap</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Project to Sculpt, Project the extracted mesh into the original sculpt</p></li>
+<li><p><strong>add_solidify</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extract as Solid, Extract the mask as a solid object with a solidify modifier</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.paint_mask_slice">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">paint_mask_slice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_holes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_object</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.paint_mask_slice" title="Link to this definition"></a></dt>
+<dd><p>Slices the paint mask from the mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask_threshold</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Threshold, Minimum mask value to consider the vertex valid to extract a face from the original mesh</p></li>
+<li><p><strong>fill_holes</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Fill Holes, Fill holes after slicing the mask</p></li>
+<li><p><strong>new_object</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Slice to New Object, Create a new object from the sliced mask</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.project_line_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">project_line_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_limit_to_segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.project_line_gesture" title="Link to this definition"></a></dt>
+<dd><p>Project the geometry onto a plane defined by a line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xstart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Start</p></li>
+<li><p><strong>xend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X End</p></li>
+<li><p><strong>ystart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Start</p></li>
+<li><p><strong>yend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y End</p></li>
+<li><p><strong>flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip</p></li>
+<li><p><strong>cursor</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cursor, Mouse cursor style to use during the modal operator</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>use_limit_to_segment</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Limit to Segment, Apply the gesture action only to the area that is contained within the segment without extending its effect to the entire line</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.sample_detail_size">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">sample_detail_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DYNTOPO'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.sample_detail_size" title="Link to this definition"></a></dt>
+<dd><p>Sample the mesh detail on clicked point</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>0</em><em>, </em><em>32767</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Screen coordinates of sampling</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DYNTOPO'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VOXEL'</span></code>], (optional)) – <p>Detail Mode, Target sculpting workflow that is going to use the sampled size</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DYNTOPO</span></code>
+Dyntopo – Sample dyntopo detail.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VOXEL</span></code>
+Voxel – Sample mesh voxel size.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.sculptmode_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">sculptmode_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.sculptmode_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle sculpt mode in 3D view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.set_persistent_base">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">set_persistent_base</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.set_persistent_base" title="Link to this definition"></a></dt>
+<dd><p>Reset the copy of the mesh that is being sculpted on</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.set_pivot_position">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">set_pivot_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UNMASKED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mouse_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mouse_y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.set_pivot_position" title="Link to this definition"></a></dt>
+<dd><p>Sets the sculpt transform pivot position</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'ORIGIN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UNMASKED'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BORDER'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ACTIVE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SURFACE'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORIGIN</span></code>
+Origin – Sets the pivot to the origin of the sculpt.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNMASKED</span></code>
+Unmasked – Sets the pivot position to the average position of the unmasked vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BORDER</span></code>
+Mask Border – Sets the pivot position to the center of the border of the mask.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code>
+Active Vertex – Sets the pivot position to the active vertex position.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Sets the pivot position to the surface under the cursor.</p></li>
+</ul>
+</p></li>
+<li><p><strong>mouse_x</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse Position X, Position of the mouse used for “Surface” and “Active Vertex” mode</p></li>
+<li><p><strong>mouse_y</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Mouse Position Y, Position of the mouse used for “Surface” and “Active Vertex” mode</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.symmetrize">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">symmetrize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_tolerance</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0005</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.symmetrize" title="Link to this definition"></a></dt>
+<dd><p>Symmetrize the topology modifications</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>merge_tolerance</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Merge Distance, Distance within which symmetrical vertices are merged</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.trim_box_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">trim_box_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DIFFERENCE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cursor_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VIEW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_extrude_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FIXED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MANIFOLD'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.trim_box_gesture" title="Link to this definition"></a></dt>
+<dd><p>Execute a boolean operation on the mesh and a rectangle defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>location</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location</p></li>
+<li><p><strong>trim_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DIFFERENCE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UNION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'JOIN'</span></code>], (optional)) – <p>Trim Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIFFERENCE</span></code>
+Difference – Use a difference boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNION</span></code>
+Union – Use a union boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code>
+Join – Join the new mesh as separate geometry, without performing any boolean operation.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_cursor_depth</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Cursor for Depth, Use cursor location and radius for the dimensions and position of the trimming shape</p></li>
+<li><p><strong>trim_orientation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SURFACE'</span></code>], (optional)) – <p>Shape Orientation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Use the view to orientate the trimming shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Use the surface normal to orientate the trimming shape.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_extrude_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'PROJECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FIXED'</span></code>], (optional)) – <p>Extrude Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJECT</span></code>
+Project – Align trim geometry with the perspective of the current view for a tapered shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIXED</span></code>
+Fixed – Align trim geometry orthogonally for a shape with 90 degree angles.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_solver</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'EXACT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FLOAT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MANIFOLD'</span></code>], (optional)) – <p>Solver</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXACT</span></code>
+Exact – Slower solver with the best results for coplanar faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>
+Float – Simple solver with good performance, without support for overlapping geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MANIFOLD</span></code>
+Manifold – Fastest solver that works only on manifold meshes but gives better results.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.trim_lasso_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">trim_lasso_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_smooth_stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DIFFERENCE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cursor_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VIEW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_extrude_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FIXED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MANIFOLD'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.trim_lasso_gesture" title="Link to this definition"></a></dt>
+<dd><p>Execute a boolean operation on the mesh and a shape defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_smooth_stroke</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Stabilize Stroke, Selection lags behind mouse and follows a smoother path</p></li>
+<li><p><strong>smooth_stroke_factor</strong> (<em>float in</em><em> [</em><em>0.5</em><em>, </em><em>0.99</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Factor, Higher values gives a smoother stroke</p></li>
+<li><p><strong>smooth_stroke_radius</strong> (<em>int in</em><em> [</em><em>10</em><em>, </em><em>200</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Radius, Minimum distance from last point before selection continues</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>location</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location</p></li>
+<li><p><strong>trim_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DIFFERENCE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UNION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'JOIN'</span></code>], (optional)) – <p>Trim Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIFFERENCE</span></code>
+Difference – Use a difference boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNION</span></code>
+Union – Use a union boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code>
+Join – Join the new mesh as separate geometry, without performing any boolean operation.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_cursor_depth</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Cursor for Depth, Use cursor location and radius for the dimensions and position of the trimming shape</p></li>
+<li><p><strong>trim_orientation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SURFACE'</span></code>], (optional)) – <p>Shape Orientation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Use the view to orientate the trimming shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Use the surface normal to orientate the trimming shape.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_extrude_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'PROJECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FIXED'</span></code>], (optional)) – <p>Extrude Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJECT</span></code>
+Project – Align trim geometry with the perspective of the current view for a tapered shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIXED</span></code>
+Fixed – Align trim geometry orthogonally for a shape with 90 degree angles.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_solver</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'EXACT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FLOAT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MANIFOLD'</span></code>], (optional)) – <p>Solver</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXACT</span></code>
+Exact – Slower solver with the best results for coplanar faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>
+Float – Simple solver with good performance, without support for overlapping geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MANIFOLD</span></code>
+Manifold – Fastest solver that works only on manifold meshes but gives better results.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.trim_line_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">trim_line_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_limit_to_segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DIFFERENCE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cursor_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VIEW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_extrude_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FIXED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MANIFOLD'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.trim_line_gesture" title="Link to this definition"></a></dt>
+<dd><p>Remove a portion of the mesh on one side of a line</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xstart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Start</p></li>
+<li><p><strong>xend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X End</p></li>
+<li><p><strong>ystart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Start</p></li>
+<li><p><strong>yend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y End</p></li>
+<li><p><strong>flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip</p></li>
+<li><p><strong>cursor</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cursor, Mouse cursor style to use during the modal operator</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>use_limit_to_segment</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Limit to Segment, Apply the gesture action only to the area that is contained within the segment without extending its effect to the entire line</p></li>
+<li><p><strong>location</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location</p></li>
+<li><p><strong>trim_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DIFFERENCE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UNION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'JOIN'</span></code>], (optional)) – <p>Trim Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIFFERENCE</span></code>
+Difference – Use a difference boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNION</span></code>
+Union – Use a union boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code>
+Join – Join the new mesh as separate geometry, without performing any boolean operation.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_cursor_depth</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Cursor for Depth, Use cursor location and radius for the dimensions and position of the trimming shape</p></li>
+<li><p><strong>trim_orientation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SURFACE'</span></code>], (optional)) – <p>Shape Orientation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Use the view to orientate the trimming shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Use the surface normal to orientate the trimming shape.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_extrude_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'PROJECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FIXED'</span></code>], (optional)) – <p>Extrude Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJECT</span></code>
+Project – Align trim geometry with the perspective of the current view for a tapered shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIXED</span></code>
+Fixed – Align trim geometry orthogonally for a shape with 90 degree angles.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_solver</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'EXACT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FLOAT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MANIFOLD'</span></code>], (optional)) – <p>Solver</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXACT</span></code>
+Exact – Slower solver with the best results for coplanar faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>
+Float – Simple solver with good performance, without support for overlapping geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MANIFOLD</span></code>
+Manifold – Fastest solver that works only on manifold meshes but gives better results.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.trim_polyline_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">trim_polyline_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DIFFERENCE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_cursor_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_orientation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VIEW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_extrude_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FIXED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trim_solver</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'MANIFOLD'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.trim_polyline_gesture" title="Link to this definition"></a></dt>
+<dd><p>Execute a boolean operation on the mesh and a polygonal shape defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>location</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location, Mouse location</p></li>
+<li><p><strong>trim_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'DIFFERENCE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'UNION'</span></code>, <code class="docutils literal notranslate"><span class="pre">'JOIN'</span></code>], (optional)) – <p>Trim Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">DIFFERENCE</span></code>
+Difference – Use a difference boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UNION</span></code>
+Union – Use a union boolean operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">JOIN</span></code>
+Join – Join the new mesh as separate geometry, without performing any boolean operation.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_cursor_depth</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Use Cursor for Depth, Use cursor location and radius for the dimensions and position of the trimming shape</p></li>
+<li><p><strong>trim_orientation</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VIEW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SURFACE'</span></code>], (optional)) – <p>Shape Orientation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VIEW</span></code>
+View – Use the view to orientate the trimming shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SURFACE</span></code>
+Surface – Use the surface normal to orientate the trimming shape.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_extrude_mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'PROJECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FIXED'</span></code>], (optional)) – <p>Extrude Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PROJECT</span></code>
+Project – Align trim geometry with the perspective of the current view for a tapered shape.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FIXED</span></code>
+Fixed – Align trim geometry orthogonally for a shape with 90 degree angles.</p></li>
+</ul>
+</p></li>
+<li><p><strong>trim_solver</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'EXACT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'FLOAT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MANIFOLD'</span></code>], (optional)) – <p>Solver</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">EXACT</span></code>
+Exact – Slower solver with the best results for coplanar faces.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FLOAT</span></code>
+Float – Simple solver with good performance, without support for overlapping geometry.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MANIFOLD</span></code>
+Manifold – Fastest solver that works only on manifold meshes but gives better results.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.uv_sculpt_grab">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">uv_sculpt_grab</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.uv_sculpt_grab" title="Link to this definition"></a></dt>
+<dd><p>Grab UVs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_invert</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Invert, Invert action for the duration of the stroke</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.uv_sculpt_pinch">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">uv_sculpt_pinch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.uv_sculpt_pinch" title="Link to this definition"></a></dt>
+<dd><p>Pinch UVs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_invert</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Invert, Invert action for the duration of the stroke</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.sculpt.uv_sculpt_relax">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.sculpt.</span></span><span class="sig-name descname"><span class="pre">uv_sculpt_relax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_invert</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">relax_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LAPLACIAN'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.sculpt.uv_sculpt_relax" title="Link to this definition"></a></dt>
+<dd><p>Relax UVs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>use_invert</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Invert, Invert action for the duration of the stroke</p></li>
+<li><p><strong>relax_method</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LAPLACIAN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'HC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COTAN'</span></code>], (optional)) – <p>Relax Method, Algorithm used for UV relaxation</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">LAPLACIAN</span></code>
+Laplacian – Use Laplacian method for relaxation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">HC</span></code>
+HC – Use HC method for relaxation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">COTAN</span></code>
+Geometry – Use Geometry (cotangent) relaxation, making UVs follow the underlying 3D geometry.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.script.html" class="btn btn-neutral float-left" title="Script Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.sculpt_curves.html" class="btn btn-neutral float-right" title="Sculpt Curves Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.sculpt.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.sculpt.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

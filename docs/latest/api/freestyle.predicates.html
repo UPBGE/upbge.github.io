@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freestyle Predicates (freestyle.predicates) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/freestyle.predicates.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Freestyle Functions (freestyle.functions)" href="freestyle.functions.html" />
+    <link rel="prev" title="Freestyle Types (freestyle.types)" href="freestyle.types.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="freestyle.types.html">Freestyle Types (freestyle.types)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Freestyle Predicates (freestyle.predicates)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.AndBP1D"><code class="docutils literal notranslate"><span class="pre">AndBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.AndUP1D"><code class="docutils literal notranslate"><span class="pre">AndUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.ContourUP1D"><code class="docutils literal notranslate"><span class="pre">ContourUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.ContourUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">ContourUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.DensityLowerThanUP1D"><code class="docutils literal notranslate"><span class="pre">DensityLowerThanUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.DensityLowerThanUP1D.__init__"><code class="docutils literal notranslate"><span class="pre">DensityLowerThanUP1D.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.DensityLowerThanUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">DensityLowerThanUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.EqualToChainingTimeStampUP1D"><code class="docutils literal notranslate"><span class="pre">EqualToChainingTimeStampUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.EqualToChainingTimeStampUP1D.__init__"><code class="docutils literal notranslate"><span class="pre">EqualToChainingTimeStampUP1D.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.EqualToChainingTimeStampUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">EqualToChainingTimeStampUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.EqualToTimeStampUP1D"><code class="docutils literal notranslate"><span class="pre">EqualToTimeStampUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.EqualToTimeStampUP1D.__init__"><code class="docutils literal notranslate"><span class="pre">EqualToTimeStampUP1D.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.EqualToTimeStampUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">EqualToTimeStampUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.ExternalContourUP1D"><code class="docutils literal notranslate"><span class="pre">ExternalContourUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.ExternalContourUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">ExternalContourUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.FalseBP1D"><code class="docutils literal notranslate"><span class="pre">FalseBP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.FalseBP1D.__call__"><code class="docutils literal notranslate"><span class="pre">FalseBP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.FalseUP0D"><code class="docutils literal notranslate"><span class="pre">FalseUP0D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.FalseUP0D.__call__"><code class="docutils literal notranslate"><span class="pre">FalseUP0D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.FalseUP1D"><code class="docutils literal notranslate"><span class="pre">FalseUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.FalseUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">FalseUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.Length2DBP1D"><code class="docutils literal notranslate"><span class="pre">Length2DBP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.Length2DBP1D.__call__"><code class="docutils literal notranslate"><span class="pre">Length2DBP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.MaterialBP1D"><code class="docutils literal notranslate"><span class="pre">MaterialBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.NotBP1D"><code class="docutils literal notranslate"><span class="pre">NotBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.NotUP1D"><code class="docutils literal notranslate"><span class="pre">NotUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.ObjectNamesUP1D"><code class="docutils literal notranslate"><span class="pre">ObjectNamesUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.OrBP1D"><code class="docutils literal notranslate"><span class="pre">OrBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.OrUP1D"><code class="docutils literal notranslate"><span class="pre">OrUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.QuantitativeInvisibilityRangeUP1D"><code class="docutils literal notranslate"><span class="pre">QuantitativeInvisibilityRangeUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.QuantitativeInvisibilityUP1D"><code class="docutils literal notranslate"><span class="pre">QuantitativeInvisibilityUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.QuantitativeInvisibilityUP1D.__init__"><code class="docutils literal notranslate"><span class="pre">QuantitativeInvisibilityUP1D.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.QuantitativeInvisibilityUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">QuantitativeInvisibilityUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.SameShapeIdBP1D"><code class="docutils literal notranslate"><span class="pre">SameShapeIdBP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.SameShapeIdBP1D.__call__"><code class="docutils literal notranslate"><span class="pre">SameShapeIdBP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.ShapeUP1D"><code class="docutils literal notranslate"><span class="pre">ShapeUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.ShapeUP1D.__init__"><code class="docutils literal notranslate"><span class="pre">ShapeUP1D.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.ShapeUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">ShapeUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.TrueBP1D"><code class="docutils literal notranslate"><span class="pre">TrueBP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.TrueBP1D.__call__"><code class="docutils literal notranslate"><span class="pre">TrueBP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.TrueUP0D"><code class="docutils literal notranslate"><span class="pre">TrueUP0D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.TrueUP0D.__call__"><code class="docutils literal notranslate"><span class="pre">TrueUP0D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.TrueUP1D"><code class="docutils literal notranslate"><span class="pre">TrueUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.TrueUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">TrueUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.ViewMapGradientNormBP1D"><code class="docutils literal notranslate"><span class="pre">ViewMapGradientNormBP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.ViewMapGradientNormBP1D.__init__"><code class="docutils literal notranslate"><span class="pre">ViewMapGradientNormBP1D.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.ViewMapGradientNormBP1D.__call__"><code class="docutils literal notranslate"><span class="pre">ViewMapGradientNormBP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.WithinImageBoundaryUP1D"><code class="docutils literal notranslate"><span class="pre">WithinImageBoundaryUP1D</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.WithinImageBoundaryUP1D.__init__"><code class="docutils literal notranslate"><span class="pre">WithinImageBoundaryUP1D.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.predicates.WithinImageBoundaryUP1D.__call__"><code class="docutils literal notranslate"><span class="pre">WithinImageBoundaryUP1D.__call__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyBackTVertexUP0D"><code class="docutils literal notranslate"><span class="pre">pyBackTVertexUP0D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyClosedCurveUP1D"><code class="docutils literal notranslate"><span class="pre">pyClosedCurveUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyDensityFunctorUP1D"><code class="docutils literal notranslate"><span class="pre">pyDensityFunctorUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyDensityUP1D"><code class="docutils literal notranslate"><span class="pre">pyDensityUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyDensityVariableSigmaUP1D"><code class="docutils literal notranslate"><span class="pre">pyDensityVariableSigmaUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHighDensityAnisotropyUP1D"><code class="docutils literal notranslate"><span class="pre">pyHighDensityAnisotropyUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHighDirectionalViewMapDensityUP1D"><code class="docutils literal notranslate"><span class="pre">pyHighDirectionalViewMapDensityUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHighSteerableViewMapDensityUP1D"><code class="docutils literal notranslate"><span class="pre">pyHighSteerableViewMapDensityUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHighViewMapDensityUP1D"><code class="docutils literal notranslate"><span class="pre">pyHighViewMapDensityUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHighViewMapGradientNormUP1D"><code class="docutils literal notranslate"><span class="pre">pyHighViewMapGradientNormUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHigherCurvature2DAngleUP0D"><code class="docutils literal notranslate"><span class="pre">pyHigherCurvature2DAngleUP0D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHigherLengthUP1D"><code class="docutils literal notranslate"><span class="pre">pyHigherLengthUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyHigherNumberOfTurnsUP1D"><code class="docutils literal notranslate"><span class="pre">pyHigherNumberOfTurnsUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyIsInOccludersListUP1D"><code class="docutils literal notranslate"><span class="pre">pyIsInOccludersListUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyIsOccludedByIdListUP1D"><code class="docutils literal notranslate"><span class="pre">pyIsOccludedByIdListUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyIsOccludedByItselfUP1D"><code class="docutils literal notranslate"><span class="pre">pyIsOccludedByItselfUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyIsOccludedByUP1D"><code class="docutils literal notranslate"><span class="pre">pyIsOccludedByUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyLengthBP1D"><code class="docutils literal notranslate"><span class="pre">pyLengthBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyLowDirectionalViewMapDensityUP1D"><code class="docutils literal notranslate"><span class="pre">pyLowDirectionalViewMapDensityUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyLowSteerableViewMapDensityUP1D"><code class="docutils literal notranslate"><span class="pre">pyLowSteerableViewMapDensityUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyNFirstUP1D"><code class="docutils literal notranslate"><span class="pre">pyNFirstUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyNatureBP1D"><code class="docutils literal notranslate"><span class="pre">pyNatureBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyNatureUP1D"><code class="docutils literal notranslate"><span class="pre">pyNatureUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyParameterUP0D"><code class="docutils literal notranslate"><span class="pre">pyParameterUP0D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyParameterUP0DGoodOne"><code class="docutils literal notranslate"><span class="pre">pyParameterUP0DGoodOne</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyProjectedXBP1D"><code class="docutils literal notranslate"><span class="pre">pyProjectedXBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyProjectedYBP1D"><code class="docutils literal notranslate"><span class="pre">pyProjectedYBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyShapeIdListUP1D"><code class="docutils literal notranslate"><span class="pre">pyShapeIdListUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyShapeIdUP1D"><code class="docutils literal notranslate"><span class="pre">pyShapeIdUP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyShuffleBP1D"><code class="docutils literal notranslate"><span class="pre">pyShuffleBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pySilhouetteFirstBP1D"><code class="docutils literal notranslate"><span class="pre">pySilhouetteFirstBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyUEqualsUP0D"><code class="docutils literal notranslate"><span class="pre">pyUEqualsUP0D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyVertexNatureUP0D"><code class="docutils literal notranslate"><span class="pre">pyVertexNatureUP0D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyViewMapGradientNormBP1D"><code class="docutils literal notranslate"><span class="pre">pyViewMapGradientNormBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyZBP1D"><code class="docutils literal notranslate"><span class="pre">pyZBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyZDiscontinuityBP1D"><code class="docutils literal notranslate"><span class="pre">pyZDiscontinuityBP1D</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.predicates.pyZSmallerUP1D"><code class="docutils literal notranslate"><span class="pre">pyZSmallerUP1D</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.functions.html">Freestyle Functions (freestyle.functions)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.chainingiterators.html">Freestyle Chaining Iterators (freestyle.chainingiterators)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.shaders.html">Freestyle Shaders (freestyle.shaders)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.utils.html">Freestyle Utilities (freestyle.utils)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="freestyle.html">Freestyle Module (freestyle)</a></li>
+      <li class="breadcrumb-item active">Freestyle Predicates (freestyle.predicates)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-freestyle.predicates">
+<span id="freestyle-predicates-freestyle-predicates"></span><h1>Freestyle Predicates (freestyle.predicates)<a class="headerlink" href="#module-freestyle.predicates" title="Link to this heading"></a></h1>
+<p>This module contains predicates operating on vertices (0D elements)
+and polylines (1D elements).  It is also intended to be a collection
+of examples for predicate definition in Python.</p>
+<p>User-defined predicates inherit one of the following base classes,
+depending on the object type (0D or 1D) to operate on and the arity
+(unary or binary):</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate0D" title="freestyle.types.BinaryPredicate0D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate0D</span></code></a></p></li>
+<li><p><a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate1D" title="freestyle.types.BinaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate1D</span></code></a></p></li>
+<li><p><a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate0D" title="freestyle.types.UnaryPredicate0D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate0D</span></code></a></p></li>
+<li><p><a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a></p></li>
+</ul>
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.AndBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">AndBP1D</span></span><a class="headerlink" href="#freestyle.predicates.AndBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.AndUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">AndUP1D</span></span><a class="headerlink" href="#freestyle.predicates.AndUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.ContourUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">ContourUP1D</span></span><a class="headerlink" href="#freestyle.predicates.ContourUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.ContourUP1D" title="freestyle.predicates.ContourUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">ContourUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.ContourUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.ContourUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the Interface1D is a contour. An Interface1D is a
+contour if it is bordered by a different shape on each of its sides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the Interface1D is a contour, false otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.DensityLowerThanUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">DensityLowerThanUP1D</span></span><a class="headerlink" href="#freestyle.predicates.DensityLowerThanUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.DensityLowerThanUP1D" title="freestyle.predicates.DensityLowerThanUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">DensityLowerThanUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.DensityLowerThanUP1D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.DensityLowerThanUP1D.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a DensityLowerThanUP1D object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<em>float</em>) – The value of the threshold density. Any Interface1D
+having a density lower than this threshold will match.</p></li>
+<li><p><strong>sigma</strong> (<em>float</em>) – The sigma value defining the density evaluation window
+size used in the <a class="reference internal" href="freestyle.functions.html#freestyle.functions.DensityF0D" title="freestyle.functions.DensityF0D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.functions.DensityF0D</span></code></a> functor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.DensityLowerThanUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.DensityLowerThanUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the density evaluated for the Interface1D is less
+than a user-defined density value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the density is lower than a threshold.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.EqualToChainingTimeStampUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">EqualToChainingTimeStampUP1D</span></span><a class="headerlink" href="#freestyle.predicates.EqualToChainingTimeStampUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.EqualToChainingTimeStampUP1D</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.EqualToChainingTimeStampUP1D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.EqualToChainingTimeStampUP1D.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a EqualToChainingTimeStampUP1D object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ts</strong> (<em>int</em>) – A time stamp value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.EqualToChainingTimeStampUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.EqualToChainingTimeStampUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the Interface1D’s time stamp is equal to a certain
+user-defined value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the time stamp is equal to a user-defined value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.EqualToTimeStampUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">EqualToTimeStampUP1D</span></span><a class="headerlink" href="#freestyle.predicates.EqualToTimeStampUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.EqualToTimeStampUP1D" title="freestyle.predicates.EqualToTimeStampUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">EqualToTimeStampUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.EqualToTimeStampUP1D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.EqualToTimeStampUP1D.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a EqualToTimeStampUP1D object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ts</strong> (<em>int</em>) – A time stamp value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.EqualToTimeStampUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.EqualToTimeStampUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the Interface1D’s time stamp is equal to a certain
+user-defined value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the time stamp is equal to a user-defined value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.ExternalContourUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">ExternalContourUP1D</span></span><a class="headerlink" href="#freestyle.predicates.ExternalContourUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.ExternalContourUP1D" title="freestyle.predicates.ExternalContourUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">ExternalContourUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.ExternalContourUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.ExternalContourUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the Interface1D is an external contour.
+An Interface1D is an external contour if it is bordered by no shape on
+one of its sides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the Interface1D is an external contour, false
+otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.FalseBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">FalseBP1D</span></span><a class="headerlink" href="#freestyle.predicates.FalseBP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate1D" title="freestyle.types.BinaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.FalseBP1D" title="freestyle.predicates.FalseBP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">FalseBP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.FalseBP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.FalseBP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Always returns false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inter1</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The first Interface1D object.</p></li>
+<li><p><strong>inter2</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The second Interface1D object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.FalseUP0D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">FalseUP0D</span></span><a class="headerlink" href="#freestyle.predicates.FalseUP0D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate0D" title="freestyle.types.UnaryPredicate0D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate0D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.FalseUP0D" title="freestyle.predicates.FalseUP0D"><code class="xref py py-class docutils literal notranslate"><span class="pre">FalseUP0D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.FalseUP0D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.FalseUP0D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Always returns false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>it</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface0DIterator" title="freestyle.types.Interface0DIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface0DIterator</span></code></a>) – An Interface0DIterator object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.FalseUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">FalseUP1D</span></span><a class="headerlink" href="#freestyle.predicates.FalseUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.FalseUP1D" title="freestyle.predicates.FalseUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">FalseUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.FalseUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.FalseUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Always returns false.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>False.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.Length2DBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">Length2DBP1D</span></span><a class="headerlink" href="#freestyle.predicates.Length2DBP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate1D" title="freestyle.types.BinaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.Length2DBP1D" title="freestyle.predicates.Length2DBP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length2DBP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.Length2DBP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.Length2DBP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the 2D length of inter1 is less than the 2D length
+of inter2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inter1</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The first Interface1D object.</p></li>
+<li><p><strong>inter2</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The second Interface1D object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True or false.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.MaterialBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">MaterialBP1D</span></span><a class="headerlink" href="#freestyle.predicates.MaterialBP1D" title="Link to this definition"></a></dt>
+<dd><p>Checks whether the two supplied ViewEdges have the same material.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.NotBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">NotBP1D</span></span><a class="headerlink" href="#freestyle.predicates.NotBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.NotUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">NotUP1D</span></span><a class="headerlink" href="#freestyle.predicates.NotUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.ObjectNamesUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">ObjectNamesUP1D</span></span><a class="headerlink" href="#freestyle.predicates.ObjectNamesUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.OrBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">OrBP1D</span></span><a class="headerlink" href="#freestyle.predicates.OrBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.OrUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">OrUP1D</span></span><a class="headerlink" href="#freestyle.predicates.OrUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.QuantitativeInvisibilityRangeUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">QuantitativeInvisibilityRangeUP1D</span></span><a class="headerlink" href="#freestyle.predicates.QuantitativeInvisibilityRangeUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.QuantitativeInvisibilityUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">QuantitativeInvisibilityUP1D</span></span><a class="headerlink" href="#freestyle.predicates.QuantitativeInvisibilityUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.QuantitativeInvisibilityUP1D" title="freestyle.predicates.QuantitativeInvisibilityUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantitativeInvisibilityUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.QuantitativeInvisibilityUP1D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.QuantitativeInvisibilityUP1D.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a QuantitativeInvisibilityUP1D object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qi</strong> (<em>int</em>) – The Quantitative Invisibility you want the Interface1D to
+have.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.QuantitativeInvisibilityUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.QuantitativeInvisibilityUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the Quantitative Invisibility evaluated at an
+Interface1D, using the
+<a class="reference internal" href="freestyle.functions.html#freestyle.functions.QuantitativeInvisibilityF1D" title="freestyle.functions.QuantitativeInvisibilityF1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.functions.QuantitativeInvisibilityF1D</span></code></a> functor,
+equals a certain user-defined value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if Quantitative Invisibility equals a user-defined
+value.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.SameShapeIdBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">SameShapeIdBP1D</span></span><a class="headerlink" href="#freestyle.predicates.SameShapeIdBP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate1D" title="freestyle.types.BinaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.SameShapeIdBP1D" title="freestyle.predicates.SameShapeIdBP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">SameShapeIdBP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.SameShapeIdBP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.SameShapeIdBP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if inter1 and inter2 belong to the same shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inter1</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The first Interface1D object.</p></li>
+<li><p><strong>inter2</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The second Interface1D object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True or false.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.ShapeUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">ShapeUP1D</span></span><a class="headerlink" href="#freestyle.predicates.ShapeUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.ShapeUP1D" title="freestyle.predicates.ShapeUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">ShapeUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.ShapeUP1D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">first</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">second</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.ShapeUP1D.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a ShapeUP1D object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>first</strong> (<em>int</em>) – The first Id component.</p></li>
+<li><p><strong>second</strong> (<em>int</em>) – The second Id component.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.ShapeUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.ShapeUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the shape to which the Interface1D belongs to has the
+same <a class="reference internal" href="freestyle.types.html#freestyle.types.Id" title="freestyle.types.Id"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Id</span></code></a> as the one specified by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if Interface1D belongs to the shape of the
+user-specified Id.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.TrueBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">TrueBP1D</span></span><a class="headerlink" href="#freestyle.predicates.TrueBP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate1D" title="freestyle.types.BinaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.TrueBP1D" title="freestyle.predicates.TrueBP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrueBP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.TrueBP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.TrueBP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Always returns true.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inter1</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The first Interface1D object.</p></li>
+<li><p><strong>inter2</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The second Interface1D object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.TrueUP0D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">TrueUP0D</span></span><a class="headerlink" href="#freestyle.predicates.TrueUP0D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate0D" title="freestyle.types.UnaryPredicate0D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate0D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.TrueUP0D" title="freestyle.predicates.TrueUP0D"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrueUP0D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.TrueUP0D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">it</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.TrueUP0D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Always returns true.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>it</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface0DIterator" title="freestyle.types.Interface0DIterator"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface0DIterator</span></code></a>) – An Interface0DIterator object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.TrueUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">TrueUP1D</span></span><a class="headerlink" href="#freestyle.predicates.TrueUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.TrueUP1D" title="freestyle.predicates.TrueUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">TrueUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.TrueUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.TrueUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Always returns true.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inter</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – An Interface1D object.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.ViewMapGradientNormBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">ViewMapGradientNormBP1D</span></span><a class="headerlink" href="#freestyle.predicates.ViewMapGradientNormBP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.BinaryPredicate1D" title="freestyle.types.BinaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.BinaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.ViewMapGradientNormBP1D" title="freestyle.predicates.ViewMapGradientNormBP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">ViewMapGradientNormBP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.ViewMapGradientNormBP1D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integration_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">IntegrationType.MEAN</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.ViewMapGradientNormBP1D.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a ViewMapGradientNormBP1D object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>level</strong> (<em>int</em>) – The level of the pyramid from which the pixel must be
+read.</p></li>
+<li><p><strong>integration_type</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.IntegrationType" title="freestyle.types.IntegrationType"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.IntegrationType</span></code></a>) – The integration method used to compute a single value
+from a set of values.</p></li>
+<li><p><strong>sampling</strong> (<em>float</em>) – The resolution used to sample the chain:
+GetViewMapGradientNormF0D is evaluated at each sample point and
+the result is obtained by combining the resulting values into a
+single one, following the method specified by integration_type.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.ViewMapGradientNormBP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inter2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.ViewMapGradientNormBP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the evaluation of the Gradient norm Function is
+higher for inter1 than for inter2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>inter1</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The first Interface1D object.</p></li>
+<li><p><strong>inter2</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Interface1D" title="freestyle.types.Interface1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Interface1D</span></code></a>) – The second Interface1D object.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True or false.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.WithinImageBoundaryUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">WithinImageBoundaryUP1D</span></span><a class="headerlink" href="#freestyle.predicates.WithinImageBoundaryUP1D" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.UnaryPredicate1D" title="freestyle.types.UnaryPredicate1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.UnaryPredicate1D</span></code></a> &gt; <a class="reference internal" href="#freestyle.predicates.WithinImageBoundaryUP1D" title="freestyle.predicates.WithinImageBoundaryUP1D"><code class="xref py py-class docutils literal notranslate"><span class="pre">WithinImageBoundaryUP1D</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.WithinImageBoundaryUP1D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xmin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.WithinImageBoundaryUP1D.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds an WithinImageBoundaryUP1D object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>float</em>) – X lower bound of the image boundary.</p></li>
+<li><p><strong>ymin</strong> (<em>float</em>) – Y lower bound of the image boundary.</p></li>
+<li><p><strong>xmax</strong> (<em>float</em>) – X upper bound of the image boundary.</p></li>
+<li><p><strong>ymax</strong> (<em>float</em>) – Y upper bound of the image boundary.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.predicates.WithinImageBoundaryUP1D.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.predicates.WithinImageBoundaryUP1D.__call__" title="Link to this definition"></a></dt>
+<dd><p>Returns true if the Interface1D intersects with image boundary.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyBackTVertexUP0D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyBackTVertexUP0D</span></span><a class="headerlink" href="#freestyle.predicates.pyBackTVertexUP0D" title="Link to this definition"></a></dt>
+<dd><p>Check whether an Interface0DIterator references a TVertex and is
+the one that is hidden (inferred from the context).</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyClosedCurveUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyClosedCurveUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyClosedCurveUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyDensityFunctorUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyDensityFunctorUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyDensityFunctorUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyDensityUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyDensityUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyDensityUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyDensityVariableSigmaUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyDensityVariableSigmaUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyDensityVariableSigmaUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHighDensityAnisotropyUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHighDensityAnisotropyUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyHighDensityAnisotropyUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHighDirectionalViewMapDensityUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHighDirectionalViewMapDensityUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyHighDirectionalViewMapDensityUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHighSteerableViewMapDensityUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHighSteerableViewMapDensityUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyHighSteerableViewMapDensityUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHighViewMapDensityUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHighViewMapDensityUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyHighViewMapDensityUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHighViewMapGradientNormUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHighViewMapGradientNormUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyHighViewMapGradientNormUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHigherCurvature2DAngleUP0D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHigherCurvature2DAngleUP0D</span></span><a class="headerlink" href="#freestyle.predicates.pyHigherCurvature2DAngleUP0D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHigherLengthUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHigherLengthUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyHigherLengthUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyHigherNumberOfTurnsUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyHigherNumberOfTurnsUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyHigherNumberOfTurnsUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyIsInOccludersListUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyIsInOccludersListUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyIsInOccludersListUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyIsOccludedByIdListUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyIsOccludedByIdListUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyIsOccludedByIdListUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyIsOccludedByItselfUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyIsOccludedByItselfUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyIsOccludedByItselfUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyIsOccludedByUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyIsOccludedByUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyIsOccludedByUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyLengthBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyLengthBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyLengthBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyLowDirectionalViewMapDensityUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyLowDirectionalViewMapDensityUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyLowDirectionalViewMapDensityUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyLowSteerableViewMapDensityUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyLowSteerableViewMapDensityUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyLowSteerableViewMapDensityUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyNFirstUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyNFirstUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyNFirstUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyNatureBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyNatureBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyNatureBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyNatureUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyNatureUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyNatureUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyParameterUP0D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyParameterUP0D</span></span><a class="headerlink" href="#freestyle.predicates.pyParameterUP0D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyParameterUP0DGoodOne">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyParameterUP0DGoodOne</span></span><a class="headerlink" href="#freestyle.predicates.pyParameterUP0DGoodOne" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyProjectedXBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyProjectedXBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyProjectedXBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyProjectedYBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyProjectedYBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyProjectedYBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyShapeIdListUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyShapeIdListUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyShapeIdListUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyShapeIdUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyShapeIdUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyShapeIdUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyShuffleBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyShuffleBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyShuffleBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pySilhouetteFirstBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pySilhouetteFirstBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pySilhouetteFirstBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyUEqualsUP0D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyUEqualsUP0D</span></span><a class="headerlink" href="#freestyle.predicates.pyUEqualsUP0D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyVertexNatureUP0D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyVertexNatureUP0D</span></span><a class="headerlink" href="#freestyle.predicates.pyVertexNatureUP0D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyViewMapGradientNormBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyViewMapGradientNormBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyViewMapGradientNormBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyZBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyZBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyZBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyZDiscontinuityBP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyZDiscontinuityBP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyZDiscontinuityBP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.predicates.pyZSmallerUP1D">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.predicates.</span></span><span class="sig-name descname"><span class="pre">pyZSmallerUP1D</span></span><a class="headerlink" href="#freestyle.predicates.pyZSmallerUP1D" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="freestyle.types.html" class="btn btn-neutral float-left" title="Freestyle Types (freestyle.types)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="freestyle.functions.html" class="btn btn-neutral float-right" title="Freestyle Functions (freestyle.functions)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60freestyle.predicates.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Ffreestyle.predicates.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

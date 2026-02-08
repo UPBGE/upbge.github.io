@@ -1,0 +1,1193 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paint Operators &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bpy.ops.paint.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Paintcurve Operators" href="bpy.ops.paintcurve.html" />
+    <link rel="prev" title="Outliner Operators" href="bpy.ops.outliner.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#calling-operators">Calling Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bpy.ops.html#overriding-context">Overriding Context</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="bpy.ops.html#execution-context">Execution Context</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.action.html">Action Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.anim.html">Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.armature.html">Armature Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.asset.html">Asset Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bge_bricknodes.html">Bge Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.boid.html">Boid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.bricknodes.html">Bricknodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.brush.html">Brush Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.buttons.html">Buttons Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cachefile.html">Cachefile Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.camera.html">Camera Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.clip.html">Clip Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.cloth.html">Cloth Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.collection.html">Collection Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.console.html">Console Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.constraint.html">Constraint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curve.html">Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.curves.html">Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.dpaint.html">Dpaint Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ed.html">Ed Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_anim.html">Export Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.export_scene.html">Export Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.extensions.html">Extensions Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.file.html">File Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.fluid.html">Fluid Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.font.html">Font Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.geometry.html">Geometry Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gizmogroup.html">Gizmogroup Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.gpencil.html">Gpencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.graph.html">Graph Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.grease_pencil.html">Grease Pencil Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.image.html">Image Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_anim.html">Import Anim Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_curve.html">Import Curve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.import_scene.html">Import Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.info.html">Info Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.lattice.html">Lattice Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic.html">Logic Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.logic_nodes.html">Logic Nodes Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.marker.html">Marker Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mask.html">Mask Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.material.html">Material Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mball.html">Mball Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.mesh.html">Mesh Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.nla.html">Nla Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.node.html">Node Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.object.html">Object Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.outliner.html">Outliner Operators</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Paint Operators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.add_simple_uvs"><code class="docutils literal notranslate"><span class="pre">add_simple_uvs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.add_texture_paint_slot"><code class="docutils literal notranslate"><span class="pre">add_texture_paint_slot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.brush_colors_flip"><code class="docutils literal notranslate"><span class="pre">brush_colors_flip()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_select_all"><code class="docutils literal notranslate"><span class="pre">face_select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_select_hide"><code class="docutils literal notranslate"><span class="pre">face_select_hide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_select_less"><code class="docutils literal notranslate"><span class="pre">face_select_less()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_select_linked"><code class="docutils literal notranslate"><span class="pre">face_select_linked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_select_linked_pick"><code class="docutils literal notranslate"><span class="pre">face_select_linked_pick()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_select_loop"><code class="docutils literal notranslate"><span class="pre">face_select_loop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_select_more"><code class="docutils literal notranslate"><span class="pre">face_select_more()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.face_vert_reveal"><code class="docutils literal notranslate"><span class="pre">face_vert_reveal()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.grab_clone"><code class="docutils literal notranslate"><span class="pre">grab_clone()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.hide_show"><code class="docutils literal notranslate"><span class="pre">hide_show()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.hide_show_all"><code class="docutils literal notranslate"><span class="pre">hide_show_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.hide_show_lasso_gesture"><code class="docutils literal notranslate"><span class="pre">hide_show_lasso_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.hide_show_line_gesture"><code class="docutils literal notranslate"><span class="pre">hide_show_line_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.hide_show_masked"><code class="docutils literal notranslate"><span class="pre">hide_show_masked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.hide_show_polyline_gesture"><code class="docutils literal notranslate"><span class="pre">hide_show_polyline_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.image_from_view"><code class="docutils literal notranslate"><span class="pre">image_from_view()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.image_paint"><code class="docutils literal notranslate"><span class="pre">image_paint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.mask_box_gesture"><code class="docutils literal notranslate"><span class="pre">mask_box_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.mask_flood_fill"><code class="docutils literal notranslate"><span class="pre">mask_flood_fill()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.mask_lasso_gesture"><code class="docutils literal notranslate"><span class="pre">mask_lasso_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.mask_line_gesture"><code class="docutils literal notranslate"><span class="pre">mask_line_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.mask_polyline_gesture"><code class="docutils literal notranslate"><span class="pre">mask_polyline_gesture()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.project_image"><code class="docutils literal notranslate"><span class="pre">project_image()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.sample_color"><code class="docutils literal notranslate"><span class="pre">sample_color()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.texture_paint_toggle"><code class="docutils literal notranslate"><span class="pre">texture_paint_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_all"><code class="docutils literal notranslate"><span class="pre">vert_select_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_hide"><code class="docutils literal notranslate"><span class="pre">vert_select_hide()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_less"><code class="docutils literal notranslate"><span class="pre">vert_select_less()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_linked"><code class="docutils literal notranslate"><span class="pre">vert_select_linked()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_linked_pick"><code class="docutils literal notranslate"><span class="pre">vert_select_linked_pick()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_loop"><code class="docutils literal notranslate"><span class="pre">vert_select_loop()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_more"><code class="docutils literal notranslate"><span class="pre">vert_select_more()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vert_select_ungrouped"><code class="docutils literal notranslate"><span class="pre">vert_select_ungrouped()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_brightness_contrast"><code class="docutils literal notranslate"><span class="pre">vertex_color_brightness_contrast()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_dirt"><code class="docutils literal notranslate"><span class="pre">vertex_color_dirt()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_from_weight"><code class="docutils literal notranslate"><span class="pre">vertex_color_from_weight()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_hsv"><code class="docutils literal notranslate"><span class="pre">vertex_color_hsv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_invert"><code class="docutils literal notranslate"><span class="pre">vertex_color_invert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_levels"><code class="docutils literal notranslate"><span class="pre">vertex_color_levels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_set"><code class="docutils literal notranslate"><span class="pre">vertex_color_set()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_color_smooth"><code class="docutils literal notranslate"><span class="pre">vertex_color_smooth()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_paint"><code class="docutils literal notranslate"><span class="pre">vertex_paint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.vertex_paint_toggle"><code class="docutils literal notranslate"><span class="pre">vertex_paint_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.visibility_filter"><code class="docutils literal notranslate"><span class="pre">visibility_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.visibility_invert"><code class="docutils literal notranslate"><span class="pre">visibility_invert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.weight_from_bones"><code class="docutils literal notranslate"><span class="pre">weight_from_bones()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.weight_gradient"><code class="docutils literal notranslate"><span class="pre">weight_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.weight_paint"><code class="docutils literal notranslate"><span class="pre">weight_paint()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.weight_paint_toggle"><code class="docutils literal notranslate"><span class="pre">weight_paint_toggle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.weight_sample"><code class="docutils literal notranslate"><span class="pre">weight_sample()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.weight_sample_group"><code class="docutils literal notranslate"><span class="pre">weight_sample_group()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bpy.ops.paint.weight_set"><code class="docutils literal notranslate"><span class="pre">weight_set()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.paintcurve.html">Paintcurve Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.palette.html">Palette Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.particle.html">Particle Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pointcloud.html">Pointcloud Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.pose.html">Pose Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.poselib.html">Poselib Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.preferences.html">Preferences Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ptcache.html">Ptcache Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.render.html">Render Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.rigidbody.html">Rigidbody Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.scene.html">Scene Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.screen.html">Screen Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.script.html">Script Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt.html">Sculpt Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sculpt_curves.html">Sculpt Curves Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sequencer.html">Sequencer Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.sound.html">Sound Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.spreadsheet.html">Spreadsheet Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.surface.html">Surface Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text.html">Text Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.text_editor.html">Text Editor Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.texture.html">Texture Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.transform.html">Transform Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.ui.html">Ui Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uilist.html">Uilist Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.uv.html">Uv Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view2d.html">View2D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.view3d.html">View3D Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.wm.html">Wm Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.workspace.html">Workspace Operators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bpy.ops.world.html">World Operators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="bpy.ops.html">Operators (bpy.ops)</a></li>
+      <li class="breadcrumb-item active">Paint Operators</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bpy.ops.paint">
+<span id="paint-operators"></span><h1>Paint Operators<a class="headerlink" href="#module-bpy.ops.paint" title="Link to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.add_simple_uvs">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">add_simple_uvs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.add_simple_uvs" title="Link to this definition"></a></dt>
+<dd><p>Add cube map UVs on mesh</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.add_texture_paint_slot">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">add_texture_paint_slot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BASE_COLOR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">slot_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IMAGE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Untitled'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">1.0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1024</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generated_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'BLANK'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">float</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'POINT'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'FLOAT_COLOR'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.add_texture_paint_slot" title="Link to this definition"></a></dt>
+<dd><p>Add a paint slot</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'BASE_COLOR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SPECULAR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ROUGHNESS'</span></code>, <code class="docutils literal notranslate"><span class="pre">'METALLIC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'NORMAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BUMP'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DISPLACEMENT'</span></code>], (optional)) – Material Layer Type, Material layer type of new paint slot</p></li>
+<li><p><strong>slot_type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'IMAGE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'COLOR_ATTRIBUTE'</span></code>], (optional)) – Slot Type, Type of new paint slot</p></li>
+<li><p><strong>name</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – Name, Name for new paint slot source</p></li>
+<li><p><strong>color</strong> (<em>float array</em><em> of </em><em>4 items in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Color, Default fill color</p></li>
+<li><p><strong>width</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Width, Image width</p></li>
+<li><p><strong>height</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Height, Image height</p></li>
+<li><p><strong>alpha</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Alpha, Create an image with an alpha channel</p></li>
+<li><p><strong>generated_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/image_generated_type_items.html#rna-enum-image-generated-type-items"><span class="std std-ref">Image Generated Type Items</span></a>, (optional)) – Generated Type, Fill the image with a grid for UV map testing</p></li>
+<li><p><strong>float</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – 32-bit Float, Create image with 32-bit floating-point bit depth</p></li>
+<li><p><strong>domain</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/color_attribute_domain_items.html#rna-enum-color-attribute-domain-items"><span class="std std-ref">Color Attribute Domain Items</span></a>, (optional)) – Domain, Type of element that attribute is stored on</p></li>
+<li><p><strong>data_type</strong> (enum in <a class="reference internal" href="bpy_types_enum_items/color_attribute_type_items.html#rna-enum-color-attribute-type-items"><span class="std std-ref">Color Attribute Type Items</span></a>, (optional)) – Data Type, Type of data stored in attribute</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.brush_colors_flip">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">brush_colors_flip</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.brush_colors_flip" title="Link to this definition"></a></dt>
+<dd><p>Swap primary and secondary brush colors</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_select_all" title="Link to this definition"></a></dt>
+<dd><p>Change selection for all faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_select_hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_select_hide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_select_hide" title="Link to this definition"></a></dt>
+<dd><p>Hide selected faces</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected rather than selected objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_select_less</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_select_less" title="Link to this definition"></a></dt>
+<dd><p>Deselect Faces connected to existing selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>face_step</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Face Step, Also deselect faces that only touch on a corner</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_select_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_select_linked" title="Link to this definition"></a></dt>
+<dd><p>Select linked faces</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_select_linked_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_select_linked_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">deselect</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_select_linked_pick" title="Link to this definition"></a></dt>
+<dd><p>Select linked faces under the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>deselect</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Deselect, Deselect rather than select items</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_select_loop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_select_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_select_loop" title="Link to this definition"></a></dt>
+<dd><p>Select face loop under the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select, If false, faces will be deselected</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend the selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_select_more</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_select_more" title="Link to this definition"></a></dt>
+<dd><p>Select Faces connected to existing selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>face_step</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Face Step, Also select faces that only touch on a corner</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.face_vert_reveal">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">face_vert_reveal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.face_vert_reveal" title="Link to this definition"></a></dt>
+<dd><p>Reveal hidden faces and vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select, Specifies whether the newly revealed geometry should be selected</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.grab_clone">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">grab_clone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">delta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0.0,</span> <span class="pre">0.0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.grab_clone" title="Link to this definition"></a></dt>
+<dd><p>Move the clone source image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>delta</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a> of 2 items in [-inf, inf], (optional)) – Delta, Delta offset of clone image in 0.0 to 1.0 coordinates</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.hide_show">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">hide_show</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HIDE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Inside'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.hide_show" title="Link to this definition"></a></dt>
+<dd><p>Hide/show some vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'HIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW'</span></code>], (optional)) – <p>Visibility Action, Whether to hide or show vertices</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE</span></code>
+Hide – Hide vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code>
+Show – Show vertices.</p></li>
+</ul>
+</p></li>
+<li><p><strong>area</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OUTSIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Inside'</span></code>], (optional)) – <p>Visibility Area, Which vertices to hide or show</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTSIDE</span></code>
+Outside – Hide or show vertices outside the selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inside</span></code>
+Inside – Hide or show vertices inside the selection.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.hide_show_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">hide_show_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HIDE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.hide_show_all" title="Link to this definition"></a></dt>
+<dd><p>Hide/show all vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'HIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW'</span></code>], (optional)) – <p>Visibility Action, Whether to hide or show vertices</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE</span></code>
+Hide – Hide vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code>
+Show – Show vertices.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.hide_show_lasso_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">hide_show_lasso_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_smooth_stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HIDE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Inside'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.hide_show_lasso_gesture" title="Link to this definition"></a></dt>
+<dd><p>Hide/show some vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_smooth_stroke</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Stabilize Stroke, Selection lags behind mouse and follows a smoother path</p></li>
+<li><p><strong>smooth_stroke_factor</strong> (<em>float in</em><em> [</em><em>0.5</em><em>, </em><em>0.99</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Factor, Higher values gives a smoother stroke</p></li>
+<li><p><strong>smooth_stroke_radius</strong> (<em>int in</em><em> [</em><em>10</em><em>, </em><em>200</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Radius, Minimum distance from last point before selection continues</p></li>
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'HIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW'</span></code>], (optional)) – <p>Visibility Action, Whether to hide or show vertices</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE</span></code>
+Hide – Hide vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code>
+Show – Show vertices.</p></li>
+</ul>
+</p></li>
+<li><p><strong>area</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OUTSIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Inside'</span></code>], (optional)) – <p>Visibility Area, Which vertices to hide or show</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTSIDE</span></code>
+Outside – Hide or show vertices outside the selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inside</span></code>
+Inside – Hide or show vertices inside the selection.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.hide_show_line_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">hide_show_line_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HIDE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Inside'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_limit_to_segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.hide_show_line_gesture" title="Link to this definition"></a></dt>
+<dd><p>Hide/show some vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xstart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Start</p></li>
+<li><p><strong>xend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X End</p></li>
+<li><p><strong>ystart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Start</p></li>
+<li><p><strong>yend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y End</p></li>
+<li><p><strong>flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip</p></li>
+<li><p><strong>cursor</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cursor, Mouse cursor style to use during the modal operator</p></li>
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'HIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW'</span></code>], (optional)) – <p>Visibility Action, Whether to hide or show vertices</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE</span></code>
+Hide – Hide vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code>
+Show – Show vertices.</p></li>
+</ul>
+</p></li>
+<li><p><strong>area</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OUTSIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Inside'</span></code>], (optional)) – <p>Visibility Area, Which vertices to hide or show</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTSIDE</span></code>
+Outside – Hide or show vertices outside the selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inside</span></code>
+Inside – Hide or show vertices inside the selection.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>use_limit_to_segment</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Limit to Segment, Apply the gesture action only to the area that is contained within the segment without extending its effect to the entire line</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.hide_show_masked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">hide_show_masked</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HIDE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.hide_show_masked" title="Link to this definition"></a></dt>
+<dd><p>Hide/show all masked vertices above a threshold</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'HIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW'</span></code>], (optional)) – <p>Visibility Action, Whether to hide or show vertices</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE</span></code>
+Hide – Hide vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code>
+Show – Show vertices.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.hide_show_polyline_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">hide_show_polyline_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HIDE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">area</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Inside'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.hide_show_polyline_gesture" title="Link to this definition"></a></dt>
+<dd><p>Hide/show some vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'HIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHOW'</span></code>], (optional)) – <p>Visibility Action, Whether to hide or show vertices</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">HIDE</span></code>
+Hide – Hide vertices.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHOW</span></code>
+Show – Show vertices.</p></li>
+</ul>
+</p></li>
+<li><p><strong>area</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'OUTSIDE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Inside'</span></code>], (optional)) – <p>Visibility Area, Which vertices to hide or show</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUTSIDE</span></code>
+Outside – Hide or show vertices outside the selection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Inside</span></code>
+Inside – Hide or show vertices inside the selection.</p></li>
+</ul>
+</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.image_from_view">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">image_from_view</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.image_from_view" title="Link to this definition"></a></dt>
+<dd><p>Make an image from biggest 3D view for reprojection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filepath</strong> (<em>string</em><em>, </em><em>(</em><em>optional</em><em>, </em><em>never None</em><em>)</em>) – File Path, Name of the file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.image_paint">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">image_paint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NORMAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brush_toggle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'None'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pen_flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.image_paint" title="Link to this definition"></a></dt>
+<dd><p>Paint a stroke into the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stroke</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorStrokeElement</span></code>, (optional)) – Stroke</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NORMAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Stroke Mode, Action taken when a paint stroke is made</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code>
+Regular – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert action of brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>brush_toggle</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'None'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERASE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MASK'</span></code>], (optional)) – <p>Temporary Brush Toggle Type, Brush to use for duration of stroke</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>
+None – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code>
+Smooth – Switch to smooth brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERASE</span></code>
+Erase – Switch to erase brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MASK</span></code>
+Mask – Switch to mask brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>pen_flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pen Flip, Whether a tablet’s eraser mode is being used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.mask_box_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">mask_box_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xmax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ymax</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wait_for_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VALUE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.mask_box_gesture" title="Link to this definition"></a></dt>
+<dd><p>Mask within a rectangle defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xmin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Min</p></li>
+<li><p><strong>xmax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Max</p></li>
+<li><p><strong>ymin</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Min</p></li>
+<li><p><strong>ymax</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Max</p></li>
+<li><p><strong>wait_for_input</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Wait for Input</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE_INVERSE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+Value – Set mask to the level specified by the ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE_INVERSE</span></code>
+Value Inverted – Set mask to the level specified by the inverted ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert the mask.</p></li>
+</ul>
+</p></li>
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value, Mask level to use when mode is ‘Value’; zero means no masking and one is fully masked</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.mask_flood_fill">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">mask_flood_fill</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VALUE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.mask_flood_fill" title="Link to this definition"></a></dt>
+<dd><p>Fill the whole mask with a given value, or invert its values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE_INVERSE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+Value – Set mask to the level specified by the ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE_INVERSE</span></code>
+Value Inverted – Set mask to the level specified by the inverted ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert the mask.</p></li>
+</ul>
+</p></li>
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value, Mask level to use when mode is ‘Value’; zero means no masking and one is fully masked</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.mask_lasso_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">mask_lasso_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_smooth_stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.75</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_stroke_radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">35</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VALUE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.mask_lasso_gesture" title="Link to this definition"></a></dt>
+<dd><p>Mask within a shape defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_smooth_stroke</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Stabilize Stroke, Selection lags behind mouse and follows a smoother path</p></li>
+<li><p><strong>smooth_stroke_factor</strong> (<em>float in</em><em> [</em><em>0.5</em><em>, </em><em>0.99</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Factor, Higher values gives a smoother stroke</p></li>
+<li><p><strong>smooth_stroke_radius</strong> (<em>int in</em><em> [</em><em>10</em><em>, </em><em>200</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Smooth Stroke Radius, Minimum distance from last point before selection continues</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE_INVERSE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+Value – Set mask to the level specified by the ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE_INVERSE</span></code>
+Value Inverted – Set mask to the level specified by the inverted ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert the mask.</p></li>
+</ul>
+</p></li>
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value, Mask level to use when mode is ‘Value’; zero means no masking and one is fully masked</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.mask_line_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">mask_line_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_limit_to_segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VALUE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.mask_line_gesture" title="Link to this definition"></a></dt>
+<dd><p>Mask to one side of a line defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>xstart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Start</p></li>
+<li><p><strong>xend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X End</p></li>
+<li><p><strong>ystart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Start</p></li>
+<li><p><strong>yend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y End</p></li>
+<li><p><strong>flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip</p></li>
+<li><p><strong>cursor</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cursor, Mouse cursor style to use during the modal operator</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>use_limit_to_segment</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Limit to Segment, Apply the gesture action only to the area that is contained within the segment without extending its effect to the entire line</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE_INVERSE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+Value – Set mask to the level specified by the ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE_INVERSE</span></code>
+Value Inverted – Set mask to the level specified by the inverted ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert the mask.</p></li>
+</ul>
+</p></li>
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value, Mask level to use when mode is ‘Value’; zero means no masking and one is fully masked</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.mask_polyline_gesture">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">mask_polyline_gesture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_front_faces_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'VALUE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.mask_polyline_gesture" title="Link to this definition"></a></dt>
+<dd><p>Mask within a shape defined by the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorMousePath</span></code>, (optional)) – Path</p></li>
+<li><p><strong>use_front_faces_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Front Faces Only, Affect only faces facing towards the view</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'VALUE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'VALUE_INVERSE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Mode</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE</span></code>
+Value – Set mask to the level specified by the ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VALUE_INVERSE</span></code>
+Value Inverted – Set mask to the level specified by the inverted ‘value’ property.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert the mask.</p></li>
+</ul>
+</p></li>
+<li><p><strong>value</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value, Mask level to use when mode is ‘Value’; zero means no masking and one is fully masked</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.project_image">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">project_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.project_image" title="Link to this definition"></a></dt>
+<dd><p>Project an edited render from the active camera back onto the object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>image</strong> (<em>enum in</em><em> [</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.sample_color">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">sample_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merged</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">palette</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.sample_color" title="Link to this definition"></a></dt>
+<dd><p>Use the mouse to sample a color in the image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>location</strong> (<em>int array</em><em> of </em><em>2 items in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Location</p></li>
+<li><p><strong>merged</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Sample Merged, Sample the output display color</p></li>
+<li><p><strong>palette</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Add to Palette</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.texture_paint_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">texture_paint_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.texture_paint_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle texture paint mode in 3D view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_all">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TOGGLE'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_all" title="Link to this definition"></a></dt>
+<dd><p>Change selection for all vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'TOGGLE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'DESELECT'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Action, Selection action to execute</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">TOGGLE</span></code>
+Toggle – Toggle selection for all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SELECT</span></code>
+Select – Select all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESELECT</span></code>
+Deselect – Deselect all elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert selection of all elements.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_hide">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_hide</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">unselected</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_hide" title="Link to this definition"></a></dt>
+<dd><p>Hide selected vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>unselected</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Unselected, Hide unselected rather than selected vertices</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_less">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_less</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_less" title="Link to this definition"></a></dt>
+<dd><p>Deselect Vertices connected to existing selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>face_step</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Face Step, Also deselect faces that only touch on a corner</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_linked">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_linked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_linked" title="Link to this definition"></a></dt>
+<dd><p>Select linked vertices</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_linked_pick">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_linked_pick</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_linked_pick" title="Link to this definition"></a></dt>
+<dd><p>Select linked vertices under the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select, Whether to select or deselect linked vertices under the cursor</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_loop">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">select</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_loop" title="Link to this definition"></a></dt>
+<dd><p>Select vertex loop under the cursor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Select, If false, vertices will be deselected</p></li>
+<li><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend the selection</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_more">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_more</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">face_step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_more" title="Link to this definition"></a></dt>
+<dd><p>Select Vertices connected to existing selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>face_step</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Face Step, Also select faces that only touch on a corner</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vert_select_ungrouped">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vert_select_ungrouped</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">extend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vert_select_ungrouped" title="Link to this definition"></a></dt>
+<dd><p>Select vertices without a group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extend</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Extend, Extend the selection</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_brightness_contrast">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_brightness_contrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contrast</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_brightness_contrast" title="Link to this definition"></a></dt>
+<dd><p>Adjust vertex color brightness/contrast</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>brightness</strong> (<em>float in</em><em> [</em><em>-100</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Brightness</p></li>
+<li><p><strong>contrast</strong> (<em>float in</em><em> [</em><em>-100</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Contrast</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_dirt">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_dirt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">blur_strength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blur_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clean_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3.14159</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirt_angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dirt_only</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_dirt" title="Link to this definition"></a></dt>
+<dd><p>Generate a dirt map gradient based on cavity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blur_strength</strong> (<em>float in</em><em> [</em><em>0.01</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blur Strength, Blur strength per iteration</p></li>
+<li><p><strong>blur_iterations</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>40</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Blur Iterations, Number of times to blur the colors (higher blurs more)</p></li>
+<li><p><strong>clean_angle</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>3.14159</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Highlight Angle, Less than 90 limits the angle used in the tonal range</p></li>
+<li><p><strong>dirt_angle</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>3.14159</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Dirt Angle, Less than 90 limits the angle used in the tonal range</p></li>
+<li><p><strong>dirt_only</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Dirt Only, Don’t calculate cleans for convex areas</p></li>
+<li><p><strong>normalize</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Normalize, Normalize the colors, increasing the contrast</p></li>
+</ul>
+</dd>
+<dt class="field-even">File<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://projects.blender.org/blender/blender/src/branch/main/scripts/startup/bl_operators/vertexpaint_dirt.py#L179">startup/bl_operators/vertexpaint_dirt.py:179</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_from_weight">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_from_weight</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_from_weight" title="Link to this definition"></a></dt>
+<dd><p>Convert active weight into gray scale vertex colors</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_hsv">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_hsv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_hsv" title="Link to this definition"></a></dt>
+<dd><p>Adjust vertex color Hue/Saturation/Value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>h</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Hue</p></li>
+<li><p><strong>s</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>2</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Saturation</p></li>
+<li><p><strong>v</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>2</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_invert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_invert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_invert" title="Link to this definition"></a></dt>
+<dd><p>Invert RGB values</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_levels">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_levels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gain</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_levels" title="Link to this definition"></a></dt>
+<dd><p>Adjust levels of vertex colors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>float in</em><em> [</em><em>-1</em><em>, </em><em>1</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Offset, Value to add to colors</p></li>
+<li><p><strong>gain</strong> (<em>float in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Gain, Value to multiply colors by</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_set" title="Link to this definition"></a></dt>
+<dd><p>Fill the active vertex color layer with the current paint color</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_alpha</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Affect Alpha, Set color completely opaque instead of reusing existing alpha</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_color_smooth">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_color_smooth</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_color_smooth" title="Link to this definition"></a></dt>
+<dd><p>Smooth colors across vertices</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_paint">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_paint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NORMAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brush_toggle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'None'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pen_flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_paint" title="Link to this definition"></a></dt>
+<dd><p>Paint a stroke in the active color attribute layer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stroke</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorStrokeElement</span></code>, (optional)) – Stroke</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NORMAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Stroke Mode, Action taken when a paint stroke is made</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code>
+Regular – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert action of brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>brush_toggle</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'None'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERASE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MASK'</span></code>], (optional)) – <p>Temporary Brush Toggle Type, Brush to use for duration of stroke</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>
+None – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code>
+Smooth – Switch to smooth brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERASE</span></code>
+Erase – Switch to erase brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MASK</span></code>
+Mask – Switch to mask brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>pen_flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pen Flip, Whether a tablet’s eraser mode is being used</p></li>
+<li><p><strong>override_location</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Override Location, Override the given “location” array by recalculating object space positions from the provided “mouse_event” positions</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.vertex_paint_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">vertex_paint_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.vertex_paint_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle the vertex paint mode in 3D view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.visibility_filter">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">visibility_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'GROW'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auto_iteration_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.visibility_filter" title="Link to this definition"></a></dt>
+<dd><p>Edit the visibility of the current mesh</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>action</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'GROW'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SHRINK'</span></code>], (optional)) – <p>Action</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">GROW</span></code>
+Grow Visibility – Grow the visibility by one face based on mesh topology.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SHRINK</span></code>
+Shrink Visibility – Shrink the visibility by one face based on mesh topology.</p></li>
+</ul>
+</p></li>
+<li><p><strong>iterations</strong> (<em>int in</em><em> [</em><em>1</em><em>, </em><em>100</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Iterations, Number of times that the filter is going to be applied</p></li>
+<li><p><strong>auto_iteration_count</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Auto Iteration Count, Use an automatic number of iterations based on the number of vertices of the sculpt</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.visibility_invert">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">visibility_invert</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.visibility_invert" title="Link to this definition"></a></dt>
+<dd><p>Invert the visibility of all vertices</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.weight_from_bones">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">weight_from_bones</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'AUTOMATIC'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.weight_from_bones" title="Link to this definition"></a></dt>
+<dd><p>Set the weights of the groups matching the attached armature’s selected bones, using the distance between the vertices and the bones</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'AUTOMATIC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ENVELOPES'</span></code>], (optional)) – <p>Type, Method to use for assigning weights</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AUTOMATIC</span></code>
+Automatic – Automatic weights from bones.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENVELOPES</span></code>
+From Envelopes – Weights from envelopes with user defined radius.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.weight_gradient">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">weight_gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'LINEAR'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xstart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">xend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ystart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cursor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.weight_gradient" title="Link to this definition"></a></dt>
+<dd><p>Draw a line to apply a weight gradient to selected vertices</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'LINEAR'</span></code>, <code class="docutils literal notranslate"><span class="pre">'RADIAL'</span></code>], (optional)) – Type</p></li>
+<li><p><strong>xstart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X Start</p></li>
+<li><p><strong>xend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – X End</p></li>
+<li><p><strong>ystart</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y Start</p></li>
+<li><p><strong>yend</strong> (<em>int in</em><em> [</em><em>-inf</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Y End</p></li>
+<li><p><strong>flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Flip</p></li>
+<li><p><strong>cursor</strong> (<em>int in</em><em> [</em><em>0</em><em>, </em><em>inf</em><em>]</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Cursor, Mouse cursor style to use during the modal operator</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.weight_paint">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">weight_paint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">stroke</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'NORMAL'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brush_toggle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'None'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pen_flip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">override_location</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.weight_paint" title="Link to this definition"></a></dt>
+<dd><p>Paint a stroke in the current vertex group’s weights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>stroke</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bpy_prop_collection</span></code> of <code class="xref py py-class docutils literal notranslate"><span class="pre">OperatorStrokeElement</span></code>, (optional)) – Stroke</p></li>
+<li><p><strong>mode</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'NORMAL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'INVERT'</span></code>], (optional)) – <p>Stroke Mode, Action taken when a paint stroke is made</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">NORMAL</span></code>
+Regular – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INVERT</span></code>
+Invert – Invert action of brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>brush_toggle</strong> (enum in [<code class="docutils literal notranslate"><span class="pre">'None'</span></code>, <code class="docutils literal notranslate"><span class="pre">'SMOOTH'</span></code>, <code class="docutils literal notranslate"><span class="pre">'ERASE'</span></code>, <code class="docutils literal notranslate"><span class="pre">'MASK'</span></code>], (optional)) – <p>Temporary Brush Toggle Type, Brush to use for duration of stroke</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>
+None – Apply brush normally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SMOOTH</span></code>
+Smooth – Switch to smooth brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERASE</span></code>
+Erase – Switch to erase brush for duration of stroke.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MASK</span></code>
+Mask – Switch to mask brush for duration of stroke.</p></li>
+</ul>
+</p></li>
+<li><p><strong>pen_flip</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Pen Flip, Whether a tablet’s eraser mode is being used</p></li>
+<li><p><strong>override_location</strong> (<em>boolean</em><em>, </em><em>(</em><em>optional</em><em>)</em>) – Override Location, Override the given “location” array by recalculating object space positions from the provided “mouse_event” positions</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.weight_paint_toggle">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">weight_paint_toggle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.weight_paint_toggle" title="Link to this definition"></a></dt>
+<dd><p>Toggle weight paint mode in 3D view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.weight_sample">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">weight_sample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.weight_sample" title="Link to this definition"></a></dt>
+<dd><p>Use the mouse to sample a weight in the 3D view</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.weight_sample_group">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">weight_sample_group</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.weight_sample_group" title="Link to this definition"></a></dt>
+<dd><p>Select one of the vertex groups available under current mouse position</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bpy.ops.paint.weight_set">
+<span class="sig-prename descclassname"><span class="pre">bpy.ops.paint.</span></span><span class="sig-name descname"><span class="pre">weight_set</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#bpy.ops.paint.weight_set" title="Link to this definition"></a></dt>
+<dd><p>Fill the active vertex group with the current paint weight</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bpy.ops.outliner.html" class="btn btn-neutral float-left" title="Outliner Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bpy.ops.paintcurve.html" class="btn btn-neutral float-right" title="Paintcurve Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bpy.ops.paint.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbpy.ops.paint.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

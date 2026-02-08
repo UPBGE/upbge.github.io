@@ -1,0 +1,1474 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Freestyle Shaders (freestyle.shaders) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/freestyle.shaders.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Freestyle Utilities (freestyle.utils)" href="freestyle.utils.html" />
+    <link rel="prev" title="Freestyle Chaining Iterators (freestyle.chainingiterators)" href="freestyle.chainingiterators.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="freestyle.types.html">Freestyle Types (freestyle.types)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.predicates.html">Freestyle Predicates (freestyle.predicates)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.functions.html">Freestyle Functions (freestyle.functions)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.chainingiterators.html">Freestyle Chaining Iterators (freestyle.chainingiterators)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Freestyle Shaders (freestyle.shaders)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.BackboneStretcherShader"><code class="docutils literal notranslate"><span class="pre">BackboneStretcherShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.BackboneStretcherShader.__init__"><code class="docutils literal notranslate"><span class="pre">BackboneStretcherShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.BackboneStretcherShader.shade"><code class="docutils literal notranslate"><span class="pre">BackboneStretcherShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.BezierCurveShader"><code class="docutils literal notranslate"><span class="pre">BezierCurveShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.BezierCurveShader.__init__"><code class="docutils literal notranslate"><span class="pre">BezierCurveShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.BezierCurveShader.shade"><code class="docutils literal notranslate"><span class="pre">BezierCurveShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.BlenderTextureShader"><code class="docutils literal notranslate"><span class="pre">BlenderTextureShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.BlenderTextureShader.__init__"><code class="docutils literal notranslate"><span class="pre">BlenderTextureShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.BlenderTextureShader.shade"><code class="docutils literal notranslate"><span class="pre">BlenderTextureShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.CalligraphicShader"><code class="docutils literal notranslate"><span class="pre">CalligraphicShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.CalligraphicShader.__init__"><code class="docutils literal notranslate"><span class="pre">CalligraphicShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.CalligraphicShader.shade"><code class="docutils literal notranslate"><span class="pre">CalligraphicShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.ColorNoiseShader"><code class="docutils literal notranslate"><span class="pre">ColorNoiseShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ColorNoiseShader.__init__"><code class="docutils literal notranslate"><span class="pre">ColorNoiseShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ColorNoiseShader.shade"><code class="docutils literal notranslate"><span class="pre">ColorNoiseShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.ConstantColorShader"><code class="docutils literal notranslate"><span class="pre">ConstantColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ConstantColorShader.__init__"><code class="docutils literal notranslate"><span class="pre">ConstantColorShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ConstantColorShader.shade"><code class="docutils literal notranslate"><span class="pre">ConstantColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.ConstantThicknessShader"><code class="docutils literal notranslate"><span class="pre">ConstantThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ConstantThicknessShader.__init__"><code class="docutils literal notranslate"><span class="pre">ConstantThicknessShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ConstantThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">ConstantThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.ConstrainedIncreasingThicknessShader"><code class="docutils literal notranslate"><span class="pre">ConstrainedIncreasingThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ConstrainedIncreasingThicknessShader.__init__"><code class="docutils literal notranslate"><span class="pre">ConstrainedIncreasingThicknessShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ConstrainedIncreasingThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">ConstrainedIncreasingThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.GuidingLinesShader"><code class="docutils literal notranslate"><span class="pre">GuidingLinesShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.GuidingLinesShader.__init__"><code class="docutils literal notranslate"><span class="pre">GuidingLinesShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.GuidingLinesShader.shade"><code class="docutils literal notranslate"><span class="pre">GuidingLinesShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.IncreasingColorShader"><code class="docutils literal notranslate"><span class="pre">IncreasingColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.IncreasingColorShader.__init__"><code class="docutils literal notranslate"><span class="pre">IncreasingColorShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.IncreasingColorShader.shade"><code class="docutils literal notranslate"><span class="pre">IncreasingColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.IncreasingThicknessShader"><code class="docutils literal notranslate"><span class="pre">IncreasingThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.IncreasingThicknessShader.__init__"><code class="docutils literal notranslate"><span class="pre">IncreasingThicknessShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.IncreasingThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">IncreasingThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.PolygonalizationShader"><code class="docutils literal notranslate"><span class="pre">PolygonalizationShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.PolygonalizationShader.__init__"><code class="docutils literal notranslate"><span class="pre">PolygonalizationShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.PolygonalizationShader.shade"><code class="docutils literal notranslate"><span class="pre">PolygonalizationShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.RoundCapShader"><code class="docutils literal notranslate"><span class="pre">RoundCapShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.RoundCapShader.round_cap_thickness"><code class="docutils literal notranslate"><span class="pre">RoundCapShader.round_cap_thickness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.RoundCapShader.shade"><code class="docutils literal notranslate"><span class="pre">RoundCapShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.SamplingShader"><code class="docutils literal notranslate"><span class="pre">SamplingShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.SamplingShader.__init__"><code class="docutils literal notranslate"><span class="pre">SamplingShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.SamplingShader.shade"><code class="docutils literal notranslate"><span class="pre">SamplingShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.SmoothingShader"><code class="docutils literal notranslate"><span class="pre">SmoothingShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.SmoothingShader.__init__"><code class="docutils literal notranslate"><span class="pre">SmoothingShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.SmoothingShader.shade"><code class="docutils literal notranslate"><span class="pre">SmoothingShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.SpatialNoiseShader"><code class="docutils literal notranslate"><span class="pre">SpatialNoiseShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.SpatialNoiseShader.__init__"><code class="docutils literal notranslate"><span class="pre">SpatialNoiseShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.SpatialNoiseShader.shade"><code class="docutils literal notranslate"><span class="pre">SpatialNoiseShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.SquareCapShader"><code class="docutils literal notranslate"><span class="pre">SquareCapShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.SquareCapShader.shade"><code class="docutils literal notranslate"><span class="pre">SquareCapShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.StrokeTextureStepShader"><code class="docutils literal notranslate"><span class="pre">StrokeTextureStepShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.StrokeTextureStepShader.__init__"><code class="docutils literal notranslate"><span class="pre">StrokeTextureStepShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.StrokeTextureStepShader.shade"><code class="docutils literal notranslate"><span class="pre">StrokeTextureStepShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.ThicknessNoiseShader"><code class="docutils literal notranslate"><span class="pre">ThicknessNoiseShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ThicknessNoiseShader.__init__"><code class="docutils literal notranslate"><span class="pre">ThicknessNoiseShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.ThicknessNoiseShader.shade"><code class="docutils literal notranslate"><span class="pre">ThicknessNoiseShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.TipRemoverShader"><code class="docutils literal notranslate"><span class="pre">TipRemoverShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.TipRemoverShader.__init__"><code class="docutils literal notranslate"><span class="pre">TipRemoverShader.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.TipRemoverShader.shade"><code class="docutils literal notranslate"><span class="pre">TipRemoverShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.py2DCurvatureColorShader"><code class="docutils literal notranslate"><span class="pre">py2DCurvatureColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.py2DCurvatureColorShader.shade"><code class="docutils literal notranslate"><span class="pre">py2DCurvatureColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyBackboneStretcherNoCuspShader"><code class="docutils literal notranslate"><span class="pre">pyBackboneStretcherNoCuspShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyBackboneStretcherNoCuspShader.shade"><code class="docutils literal notranslate"><span class="pre">pyBackboneStretcherNoCuspShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyBackboneStretcherShader"><code class="docutils literal notranslate"><span class="pre">pyBackboneStretcherShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyBackboneStretcherShader.shade"><code class="docutils literal notranslate"><span class="pre">pyBackboneStretcherShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyBluePrintCirclesShader"><code class="docutils literal notranslate"><span class="pre">pyBluePrintCirclesShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyBluePrintCirclesShader.shade"><code class="docutils literal notranslate"><span class="pre">pyBluePrintCirclesShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyBluePrintDirectedSquaresShader"><code class="docutils literal notranslate"><span class="pre">pyBluePrintDirectedSquaresShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyBluePrintDirectedSquaresShader.shade"><code class="docutils literal notranslate"><span class="pre">pyBluePrintDirectedSquaresShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyBluePrintEllipsesShader"><code class="docutils literal notranslate"><span class="pre">pyBluePrintEllipsesShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyBluePrintEllipsesShader.shade"><code class="docutils literal notranslate"><span class="pre">pyBluePrintEllipsesShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyBluePrintSquaresShader"><code class="docutils literal notranslate"><span class="pre">pyBluePrintSquaresShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyBluePrintSquaresShader.shade"><code class="docutils literal notranslate"><span class="pre">pyBluePrintSquaresShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyConstantColorShader"><code class="docutils literal notranslate"><span class="pre">pyConstantColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyConstantColorShader.shade"><code class="docutils literal notranslate"><span class="pre">pyConstantColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyConstantThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyConstantThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyConstantThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyConstantThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyConstrainedIncreasingThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyConstrainedIncreasingThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyConstrainedIncreasingThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyConstrainedIncreasingThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyDecreasingThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyDecreasingThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyDecreasingThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyDecreasingThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyDepthDiscontinuityThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyDepthDiscontinuityThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyDepthDiscontinuityThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyDepthDiscontinuityThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyDiffusion2Shader"><code class="docutils literal notranslate"><span class="pre">pyDiffusion2Shader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyDiffusion2Shader.shade"><code class="docutils literal notranslate"><span class="pre">pyDiffusion2Shader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyFXSVaryingThicknessWithDensityShader"><code class="docutils literal notranslate"><span class="pre">pyFXSVaryingThicknessWithDensityShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyFXSVaryingThicknessWithDensityShader.shade"><code class="docutils literal notranslate"><span class="pre">pyFXSVaryingThicknessWithDensityShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyGuidingLineShader"><code class="docutils literal notranslate"><span class="pre">pyGuidingLineShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyGuidingLineShader.shade"><code class="docutils literal notranslate"><span class="pre">pyGuidingLineShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyHLRShader"><code class="docutils literal notranslate"><span class="pre">pyHLRShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyHLRShader.shade"><code class="docutils literal notranslate"><span class="pre">pyHLRShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyImportance2DThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyImportance2DThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyImportance2DThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyImportance2DThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyImportance3DThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyImportance3DThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyImportance3DThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyImportance3DThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyIncreasingColorShader"><code class="docutils literal notranslate"><span class="pre">pyIncreasingColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyIncreasingColorShader.shade"><code class="docutils literal notranslate"><span class="pre">pyIncreasingColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyIncreasingThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyIncreasingThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyIncreasingThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyIncreasingThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyInterpolateColorShader"><code class="docutils literal notranslate"><span class="pre">pyInterpolateColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyInterpolateColorShader.shade"><code class="docutils literal notranslate"><span class="pre">pyInterpolateColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyLengthDependingBackboneStretcherShader"><code class="docutils literal notranslate"><span class="pre">pyLengthDependingBackboneStretcherShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyLengthDependingBackboneStretcherShader.shade"><code class="docutils literal notranslate"><span class="pre">pyLengthDependingBackboneStretcherShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyMaterialColorShader"><code class="docutils literal notranslate"><span class="pre">pyMaterialColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyMaterialColorShader.shade"><code class="docutils literal notranslate"><span class="pre">pyMaterialColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyModulateAlphaShader"><code class="docutils literal notranslate"><span class="pre">pyModulateAlphaShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyModulateAlphaShader.shade"><code class="docutils literal notranslate"><span class="pre">pyModulateAlphaShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyNonLinearVaryingThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyNonLinearVaryingThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyNonLinearVaryingThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyNonLinearVaryingThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyPerlinNoise1DShader"><code class="docutils literal notranslate"><span class="pre">pyPerlinNoise1DShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyPerlinNoise1DShader.shade"><code class="docutils literal notranslate"><span class="pre">pyPerlinNoise1DShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyPerlinNoise2DShader"><code class="docutils literal notranslate"><span class="pre">pyPerlinNoise2DShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyPerlinNoise2DShader.shade"><code class="docutils literal notranslate"><span class="pre">pyPerlinNoise2DShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyRandomColorShader"><code class="docutils literal notranslate"><span class="pre">pyRandomColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyRandomColorShader.shade"><code class="docutils literal notranslate"><span class="pre">pyRandomColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pySLERPThicknessShader"><code class="docutils literal notranslate"><span class="pre">pySLERPThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pySLERPThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pySLERPThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pySamplingShader"><code class="docutils literal notranslate"><span class="pre">pySamplingShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pySamplingShader.shade"><code class="docutils literal notranslate"><span class="pre">pySamplingShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pySinusDisplacementShader"><code class="docutils literal notranslate"><span class="pre">pySinusDisplacementShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pySinusDisplacementShader.shade"><code class="docutils literal notranslate"><span class="pre">pySinusDisplacementShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyTVertexRemoverShader"><code class="docutils literal notranslate"><span class="pre">pyTVertexRemoverShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyTVertexRemoverShader.shade"><code class="docutils literal notranslate"><span class="pre">pyTVertexRemoverShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyTVertexThickenerShader"><code class="docutils literal notranslate"><span class="pre">pyTVertexThickenerShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyTVertexThickenerShader.shade"><code class="docutils literal notranslate"><span class="pre">pyTVertexThickenerShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyTimeColorShader"><code class="docutils literal notranslate"><span class="pre">pyTimeColorShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyTimeColorShader.shade"><code class="docutils literal notranslate"><span class="pre">pyTimeColorShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyTipRemoverShader"><code class="docutils literal notranslate"><span class="pre">pyTipRemoverShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyTipRemoverShader.shade"><code class="docutils literal notranslate"><span class="pre">pyTipRemoverShader.shade()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freestyle.shaders.pyZDependingThicknessShader"><code class="docutils literal notranslate"><span class="pre">pyZDependingThicknessShader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#freestyle.shaders.pyZDependingThicknessShader.shade"><code class="docutils literal notranslate"><span class="pre">pyZDependingThicknessShader.shade()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="freestyle.utils.html">Freestyle Utilities (freestyle.utils)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="freestyle.html">Freestyle Module (freestyle)</a></li>
+      <li class="breadcrumb-item active">Freestyle Shaders (freestyle.shaders)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-freestyle.shaders">
+<span id="freestyle-shaders-freestyle-shaders"></span><h1>Freestyle Shaders (freestyle.shaders)<a class="headerlink" href="#module-freestyle.shaders" title="Link to this heading"></a></h1>
+<p>This module contains stroke shaders used for creation of stylized
+strokes.  It is also intended to be a collection of examples for
+shader definition in Python.</p>
+<p>User-defined stroke shaders inherit the
+<a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.BackboneStretcherShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">BackboneStretcherShader</span></span><a class="headerlink" href="#freestyle.shaders.BackboneStretcherShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.BackboneStretcherShader" title="freestyle.shaders.BackboneStretcherShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">BackboneStretcherShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.BackboneStretcherShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.BackboneStretcherShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a BackboneStretcherShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>amount</strong> (<em>float</em>) – The stretching amount value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.BackboneStretcherShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.BackboneStretcherShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Stretches the stroke at its two extremities and following the
+respective directions: v(1)v(0) and v(n-1)v(n).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.BezierCurveShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">BezierCurveShader</span></span><a class="headerlink" href="#freestyle.shaders.BezierCurveShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.BezierCurveShader" title="freestyle.shaders.BezierCurveShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">BezierCurveShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.BezierCurveShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.BezierCurveShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a BezierCurveShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>error</strong> (<em>float</em>) – The error we’re allowing for the approximation. This
+error is the max distance allowed between the new curve and the
+original geometry.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.BezierCurveShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.BezierCurveShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Transforms the stroke backbone geometry so that it corresponds to a
+Bezier Curve approximation of the original backbone geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.BlenderTextureShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">BlenderTextureShader</span></span><a class="headerlink" href="#freestyle.shaders.BlenderTextureShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.BlenderTextureShader" title="freestyle.shaders.BlenderTextureShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlenderTextureShader</span></code></a></p>
+<p>[Texture shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.BlenderTextureShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">texture</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.BlenderTextureShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a BlenderTextureShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>texture</strong> (<a class="reference internal" href="bpy.types.LineStyleTextureSlot.html#bpy.types.LineStyleTextureSlot" title="bpy.types.LineStyleTextureSlot"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.LineStyleTextureSlot</span></code></a> | <a class="reference internal" href="bpy.types.ShaderNodeTree.html#bpy.types.ShaderNodeTree" title="bpy.types.ShaderNodeTree"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.ShaderNodeTree</span></code></a>) – A line style texture slot or a shader node tree to define a set of textures.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.BlenderTextureShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.BlenderTextureShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Assigns a blender texture slot to the stroke  shading in order to
+simulate marks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.CalligraphicShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">CalligraphicShader</span></span><a class="headerlink" href="#freestyle.shaders.CalligraphicShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.CalligraphicShader" title="freestyle.shaders.CalligraphicShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">CalligraphicShader</span></code></a></p>
+<p>[Thickness Shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.CalligraphicShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thickness_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clamp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.CalligraphicShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a CalligraphicShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thickness_min</strong> (<em>float</em>) – The minimum thickness in the direction
+perpendicular to the main direction.</p></li>
+<li><p><strong>thickness_max</strong> (<em>float</em>) – The maximum thickness in the main direction.</p></li>
+<li><p><strong>orientation</strong> (<a class="reference internal" href="mathutils.html#mathutils.Vector" title="mathutils.Vector"><code class="xref py py-class docutils literal notranslate"><span class="pre">mathutils.Vector</span></code></a>) – The 2D vector giving the main direction.</p></li>
+<li><p><strong>clamp</strong> (<em>bool</em>) – If true, the strokes are drawn in black when the stroke
+direction is between -90 and 90 degrees with respect to the main
+direction and drawn in white otherwise. If false, the strokes
+are always drawn in black.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.CalligraphicShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.CalligraphicShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Assigns thicknesses to the stroke vertices so that the stroke looks
+like made with a calligraphic tool, i.e. the stroke will be the
+thickest in a main direction, and the thinnest in the direction
+perpendicular to this one, and an interpolation in between.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.ColorNoiseShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">ColorNoiseShader</span></span><a class="headerlink" href="#freestyle.shaders.ColorNoiseShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.ColorNoiseShader" title="freestyle.shaders.ColorNoiseShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorNoiseShader</span></code></a></p>
+<p>[Color shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ColorNoiseShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ColorNoiseShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a ColorNoiseShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em>) – The amplitude of the noise signal.</p></li>
+<li><p><strong>period</strong> (<em>float</em>) – The period of the noise signal.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ColorNoiseShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ColorNoiseShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Shader to add noise to the stroke colors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstantColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">ConstantColorShader</span></span><a class="headerlink" href="#freestyle.shaders.ConstantColorShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.ConstantColorShader" title="freestyle.shaders.ConstantColorShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConstantColorShader</span></code></a></p>
+<p>[Color shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstantColorShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ConstantColorShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a ConstantColorShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>red</strong> (<em>float</em>) – The red component.</p></li>
+<li><p><strong>green</strong> (<em>float</em>) – The green component.</p></li>
+<li><p><strong>blue</strong> (<em>float</em>) – The blue component.</p></li>
+<li><p><strong>alpha</strong> (<em>float</em>) – The alpha value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstantColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ConstantColorShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Assigns a constant color to every vertex of the Stroke.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstantThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">ConstantThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.ConstantThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.ConstantThicknessShader" title="freestyle.shaders.ConstantThicknessShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConstantThicknessShader</span></code></a></p>
+<p>[Thickness shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstantThicknessShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thickness</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ConstantThicknessShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a ConstantThicknessShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>thickness</strong> (<em>float</em>) – The thickness that must be assigned to the stroke.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstantThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ConstantThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Assigns an absolute constant thickness to every vertex of the Stroke.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstrainedIncreasingThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">ConstrainedIncreasingThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.ConstrainedIncreasingThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.ConstrainedIncreasingThicknessShader" title="freestyle.shaders.ConstrainedIncreasingThicknessShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConstrainedIncreasingThicknessShader</span></code></a></p>
+<p>[Thickness shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstrainedIncreasingThicknessShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thickness_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ConstrainedIncreasingThicknessShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a ConstrainedIncreasingThicknessShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thickness_min</strong> (<em>float</em>) – The minimum thickness.</p></li>
+<li><p><strong>thickness_max</strong> (<em>float</em>) – The maximum thickness.</p></li>
+<li><p><strong>ratio</strong> (<em>float</em>) – The thickness/length ratio that we don’t want to exceed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ConstrainedIncreasingThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ConstrainedIncreasingThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Same as the <a class="reference internal" href="#freestyle.shaders.IncreasingThicknessShader" title="freestyle.shaders.IncreasingThicknessShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">IncreasingThicknessShader</span></code></a>, but here we allow
+the user to control the thickness/length ratio so that we don’t get
+fat short lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.GuidingLinesShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">GuidingLinesShader</span></span><a class="headerlink" href="#freestyle.shaders.GuidingLinesShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.GuidingLinesShader" title="freestyle.shaders.GuidingLinesShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">GuidingLinesShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.GuidingLinesShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.GuidingLinesShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a GuidingLinesShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>offset</strong> (<em>float</em>) – The line that replaces the stroke is initially in the
+middle of the initial stroke bounding box. offset is the value
+of the displacement which is applied to this line along its
+normal.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.GuidingLinesShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.GuidingLinesShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Shader to modify the Stroke geometry so that it corresponds to its
+main direction line. This shader must be used together with the
+splitting operator using the curvature criterion. Indeed, the
+precision of the approximation will depend on the size of the
+stroke’s pieces. The bigger the pieces are, the rougher the
+approximation is.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.IncreasingColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">IncreasingColorShader</span></span><a class="headerlink" href="#freestyle.shaders.IncreasingColorShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.IncreasingColorShader" title="freestyle.shaders.IncreasingColorShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">IncreasingColorShader</span></code></a></p>
+<p>[Color shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.IncreasingColorShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">red_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">red_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha_max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.IncreasingColorShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds an IncreasingColorShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>red_min</strong> (<em>float</em>) – The first color red component.</p></li>
+<li><p><strong>green_min</strong> (<em>float</em>) – The first color green component.</p></li>
+<li><p><strong>blue_min</strong> (<em>float</em>) – The first color blue component.</p></li>
+<li><p><strong>alpha_min</strong> (<em>float</em>) – The first color alpha value.</p></li>
+<li><p><strong>red_max</strong> (<em>float</em>) – The second color red component.</p></li>
+<li><p><strong>green_max</strong> (<em>float</em>) – The second color green component.</p></li>
+<li><p><strong>blue_max</strong> (<em>float</em>) – The second color blue component.</p></li>
+<li><p><strong>alpha_max</strong> (<em>float</em>) – The second color alpha value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.IncreasingColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.IncreasingColorShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Assigns a varying color to the stroke. The user specifies two
+colors A and B. The stroke color will change linearly from A to B
+between the first and the last vertex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.IncreasingThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">IncreasingThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.IncreasingThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.IncreasingThicknessShader" title="freestyle.shaders.IncreasingThicknessShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">IncreasingThicknessShader</span></code></a></p>
+<p>[Thickness shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.IncreasingThicknessShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thickness_A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness_B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.IncreasingThicknessShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds an IncreasingThicknessShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thickness_A</strong> (<em>float</em>) – The first thickness value.</p></li>
+<li><p><strong>thickness_B</strong> (<em>float</em>) – The second thickness value.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.IncreasingThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.IncreasingThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Assigns thicknesses values such as the thickness increases from a
+thickness value A to a thickness value B between the first vertex
+to the midpoint vertex and then decreases from B to a A between
+this midpoint vertex and the last vertex. The thickness is
+linearly interpolated from A to B.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.PolygonalizationShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">PolygonalizationShader</span></span><a class="headerlink" href="#freestyle.shaders.PolygonalizationShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.PolygonalizationShader" title="freestyle.shaders.PolygonalizationShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">PolygonalizationShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.PolygonalizationShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">error</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.PolygonalizationShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a PolygonalizationShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>error</strong> (<em>float</em>) – The error we want our polygonal approximation to have
+with respect to the original geometry. The smaller, the closer
+the new stroke is to the original one. This error corresponds to
+the maximum distance between the new stroke and the old one.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.PolygonalizationShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.PolygonalizationShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Modifies the Stroke geometry so that it looks more “polygonal”.
+The basic idea is to start from the minimal stroke approximation
+consisting in a line joining the first vertex to the last one and
+to subdivide using the original stroke vertices until a certain
+error is reached.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.RoundCapShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">RoundCapShader</span></span><a class="headerlink" href="#freestyle.shaders.RoundCapShader" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.RoundCapShader.round_cap_thickness">
+<span class="sig-name descname"><span class="pre">round_cap_thickness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.RoundCapShader.round_cap_thickness" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.RoundCapShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.RoundCapShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.SamplingShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">SamplingShader</span></span><a class="headerlink" href="#freestyle.shaders.SamplingShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.SamplingShader" title="freestyle.shaders.SamplingShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">SamplingShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.SamplingShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sampling</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.SamplingShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a SamplingShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sampling</strong> (<em>float</em>) – The sampling to use for the stroke resampling.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.SamplingShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.SamplingShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Resamples the stroke.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.SmoothingShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">SmoothingShader</span></span><a class="headerlink" href="#freestyle.shaders.SmoothingShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.SmoothingShader" title="freestyle.shaders.SmoothingShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">SmoothingShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.SmoothingShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor_curvature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">factor_curvature_difference</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aniso_point</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aniso_normal</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aniso_curvature</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">carricature_factor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.SmoothingShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a SmoothingShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_iterations</strong> (<em>int</em>) – The number of iterations.</p></li>
+<li><p><strong>factor_point</strong> (<em>float</em>) – 0.1</p></li>
+<li><p><strong>factor_curvature</strong> (<em>float</em>) – 0.0</p></li>
+<li><p><strong>factor_curvature_difference</strong> (<em>float</em>) – 0.2</p></li>
+<li><p><strong>aniso_point</strong> (<em>float</em>) – 0.0</p></li>
+<li><p><strong>aniso_normal</strong> (<em>float</em>) – 0.0</p></li>
+<li><p><strong>aniso_curvature</strong> (<em>float</em>) – 0.0</p></li>
+<li><p><strong>carricature_factor</strong> (<em>float</em>) – 1.0</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.SmoothingShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.SmoothingShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Smooths the stroke by moving the vertices to make the stroke
+smoother. Uses curvature flow to converge towards a curve of
+constant curvature. The diffusion method we use is anisotropic to
+prevent the diffusion across corners.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.SpatialNoiseShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">SpatialNoiseShader</span></span><a class="headerlink" href="#freestyle.shaders.SpatialNoiseShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.SpatialNoiseShader" title="freestyle.shaders.SpatialNoiseShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpatialNoiseShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.SpatialNoiseShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amount</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_octaves</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pure_random</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.SpatialNoiseShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a SpatialNoiseShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amount</strong> (<em>float</em>) – The amplitude of the noise.</p></li>
+<li><p><strong>scale</strong> (<em>float</em>) – The noise frequency.</p></li>
+<li><p><strong>num_octaves</strong> (<em>int</em>) – The number of octaves</p></li>
+<li><p><strong>smooth</strong> (<em>bool</em>) – True if you want the noise to be smooth.</p></li>
+<li><p><strong>pure_random</strong> (<em>bool</em>) – True if you don’t want any coherence.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.SpatialNoiseShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.SpatialNoiseShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Spatial Noise stroke shader. Moves the vertices to make the stroke
+more noisy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.SquareCapShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">SquareCapShader</span></span><a class="headerlink" href="#freestyle.shaders.SquareCapShader" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.SquareCapShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.SquareCapShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.StrokeTextureStepShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">StrokeTextureStepShader</span></span><a class="headerlink" href="#freestyle.shaders.StrokeTextureStepShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.StrokeTextureStepShader" title="freestyle.shaders.StrokeTextureStepShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">StrokeTextureStepShader</span></code></a></p>
+<p>[Texture shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.StrokeTextureStepShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.StrokeTextureStepShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a StrokeTextureStepShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>step</strong> (<em>float</em>) – The spacing along the stroke.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.StrokeTextureStepShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.StrokeTextureStepShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Assigns a spacing factor to the texture coordinates of the Stroke.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.ThicknessNoiseShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">ThicknessNoiseShader</span></span><a class="headerlink" href="#freestyle.shaders.ThicknessNoiseShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.ThicknessNoiseShader" title="freestyle.shaders.ThicknessNoiseShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ThicknessNoiseShader</span></code></a></p>
+<p>[Thickness shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ThicknessNoiseShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">amplitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">period</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ThicknessNoiseShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a ThicknessNoiseShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amplitude</strong> (<em>float</em>) – The amplitude of the noise signal.</p></li>
+<li><p><strong>period</strong> (<em>float</em>) – The period of the noise signal.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.ThicknessNoiseShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.ThicknessNoiseShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Adds some noise to the stroke thickness.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.TipRemoverShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">TipRemoverShader</span></span><a class="headerlink" href="#freestyle.shaders.TipRemoverShader" title="Link to this definition"></a></dt>
+<dd><p>Class hierarchy: <a class="reference internal" href="freestyle.types.html#freestyle.types.StrokeShader" title="freestyle.types.StrokeShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.StrokeShader</span></code></a> &gt; <a class="reference internal" href="#freestyle.shaders.TipRemoverShader" title="freestyle.shaders.TipRemoverShader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TipRemoverShader</span></code></a></p>
+<p>[Geometry shader]</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.TipRemoverShader.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tip_length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.TipRemoverShader.__init__" title="Link to this definition"></a></dt>
+<dd><p>Builds a TipRemoverShader object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tip_length</strong> (<em>float</em>) – The length of the piece of stroke we want to remove
+at each extremity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.TipRemoverShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.TipRemoverShader.shade" title="Link to this definition"></a></dt>
+<dd><p>Removes the stroke’s extremities.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>stroke</strong> (<a class="reference internal" href="freestyle.types.html#freestyle.types.Stroke" title="freestyle.types.Stroke"><code class="xref py py-class docutils literal notranslate"><span class="pre">freestyle.types.Stroke</span></code></a>) – A Stroke object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.py2DCurvatureColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">py2DCurvatureColorShader</span></span><a class="headerlink" href="#freestyle.shaders.py2DCurvatureColorShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns a color (grayscale) to the stroke based on the curvature.
+A higher curvature will yield a brighter color.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.py2DCurvatureColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.py2DCurvatureColorShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBackboneStretcherNoCuspShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyBackboneStretcherNoCuspShader</span></span><a class="headerlink" href="#freestyle.shaders.pyBackboneStretcherNoCuspShader" title="Link to this definition"></a></dt>
+<dd><p>Stretches the stroke’s backbone, excluding cusp vertices (end junctions).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBackboneStretcherNoCuspShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyBackboneStretcherNoCuspShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBackboneStretcherShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyBackboneStretcherShader</span></span><a class="headerlink" href="#freestyle.shaders.pyBackboneStretcherShader" title="Link to this definition"></a></dt>
+<dd><p>Stretches the stroke’s backbone by a given length (in pixels).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBackboneStretcherShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyBackboneStretcherShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintCirclesShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyBluePrintCirclesShader</span></span><a class="headerlink" href="#freestyle.shaders.pyBluePrintCirclesShader" title="Link to this definition"></a></dt>
+<dd><p>Draws the silhouette of the object as a circle.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintCirclesShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyBluePrintCirclesShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintDirectedSquaresShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyBluePrintDirectedSquaresShader</span></span><a class="headerlink" href="#freestyle.shaders.pyBluePrintDirectedSquaresShader" title="Link to this definition"></a></dt>
+<dd><p>Replaces the stroke with a directed square.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintDirectedSquaresShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyBluePrintDirectedSquaresShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintEllipsesShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyBluePrintEllipsesShader</span></span><a class="headerlink" href="#freestyle.shaders.pyBluePrintEllipsesShader" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintEllipsesShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyBluePrintEllipsesShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintSquaresShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyBluePrintSquaresShader</span></span><a class="headerlink" href="#freestyle.shaders.pyBluePrintSquaresShader" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyBluePrintSquaresShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyBluePrintSquaresShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyConstantColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyConstantColorShader</span></span><a class="headerlink" href="#freestyle.shaders.pyConstantColorShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns a constant color to the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyConstantColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyConstantColorShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyConstantThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyConstantThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyConstantThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns a constant thickness along the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyConstantThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyConstantThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyConstrainedIncreasingThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyConstrainedIncreasingThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyConstrainedIncreasingThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Increasingly thickens the stroke, constrained by a ratio of the
+stroke’s length.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyConstrainedIncreasingThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyConstrainedIncreasingThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyDecreasingThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyDecreasingThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyDecreasingThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Inverse of pyIncreasingThicknessShader, decreasingly thickens the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyDecreasingThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyDecreasingThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyDepthDiscontinuityThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyDepthDiscontinuityThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyDepthDiscontinuityThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns a thickness to the stroke based on the stroke’s distance
+to the camera (Z-value).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyDepthDiscontinuityThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyDepthDiscontinuityThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyDiffusion2Shader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyDiffusion2Shader</span></span><a class="headerlink" href="#freestyle.shaders.pyDiffusion2Shader" title="Link to this definition"></a></dt>
+<dd><p>Iteratively adds an offset to the position of each stroke vertex
+in the direction perpendicular to the stroke direction at the
+point. The offset is scaled by the 2D curvature (i.e. how quickly
+the stroke curve is) at the point.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyDiffusion2Shader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyDiffusion2Shader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyFXSVaryingThicknessWithDensityShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyFXSVaryingThicknessWithDensityShader</span></span><a class="headerlink" href="#freestyle.shaders.pyFXSVaryingThicknessWithDensityShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns thickness to a stroke based on the density of the diffuse map.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyFXSVaryingThicknessWithDensityShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyFXSVaryingThicknessWithDensityShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyGuidingLineShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyGuidingLineShader</span></span><a class="headerlink" href="#freestyle.shaders.pyGuidingLineShader" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyGuidingLineShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyGuidingLineShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyHLRShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyHLRShader</span></span><a class="headerlink" href="#freestyle.shaders.pyHLRShader" title="Link to this definition"></a></dt>
+<dd><p>Controls visibility based upon the quantitative invisibility (QI)
+based on hidden line removal (HLR).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyHLRShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyHLRShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyImportance2DThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyImportance2DThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyImportance2DThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns thickness based on distance to a given point in 2D space.
+the thickness is inverted, so the vertices closest to the
+specified point have the lowest thickness.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyImportance2DThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyImportance2DThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyImportance3DThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyImportance3DThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyImportance3DThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns thickness based on distance to a given point in 3D space.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyImportance3DThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyImportance3DThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyIncreasingColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyIncreasingColorShader</span></span><a class="headerlink" href="#freestyle.shaders.pyIncreasingColorShader" title="Link to this definition"></a></dt>
+<dd><p>Fades from one color to another along the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyIncreasingColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyIncreasingColorShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyIncreasingThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyIncreasingThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyIncreasingThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Increasingly thickens the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyIncreasingThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyIncreasingThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyInterpolateColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyInterpolateColorShader</span></span><a class="headerlink" href="#freestyle.shaders.pyInterpolateColorShader" title="Link to this definition"></a></dt>
+<dd><p>Fades from one color to another and back.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyInterpolateColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyInterpolateColorShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyLengthDependingBackboneStretcherShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyLengthDependingBackboneStretcherShader</span></span><a class="headerlink" href="#freestyle.shaders.pyLengthDependingBackboneStretcherShader" title="Link to this definition"></a></dt>
+<dd><p>Stretches the stroke’s backbone proportional to the stroke’s length
+NOTE: you’ll probably want an l somewhere between (0.5 - 0). A value that
+is too high may yield unexpected results.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyLengthDependingBackboneStretcherShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyLengthDependingBackboneStretcherShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyMaterialColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyMaterialColorShader</span></span><a class="headerlink" href="#freestyle.shaders.pyMaterialColorShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns the color of the underlying material to the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyMaterialColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyMaterialColorShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyModulateAlphaShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyModulateAlphaShader</span></span><a class="headerlink" href="#freestyle.shaders.pyModulateAlphaShader" title="Link to this definition"></a></dt>
+<dd><p>Limits the stroke’s alpha between a min and max value.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyModulateAlphaShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyModulateAlphaShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyNonLinearVaryingThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyNonLinearVaryingThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyNonLinearVaryingThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns thickness to a stroke based on an exponential function.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyNonLinearVaryingThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyNonLinearVaryingThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyPerlinNoise1DShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyPerlinNoise1DShader</span></span><a class="headerlink" href="#freestyle.shaders.pyPerlinNoise1DShader" title="Link to this definition"></a></dt>
+<dd><p>Displaces the stroke using the curvilinear abscissa.  This means
+that lines with the same length and sampling interval will be
+identically distorted.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyPerlinNoise1DShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyPerlinNoise1DShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyPerlinNoise2DShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyPerlinNoise2DShader</span></span><a class="headerlink" href="#freestyle.shaders.pyPerlinNoise2DShader" title="Link to this definition"></a></dt>
+<dd><p>Displaces the stroke using the strokes coordinates.  This means
+that in a scene no strokes will be distorted identically.</p>
+<p>More information on the noise shaders can be found at:
+<a class="reference external" href="https://freestyleintegration.wordpress.com/2011/09/25/development-updates-on-september-25/">https://freestyleintegration.wordpress.com/2011/09/25/development-updates-on-september-25/</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyPerlinNoise2DShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyPerlinNoise2DShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyRandomColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyRandomColorShader</span></span><a class="headerlink" href="#freestyle.shaders.pyRandomColorShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns a color to the stroke based on given seed.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyRandomColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyRandomColorShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pySLERPThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pySLERPThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pySLERPThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns thickness to a stroke based on spherical linear interpolation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pySLERPThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pySLERPThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pySamplingShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pySamplingShader</span></span><a class="headerlink" href="#freestyle.shaders.pySamplingShader" title="Link to this definition"></a></dt>
+<dd><p>Resamples the stroke, which gives the stroke the amount of
+vertices specified.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pySamplingShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pySamplingShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pySinusDisplacementShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pySinusDisplacementShader</span></span><a class="headerlink" href="#freestyle.shaders.pySinusDisplacementShader" title="Link to this definition"></a></dt>
+<dd><p>Displaces the stroke in the shape of a sine wave.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pySinusDisplacementShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pySinusDisplacementShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTVertexRemoverShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyTVertexRemoverShader</span></span><a class="headerlink" href="#freestyle.shaders.pyTVertexRemoverShader" title="Link to this definition"></a></dt>
+<dd><p>Removes t-vertices from the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTVertexRemoverShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyTVertexRemoverShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTVertexThickenerShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyTVertexThickenerShader</span></span><a class="headerlink" href="#freestyle.shaders.pyTVertexThickenerShader" title="Link to this definition"></a></dt>
+<dd><p>Thickens TVertices (visual intersections between two edges).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTVertexThickenerShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyTVertexThickenerShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTimeColorShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyTimeColorShader</span></span><a class="headerlink" href="#freestyle.shaders.pyTimeColorShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns a grayscale value that increases for every vertex.
+The brightness will increase along the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTimeColorShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyTimeColorShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTipRemoverShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyTipRemoverShader</span></span><a class="headerlink" href="#freestyle.shaders.pyTipRemoverShader" title="Link to this definition"></a></dt>
+<dd><p>Removes the tips of the stroke.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyTipRemoverShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyTipRemoverShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<p>Undocumented</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="freestyle.shaders.pyZDependingThicknessShader">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">freestyle.shaders.</span></span><span class="sig-name descname"><span class="pre">pyZDependingThicknessShader</span></span><a class="headerlink" href="#freestyle.shaders.pyZDependingThicknessShader" title="Link to this definition"></a></dt>
+<dd><p>Assigns thickness based on an object’s local Z depth (point
+closest to camera is 1, point furthest from camera is zero).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="freestyle.shaders.pyZDependingThicknessShader.shade">
+<span class="sig-name descname"><span class="pre">shade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stroke</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#freestyle.shaders.pyZDependingThicknessShader.shade" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="freestyle.chainingiterators.html" class="btn btn-neutral float-left" title="Freestyle Chaining Iterators (freestyle.chainingiterators)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="freestyle.utils.html" class="btn btn-neutral float-right" title="Freestyle Utilities (freestyle.utils)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60freestyle.shaders.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Ffreestyle.shaders.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internal Data &amp; Their Python Objects &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/info_gotchas_internal_data_and_python_objects.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Operators" href="info_gotchas_operators.html" />
+    <link rel="prev" title="Python Threads are Not Supported" href="info_gotchas_threading.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="info_gotcha.html">Gotchas</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="info_gotchas_crashes.html">Troubleshooting Errors &amp; Crashes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info_gotchas_threading.html">Python Threads are Not Supported</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Internal Data &amp; Their Python Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#life-time-of-python-objects-wrapping-blender-data">Life-Time of Python Objects Wrapping Blender Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-names">Data Names</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#naming-limitations">Naming Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#library-collisions">Library Collisions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#stale-data">Stale Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#no-updates-after-setting-values">No updates after setting values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#no-updates-after-changing-ui-context">No updates after changing UI context</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#can-i-redraw-during-script-execution">Can I redraw during script execution?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="info_gotchas_operators.html">Using Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info_gotchas_meshes.html">Modes and Mesh Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info_gotchas_armatures_and_bones.html">Bones &amp; Armatures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info_gotchas_file_paths_and_encoding.html">File Paths &amp; String Encoding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.html">BMesh Module (bmesh)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="info_gotcha.html">Gotchas</a></li>
+      <li class="breadcrumb-item active">Internal Data &amp; Their Python Objects</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="internal-data-their-python-objects">
+<h1>Internal Data &amp; Their Python Objects<a class="headerlink" href="#internal-data-their-python-objects" title="Link to this heading"></a></h1>
+<p>The Python objects wrapping Blender internal data have some limitations and constraints,
+compared to ‘pure Python’ data. The most common things to keep in mind are documented here.</p>
+<section id="life-time-of-python-objects-wrapping-blender-data">
+<span id="blender-py-objects-life-time"></span><h2>Life-Time of Python Objects Wrapping Blender Data<a class="headerlink" href="#life-time-of-python-objects-wrapping-blender-data" title="Link to this heading"></a></h2>
+<p>Typically, Python objects representing (wrapping) Blender data have a limited life-time.
+They are created on-demand, and deleted as soon as they are not used in Python anymore.</p>
+<p>This means that storing python-only data in these objects should not be done for anything that
+requires some form of persistence.</p>
+<p>There are some exceptions to this rule. For example, IDs do store their Python instance, once created,
+and re-use it instead of re-creating a new Python object every time they are accessed from Python.
+And modal operators will keep their instance as long as the operator is running.
+However, this is done for performances purpose and is considered an internal implementation detail.
+Relying on this behavior from Python code side for any purpose is not recommended.</p>
+<p>Further more, Blender may free its internal data, in which case it will try to invalidate a known
+Python object wrapping it. But this is not always possible, which can lead to invalid memory access and
+is another good reason to never store these in Python code in any persistent way.
+See also the <a class="reference internal" href="info_gotchas_crashes.html#troubleshooting-crashes"><span class="std std-ref">troubleshooting crashes</span></a> documentation.</p>
+</section>
+<section id="data-names">
+<h2>Data Names<a class="headerlink" href="#data-names" title="Link to this heading"></a></h2>
+<section id="naming-limitations">
+<h3>Naming Limitations<a class="headerlink" href="#naming-limitations" title="Link to this heading"></a></h3>
+<p>A common mistake is to assume newly created data is given the requested name.
+This can cause bugs when you add data (normally imported) then reference it later by name:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">meshid</span><span class="p">)</span>
+
+<span class="c1"># Normally some code, function calls, etc.</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">meshes</span><span class="p">[</span><span class="n">meshid</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Or with name assignment:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">objname</span>
+
+<span class="c1"># Normally some code, function calls, etc.</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">meshes</span><span class="p">[</span><span class="n">objname</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Data names may not match the assigned values if they exceed the maximum length, are already used or an empty string.</p>
+<p>It’s better practice not to reference objects by names at all,
+once created you can store the data in a list, dictionary, on a class, etc;
+there is rarely a reason to have to keep searching for the same data by name.</p>
+<p>If you do need to use name references, it’s best to use a dictionary to maintain
+a mapping between the names of the imported assets and the newly created data,
+this way you don’t run this risk of referencing existing data from the blend-file, or worse modifying it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Typically declared in the main body of the function.</span>
+<span class="n">mesh_name_mapping</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">meshes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">meshid</span><span class="p">)</span>
+<span class="n">mesh_name_mapping</span><span class="p">[</span><span class="n">meshid</span><span class="p">]</span> <span class="o">=</span> <span class="n">mesh</span>
+
+<span class="c1"># Normally some code, or function calls, etc.</span>
+
+<span class="c1"># Use own dictionary rather than `bpy.data`.</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">mesh_name_mapping</span><span class="p">[</span><span class="n">meshid</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="library-collisions">
+<h3>Library Collisions<a class="headerlink" href="#library-collisions" title="Link to this heading"></a></h3>
+<p>Blender keeps data names unique (<a class="reference internal" href="bpy.types.ID.html#bpy.types.ID.name" title="bpy.types.ID.name"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.ID.name</span></code></a>) so you can’t name two objects,
+meshes, scenes, etc., the same by accident.
+However, when linking in library data from another blend-file naming collisions can occur,
+so it’s best to avoid referencing data by name at all.</p>
+<p>This can be tricky at times and not even Blender handles this correctly in some cases
+(when selecting the modifier object for example, you can’t select between multiple objects with the same name),
+but it’s still good to try avoiding these problems in this area.
+If you need to select between local and library data, there is a feature in <code class="docutils literal notranslate"><span class="pre">bpy.data</span></code> members to allow for this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Typical name lookup, could be local or library.</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;my_obj&quot;</span><span class="p">]</span>
+
+<span class="c1"># Library object name lookup using a pair,</span>
+<span class="c1"># where the second argument is the library path matching bpy.types.Library.filepath.</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;my_obj&quot;</span><span class="p">,</span> <span class="s2">&quot;//my_lib.blend&quot;</span><span class="p">]</span>
+
+<span class="c1"># Local object name look up using a pair,</span>
+<span class="c1"># where the second argument excludes library data from being returned.</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;my_obj&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+<span class="c1"># Both the examples above also works for `get`.</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="s2">&quot;my_obj&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="stale-data">
+<h2>Stale Data<a class="headerlink" href="#stale-data" title="Link to this heading"></a></h2>
+<section id="no-updates-after-setting-values">
+<h3>No updates after setting values<a class="headerlink" href="#no-updates-after-setting-values" title="Link to this heading"></a></h3>
+<p>Sometimes you want to modify values from Python and immediately access the updated values, e.g:
+Once changing the objects <a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.location" title="bpy.types.Object.location"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Object.location</span></code></a>
+you may want to access its transformation right after from <a class="reference internal" href="bpy.types.Object.html#bpy.types.Object.matrix_world" title="bpy.types.Object.matrix_world"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Object.matrix_world</span></code></a>,
+but this doesn’t work as you might expect. There are similar issues with changes to the UI, that
+are covered in the next section.</p>
+<p>Consider the calculations that might contribute to the object’s final transformation, this includes:</p>
+<ul class="simple">
+<li><p>Animation function curves.</p></li>
+<li><p>Drivers and their Python expressions.</p></li>
+<li><p>Constraints</p></li>
+<li><p>Parent objects and all of their F-Curves, constraints, etc.</p></li>
+</ul>
+<p>To avoid expensive recalculations every time a property is modified,
+Blender defers the evaluation until the results are needed.
+However, while the script runs you may want to access the updated values.
+In this case you need to call <a class="reference internal" href="bpy.types.ViewLayer.html#bpy.types.ViewLayer.update" title="bpy.types.ViewLayer.update"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.ViewLayer.update</span></code></a> after modifying values, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">view_layer</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now all dependent data (child objects, modifiers, drivers, etc.)
+have been recalculated and are available to the script within the active view layer.</p>
+</section>
+<section id="no-updates-after-changing-ui-context">
+<h3>No updates after changing UI context<a class="headerlink" href="#no-updates-after-changing-ui-context" title="Link to this heading"></a></h3>
+<p>Similar to the previous issue, some changes to the UI  may also not have an immediate effect. For example, setting
+<a class="reference internal" href="bpy.types.Window.html#bpy.types.Window.workspace" title="bpy.types.Window.workspace"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Window.workspace</span></code></a> doesn’t seem to cause an observable effect in the immediately following code
+(<a class="reference internal" href="bpy.types.Window.html#bpy.types.Window.workspace" title="bpy.types.Window.workspace"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Window.workspace</span></code></a> is still the same), but the UI will in fact reflect the change. Some of the
+properties that behave that way are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Window.html#bpy.types.Window.workspace" title="bpy.types.Window.workspace"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Window.workspace</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Window.html#bpy.types.Window.screen" title="bpy.types.Window.screen"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Window.screen</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Window.html#bpy.types.Window.scene" title="bpy.types.Window.scene"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Window.scene</span></code></a></p></li>
+<li><p><a class="reference internal" href="bpy.types.Area.html#bpy.types.Area.type" title="bpy.types.Area.type"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Area.type</span></code></a></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Area.uitype</span></code></p></li>
+</ul>
+<p>Such changes impact the UI, and with that the context (<a class="reference internal" href="bpy.context.html#module-bpy.context" title="bpy.context"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.context</span></code></a>) quite drastically. This can break
+Blender’s context management. So Blender delays this change until after operators have run and just before the UI is
+redrawn, making sure that context can be changed safely.</p>
+<p>If you rely on executing code with an updated context this can be worked around by executing the code in a delayed
+fashion as well. Possible options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="bpy.types.Operator.html#modal-operator"><span class="std std-ref">Modal Operator</span></a>.</p></li>
+<li><p><a class="reference internal" href="bpy.app.handlers.html#module-bpy.app.handlers" title="bpy.app.handlers"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.app.handlers</span></code></a>.</p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.app.timer</span></code>.</p></li>
+</ul>
+</div></blockquote>
+<p>It’s also possible to depend on drawing callbacks although these should generally be avoided as failure to draw a
+hidden panel, region, cursor, etc. could cause your script to be unreliable</p>
+</section>
+</section>
+<section id="can-i-redraw-during-script-execution">
+<h2>Can I redraw during script execution?<a class="headerlink" href="#can-i-redraw-during-script-execution" title="Link to this heading"></a></h2>
+<p>The official answer to this is no, or… <em>“You don’t want to do that”</em>.
+To give some background on the topic:</p>
+<p>While a script executes, Blender waits for it to finish and is effectively locked until it’s done;
+while in this state Blender won’t redraw or respond to user input.
+Normally this is not such a problem because scripts distributed with Blender
+tend not to run for an extended period of time,
+nevertheless scripts <em>can</em> take a long time to complete and it would be nice to see progress in the viewport.</p>
+<p>Tools that lock Blender in a loop redraw are highly discouraged
+since they conflict with Blender’s ability to run multiple operators
+at once and update different parts of the interface as the tool runs.</p>
+<p>So the solution here is to write a <strong>modal</strong> operator, which is an operator that defines a <code class="docutils literal notranslate"><span class="pre">modal()</span></code> function,
+See the modal operator template in the text editor.
+Modal operators execute on user input or setup their own timers to run frequently,
+they can handle the events or pass through to be handled by the keymap or other modal operators.
+Examples of modal operators are Transform, Painting, Fly Navigation and File Select.</p>
+<p>Writing modal operators takes more effort than a simple <code class="docutils literal notranslate"><span class="pre">for</span></code> loop
+that contains draw calls but is more flexible and integrates better with Blender’s design.</p>
+<p class="rubric">Ok, Ok! I still want to draw from Python</p>
+<p>If you insist – yes it’s possible, but scripts that use this hack will not be considered
+for inclusion in Blender and any issue with using it will not be considered a bug,
+there is also no guaranteed compatibility in future releases.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">redraw_timer</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s1">&#39;DRAW_WIN_SWAP&#39;</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="info_gotchas_threading.html" class="btn btn-neutral float-left" title="Python Threads are Not Supported" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="info_gotchas_operators.html" class="btn btn-neutral float-right" title="Using Operators" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60info_gotchas_internal_data_and_python_objects.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Finfo_gotchas_internal_data_and_python_objects.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>

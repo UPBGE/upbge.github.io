@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMesh Module (bmesh) &mdash; UPBGE/Blender Python API</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme_overrides_upbge.css?v=3436ad75" />
+
+  
+    <link rel="shortcut icon" href="_static/upbge_favicon.png"/>
+    <link rel="canonical" href="https://upbge.org/docs/latest/api/bmesh.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=0755ccff"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Search within UPBGE/Blender Python API"
+          href="_static/opensearch.xml"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BMesh Operators (bmesh.ops)" href="bmesh.ops.html" />
+    <link rel="prev" title="Font Drawing (blf)" href="blf.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            UPBGE 0.5x & Blender 5.1.0 Alpha Python API
+              <img src="_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="info_quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_overview.html">API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_api_reference.html">API Reference Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_best_practice.html">Best Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_tips_and_tricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_gotcha.html">Gotchas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_advanced.html">Advanced</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change_log.html">Change Log</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Application Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bpy.context.html">Context Access (bpy.context)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.data.html">Data Access (bpy.data)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.msgbus.html">Message Bus (bpy.msgbus)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.ops.html">Operators (bpy.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.types.html">Types (bpy.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.utils.html">Utilities (bpy.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.path.html">Path Utilities (bpy.path)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.app.html">Application Data (bpy.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bpy.props.html">Property Definitions (bpy.props)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Game Engine Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bge.types.html">Game Types (bge.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.logic.html">Game Logic (bge.logic)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.render.html">Rasterizer (bge.render)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html">Video Texture (bge.texture)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#ffmpeg-video-and-image-status">FFmpeg Video and Image Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.texture.html#image-blending-modes">Image Blending Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.events.html">Game Keys (bge.events)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.constraints.html">Physics Constraints (bge.constraints)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bge.app.html">Application Data (bge.app)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bgui.html">Game GUI (bgui)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Standalone Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="aud.html">Audio System (aud)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bl_math.html">Additional Math Functions (bl_math)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="blf.html">Font Drawing (blf)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BMesh Module (bmesh)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-script">Example Script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standalone-module">Standalone Module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mesh-access">Mesh Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#edit-mode-tessellation">Edit-Mode Tessellation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#customdata-access">CustomData Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keeping-a-correct-state">Keeping a Correct State</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#selection-flushing">Selection / Flushing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions">Module Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bmesh.ops.html">BMesh Operators (bmesh.ops)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmesh.types.html">BMesh Types (bmesh.types)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmesh.utils.html">BMesh Utilities (bmesh.utils)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bmesh.geometry.html">BMesh Geometry Utilities (bmesh.geometry)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bmesh.from_edit_mesh"><code class="docutils literal notranslate"><span class="pre">from_edit_mesh()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bmesh.new"><code class="docutils literal notranslate"><span class="pre">new()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bmesh.update_edit_mesh"><code class="docutils literal notranslate"><span class="pre">update_edit_mesh()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bpy_extras.html">Extra Utilities (bpy_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="freestyle.html">Freestyle Module (freestyle)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPU Module (gpu)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu_extras.html">GPU Utilities (gpu_extras)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idprop.html">ID Properties Module (idprop)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imbuf.html">Image Buffer (imbuf)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mathutils.html">Math Types &amp; Utilities (mathutils)</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">UPBGE 0.5x & Blender 5.1.0 Alpha Python API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BMesh Module (bmesh)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bmesh">
+<span id="bmesh-module-bmesh"></span><h1>BMesh Module (bmesh)<a class="headerlink" href="#module-bmesh" title="Link to this heading"></a></h1>
+<p>This module provides access to blenders bmesh data structures.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>This API gives access the Blender’s internal mesh editing API, featuring geometry connectivity data and
+access to editing operations such as split, separate, collapse and dissolve.
+The features exposed closely follow the C API,
+giving Python access to the functions used by Blender’s own mesh editing tools.</p>
+<p>For an overview of BMesh data types and how they reference each other see:
+<a class="reference external" href="https://developer.blender.org/docs/features/objects/mesh/bmesh/">BMesh Design Document</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Disk</strong> and <strong>Radial</strong> data is not exposed by the Python API since this is for internal use only.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO items are…</p>
+<ul class="simple">
+<li><p>add access to BMesh <strong>walkers</strong>.</p></li>
+<li><p>add custom-data manipulation functions add, remove or rename.</p></li>
+</ul>
+</div>
+</section>
+<section id="example-script">
+<h2>Example Script<a class="headerlink" href="#example-script" title="Link to this heading"></a></h2>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This example assumes we have a mesh object selected</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">bpy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">bmesh</span>
+
+<span class="c1"># Get the active mesh</span>
+<span class="n">me</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">data</span>
+
+
+<span class="c1"># Get a BMesh representation</span>
+<span class="n">bm</span> <span class="o">=</span> <span class="n">bmesh</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>   <span class="c1"># create an empty BMesh</span>
+<span class="n">bm</span><span class="o">.</span><span class="n">from_mesh</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>   <span class="c1"># fill it in from a Mesh</span>
+
+
+<span class="c1"># Modify the BMesh, can do anything here...</span>
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="p">:</span>
+    <span class="n">v</span><span class="o">.</span><span class="n">co</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mf">1.0</span>
+
+
+<span class="c1"># Finish up, write the bmesh back to the mesh</span>
+<span class="n">bm</span><span class="o">.</span><span class="n">to_mesh</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+<span class="n">bm</span><span class="o">.</span><span class="n">free</span><span class="p">()</span>  <span class="c1"># free and prevent further access</span>
+</pre></div>
+</div>
+<section id="standalone-module">
+<h3>Standalone Module<a class="headerlink" href="#standalone-module" title="Link to this heading"></a></h3>
+<p>The BMesh module is written to be standalone except for <a class="reference internal" href="mathutils.html#module-mathutils" title="mathutils"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mathutils</span></code></a>
+which is used for vertex locations and normals.
+The only other exception to this are when converting mesh data to and from <a class="reference internal" href="bpy.types.Mesh.html#bpy.types.Mesh" title="bpy.types.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Mesh</span></code></a>.</p>
+</section>
+</section>
+<section id="mesh-access">
+<h2>Mesh Access<a class="headerlink" href="#mesh-access" title="Link to this heading"></a></h2>
+<p>There are two ways to access BMesh data, you can create a new BMesh by converting a mesh from
+<a class="reference internal" href="bpy.types.BlendData.html#bpy.types.BlendData.meshes" title="bpy.types.BlendData.meshes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.BlendData.meshes</span></code></a> or by accessing the current Edit-Mode mesh.
+See: <a class="reference internal" href="bmesh.types.html#bmesh.types.BMesh.from_mesh" title="bmesh.types.BMesh.from_mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">bmesh.types.BMesh.from_mesh</span></code></a> and <a class="reference internal" href="#bmesh.from_edit_mesh" title="bmesh.from_edit_mesh"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bmesh.from_edit_mesh</span></code></a> respectively.</p>
+<p>When explicitly converting from mesh data Python <strong>owns</strong> the data, that means that
+the mesh only exists while Python holds a reference to it.
+The script is responsible for putting it back into a mesh data-block when the edits are done.</p>
+<p>Note that unlike <code class="xref py py-mod docutils literal notranslate"><span class="pre">bpy</span></code>, a BMesh does not necessarily correspond to data in the currently open blend-file,
+a BMesh can be created, edited and freed without the user ever seeing or having access to it.
+Unlike Edit-Mode, the BMesh module can use multiple BMesh instances at once.</p>
+<p>Take care when dealing with multiple BMesh instances since the mesh data can use a lot of memory.
+While a mesh that the Python script owns will be freed when the script holds no references to it,
+it’s good practice to call <a class="reference internal" href="bmesh.types.html#bmesh.types.BMesh.free" title="bmesh.types.BMesh.free"><code class="xref py py-class docutils literal notranslate"><span class="pre">bmesh.types.BMesh.free</span></code></a> which will remove all the mesh data immediately
+and disable further access.</p>
+<section id="edit-mode-tessellation">
+<h3>Edit-Mode Tessellation<a class="headerlink" href="#edit-mode-tessellation" title="Link to this heading"></a></h3>
+<p>When writing scripts that operate on Edit-Mode data you will normally want to re-calculate the tessellation after
+running the script, this needs to be called explicitly.
+The BMesh itself does not store the triangulated faces, instead they are stored in the <a class="reference internal" href="bpy.types.Mesh.html#bpy.types.Mesh" title="bpy.types.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Mesh</span></code></a>,
+to refresh tessellation triangles call <a class="reference internal" href="bpy.types.Mesh.html#bpy.types.Mesh.calc_loop_triangles" title="bpy.types.Mesh.calc_loop_triangles"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Mesh.calc_loop_triangles</span></code></a>.</p>
+</section>
+</section>
+<section id="customdata-access">
+<h2>CustomData Access<a class="headerlink" href="#customdata-access" title="Link to this heading"></a></h2>
+<p>BMesh has a unified way to access mesh attributes such as UVs, vertex colors, shape keys, edge crease, etc.
+This works by having a <strong>layers</strong> property on BMesh data sequences to access the custom data layers
+which can then be used to access the actual data on each vert, edge, face or loop.</p>
+<p>Here are some examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">uv_lay</span> <span class="o">=</span> <span class="n">bm</span><span class="o">.</span><span class="n">loops</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">uv</span><span class="o">.</span><span class="n">active</span>
+
+<span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">faces</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">loop</span> <span class="ow">in</span> <span class="n">face</span><span class="o">.</span><span class="n">loops</span><span class="p">:</span>
+        <span class="n">uv</span> <span class="o">=</span> <span class="n">loop</span><span class="p">[</span><span class="n">uv_lay</span><span class="p">]</span><span class="o">.</span><span class="n">uv</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop UV: </span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">uv</span><span class="p">[:])</span>
+        <span class="n">vert</span> <span class="o">=</span> <span class="n">loop</span><span class="o">.</span><span class="n">vert</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop Vert: (</span><span class="si">%f</span><span class="s2">,</span><span class="si">%f</span><span class="s2">,</span><span class="si">%f</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">vert</span><span class="o">.</span><span class="n">co</span><span class="p">[:])</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shape_lay</span> <span class="o">=</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="s2">&quot;Key.001&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="p">:</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">vert</span><span class="p">[</span><span class="n">shape_lay</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Vert Shape: </span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">, </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">z</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In this example the active vertex group index is used,</span>
+<span class="c1"># this is stored in the object, not the `BMesh`.</span>
+<span class="n">group_index</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">vertex_groups</span><span class="o">.</span><span class="n">active_index</span>
+
+<span class="c1"># Only ever one deform weight layer.</span>
+<span class="n">dvert_lay</span> <span class="o">=</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">deform</span><span class="o">.</span><span class="n">active</span>
+
+<span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">bm</span><span class="o">.</span><span class="n">verts</span><span class="p">:</span>
+    <span class="n">dvert</span> <span class="o">=</span> <span class="n">vert</span><span class="p">[</span><span class="n">dvert_lay</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">group_index</span> <span class="ow">in</span> <span class="n">dvert</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Weight </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dvert</span><span class="p">[</span><span class="n">group_index</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting Weight&quot;</span><span class="p">)</span>
+        <span class="n">dvert</span><span class="p">[</span><span class="n">group_index</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</section>
+<section id="keeping-a-correct-state">
+<h2>Keeping a Correct State<a class="headerlink" href="#keeping-a-correct-state" title="Link to this heading"></a></h2>
+<p>When modeling in Blender there are certain assumptions made about the state of the mesh:</p>
+<ul class="simple">
+<li><p>Hidden geometry isn’t selected.</p></li>
+<li><p>When an edge is selected, its vertices are selected too.</p></li>
+<li><p>When a face is selected, its edges and vertices are selected.</p></li>
+<li><p>Duplicate edges / faces don’t exist.</p></li>
+<li><p>Faces have at least three vertices.</p></li>
+</ul>
+<p>To give developers flexibility these conventions are not enforced,
+yet tools must leave the mesh in a valid state or else other tools may behave incorrectly.
+Any errors that arise from not following these conventions is considered a bug in the script,
+not a bug in Blender.</p>
+<section id="selection-flushing">
+<h3>Selection / Flushing<a class="headerlink" href="#selection-flushing" title="Link to this heading"></a></h3>
+<p>As mentioned above, it is possible to create an invalid selection state
+(by selecting a state and then deselecting one of its vertices for example),
+mostly the best way to solve this is to flush the selection
+after performing a series of edits. This validates the selection state.</p>
+</section>
+</section>
+<section id="module-functions">
+<h2>Module Functions<a class="headerlink" href="#module-functions" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Submodules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.ops.html">BMesh Operators (bmesh.ops)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.types.html">BMesh Types (bmesh.types)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.utils.html">BMesh Utilities (bmesh.utils)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bmesh.geometry.html">BMesh Geometry Utilities (bmesh.geometry)</a></li>
+</ul>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="bmesh.from_edit_mesh">
+<span class="sig-prename descclassname"><span class="pre">bmesh.</span></span><span class="sig-name descname"><span class="pre">from_edit_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bmesh.from_edit_mesh" title="Link to this definition"></a></dt>
+<dd><p>Return a BMesh from this mesh, currently the mesh must already be in editmode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>mesh</strong> (<a class="reference internal" href="bpy.types.Mesh.html#bpy.types.Mesh" title="bpy.types.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Mesh</span></code></a>) – The editmode mesh.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the BMesh associated with this mesh.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bmesh.types.html#bmesh.types.BMesh" title="bmesh.types.BMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">bmesh.types.BMesh</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmesh.new">
+<span class="sig-prename descclassname"><span class="pre">bmesh.</span></span><span class="sig-name descname"><span class="pre">new</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">use_operators</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bmesh.new" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>use_operators</strong> (<em>bool</em>) – Support calling operators in <a class="reference internal" href="bmesh.ops.html#module-bmesh.ops" title="bmesh.ops"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bmesh.ops</span></code></a> (uses some extra memory per vert/edge/face).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Return a new, empty BMesh.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="bmesh.types.html#bmesh.types.BMesh" title="bmesh.types.BMesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">bmesh.types.BMesh</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bmesh.update_edit_mesh">
+<span class="sig-prename descclassname"><span class="pre">bmesh.</span></span><span class="sig-name descname"><span class="pre">update_edit_mesh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mesh</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">loop_triangles</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destructive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#bmesh.update_edit_mesh" title="Link to this definition"></a></dt>
+<dd><p>Update the mesh after changes to the BMesh in editmode,
+optionally recalculating n-gon tessellation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mesh</strong> (<a class="reference internal" href="bpy.types.Mesh.html#bpy.types.Mesh" title="bpy.types.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">bpy.types.Mesh</span></code></a>) – The editmode mesh.</p></li>
+<li><p><strong>loop_triangles</strong> (<em>bool</em>) – Option to recalculate n-gon tessellation.</p></li>
+<li><p><strong>destructive</strong> (<em>bool</em>) – Use when geometry has been added or removed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="blf.html" class="btn btn-neutral float-left" title="Font Drawing (blf)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bmesh.ops.html" class="btn btn-neutral float-right" title="BMesh Operators (bmesh.ops)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright UPBGE &amp; Blender Authors.
+      <span class="commit">Revision <code><a href=https://projects.blender.org/blender/blender/commit/93a935a00ead>93a935a00ead</a> - 31/01/2026</code>.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+<div class="footer-contribute">
+  <ul>
+    <li>
+      <a href="https://projects.blender.org/blender/blender/issues/new?template=.gitea/issue_template/api_docs.yaml&field:body=%2A%2APage+Information%2A%2A%0D%0AFile%3A+%60bmesh.rst%60%0D%0ABlender+Version%3A+%605.1%60%0D%0A%5BPermanent+Link%5D%28https%3A%2F%2Fdocs.blender.org%2Fapi%2F5.1%2Fbmesh.html%29%0D%0A%0D%0A%2A%2AShort+description+of+error%2A%2A%0D%0A%5BPlease+fill+out+a+short+description+of+the+error+here%5D%0D%0A" class="fa fa-bug"> Report issue
+        on this page</a>
+    </li>
+  </ul>
+</div>
+
+</body>
+</html>
