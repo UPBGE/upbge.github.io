@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Physics &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme_overrides.css?v=523733c9" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data-Blocks" href="../datablocks/index.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_bricks/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_scripting/index.html">Python Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Physics</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">World Physics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#physics-panel">Physics Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigation-mesh">Navigation Mesh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obstacle-simulation">Obstacle Simulation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datablocks/index.html">Data-Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Physics</a></li>
+      <li class="breadcrumb-item active">World Physics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/manual/physics/world.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="world-physics">
+<h1>World Physics<a class="headerlink" href="#world-physics" title="Link to this heading"></a></h1>
+<figure class="align-right" id="id1">
+<a class="reference internal image-reference" href="../../_images/game_engine-physics-world_panel.png"><img alt="../../_images/game_engine-physics-world_panel.png" src="../../_images/game_engine-physics-world_panel.png" style="width: 290px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">World Physics panel</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="physics-panel">
+<h2>Physics Panel<a class="headerlink" href="#physics-panel" title="Link to this heading"></a></h2>
+<p>The <em>Game Physics</em> located in the <em>World</em> panel determine the type of physical rules that govern the Game Engine scene, and the gravity value to be used. Based on the physics engine selected, in physics simulations in the Game Engine, Blender will automatically move <em>Actors</em> in the downward (-Z) direction. After you arrange the actors and they move as you wish, you can then bake this computed motion into keyframes (see <a class="reference internal" href="introduction.html#game-engine-physics-bake-keyframes"><span class="std std-ref">Digging Deeper</span></a> for more info).</p>
+<dl>
+<dt>Physics Engine</dt><dd><p>Set the type of physics engine to use.</p>
+<dl class="simple">
+<dt>Bullet</dt><dd><p>The default physics engine, in active development. It handles movement and collision detection. The things that collide transfer momentum to the collided object.</p>
+</dd>
+<dt>None</dt><dd><p>No physics in use. Things are not affected by gravity and can fly about in a virtual space. Objects in motion stay in that motion.</p>
+</dd>
+</dl>
+</dd>
+<dt>Gravity</dt><dd><p>The gravitational acceleration, m.s<sup>-2</sup> (in units of meters per squared second), of this world. Each object that is an actor has a mass and size slider. In conjunction with the frame rate, Blender uses this info to calculate how fast the object should accelerate downward.</p>
+</dd>
+<dt>Culling Resolution</dt><dd><p>The size of the occlusion culling buffer in pixel, use higher value for better precision (slower). The optimized Bullet DBVT for view frustum and occlusion culling is activated internally by default.</p>
+</dd>
+<dt>Physics Steps</dt><dd><dl class="simple">
+<dt>Max</dt><dd><p>Sets the maximum number of physics steps per game frame if graphics slow down the game. higher value allows physics to keep up with real-time.</p>
+</dd>
+<dt>Substeps</dt><dd><p>Sets the number of simulation sub-steps per physics time step. Higher value give better physics precision.</p>
+</dd>
+<dt>FPS</dt><dd><p>Set the nominal number of game frames per second. Physics fixed timestep = 1/fps, independently of actual frame rate.</p>
+</dd>
+</dl>
+</dd>
+<dt>Logic Steps</dt><dd><p>Sets the maximum number of logic frame per game frame if graphics slows down the game, higher value allows better synchronization with physics.</p>
+</dd>
+<dt>Physics Deactivation</dt><dd><p>These settings control the threshold at which physics is deactivated. These settings help reducing the processing spent on Physics simulation during the game.</p>
+<dl class="simple">
+<dt>Linear Threshold</dt><dd><p>The speed limit under which a rigid body will go to sleep (stop moving) if it stays below the limits for a time equal or longer than the deactivation time (sleeping is disabled when deactivation time is set to 0).</p>
+</dd>
+<dt>Angular Threshold</dt><dd><p>Same as linear threshold, but for rotation limit (in rad/s)</p>
+</dd>
+<dt>Time</dt><dd><p>The amount of time in which the object must have motion below the thresholds for physics to be disabled (0.0 disables physics deactivation).</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="navigation-mesh">
+<h2>Navigation Mesh<a class="headerlink" href="#navigation-mesh" title="Link to this heading"></a></h2>
+<dl class="simple">
+<dt>Rasterization</dt><dd><dl class="simple">
+<dt>Cell size</dt><dd><p>Rasterized cell size.</p>
+</dd>
+<dt>Cell height</dt><dd><p>Rasterized cell height.</p>
+</dd>
+</dl>
+</dd>
+<dt>Agent</dt><dd><dl class="simple">
+<dt>Height</dt><dd><p>Minimum height where the agent can still walk.</p>
+</dd>
+<dt>Radius</dt><dd><p>Radius of the agent.</p>
+</dd>
+<dt>Max climb</dt><dd><p>Maximum height between grid cells the agent can climb.</p>
+</dd>
+<dt>Max slope</dt><dd><p>Maximum walkable slope angle in degrees.</p>
+</dd>
+</dl>
+</dd>
+<dt>Region</dt><dd><dl class="simple">
+<dt>Min Region Size</dt><dd><p>Minimum regions size. Smaller regions will be deleted.</p>
+</dd>
+<dt>Merged Region Size</dt><dd><p>Minimum regions size. Smaller regions will be merged.</p>
+</dd>
+</dl>
+</dd>
+<dt>Partitioning</dt><dd><dl class="simple">
+<dt>Watershed</dt><dd><p>Classic Recast partitioning method generating the nicest tessellation.</p>
+</dd>
+<dt>Monotone</dt><dd><p>The fastest navmesh generation method, but may cause long thin polygons.</p>
+</dd>
+<dt>Layers</dt><dd><p>A reasonably fast method that produces better triangles than monotone partitioning.</p>
+</dd>
+</dl>
+</dd>
+<dt>Polygonization</dt><dd><dl class="simple">
+<dt>Max Edge Length</dt><dd><p>Maximum contour edge length.</p>
+</dd>
+<dt>Max Edge Error</dt><dd><p>Maximum distance error from contour to cells.</p>
+</dd>
+<dt>Vertices Per Poly</dt><dd><p>Max number of vertices per polygon.</p>
+</dd>
+</dl>
+</dd>
+<dt>Detail Mesh</dt><dd><dl class="simple">
+<dt>Sample Distance</dt><dd><p>Detail mesh sample spacing.</p>
+</dd>
+<dt>Max Sample Error</dt><dd><p>Detail mesh simplification max sample error.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+<section id="obstacle-simulation">
+<h2>Obstacle Simulation<a class="headerlink" href="#obstacle-simulation" title="Link to this heading"></a></h2>
+<p>Simulation used for obstacle avoidance in the Game Engine, based on the RVO (Reciprocal Velocity Obstacles) principle. The aim is to prevent one or more actors colliding with obstacles.</p>
+<p>See <a class="reference external" href="https://wiki.blender.org/index.php/User:Nicks/Gsoc2010/Docs">Pathfinding and steering behaviors</a> for more details.</p>
+<dl class="simple">
+<dt>Type</dt><dd><dl class="simple">
+<dt>None</dt><dd><p>Obstacle simulation is disabled, actors are not able to avoid obstacles.</p>
+</dd>
+<dt>RVO (cells)</dt><dd><p>Obstacle simulation is based on the <a class="reference external" href="http://gamma.cs.unc.edu/RVO/">RVO method</a> with cell sampling.</p>
+</dd>
+<dt>RVO (rays)</dt><dd><p>Obstacle simulation is based on the <a class="reference external" href="http://gamma.cs.unc.edu/RVO">RVO method</a> with ray sampling.</p>
+</dd>
+</dl>
+</dd>
+<dt>Level height</dt><dd><p>Max difference in heights of obstacles to enable their interaction. Used to define minimum margin between obstacles by height, when they are treated as those which are situated one above the other i.e. they does not influence to each other.</p>
+</dd>
+<dt>Visualization</dt><dd><p>Enable debug visualization for obstacle simulation.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../datablocks/index.html" class="btn btn-neutral float-right" title="Data-Blocks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
