@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Standalone Player &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme_overrides.css?v=523733c9" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Deployment Procedure" href="release_procedure.html" />
+    <link rel="prev" title="Performance Considerations" href="performance.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_bricks/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_scripting/index.html">Python Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datablocks/index.html">Data-Blocks</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Deployment</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="licensing.html">Licensing of Games</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance Considerations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Standalone Player</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#personalize-the-game-icon">Personalize The Game Icon</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release_procedure.html">Deployment Procedure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contribute/index.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Deployment</a></li>
+      <li class="breadcrumb-item active">Standalone Player</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/manual/deployment/blender_player.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="standalone-player">
+<span id="deploy-standalone-player"></span><h1>Standalone Player<a class="headerlink" href="#standalone-player" title="Link to this heading"></a></h1>
+<p>The standalone player allows a Blender game to be run without having to load the Blender system. This allows games to be distributed to other users, without requiring them a detailed knowledge of Blender (and also without the possibility of unauthorized modification). Note that the Game Engine <em>Save as Runtime</em> is an add-on facility which must be pre-loaded before use.</p>
+<p>The following procedure will give a standalone version of a working game.</p>
+<ol class="arabic simple">
+<li><p><span class="menuselection">Edit &gt; Preferences &gt; Add-ons &gt; Game Engine &gt; Save As Game Engine Runtime</span>
+enable the checkbox. (You can also <em>Save User Settings</em>, in which case the add-on will always be present whenever Blender is re-loaded).</p></li>
+<li><p><span class="menuselection">File ‣ Export ‣ Save As Game Engine Runtime</span>
+(give appropriate directory/filename) confirm with <em>Save as Game Engine Runtime</em>.</p></li>
+</ol>
+<p>The game can then be executed by running the appropriate <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file. Note that all appropriate libraries are automatically loaded by the add-on.</p>
+<p>If you are interested in licensing your game, read <a class="reference external" href="https://www.blender.org/about/license/">Licensing</a> for a discussion of the issues involved.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Exporting…
+If the game is to be exported to other computers, make a new empty directory for the game runtime and all its ancillary libraries, etc. Then make sure the <strong>whole</strong> directory is transferred to the target computer.</p>
+</div>
+<section id="personalize-the-game-icon">
+<h2>Personalize The Game Icon<a class="headerlink" href="#personalize-the-game-icon" title="Link to this heading"></a></h2>
+<p>This is option is available for Windows only. You can personalize the icon using the option shown in the figure below.</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/deploy-personalize_icon.png" src="../../_images/deploy-personalize_icon.png" />
+<figcaption>
+<p><span class="caption-text">Personalize game icon</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Here is a small video tutorial showing all the process, from .ico creation to its use in an example game:</p>
+<div class="youtube_wrapper" style="">
+<iframe allowfullscreen="true" src="https://www.youtube.com/embed/6r2749ldNC4" style="border: 0; height: 345px; width: 560px">
+</iframe></div></section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="performance.html" class="btn btn-neutral float-left" title="Performance Considerations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="release_procedure.html" class="btn btn-neutral float-right" title="Deployment Procedure" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
