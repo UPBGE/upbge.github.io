@@ -1,0 +1,187 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2. Player Movement &mdash; UPBGE Manual</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme_overrides.css?v=523733c9" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="3. Player Properties" href="player_properties.html" />
+    <link rel="prev" title="1. Camera Movement" href="camera_movement.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            UPBGE Manual
+              <img src="../../../../_static/upbge_logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Manual</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction/index.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introducing_logic_bricks/index.html">Introducing Logic Bricks</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Introducing Logic Nodes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../moving_cube.html">Moving A Cube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../first_person_shooter.html">First Person Shooter</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">2D Side Scroller</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../introducing_python_scripting/index.html">Introducing Python Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introducing_python_components/index.html">Introducing Python Components</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../editors/index.html">Editors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logic_bricks/index.html">Logic Bricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../logic_nodes/index.html">Logic Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python_scripting/index.html">Python Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../python_components/index.html">Python Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../physics/index.html">Physics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../datablocks/index.html">Data-Blocks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deployment/index.html">Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary/index.html">Glossary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contribute</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contribute/index.html">Contribute</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">UPBGE Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Tutorials</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Introducing Logic Nodes</a></li>
+          <li class="breadcrumb-item"><a href="index.html">2D Side Scroller</a></li>
+      <li class="breadcrumb-item active">2. Player Movement</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/manual/tutorials/introducing_logic_nodes/2d_side_scroller/player_movement.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="player-movement">
+<span id="d-scroller-player-movement"></span><h1>2. Player Movement<a class="headerlink" href="#player-movement" title="Link to this heading"></a></h1>
+<p>From the game logic perspective, player can do few movements:</p>
+<ul class="simple">
+<li><p>It can walk/run, either to the left, or to the right, relative to the screen space.</p></li>
+<li><p>It can jump up.</p></li>
+<li><p>It can fall off the rock into the void.</p></li>
+</ul>
+<p>For this reason, we need to know what state/movement a player is in. We need properties to keep those states updated while the game is running.</p>
+<ul class="simple">
+<li><p>With player selected, first add <span class="menuselection">Properties &gt; Game &gt; Game Properties &gt; Add Game Property</span>, name it <code class="docutils literal notranslate"><span class="pre">running</span></code>, leave default type <code class="docutils literal notranslate"><span class="pre">Float</span></code>, and also default value <code class="docutils literal notranslate"><span class="pre">0.0</span></code>. Save often.</p></li>
+<li><p>In <em>Logic Node Editor</em>, add new node tree, name it <code class="docutils literal notranslate"><span class="pre">player_2d_movement</span></code>, and set ‘Fake User’.</p></li>
+<li><p>Next add <span class="ln">Get Object Property</span>, <code class="docutils literal notranslate"><span class="pre">Object</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">player</span></code>, and <code class="docutils literal notranslate"><span class="pre">Property</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">running</span></code>.</p></li>
+<li><p>Connect above node <code class="docutils literal notranslate"><span class="pre">Property</span> <span class="pre">Value</span></code> socket into <span class="ln">Math</span> &gt; <code class="docutils literal notranslate"><span class="pre">A</span></code> socket, set <code class="docutils literal notranslate"><span class="pre">B</span></code> to <code class="docutils literal notranslate"><span class="pre">0.20</span></code>, set <code class="docutils literal notranslate"><span class="pre">Operation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Multiply</span></code>.</p></li>
+<li><p>Connect <span class="ln">Math</span> <code class="docutils literal notranslate"><span class="pre">Result</span></code> &gt; <span class="ln">Combine XYZ</span> <code class="docutils literal notranslate"><span class="pre">Y</span></code> socket, leave <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Z</span></code> at default value (<code class="docutils literal notranslate"><span class="pre">0.0</span></code>).</p></li>
+<li><p>Below <span class="ln">Combine XYZ</span> node add <span class="ln">Get Attribute - World Position</span>, and <code class="docutils literal notranslate"><span class="pre">Object</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">player</span></code>.</p></li>
+<li><p>Next add <span class="ln">Vector Math</span>, connect <span class="ln">Combine XYZ</span> <code class="docutils literal notranslate"><span class="pre">Vector</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Vector</span> <span class="pre">1</span></code>, <span class="ln">World Position</span> &gt; <code class="docutils literal notranslate"><span class="pre">Vector</span> <span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">Operation</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Add</span></code>.</p></li>
+<li><p>Above <span class="ln">Vector Math</span> add <span class="ln">On Update</span>, next <span class="ln">Rotate To</span>, connect <code class="docutils literal notranslate"><span class="pre">Out</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Condition</span></code> (<em>red</em> to <em>red</em> socket), and <code class="docutils literal notranslate"><span class="pre">Result</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Target</span></code> (<em>blue</em> to <em>blue</em> socket).</p></li>
+<li><p>Next add <span class="ln">Walk</span>, and above it <span class="ln">Set Attribute - World Position</span>; <span class="ln">Rotate To</span> <code class="docutils literal notranslate"><span class="pre">Done</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">Condition</span></code> - both nodes, <span class="ln">Combine XYZ</span> <code class="docutils literal notranslate"><span class="pre">Vector</span></code> &gt; <span class="ln">Walk</span> <code class="docutils literal notranslate"><span class="pre">Vector</span></code>, uncheck <span class="ln">Set World Position</span> <code class="docutils literal notranslate"><span class="pre">Y</span></code> and <code class="docutils literal notranslate"><span class="pre">Z</span></code>, both nodes <code class="docutils literal notranslate"><span class="pre">Object</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">player</span></code>, also uncheck <span class="ln">Walk</span> <code class="docutils literal notranslate"><span class="pre">Local</span></code>.</p></li>
+<li><p>For organizing purpose, select all &gt; <kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">J</kbd> to put all into a frame, with frame still selected &gt; <span class="menuselection">N-panel &gt; Node &gt; Node &gt; Label</span> &gt; <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">player</span> <span class="pre">rotation</span> <span class="pre">based</span> <span class="pre">on</span> <span class="pre">'running'</span> <span class="pre">property</span></code>.</p></li>
+</ul>
+<p>This part is done.</p>
+<figure class="align-center" id="id1" style="width: 100%">
+<img alt="../../../../_images/ln-2d-player_movement-1.png" src="../../../../_images/ln-2d-player_movement-1.png" />
+<figcaption>
+<p><span class="caption-text">Player movement setup - rotation part</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Next we add collision detection - if player falls into the void, when it collides with <em>Bedrock</em> object, it will be ‘teleported’ back to the beginning. This is the sole purpose of Bedrock object.</p>
+<ul class="simple">
+<li><p>First we need to add a property to <em>Bedrock</em> object &gt; select it in <span class="menuselection">Outliner</span>, then <span class="menuselection">Add Game Property</span>, same as we did above for the player; name it <code class="docutils literal notranslate"><span class="pre">bedrock</span></code>, leave the rest as default.</p></li>
+</ul>
+<figure class="align-center" id="id2" style="width: 60%">
+<img alt="../../../../_images/ln-2d-bedrock.png" src="../../../../_images/ln-2d-bedrock.png" />
+<figcaption>
+<p><span class="caption-text">Bedrock property</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>In <em>Logic Node Editor</em>, under <em>Player movement</em> frame, add <span class="ln">Collision</span>, and <span class="ln">Set Attribute - World Position</span> - it makes sense, doesn’t it, because when player will fall into the void, and touch (collide) with the <em>Bedrock</em>, we will reset its position, otherwise player would keep falling deeper and deeper into the void - forever.</p></li>
+<li><p>Set <span class="ln">Collision</span> <code class="docutils literal notranslate"><span class="pre">Property</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">bedrock</span></code>, check <code class="docutils literal notranslate"><span class="pre">Continuous</span></code>, connect <code class="docutils literal notranslate"><span class="pre">On</span> <span class="pre">Collision</span></code> output to <span class="ln">Set World Position</span> &gt; <code class="docutils literal notranslate"><span class="pre">Condition</span></code>, and last node <code class="docutils literal notranslate"><span class="pre">Object</span></code> &gt; <code class="docutils literal notranslate"><span class="pre">player</span></code>.</p></li>
+</ul>
+<p>Done. Simple as that.</p>
+<figure class="align-center" id="id3" style="width: 60%">
+<img alt="../../../../_images/ln-2d-player_movement-2.png" src="../../../../_images/ln-2d-player_movement-2.png" />
+<figcaption>
+<p><span class="caption-text">Reset player position nodes setup</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In case you need to ‘teleport’ player somewhere else than at the beginning, change <span class="ln">Set World Position</span> <code class="docutils literal notranslate"><span class="pre">Value</span></code> fields (from top to bottom - X, Y, Z). This is used in case when player manages to advance to some ‘checkpoint’ inside the level, but it fails to make it to the end - it is ‘teleported’ to last ‘checkpoint’.</p>
+<p>If you run the game, not much will happen - the game is not yet functional. We need to add more functionality to the player. And <code class="docutils literal notranslate"><span class="pre">Apply</span> <span class="pre">To</span> <span class="pre">Selected</span></code> all logic trees to player, of course.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="camera_movement.html" class="btn btn-neutral float-left" title="1. Camera Movement" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="player_properties.html" class="btn btn-neutral float-right" title="3. Player Properties" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright : This page is licensed under a CC-BY-SA 4.0 Int. License.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
